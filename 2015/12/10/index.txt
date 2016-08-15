@@ -49,17 +49,17 @@ Installasjon
 Filstruktur
 -----------
 
--   `test/`
-    -   `test.js`
-    -   `node_modules/`
-        -   `selenium_webdriver/`
-        -   `chai/`
-        -   `chai-as-promised/`
-        -   ...
+    test/
+    |-- test.js
+    `-- node_modules/
+        |-- selenium_webdriver/
+        |-- chai/
+        |-- chai-as-promised/
+        `-- ...
 
 Kjøres med:
 
--   `mocha test.js`
+    mocha test.js
 
 [test.js](test.js)
 ------------------
