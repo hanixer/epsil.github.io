@@ -58,19 +58,16 @@
 <section id="content">
 <p><a href="http://userscripts.org/scripts/show/20252">Last.fm Search Links</a> er et nyttig skript for diverse musikknettsteder. Dessverre har den siste offisielle versjonen (2012.12.09) problemer med <a href="http://rateyourmusic.com/">Rate Your Music</a>. En uoffisiell <a href="http://userscripts.org/topics/131464">versjon 2013.09.10</a> gjør noen endringer:</p>
 
-<pre>
-<code class="language-javascript">{       <span class="hljs-comment">// rym artist</span>
+<pre><code class="language-javascript">{       <span class="hljs-comment">// rym artist</span>
         url:<span class="hljs-regexp">/^http:\/\/(?:www\.)?rateyourmusic\.com\/artist\/[\w#!:.?+=&amp;%@!\-]+\/?$/i</span>,
         mainPath:<span class="hljs-string">"div.profilehir"</span>,
         search:rymSearch
 },
-</code>
-</pre>
+</code></pre>
 
 <p>Men nå har Rate Your Music endret <abbr class="acronym" title="HyperText Markup Language">HTML</abbr>-koden igjen, så dette virker ikke lenger. Det følgende ser ut til å fungere:</p>
 
-<pre>
-<code class="language-javascript">{       <span class="hljs-comment">// rym artist</span>
+<pre><code class="language-javascript">{       <span class="hljs-comment">// rym artist</span>
         url:<span class="hljs-regexp">/^http:\/\/(?:www\.)?rateyourmusic\.com\/artist\/[\w#!:.?+=&amp;%@!\-]+\/?$/i</span>,
         mainPath:<span class="hljs-string">"div.section_artist_name"</span>,
         search:rymSearch
@@ -83,8 +80,7 @@
         albumPath:<span class="hljs-string">"div.album_title"</span>,
         placePath:<span class="hljs-string">"div.album_title"</span>
 },
-</code>
-</pre>
+</code></pre>
 
 <hr>
 

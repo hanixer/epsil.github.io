@@ -72,8 +72,7 @@ For å gjøre ting litt enklere for folk har jeg laget en Zip-fil med alle `.dll
 
 <p>Når alt er på plass, enten man går for pakkeløsningen eller installerer <a href="http://ftp.gnu.org/pub/gnu/emacs/windows/emacs-22.1-bin-i386.zip">Emacs</a>, <code>.dll</code>-filene og <a href="http://ftp.gnu.org/pub/gnu/auctex/auctex-11.84.zip"><abbr title="AUCTeX">AUCT<span class="tex-e">e</span>X</abbr></a> manuelt, er det vel verdt å ta en kikk på <a href="http://www.math.aau.dk/%7Edethlef/Tips/tuning.html">Claus Dethlefsens <abbr title="LaTeX">L<span class="latex-a">a</span>T<span class="tex-e">e</span>X</abbr>/Emacs-side</a>, som tar for seg fintilpasning med <a href="http://www.wyrdrune.com/gnuserv.html">gnuserv</a> (lastes ned separat). Selv har jeg <abbr title="blant annet">bl.a.</abbr> dette i <code>.emacs</code>-filen min:</p>
 
-<pre>
-<code class="language-lisp">(<span class="hljs-name">load</span> <span class="hljs-string">"gnuserv"</span>)
+<pre><code class="language-lisp">(<span class="hljs-name">load</span> <span class="hljs-string">"gnuserv"</span>)
 (<span class="hljs-name">gnuserv-start</span>)
 (<span class="hljs-name">setq</span> gnuserv-frame (<span class="hljs-name">selected-frame</span>))
 
@@ -106,8 +105,7 @@ For å gjøre ting litt enklere for folk har jeg laget en Zip-fil med alle `.dll
 (<span class="hljs-name">load</span> <span class="hljs-string">"preview-latex.el"</span> <span class="hljs-literal">nil</span> <span class="hljs-literal">t</span> <span class="hljs-literal">t</span>)
 (<span class="hljs-name">require</span> 'tex-mik)
 (<span class="hljs-name">add-hook</span> 'LaTeX-mode-hook 'LaTeX-math-mode)
-</code>
-</pre>
+</code></pre>
 
 <p>Det blir for mye å gå inn på hva alt dette gjør (men se bloggen <a href="http://www.emacsblog.org/">M-x all-things-emacs</a> for mange nybegynnertips), men de fire siste linjene laster inn <abbr title="AUCTeX">AUCT<span class="tex-e">e</span>X</abbr> og preview-latex med <abbr title="MiKTeX">MiKT<span class="tex-e">e</span>X</abbr>-oppsett og automatisk aktivering av <abbr title="AUCTeX">AUCT<span class="tex-e">e</span>X</abbr> sine mattefunksjoner når Emacs går inn i <abbr title="LaTeX">L<span class="latex-a">a</span>T<span class="tex-e">e</span>X</abbr>-modus.</p>
 

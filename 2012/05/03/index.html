@@ -64,15 +64,13 @@
 
 <p><strong>Oppdatering:</strong> Jeg har lykkes! Takket være jQuery var det ikke mye kode å skrive:</p>
 
-<pre>
-<code class="language-javascript">$(<span class="hljs-string">"#trackChart tbody tr"</span>).each(<span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params"></span>) </span>{
+<pre><code class="language-javascript">$(<span class="hljs-string">"#trackChart tbody tr"</span>).each(<span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params"></span>) </span>{
     <span class="hljs-keyword">var</span> cell = $(<span class="hljs-string">'&lt;td class="playCount"&gt;'</span>);
     <span class="hljs-keyword">var</span> url = $(<span class="hljs-keyword">this</span>).find(<span class="hljs-string">".subjectCell a"</span>).attr(<span class="hljs-string">"href"</span>);
     $(<span class="hljs-keyword">this</span>).append(cell);
     cell.load(url + <span class="hljs-string">" [itemprop=playCount]"</span>);
 });
-</code>
-</pre>
+</code></pre>
 <!--
 Men, la meg se litt kvantitativt på dette. For å skrive de 6 linjene over, (skum)leste jeg 4 kapitler av *Greasemonkey Hacks*, 120 sider av *JavaScript & jQuery: The Missing Manual*, og ytterligere 20 sider av *jQuery in Action*. Hvis jeg runder ned dette til 12 timers arbeid, har jeg altså brukt gjennomsnittlig to timer per linje kode. Det tar tid å skaffe seg oversikt.
 -->

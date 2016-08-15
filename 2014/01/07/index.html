@@ -58,41 +58,31 @@
 <section id="content">
 <p>Pakkehåndtering på <abbr class="acronym" title="Operating System 10">OS X</abbr> er et herk uten like. Her er det som skulle til for å installere Python-biblioteket <a href="http://eyed3.nicfit.net/installation.html">eyeD3</a> med <code>pip</code>. Først, <a href="http://www.pip-installer.org/en/latest/installing.html">installer pip</a> med <code>easy_install</code>:</p>
 
-<pre>
-<code>$ sudo easy_install pip
-</code>
-</pre>
+<pre><code>$ sudo easy_install pip
+</code></pre>
 
 <p>Deretter kan det være nødvendig å oppgradere <code>setuptools</code>:</p>
 
-<pre>
-<code>$ pip install --upgrade setuptools
-</code>
-</pre>
+<pre><code>$ pip install --upgrade setuptools
+</code></pre>
 
 <p>Hvis dette ikke fungerer, prøv:</p>
 
-<pre>
-<code>$ sudo pip install --no-use-wheel --upgrade setuptools
-</code>
-</pre>
+<pre><code>$ sudo pip install --no-use-wheel --upgrade setuptools
+</code></pre>
 
 <p>Alternativt, last ned og kjør det offisielle <a href="https://pypi.python.org/pypi/setuptools#unix-based-systems-including-mac-os-x">installasjonsskriptet</a>:</p>
 
-<pre>
-<code>$ wget https://bitbucket.org/pypa/setuptools/raw/bootstrap/ez_setup.py -O - | sudo python
-</code>
-</pre>
+<pre><code>$ wget https://bitbucket.org/pypa/setuptools/raw/bootstrap/ez_setup.py -O - | sudo python
+</code></pre>
 
 <p>(Hvis <code>wget</code> ikke er installert ennå, gjør <code>$ brew install wget</code>. Hvis <code>brew</code> krangler, kjør <code>$ brew doctor</code> og påse at filrettigheter er som de skal være.)</p>
 
 <p>Når <code>pip</code> <em>og</em> <code>setuptools</code> er installert, kan <code>pip</code>-pakken for <code>eye3D</code> finnes med <code>pip search</code>:</p>
 
-<pre>
-<code>$ pip search eyeD3
+<pre><code>$ pip search eyeD3
 $ pip install eyeD3-pip
-</code>
-</pre>
+</code></pre>
 </section>
 </article>
 </div>

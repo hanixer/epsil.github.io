@@ -60,8 +60,7 @@
 
 <p>Martin Wolf har laget en <code>config.rb</code>-fil som gjør at Gollum bruker <a href="http://mwolf.net/2014/04/29/adding-pandoc-to-gollum/">Pandoc</a>:</p>
 
-<pre>
-<code class="language-ruby"><span class="hljs-keyword">require</span> <span class="hljs-string">"github/markup"</span>
+<pre><code class="language-ruby"><span class="hljs-keyword">require</span> <span class="hljs-string">"github/markup"</span>
 
 ci = GitHub::Markup::CommandImplementation.new(
     <span class="hljs-regexp">/md|mkdn?|mdwn|mdown|markdown|litcoffee/</span>,
@@ -69,8 +68,7 @@ ci = GitHub::Markup::CommandImplementation.new(
 <span class="hljs-comment"># Our command needs to go to the front of the queue, in order to take</span>
 <span class="hljs-comment"># precedence before the stock GitHub::Markup::Markdown implementation</span>
 GitHub::Markup::markups.unshift(ci)
-</code>
-</pre>
+</code></pre>
 
 <p>Dette forutsetter at Gollum startes med opsjonen <code>--config</code>.</p>
 </section>

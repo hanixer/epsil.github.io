@@ -64,8 +64,7 @@
 
 <p>Det er i prinsippet mulig å bruke lambdaer som et fundament for videre programmering. Det klassiske <a href="http://mitpress.mit.edu/sicp/full-text/book/book.html"><em><abbr class="acronym" title="Structure and Interpretation of Computer Programs">SICP</abbr></em></a>-eksemplet er å definere <code>cons</code>, <code>car</code> og <code>cdr</code> på denne måten,<sup class="footnote-ref"><a href="#fn2" id="fnref2" title="http://mitpress.mit.edu/sicp/full-text/book/book-Z-H-14.html#%_sec_2.1.3">[2]</a></sup> som vi kan tenke på som Lisp-sjargong for <code>pair</code>, <code>first</code> og <code>second</code>. La <code>pair</code> være en funksjon som returnerer et par med verdier, <code>first</code> returnere den første verdien til paret, og <code>second</code> returnere den andre:</p>
 
-<pre>
-<code class="language-scheme">&gt; (pair "foo" "bar")
+<pre><code class="language-scheme">&gt; (pair "foo" "bar")
 #&lt;par av "foo" og "bar"&gt;
 
 &gt; (first (pair "foo" "bar"))
@@ -73,13 +72,11 @@
 
 &gt; (second (pair "foo" "bar"))
 "bar"
-</code>
-</pre>
+</code></pre>
 
 <p>Den vanlige måten å implementere dette på ville være å konstruere en listestruktur – et stykke data – med <code>pair</code>, og så la <code>first</code> og <code>second</code> hente ut riktig element fra strukturen. <em><abbr class="acronym" title="Structure and Interpretation of Computer Programs">SICP</abbr></em> sin fremgangsmåte er derimot å implementere paret som en <em>prosedyre</em>:</p>
 
-<pre>
-<code class="language-scheme">(<span class="hljs-name"><span class="hljs-builtin-name">define</span></span> (<span class="hljs-name">pair</span> x y)
+<pre><code class="language-scheme">(<span class="hljs-name"><span class="hljs-builtin-name">define</span></span> (<span class="hljs-name">pair</span> x y)
   (<span class="hljs-name"><span class="hljs-builtin-name">lambda</span></span> (m)
     (<span class="hljs-name"><span class="hljs-builtin-name">cond</span></span>
      ((<span class="hljs-name"><span class="hljs-builtin-name">=</span></span> m <span class="hljs-number">1</span>) x)
@@ -90,16 +87,13 @@
 
 (<span class="hljs-name"><span class="hljs-builtin-name">define</span></span> (<span class="hljs-name">second</span> z)
   (<span class="hljs-name">z</span> <span class="hljs-number">2</span>))
-</code>
-</pre>
+</code></pre>
 
 <p>Her returnerer <code>pair</code> en anonym funksjon (som lages med <code>lambda</code> i Lisp). Denne funksjonen inneholder argumentene til <code>pair</code>:</p>
 
-<pre>
-<code class="language-scheme">&gt; (pair "foo" "bar")
+<pre><code class="language-scheme">&gt; (pair "foo" "bar")
 #&lt;prosedyre som inneholder "foo" og "bar"&gt;
-</code>
-</pre>
+</code></pre>
 
 <p>Det <code>first</code> og <code>second</code> så gjør, er å kalle prosedyren med et bestemt argument slik at den første eller andre verdien returneres. Dermed vil <code>(first (pair "foo" "bar"))</code> fortsatt gi <code>"foo"</code>, og <code>(second (pair "foo" "bar"))</code> gi <code>"bar"</code>. På papiret en helt adekvat implementasjon.</p>
 <!--

@@ -58,33 +58,25 @@
 <section id="content">
 <p>Rediger filen <code>/etc/fstab</code>:</p>
 
-<pre>
-<code>$ sudo vi /etc/fstab
-</code>
-</pre>
+<pre><code>$ sudo vi /etc/fstab
+</code></pre>
 
 <p>Legg til:</p>
 
-<pre>
-<code>LABEL=DRIVE_NAME none ntfs rw,auto,nobrowse
-</code>
-</pre>
+<pre><code>LABEL=DRIVE_NAME none ntfs rw,auto,nobrowse
+</code></pre>
 
 <p>(Hvis disken har et komplisert navn, finn <abbr class="acronym" title="Universally Unique Identifier">UUID</abbr>-en med <code>$ diskutil info /Volumes/DRIVENAME | grep UUID</code> og skriv <code>UUID=...</code> istedenfor.)</p>
 
 <p>Disken vil ikke vises som en vanlig disk, men kan åpnes i Finder med:</p>
 
-<pre>
-<code>$ open /Volumes/DRIVENAME
-</code>
-</pre>
+<pre><code>$ open /Volumes/DRIVENAME
+</code></pre>
 
 <p>Alternativt kan man legge til en snarvei på skrivebordet:</p>
 
-<pre>
-<code>$ sudo ln -s /Volumes/DRIVENAME ~/Desktop/DRIVENAME
-</code>
-</pre>
+<pre><code>$ sudo ln -s /Volumes/DRIVENAME ~/Desktop/DRIVENAME
+</code></pre>
 
 <hr>
 
