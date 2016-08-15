@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>Mocha Tests</title>
+  <link href="mocha.css" rel="stylesheet">
+  <link href="favicon.ico" rel="icon" type="image/x-icon">
+</head>
+<body>
+  <div id="mocha"></div>
+  <script src="chai.js"></script>
+  <script src="mocha.js"></script>
+  <script>
+    var chai = window.chai
+    var assert = chai.assert
+    var expect = chai.expect
+    var should = chai.should()
+    mocha.setup('bdd')
+  </script>
+  <script src="../js/jquery.js"></script>
+  <script src="../js/markdown-it.js"></script>
+  <script src="../js/markdown-it-attrs.js"></script>
+  <script src="../js/markdown-it-anchor.js"></script>
+  <script src="../js/markdown-it-sub.js"></script>
+  <script src="../js/markdown-it-sup.js"></script>
+  <script src="../js/markdown-it-footnote.js"></script>
+  <script src="../js/collapse.js"></script>
+  <script src="../js/figure.js"></script>
+  <script src="../js/punctuation.js"></script>
+  <script src="../js/util.js"></script>
+  <script src="../js/highlight.js"></script>
+  <script src="../js/readinglist.js"></script>
+  <script src="../js/custom.js"></script>
+  <script src="test.js"></script>
+  <script>
+    mocha.run();
+  </script>
+</body>
+</html>

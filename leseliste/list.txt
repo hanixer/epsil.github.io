@@ -1,0 +1,67 @@
+﻿Leseliste
+=========
+
+Tips {.collapsed}
+----
+
+- Harold Abelson & Gerald Jay Sussman: *Structure and Interpretation of Computer Programs* #utvikling
+- Ellen Lupton: *Thinking with Type* #design
+- ~~Robert Bringhurst: *The Elements of Typographic Style*~~ #design
+- ~~Miran Lipovaca: *Learn You a Haskell for Great Good!*~~ #utvikling
+- ~~David Sawyer McFarland: *JavaScript & jQuery: The Missing Manual*~~ #utvikling
+- Steven Mann: *InfoPath with SharePoint 2010* #utvikling
+- Scott Roberts & Hagen Green & Jessica Meats: *Designing Forms for SharePoint and InfoPath* #utvikling
+- Philo Janus: *Pro InfoPath 2007* #utvikling
+- Thom Robbins: *Programming Microsoft InfoPath* #utvikling
+- Scott Roberts & Hagen Green: *Designing Forms for Microsoft Office InfoPath and Forms Services 2007* #utvikling
+- F. Scott Barker: *Beginning InfoPath 2003* #utvikling
+- ~~Joseph Albahari & Ben Albahari: *C# 6.0 Pocket Reference*~~ #utvikling (4.5/5)
+- Joseph Albahari & Ben Albahari: *C# 6.0 in a Nutshell* #utvikling
+- Joseph Albahari & Ben Albahari: *LINQ Pocket Reference* #utvikling
+- Fabrice Marguerie & Steve Eichert & Jim Wooley: *LINQ in Action* #utvikling
+- Charlie Calvert & Dinesh Kulkarni: *Essential LINQ* #utvikling
+- N. Satheesh Kumar: *LINQ Quickly* #utvikling
+- ~~Rick Delorme: *Exam Ref 70-480: Programming in HTML5 with JavaScript and CSS3*~~ #utvikling (1/5)
+- Evan Hahn: *JavaScript Testing with Jasmine* #utvikling
+- Jake Spurlock: *Bootstrap* #utvikling
+- David Cochran: *Twitter Bootstrap Web Development How-To* #utvikling
+- Andrew Stellman & Jennifer Greene: *Head First C#* #utvikling
+- Mark Michaelis: *Essential C# 4.0* #utvikling
+- James Foxall: *Sams Teach Yourself Visual C# 2008 in 24 Hours* #utvikling
+- Karli Watson: *Beginning Visual C# 2012 Programming* #utvikling
+- Emer McKenna & Kevin Laahs & Veli-Matti Vanamo: *SharePoint 2010 for Dummies* #utvikling
+- Scot Hillier: *Real World SharePoint 2010* #utvikling
+- Matthew MacDonald: *HTML5: The Missing Manual* #utvikling
+- Erich Gamma & Richard Helm & Ralph Johnson & John Vlissides: *Design Patterns* #utvikling
+- Eric Freeman & Elisabeth Freeman: *Head First Design Patterns* #utvikling
+- Bill Hetzel: *The Complete Guide to Software Testing* #testing
+- Lee Copeland: *A Practitioner's Guide to Software Test Design* #testing
+- Rex Black: *Managing the Testing Process* #testing
+- Gerald D. Everett & Raymond McLeod: *Software Testing: Testing Across the Entire Software Development Life Cycle* #testing
+- Mark Fewster & Dorothy Graham: *Software Test Automation* #testing
+- Dorothy Graham & Erik van Veenendaal & Isabel Evas & Rex Black: *Foundations of Software Testing: ISTQB Certification* #testing
+- Andreas Spillner & Tilo Linz & Hans Schaefer: *Software Testing Foundations* #testing
+- Ola Ellnestam & Daniel Brolund: *The Mikado Method* #prosess
+- Joy Beatty & Anthony Chen: *Visual Models for Software Requirements* #prosess
+- Robert C. Martin: *Clean Code* #prosess
+- Steve McConnell: *Code Complete* #prosess
+- Steve Krug: *Don't Make Me Think!* #design
+- Robin Williams: *The Non-Designer's Design Book* #design
+- Jeff Gothelf & Josh Seiden: *Lean UX* #design
+- Jesse James Garrett: *The Elements of User Experience: User-Centered Design for the Web and Beyond* #design
+- Yvonne Rogers & Helen Sharp & Jenny Preece: *Interaction Design: Beyond Human-Computer Interaction* #design
+- Donald A. Norman: *The Design of Everyday Things* #design
+- Garr Reynolds: *Presentation Zen* #presentasjon
+- Garr Reynolds: *Presentation Zen Design* #presentasjon
+- Garr Reynolds: *The Naked Presenter* #presentasjon
+- Jeremey Donovan: *How to Deliver a TED Talk* #presentasjon
+- Carmine Gallo: *The Presentation Secrets of Steve Jobs* #presentasjon
+- Nancy Duarte: *Slide:ology* #presentasjon
+- Alexei Kapterev: *Presentation Secrets* #presentasjon
+- Matt Carter: *Designing Science Presentations* #presentasjon
+- Philip Collins: *The Art of Speeches and Presentations* #presentasjon
+- ~~David Allen: *Getting Things Done: The Art of Stress-Free Productivity*~~ #produktivitet
+- ~~Stephen R. Covey: *The 7 Habits of Highly Effective People*~~ #produktivitet
+- Stephen R. Covey: *First Things First* #produktivitet
+- Brian Tracy: *Eat That Frog!* #produktivitet
+- Staffan Nöteberg: *Pomodoro Technique Illustrated* #produktivitet
