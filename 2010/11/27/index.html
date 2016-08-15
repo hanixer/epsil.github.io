@@ -64,13 +64,15 @@
 
 <p>På maskinen jeg skulle kopiere <em>til</em>, skrev jeg nå følgende:</p>
 
-<pre><code>nc -l -p 8888 | dd of=/dev/sda
-</code></pre>
+<pre>
+<code>nc -l -p 8888 | dd of=/dev/sda</code>
+</pre>
 
 <p>Dette satte maskinen til å lytte på port 8888 og skrive alt den mottok derfra <em>direkte</em> til den nye harddisken, <code>/dev/sda</code>. Sterk kost! På maskinen jeg skulle kopiere <em>fra</em>, skrev jeg:</p>
 
-<pre><code>dd if=/dev/sda | nc 192.168.1.10 8888
-</code></pre>
+<pre>
+<code>dd if=/dev/sda | nc 192.168.1.10 8888</code>
+</pre>
 
 <p>Dermed begynte den gamle maskinen å lese fra harddisken, blokk for blokk, og sende alt sammen over til den nye.</p>
 

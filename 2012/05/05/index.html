@@ -58,12 +58,13 @@
 <section id="content">
 <p>JavaScript har forandret seg mye de siste årene. Først har man <a href="https://developer.mozilla.org/en/Gecko_DOM_Reference/Introduction#Core_Interfaces_in_the_DOM">Document Object Model</a> (<abbr class="acronym" title="Document Object Model">DOM</abbr>), som implementeres litt forskjellig av hver nettleser og i grunn er ganske omstendelig:</p>
 
-<pre><code class="language-javascript"><span class="hljs-keyword">var</span> elmNewContent = <span class="hljs-built_in">document</span>.createElement(<span class="hljs-string">'a'</span>);
+<pre>
+<code class="language-javascript"><span class="hljs-keyword">var</span> elmNewContent = <span class="hljs-built_in">document</span>.createElement(<span class="hljs-string">'a'</span>);
 elmNewContent.href = <span class="hljs-string">'http://www.example.com/'</span>;
 elmNewContent.appendChild(<span class="hljs-built_in">document</span>.createTextNode(<span class="hljs-string">'click here'</span>));
 <span class="hljs-keyword">var</span> elmFoo = <span class="hljs-built_in">document</span>.getElementById(<span class="hljs-string">'foo'</span>);
-elmFoo.parentNode.insertBefore(elmNewContent, elmFoo);
-</code></pre>
+elmFoo.parentNode.insertBefore(elmNewContent, elmFoo);</code>
+</pre>
 
 <p>Douglas Crockford vil knapt <em>nevne</em> <abbr class="acronym" title="Document Object Model">DOM</abbr> i <em>JavaScript: The Good Parts</em>: «I think writing a Good Parts book about the <abbr class="acronym" title="Document Object Model">DOM</abbr> would be extremely challenging.»<sup class="footnote-ref"><a href="#fn1" id="fnref1" title="Douglas Crockford: JavaScript: The Good Parts, kapittel 1: «Good Parts», s. 2. O’Reilly, 2008.">[1]</a></sup></p>
 
@@ -73,11 +74,12 @@ elmFoo.parentNode.insertBefore(elmNewContent, elmFoo);
 
 <p>Det må imidlertid påpekes at Greasemonkey ikke nødvendigvis er <a href="http://wiki.greasespot.net/Third-Party_Libraries#jQuery">kompatibel</a> med siste versjon av jQuery. Versjon 1.3.2 virker, men 1.4.1 gjør det ikke. Anbefalt bruk er:</p>
 
-<pre><code class="language-javascript"><span class="hljs-comment">// ==UserScript==</span>
+<pre>
+<code class="language-javascript"><span class="hljs-comment">// ==UserScript==</span>
 <span class="hljs-comment">// @name          jQuery Example</span>
 <span class="hljs-comment">// @require       http://ajax.googleapis.com/ajax/libs/jquery/1.3.2/jquery.min.js</span>
-<span class="hljs-comment">// ==/UserScript==</span>
-</code></pre>
+<span class="hljs-comment">// ==/UserScript==</span></code>
+</pre>
 
 <p>Greasemonkey-utgaven av <a href="http://userscripts.org/scripts/show/66698">Reddit Reveal</a> gjør <abbr title="for eksempel">f.eks.</abbr> utstrakt bruk av jQuery. Forresten har Ubuntu en pakke, <code>libjs-jsquery</code>, som installerer en utgave av jQuery under <code>/usr/share/javascript/jquery/jquery.js</code> (v1.7.1 i skrivende stund).</p>
 

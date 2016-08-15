@@ -58,7 +58,8 @@
 <section id="content">
 <p>Du skal <em>aldri</em> bruke en bindestrek som punktmerke i en liste, men derimot en <a href="http://www.sprakrad.no/tanke.htm">tankestrek</a>, som har Unicode-plasseringen U+2013. I både Mozilla- og Opera-støttet <abbr class="acronym" title="Cascading Style Sheets Level 2">CSS2</abbr> blir dette slik:</p>
 
-<pre><code class="language-css"><span class="hljs-selector-tag">ul</span> {
+<pre>
+<code class="language-css"><span class="hljs-selector-tag">ul</span> {
     <span class="hljs-attribute">list-style</span>: none;
     <span class="hljs-attribute">margin</span>: <span class="hljs-number">0</span>;
     <span class="hljs-attribute">padding</span>: <span class="hljs-number">0</span> <span class="hljs-number">1em</span>;
@@ -68,24 +69,26 @@
                             etterfulgt av et hardt mellomrom */</span>
     <span class="hljs-attribute">display</span>: marker;
     <span class="hljs-attribute">padding-right</span>: .<span class="hljs-number">25em</span>;
-}
-</code></pre>
+}</code>
+</pre>
 
 <p><code>margin</code>- og <code>padding</code>-deklarasjonene er bare min måte å oppnå passende avstander på; du kan selvsagt justere disse etter behov.</p>
 
 <p>Men så var det <abbr class="acronym" title="Internet Explorer">IE</abbr>, da – som ikke støtter verken <code>content</code>-egenskapen eller pseudoelementet <code>:before</code>, og som følge av den øverste stilregelen ikke viser punktmerker i det hele tatt. Den eneste måten å (til en viss grad) få det som vi ønsker på er ved å bruke et et lite bilde i <abbr class="acronym" title="Graphics Interchange Format">GIF</abbr>- eller <abbr class="acronym" title="Portable Network Graphics">PNG</abbr>-format (bruk <abbr class="acronym" title="Portable Network Graphics">PNG</abbr>!), som vi setter inn foran hvert <code>li</code>-element med stilregelen</p>
 
-<pre><code class="language-css"><span class="hljs-selector-tag">ul</span> {
+<pre>
+<code class="language-css"><span class="hljs-selector-tag">ul</span> {
      <span class="hljs-attribute">list-style-image</span>: <span class="hljs-built_in">url</span>(<span class="hljs-string">"strek.png"</span>);
-}
-</code></pre>
+}</code>
+</pre>
 
 <p>Vi ønsker selvsagt ikke at denne stilregelen skal brukes av Mozilla og Opera, da dette vil føre til <em>to</em> streker foran hver <code>li</code> (urk). Derfor plasserer vi heller denne regelen i et eget stilark kun for Internet Explorer, som vi i <abbr class="acronym" title="HyperText Markup Language">HTML</abbr>-dokumentene refererer til med følgende kode:</p>
 
-<pre><code class="language-html"><span class="hljs-comment">&lt;!--[if IE]&gt;
+<pre>
+<code class="language-html"><span class="hljs-comment">&lt;!--[if IE]&gt;
   &lt;link href="IE.css" rel="stylesheet" type="text/css"&gt;
-&lt;![endif]--&gt;</span>
-</code></pre>
+&lt;![endif]--&gt;</span></code>
+</pre>
 
 <p>Bildeløsningen er en <em>svak</em> løsning, som ikke skalerer så veldig bra. Men den er fortsatt mye bedre enn å kludre til markeringen med «presentasjonsorienterte» streker, og gjør at listene også vil fungere i nettlesere uten <abbr class="acronym" title="Cascading Style Sheets">CSS</abbr>-støtte (fordi <em>strukturen</em> i dokumentet er bevart).</p>
 </section>

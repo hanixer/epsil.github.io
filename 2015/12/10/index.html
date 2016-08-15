@@ -211,7 +211,8 @@
 <h2><a aria-hidden="true" class="header-anchor" href="#testjs" title="test.js"></a> <a href="test.js">test.js</a><a aria-controls="testjs-section" aria-expanded="true" aria-hidden="true" class="collapse-button" data-toggle="collapse" href="#testjs-section" role="button"></a></h2>
 
 <div class="collapse in" id="testjs-section">
-<pre><code class="language-javascript"><span class="hljs-keyword">var</span> selenium = <span class="hljs-built_in">require</span>(<span class="hljs-string">'selenium-webdriver'</span>);
+<pre>
+<code class="language-javascript"><span class="hljs-keyword">var</span> selenium = <span class="hljs-built_in">require</span>(<span class="hljs-string">'selenium-webdriver'</span>);
 <span class="hljs-keyword">var</span> chai = <span class="hljs-built_in">require</span>(<span class="hljs-string">'chai'</span>);
 chai.use(<span class="hljs-built_in">require</span>(<span class="hljs-string">'chai-as-promised'</span>));
 <span class="hljs-keyword">var</span> expect = chai.expect;
@@ -230,8 +231,8 @@ after(<span class="hljs-function"><span class="hljs-keyword">function</span>(<sp
 
 describe(<span class="hljs-string">'Component'</span>, <span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params"></span>) </span>{
   <span class="hljs-comment">// ...</span>
-});
-</code></pre>
+});</code>
+</pre>
 </div>
 </section>
 
@@ -239,7 +240,8 @@ describe(<span class="hljs-string">'Component'</span>, <span class="hljs-functio
 <h2><a aria-hidden="true" class="header-anchor" href="#testjs-del-2" title="test.js, del 2"></a> <a href="test.js">test.js</a>, del 2<a aria-controls="testjs-del-2-section" aria-expanded="true" aria-hidden="true" class="collapse-button" data-toggle="collapse" href="#testjs-del-2-section" role="button"></a></h2>
 
 <div class="collapse in" id="testjs-del-2-section">
-<pre><code class="language-javascript">describe(<span class="hljs-string">'Component'</span>, <span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params"></span>) </span>{
+<pre>
+<code class="language-javascript">describe(<span class="hljs-string">'Component'</span>, <span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params"></span>) </span>{
   beforeEach(<span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params"></span>) </span>{
     <span class="hljs-comment">// ...</span>
   });
@@ -251,8 +253,8 @@ describe(<span class="hljs-string">'Component'</span>, <span class="hljs-functio
   it(<span class="hljs-string">'should work as expected'</span>, <span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params"></span>) </span>{
     <span class="hljs-comment">// Selenium test code here</span>
   });
-});
-</code></pre>
+});</code>
+</pre>
 
 <p>Resultat:</p>
 
@@ -266,15 +268,16 @@ describe(<span class="hljs-string">'Component'</span>, <span class="hljs-functio
 <h2><a aria-hidden="true" class="header-anchor" href="#testjs-del-3" title="test.js, del 3"></a> <a href="test.js">test.js</a>, del 3<a aria-controls="testjs-del-3-section" aria-expanded="true" aria-hidden="true" class="collapse-button" data-toggle="collapse" href="#testjs-del-3-section" role="button"></a></h2>
 
 <div class="collapse in" id="testjs-del-3-section">
-<pre><code class="language-javascript">describe(<span class="hljs-string">'Search field'</span>, <span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params"></span>) </span>{
+<pre>
+<code class="language-javascript">describe(<span class="hljs-string">'Search field'</span>, <span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params"></span>) </span>{
   it(<span class="hljs-string">'should clear when selected'</span>, <span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params"></span>) </span>{
     <span class="hljs-keyword">this</span>.driver.get(<span class="hljs-string">'http://...'</span>);
     <span class="hljs-keyword">var</span> searchField = <span class="hljs-keyword">this</span>.driver.findElement({ css: <span class="hljs-string">'#searchField'</span> });
     searchField.click();
     <span class="hljs-keyword">return</span> expect(searchField.getText()).to.eventually.equal(<span class="hljs-string">''</span>);
   });
-});
-</code></pre>
+});</code>
+</pre>
 
 <p>Resultat:</p>
 

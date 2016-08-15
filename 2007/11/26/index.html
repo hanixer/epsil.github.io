@@ -121,12 +121,13 @@
 
 <p>Emacs har en slik tast: Tab. Denne tasten setter <em>ikke</em> inn en tabulator ved markøren (selv om man naturligvis kan gjøre dét hvis man har behov for det), men rykker inn linjen markøren befinner seg på med utgangspunkt i den foregående linjen. Det vil si at dersom man roter til innrykket til linjen man befinner seg på, kan man trykke Tab for å komme tilbake til «riktig» innrykk. Dette <em>kunne</em> ha vært katastrofalt dersom brukeren og Emacs hadde ulike meninger om hva som utgjør «riktig» innrykk, men innrykkingsrutinen i Emacs er <em>gjennomtenkt</em> (og konfigurerbar). Se <abbr title="for eksempel">f.eks.</abbr> på følgende C++-kode:</p>
 
-<pre><code class="language-cpp"><span class="hljs-keyword">if</span>(foo == <span class="hljs-string">"bar"</span> &amp;&amp;
+<pre>
+<code class="language-cpp"><span class="hljs-keyword">if</span>(foo == <span class="hljs-string">"bar"</span> &amp;&amp;
    baz == <span class="hljs-string">"quux"</span>) {
   <span class="hljs-built_in">cout</span> &lt;&lt; <span class="hljs-string">"foo, bar, "</span>
        &lt;&lt; <span class="hljs-string">"baz, quux"</span>;
-}
-</code></pre>
+}</code>
+</pre>
 
 <p>Her rykkes innholdet i <code>if</code>-setningen inn, og den smarte håndteringen av strømoperatoren (<code>&lt;&lt;</code>) gjør det uproblematisk å «<code>cout</code>-e» tekst som går over mer enn en linje. For øvrig har Emacs også en kommando som ordner innrykket til alle linjene i det markerte området.</p>
 </div>

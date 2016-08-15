@@ -56,7 +56,8 @@
 </header>
 
 <section id="content">
-<pre><code>/**//*/};)/**/main(/*//**/tang         ,gnat/**//*/,ABBA~,0-0(avnz;)0-0,tang,raeN
+<pre>
+<code>/**//*/};)/**/main(/*//**/tang         ,gnat/**//*/,ABBA~,0-0(avnz;)0-0,tang,raeN
 ,ABBA(niam&amp;&amp;)))2-]--tang-[kri     - =raeN(&amp;&amp;0&lt;)/*clerk*/,noon,raeN){(!tang&amp;&amp;
 noon!=-1&amp;&amp;(gnat&amp;2)&amp;&amp;((raeN&amp;&amp;(    getchar(noon+0)))||(1-raeN&amp;&amp;(trgpune(noon
 )))))||tang&amp;&amp;znva(/*//**/tang   ,tang,tang/**|**//*/((||)))0(enupgrt=raeN
@@ -78,18 +79,19 @@ enupgrt&amp;&amp;1==enrA((&amp;&amp;)2&amp;gnat(&amp;&amp;           )1-^tang(&a
 (&amp;&amp;)'a\'=gnat(&amp;&amp;)1-==gnat(&amp;&amp;)4        ==ABBA(&amp;&amp;tang!;))))0(enupgrt=
  gnat(&amp;&amp;)tang!((||)))0(rahcteg        =gnat(&amp;&amp;tang((&amp;&amp;ABBA;;)1-'A'=!
 'Z'=tang(&amp;&amp;ABBA{)enrA/***/);gnat        ^-1&amp;&amp;znva(tang+1,gnat,1+gnat);
- main(ABBA&amp;2/*//*\\**/,tang,gnat    ,ABBA/**//*/(avnz/**/);}/*//**/
-</code></pre>
+ main(ABBA&amp;2/*//*\\**/,tang,gnat    ,ABBA/**//*/(avnz/**/);}/*//**/</code>
+</pre>
 
 <p>Det ovenstående programmet, <a href="http://www.ioccc.org/1989/westley.c"><code>westley.c</code></a>, er <a href="http://www.westley.org/">Brian Westley</a> sitt vinnerbidrag til <a href="http://www.ioccc.org/">The International Obfuscated C Code Contest</a> året 1989. Hvis det kjøres uten argumenter, kopierer det teksten man skriver inn. Hvis det kjøres med ett argument, utfører det <a href="http://en.wikipedia.org/wiki/ROT13"><abbr class="acronym" title="Rotate By 13 Places">ROT13</abbr></a>-kryptering på teksten: Hver bokstav fra <em>A</em> til <em>Z</em> byttes ut med den som er 13 plasser frem. (<abbr class="acronym" title="Rotate By 13 Places">ROT13</abbr> av «Hello world», for eksempel, er «Uryyb jbeyq». Utfører man <abbr class="acronym" title="Rotate By 13 Places">ROT13</abbr> to ganger, ender man opp med utgangspunktet, så <abbr class="acronym" title="Rotate By 13 Places">ROT13</abbr> av «Uryyb jbeyq» er «Hello world».) Kjøres det med to argumenter, «reverserer» det teksten, og kjøres det med tre, gjør det begge deler. (Se <a href="http://www.ioccc.org/1989/westley.hint"><code>wesley.hint</code></a> for mer informasjon.)</p>
 
 <p>Det spesielle med programmet er imidlertid at <em>kildekoden kan <abbr class="acronym" title="Rotate By 13 Places">ROT13</abbr>-krypteres, «reverseres» eller begge deler</em>, og vil fortsatt kompilere. Hver nye «versjon» av programmet man får på denne måten, anvender en egen algoritme. Og siden programmets oppgave nettopp er å utføre <abbr class="acronym" title="Rotate By 13 Places">ROT13</abbr>-kryptering og «reversering», kan de ulike «versjonene» produseres ved å <em>bruke programmet på seg selv</em>:</p>
 
-<pre><code>westley &lt; westley.c &gt; ver0.c
+<pre>
+<code>westley &lt; westley.c &gt; ver0.c
 westley 1  &lt; westley.c &gt; ver1.c
 westley 1  2  &lt; westley.c &gt; ver2.c
-westley 1  2  3  &lt; westley.c &gt; ver3.c
-</code></pre>
+westley 1  2  3  &lt; westley.c &gt; ver3.c</code>
+</pre>
 
 <p>Sånn. Nå skal jeg gå og legge hodet mitt i bløt.</p>
 </section>

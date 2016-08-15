@@ -58,14 +58,16 @@
 <section id="content">
 <p>Hvis man skal bruke <code>find</code> sammen med, si, <code>rm</code> på filnavn som inneholder mellomrom, må man ta visse forhåndsregler. Den mest opplagte besvergelsen ville være:</p>
 
-<pre><code>find -name &lt;PATTERN&gt; | xargs rm
-</code></pre>
+<pre>
+<code>find -name &lt;PATTERN&gt; | xargs rm</code>
+</pre>
 
 <p>Men dette fungerer altså bare på filnavn uten mellomrom. For mer kronglete filer må man bruke en av disse:</p>
 
-<pre><code>find -name &lt;PATTERN&gt; -exec rm {} \;
-find -name &lt;PATTERN&gt; -print0 | xargs -0 rm
-</code></pre>
+<pre>
+<code>find -name &lt;PATTERN&gt; -exec rm {} \;
+find -name &lt;PATTERN&gt; -print0 | xargs -0 rm</code>
+</pre>
 
 <p>Den første eksekverer <code>rm</code> via <code>find</code>. Den siste bruker opsjonen <code>-print0</code> for å terminere filnavn med <code>\0</code> istedenfor linjeskift, og <code>rm</code> gjøres oppmerksom på dette med opsjonen <code>-0</code>. Begge programmer må altså tilpasses for å kunne samarbeide om spesielle filnavn.</p>
 

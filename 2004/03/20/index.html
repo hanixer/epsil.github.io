@@ -71,17 +71,19 @@ HalTan o.a. har kanskje noe mer hysterisk som «Hver gang siden vises» i stedet
 
 <p>Dersom vi har plassert alle «rollover»-bildene i en egen mappe, <abbr title="for eksempel">f.eks.</abbr> <code>rollovers</code>, kan vi plassere en tekstfil med filnavnet <code>.htaccess</code> som inneholder ekstra serverinstruksjoner for disse filene i denne mappen. Kopier følgende inn i en passende tekstbehandler:</p>
 
-<pre><code>ExpiresActive on
+<pre>
+<code>ExpiresActive on
 ExpiresDefault "access plus 1 day"
-Header append Cache-Control "must-revalidate"
-</code></pre>
+Header append Cache-Control "must-revalidate"</code>
+</pre>
 
 <p>Å få lagret filen med navnet <code>.htaccess</code> kan være litt problematisk på Windows-plattformen, men heldigvis fins det en enkel løsning. I Notisblokk skriver vi ganske enkelt <code>".htaccess"</code> – <em>med</em> anførselstegnene – i <code>Filnavn</code>-feltet i <code>Lagre som</code>-dialogvinduet. Til slutt laster vi opp denne filen til samme mappe som «rollover»-bildene befinner seg i, altså rollovers. For å kontrollere at dette fungerer som det skal, sjekker vi adressen <code>http://www.example.org/rollovers/bilde.png</code> med <a href="http://www.delorie.com/web/headers.html"><abbr class="acronym" title="HyperText Transfer Protocol">HTTP</abbr> Header Viewer</a>. Dersom serveren har tatt notis av instruksjonene i <code>.htaccess</code>-fila, vil startblokken <abbr title="blant annet">bl.a.</abbr> inneholde to tekstlinjer som begynner med henholdsvis «<code>Expires:</code>» og «<code>Cache-Control:</code>».</p>
 
 <p>Dersom de nødvendige modulene <em>ikke</em> er installert, vil serveren i stedet svare med en 500-feilmelding. Hvis bare funksjonene i <code>mod_headers</code> er tilgjengelige, kan vi heller skrive</p>
 
-<pre><code>Header set Cache-Control "max-age=86400, must-revalidate"
-</code></pre>
+<pre>
+<code>Header set Cache-Control "max-age=86400, must-revalidate"</code>
+</pre>
 
 <p>i <code>.htaccess.</code></p>
 
