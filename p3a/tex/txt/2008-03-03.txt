@@ -1,0 +1,56 @@
+ __ __  __  _____ __ __     __ __
+|_ /  \|__)(_  | |_ |__)|_/|_ |__)  _    _
+|  \__/| \ __) | |__| \ | \|__| \  | |  | |
+         _ __  _ __ ___  ___ _  ___| | _| |_
+        | '_ \| '__/ _ \/ __| |/ _ \ |/ / __|
+        | |_) | | | (_) \__ \ |  __/   <| |_
+        | .__/|_|  \___/|___/ |\___|_|\_\\__|
+        | |                _/ |
+        |_|               |__/    Møtereferat
+                                   2008-03-03
+MØTT OPP:
+
+    Aleksander Uthus
+    Bastian S. Solem
+    Johan Wiggen
+    Vegard Øye
+
+HVA BLE GJENNOMGÅTT?
+
+    Komponentlisten og bestillingslisten er sendt inn.
+
+    Trafo er bestilt.
+
+    Kjøleribbe er skaffet.
+
+HVA SKAL GJØRES TIL NESTE MØTE?
+
+    Tegne og konstruere kasse (Johan og Aleksander).
+
+    Skrive opp størrelsen på alle komponentene og ev. begynne å lage
+    kretskort.
+
+    Skrive budsjett.
+
+    Simulere kretsen med komponentene.
+
+    Kontakte Valdemar (volumkontroll ++).
+
+MØTEPLAN
+
+    Kl. 13.25 hver mandag.
+
+MØTELEDER (NESTE MØTE):
+
+    Aleksander «the man» Uthus.
+
+     ,_     _
+     |\\_,-~/
+     / _  _ |    ,--.
+    (  @  @ )   / ,-'
+     \  _T_/-._( (
+     /         `. \
+    |         _  \ |
+     \ \ ,  /      |
+      || |-_\__   /
+     ((_/`(____,-'

@@ -1,0 +1,19 @@
+title: Dia på OS X
+date: 2015-06-25
+---
+
+[Dia](http://dia-installer.de/) krasjer på OS X Yosemite. Følgende [løsning](http://navkirats.blogspot.no/2014/10/dia-diagram-mac-osx-yosemite-fix-i-use.html) retter opp en GTK-feil:
+
+1.  Åpne filen `/Applications/Dia.app/Contents/Resources/bin/dia` i en editor.
+2.  Legg til linjen `export DISPLAY=:0` etter linje 39.
+3.  Avslutt XQuartz hvis det kjører og start Dia på nytt.
+
+Hvis det ovenstående ikke fungerer, kan man prøve å legge til `export DISPLAY=:0` i `~/.bash_profile`.
+
+* * * * *
+
+For å lage PDF, er det best å eksportere til EPS (med Pango-skrifter) og deretter [konvertere til PDF](http://www.dark.ca/2009/07/16/getting-dia-to-give-you-a-pdf/):
+
+    $ epstopdf diagram.eps
+
+`epstopdf` er inkludert i TeX Live ([MacTeX](http://tug.org/mactex/)).

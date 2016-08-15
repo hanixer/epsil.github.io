@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<title>Running Bash scripts on Windows</title>
+<meta content="text/html; charset=utf-8" http-equiv="Content-Type">
+<meta content="text/css" http-equiv="Content-Style-Type">
+<meta content="width=device-width, initial-scale=1" name="viewport">
+<link href="../../../favicon.ico" rel="icon" type="image/x-icon">
+<link href="../../../css/markdown-template.css" rel="stylesheet">
+<link href="index.txt" rel="alternate" title="Markdown" type="text/markdown">
+<script async="" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-MML-AM_CHTML" type="text/javascript">
+</script>
+<script src="../../../js/markdown-template.js">
+</script>
+</head>
+<body>
+<nav class="navbar navbar-default navbar-fixed-top">
+<div class="container-fluid">
+<ul class="nav nav-pills navbar-left">
+<li role="presentation"><a href="/" title="Return home"><i class="fa fa-home"></i></a>
+</li>
+</ul>
+
+<ul class="nav nav-pills navbar-right">
+<li role="presentation"><a href="http://www.facebook.com/share.php?u=about%3Ablank" title="Share on Facebook"><i class="fa fa-facebook-square"></i></a>
+</li>
+
+<li role="presentation"><a href="https://twitter.com/intent/tweet?url=about%3Ablank" title="Share on Twitter"><i class="fa fa-twitter-square"></i></a>
+</li>
+
+<li role="presentation"><a href="mailto:?body=about%3Ablank" title="Share by mail"><i class="fa fa-envelope"></i></a>
+</li>
+
+<li role="presentation"><a href="https://github.com/epsil/epsil.github.io/tree/master/blank/index.txt" title="Edit on GitHub"><i class="fa fa-edit"></i></a>
+</li>
+
+<li role="presentation"><a href="index.txt" title="Get Markdown source"><i class="fa fa-download"></i></a>
+</li>
+
+<li role="presentation"><a data-toggle="collapse" href="#toc" title="Table of contents"><i class="fa fa-bars"></i></a>
+</li>
+</ul>
+</div>
+
+<div class="collapse" id="toc" title="Contents">
+</div>
+</nav>
+
+<div class="container">
+<article>
+<header>
+<h1 class="title">Running Bash scripts on Windows</h1>
+
+<p><time><i class="fa fa-calendar-o"></i> 2016-04-20</time>
+</p>
+</header>
+
+<section id="content">
+<p>The following setup allows you to <a href="#usage" title="Usage">run Bash scripts from Windows’ command line</a>. It also augments the command line with common Unix commands like <code>ls</code>, <code>mv</code> and <code>rm</code>, which is useful if these are ingrained into your muscle memory.</p>
+
+<p>(For a list of standalone Bash shells for Windows, see <a href="#alternatives" title="Alternatives">alternatives</a>.)</p>
+
+<section id="usage">
+<h2><a aria-hidden="true" class="header-anchor" href="#usage" title="Usage"></a> Usage<a aria-controls="usage-section" aria-expanded="true" aria-hidden="true" class="collapse-button" data-toggle="collapse" href="#usage-section" role="button"></a></h2>
+
+<div class="collapse in" id="usage-section">
+<p>The minimum requirement is to <a href="#msys" title="MSYS">install <abbr class="acronym" title="Minimal System">MSYS</abbr></a>. You can then open a command prompt window and run a Bash script as follows:</p>
+
+<pre>
+<code>sh script.sh
+</code>
+</pre>
+
+<p>If the script accepts parameters, just provide them at the end:</p>
+
+<pre>
+<code>sh script.sh --param1 val1 --param2 val2
+</code>
+</pre>
+
+<p>Below follow installation instructions for <a href="#msys" title="MSYS"><abbr class="acronym" title="Minimal System">MSYS</abbr></a>, <a href="#mingw" title="MinGW"><abbr title="Minimalist GNU for Windows">MinGW</abbr></a> and <a href="#gnuwin32" title="GnuWin32">G<em>nu</em>W<em>in</em>32</a>.</p>
+</div>
+</section>
+
+<section id="msys">
+<h2><a aria-hidden="true" class="header-anchor" href="#msys" title="MSYS"></a> <a href="http://www.mingw.org/wiki/msys"><abbr class="acronym" title="Minimal System">MSYS</abbr></a><a aria-controls="msys-section" aria-expanded="true" aria-hidden="true" class="collapse-button" data-toggle="collapse" href="#msys-section" role="button"></a></h2>
+
+<div class="collapse in" id="msys-section">
+<p>Install <a href="http://www.mingw.org/wiki/msys"><abbr class="acronym" title="Minimal System">MSYS</abbr></a>. Ensure that <code>sh.exe</code> is globally available by appending <abbr class="acronym" title="Minimal System">MSYS</abbr>’ <code>bin/</code> directory to the <code>PATH</code> environment variable.</p>
+</div>
+</section>
+
+<section id="mingw">
+<h2><a aria-hidden="true" class="header-anchor" href="#mingw" title="MinGW"></a> <a href="http://www.mingw.org/"><abbr title="Minimalist GNU for Windows">MinGW</abbr></a><a aria-controls="mingw-section" aria-expanded="true" aria-hidden="true" class="collapse-button" data-toggle="collapse" href="#mingw-section" role="button"></a></h2>
+
+<div class="collapse in" id="mingw-section">
+<p>For more Unix utilities, augment the above setup with a complete installation of <a href="http://www.mingw.org/"><abbr title="Minimalist GNU for Windows">MinGW</abbr></a>. Append its directory to <code>PATH</code> <em>after</em> <abbr class="acronym" title="Minimal System">MSYS</abbr>.</p>
+</div>
+</section>
+
+<section id="gnuwin32">
+<h2><a aria-hidden="true" class="header-anchor" href="#gnuwin32" title="GnuWin32"></a> <a href="http://gnuwin32.sourceforge.net/">G<em>nu</em>W<em>in</em>32</a><a aria-controls="gnuwin32-section" aria-expanded="true" aria-hidden="true" class="collapse-button" data-toggle="collapse" href="#gnuwin32-section" role="button"></a></h2>
+
+<div class="collapse in" id="gnuwin32-section">
+<p>For even more Unix utilities, install <a href="http://gnuwin32.sourceforge.net/">G<em>nu</em>W<em>in</em>32</a>. Append its directory to <code>PATH</code> <em>after</em> <abbr class="acronym" title="Minimal System">MSYS</abbr> and <abbr title="Minimalist GNU for Windows">MinGW</abbr>.</p>
+</div>
+</section>
+
+<section id="alias">
+<h2><a aria-hidden="true" class="header-anchor" href="#alias" title="Alias open"></a> Alias <code>open</code><a aria-controls="alias-section" aria-expanded="true" aria-hidden="true" class="collapse-button" data-toggle="collapse" href="#alias-section" role="button"></a></h2>
+
+<div class="collapse in" id="alias-section">
+<p>Windows does not have the <code>open</code> command. To alias it to <code>start</code>, create a <code>C:\Windows\open.bat</code> file containing the following:</p>
+
+<pre>
+<code>@echo off
+start %*
+</code>
+</pre>
+</div>
+</section>
+
+<section id="alternatives">
+<h2><a aria-hidden="true" class="header-anchor" href="#alternatives" title="Alternatives"></a> Alternatives<a aria-controls="alternatives-section" aria-expanded="true" aria-hidden="true" class="collapse-button" data-toggle="collapse" href="#alternatives-section" role="button"></a></h2>
+
+<div class="collapse in" id="alternatives-section">
+<p><abbr class="acronym" title="Minimal System">MSYS</abbr> and <abbr title="Minimalist GNU for Windows">MinGW</abbr> both provide standalone Bash shells which can be used without modifying the <code>PATH</code> variable.</p>
+
+<p>Windows 10 includes its own <a href="http://www.howtogeek.com/249966/how-to-install-and-use-the-linux-bash-shell-on-windows-10/">Linux Bash Shell</a>.</p>
+
+<p>For older Windows versions, the <a href="http://www.cygwin.com/">Cygwin</a> project provides what is probably the most complete standalone Bash shell for Windows.</p>
+
+<p>Alternatively, <a href="https://git-scm.com/download/win">Git for Windows</a> also includes a standalone Bash shell.</p>
+</div>
+</section>
+</section>
+</article>
+</div>
+</body>
+</html>

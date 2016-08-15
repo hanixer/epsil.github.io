@@ -1,0 +1,122 @@
+\chapter{Veien videre}
+\label{sec:veienvidere}
+
+\begin{quote}\it
+  \textbf{Sammendrag:} Inneholder en oversikt over hva prosjektgruppen mener kan
+  vidreutvikles for enten å forbedre noe som allerede er implementert, eller
+  forslag til hva som kan implementeres.
+\end{quote}
+
+\section{Hodebøylen}
+\label{sec:vvidere_hodeboyle}
+
+Hvis man designer et eget kretskort, kan kortets størrelse minskes betraktelig,
+slik at det kan gjøres plass til det på hodebøylen. Dette vil være mer praktisk
+framfor å ha et mellomledd som <<X-box>> (s.~\pageref{sec:xbox}). Den eneste
+kabelen fra hodebøylen vil da være USB-kabelen, som settes rett i PC-en. Denne
+kabelen vil også kunne tas helt av i andre enden. Det vil da være enklere å
+sette hodebøylen på bruker, og feste USB-kabelen etter at alt av utstyr er på
+plass.
+
+Det neste vil være å forme platene brukt til justeringsboksen eller ev. hele
+justeringsboksen. Det vil være ønskelig å kunne sette en <<styrke>> som skal til
+for å justere hodebøylen ved behov. Slik som prototypen er nå, er justeringen
+hard og ikke så brukervennlig. Dette vil være noe som en person med litt
+bakgrunnskunnskaper om mekanikk/design kan utføre.
+
+Det vil være en forbedring å skjule ledningene som går fra sensorene som er
+plassert nede på hver side. Disse er på dagens prototype synlige, og veldig
+sårbare. Et lite rykk i en av disse kan føre til at kabelen mister kontakt med
+sensor, og musen vil være ubrukelig (noe som for~øvrig skjedde under det ene
+møtet mellom SINTEF og prosjektgruppen).
+
+Det er også et behov å se på metallet som er brukt og alternativer til dette,
+for å få bedre trykk mot kinnet. Samme metall, men en tykkere utgave kan være en
+god forbedring.
+
+Sensorplatene til prototypen består av to kretskort som sensorene er teipet til.
+Dette har vist seg lite slitesterkt, man bør finne en alternativ løsning. Det
+kan være ønskelig for den enkelte bruker å rotere platene 180--360\degree, for
+optimal brukervennlighet. Videre kan det hende at en buet eller fleksibel plate
+kan fungere bedre som festepunkt til sensorene. Dette kan skape et mer nøyaktig
+bilde av hvor tungen trykker, og en bedre brukeropplevelse. Det kan være
+ønskelig med et <<mellomlegg>> mellom kinnet og sensorene for å kontrolere
+treffpunktet.
+
+\section{Elektronikk}
+\label{sec:vvidere_krets}
+
+Det vil være nødvendig å designe en egen krets rundt
+AT90USB1287-mikrokontrolleren for eventuell produksjon. Når man først er i gang
+med dette, kan man se på mulighetene for Bluetooth-implementering i tillegg til
+USB. Ved å bruke et litium-batteri med laderkrets mot USB, kan produktet lades
+når det ikke er i bruk, og det vil ikke være nødvendig med batteribytte eller
+ekstern lader. Om batteriet ikke får ladet lenge nok, bør det være mulig å bruke
+USB-grensesnittet.
+
+\subsection{Bruk av batteri som strømforsyning}
+\label{sec:bbstrom}
+
+Den innebygde spenningskretsen på AT90USBKey gjør at den kan forsynes med
+batterispenninger mellom 8--15~V$_\text{DC}$. Ved normal bruk blir det målt at
+kretsen trekker mellom 7,5--10~mA med et 9~V batteri tilkoblet. I tilegg kommer
+Bluetooth-adapteren, som også får spenningsforsyningen fra AT90USBKey. Ved
+opperasjon vil denne øke forbruket med 18,3~mA, slik at totalforbruket blir ca.
+28~mA.
+
+En oversikt over brukertid med ulike batterier tilkoblet kretsen er gitt i
+tabell~\ref{tab:batteri}. Det er også mulig å legge en funksjon inn i
+programkoden som gjør at Bluetooth-modulen går i hvilemodus ved inaktivitet.
+Funksjoner som ikke er i bruk, vil slås av, og strømforbruket vil falle
+betraktelig.
+
+Som man kan se av tabell~\ref{tab:batteri}, gir litiumbatterier overlegen
+kapasitet fremfor standard NiMh-batterier (nikkel-metalhydrid). For å få samme
+kapasitet fra NiMh-batterier, vil vekten og størrelsen disse krever gjøre det
+vanskelig å integrere kretsen på hodebøylen. Ulempen med litiumbatterier er at
+de krever en dedikert lader, og at de kan eksplodere ved
+overoppheting/belastning.
+
+En liten innebygd krets hindrer at batteriet blir utladet under en gitt
+spenning, og ved ladning fungerer den samme kretsen slik at batteriet ikke skal
+overlades. Uten denne ville batteriet ha blitt ødelagt.
+
+\subsection{Bluetooth}
+
+For eventuell trådløs dataoverføring kan det benyttes Bluetooth som
+overføringsprotokoll. Dette vil f.eks. gjøre det enklere for brukeren å koble
+seg til en annen datamaskin når dette først er konfigurert. Datamaskinen vil da
+automatisk kjenne igjen den virtuelle armen og vil av den kunne vekkes fra en
+eventuell dvalemodus.
+
+Teknologien benytter seg av radiofrekvensbåndets 2,4~GHz-område og har en
+rekkevidde på ca. 10~m. Overføringshastigheten ligger på ca 1,0~Mb/s. Da det
+benyttes radiobølger, vil brukeren ikke hindres av at objekter i veien hindrer
+signalet. For å øke båndbredden og sikkerheten, benytter Bluetooth seg av
+frekvens-hopping (Frequency Hopping Spread Spectrum, FHSS). Dette fungerer ved
+at sender og mottager <<hopper>> fra frekvens til frekvens hele tiden etter et
+bestemt mønster, i frekvensområdet 2,402~GHz til 2,480~Ghz~\cite{bluetooth}. En
+ulempe ved bruk av denne teknologien som brukergrensesnitt, er at det kan oppstå
+forsinkelse hvis datamaskinen belastes med parallelle oppgaver. Siden kretsen
+ikke lenger vil være tilkoblet USB, må den få strømtilførsel fra et batteri
+eller annen ekstern strømforsyning, som beskrevet i
+kapittel~\ref{sec:elektronikk} og kapittel~\ref{sec:bbstrom}.
+
+\vspace*{-0.5\baselineskip}
+{\footnotesize
+  \begin{longtable}[c]{llllll}
+    \caption{Teoretisk operasjonstid med ulike batterityper}\\
+    \toprule
+    Batteritype        & Spenning      & Kapasitet & Belastningsstrøm & Operasjonstid & Vekt \\
+                       & [V]           & [mAh]     & [mA]             & [h]           & [g] \\
+    \midrule
+    HR6F22 Ni-MH       & 8,4           & 200       & 30,0             & 6,7           & 39 \\
+    6F22 Litium\footnote{Tilpasset lader må anvendes for lading av litiumbatterier.} & 9,0 & 500 & 28,0 & 17,9 & 28 \\
+    U9VLJ10 Litium*    & 9,0           & 1200      & 28,0             & 42,9          & 38 \\
+    AAA Ni-MH 8x serie & $8 \times 1,2$ & 1000     & 26,3             & 38,0          & $8 \times 16$ \\
+    AA Ni-MH 8x serie  & $8 \times 1,2$ & 2700     & 26,3             & 102,7         & $8 \times 30$ \\
+    \bottomrule
+    \label{tab:batteri}
+  \end{longtable}}
+\vspace*{-0.5\baselineskip}
+

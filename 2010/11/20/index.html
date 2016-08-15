@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="no">
+<head>
+<title>Grenseverdisetningen</title>
+<meta content="text/html; charset=utf-8" http-equiv="Content-Type">
+<meta content="text/css" http-equiv="Content-Style-Type">
+<meta content="width=device-width, initial-scale=1" name="viewport">
+<link href="../../../favicon.ico" rel="icon" type="image/x-icon">
+<link href="../../../css/markdown-template.css" rel="stylesheet">
+<link href="index.txt" rel="alternate" title="Markdown" type="text/markdown">
+<script async="" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-MML-AM_CHTML" type="text/javascript">
+</script>
+<script src="../../../js/markdown-template.js">
+</script>
+</head>
+<body>
+<nav class="navbar navbar-default navbar-fixed-top">
+<div class="container-fluid">
+<ul class="nav nav-pills navbar-left">
+<li role="presentation"><a href="/" title="Return home"><i class="fa fa-home"></i></a>
+</li>
+</ul>
+
+<ul class="nav nav-pills navbar-right">
+<li role="presentation"><a href="http://www.facebook.com/share.php?u=about%3Ablank" title="Share on Facebook"><i class="fa fa-facebook-square"></i></a>
+</li>
+
+<li role="presentation"><a href="https://twitter.com/intent/tweet?url=about%3Ablank" title="Share on Twitter"><i class="fa fa-twitter-square"></i></a>
+</li>
+
+<li role="presentation"><a href="mailto:?body=about%3Ablank" title="Share by mail"><i class="fa fa-envelope"></i></a>
+</li>
+
+<li role="presentation"><a href="https://github.com/epsil/epsil.github.io/tree/master/blank/index.txt" title="Edit on GitHub"><i class="fa fa-edit"></i></a>
+</li>
+
+<li role="presentation"><a href="index.txt" title="Get Markdown source"><i class="fa fa-download"></i></a>
+</li>
+
+<li role="presentation"><a data-toggle="collapse" href="#toc" title="Table of contents"><i class="fa fa-bars"></i></a>
+</li>
+</ul>
+</div>
+
+<div class="collapse" id="toc" title="Innhold">
+</div>
+</nav>
+
+<div class="container">
+<article>
+<header>
+<h1 class="title">Grenseverdisetningen</h1>
+
+<p><time><i class="fa fa-calendar-o"></i> 2010-11-20</time>
+</p>
+</header>
+
+<section id="content">
+<p>\[0 &lt; \lvert x - x_0\rvert &lt; \delta \quad\Rightarrow\quad 0 &lt; \lvert f(x) - L\rvert &lt; \epsilon\]</p>
+
+<p>Vi har en \(\delta\), og den bruker vi for å komme nærmere \(x_0\), ved å skvise sammen differansen mellom \(x\) og \(x_0\). (<abbr title="Det vil si">Dvs.</abbr> \(x\) er en fri variabel og kan være hva som helst, men den kan ikke være lengre unna \(x_0\) enn \(\delta\).) I tillegg har vi en \(\epsilon\), og den bruker vi for å komme nærmere grenseverdien \(L\), ved å skvise sammen differansen mellom \(f(x)\) og \(L\). Bokstavene \(\delta\) (delta) og \(\epsilon\) (epsilon) kan forstås som «differanse» og «feilmargin» («error»), og differansen og feilmarginen henger sammen gjennom implikasjonspilen.</p>
+
+<p>Hvis feilmarginen nå er gitt – la oss si at \(\epsilon = 3\) eller noe annet – så må vi sørge for at \(f(x)\) kommer såpass nærme \(L\). Hvordan gjør vi det? Jo, ved å flytte på \(x\). Hvis vi reduserer spillerommet til \(x\) (differansen), så følger det av implikasjonen at vi også reduserer spillerommet til \(f(x)\) (feilmarginen). Det er altså bare å redusere \(\delta\) inntil \(x\) er så innsnevret at \(f(x)\) <em>må</em> komme nærme nok \(L\), altså inntil \(\lvert f(x) - L\rvert &lt; 3\).</p>
+
+<p>Poenget er at grenseverdidefinisjonen sier at vi kan gjøre dette <em>uansett</em> hva \(\epsilon\) er. Uansett feilmargin, så kan differansen gjøres liten nok:</p>
+
+<blockquote>
+<p>Grenseverdien \(\lim_{x \to x_0} f(x) = L\) eksisterer hvis og bare hvis det for enhver \(\epsilon &gt; 0\) finnes en \(\delta &gt; 0\) som oppfyller kriteriene over.</p>
+</blockquote>
+
+<p>Så uansett hvor tett vi ønsker å skvise sammen \(f(x)\) og \(L\), er det mulig å skvise sammen \(x\) og \(x_0\) tilsvarende. Dermed går \(f(x)\) mot \(L\) når \(x\) går mot \(x_0\).</p>
+</section>
+</article>
+</div>
+</body>
+</html>

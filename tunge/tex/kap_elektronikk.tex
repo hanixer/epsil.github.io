@@ -1,0 +1,103 @@
+\chapter[Elektronikk (Rishaug og Solem)]{Elektronikk} % hardware
+\label{sec:elektronikk}
+
+\begin{quote}\it
+  \textbf{Sammendrag:} Dette kapittelet tar for seg valg av krets for tolking og
+  digitalisering av sensordata og begrunnelse for valget. Det omhandler også
+  litt om den innebygde spenningsregulatoren som bruker strøm fra USB eller
+  batteri. Kapittelet avrundes med en begrunnelse for valg av
+  PC-grensesnitt. AT90USBkey har de funksjonene vi lette etter. Den kommuniserer
+  og får strøm via USB-porten, og har en innebygd spenningsregulator som blir
+  brukt til forspenning av de trykkfølsome motstandene.
+\end{quote}
+
+\section{Problemstilling}
+
+Det skal lages en krets for kommunikasjon med PC og Microsoft Windows.
+Prosjektgruppen fokuserer på de to grensesnittene Bluetooth og USB. Bluetooth er
+et trådløst grensesnitt som de fleste moderne PC-er enten allerede har mottager
+for eller mulighet for å installere. USB er det mest brukte grensesnittet mot PC
+i dag. Det er også standard grensesnitt for PC-mus.
+
+Det skal tas stilling til hvor behandlingen av data skal foregå. Skal data
+behandles i et bakgrunnsprogram på Microsoft Windows, eller skal all
+prosessering av data foregå før oversending til PC?
+
+Kretsen skal ikke sette krav til brukerens tekniske kunnskaper. Kretsen må kunne
+lese analoge data og digitalisere den å sende den videre
+(analog-til-digital-omformer, ADC). Den skal også være den billigste mulige
+løsningen som kan tilfredsstille alle spesifikasjonene på
+side~\pageref{sec:produktspes}.
+
+\section{Valg av krets}
+
+Prosjektgruppen velger å bruke AT90USBKey, som er en demokrets fra
+Atmel~\cite{usbkey}.\footnote{\url{http://www.atmel.com/dyn/products/tools_card.asp?tool_id=3879}.}
+Kretsen inneholder mikrokontrolleren AT90USB1287~\cite{uk}.
+
+Denne kretsen ble valgt på grunnlag av at den inneholder USB-brukergrensesnitt
+mot PC, og er tidsbesparende siden prosjektgruppen slipper å designe en egen
+krets. Mikrokontrolleren har en krystall på 8~MHz og 128~kB minne. Den har også
+en åtte-ports ADC.
+
+Siden kretsen er ment som en demonstrasjonskrets, bruker den to av ADC-portene
+til temperaturavlesning (PF0 og PF3). Dette er ikke et problem for prototypen,
+som bare bruker seks ADC-porter. Men ønsker man å bruke portene PF0 og PF3, kan
+kretsen endres ved å fysisk fjerne tilkoblingen til temperaturavlesningen.
+
+\begin{figure}[htb]
+  \centering
+  \includegraphics[width=0.6\linewidth]{fig/USBkey.png}
+  \caption{AT90USBKey}
+  \label{fig:AT90USBkey}
+\end{figure}
+
+Atmel har laget et USB Human Interface Device (HID)-kompatibelt musegrensesnitt
+for mikrokontrolleren.\footnote{Lisensen for den medfølgende programvaren til
+  Atmel er gitt i \texttt{LICENSE.TXT} i \cite{program}.} Ved å bruke dette
+sparer prosjektgruppen ytterligere med arbeidstid, men dette betyr at avlest
+data må behandles av mikrokontrolleren før den sendes til PC (for
+databehandling, se kapittel~\ref{sec:funksjonalitet}).
+
+Alternativet til denne kretsen var å designe en egen krets med
+Bluetooth/USB-grensesnitt mot PC for bruker, og et programmeringsgrensesnitt for
+utvikling. Denne kretsen ville også blitt bygd rundt en mikrokontroller fra
+Atmel, grunnet faglig kompetanse hos HiST. Mer om hva som kan gjøres videre er
+gitt i kapittel~\ref{sec:veienvidere} -- design av kretsen(e) er utenfor
+prosjektgruppens hovedproblemstilling (s.~\pageref{sec:hovedproblemstilling}).
+
+\section{Strømforsyning}
+\label{sec:stromforsyning}
+
+Den innebygde spenningskretsen på AT90USBKey gjør det mulig å bruke strøm
+direkte fra USB-porten eller fra et eksternt batteri (se
+kapittel~\ref{sec:veienvidere} for bruk av batteri). I vårt tilfelle bruker vi
+5~V spenningen fra USB-kontakten for å forsyne kretsen. Se
+figur~\ref{fig:powerkrets-USB} for skjemategning over strømforsyningen fra USB.
+Fordelene med dette er at kretsen blir billigere og mindre komplisert.
+Spenningen blir gjort om til ca. 3,3~V ved hjelp av en lineær
+CMOS-spenningsregulator. Den nøyaktige utspenningen fra denne kan beregnes fra
+formelen
+\begin{equation}
+  V_{CC3} = 1,25 \cdot \left(1 + \frac{R_{15}+R_{18}}{R_{19}}\right)
+\end{equation}
+Dette gir en utspenning på $V_{CC3} = 3,266$~V. Denne spenningen blir også
+benyttet av sensorene som er koblet til.
+
+\begin{figure}[htb]
+  \centering
+  \includegraphics[width=0.8\linewidth]{fig/power.png}
+  \caption{AT90USBKey-powerkrets}
+  \label{fig:powerkrets-USB}
+\end{figure}
+
+\section{USB-grensesnitt}
+
+USB-teknologien har mange fordeler fremfor f.eks. PS2, RS232, LPT1 mfl. Siden
+USB er det mest brukte PC-grensesnittet i dag, er alle nye datamaskiner og
+maskiner fra tilbake til begynnelsen av 2000-tallet utrustet og klargjort for
+dette. Enheter kan bli koblet til og fra uten å måtte restarte systemet. Drivere
+blir automatisk lastet inn og enheten blir dermed gjenkjent og gjort klar til
+bruk (<<Plug `n' Play>>). En USB-inngang kan tilkobles så mange som 127 enheter
+og kan levere totalt opp til en halv ampere strøm til
+periferiutstyr.\footnote{Standard 100~mA, maksimalt 500~mA etter forespørsel.}

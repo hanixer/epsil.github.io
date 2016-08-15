@@ -1,0 +1,5 @@
+<area shape="rect" href="$a00031.html#c8ec403b244267ecd7c29fd6620076e3" title="This function updates Zerovalue by copying Invalue." alt="" coords="183,5,255,32">
+<area shape="rect" href="$a00031.html#caca6743f95a33743918a890a7dcdccd" title="This function runs through the read sensor values and returns the most active sensor..." alt="" coords="155,56,283,83">
+<area shape="rect" href="$a00031.html#f69836438397c47cde6e849fc2a158a6" title="This function checks whether a sensor is a button sensor." alt="" coords="159,107,279,133">
+<area shape="rect" href="$a00031.html#674791a51be825a2da83277901b855a8" title="This function checks whether a sensor is a movement sensor." alt="" coords="147,157,291,184">
+<area shape="rect" href="$a00031.html#03f1a96bde8ea4ceca60f9eba847a16a" title="This function modifies g_hid_mouse_report." alt="" coords="169,208,268,235">

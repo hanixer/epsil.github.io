@@ -1,0 +1,57 @@
+ __ __  __  _____ __ __     __ __
+|_ /  \|__)(_  | |_ |__)|_/|_ |__)  _    _
+|  \__/| \ __) | |__| \ | \|__| \  | |  | |
+         _ __  _ __ ___  ___ _  ___| | _| |_
+        | '_ \| '__/ _ \/ __| |/ _ \ |/ / __|
+        | |_) | | | (_) \__ \ |  __/   <| |_
+        | .__/|_|  \___/|___/ |\___|_|\_\\__|
+        | |                _/ |
+        |_|               |__/    Møtereferat
+                                   2008-03-31
+MØTT OPP:
+
+    Aleksander Uthus
+    Johan Wiggen
+    Stian Rishaug
+    Vegard Øye
+
+HVA BLE GJENNOMGÅTT?
+
+    Kasse har blitt laget. Kretsen har blitt simulert og drøftet med
+    Valdermar. Kretskortet er påbegynt (Bastian).
+
+HVA SKAL GJØRES TIL NESTE MØTE?
+
+    Sette opp disposisjon for rapport:
+      - Analyse/teknisk beskrivelse
+      - Komponentoversikt
+      - Karakteristikker fra data sheets
+      - (Innholdsfortegnelse)
+      - Forsterkeren:
+        * Teknisk tegning av kassen
+      - Konklusjon
+      - Sammendrag (abstract)
+      - (Bruksanvisning)
+
+    Gjøre ferdig kretskortet.
+
+    Strømforsyning: fet jordkabel. (Sikring etter transformatoren?)
+
+MØTEPLAN
+
+    Kl. 13.25 hver mandag.
+
+MØTELEDER (NESTE MØTE):
+
+    Aleksander «the man» Uthus.
+
+     ,_     _
+     |\\_,-~/
+     / _  _ |    ,--.
+    (  @  @ )   / ,-'
+     \  _T_/-._( (
+     /         `. \
+    |         _  \ |
+     \ \ ,  /      |
+      || |-_\__   /
+     ((_/`(____,-'

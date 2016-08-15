@@ -1,0 +1,19 @@
+{
+  "name": "readinglist",
+  "author": "Vegard Øye",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/epsil/readinglist.git"
+  },
+  "scripts": {
+    "start": "start index.html",
+    "edit": "emacs list.txt",
+    "test": "npm run lint && npm run spec",
+    "lint": "jshint js/collapse.js js/punctuation.js js/util.js js/readinglist.js js/custom.js test/test.js && standard js/collapse.js js/punctuation.js js/util.js js/readinglist.js js/custom.js test/test.js && markdownlint list.txt",
+    "spec": "mocha-phantomjs test/index.html",
+    "browser": "start test/index.html",
+    "commit": "npm run lint && git commit -a",
+    "amend": "npm run lint && git commit -a --amend"
+  },
+  "url": "https://github.com/epsil/readinglist"
+}

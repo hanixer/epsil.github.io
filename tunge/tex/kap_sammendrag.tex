@@ -1,0 +1,40 @@
+\begin{abstract}
+  \noindent På oppdrag fra SINTEF er det laget en prototype til en
+  \emph{tungestyrt musepeker} som kan brukes på Microsoft Windows via standard
+  HID-musegrensesnitt. Musepekeren aktiveres av forspente trykkfølsomme
+  resistanser av typen FSR-400 og FSR-402. Disse sensorene er svært følsomme,
+  og har en hysteresefunksjon ved kontinuerlig trykk. Det er derfor laget
+  en automatisk kalibreringsrutine som bruker av musen kan aktivere manuelt i
+  tilfellet musepekeren oppfører seg uønsket.
+
+  For plassering av sensorene er det laget en justerbar \emph{hodebøyle}.
+  Hodebøylen er bygd av et noe svakt material, og måten sensorene er festet på,
+  bør forskes videre på. Ved videreutvikling av den valgte designen kan
+  hodebøylen bli meget bra.
+
+  Elektronikken som behandler data og <<styrer>> musepekeren, er demokretsen
+  \emph{AT90USBKey} fra Atmel. Kretsen har innebygde ADC-er, som benyttes til
+  tolking av sensordata. Den gjør bruk av USB-grensesnittet for overføring av
+  data, så vel som energitilførsel. Det er integrert en spenningsregulator som
+  benyttes til å forspenne sensorene. Regulatoren er sterk nok til å forsyne
+  eventuelle tilleggskretser.
+
+  Programkoden er skrevet for å være fleksibel angående antall sensorer og
+  portene de kobles til, så vel som valg av mikrokontroller. Programkoden
+  foreligger som vedlegg til rapporten.
+
+  Bruk av musen fungerer slik: Brukeren starter en bevegelse og stopper eller
+  endrer retning ved ønsket plassering. Pekeren seg langsomt til å begynne med
+  for å gi god presisjon. Man kan snakke mens man beveger musepekeren over
+  skjermen, og det er mulig å be venstre museknapp være aktiv mens man beveger
+  musepekeren over skjermen. Det er også mulig å sette musen i en
+  <<scroll>>-modus som gjør surfing av nettsider og lesing av dokumenter meget
+  behagelig.
+
+  Utgiftene ved prosjektet var minimale, estimert til ca. 2000 NOK.\\
+
+  \noindent På bakgrunn av rapporten konkluderer prosjektgruppen med at
+  \emph{det er mulig å lage en tungestyrt musepeker med de valgte sensorene}.
+  Det mekaniske og ergonomiske må imidlertid forbedres for å få et salgbart
+  produkt.
+\end{abstract}

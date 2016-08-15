@@ -1,0 +1,28 @@
+h1:hover .header-anchor, h2:hover .header-anchor, h3:hover .header-anchor, h4:hover .header-anchor, h5:hover .header-anchor, h6:hover .header-anchor {
+    color: #cccccc;
+    text-decoration: none;
+    transition: all 0.5s;
+}
+
+.container .header-anchor {
+    color: #ffffff;
+    display: inline-block;
+    font-weight: normal;
+    left: -0.7em;
+    position: absolute;
+    transition: all 0.5s;
+    user-select: none;           /* Non-prefixed version */
+    -webkit-touch-callout: none; /* iOS Safari */
+    -webkit-user-select: none;   /* Chrome/Safari/Opera */
+    -khtml-user-select: none;    /* Konqueror */
+    -moz-user-select: none;      /* Firefox */
+    -ms-user-select: none;       /* Internet Explorer/Edge */
+}
+
+.container .header-anchor:hover {
+    color: #999999 !important;
+}
+
+.header-anchor:before {
+    content: "\00B6";
+}

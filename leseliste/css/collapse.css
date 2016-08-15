@@ -1,0 +1,43 @@
+h1, h2, h3, h4, h5, h6 {
+    padding-right: 1em;
+    position: relative;
+}
+
+h1:hover .collapse-button, h2:hover .collapse-button, h3:hover .collapse-button, h4:hover .collapse-button, h5:hover .collapse-button, h6:hover .collapse-button,
+.collapsed .collapse-button {
+    color: #cccccc;
+    text-decoration: none;
+    transition: all 0.5s;
+    text-align: right;
+}
+
+.collapsed .collapse-button {
+    height: 100%;
+    width: 100%;
+}
+
+.collapsed {
+    border-bottom: 1px solid #ccc;
+    padding-bottom: 0.5em;
+}
+
+.collapse-button {
+    color: rgba(0, 0, 0, 0.0);
+    cursor: pointer;
+    min-width: 1.5em;
+    position: absolute;
+    right: 0;
+    top: 0;
+    text-align: right;
+    transition: all 0.5s;
+    user-select: none;           /* Non-prefixed version */
+    -webkit-touch-callout: none; /* iOS Safari */
+    -webkit-user-select: none;   /* Chrome/Safari/Opera */
+    -khtml-user-select: none;    /* Konqueror */
+    -moz-user-select: none;      /* Firefox */
+    -ms-user-select: none;       /* Internet Explorer/Edge */
+}
+
+.collapse-button:hover {
+    color: #999999 !important;
+}

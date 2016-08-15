@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="no">
+<head>
+<title>Bruke find på filnavn med mellomrom</title>
+<meta content="text/html; charset=utf-8" http-equiv="Content-Type">
+<meta content="text/css" http-equiv="Content-Style-Type">
+<meta content="width=device-width, initial-scale=1" name="viewport">
+<link href="../../../favicon.ico" rel="icon" type="image/x-icon">
+<link href="../../../css/markdown-template.css" rel="stylesheet">
+<link href="index.txt" rel="alternate" title="Markdown" type="text/markdown">
+<script async="" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-MML-AM_CHTML" type="text/javascript">
+</script>
+<script src="../../../js/markdown-template.js">
+</script>
+</head>
+<body>
+<nav class="navbar navbar-default navbar-fixed-top">
+<div class="container-fluid">
+<ul class="nav nav-pills navbar-left">
+<li role="presentation"><a href="/" title="Return home"><i class="fa fa-home"></i></a>
+</li>
+</ul>
+
+<ul class="nav nav-pills navbar-right">
+<li role="presentation"><a href="http://www.facebook.com/share.php?u=about%3Ablank" title="Share on Facebook"><i class="fa fa-facebook-square"></i></a>
+</li>
+
+<li role="presentation"><a href="https://twitter.com/intent/tweet?url=about%3Ablank" title="Share on Twitter"><i class="fa fa-twitter-square"></i></a>
+</li>
+
+<li role="presentation"><a href="mailto:?body=about%3Ablank" title="Share by mail"><i class="fa fa-envelope"></i></a>
+</li>
+
+<li role="presentation"><a href="https://github.com/epsil/epsil.github.io/tree/master/blank/index.txt" title="Edit on GitHub"><i class="fa fa-edit"></i></a>
+</li>
+
+<li role="presentation"><a href="index.txt" title="Get Markdown source"><i class="fa fa-download"></i></a>
+</li>
+
+<li role="presentation"><a data-toggle="collapse" href="#toc" title="Table of contents"><i class="fa fa-bars"></i></a>
+</li>
+</ul>
+</div>
+
+<div class="collapse" id="toc" title="Innhold">
+</div>
+</nav>
+
+<div class="container">
+<article>
+<header>
+<h1 class="title">Bruke <code>find</code> på filnavn med mellomrom</h1>
+
+<p><time><i class="fa fa-calendar-o"></i> 2010-11-14</time>
+</p>
+</header>
+
+<section id="content">
+<p>Hvis man skal bruke <code>find</code> sammen med, si, <code>rm</code> på filnavn som inneholder mellomrom, må man ta visse forhåndsregler. Den mest opplagte besvergelsen ville være:</p>
+
+<pre>
+<code>find -name &lt;PATTERN&gt; | xargs rm
+</code>
+</pre>
+
+<p>Men dette fungerer altså bare på filnavn uten mellomrom. For mer kronglete filer må man bruke en av disse:</p>
+
+<pre>
+<code>find -name &lt;PATTERN&gt; -exec rm {} \;
+find -name &lt;PATTERN&gt; -print0 | xargs -0 rm
+</code>
+</pre>
+
+<p>Den første eksekverer <code>rm</code> via <code>find</code>. Den siste bruker opsjonen <code>-print0</code> for å terminere filnavn med <code>\0</code> istedenfor linjeskift, og <code>rm</code> gjøres oppmerksom på dette med opsjonen <code>-0</code>. Begge programmer må altså tilpasses for å kunne samarbeide om spesielle filnavn.</p>
+
+<p>Fortrinnet med <code>\0</code>-metoden er at den håndterer de mest outrerte filnavn, selv navn som inneholder linjeskift! Jeg visste ikke at det var mulig før jeg leste <code>man find</code>, men <code>touch 'some\</code> + <kbd title="Enter">↵</kbd> + <code>file'</code> vil lage en slik fil. (Bytt ut «<code>touch</code>» med «<code>rm</code>» for å slette filen.)</p>
+</section>
+</article>
+</div>
+</body>
+</html>

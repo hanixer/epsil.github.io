@@ -1,0 +1,122 @@
+\chapter[Testing med tungen (Rishaug og Solem)]{Testing med tungen}
+\label{sec:testingmedtungen}
+
+\begin{quote}\it
+  \textbf{Sammendrag:} Inneholder en grundig test -- med resultater -- av
+  funksjonaliteten og brukervennlighet til de to tilnærmingene i
+  kapittel~\ref{sec:funksjonalitet}. Viser at andre tilnærming er en god
+  forbedring av den første. Videre drøfting er gitt i forrige kapittel,
+  avsnitt~\ref{sec:forstedrofting} og \ref{sec:andredrofting}.
+\end{quote}
+
+\section{Problemstilling}
+
+Det er et behov for å teste om datamusen kan brukes til en dagligdags dataøkt.
+Testen gjennomføres etter endringer i programmet som påvirker
+brukerfunksjonaliteten. Testen brukes også for å finne optimal plassering av
+sensorene på sensorplatene.
+
+\section{Tester}
+
+Når man skal bruke en datamus, har man enkelte krav. Den skal være lett å styre,
+og den skal være nøyaktig. En økt frran datamaskinen tar gjerne litt tid, så
+hvor lenge kan man sitte før tungen blir sliten? Hvor god følelse av kontroll
+oppnår brukeren -- oppleves frustrasjon over datamusen under bruk? For å kunne
+teste dette, er det laget noen enkle tester med stigende
+vanskelighetsgrad.\\
+
+\noindent\textbf{Metode:}
+\begin{enumerate}
+\item \textbf{Åpne en snarvei fra skrivebordet:} velg en snarvei, før
+  musepekeren over den og dobbeltklikk/åpne.
+\item \textbf{Åpne en snarvei fra startmenyen:} åpne <<Start>>-menyen og
+  <<Programmer>>. Åpne nå en forhåndsbestemt snarvei fra denne menyen.
+\item \textbf{Bruke nettleseren:} Åpne Mozilla, gå til en avisside fra
+  <<Favoritter>> eller hurtigmeny (f.eks. \url{http://www.vg.no/}), bla ned på
+  siden og åpne en artikkel.
+\item \textbf{Bruk over tid:} åpne Microsoft Paint og prøv å tegne en kopi av
+  figur~\ref{fig:brukertest1}. Etter 15~minutter avsluttes testen, og resultatet
+  sammenlignes med originalen. Er resultatet bra, og er tungen sliten? Utfør
+  testen to ganger for å se om det er en liten tilvenningskurve fra brukersiden.
+\end{enumerate}
+Testen er utført med hodebøylen, men testeren har lagt ekstra trykk bak
+sensorplatene med hendene. Med en bedre hodebøyle vil dette være unødvendig (se
+kapittel~\ref{sec:veienvidere}).
+
+\clearpage
+
+\subsection{Resultater første tilnærming}
+
+\begin{figure}[p]
+  \centering
+  \subfloat[]{\label{fig:brukertest1}\fbox{\includegraphics[width=0.5\linewidth]{fig/brukertest.png}}}
+
+  \subfloat[]{\label{fig:brukertestresultat1a}\fbox{\includegraphics[width=0.5\linewidth]{fig/brukertestresultat1a.png}}}
+
+  \caption[Tegnetest, første tilnærming]{Testtegning for bruk over tid \subref{fig:brukertest2},\\
+    resultat i første tilnærming~\subref{fig:brukertestresultat2a}, første og eneste forsøk}
+  \label{fig:forstebrukertest}
+\end{figure}
+
+Se avsnitt~\ref{sec:forstetilnerming}, s.~\pageref{sec:forstetilnerming}, for
+detaljer om første tilnærming.
+\begin{enumerate}
+\item \textbf{Åpne en snarvei fra skrivebordet:} Musepekeren danser litt over
+  skjermen, men med litt godvilje blir pekeren plassert over den forhåndsvalgte
+  snarveien (Papirkurven). Musebevegelsen går litt for fort, noe som gjør det
+  vanskelig å treffe ikonet. Det føles også litt tungt å holde sensoren inne for
+  å bevege pekeren over skjermen. Holder venstre muspeker inne for å
+  dobbeltklikke.
+\item \textbf{Åpne en snarvei fra startmenyen:} Merker at det krever mer
+  presisjon og konsentrasjon å gå inn i <<Programmer>>-menyen. Musepekeren
+  beveger seg litt for fort, noe som fører til at <<Start>>-meny-grenen til
+  tider lukker seg. Det kommer frem at musen trenger en ny måte å prioritere
+  mellom sensoren(e) som er i bruk på. Det hender musepekeren bytter retning
+  uten at man vil det, og dette føltes ikke behagelig.
+\item \textbf{Bruke nettleseren:} Velger å åpne nettsiden fra hurtigmenyen, blar
+  nedover ved å trykke nederst på rullefeltet. Det er noe vanskelig å treffe
+  det, savner en scrollfunksjon. Følelsen av kontroll over bevegelsen er også
+  her litt dårlig, men knappene (høyre/venstre) er lette å bruke. Litt tungt å
+  bevege musepekeren rundt på skjermen.
+\item \textbf{Bruk over tid:} Ga opp etter syv minutter. Ble utrolig hemmet av
+  at pekeren beveget seg for fort, og ble veldig sliten. Resultatet er gitt i
+  figur~\ref{fig:brukertestresultat1a}.
+\end{enumerate}
+For drøfting av resultatene, se avsnitt~\ref{sec:forstedrofting},
+side~\pageref{sec:forstedrofting}.
+
+\clearpage
+
+\subsection{Resultater andre tilnærming}
+
+\begin{figure}[p]
+  \centering
+  \subfloat[]{\label{fig:brukertest2}\fbox{\includegraphics[width=0.5\linewidth]{fig/brukertest.png}}}
+
+  \subfloat[]{\label{fig:brukertestresultat2a}\fbox{\includegraphics[width=0.5\linewidth]{fig/brukertestresultat2a.png}}}
+
+  \subfloat[]{\label{fig:brukertestresultat2b}\fbox{\includegraphics[width=0.5\linewidth]{fig/brukertestresultat2b.png}}}
+
+  \caption[Tegnetest, andre tilnærming]{Testtegning for bruk over tid \subref{fig:brukertest2},\\
+    resultat i andre tilnærming første forsøk~\subref{fig:brukertestresultat2a}, andre forsøk~\subref{fig:brukertestresultat2b}}
+  \label{fig:andrebrukertest}
+\end{figure}
+
+Se avsnitt~\ref{sec:andretilnerming}, side~\pageref{sec:andretilnerming}, for
+detaljer om andre tilnærming.
+\begin{enumerate}
+\item \textbf{Åpne en snarvei fra skrivebordet:} Litt vansker med å treffe rett
+  sensor gjør at pekeren til tider beveger seg feil vei. Trykker to ganger på
+  venstre musetast for å åpne den forhåndsvalgte snarveien.
+\item \textbf{Åpne en snarvei fra startmenyen:} Bruker
+  <<ett-trykk-funksjonaliteten>> for å bevege pekeren. Ingen problemer.
+\item \textbf{Bruke nettleseren:} Glimrende. Gjorde speielt mye bruk av
+  <<ett-trykk-funksjonaliteten>> og scrollfunksjonen, svært behagelig i bruk.
+\item \textbf{Bruk over tid:} Den delen av tegningen som krever høyest
+  presisjon, blomsten med blad og den dråpeformede figuren, er litt vanskelig.
+  Men av fremskrittet fra figur~\ref{fig:brukertestresultat2a} til
+  figur~\ref{fig:brukertestresultat2b} ser man at dette kan bli meget bra med
+  litt øvelse.
+\end{enumerate}
+For drøfting av resultatene, se avsnitt~\ref{sec:andredrofting},
+side~\pageref{sec:andredrofting}.

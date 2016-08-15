@@ -1,0 +1,90 @@
+CHANGELOG
+
+2009-05-08: Mindre opprydning i koden. is_mouse_event() kjører nå koden
+            for langsom bevegelse og for "drag" uavhengig av
+            tilstandskoden; den gjeldende tilstanden kan aktivere eller
+            deaktivere disse operasjonene, men slipper å utføre dem selv.
+
+2009-05-07: "Drag" er implementert; trigges ved å holde nede venstre museknapp.
+            Scroll trigges ved å holde nede høyre museknapp.
+            find_active_sensor() og check_nearby_sensor() er forbedret
+            (returnerer nå den mest aktive sensoren, ikke bare den første aktive).
+
+2009-05-05: Grunnleggende omskrivning av koden. Definerer seks tilstander:
+            Default State, Movement Countdown State, Movement Press State,
+            Movement Touch State, Button Wait State og Scroll State.
+            Sensorer henvises til med makronavn istedenfor hardkodede tall.
+            Grunnleggende oppgaver er brutt opp i mindre funksjoner.
+            Dokumentasjonen er renskrevet og oppdatert.
+
+2009-03-31-rev1: Fortsatt opprydning. Erstattet const med #define for alle
+                 globale konstanter. De er nå definert i sensors.h, for enkelt
+                 å kunne brukes flere steder.
+
+                 Det er mye vanskeligere å bruke variabler enn #define's på
+                 tvers av filer, på grunn av extern-deklarasjonene førstnevnte
+                 nødvendiggjør. Har derfor redusert slike variabler til et
+                 minimum.
+
+                 Betydelig omskrivning av koden (refactoring). Foreslår et
+                 skille mellom stor og liten forbokstav: stor forbokstav for
+                 globale objekter (makroer og globale tellere), liten
+                 forbokstav for lokale objekter (matrisen og alle funksjonene i
+                 sensors.c). g_hid_mouse_report blir et unntak her, men
+                 man kan ikke få alt.
+
+                 Av globale tellere er det bare Calibrator_counter som
+                 gjenstår. k og j er erstattet med lokale og mer beskrivende
+                 variabler. i har fått en renessanse som tellervariabel -- mer
+                 leselig, og intet problem så lenge den er lokal.
+
+                 Programflyten er dermed også endret. De fleste funksjonene
+                 returnerer nå ting i stedet for å modifisere globale
+                 variabler. Hva de returnerer, er beskrevet nærmere med
+                 Doxygen-kommentarer.
+
+                 .rar-filene hos Bastian har nå filnavn på formen YYYY-MM-DD.
+                 Fordelen er at alfabetiseringen blir kronologisk.
+
+2009-03-31: Matrisen er korrigert og fungerer. Sensitiviteten er enda et
+            spørgesmål. Denne må testes ut, helst med et ferdig headsett eller
+            bare med håndholdt.
+
+            Mulig dobbel hastighet ved diagonale bevegelser (opp-høyre og
+            ned-venstre)?! Kan ikke se noen grunn til dette i programmet.
+            Test med kjente vekter kan være aktuelt, kan hende jeg økte trykket
+            for å gå diagonalt. Hadde denne buggen ved første bruk av matrisen,
+            men da var det et kall til modifyReport() i Check_nearby_sensor().
+            Det er fjernet.
+
+            Dette programmet har DEBUG = 0. Alle sensorene MÅ være koblet til
+            eller jordet (via noen kiloohm for å spare belastning) for at
+            programmet skal kunne fungere.
+
+            Det er laget flere STEP. STEP2 brukes nå for venstre- og høyreklikk
+            (se is_mouse_event()). Dette er fordi den vanlige STEP ble for
+            sensitiv. Hastigheten på bevegelsen er nå bestemt av STEP3 og
+            oppover. Kanskje vi ikke bør gå høyere enn STEP3?
+
+            Et problem er at ved klikk har vi ingen delay, så 1 klikk blir fort
+            til mange :P
+
+2009-03-30-rev1: Påbegynt opprydning i koden. Sensorfunksjoner er plassert i
+                 sensors.c, prototyper i sensors.h. gcc/Makefile er oppdatert
+                 med oppføring for sensors.c.
+
+2009-03-30: Dette skal fungere. Mangler hardware for å ta en full test og
+            sette alle sensorene og slikt i riktig rekkefølge.
+
+2009-03-28: It's working! Test PF1 og PF2: up, left, up & left. Hug
+
+2009-03-27: Dette fungerer-ish, må skrive DIDR0 til 1 i adc_init. ADC-read
+            values er alltid 255, dette kan være pga. DIDR0 eller noe slikt.
+            Kan du finne ut av det? mouse_init og adc_init har byttet
+            rekkefølge i scheduler.c for å kalibrere første gang. Det er ikke
+            laget en funksjon for å kunne trykke en annen sensor for å avbryte
+            nåværende funksjon.
+
+2009-03-21: ADC og initial step med selvkalibrering. Skal fungere med fast
+            musehastighet. Tar ikke høyde for at enkelte sensorer bør være mer
+            sensitive enn andre. Er ikke testet.

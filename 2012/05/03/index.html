@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="no">
+<head>
+<title>Greasemonkey-skript for Last.fm</title>
+<meta content="text/html; charset=utf-8" http-equiv="Content-Type">
+<meta content="text/css" http-equiv="Content-Style-Type">
+<meta content="width=device-width, initial-scale=1" name="viewport">
+<link href="../../../favicon.ico" rel="icon" type="image/x-icon">
+<link href="../../../css/markdown-template.css" rel="stylesheet">
+<link href="index.txt" rel="alternate" title="Markdown" type="text/markdown">
+<script async="" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-MML-AM_CHTML" type="text/javascript">
+</script>
+<script src="../../../js/markdown-template.js">
+</script>
+</head>
+<body>
+<nav class="navbar navbar-default navbar-fixed-top">
+<div class="container-fluid">
+<ul class="nav nav-pills navbar-left">
+<li role="presentation"><a href="/" title="Return home"><i class="fa fa-home"></i></a>
+</li>
+</ul>
+
+<ul class="nav nav-pills navbar-right">
+<li role="presentation"><a href="http://www.facebook.com/share.php?u=about%3Ablank" title="Share on Facebook"><i class="fa fa-facebook-square"></i></a>
+</li>
+
+<li role="presentation"><a href="https://twitter.com/intent/tweet?url=about%3Ablank" title="Share on Twitter"><i class="fa fa-twitter-square"></i></a>
+</li>
+
+<li role="presentation"><a href="mailto:?body=about%3Ablank" title="Share by mail"><i class="fa fa-envelope"></i></a>
+</li>
+
+<li role="presentation"><a href="https://github.com/epsil/epsil.github.io/tree/master/blank/index.txt" title="Edit on GitHub"><i class="fa fa-edit"></i></a>
+</li>
+
+<li role="presentation"><a href="index.txt" title="Get Markdown source"><i class="fa fa-download"></i></a>
+</li>
+
+<li role="presentation"><a data-toggle="collapse" href="#toc" title="Table of contents"><i class="fa fa-bars"></i></a>
+</li>
+</ul>
+</div>
+
+<div class="collapse" id="toc" title="Innhold">
+</div>
+</nav>
+
+<div class="container">
+<article>
+<header>
+<h1 class="title">Greasemonkey-skript for Last.fm</h1>
+
+<p><time><i class="fa fa-calendar-o"></i> 2012-05-03</time>
+</p>
+</header>
+
+<section id="content">
+<p><a href="http://last.fm/">Last.fm</a> viser <em>ikke</em> totalt antall lytt under «Tracks» eller «Charts». Last.fm viser antall lytt <em>de siste seks månedene</em>. Dette favoriserer nye utgivelser.</p>
+
+<p>Hvis jeg skal bruke Last.fm til å oppdage klassiske låter, trenger jeg de totale tallene, som finnes på siden til hver enkelt låt. Kan jeg skrive et Greasemonkey-skript som importerer denne informasjonen inn i «Charts»? Boken <em>Greasemonkey Hacks</em> av Mark Pilgrim, fra 2005, kan være et utgangspunkt.</p>
+
+<hr>
+
+<p><strong>Oppdatering:</strong> Jeg har lykkes! Takket være jQuery var det ikke mye kode å skrive:</p>
+
+<pre>
+<code class="language-javascript">$(<span class="hljs-string">"#trackChart tbody tr"</span>).each(<span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params"></span>) </span>{
+    <span class="hljs-keyword">var</span> cell = $(<span class="hljs-string">'&lt;td class="playCount"&gt;'</span>);
+    <span class="hljs-keyword">var</span> url = $(<span class="hljs-keyword">this</span>).find(<span class="hljs-string">".subjectCell a"</span>).attr(<span class="hljs-string">"href"</span>);
+    $(<span class="hljs-keyword">this</span>).append(cell);
+    cell.load(url + <span class="hljs-string">" [itemprop=playCount]"</span>);
+});
+</code>
+</pre>
+<!--
+Men, la meg se litt kvantitativt på dette. For å skrive de 6 linjene over, (skum)leste jeg 4 kapitler av *Greasemonkey Hacks*, 120 sider av *JavaScript & jQuery: The Missing Manual*, og ytterligere 20 sider av *jQuery in Action*. Hvis jeg runder ned dette til 12 timers arbeid, har jeg altså brukt gjennomsnittlig to timer per linje kode. Det tar tid å skaffe seg oversikt.
+-->
+
+<p>Jeg har også funnet to foobar2000-komponenter, <a href="http://chronial.de/foobar2000/#foo_scrobblecharts">foo_scrobblecharts</a> og <a href="http://www.foobar2000.org/components/view/foo_softplaylists">foo_softplaylists</a>, som sorterer musikken i henhold til Last.fm. (Det later til at man <em>kan</em> kjøre foobar2000 under Linux med Wine, bare man bruker <code>winetricks</code> og installerer nødvendige <abbr class="acronym" title="Dynamic-Link Library">DLL</abbr>-er (og skriften Tahoma for bedre utseende). Om dette er en <em>god</em> idé er en annen sak.)</p>
+</section>
+</article>
+</div>
+</body>
+</html>

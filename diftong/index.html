@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html ng-app="DiftongMaskinen">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<title>Diftongmaskinen</title>
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<meta http-equiv="Content-Style-Type" content="text/css">
+<link href="bootstrap.css" rel="stylesheet" type="text/css">
+<style type="text/css">
+abbr[title] {
+    border: none;
+    text-decoration: none;
+}
+blockquote {
+    font-size: 1em;
+}
+body {
+    font-family: Georgia, serif;
+    margin-top: 2em;
+    text-rendering: optimizelegibility;
+    -moz-osx-font-smoothing: grayscale;
+    -webkit-font-smoothing: antialiased;
+}
+html, body, p {
+    font-size: 1em;
+}
+ol ol {
+    list-style-type: lower-alpha;
+}
+textarea {
+    max-width: 100%;
+}
+.container {
+    max-width: 730px;
+}
+</style>
+<script type="text/javascript" src="angular.js"></script>
+<script type="text/javascript" src="jquery.js"></script>
+<script src="diftong.js" type="text/javascript"></script>
+</head>
+<body ng-controller="DiftongCtrl">
+<div class="container">
+<a href="https://github.com/epsil/diftong"><img style="position: absolute; top: 0; right: 0; border: 0; user-select: none; -webkit-touch-callout: none; -webkit-user-select: none; -khtml-user-select: none; -moz-user-select: none; -ms-user-select: none;" src="../img/forkme.png" alt="Fork me on GitHub" data-canonical-src="https://s3.amazonaws.com/github/ribbons/forkme_right_gray_6d6d6d.png"></a>
+
+<h1>Diftongmaskinen<br>
+<small>Kilden til et klangfullt språk</small></h1>
+
+<p>Diftongmaskinen er et redskap som kjapt lar deg oversette små
+eller store mengder tekst på bokmål, nynorsk, riksmål eller
+høgnorsk til feilfri <a href="#anorsk"
+title="Hva er alternativ norsk?">alternativ norsk</a>. Veien til et
+klangfullt språk har aldri vært kortere!</p>
+
+<form>
+<p><textarea cols="72" name="tekst" rows="5"
+title="Skriv eller lim inn teksten du ønsker å oversette her" ng-model="tekst">{$input}</textarea></p>
+</form>
+
+<blockquote class="oversettelse" style="white-space: pre-wrap;">
+<p>{{tekst|anorsk}}</p>
+</blockquote>
+
+<h2 id="anorsk">Hva er alternativ norsk?</h2>
+
+<p>Alternativ norsk er en uoffisiell målform som tar sikte på å
+etablere et mer klangfullt og vakrere norsk. Dette gjøres ved å
+bytte ut alle enkeltvokaler med diftonger, noe som ikke bare gir en
+meget distinkt uttale, men som også minsker avstanden mellom det
+skriftlige og det muntlige. I alternativ norsk er alle vokaler entydige, til forskjell fra <abbr
+title="blant annet">bl.a.</abbr> bokmål, hvor <abbr
+title="for eksempel">f.eks.</abbr> <em>o</em>-en i «hvor» uttales
+<em>/o/</em>, mens den i «lov» uttales <em>/å/</em>.</p>
+
+<p>Alternativ norsk bygger videre på eldre målformer, både
+offisielle og uoffiselle. Man kan skrive alternativ norsk med
+utgangspunkt i bokmål og nynorsk (offisielle) så vel som riksmål og
+høgnorsk (uoffisielle). Takket være denne inkluderende holdningen
+til norsk språk er alternativ norsk både ordrikt og nyansert.</p>
+
+<p>Det er lett å skrive alternativ norsk, selv om målformen
+revideres jevnlig. For øyeblikket gjelder følgende regler:</p>
+
+<ol>
+<li>
+<p>Bytt ut enkeltstående <em>a</em>-er og <em>æ</em>-er med
+<em>åi</em>.</p>
+
+<blockquote>
+<p>Han har tæl.</p>
+</blockquote>
+
+<blockquote>
+<p>Håin håir tåil.</p>
+</blockquote>
+</li>
+
+<li>
+<ol>
+<li>
+<p>Bytt ut enkeltstående <em>e</em>-er og <em>i</em>-er med
+<em>ei</em>.</p>
+
+<blockquote>
+<p>Det er veldig lett.</p>
+</blockquote>
+
+<blockquote>
+<p>Deit eir veildeig leitt.</p>
+</blockquote>
+</li>
+
+<li>
+<p>Dersom <em>e</em>-stavelsen er den første av to eller flere
+<em>e</em>-stavelser, skal <em>e</em>-en byttes ut med
+<em>øy</em>.</p>
+
+<blockquote>
+<p>Dette er lett.</p>
+</blockquote>
+
+<blockquote>
+<p>Døyttei eir leitt.</p>
+</blockquote>
+</li>
+</ol>
+</li>
+
+<li>
+<p>Bytt ut enkeltstående <em>o</em>-er og <em>u</em>-er med
+<em>ou</em>.</p>
+
+<blockquote>
+<p>Lutefisk er vondt.</p>
+</blockquote>
+
+<blockquote>
+<p>Louteifeisk eir voundt.</p>
+</blockquote>
+</li>
+
+<li>
+<p>Bytt ut enkeltstående <em>y</em>-er med <em>øy</em>.</p>
+
+<blockquote>
+<p>Siste nytt.</p>
+</blockquote>
+
+<blockquote>
+<p>Seistei nøytt.</p>
+</blockquote>
+</li>
+
+<li>
+<p>Bytt ut enkeltstående <em>å</em>-er med <em>ao</em>.</p>
+
+<blockquote>
+<p>Gå på!</p>
+</blockquote>
+
+<blockquote>
+<p>Gao pao!</p>
+</blockquote>
+</li>
+
+<li>
+<p>Dersom vokalen som byttes ut har aksent (eller et annet
+diakritisk tegn, som cirkumfleks eller tødler), og inngår i
+diftongen den byttes ut med, skal aksenten beholdes.</p>
+
+<blockquote>
+<p>Jeg har en idé.</p>
+</blockquote>
+
+<blockquote>
+<p>Jeig håir ein eidéi.</p>
+</blockquote>
+</li>
+</ol>
+</div>
+</body>
+</html>

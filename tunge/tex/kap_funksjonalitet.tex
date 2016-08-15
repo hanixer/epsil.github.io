@@ -1,0 +1,361 @@
+\chapter[Funksjonalitet (Solem og Øye)]{Funksjonalitet} % programvare
+\label{sec:funksjonalitet}
+
+\begin{quote}\it
+  \textbf{Sammendrag:} Sensorene plasseres utenpå kinnene, to store
+  knappsensorer og fire små bevegelsessensorer. Avlesningen av sensorverdiene er
+  selvkalibrerende, og kan også kalibreres manuelt. I utgangspunktet måtte man
+  presse kontinuerlig på bevegelsessensorene for å flytte pekeren, men dette
+  gjorde tungemuskelen fort sliten. På bakgrunn av dette er sensorplasseringen
+  justert lengst mulig frem på kinnet, og <<ett-trykk-funksjonalitet>> gjør det
+  mulig å styre pekeren med lette trykk. Scroll og mulighet for å <<dra>>
+  pekeren realiseres gjennom moduser, som aktiveres og deaktiveres ved å presse
+  på knappsensorene.
+\end{quote}
+
+\section{Problemstilling}
+
+Plug `n' Play USB-musegrensesnittet mot PC, valgt i
+kapittel~\ref{sec:elektronikk}, begrenser funksjonaliteten til \emph{standard
+  musefunksjoner}: horisontal, vertikal og diagonal bevegelse, venstre- og høyre
+museknapp, og scroll.\footnote{Se produktspesifikasjonen,
+  s.~\pageref{sec:produktspes}.} Den videre problemstillingen er hvordan disse
+funksjonene skal aktiveres ved å bruke sensorene.
+
+Den fysiske plasseringen av sensorene må være enkel og intuitiv.
+Implementeringen av musefunksjonene må gjøres på bakgrunn av antall sensorer og
+plassering.
+
+Det må også tas stilling til hvordan hver enkelt sensor avleses. Avleste verdier
+må nødvendigvis sammenlignes med et \emph{nullnivå} for å avgjøre om de er i
+bruk. Målingene i kapittel~\ref{sec:sensorkap} tilsier at dette nullnivået bør
+oppdateres med jevne mellomrom -- mikrokontrolleren bør ta høyde for at
+sensorene kan henge seg opp, og kalibrere deretter.
+
+\section{Plassering av sensorene}
+
+\begin{figure}
+  \centering
+  \subfloat[]{\label{fig:bevsensorlinje}\includegraphics[height=5cm]{fig/bevsensorlinje.pdf}}\qquad\qquad
+  \subfloat[]{\label{fig:bevsensortrekant}{\includegraphics[height=5cm]{fig/bevsensortrekant.pdf}}}
+  \caption[Tre bevegelsessensorer i linje og trekant]{Sensorplate med tre
+    bevegelsessensorer i linje~\subref{fig:bevsensorlinje} og
+    trekant~\subref{fig:bevsensortrekant}}
+  \label{fig:trebevsensorer}
+\end{figure}
+
+For at tungen skal kunne ha noen innvirkning på sensorene uten å være i direkte
+kontakt, må sensorene festes utenpå kinnet. Dermed unngår man også spørsmål
+rundt hygiene ved brukerbytte.
+
+Sensorene kan festes på kinnet på flere måter. Det er valgt å bruke en hodebøyle
+(se kap.~\ref{sec:hodeboyle}) med plater som sensorene festes
+på.\footnote{Festemekanismen kan videreutvikles, se
+  kapittel~\ref{sec:veienvidere}.} Platene må ha riktig antall sensorer, som
+igjen må ha riktig plassering mellom hverandre for å gi en god brukerfølelse.
+For å gjøre det intuitivt, er knapp- og bevegelsessensorene plassert på hvert
+sitt kinn.
+
+De \emph{fire hovedretningene} regner vi som oppover, nedover, til venstre og
+til høyre. Dersom \emph{diagonal bevegelse} (kombinasjoner av hovedretningene)
+også er et krav, må det plasseres minst tre sensorer på
+<<bevegelseskinnet>>.\footnote{Man \emph{kan} klare seg med færre dersom man
+  bruker ulikt trykk for ulike retninger, men kapittel~\ref{sec:sensorkap}
+  antyder at dette blir vanskelig.} Disse må kunne aktiveres samtidig, og det må
+tas hensyn til hvilken sensor som er mest aktiv.
+
+Som vi ser av figur~\ref{fig:trebevsensorer}, krever minst én av hovedretningene
+at man trykker på to av de tre sensorene samtidig. Dette blir veldig vanskelig å
+skille fra diagonal bevegelse, og derfor forkaster vi disse konfigurasjonene.
+\emph{Hovedretningene er viktigere enn diagonalretningene.} Ved å bruke fire
+sensorer for bevegelse, får hver hovedretning sin egen sensor, og diagonal
+bevegelse fås ved å aktivere to sensorer samtidig. Det er dette oppsettet vi
+bruker i vår \emph{første tilnærming}.
+
+\section{Første tilnærming}
+\label{sec:forstetilnerming}
+
+\begin{figure}[p]
+  \centering
+  \subfloat[]{\label{fig:sensorknapperklikk1}\raisebox{1cm}{\includegraphics[height=4cm]{fig/sensorknapper1.pdf}}}\qquad
+  \subfloat[]{\label{fig:sensorknapperbev1}\includegraphics[height=6cm]{fig/bevsensorfirkant1.pdf}}
+  \caption[Sensorplassering, første tilnærming]{Første tilnærming: knapper på
+    venstre kinn~\subref{fig:sensorknapperklikk1} og bevegelse på høyre
+    kinn~\subref{fig:sensorknapperbev1}}
+  \label{fig:sensorknapper1}
+\end{figure}
+
+\noindent Den første tilnærmingen anvender fire \emph{små} sensorer
+(type~FSR-400) for bevegelse på venstre kinn og to \emph{store} sensorer
+(type~FSR-402) for knapper på høyre kinn (fig.~\ref{fig:sensorknapper1}).
+Bevegelsessensorene er plassert i <<stjerne>> og svarer til himmelretningene på
+et kompass -- ved å presse på den øverste sensoren, går pekeren oppover, osv.
+Når trykket forsvinner, slutter bevegelsen.
+
+\begin{figure}[p]
+  \centering
+  \includegraphics[height=5.5cm]{fig/retninger.pdf}
+  \caption[Retninger i intervallet 0--90\degree]{Retninger i
+    intervallet 0--90\degree.\\
+    Tallene på aksene ganges med basishastigheten.}
+  \label{fig:retninger}
+\end{figure}
+
+Diagonal bevegelse fås ved å trykke på to nærliggende sensorer samtidig. Dersom
+man presser ekstra hardt, beveger pekeren seg opptil fem ganger raskere. Dette
+gir teoretisk 72 flere retninger dersom man øver ulikt trykk på to nærliggende
+sensorer (fig.~\ref{fig:retninger}), dvs. en gjennomsnittlig oppløsning på
+4,5\degree. (I praksis er bare de fire første hastighetene oppnåelige, noe som
+gir 40 ekstra retninger og 7,5\degree\ gjennomsnittlig oppløsning.)
+
+Knappsensorene er plassert side om side og svarer til henholdsvis venstre og
+høyre museknapp. Et enkelt trykk gir et enkelt klikk. For å dobbeltklikke, kan
+man presse kontinuerlig slik at to klikk produseres i rask rekkefølge.
+
+Hvis en sensor kommer under uønsket press, kan brukeren \emph{rekalibrere} den
+ved å trykke på motsatt kinn. Da tas den gjeldende sensorverdien som nullnivå,
+og fremtidige sensorverdier sammenlignes med denne. Ellers kalibreres sensorene
+automatisk når de ikke er i bruk.
+
+\emph{Manglende funksjoner} er scroll og å <<dra>> musepekeren, dvs. holde
+venstre museknapp inne mens pekeren beveges.
+
+\subsection{Avlesning av én sensor}
+
+Hver sensor er forspent og koblet til en egen analog-til-digital-omformer (ADC)
+som beskrevet i kapittel~\ref{sec:sensorkap}. ADC-ene avleses kontinuerlig --
+opptil 125 ganger i sekundet -- og verdiene analyseres for å fastslå om en
+sensor er i bruk.
+
+For å finne ut om en sensor er aktiv, må den avleste verdien sammenlignes med en
+verdi for når sensoren \emph{ikke} er i bruk, nullnivået. Hvis den avleste
+verdien er større enn nullnivået med en viss margin -- \emph{spranget} -- er
+sensoren aktiv:
+\begin{equation}
+  \text{avlest verdi} > \text{nullnivå} + \text{sprang}
+  \label{eq:sprang}
+\end{equation}
+Når dette er oppfylt, sier vi at vi <<har et sprang>>. Marginen er fastsatt på
+forhånd, og er litt større for de store sensorene på knappkinnet enn de små
+sensorene på bevegelseskinnet.
+
+\begin{figure}
+  \centering
+  \includegraphics[height=10cm]{fig/kalibrering.pdf}
+  \caption{Selvkalibrering og avlesning av sensor}
+  \label{fig:kalibrering}
+\end{figure}
+
+Ideelt sett er nullnivået 0~V. Men det er alltid en fare for at en av sensorene
+kommer i klem, og dermed gir en høyere verdi. Derfor bør ikke nullnivået
+fastsettes på forhånd, men i stedet \emph{kalibreres} automatisk med
+utgangspunkt i de avleste verdiene.
+
+Figur~\ref{fig:kalibrering} viser avlesing og kalibrering av én enkelt sensor.
+Den første avlesningen av sensoren etablerer nullnivået, som videre avlesninger
+sammenlignes med. Deretter avleses sensoren kontinuerlig og sammenlignes med
+nullnivået. Hvis differansen er stor nok, betraktes sensoren som aktiv, og en
+musefunksjon utføres. Hvis differansen ikke er stor nok, derimot, blir
+nullnivået \emph{rekalibrert}: nullnivået settes til den avleste verdien.
+
+Rekalibreringen begrenset til hver 250. gjennomgang i programmet~\cite{program},
+slik at bare 250 påfølgende avlesninger uten <<sprang>> gir rekalibrering. Dette
+medfører at dersom sensoren gradvis kommer under press (eller presset gradvis
+opphører), vil nullnivået oppdateres, mens hvis sensoren plutselig tas i bruk,
+vil en musefunksjon utføres.
+
+Det kan tenkes at en sensor plutselig kommer under varig press selv om den ikke
+er i bruk, f.eks. ved å flytte på hodebøylen. I slike tilfeller kan det være
+nødvendig å kalibrere manuelt, noe som gjøres ved å aktivere en sensor på
+motsatt kinn. Hvis begge kinnene er <<aktive>>, sett fra programmets synspunkt,
+settes nullnivået på nytt.
+
+\subsection{Avlesning av flere sensorer}
+
+Programmet lagrer de siste avleste verdiene til de seks sensorene i én tabell,
+og de seks nullnivåene, som disse sammenlignes med, i en annen. Det går så
+igjennom tabellene parvis og sjekker dem opp mot ligning~(\ref{eq:sprang}) -- på
+leting etter en aktiv sensor.
+
+\begin{figure}[p]
+  \centering
+  \subfloat[]{\label{fig:sensortabenkel}\includegraphics[width=0.7\linewidth]{fig/sensortabenkel.pdf}}
+
+  \subfloat[]{\label{fig:sensortabtung}\includegraphics[width=0.7\linewidth]{fig/sensortabtung.pdf}}
+  \caption[Avlesningsløkker, enkel og avansert]{Avlesningsløkker:
+    enkel~\subref{fig:sensortabenkel} og avansert~\subref{fig:sensortabtung}}
+  \label{fig:sensortab}
+\end{figure}
+
+Når en aktiv sensor er funnet, er det to muligheter (fig.~\ref{fig:sensortab}).
+Skal \subref{fig:sensortabenkel} resten av sensorene også undersøkes, eller
+\subref{fig:sensortabtung} søket avsluttes og den aktive sensoren returneres?
+Hvis vi bare returnerer den første aktive sensoren, må vi legge inn en ekstra
+<<nabosjekk>> av nærliggende sensorer for å oppdage om to bevegelsessensor
+brukes samtidig (diagonal bevegelse).\footnote{Dette gjøres ved å slå opp i en
+  matrise som inneholder informasjon om hvilke sensorer som er i nærheten av
+  hverandre. Hvis sensoren for bevegelse oppover er i bruk, for eksempel, ønsker
+  vi bare å undersøke sensorene for bevegelse til venstre og høyre, ikke
+  sensoren for bevegelse nedover.} Hvis vi søker gjennom hele tabellen, derimot,
+vil alle aktive sensorer gi musefunksjoner (noe som håndterer diagonal bevegelse
+automatisk), men kan gi uønskede eller ingen musebevegelse ved noen
+sensorkombinasjoner.
+
+Fordelen med å gjøre det på den andre og mer <<tungvinte>> måten i
+figur~\ref{fig:sensortabtung}, hvor vi stanser søket når en aktiv sensor er
+funnet og sjekker om denne sensoren har en aktiv <<nabosensor>>, er er at den er
+mer fleksibel. Det er lettere å <<gardere>> mot aktive sensorer på begge kinn,
+som er signalet for manuell rekalibrering. Dessuten kan funksjonen som
+returnerer den første aktive sensoren, lett skrives om til å returnere den
+\emph{mest} aktive sensoren dersom det viser seg vesentlig å skille mellom flere
+sensortrykk.\footnote{Dette gjør vi i andre tilnærming,
+  s.~\pageref{sec:andretilnerming}.} I vår første tilnærming returneres bare den
+første aktive sensoren, men forholdene ligger til rette for en omskrivning.
+
+For å produsere ett klikk av gangen, er det bygd inn en forsinkelse som overser
+aktive knappsensorer etter at de er funnet aktive første gang. Dette forhindrer
+hundrevis av klikk mens sensoren er i bruk. Forsinkelsen er innstilt slik at
+brukeren kan dobbeltklikke ved å presse kontinuerlig.
+
+\subsection{Drøfting}
+\label{sec:forstedrofting}
+
+Tilnærmingen er utførlig testet i kapittel~\ref{sec:testingmedtungen}. De
+viktigste funnene er at tungemuskelen fort blir sliten av å kontinuerlig presse
+på sensorene, og at det er tyngre dess lengre bak på kinnet man kommer. Med
+venstre og høyre knappsensor plassert side om side, kommer venstre knappsensor
+langt bak på kinnet (fig.~\ref{fig:sensorknapperklikk1}). Det samme gjelder
+høyre bevegelsessensor, som er plassert i <<stjerne>> med de andre
+bevegelsessensorene (fig.~\ref{fig:sensorknapperbev1}).
+
+Det er også et problem at det ikke er mulig å <<dra>> musepekeren. Ettersom
+tungen ikke kan presse på begge kinnene samtidig, kan dette bare implementeres
+ved å aktivere en egen \emph{modus} hvor museknappen holdes nede. Støtte for
+moduser vil også gjøre det mulig å implementere scroll.
+
+I vår \emph{andre tilnærming} roterer vi sensorplasseringen slik at den blir mer
+vertikal med hensyn til munnen, og vi skriver om programmet til å <<huske>> en
+oppgave over flere sensoravlesninger. Resultatet er mer omfattende, men også mer
+komfortabelt.
+
+\section{Andre tilnærming}
+\label{sec:andretilnerming}
+
+\begin{figure}[b]
+  \centering
+  \subfloat[]{\label{fig:sensorknapperklikk2}\raisebox{1cm}{\includegraphics[height=4cm]{fig/sensorknapper2.pdf}}}\qquad\qquad
+  \subfloat[]{\label{fig:sensorknapperbev2}\includegraphics[height=6cm]{fig/bevsensorfirkant2.pdf}}
+  \caption[Sensorplassering, andre tilnærming]{Andre tilnærming:
+    knapper~\subref{fig:sensorknapperklikk2} og
+    bevegelse~\subref{fig:sensorknapperbev2}.}
+  \label{fig:sensorknapper2}
+\end{figure}
+
+\noindent I andre tilnærming plasserer vi bevegelsessensorene i <<firkant>>
+istedenfor <<stjerne>> for å få dem lengre frem på kinnet
+(fig.~\ref{fig:sensorknapper2}). Knappsensorene er plassert ovenfor hverandre
+istedenfor side om side.
+
+Programmet tar nå utgangspunkt i den \emph{mest} aktive sensoren, ikke bare den
+første.
+
+Sensorenes funksjoner avhenger av hvilken \emph{modus} programmet befinner seg
+i. I utgangspunktet befinner programmet seg i \emph{normalmodus}, hvor
+knappsensorene produserer klikk og bevegelsessensorene styrer pekeren. Den
+viktigste forskjellen er måten pekeren styres på.
+
+\subsection{Normalmodus}
+\label{sec:normmodus}
+
+\begin{figure}
+  \centering
+  \subfloat[]{\label{fig:normalmodusstart}\includegraphics[width=\linewidth]{fig/normalmodusstart.pdf}}
+
+  \subfloat[]{\label{fig:normalmodusbev}\includegraphics[width=\linewidth]{fig/normalmodusbev.pdf}}
+  \caption[Normalmodus]{Normalmodus: klikk~\subref{fig:normalmodusstart} og
+    bevegelse~\subref{fig:normalmodusbev}}
+  \label{fig:normalmodus}
+\end{figure}
+
+Dette er programmets utgangspunkt (fig.~\ref{fig:normalmodus}). Hvis brukeren
+trykker lett på en knappsensor, produseres et klikk. Hvis brukeren trykker lett
+på en bevegelsessensor, beveger pekeren seg i sensorens retning, og
+\emph{fortsetter å bevege seg} selv om brukeren ikke presser kontinuerlig.
+Pekeren styres med lette trykk istedenfor kontinuerlig pressing, noe som er mer
+behagelig for tungen.
+
+Når pekeren beveger seg, kan brukeren skifte retning ved å trykke på en annen
+bevegelsessensor, og få bevegelsen til å opphøre ved å trykke på samme sensor en
+gang til. Pekeren beveger seg langsomt til å begynne med, for presisjonens
+skyld, og så raskere dersom brukeren ikke har skiftet retning etter et par
+sekunder. Dette gjør det lettere å bruke menyer og andre små områder på
+skjermen, uten at pekeren er like treg når den skal flyttes over større områder.
+
+Det er mulig å bevege pekeren enda raskere ved å presse kontinuerlig på en
+bevegelsessensor istedenfor å bruke <<ett-trykk-funksjonaliteten>>. Da vil
+pekeren bevege seg raskere dess hardere man presser, og slutte å bevege seg når
+trykket opphører, akkurat som i første tilnærming. Dette er praktisk for å
+bevege seg over store deler av skjermen effektivt.
+
+For presisjonens skyld er diagonal bevegelse \emph{deaktivert} når pekeren
+beveges med lette trykk. Det er bare mulig å bevege seg diagonalt ved å presse
+kontinuerlig på sensorene.
+
+\begin{figure}
+  \centering
+  \includegraphics[width=0.85\linewidth]{fig/dramodus.pdf}
+  \caption{<<Dra>>-modus}
+  \label{fig:dramodus}
+\end{figure}
+
+\begin{figure}
+  \centering
+  \includegraphics[width=0.85\linewidth]{fig/scrollmodus.pdf}
+  \caption{<<Scroll>>-modus}
+  \label{fig:scrollmodus}
+\end{figure}
+
+\subsection{<<Dra>>-modus}
+
+Ved å presse kontinuerlig på knappsensorene istedenfor å bare trykke, bytter man
+fra normalmodus til andre moduser. Venstre knappsensor bytter til <<dra>>-modus
+(fig.~\ref{fig:dramodus}), slik at venstre museknapp holdes nede også når
+sensoren slippes. Dermed kan tungen flyttes over på bevegelseskinnet for å
+<<dra>> pekeren.
+
+<<Dra>>-modus fungerer ellers som normalmodus; pekeren styres på akkurat samme
+måte. For å gå tilbake til normalmodus, er det bare å berøre knappsensoren en
+gang til.
+
+\subsection{<<Scroll>>-modus}
+
+\noindent Høyre knappsensor bytter til <<scroll>>-modus
+(fig.~\ref{fig:scrollmodus}). Man scroller oppover ved å presse på øvre
+bevegelsessensor, og nedover ved å presse på nedre bevegelsessensor. For å gå
+tilbake til normalmodus, trykker man på en av knappsensorene.
+
+\subsection{Drøfting}
+\label{sec:andredrofting}
+
+Andre tilnærming er utførlig testet i kapittel~\ref{sec:testingmedtungen}. Den
+viktigste forskjellen fra første tilnærming er <<ett-trykk-funksjonaliteten>>,
+som hindrer at tungen slites ut selv etter langvarig bruk. Den forbedrede
+sensorplasseringen motvirker også dette.
+
+Presisjonen er betraktelig bedre takket være den langsommere pekerhastigheten
+til å begynne med. Disse funksjonene kan kombineres: Ved å trykke fort to
+ganger, kan man bevege pekeren i små, presise <<steg>>, f.eks. fra ett
+menyelement til et annet.
+
+<<Ett-trykk-funksjonaliteten>> gjør det dessuten mulig å snakke mens man bruker
+musen.
+
+Høyere presisjon er viktig når man har behov for å <<dra>> pekeren, f.eks. for å
+flytte vinduer. Å innføre moduser for slik funksjonalitet hever brukerterskelen,
+men det viser seg enkelt å aktivere og deaktivere <<dra>>- og
+<<scroll>>-modusene. Scrolling er en stor fordel når man surfer på nettet, samt
+i alle sammenhenger hvor man har behov for å rulle tekst. Disse to modusene gjør
+funksjonaliteten komplett.
+
+Den største utfordringen er å lære opp tungen til å huske sensorenes plassering
+på kinnet. Dette blir bedre over tid, men krever litt tålmodighet og innsats.

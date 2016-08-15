@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="no">
+<head>
+<title>Klone harddisk</title>
+<meta content="text/html; charset=utf-8" http-equiv="Content-Type">
+<meta content="text/css" http-equiv="Content-Style-Type">
+<meta content="width=device-width, initial-scale=1" name="viewport">
+<link href="../../../favicon.ico" rel="icon" type="image/x-icon">
+<link href="../../../css/markdown-template.css" rel="stylesheet">
+<link href="index.txt" rel="alternate" title="Markdown" type="text/markdown">
+<script async="" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-MML-AM_CHTML" type="text/javascript">
+</script>
+<script src="../../../js/markdown-template.js">
+</script>
+</head>
+<body>
+<nav class="navbar navbar-default navbar-fixed-top">
+<div class="container-fluid">
+<ul class="nav nav-pills navbar-left">
+<li role="presentation"><a href="/" title="Return home"><i class="fa fa-home"></i></a>
+</li>
+</ul>
+
+<ul class="nav nav-pills navbar-right">
+<li role="presentation"><a href="http://www.facebook.com/share.php?u=about%3Ablank" title="Share on Facebook"><i class="fa fa-facebook-square"></i></a>
+</li>
+
+<li role="presentation"><a href="https://twitter.com/intent/tweet?url=about%3Ablank" title="Share on Twitter"><i class="fa fa-twitter-square"></i></a>
+</li>
+
+<li role="presentation"><a href="mailto:?body=about%3Ablank" title="Share by mail"><i class="fa fa-envelope"></i></a>
+</li>
+
+<li role="presentation"><a href="https://github.com/epsil/epsil.github.io/tree/master/blank/index.txt" title="Edit on GitHub"><i class="fa fa-edit"></i></a>
+</li>
+
+<li role="presentation"><a href="index.txt" title="Get Markdown source"><i class="fa fa-download"></i></a>
+</li>
+
+<li role="presentation"><a data-toggle="collapse" href="#toc" title="Table of contents"><i class="fa fa-bars"></i></a>
+</li>
+</ul>
+</div>
+
+<div class="collapse" id="toc" title="Innhold">
+</div>
+</nav>
+
+<div class="container">
+<article>
+<header>
+<h1 class="title">Klone harddisk</h1>
+
+<p><time><i class="fa fa-calendar-o"></i> 2010-11-27</time>
+</p>
+</header>
+
+<section id="content">
+<p>Jeg fikk nylig en ny bærbar i hende og trengte en enkel måte å klone den gamle harddisken på, heller enn å installere alt på nytt. (Ubuntu-installasjoner er svært flyttbare takket være glimrende autodeteksjon av maskinvare.) Slik gikk jeg frem:</p>
+
+<p><code>dd</code> er et kraftig kommandolinjeverktøy som leser fra og skriver til disker på lavnivå. <code>nc</code>, <abbr class="acronym" title="Also Known As">AKA</abbr> NetCat, overfører data over nettverket. Alt som trengs er å kombinere disse: Den gamle maskinen leser data og sender dem til den nye, som i sin tur skriver dem til harddisken.</p>
+
+<p>For å få nettverk, la jeg i all enkelhet en krysset <abbr class="acronym" title="Twisted Pair">TP</abbr>-kabel (<abbr class="acronym" title="Registered Jack 45">RJ45</abbr>) mellom maskinene. Deretter startet jeg opp maskinene fra noen Ubuntu 10.04- og 10.10-<abbr class="acronym" title="Compact Disc">CD</abbr>-er jeg hadde liggende for å kjøre Linux uten å aksessere harddisken. Jeg valgte nødmodusen («recovery mode») fordi den stilte alle de riktige spørsmålene – hvilken <abbr class="acronym" title="Internet Protocol">IP</abbr>-adresse maskinen skulle ha (192.168.1.10 og .11), hvorvidt filsystemet skulle monteres (nei) – før den overlot styringen til meg gjennom et enkelt, men kraftig rootshell.</p>
+
+<p>På maskinen jeg skulle kopiere <em>til</em>, skrev jeg nå følgende:</p>
+
+<pre>
+<code>nc -l -p 8888 | dd of=/dev/sda
+</code>
+</pre>
+
+<p>Dette satte maskinen til å lytte på port 8888 og skrive alt den mottok derfra <em>direkte</em> til den nye harddisken, <code>/dev/sda</code>. Sterk kost! På maskinen jeg skulle kopiere <em>fra</em>, skrev jeg:</p>
+
+<pre>
+<code>dd if=/dev/sda | nc 192.168.1.10 8888
+</code>
+</pre>
+
+<p>Dermed begynte den gamle maskinen å lese fra harddisken, blokk for blokk, og sende alt sammen over til den nye.</p>
+
+<p>Så var det bare å vente (den nye maskinen sluttet å lytte straks den gamle var ferdig med å sende). For min del tok dette 6 timer for 250 <abbr class="acronym" title="gigabyte">GB</abbr>, altså <abbr title="cirka">ca.</abbr> 12 <abbr class="acronym" title="megabyte">MB</abbr>/s. Ved å bruke <code>bzip</code>-komprimering og en fornuftig blokkstørrelse kan tiden halveres, avhengig av dataene som overføres;<sup class="footnote-ref"><a href="#fn1" id="fnref1" title="http://www.ndchost.com/wiki/server-administration/netcat-over-ssh">[1]</a></sup> hvis man har en maskin med rom for to harddisker, er dét naturligvis enda raskere. Søk ellers på «<a href="http://www.google.no/search?q=dd+over+netcat">dd over netcat</a>» og «<a href="http://www.google.no/search?q=dd+over+ssh">dd over ssh</a>» for mer info. (Den som ønsker et mer polert verktøy med <abbr class="acronym" title="Graphical User Interface">GUI</abbr> og fremdriftsindikatorer, kan kikke på <a href="http://clonezilla.org/">Clonezilla</a> eller <a href="http://ping.windowsdream.com/">PING</a>, men også disse bruker <code>dd</code> i bunnen.)</p>
+
+<p>Det slående med denne prosedyren er hvor enkel den er. <code>dd</code> leser fra og skriver til harddiskene, <code>nc</code> sender dataene over nettverket, og pipe-operatoren, <code>|</code>, kobler de to sammen. Dette er et elegant eksempel på «Unix power», hvor små og kraftige verktøy kombineres for å utføre større oppgaver.</p>
+
+<p>Til slutt et stalltips til alle dual-bootere: lag en diskavbildning av Windows-installasjonen i Linux! <code>dd</code>, <code>ntfsclone</code> eller <code>partimage</code> gjør jobben. Straks Windows-installasjonen får et virus eller noe, som iallfall min gjør med jevne mellomrom, er det bare å gå inn i det friske Linux-systemet og gjenopprette avbildningen. Ingen bekymringer!</p>
+
+<hr class="footnotes-sep">
+
+<section class="footnotes">
+<ol class="footnotes-list">
+<li class="footnote-item" id="fn1">
+<p><a href="http://www.ndchost.com/wiki/server-administration/netcat-over-ssh">http://www.ndchost.com/wiki/server-administration/netcat-over-ssh</a> <a class="footnote-backref" href="#fnref1" title="Så var det bare å vente (den nye maskinen sluttet å lytte straks den gamle var ferdig med å sende). For min del tok dette 6 timer for 250 GB, altså ca. 12 MB/s. Ved å bruke bzip-komprimering og en fornuftig blokkstørrelse kan tiden halveres, avhengig av dataene som overføres;[1] hvis man har en maskin med rom for to harddisker, er dét naturligvis enda raskere. Søk ellers på «dd over netcat» og «dd over ssh» for mer info. (Den som ønsker et mer polert verktøy med GUI og fremdriftsindikatorer, kan kikke på Clonezilla eller PING, men også disse bruker dd i bunnen.)">↩︎</a></p>
+</li>
+</ol>
+</section>
+</section>
+</article>
+</div>
+</body>
+</html>

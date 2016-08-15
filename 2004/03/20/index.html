@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="no">
+<head>
+<title>Cache bakgrunnsbilder i Internet Explorer</title>
+<meta content="text/html; charset=utf-8" http-equiv="Content-Type">
+<meta content="text/css" http-equiv="Content-Style-Type">
+<meta content="width=device-width, initial-scale=1" name="viewport">
+<link href="../../../favicon.ico" rel="icon" type="image/x-icon">
+<link href="../../../css/markdown-template.css" rel="stylesheet">
+<link href="index.txt" rel="alternate" title="Markdown" type="text/markdown">
+<script async="" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-MML-AM_CHTML" type="text/javascript">
+</script>
+<script src="../../../js/markdown-template.js">
+</script>
+</head>
+<body>
+<nav class="navbar navbar-default navbar-fixed-top">
+<div class="container-fluid">
+<ul class="nav nav-pills navbar-left">
+<li role="presentation"><a href="/" title="Return home"><i class="fa fa-home"></i></a>
+</li>
+</ul>
+
+<ul class="nav nav-pills navbar-right">
+<li role="presentation"><a href="http://www.facebook.com/share.php?u=about%3Ablank" title="Share on Facebook"><i class="fa fa-facebook-square"></i></a>
+</li>
+
+<li role="presentation"><a href="https://twitter.com/intent/tweet?url=about%3Ablank" title="Share on Twitter"><i class="fa fa-twitter-square"></i></a>
+</li>
+
+<li role="presentation"><a href="mailto:?body=about%3Ablank" title="Share by mail"><i class="fa fa-envelope"></i></a>
+</li>
+
+<li role="presentation"><a href="https://github.com/epsil/epsil.github.io/tree/master/blank/index.txt" title="Edit on GitHub"><i class="fa fa-edit"></i></a>
+</li>
+
+<li role="presentation"><a href="index.txt" title="Get Markdown source"><i class="fa fa-download"></i></a>
+</li>
+
+<li role="presentation"><a data-toggle="collapse" href="#toc" title="Table of contents"><i class="fa fa-bars"></i></a>
+</li>
+</ul>
+</div>
+
+<div class="collapse" id="toc" title="Innhold">
+</div>
+</nav>
+
+<div class="container">
+<article>
+<header>
+<h1 class="title">Cache bakgrunnsbilder i Internet Explorer</h1>
+
+<p><time><i class="fa fa-calendar-o"></i> 2003-03-20</time>
+</p>
+</header>
+
+<section id="content">
+<p>Vel, det later til at jeg endelig har fått til å rekonstruere denne feilen som så mange snakker om, og muligens til og med har funnet en løsning på problemet. Årsaken til at bildene «blinker» i Internet Explorer er at <abbr class="acronym" title="Internet Explorer">IE</abbr> – av en eller annen merkelig grunn – bestemmer seg for å laste ned bakgrunnsbilder i <abbr class="acronym" title="Cascading Style Sheets">CSS</abbr> på nytt i ett sett dersom enkelte egenskaper og verdier er brukt (se artikkelen <a href="http://www.fivesevensix.com/studies/ie6flicker/">«Minimizing Flickering <abbr class="acronym" title="Cascading Style Sheets">CSS</abbr> Background Images in IE6»</a> for detaljer). I hvilken grad denne blinkingen finner sted, avhenger av hva «Se etter nyere versjoner av lagrede sider» under <code>Verktøy | Alternativer for Internett | Generelt &gt; Midlertidige Internett-filer &gt; Innstillinger</code> er satt til. Jeg antar at standardinnstillingen her er «Automatisk».</p>
+<!--
+HalTan o.a. har kanskje noe mer hysterisk som «Hver gang siden vises» i stedet (ikke noe vondt ment).
+-->
+
+<p>Forsinkelsen oppstår altså fordi den besøkende må vente på at bildet lastes ned på nytt. En måte å forhindre dette på, er ved å ta <em>cache-styrende <abbr class="acronym" title="HyperText Transfer Protocol">HTTP</abbr>-felt</em> i bruk. Med «cache» menes her mellomlager. Dette er noe de fleste nettlesere er utstyrt med – IEs går også under tittelen «Midlertidige Internett-filer». Konseptet er at nettsider og relaterte filer lagres midlertidig et sted på harddisken (eller lokalt), slik at nettleseren kan hente data som går igjen på flere sider fra dette i stedet for å måtte laste ned alt sammen på nytt hver eneste gang. Dette gjør også <abbr class="acronym" title="Internet Explorer">IE</abbr> dersom mellomlager-innstillingen er satt til «Hver gang Internet Explorer startes» eller noe høyere – men, som vi har sett, altså ikke for «rollover»-bildene angitt i stilsettet. Hvis vi derimot klarer å <em>tvinge</em> <abbr class="acronym" title="Internet Explorer">IE</abbr> til å lagre også disse lokalt, skulle problemet være ute av verden.</p>
+
+<p>Dermed kommer vi inn på <abbr class="acronym" title="HyperText Transfer Protocol">HTTP</abbr>-felt. Hver gang en fil overføres via <abbr class="acronym" title="HyperText Transfer Protocol">HTTP</abbr>, legger serveren med litt metadata (data om data) i en <em>startblokk</em> før selve filen. Startblokken består av ren tekst, og en tekstlinje i startblokken kalles et <em>felt.</em> For å se hva slags startblokker som er i omløp på <abbr class="acronym" title="World Wide Web">WWW</abbr>, kan man bruke tjenesten <a href="http://www.delorie.com/web/headers.html"><abbr class="acronym" title="HyperText Transfer Protocol">HTTP</abbr> Header Viewer</a>.</p>
+
+<p>For å gjøre websider og -filer mer «cache-vennlige» (og dermed <em>raskere å laste</em> – ja, nå spisser dere vel ørene, ikke sant?), kan man ta det jeg kaller cache-styrende <abbr class="acronym" title="HyperText Transfer Protocol">HTTP</abbr>-felt i bruk. For mer informasjon om dette, les artikkelen <a href="http://www.mnot.net/cache_docs/">«Caching Tutorial for Web Authors And Webmasters»</a>. Her vil jeg bare forklare hvordan vi blir kvitt «rollover»-problemet på en Apache-server ved å bruke konfigurasjonsfilen <a href="http://wsabstract.com/howto/htaccess.shtml"><code>.htaccess</code></a>.</p>
+
+<p>Kort fortalt ønsker vi å sende to «cache-felt» med alle «rollover»-bilder: «Cache-Control», som angir hvor lenge fila skal beholdes i mellomlageret, og «Expires», som forteller når den lokale fila «utgår» – dette er bare av hensyn til eldre nettlesere. Dette styrer vi i Apache med funksjoner fra de to <em>modulene</em> <code>mod_expires</code> og <code>mod_headers</code>. (En modul er et programtillegg til Apache. For at det følgende skal fungere, må begge disse være installert – kontakt webhotellet ditt for detaljer.)</p>
+
+<p>Dersom vi har plassert alle «rollover»-bildene i en egen mappe, <abbr title="for eksempel">f.eks.</abbr> <code>rollovers</code>, kan vi plassere en tekstfil med filnavnet <code>.htaccess</code> som inneholder ekstra serverinstruksjoner for disse filene i denne mappen. Kopier følgende inn i en passende tekstbehandler:</p>
+
+<pre>
+<code>ExpiresActive on
+ExpiresDefault "access plus 1 day"
+Header append Cache-Control "must-revalidate"
+</code>
+</pre>
+
+<p>Å få lagret filen med navnet <code>.htaccess</code> kan være litt problematisk på Windows-plattformen, men heldigvis fins det en enkel løsning. I Notisblokk skriver vi ganske enkelt <code>".htaccess"</code> – <em>med</em> anførselstegnene – i <code>Filnavn</code>-feltet i <code>Lagre som</code>-dialogvinduet. Til slutt laster vi opp denne filen til samme mappe som «rollover»-bildene befinner seg i, altså rollovers. For å kontrollere at dette fungerer som det skal, sjekker vi adressen <code>http://www.example.org/rollovers/bilde.png</code> med <a href="http://www.delorie.com/web/headers.html"><abbr class="acronym" title="HyperText Transfer Protocol">HTTP</abbr> Header Viewer</a>. Dersom serveren har tatt notis av instruksjonene i <code>.htaccess</code>-fila, vil startblokken <abbr title="blant annet">bl.a.</abbr> inneholde to tekstlinjer som begynner med henholdsvis «<code>Expires:</code>» og «<code>Cache-Control:</code>».</p>
+
+<p>Dersom de nødvendige modulene <em>ikke</em> er installert, vil serveren i stedet svare med en 500-feilmelding. Hvis bare funksjonene i <code>mod_headers</code> er tilgjengelige, kan vi heller skrive</p>
+
+<pre>
+<code>Header set Cache-Control "max-age=86400, must-revalidate"
+</code>
+</pre>
+
+<p>i <code>.htaccess.</code></p>
+
+<p>Etter omfattende testing av dette på min lokale Apache-server, ser det faktisk ut til at dette fjerner blinkingen for godt. <abbr class="acronym" title="Internet Explorer">IE</abbr> behandler altså bildene på samme måte som enhver <em>fornuftig</em> nettleser gjør (dette problemet er ikke-eksisterende i Opera og Mozilla) – uavhengig av hvordan «Midlertidige Internett-filer» er konfigurert. Følgelig lastes også sidene raskere. Dersom du ikke har tilgang til disse funksjonene på webhotellet ditt – <em>klag,</em> eller bytt webhotell. Nei, dette har ikke noe med <abbr class="acronym" title="Cascading Style Sheets">CSS</abbr>-rollovers å gjøre. <em><abbr class="acronym" title="HyperText Transfer Protocol">HTTP</abbr>-kontroll er et</em> must <em>for alle med egen hjemmeside.</em></p>
+
+<p>For mer informasjon om <abbr class="acronym" title="HyperText Transfer Protocol">HTTP</abbr>, se <abbr class="acronym" title="World Wide Web Consortium">W3C</abbr>-dokumentet <a href="http://www.w3.org/TR/chips">«Common <abbr class="acronym" title="HyperText Transfer Protocol">HTTP</abbr> Implementation Problems»</a>.</p>
+<!--
+Har jeg forresten nevnt at søkemotorer setter stor pris på *skikkelige* HTTP-startblokker?
+-->
+</section>
+</article>
+</div>
+</body>
+</html>

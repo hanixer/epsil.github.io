@@ -1,0 +1,55 @@
+title: Running Bash scripts on Windows
+date: 2016-04-20
+lang: en
+---
+
+The following setup allows you to [run Bash scripts from Windows' command line](#usage). It also augments the command line with common Unix commands like `ls`, `mv` and `rm`, which is useful if these are ingrained into your muscle memory.
+
+(For a list of standalone Bash shells for Windows, see [alternatives](#alternatives).)
+
+Usage
+-----
+
+The minimum requirement is to [install MSYS](#msys). You can then open a command prompt window and run a Bash script as follows:
+
+    sh script.sh
+
+If the script accepts parameters, just provide them at the end:
+
+    sh script.sh --param1 val1 --param2 val2
+
+Below follow installation instructions for [MSYS](#msys), [MinGW](#mingw) and [G*nu*W*in*32](#gnuwin32).
+
+[MSYS](http://www.mingw.org/wiki/msys)
+--------------------------------------
+
+Install [MSYS](http://www.mingw.org/wiki/msys). Ensure that `sh.exe` is globally available by appending MSYS' `bin/` directory to the `PATH` environment variable.
+
+[MinGW](http://www.mingw.org/)
+------------------------------
+
+For more Unix utilities, augment the above setup with a complete installation of [MinGW](http://www.mingw.org/). Append its directory to `PATH` *after* MSYS.
+
+[G*nu*W*in*32](http://gnuwin32.sourceforge.net/)
+------------------------------------------------
+
+For even more Unix utilities, install [G*nu*W*in*32](http://gnuwin32.sourceforge.net/). Append its directory to `PATH` *after* MSYS and MinGW.
+
+Alias `open`
+------------
+
+Windows does not have the `open` command. To alias it to `start`, create a `C:\Windows\open.bat` file containing the following:
+
+    @echo off
+    start %*
+
+Alternatives
+------------
+
+MSYS and MinGW both provide standalone Bash shells which can be used without modifying the `PATH` variable.
+
+Windows 10 includes its own [Linux Bash Shell](http://www.howtogeek.com/249966/how-to-install-and-use-the-linux-bash-shell-on-windows-10/).
+
+For older Windows versions, the [Cygwin](http://www.cygwin.com/) project provides what is probably the most complete standalone Bash shell for Windows.
+
+Alternatively, [Git for Windows](https://git-scm.com/download/win) also includes a standalone Bash shell.

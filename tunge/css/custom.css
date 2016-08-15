@@ -1,0 +1,32 @@
+code {
+    background: inherit;
+    padding: 0;
+}
+
+hr {
+    border-top: 1px solid #ddd;
+    height: 0;
+    margin: 1em 0;
+    padding: 0;
+}
+
+hr:before {
+    content: normal;
+}
+
+hr.footnotes-sep {
+    border: none;
+    color: inherit;
+    font-family: "Segoe UI", Seravek, "Avenir Next", Avenir, Optima, "Optima Web", Candara, Futura, "Gill Sans", Calibri, Corbel, Helvetica, Arial, sans-serif !important;
+    font-size: 2em;
+    font-weight: bold;
+    margin: 1.7em 0 1.3em 0;
+    text-align: left;
+}
+
+hr.footnotes-sep:before {
+    color: inherit;
+    content: "Fotnoter";
+    letter-spacing: 0;
+    padding-bottom: 0.5em;
+}

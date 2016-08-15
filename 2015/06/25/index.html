@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="no">
+<head>
+<title>Dia på OS X</title>
+<meta content="text/html; charset=utf-8" http-equiv="Content-Type">
+<meta content="text/css" http-equiv="Content-Style-Type">
+<meta content="width=device-width, initial-scale=1" name="viewport">
+<link href="../../../favicon.ico" rel="icon" type="image/x-icon">
+<link href="../../../css/markdown-template.css" rel="stylesheet">
+<link href="index.txt" rel="alternate" title="Markdown" type="text/markdown">
+<script async="" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-MML-AM_CHTML" type="text/javascript">
+</script>
+<script src="../../../js/markdown-template.js">
+</script>
+</head>
+<body>
+<nav class="navbar navbar-default navbar-fixed-top">
+<div class="container-fluid">
+<ul class="nav nav-pills navbar-left">
+<li role="presentation"><a href="/" title="Return home"><i class="fa fa-home"></i></a>
+</li>
+</ul>
+
+<ul class="nav nav-pills navbar-right">
+<li role="presentation"><a href="http://www.facebook.com/share.php?u=about%3Ablank" title="Share on Facebook"><i class="fa fa-facebook-square"></i></a>
+</li>
+
+<li role="presentation"><a href="https://twitter.com/intent/tweet?url=about%3Ablank" title="Share on Twitter"><i class="fa fa-twitter-square"></i></a>
+</li>
+
+<li role="presentation"><a href="mailto:?body=about%3Ablank" title="Share by mail"><i class="fa fa-envelope"></i></a>
+</li>
+
+<li role="presentation"><a href="https://github.com/epsil/epsil.github.io/tree/master/blank/index.txt" title="Edit on GitHub"><i class="fa fa-edit"></i></a>
+</li>
+
+<li role="presentation"><a href="index.txt" title="Get Markdown source"><i class="fa fa-download"></i></a>
+</li>
+
+<li role="presentation"><a data-toggle="collapse" href="#toc" title="Table of contents"><i class="fa fa-bars"></i></a>
+</li>
+</ul>
+</div>
+
+<div class="collapse" id="toc" title="Innhold">
+</div>
+</nav>
+
+<div class="container">
+<article>
+<header>
+<h1 class="title">Dia på <abbr title="Operating System 10">OS X</abbr></h1>
+
+<p><time><i class="fa fa-calendar-o"></i> 2015-06-25</time>
+</p>
+</header>
+
+<section id="content">
+<p><a href="http://dia-installer.de/">Dia</a> krasjer på <abbr class="acronym" title="Operating System 10">OS X</abbr> Yosemite. Følgende <a href="http://navkirats.blogspot.no/2014/10/dia-diagram-mac-osx-yosemite-fix-i-use.html">løsning</a> retter opp en <abbr class="acronym" title="GIMP Toolkit">GTK</abbr>-feil:</p>
+
+<ol>
+<li>Åpne filen <code>/Applications/Dia.app/Contents/Resources/bin/dia</code> i en editor.</li>
+
+<li>Legg til linjen <code>export DISPLAY=:0</code> etter linje 39.</li>
+
+<li>Avslutt XQuartz hvis det kjører og start Dia på nytt.</li>
+</ol>
+
+<p>Hvis det ovenstående ikke fungerer, kan man prøve å legge til <code>export DISPLAY=:0</code> i <code>~/.bash_profile</code>.</p>
+
+<hr>
+
+<p>For å lage <abbr class="acronym" title="Portable Document Format">PDF</abbr>, er det best å eksportere til <abbr class="acronym" title="Encapsulated PostScript">EPS</abbr> (med Pango-skrifter) og deretter <a href="http://www.dark.ca/2009/07/16/getting-dia-to-give-you-a-pdf/">konvertere til <abbr class="acronym" title="Portable Document Format">PDF</abbr></a>:</p>
+
+<pre>
+<code>$ epstopdf diagram.eps
+</code>
+</pre>
+
+<p><code>epstopdf</code> er inkludert i <abbr title="TeX">T<span class="tex-e">e</span>X</abbr> Live (<a href="http://tug.org/mactex/"><abbr title="MacTeX">MacT<span class="tex-e">e</span>X</abbr></a>).</p>
+</section>
+</article>
+</div>
+</body>
+</html>

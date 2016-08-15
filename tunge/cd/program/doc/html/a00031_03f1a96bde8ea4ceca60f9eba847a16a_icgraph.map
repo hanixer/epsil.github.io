@@ -1,0 +1,7 @@
+<area shape="rect" href="$a00032.html#f38325cb4a238445fadbe32d01dd0d4d" title="This function defines state 4: Button Wait State." alt="" coords="168,5,288,32">
+<area shape="rect" href="$a00032.html#a7e99e80bf89549606e6fe10de83fde9" title="This function defines state 0: Default State." alt="" coords="183,56,273,83">
+<area shape="rect" href="$a00032.html#3f0f020fe6f952f09853eae164d82745" title="This function checks sensor pressure for speed increase." alt="" coords="188,107,268,133">
+<area shape="rect" href="$a00032.html#55bdc319254e6ad2b98b2b988def4718" title="This function defines state 2: Movement Press State." alt="" coords="349,132,464,159">
+<area shape="rect" href="$a00032.html#89860b11fe875495bc114b044067a39d" title="This function holds down the left button if Left_holddown is TRUE." alt="" coords="156,208,300,235">
+<area shape="rect" href="$a00032.html#dbdce8d89d02f7a148d2b166d94eea9d" title="This function defines state 1: Movement Countdown State." alt="" coords="171,259,285,285">
+<area shape="rect" href="$a00032.html#e960f26d1f6df6d487075ccb69ca5b49" title="This function defines state 3: Movement Touch State." alt="" coords="171,309,285,336">

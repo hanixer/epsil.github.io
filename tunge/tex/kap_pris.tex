@@ -1,0 +1,67 @@
+\chapter[Prisestimering (Rishaug og Solem)]{Prisestimering}
+
+\begin{quote}\it
+  \textbf{Sammendrag:} Kapittelet inneholder en tilnærming over prosjektets
+  kostnad. Det er også eksempler på pris for egenproduksjon av krets.
+  Prosjektets tilnærmede utgifter er drøyt 2000~NOK.
+\end{quote}
+
+\section{Utviklingskostnader}
+
+Prosjektet er en bacheloroppgave på HiST. Studentene får ikke lønn under
+arbeidet, så utgiftene er konsentrert rundt materialkostnadene i
+tabell~\ref{tab:utviklingskostnader}. Sensorene ble kjøpt inn av SINTEF, og
+AT90USBKey ble kjøpt inn av HiST. Tabellen lister opp antatte kostnader for
+disse. Prosjektets tilnærmede utgifter er 1949~NOK i materialkostnader. Siden
+dette er de eneste utgiftene, kan man konkludere med at prosjektet har vært
+særdeles billig for oppdragsgiver.
+
+Forslag til løskomponenter består av en liste som inneholder overslag over
+priser en eventuell egenproduksjon av kretsen vil koste. For 100~enheter vil de
+løse materialene til kretskortet tilnærme en kostnad på 13~518~NOK. Siden
+kretsen ikke er designet, kan denne prisen avvike noe. Det er ikke laget noen
+liste for materialpris til produksjon av hodebøylen. Det forventes at designen
+og materialvalget på denne må utvikles videre (se
+kapittel~\ref{sec:veienvidere}).
+
+\clearpage
+
+\begin{center}
+  \footnotesize
+  \begin{longtable}{lp{1.5cm}p{1.7cm}lll>{\raggedright\arraybackslash}p{1.5cm}}
+    \caption{Materialkostnader uten frakt}\\
+    \toprule
+    Produktnavn   & Produsent            & Type                     & Antall & Enhetspris & Total pris        & Firma \\
+                  &                      &                          &        & [NOK]      & [NOK]             &       \\
+    \midrule
+    AT90USBKey    & Atmel                & Demokrets\footnote{Tilnærmede priser.} & 2 & 229 & 458             & Mouser electronics \\
+    FSR-400       & Interlink            & Trykkfølsom resistans*   & 25     & 23         & 575               & Interlink Electronics \\
+    FSR-402       & Interlink            & Trykkfølsom resistans*   & 25     & 26         & 650               & Interlink Electronics \\
+    Veroboard     &                      & Koblingsbrett            & 1      & 59         & 59                & Clas Ohlson \\
+    Teip          &                      & Gaffateip                & 1      & 79         & 79                & Clas Ohlson \\
+    Metall 1      &                      & Stakepinne               & 7,6~m  & 39         & 39                & Jula \\
+    Metall 2      &                      & Spikerbånd $20 \times 1$~mm & 10~m & 89        & 89                & Clas Ohlson \\
+                  &                      & Koblings\-enheter\footnote{Skruer/muttrer/ledninger og lignende.}  & 1 & -- & -- & HiST \\
+    \midrule
+    \multicolumn{7}{c}{Forslag til løskomponenter} \\
+    \midrule
+    AT90USB1287   & Atmel                & Mikro\-kontroller        & 1      & 87         & 87                & Mouser electronics \\
+    AT90USB1287   &                      &                          & 25     & 68         & 1700              & \\
+    AT90USB1287   &                      &                          & 100    & 61,182     & 6118              & \\
+    LP3982IMM-ADJ & National Semiconductor & Spennings\-regulator   & 10     & 14,65      & 146,5             & Arrow Electronics\\
+    LP3982IMM-ADJ &                      &                          & 100    & 5,15       & 515               & \\
+    LP3982IMM-ADJ &                      &                          & 1000   & 4,25       & 4250              & \\
+    774-MXO45HS-3C-8.0  & CTS Electronic Components & Crystal Oscillators 8~MHz & 1 & 19,50 & 19,50           & Mouser electronics\\
+	774-MXO45HS-3C-8.0  &                &                          & 100    & 15,24      & 1524              & \\
+	774-MXO45HS-3C-8. 0 &                &                          & 1000   & 9,966      & 9996              & \\
+	500075-1517   & Molex                & USB Mini-B vert          & 1	     & 51         & 51                & Mouser electronics\\
+    500075-1517   &                      &                          & 100    & 29,43      & 2943              & \\
+    500075-1517   &                      &                          & 1000   & 24,09      & 24090             & \\
+	Motstander    &                      & Laveffekt-motstander*    & 1000   & 0,0594     & 59,4              & \\
+	Kretskort     &                      & To-lags PCB*             & 100    & 21,4       & $2140 + 278$      & Microcirtec\\
+	Kretskort     &                      & 	 			            & 1000   & 3,219      & $3219 + 730$      & \\
+    \bottomrule\addlinespace
+    \multicolumn{7}{l}{Tabellen benytter seg av omregningene \euro\ = 8,7 NOK og \$ = 6,6 NOK.}
+    \label{tab:utviklingskostnader}
+  \end{longtable}
+\end{center}

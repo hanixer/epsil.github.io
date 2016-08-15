@@ -1,0 +1,59 @@
+\chapter[X-box (Uthus)]{X-box}
+\label{sec:xbox}
+
+\begin{figure}[h]
+  \centering \fbox{\includegraphics[width=0.8\linewidth]{fig/x-boxsalangt.png}}
+  \caption[Skisse av <<X-box>>]{Skisse av <<X-box>>, laget i AutoCAD}
+  \label{fig:xboxACad}
+\end{figure}
+
+\begin{quote}\it
+  \textbf{Sammendrag:} Inneholder en kort beskrivelse av hvordan <<X-box>>-en
+  ble laget og hva den brukes til. Bakgrunnen til at <<X-box>>-en ble laget er
+  gitt i kapittel~\ref{sec:hodeboyle}. <<X-box>>-en skal inneholde elektronikken
+  som behandler dataen fra hodebøylen, og sender den videre til PC-en.
+\end{quote}
+
+\section{Problemstilling}
+
+Det var et behov for et mellomledd mellom selve musen (hodebøylen,
+kap.~\ref{sec:hodeboyle}) og datamaskinen. Dette bindingspunktet måtte enkelt
+kunne kobles til hodebøylen via COM-port og samtidig kunne kobles videre via USB
+til PC-en. Det måtte inneholde kretskortet til mikroprosessoren.
+
+\section{Gjennomføring}
+
+Prosjektgruppen fant ut at det skulle lages en boks som skulle ha to kontakter:
+En COM-port som skulle kobles til hodebøylen, den andre kontakten skulle være
+USB for å kommunisere videre inn til datamaskinen. Inne i boksen skulle det også
+være plass til kretskortet, samt til å sette på testutstyr for å resette/justere
+koden underveis. Det ble brukt en metalplate som bøydes 90\degree\ på hver side.
+Dette utgjorde underlaget til boksen og 2 <<vegger>>. Kretskortet ble festet
+inne i boksen ved hjelp av gaffateip, og plasseringen av kortet var så nær den
+ene kanten uten <<vegg>> slik at den lett kan kobles til USB-kabelen (som en kan
+se på fig.~\ref{fig:xboxtopp}). Siden det skulle være COM-kontakt mot
+hodebøylen, ble det laget et hull i den ene siden hvor COM-porten ble satt inn.
+Det ble strukket ledninger som på den ene siden var loddet fast til kretskortet,
+den andre enden til COM-porten. Nå var det altså bare å koble i headsettet på
+den ene siden, og maskinen med USB på den andre. <<That's Plug `n' Play!>>
+
+\begin{figure}[h]
+  \centering
+  \includegraphics[width=0.6\linewidth]{fig/x-box2.jpg}
+  \caption{Bilde av <<X-box>> fra toppen}
+  \label{fig:xboxtopp}
+\end{figure}
+
+\section{Resultat}
+
+En boks som skal være et bindeledd mellom PC-en og musen
+(figur~\ref{fig:xboxferdig}. Den har en COM-port som var gruppens løsning for å
+på en enkel måte koble til hodebøylen. Videre går data fra hodebøylen inn til
+kretskortet, og videre til maskinen som utfører ønskede operasjoner.
+
+\begin{figure}[h]
+  \centering
+  \includegraphics[width=0.6\linewidth]{fig/x-box1.jpg}
+  \caption{Bilde av ferdig <<X-box>>}
+  \label{fig:xboxferdig}
+\end{figure}

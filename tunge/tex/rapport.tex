@@ -1,0 +1,246 @@
+\documentclass[a4paper,11pt,norsk,DIV10,twoside,openright,abstracton,idxtotoc,numbers=noenddot]{scrreprt}
+\usepackage[latin1]{inputenc}
+\usepackage[OT1,T1]{fontenc}
+\usepackage{babel}
+\usepackage{amsmath}
+\usepackage{txfonts}
+\usepackage{eurofont}
+%% \usepackage{times}
+%% \usepackage[subscriptcorrection,slantedGreek,nofontinfo]{mtpro}
+%% \usepackage{mtpams}
+%% \usepackage{mtpb}
+\usepackage{icomma}
+\usepackage{soul}
+\usepackage[scaled=0.85]{couriers}
+\usepackage[squaren]{SIunits}
+\usepackage[bottom,symbol,perpage]{footmisc}
+\usepackage[center]{caption}
+\usepackage{enumitem}
+\usepackage{titlesec}
+\usepackage{array}
+\usepackage{booktabs}
+\usepackage{longtable}
+\usepackage{ragged2e}
+\usepackage{subfig}
+\usepackage{listings}
+\usepackage{fancyvrb}
+\usepackage{upquote}
+\usepackage{graphicx}
+\usepackage{color}
+\usepackage[pdfborder={0 0 0}]{hyperref}
+\usepackage{ellipsis}
+\usepackage{pdfpages}
+\usepackage[expansion=false]{microtype}
+
+%% \onehalfspacing
+\frenchspacing
+
+\setlength{\parindent}{\baselineskip}
+\setlength{\parskip}{0pt}
+
+\setlength{\fboxrule}{0.5pt}
+\setlength{\fboxsep}{0pt}
+
+\addtokomafont{sectioning}{\rmfamily}
+
+\addtokomafont{captionlabel}{\bfseries}
+
+%% \titleformat{\chapter}{\huge\bfseries}{}{}{}[\vspace{0.2\baselineskip}\titlerule]
+%% \titlespacing*{\chapter}{0pt}{2.6\baselineskip}{1\baselineskip}
+
+\setcounter{secnumdepth}{4}
+\setcounter{tocdepth}{2}
+
+\setcapindent{0em}
+
+%% \renewcommand{\theequation}{\arabic{equation}}
+
+\DefineFNsymbols{stars}[text]{* {**} {***} {****} {*****} {******}}
+\setfnsymbol{stars}
+
+\deffootnote[1.5em]{0em}{1.5em}
+{\thefootnotemark\hspace{0.1em}}
+\deffootnotemark{\thefootnotemark}
+
+\setlist{noitemsep}
+\setenumerate{label=\arabic*}
+\setitemize[1]{label=\textendash}
+\setitemize[2]{label=\ensuremath{\bullet},nolistsep}
+\setenumerate[2]{nolistsep}
+\setitemize[3]{label=\textendash,nolistsep}
+\setenumerate[3]{nolistsep}
+\setitemize[4]{label=\ensuremath{\bullet},nolistsep}
+\setenumerate[4]{nolistsep}
+%% ...
+
+\sloppy
+
+% Alter some LaTeX defaults for better treatment of figures:
+% See p.105 of "TeX Unbound" for suggested values.
+% See pp. 199-200 of Lamport's "LaTeX" book for details.
+%   General parameters, for ALL pages:
+\renewcommand{\topfraction}{0.9}	% max fraction of floats at top
+\renewcommand{\bottomfraction}{0.8}	% max fraction of floats at bottom
+%   Parameters for TEXT pages (not float pages):
+\setcounter{topnumber}{2}
+\setcounter{bottomnumber}{2}
+\setcounter{totalnumber}{4}     % 2 may work better
+\setcounter{dbltopnumber}{2}    % for 2-column pages
+\renewcommand{\dbltopfraction}{0.9}	% fit big float above 2-col. text
+\renewcommand{\textfraction}{0.07}	% allow minimal text w. figs
+%   Parameters for FLOAT pages (not text pages):
+\renewcommand{\floatpagefraction}{0.7}	% require fuller float pages
+% N.B.: floatpagefraction MUST be less than topfraction !!
+\renewcommand{\dblfloatpagefraction}{0.7}	% require fuller float pages
+% remember to use [htp] or [htpb] for placement
+
+%% Definerer DC-symbolet som Bastian er så glad i
+\newcommand{\Beam}{\raisebox{0.2em}{\includegraphics[width=0.75em]{fig/dc.png}}}
+
+\addtolength{\oddsidemargin}{1cm}
+\addtolength{\evensidemargin}{-1cm}
+
+\title{Rapport}
+\author{}
+\date{}
+
+\begin{document}
+\renewcommand{\micro}{\ensuremath{\muup}}
+\thispagestyle{empty}
+
+% \begin{titlepage}
+%   \newcommand{\HRule}{\rule{\linewidth}{1pt}}
+
+%   \vspace*{\stretch{1}}
+%   \noindent\HRule
+%   \vspace*{0.5\baselineskip}
+%   \begin{center}
+%     \Huge
+%     \noindent {\bf Virtuell arm\\
+%       for funksjonshemmede}\\[1.25\baselineskip]
+%     \large
+%     % \noindent\emph{Logo (HiST)}
+%     \noindent\large\caps{Stian~Rishaug, Bastian~S.~Solem,}\\
+%     \noindent\large\caps{Aleksander~Uthus~og~Vegard~Øye}\\[\baselineskip]
+
+%     \noindent Veileder: Herman Ranes
+
+%   \end{center}
+%   \vspace*{0.5\baselineskip}
+%   \noindent\HRule
+%   \vspace*{\stretch{0.75}}
+%   \begin{center}
+%     \includegraphics[width=6.5cm]{fig/hist-logo}\\[\baselineskip]
+%     \vspace*{0.25\baselineskip}
+
+%     \noindent {\large Trondheim, mai 2009}
+%   \end{center}
+% \end{titlepage}
+
+\begin{titlepage}
+\includepdf{fig/forside.pdf}
+\end{titlepage}
+
+\addcontentsline{toc}{chapter}{Sammendrag}
+
+\input{kap_sammendrag.tex}
+
+\input{kap_forord.tex}
+
+\tableofcontents
+
+\input{kap_innledning.tex}
+
+\cleardoublepage
+
+\input{kap_sensorene.tex}
+
+\cleardoublepage
+
+\input{kap_hodeboyle.tex}
+
+\cleardoublepage
+
+\input{kap_xbox.tex}
+
+\cleardoublepage
+
+\input{kap_elektronikk.tex}
+
+\cleardoublepage
+
+\input{kap_funksjonalitet.tex}
+
+\cleardoublepage
+
+\input{kap_tungetest.tex}
+
+\cleardoublepage
+
+\input{kap_pris.tex}
+
+\cleardoublepage
+
+\input{kap_konklusjon.tex}
+
+\cleardoublepage
+
+\input{kap_videre.tex}
+
+\cleardoublepage
+
+\appendix
+
+\addcontentsline{toc}{chapter}{Bibliografi}
+\begin{thebibliography}{99}
+\bibitem[Bluetooth]{bluetooth}
+  \url{http://www.bluetooth.com/Bluetooth/Technology/Works/}.
+
+\bibitem[Vedlegg 1]{program}
+  Programkode, dokumentert.
+
+\bibitem[Vedlegg 2]{interlink}
+  Datablad for Interlink sensorer.
+
+\bibitem[Vedlegg 3]{usbkey}
+  Datablad for AT90USBKey.
+
+\bibitem[Vedlegg 4]{uk}
+  Datablad for mikrokontrolleren.
+\end{thebibliography}
+
+\addcontentsline{toc}{chapter}{Bilag: CD}
+\chapter*{Bilag: CD}
+\label{sec:cd}
+
+Vedlegg 1--4 foreligger på CD, organisert som følger:
+
+\section*{Vedlegg 1: Programkode}
+
+\RaggedRight
+Plassert i mappen \texttt{/Program}. Lisens for Atmel-kode har plasseringen
+\texttt{/Program/at90usb128/demo/series6-hidmouse/LICENSE.txt}.
+
+\section*{Vedlegg 2: Datablad for Interlink sensorer}
+
+Plassert i mappen \texttt{/Datablader/Trykksensorer}.
+
+\section*{Vedlegg 3: Datablad for AT90USBKey}
+
+Plassert i mappen \texttt{/Datablader/Kretskort}.
+
+\section*{Vedlegg 4: Datablad for mikrokontrolleren}
+
+Plassert i mappen \texttt{/Datablader/Mikrokontroller}.
+
+\cleardoublepage
+
+\addcontentsline{toc}{chapter}{Figurer}
+\listoffigures
+
+\cleardoublepage
+
+\addcontentsline{toc}{chapter}{Tabeller}
+\listoftables
+
+\end{document}

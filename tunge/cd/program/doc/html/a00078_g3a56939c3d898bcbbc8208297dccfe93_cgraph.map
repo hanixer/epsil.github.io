@@ -1,0 +1,10 @@
+<area shape="rect" href="$a00046.html#1cd960f972d60e99b6f9c052018c4d85" title="This function manages the SET FEATURE request." alt="" coords="217,5,340,32">
+<area shape="rect" href="$a00046.html#e92ef962c797a8ef223beaa22f3f020a" title="This function manages the GET CONFIGURATION request." alt="" coords="205,56,352,83">
+<area shape="rect" href="$a00046.html#2370f7b0fe3f3ddb58c7750725849e7a" title="This function manages the GET DESCRIPTOR request." alt="" coords="213,107,344,133">
+<area shape="rect" href="$a00046.html#fff6d8ee7bf9db2927816093ebf38065" title="This function manages the SETUP_GET_INTERFACE request." alt="" coords="217,157,340,184">
+<area shape="rect" href="$a00046.html#d73e65ef060caa9facf305d36134c222" title="This function manages the GET STATUS request." alt="" coords="224,208,333,235">
+<area shape="rect" href="$a00046.html#679a1cae6c591cd1083ca444b0c0bd4f" title="This function manages the SET ADDRESS request." alt="" coords="219,259,339,285">
+<area shape="rect" href="$a00046.html#f047a4b40a02a7d914285ccf4427d5e5" title="This function manages the SET CONFIGURATION request." alt="" coords="205,309,352,336">
+<area shape="rect" href="$a00046.html#b917bc6f4e78c0b9cf2ce83c31b56900" title="This function manages the SET FEATURE request." alt="" coords="223,360,335,387">
+<area shape="rect" href="$a00046.html#297a20012be192881328104df398c6bb" title="This function manages the SETUP_SET_INTERFACE request." alt="" coords="217,411,340,437">
+<area shape="rect" href="$a00044.html#d561daf187c11aa8679aa559ac13e322" title="This function checks the specific request and if known then processes it" alt="" coords="201,461,356,488">

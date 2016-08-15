@@ -1,0 +1,560 @@
+\chapter[Sensorene (Solem og Øye)]{Sensorene}
+\label{sec:sensorkap}
+
+\begin{quote}\it
+  \textbf{Sammendrag:} Tar for seg forspenningskretsen i teori og praksis.
+  Teorien tilsier at sensorene bør forspennes med en motstand på
+  8--15~$\mathit{k\Omega}$. Målingene viser hvordan sensorene oppfører seg under
+  ulike omstendigheter. Sensorkarakteristikken setter krav til en dynamisk verdi
+  for hendelsesaktivering, og kontinuerlig kalibrering. % konklusjon
+\end{quote}
+
+\section{Teori: forspenning av trykksensorene}
+
+%% \newcommand*{\appropto}{\mathrel{\vcenter{\offinterlineskip\vskip0.4ex\hbox{$\propto$}\hbox{$\sim$}}}}
+
+\begin{figure}[h]
+  \centering
+  \includegraphics[height=5cm]{fig/trykksensor.pdf}
+  \caption{Resistive trykksensorer}
+  \label{fig:trykksensorer}
+\end{figure}
+
+\noindent Sensorene som brukes, er \emph{resistive trykksensorer}
+(fig.~\ref{fig:trykksensorer}), eller trykkfølsomme motstander. De består av av
+to deler: polymerbasert tykkfilm koblet til et resistivt materiale, og
+polymerbasert tykkfilm koblet til elektroniske kontakter. Polymer er en type
+bindingsmiddel som brukes på motstander og ledere. Når dette presses sammen, gir
+det økt konduktivitans (lederevne) gjennom kretsen~\cite{interlink}.
+
+Dermed fungerer sensorene som en variabel motstand under trykk (jo høyere trykk,
+jo lavere resistans), og som et brudd (uendelig resistans) ellers.
+
+\begin{figure}[t]
+  \centering
+  \subfloat[]{\label{fig:litensensor}\includegraphics[clip=true,height=6cm,page=11,trim={120
+      400 400 140}]{fig/fsrguide.pdf}}\qquad\qquad
+  \subfloat[]{\label{fig:storsensor}\includegraphics[clip=true,height=6cm,page=11,trim={375
+      400 135 140}]{fig/fsrguide.pdf}}
+  \caption[Sensortyper, FSR-400 og FSR-402]{Sensor type FSR-400~\subref{fig:litensensor},
+    sensor type FSR-402~\subref{fig:storsensor}.\\
+    Millimetermål er gitt i klammer.}
+  \label{fig:sensortyper}
+\end{figure}
+
+Sensorene, som produseres av Interlink Electronics,\footnote{Nettside:
+  \url{http://www.interlinkelectronics.com/}.} kommer i to typer
+(fig.~\ref{fig:sensortyper}): \subref{fig:litensensor} en \emph{liten} sensor
+med en diameter på 8~mm (FSR-400), og \subref{fig:storsensor} en \emph{stor}
+sensor på 18~mm (FSR-402). Det trykkfølsomme området er litt mindre og er på
+hhv. 5~mm og 14~mm.
+
+\begin{figure}[b]
+  \centering
+  \subfloat[]{\label{fig:forspenning}\includegraphics[height=4.2cm]{fig/sensor.pdf}}
+  \qquad
+  \subfloat[]{\label{fig:spenningsdeling}\includegraphics[height=4.2cm]{fig/spenningsdeling.pdf}}
+  \qquad
+  \subfloat[]{\label{fig:brudd}\includegraphics[height=4.2cm]{fig/brudd.pdf}}
+  \caption[Forspenning av trykksensor, spenningsdeling og brudd]{Forspenning av
+    trykksensor~\subref{fig:forspenning},
+    spenningsdeling~\subref{fig:spenningsdeling} og brudd~\subref{fig:brudd}}
+  \label{fig:sensor}
+\end{figure}
+
+For å få målbare trykkverdier, må sensorene \emph{forspennes}
+(fig.~\ref{fig:forspenning}). Hver sensor kobles i serie med en motstand $R$,
+som går til jord. I den andre enden påtrykkes en tilførselsspenning $V_{CC}$ på
+3,3~V. Dette oppsettet gir en spenningsdeling mellom sensorresistansen, $R_S$,
+og $R$:
+\begin{equation}
+  \label{eq:spenningsdeling}
+  V_{IN} = V_{CC} \cdot \frac{R}{R_S + R}
+\end{equation}
+$V_{IN}$ sendes inn på analog-til-digital-omformeren på kortet (ADC-en), og er
+altså verdien som programmet på mikrokontrolleren <<ser>>. Gjennom ADC-en får vi
+en overgang fra den \emph{fysiske} størrelsen $V_{IN}$ til den \emph{digitale}
+8-bit verdien \texttt{\textit{ADC\_VARIABEL}} i programkoden:
+\begin{equation}
+  \label{eq:datablad}
+  \text{\texttt{\textit{ADC\_VARIABEL}}}
+  = \frac{V_{IN} \cdot 255}{V_{REF}}
+\end{equation}
+$V_{REF}$ er \emph{referansespenningen} og er lik $V_{CC}$. Den maksimale
+verdien for \texttt{\textit{ADC\_VARIABEL}}, 255, svarer dermed til 3,3~V, og
+\texttt{\textit{ADC\_VARIABEL}} er proporsjonal med $V_{IN}$.
+
+For å velge en passende verdi for forspenningsmotstanden $R$, må vi se hvordan
+den påvirker forholdet mellom trykk og spenning. Dette forholdet kan brytes opp
+i to mindre: forholdet mellom trykk~($\rho$) og sensorresistans~($R_S$), og
+forholdet mellom sensorresistans~($R_S$) og målt spenning~($V_{IN}$).
+
+Målinger på $\rho$--$R_S$-forholdet er gitt i avsnitt~\ref{sec:malinger}, og kan
+i korte trekk oppsummeres slik: for lette trykk er $R_S \approx 100$~\kilo\ohm,
+og for harde trykk går $R_S$ ned til 20~\kilo\ohm, med sterkt avtagende stigning
+(fig.~\ref{fig:litenok}, s.~\pageref{fig:litenok}). Forholdet er altså sterkt
+ulineært: $R_S$ er stor når $\rho$ er liten, og $R_S$ er liten når $\rho$ er
+stor.
+
+Det samme gjelder for $R_S$--$V_{IN}$-forholdet, gitt i
+ligning~(\ref{eq:spenningsdeling}): når den ene går opp, går den andre ned.
+Summen av disse to <<inverse>> forholdene er at $\rho$ og $V_{IN}$ øker i takt:
+når trykket øker, så øker den målte spenningen, og når trykket minker, så minker
+spenningen. Når $\rho = 0$, så er også $V_{IN} = 0$, og i programkoden har
+\texttt{\textit{ADC\_VARIABEL}} verdien 0. Dette er det ideelle
+\emph{nullnivået}, verdien når sensoren ikke er i bruk. \label{sec:nullnivaa}
+
+% \begin{displaymath}
+%   R_S \overset{\text{tiln.}}{\propto} \frac{1}{\rho}
+% \end{displaymath}
+% der $\overset{\text{tiln.}}{\propto}$ betyr <<tilnærmet proporsjonal med>>.
+% Sensorresistansen kan dermed, \emph{i upresise termer}, betraktes som en slags
+% <<invers>> av trykket: $R_S$ er stor når $\rho$ er liten, og $R_S$ er liten
+% når $\rho$ er stor. Tilsvarende kan den målte spenningen, $V_{IN}$, betraktes
+% som <<inversen>> av $R_S$:
+% \begin{displaymath}
+%   V_{IN} \overset{\text{tiln.}}{\propto} \frac{1}{R_S}
+% \end{displaymath}
+% Dette er en forenklet måte å uttrykke innholdet i
+% ligning~(\ref{eq:spenningsdeling}) på.\footnote{Dersom $R$ holdes konstant, er
+%   den matematiske beskrivelsen av $R_S$--$V_{IN}$-kurven at den antar
+%   \emph{hyperbolsk vekst}.} Legger vi sammen disse forenklingene, får vi at
+% \begin{displaymath}
+%   V_{IN} \overset{\text{tiln.}}{\propto} \rho
+% \end{displaymath}
+% Dvs. den målte spenningen, $V_{IN}$ (alias \texttt{\textit{ADC\_VARIABEL}} i
+% programkoden), er \emph{tilnærmet proporsjonal} med trykket, $\rho$.
+
+\begin{figure}
+  \centering
+  \subfloat[]{\label{fig:vin3d}\includegraphics[height=4.7cm]{fig/vin3d.pdf}}\quad
+  \subfloat[]{\label{fig:vin2d}\includegraphics[height=4.7cm]{fig/vin2d.pdf}}
+  \caption[Spenning som funksjon av sensorresistans og motstand]{$V_{IN}$ som
+    funksjon av $R$ og $R_S$, ligning~(\ref{eq:spenningsdeling})}
+  \label{fig:vin}
+\end{figure}
+
+% \begin{figure}
+%   \centering
+%   \subfloat[]{\label{fig:partvin3d}\includegraphics[height=5cm]{fig/partvin3d.pdf}}
+%   \subfloat[]{\label{fig:partvin2d}\includegraphics[height=5cm,clip=true,trim={0
+%       0 0 10}]{fig/partvin2d.pdf}}
+%   \caption[Den partiellderiverte av spenningen mht. sensorresistans]{Plott av
+%     den partiellderiverte av $V_{IN}$ med hensyn til $R_S$,
+%     ligning~(\ref{eq:partiell})}
+%   \label{fig:partvin}
+% \end{figure}
+
+Hvis 0~V er spenningen som måles for intet trykk, hva er da spenningen for et
+lett trykk (når $R_S = 100$~\kilo\ohm)? Det er viktig at denne verdien ikke er
+for lav, ellers vil den ikke reliabelt kunne skilles fra nullnivået:
+$V_{IN\,\text{min}} > 0$~V. Figur \ref{fig:vin} viser hvordan
+forspenningsmotstanden $R$ innvirker på forholdet mellom $R_S$ og $V_{IN}$. Når
+sensoren tas i bruk, vil vi få et \emph{sprang} på minst minimumsverdien,
+$V_{IN\,\text{min}}$, som selvfølgelig ikke bør være så lav at spranget ikke
+registreres. Men den bør heller ikke være for høy, ellers får vi ikke utnyttet
+intervallet av $V_{IN}$-verdier (verdiområdet) skikkelig.
+
+Vi ser også at sammenhengen mellom $R_S$ og $V_{IN}$ blir \emph{mer ulineær} for
+lavere verdier av $R$. Ulinearitet er ikke nødvendigvis negativt. Si at vi
+ønsker at pekerfarten skal være konstant for lette trykk ($R_S =
+\text{40--100}$~\kilo\ohm), men at den skal øke for harde trykk ($R_S <
+40$~\kilo\ohm). Da er det gunstig med \emph{lav oppløsning} for <<lette trykk>>
+og \emph{høy oppløsning} for <<harde trykk>>. Det vil si at vi bruker en større
+del av intervallet av $V_{IN}$-verdier til å differensiere mellom de <<harde
+trykkene>>, mens de <<lette trykkene>> delegeres til et snevrere utsnitt.
+
+Veier vi disse hensynene opp mot hverandre, ser vi at en motstand på
+8--15~\kilo\ohm\ kan være egnet. Dette gir $V_{IN\,\text{min}} =
+\text{0,24--0,43}$~V, som svarer til $\text{\texttt{\textit{ADC\_VARIABEL}}} =
+\text{19--33}$: godt over det ideelle nullnivået, og god utnyttelse av
+verdiområdet.
+
+Men hvordan fungerer sensorene i praksis? Endres sensorresistansen over tid? Er
+nullnivået alltid 0~V? For å få svar på disse spørsmålene, må vi foreta noen
+målinger.
+
+\section{Målinger}
+
+\label{sec:malinger}
+
+\noindent For å fastslå hvordan sensorene oppfører seg under ulike
+omstendigheter, er det foretatt tre forskjellige typer målinger på sensorene.
+Denne informasjonen er nødvendig for å avgjøre sensorenes muligheter og
+begrensninger. Utstyret som er benyttet for disse målingene er gitt i
+tabell~\ref{tab:utstyrliste}.
+
+\begin{table}[h]
+  \centering
+  \caption[Utstyrsliste for målinger på sensorer]{Utstyrsliste}
+  \begin{tabular}{ll}
+    \toprule
+    Instrument/maskin  & Type/data\\
+    \midrule
+    Motstand           & 8,2~\kilo\ohm\\
+    Spenningsforsyning & 4,5~V\Beam\\ % DC
+    Vektenhet          & 4,35~g (kronestykke)\\
+    Vektarm            & 18~g\\
+    Multimeter         & \\
+    \bottomrule
+  \end{tabular}
+  \label{tab:utstyrliste}
+\end{table}
+
+\noindent For å øve et konstant trykk på sensorene, er det brukt en arm som det
+blir lagt vektenheter på, figur~\ref{fig:malepinne}. Hvor på sensorens overflate
+trykket settes, innvirker på motstandsverdien, men armen sørger for å holde
+kontaktflaten og trykkområdet tilnærmet konstant, figur~\ref{fig:sensorpress}.
+Uten vektenheter veier armen 18~g.
+
+\subsection[Motstandsverdi ved varierende trykk]{Motstandsverdi ved varierende
+  trykk FSR-400}
+\label{sec:litenvar}
+Motstandsverdien til $R_S$ (i \kilo\ohm) måles som direkte følge av trykk på
+overflaten til en sensor av typen FSR-400 (\textit{liten sensor}). Målingene
+foretas med 5~s mellomrom. Hensikten med denne målingen er å se hvordan et
+konstant trykk påvirker $R_S$ over tid og hva som skjer når trykket minker. Går
+$R_S$-verdien tilbake til utgangspunktet, eller er den endret som følge av at
+sensoren har vært i bruk? Dette er et viktig spørsmål hva nullnivået angår
+(tidligere omtalt på s.~\pageref{sec:nullnivaa}).
+
+Måleresultatene er gitt i tabell~\ref{tab:litenvar} og
+figur~\ref{fig:litenvar}.
+
+\subsubsection{Drøfting av resultatene}
+
+Som man kan se av tabell~\ref{tab:litenvar} er resistansen i sensoren ved 26,7~g
+(tilstand~0) lik uendelig -- sensoren leder ikke. Når trykket så øker til
+31,05~g (tilstand~1), leder sensoren. Deretter lar man sensoren være i
+tilstand~1 i 20~s, og observerer at resistansen minker, se
+figur~\ref{fig:litenvar}. Men når man nå går tilbake til tilstand~0, kan man se
+at sensoren \emph{fortsatt leder}.
+
+Sensorresistansen har altså en slags \emph{hysteresefunksjon}. Over tid vil
+denne hysteresen øke noe. Dette må det tas høyde for når sensorene skal avleses:
+Man kan ikke sammenligne de avleste verdiene med et fastsatt nullnivå på 0~V,
+men må i stedet sørge for å \emph{kalibrere} nullnivået med jevne mellomrom.
+
+\begin{table}[tpb]
+  \centering
+  \caption{Liten sensor, varierende vekt}
+  \begin{tabular}{llll}
+    \toprule
+    Vektenheter [stk.] &
+    Tillegg til arm [g] &
+    Total vekt [g] &
+    $R_S$ [\kilo\ohm]\\
+    \midrule
+    0 & 0,00  & 18,00 & --\\
+    2 & 8,70  & 26,70 & --\\
+    3 & 13,05 & 31,05 & 111\\
+    3 & 13,05 & 31,05 & 97\\
+    3 & 13,05 & 31,05 & 93\\
+    3 & 13,05 & 31,05 & 70\\
+    2 & 8,70  & 26,70 & 120\\
+    3 & 13,05 & 31,05 & 74\\
+    2 & 8,70  & 26,70 & 108\\
+    3 & 13,05 & 31,05 & 71\\
+    3 & 13,05 & 31,05 & 69\\
+    3 & 13,05 & 31,05 & 66\\
+    2 & 8,70  & 26,70 & 87\\
+    \bottomrule
+  \end{tabular}
+  \label{tab:litenvar}
+\end{table}
+
+\begin{figure}[tpb]
+  \centering
+  \includegraphics[clip=true,page=2,trim={80 265 145
+    390},width=0.9\linewidth]{fig/sensormalinger.pdf}
+  \caption[Liten sensor, varierende vekt]{Liten sensor, varierende vekt
+    (tabell~\ref{tab:litenvar})}
+  \label{fig:litenvar}
+\end{figure}
+
+\clearpage
+
+\subsection[Spenningsverdi ved økende trykk, vektene av]{Spenningsverdi ved
+  økende trykk, vektene av mellom hver måling}
+
+\label{sec:okav}
+
+\noindent Sensorene blir koblet opp som i figur~\ref{fig:sensor} og spenningen
+over $R$ blir målt ved trykk på sensoren. Mellom hver måling tas vektene av, og
+trykket blir 18~g.\footnote{Lar målearmen ligge for å holde trykkområdet
+  konstant. Vekten på armen er så liten at sensorene påvirkes minimalt av denne,
+  se kapittel~\ref{sec:litenvar}} Målingene foretas 5~s etter at vekten er lagt
+på. Spenningen som måles er spenningen ADC-en på kortet ser, så hensikten er å
+måle hvordan spenningen stiger ved enkelttrykk.
+
+For målingene gjelder ligning~(\ref{eq:spenningsdeling}),
+s.~\pageref{eq:spenningsdeling}, samt sammenhengene
+\begin{align}
+  R_S &= \frac{V_{CC} - V_R}{I_R}\label{eq:resistans}\\
+  I_R &= \frac{U_R}{R}\label{eq:strom}
+\end{align}
+Målingene er foretatt med $V_{CC} = 4,5$~V og $R = 8,2$~\kilo\ohm. Valget av
+verdier er basert på utstyret som var tilgjengelig da målingene ble foretatt.
+
+Resultatene for \textit{liten sensor} (FSR-400) er gitt i
+tabell~\ref{tab:litenokav} og figur~\ref{fig:litenokav}, og resultatene for
+\textit{stor sensor} (FSR-402) er gitt i tabell~\ref{tab:storokav} og
+figur~\ref{fig:storokav}.
+
+\subsubsection{Drøfting av resultatene}
+
+Av figur~\ref{fig:litenokav} og \ref{fig:storok}, som viser spenning og motstand
+mot trykk for hhv. liten og stor sensor, kan man se at de to typene gir ganske
+like resultater. Den store sensoren har en noe brattere kurve. Dette kan komme
+av den større overflaten, og at buen på overflatemembranen minker resistansen
+over et større område enn det som faktisk er i kontakt med armen, illustrert i
+figur~\ref{fig:sensorpress}.
+
+Det kommer frem av resultatene i figur~\ref{fig:litenokavspenning} og
+figur~\ref{fig:storokavspenning} at spenningens stigningsendring er ganske jevnt
+fordelt over trykkområdet. Det er derimot ikke den fallende endringen til
+sensorverdien som man kan se i figur~\ref{fig:litenokavmotstand} og
+figur~\ref{fig:storokavmotstand}. Dette skyldes den ulineære sammenhengen i
+ligning~(\ref{eq:spenningsdeling}).
+
+Spenningsstigningen har noen ujevnheter, dette kan være fordi kontaktpunktet har
+en unøyaktighet på $\pm 1$~mm når vektene tas av.
+
+\begin{figure}[b]
+  \centering
+  \includegraphics[width=0.5\linewidth]{fig/malepinne.png}
+  \caption[Arm for sensormålinger]{Arm for å legge vekt(er) på sensorene}
+  \label{fig:malepinne}
+\end{figure}
+
+\begin{figure}[b]
+  \centering
+  \includegraphics[width=0.4\linewidth]{fig/sensorpress.png}
+  \caption{Sensor under trykk}
+  \label{fig:sensorpress}
+\end{figure}
+
+\clearpage
+
+\begin{table}[t]
+  \centering
+  \caption[Liten sensor, økende vekt, vektene av]{Liten sensor, økende vekt, vektene av mellom hver måling}
+  \begin{tabular}{lllll}
+    \toprule
+    $V_R$ [V] &
+    Vekt [g] &
+    Vektenheter [stk.] &
+    Utr. $I_R$ [\micro\ampere] &
+    Utr. $R_S$ [\kilo\ohm]\\
+    \midrule
+    0,20 & 18,00 & 0  & 24,39  & 176,30\\
+    0,38 & 22,35 & 1  & 46,34  & 88,91\\
+    0,72 & 26,70 & 2  & 87,80  & 43,05\\
+    1,02 & 31,05 & 3  & 124,39 & 27,98\\
+    1,13 & 35,40 & 4  & 137,80 & 24,45\\
+    1,28 & 39,75 & 5  & 156,10 & 20,63\\
+    1,29 & 44,10 & 6  & 157,32 & 20,40\\
+    1,56 & 48,45 & 7  & 190,24 & 15,45\\
+    1,60 & 52,80 & 8  & 195,12 & 14,86\\
+    1,70 & 57,15 & 9  & 207,32 & 13,51\\
+    1,67 & 61,50 & 10 & 203,66 & 13,90\\
+    1,75 & 65,85 & 11 & 213,41 & 12,89\\
+    1,90 & 70,20 & 12 & 231,71 & 11,22\\
+    1,96 & 74,55 & 13 & 239,02 & 10,63\\
+    2,01 & 78,90 & 14 & 245,12 & 10,16\\
+    2,07 & 83,25 & 15 & 252,44 & 9,63\\
+    2,12 & 87,60 & 16 & 258,54 & 9,21\\
+    2,18 & 91,95 & 17 & 265,85 & 8,73\\
+    2,20 & 96,30 & 18 & 268,29 & 8,57\\
+    \bottomrule
+  \end{tabular}
+  \label{tab:litenokav}
+\end{table}
+
+\begin{table}[b]
+  \centering
+  \caption[Stor sensor, økende vekt, vektene av]{Stor sensor, økende vekt, vektene av mellom hver måling}
+  \begin{tabular}{lllll}
+    \toprule
+    $V_R$ [V] &
+    Vekt [g] &
+    Vektenheter [stk.] &
+    Utr. $I_R$ [\micro\ampere] &
+    Utr. $R_S$ [\kilo\ohm]\\
+    \midrule
+    0,27 & 18,00 & 0  & 32,93  & 128,47\\
+    0,63 & 22,35 & 1  & 76,83  & 50,37\\
+    0,96 & 26,70 & 2  & 117,07 & 30,24\\
+    1,25 & 31,05 & 3  & 152,44 & 21,32\\
+    1,35 & 35,40 & 4  & 164,63 & 19,13\\
+    1,54 & 39,75 & 5  & 187,80 & 15,76\\
+    1,65 & 44,10 & 6  & 201,22 & 14,16\\
+    1,65 & 48,45 & 7  & 201,22 & 14,16\\
+    1,67 & 52,80 & 8  & 203,66 & 13,90\\
+    1,80 & 57,15 & 9  & 219,51 & 12,30\\
+    1,90 & 61,50 & 10 & 231,71 & 11,22\\
+    1,94 & 65,85 & 11 & 236,59 & 10,82\\
+    2,08 & 70,20 & 12 & 253,66 & 9,54\\
+    \bottomrule
+  \end{tabular}
+  \label{tab:storokav}
+\end{table}
+
+\clearpage
+
+\begin{figure}[t]
+  \centering \subfloat[Spenning mot
+  trykk]{\label{fig:litenokavspenning}\includegraphics[clip=true,page=4,trim={80
+      490 145 115}]{fig/sensormalinger.pdf}}
+
+  \subfloat[Motstand mot trykk, utregnet fra
+  \subref{fig:litenokavspenning}]{\label{fig:litenokavmotstand}\includegraphics[clip=true,page=4,trim={80
+      190 145 410}]{fig/sensormalinger.pdf}}
+
+  \caption[Liten sensor, økende vekt, vektene av]{Liten sensor, økende vekt,
+    vektene av mellom hver måling (tabell~\ref{tab:litenokav})}
+  \label{fig:litenokav}
+\end{figure}
+
+\begin{figure}[b]
+  \centering \subfloat[Spenning mot
+  trykk]{\label{fig:storokavspenning}\includegraphics[clip=true,page=8,trim={80
+      490 275 110}]{fig/sensormalinger.pdf}}
+
+  \subfloat[Motstand mot trykk, utregnet fra
+  \subref{fig:storokavspenning}]{\label{fig:storokavmotstand}\includegraphics[clip=true,page=8,trim={80
+      190 150 410}]{fig/sensormalinger.pdf}}
+
+  \caption[Stor sensor, økende vekt, vektene av]{Stor sensor, økende vekt,
+    vektene av mellom hver måling (tabell~\ref{tab:storokav})}
+  \label{fig:storokav}
+\end{figure}
+
+\clearpage
+
+\subsection{Spenningsverdi ved økende trykk, vektene ikke av}
+
+Som tidligere i avsnitt~\ref{sec:okav} måles spenningen over $R$, men vektene
+blir nå \emph{ikke} tatt av mellom hver måling. Dette er for å minske muligheten
+for bevegelse på armen, og for å vise forventet spenning/spenningsendring i
+tilfelle konstant trykk på sensoren. Her venter man 15~s mellom målingene for å
+la verdien bli tilnærmet stabil før vekten økes.
+
+Resultatene for liten sensor er gitt i tabell~\ref{tab:litenok} og
+figur~\ref{fig:litenok}, og resultatene for stor sensor er gitt i
+tabell~\ref{tab:storok} og figur~\ref{fig:storok}.
+
+\subsubsection{Drøfting av resultatene}
+
+Ved å sammenligne figurene \ref{fig:litenokav} og \ref{fig:litenok} (for liten
+sensor) og \ref{fig:storokav} og \ref{fig:storok} (for stor sensor), kan man se
+at de er ganske like. Den første avlesningen gir imidlertid en mye høyere
+spenning enn tidligere: Det er nå en differanse på ca. 0,25--0,50~V. Denne
+differansen synker til ca. 0,00--0,15~V ved 70,20~g. Følgen er en lavere
+stigning enn for enkelttrykkene.
+
+Dette understreker viktigheten av kontinuerlig kalibrering av nullnivået. Det de
+avleste sensorverdiene blir sammenlignet med for å fastslå om de er i bruk, kan
+ikke være en konstant -- ellers vil man kunne få hendelsesaktivering som følge
+av at hodebøylen presser mot kinnet. Sensorene setter krav til en \emph{dynamisk
+  verdi} for hendelsesaktivering.
+
+\begin{table}[b]
+  \centering
+  \caption[Liten sensor, økende vekt, vektene ikke av]{Liten sensor, økende vekt, vektene ikke av mellom målingene}
+  \begin{tabular}{lllll}
+    \toprule
+    $V_R$ [V] &
+    Vekt [g] &
+    Vektenheter [stk.] &
+    Utr. $I_R$ [\micro\ampere] &
+    Utr. $R_S$ [\kilo\ohm]\\
+    \midrule
+    0,66 & 18,00 & 0  & 80,49  & 47,71\\
+    0,79 & 22,35 & 1  & 96,34  & 38,51\\
+    0,94 & 26,70 & 2  & 114,63 & 31,06\\
+    1,14 & 31,05 & 3  & 139,02 & 24,17\\
+    1,30 & 35,40 & 4  & 158,54 & 20,18\\
+    1,50 & 39,75 & 5  & 182,93 & 16,40\\
+    1,62 & 44,10 & 6  & 197,56 & 14,58\\
+    1,71 & 48,45 & 7  & 208,54 & 13,38\\
+    1,79 & 52,80 & 8  & 218,29 & 12,41\\
+    1,89 & 57,15 & 9  & 230,49 & 11,32\\
+    1,96 & 61,50 & 10 & 239,02 & 10,63\\
+    2,03 & 65,85 & 11 & 247,56 & 9,98\\
+    2,07 & 70,20 & 12 & 252,44 & 9,63\\
+    2,10 & 74,55 & 13 & 256,10 & 9,37\\
+    2,14 & 78,90 & 14 & 260,98 & 9,04\\
+    2,17 & 83,25 & 15 & 264,63 & 8,80\\
+    2,20 & 87,60 & 16 & 268,29 & 8,57\\
+    2,23 & 91,95 & 17 & 271,95 & 8,35\\
+    2,25 & 96,30 & 18 & 274,39 & 8,20\\
+    \bottomrule
+  \end{tabular}
+  \label{tab:litenok}
+\end{table}
+
+\begin{figure}[htpb]
+  \centering \subfloat[Spenning mot
+  trykk]{\label{fig:litenokspenning}\includegraphics[clip=true,page=6,trim={80
+      490 145 115}]{fig/sensormalinger.pdf}}
+
+  \subfloat[Motstand mot trykk, utregnet fra
+  \subref{fig:litenokspenning}]{\label{fig:litenokmotstand}\includegraphics[clip=true,page=6,trim={80
+      190 145 410}]{fig/sensormalinger.pdf}}
+
+  \caption[Liten sensor, økende vekt, vektene ikke av]{Liten sensor, økende
+    vekt, vektene ikke av mellom målingene (tabell~\ref{tab:litenok})}
+  \label{fig:litenok}
+\end{figure}
+
+\begin{table}[htpb]
+  \centering
+  \caption[Stor sensor, økende vekt, vektene ikke av]{Stor sensor, økende vekt, vektene ikke av mellom målingene}
+  \begin{tabular}{lllll}
+    \toprule
+    $V_R$ [V] &
+    Vekt [g] &
+    Vektenheter [stk.] &
+    Utr. $I_R$ [\micro\ampere] &
+    Utr. $R_S$ [\kilo\ohm]\\
+    \midrule
+    0,48 & 18,00 & 0  & 58,54  & 68,68\\
+    0,73 & 22,35 & 1  & 89,02  & 42,35\\
+    1,10 & 26,70 & 2  & 134,15 & 25,35\\
+    1,28 & 31,05 & 3  & 156,10 & 20,63\\
+    1,42 & 35,40 & 4  & 173,17 & 17,79\\
+    1,50 & 39,75 & 5  & 182,93 & 16,40\\
+    1,63 & 44,10 & 6  & 198,78 & 14,44\\
+    1,71 & 48,45 & 7  & 208,54 & 13,38\\
+    1,80 & 52,80 & 8  & 219,51 & 12,30\\
+    1,89 & 57,15 & 9  & 230,49 & 11,32\\
+    1,97 & 61,50 & 10 & 240,24 & 10,53\\
+    2,08 & 65,85 & 11 & 253,66 & 9,54\\
+    2,15 & 70,20 & 12 & 262,20 & 8,96\\
+    2,22 & 74,55 & 13 & 270,73 & 8,42\\
+    2,27 & 78,90 & 14 & 276,83 & 8,06\\
+    2,32 & 83,25 & 15 & 282,93 & 7,71\\
+    2,35 & 87,60 & 16 & 286,59 & 7,50\\
+    2,39 & 91,95 & 17 & 291,46 & 7,24\\
+    2,42 & 96,30 & 18 & 295,12 & 7,05\\
+    \bottomrule
+  \end{tabular}
+  \label{tab:storok}
+\end{table}
+
+\clearpage
+
+\begin{figure}[htpb]
+  \centering \subfloat[Spenning mot
+  trykk]{\label{fig:storokspenning}\includegraphics[clip=true,page=10,trim={80
+      490 145 115}]{fig/sensormalinger.pdf}}
+
+  \subfloat[Motstand mot trykk, utregnet fra
+  \subref{fig:storokspenning}]{\label{fig:storokmotstand}\includegraphics[clip=true,page=10,trim={80
+      190 150 410}]{fig/sensormalinger.pdf}}
+
+  \caption[Stor sensor, økende vekt, vektene ikke av]{Stor sensor, økende vekt,
+    vektene ikke av mellom målingene (tabell~\ref{tab:storok})}
+  \label{fig:storok}
+\end{figure}

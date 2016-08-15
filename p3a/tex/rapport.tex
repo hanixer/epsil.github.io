@@ -1,0 +1,2349 @@
+\documentclass[a4paper,12pt,norsk,DIV10,twoside,openright,abstracton,idxtotoc]{scrreprt}
+\usepackage[latin1]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage{babel}
+\usepackage{makeidx}
+% \usepackage{pxfonts}
+% \usepackage{fourier}
+% \usepackage{newcent}
+\usepackage{lmodern}
+\usepackage{amsmath}
+\usepackage{mathtools}
+\usepackage{fourier}
+\thinmuskip=3.0mu
+\medmuskip=4.0mu plus 2.0mu minus 4.0mu
+\thickmuskip=5.0mu plus 5.0mu
+\usepackage{bm}
+\usepackage{booktabs}
+\usepackage{longtable}
+\usepackage{tabularx}
+\usepackage{ragged2e}
+\usepackage{epigraph}
+\usepackage[symbol,perpage]{footmisc}
+\usepackage{setspace}
+\usepackage{icomma}
+\usepackage[bookmarks=false,pdfborder={0 0 0}]{hyperref}
+\usepackage{titlesec}
+\usepackage{enumitem}
+\usepackage{soul}
+\usepackage{ellipsis}
+\usepackage{url}
+\usepackage[amssymb]{SIunits}
+\usepackage{upquote}
+\usepackage{fancyvrb}
+\usepackage{graphicx}
+\usepackage{wrapfig}
+\usepackage{ifpdf}
+\usepackage{lscape}
+\usepackage{rotating}
+\ifpdf
+\usepackage{pdflscape}
+\usepackage{pdfpages}
+\usepackage[expansion=false]{microtype}
+\fi
+
+\onehalfspacing
+\frenchspacing
+
+\setlength{\parindent}{\baselineskip}
+\setlength{\parskip}{0pt}
+
+\addtokomafont{sectioning}{\rmfamily}
+
+\addtokomafont{captionlabel}{\bfseries}
+
+\titleformat{\chapter}{\huge\bfseries}{}{}{}[\vspace{0.2\baselineskip}\titlerule]
+\titlespacing*{\chapter}{0pt}{2.6\baselineskip}{1\baselineskip}
+
+% \makeatletter
+% \renewcommand*\toc@heading{%
+%   \section*{\contentsname}%
+%   \@mkboth{\contentsname}{\contentsname}%
+% }
+% \makeatother
+
+\setcapindent{0em}
+
+% \setlrmargins{*}{*}{1.25}
+
+% \numberwithin{section}{chapter}
+\renewcommand{\theequation}{\arabic{equation}}
+
+\DefineFNsymbols{stars}[text]{* {**} {***} {****} {*****} {******}}
+\setfnsymbol{stars}
+
+\deffootnote[1.5em]{0em}{1.5em}
+{\thefootnotemark\hspace{0.1em}}
+\deffootnotemark{\thefootnotemark}
+
+\renewcommand{\epigraphsize}{\footnotesize}
+\renewcommand{\textflush}{flushepinormal}
+
+\setcounter{secnumdepth}{-1}
+\addtocounter{tocdepth}{-1}
+
+\setlength{\intextsep}{0pt}
+\setlength{\wrapoverhang}{0pt}
+
+\setlength{\fboxrule}{0.5pt}
+\setlength{\fboxsep}{0pt}
+
+\renewcommand{\topfraction}{1.0}
+\renewcommand{\bottomfraction}{\topfraction}
+
+\addtolength{\oddsidemargin}{1cm}
+\addtolength{\evensidemargin}{-1cm}
+
+\sloppy
+
+\title{Prosjektoppgave 2008}
+\author{Bastian S.\ Solem, Stian Rishaug,\\
+  Aleksander Uthus og Vegard Øye}
+\date{}
+
+\renewcommand{\see}[2]{\emph{se}~#1}
+\renewcommand{\seealso}[2]{\emph{se~også}~#1}
+
+\newcommand{\seeunder}[2]{\emph{se~under}~#1}
+\newcommand{\seealsounder}[2]{\emph{se~også~under}~#1}
+
+\newcommand\nn[1]{#1\hspace{1pt}n}
+
+\makeindex
+
+\begin{document}
+\renewcommand{\micro}{\ensuremath{\othermu}}
+\renewcommand{\indexname}{Stikkordregister}
+
+\thispagestyle{empty}
+
+\begin{titlepage}
+  \newcommand{\HRule}{\rule{\linewidth}{1pt}}
+
+  \vspace*{\stretch{1}}
+  \noindent\HRule
+  \vspace*{0.5\baselineskip}
+  \begin{center}
+    \Huge
+    \noindent {\bf Lydforsterker\\
+      \emph{Project 3A}} \\[1.25\baselineskip]
+    \large
+    % \noindent\emph{Logo (HiST)}
+    \noindent\large\caps{Stian~Rishaug, Bastian~S.~Solem,
+      Aleksander~Uthus~og~Vegard~Øye}\\[\baselineskip]
+
+    \noindent Veileder: Herman Ranes
+
+  \end{center}
+  \vspace*{0.5\baselineskip}
+  \noindent\HRule
+  \vspace*{\stretch{0.75}}
+  \begin{center}
+    \includegraphics[width=6.5cm]{fig/hist-logo}\\[\baselineskip]
+    \vspace*{0.25\baselineskip}
+
+    \noindent {\large Trondheim, april 2008}
+  \end{center}
+\end{titlepage}
+
+\addcontentsline{toc}{chapter}{Sammendrag}
+
+\begin{abstract}
+  \noindent Rapport for konstruksjon av den $60$~\watt\ klasse
+  AB-forsterkeren \textit{Project 3A}: enkelt design
+  (BJT-transistorer, tilbakekobling) og god lydkvalitet.
+
+  Simulering ga jevn forsterkning i det hørbare området
+  ($20$~\hertz\textendash $20$~\kilo\hertz). Målt forsterkning var
+  $24,9$~\deci\bel, med en effekt på $2 \times 55$~\watt\ ved
+  $8$~\ohm.
+
+  En detaljert kretsanalyse av forsterkeren trinn for trinn ga en
+  forsterkning uten tilbakekobling på $20714$~ganger; beregnet
+  forsterkning med tilbakekobling var $23$~\deci\bel.
+
+  Strømforsyningen var en $200$~\volt\ampere\ $24$\textendash
+  $0$\textendash $24$~\volt\ transformator; fortrinnsvis bør en på
+  $300$~\volt\ampere\ brukes.
+
+  Kabinettet og innsiden er dokumentert med fotografier. Forsterkeren
+  har to forsterkerkretser, en for hver lydkanal, med felles
+  kjøleribbe. Kretskortenes <<silk screen>> har enkelte feil.
+
+  Grunnet støyproblemer er kretsen lettere modifisert ved å lodde fast
+  ekstra kondensatorer. Kjølingen bruker termisk tilbakekobling.
+  Hvilestrømmen bestemmes ved å skru på et potensiometer og bør ligge
+  på ca.\ $75$~\milli\ampere.
+
+  Budsjettet lå på 1000,\textendash~kr, mens utgiftene ble 1085,70~kr,
+  bl.a.\ på grunn av dyre utgangstransistorer. Testing ble gjort med
+  billige BD911- og BD912-transistorer; lydkvaliteten økte dramatisk
+  da de ble byttet ut med MJL3281A- og MJL1302A-transistorer.
+
+  Forsterkeren kan anses som høyst vellykket lydmessig, men det er rom
+  for forbedringer: automatisk utlading av glattefilteret, DC-vern
+  over utgangstrinnet for å beskytte høyttalerne ved kortslutning av
+  utgangene, kraftigere strømforsyning, større kjøleribbe, mindre
+  kretskort og ev.\ delefilter.
+
+  Rapporten har innholdsfortegnelse og stikkordregister.
+
+  % Inneholder spesifikasjoner, simulering og målinger; kretsskjema;
+  % kretsanalyse med småsignal- og arbeidspunktsanalyse~\textendash\
+  % råforsterkning og forsterkning med tilbakekobling;
+  % strømforsyning~\textendash\ skjema og beregninger;
+  % konstruksjon~\textendash\ bilder av kabinettet og innsiden;
+  % ensidig kretskort~\textendash\ kobberbaner og <<silk screen>>;
+  % modifikasjoner ift.\ opprinnelig skjema; trimmeprosedyrer;
+  % komponentliste; budsjett; konklusjon.
+
+  % En lydforsterker skal konstrueres, bygges og uttestes. Forsterker,
+  % strømforsyning og eventuelle eksterne kontroller skal monteres på
+  % en hensiktsmessig monteringsvinkel eller i kabinett.
+  %
+  % Forsterkerens bruksområde og ønskede elektriske spesifikasjoner
+  % fastlegges av prosjektgruppen. De totale komponentkostnader skal
+  % normalt ikke overstige kr~1000,\textendash. Fullstendig
+  % dokumentasjon av konstruksjonen, med målte spesifikasjoner, skal
+  % utarbeides. Dokumentasjonen skal inneholde servicedokumentasjon:
+  % kretsskjema(er), kretskortutlegg og komponentplassering, nødvendig
+  % beskrivelse av trimmeprosedyrer, tegning av monteringsvinkel eller
+  % kabinett.
+  %
+  % Resultatet skal presenteres på en elektronikkmesse som avslutter
+  % prosjektet. Markedsføring og reklamemateriell til messen
+  % utarbeides av gruppene og en valgt messekomité.
+\end{abstract}
+
+\tableofcontents
+
+\chapter{\index{forsterker}Forsterkertype og spesifikasjoner}
+
+% Beskrivelse av Project 3A
+
+Mens det er trivielt å forsterke en konstant inngangsstrøm eller
+-spenning, er det vanskelig å gjengi endringer i den samme strømmen
+eller spenningen. Både blant hobbyentusiaster og profesjonelle går det
+sport i å konstruere en <<enda bedre>> forsterker, og
+\textit{hi-fi}-pressen ser aldri ut til å gå tom for anledninger til å
+presentere det nyeste, mest avanserte og angivelig beste innen
+elektronisk lydgjengivelse. Hvor mye av utviklingen som er reell, er
+det opp til den enkelte å vurdere, men et kjapt overblikk over
+markedet levner ingen tvil om at lydforsterkning er \textit{big
+  business}.
+
+Mot denne bakgrunnen presenterer vi et forsterkerdesign som er $20$~år
+gammelt og forbausende enkelt. Rod Elliots \index{Project 3A
+  (P3A)}\emph{Project~3A} (fork.\ \emph{P3A}) gir høy ytelse ved lave
+kostnader, er velutprøvd og er lett å bygge. Det er et ideelt design
+for nybegynneren, men kan også anbefales til den kresne
+\textit{hi-fi}-entusiasten. Designet bygger videre på det opprinnelige
+\index{Project 3A (P3A)!og Project 03}\emph{Project~03}, og drar nytte
+av nyere og bedre \index{utgangstransistorer}utgangstransistorer.
+
+De oppgitte spesifikasjonene til forsterkeren er som følger:
+\begin{center}
+  \begin{tabular}{@{}ll@{}}
+    \index{effekt}Effekt:\footnotemark & Ca.\ $2 \times 60$~\watt\
+    ($8$~\ohm)\\
+    \index{forsterkning!for forsterkeren}Strømforsterkning: & $27$~\deci\bel\\
+    \index{inngangsimpedans!til forsterkeren}Inngangsimpedans: & $24,2$~\kilo\ohm\\
+    \index{inngangssensitivitet}Inngangssensitivitet: & $1,22$~\volt\ for $100$~\watt\
+    ($8$~\ohm)\\
+    \index{bzndbredde@båndbredde}Båndbredde: & $10$~\hertz\textendash $30$~\kilo\hertz\
+    ($-1$~\deci\bel)\\
+    \index{klirr}Klirr: & $0,04$~\%, $1$\textendash $80$~\watt\\
+    \index{DC offset}DC offset: & ${<}100$~\milli\volt
+  \end{tabular}
+\end{center}
+\footnotetext{Avhenger av transformator.}
+
+% \begin{landscape}
+%   \begin{figure}[h]
+%     \centering
+%     \includegraphics[width=\linewidth]{fig/kretsskjema}
+%
+%     {\footnotesize Kretsskjema fra Multisim. For det opprinnelige
+%       kretsskjemaet til Rod Elliot, se side~\pageref{fig:elliot}.\\
+%       For et modifisert skjema som viser hvordan kretsen ble etter
+%       egne justeringer, se side~\pageref{fig:mod}.}
+%   \end{figure}
+% \end{landscape}
+
+\noindent Forsterkeren er en \emph{\index{forsterkertype!klasse AB}klasse
+  AB-forsterker}, altså en blanding av en \index{forsterkertype!klasse
+  A}klasse A-forsterker og en \index{forsterkertype!klasse B|(}klasse
+B-forsterker. For små signaler fungerer den som en
+\index{forsterkertype!klasse A}klasse A-forsterker, og
+\index{utgangstransistorer}utgangstransistorene er konstant
+<<på>>~\textendash\ men siden dette bare gjelder små signaler, trekker
+ikke forsterkeren like mye strøm som en ekte \index{forsterkertype!klasse
+  A}klasse A-forsterker, som er konstant <<på>> uavhengig av
+lydnivået. For store signaler fungerer forsterkeren som en
+\index{forsterkertype!klasse B|)}klasse B-forsterker, og
+\index{utgangstransistorer}utgangstransistorene bytter på å forsterke
+positive deler av signalet og negative. Forsterkeren bruker
+\index{tilbakekobling!negativ}negativ tilbakekobling for å oppnå
+\index{linearitet|}linearitet for høye strømmer og spenninger. (For en
+detaljert gjennomgang av kretsens oppbygning og virkemåte, se
+kretsanalysen, s.~\pageref{analyse}.)
+
+% Konstruksjonsmessig inneholder forsterkeren to identiske
+% kretskort~\textendash\ et for venstre lydkanal og et for høyre.
+% Påtrykksspenningene på $+35$~\volt\ og $-35$~\volt\ kommer fra et
+% glattefilter koblet til en transformator gjennom en brolikeretter.
+% DC-messig er de to kortene koblet i parallell.
+
+\section{\index{simulering|(}Simulering}
+
+\begin{center}
+  \includegraphics[width=\linewidth]{fig/magnitude}\\[\baselineskip]
+
+  \includegraphics[width=\linewidth]{fig/fasemargin}
+\end{center}
+\index{Bode-diagram|(textit}Bode-diagrammet viser at forsterkeres
+maksimale \index{bzndbredde@båndbredde}båndbredde ligger fra
+$1/2$~\hertz\ til ca.\ $500$~\kilo\hertz. Den originale kretsen ville
+normalt gått mye høyere, men siden vi har \index{modifikasjoner av
+  kretsen!flaskehals}\emph{modifisert} kretsen noe ved å koble
+$368$~\pico\farad\ kondensatorer i parallell med \index{C4@$C_4$}$C_4$
+og \index{C6@$C_6$}$C_6$ (se s.~\pageref{modifikasjoner} for
+detaljer), blir de flaskehalsen i kretsen.
+\begin{center}
+  \includegraphics[width=\linewidth]{fig/magnitude20-20kHz}\\[\baselineskip]
+
+  \includegraphics[width=\linewidth]{fig/fasemargin20-20kHz}
+\end{center}
+Det lydmessig interessante området ligger fra $20$~\hertz\ til
+$20$~\kilo\hertz\ (\textit{hi-fi}), og av utsnittet ser vi at dette
+området ligger ganske
+flatt.\index{Bode-diagram|)textit}\index{simulering|)}
+
+\section{\index{mZlinger@målinger|(}Målinger}
+
+\subsection{\index{forsterkning!for forsterkeren!målt|(}Forsterkning}
+
+Vi fikk at $8$~\milli\volt\ inn ga $140$~\milli\volt\ ut. Det gir en
+forsterking på
+\begin{displaymath}
+  A = \frac{\unit{0,14}{\volt}}{\unit{0,008}{\volt}} = 17,5
+\end{displaymath}
+I desibel tilsvarer dette
+\begin{displaymath}
+  A_{\mathrm{dB}} = 20\lg{17,5} = \unit{24,9}{\deci\bel}
+\end{displaymath}\index{forsterkning!for forsterkeren!målt|)}
+
+\subsection{\index{utgangsimpedans|(}Utgangsimpedans}
+
+Utgangsimpedansen finnes ved å sammenligne utgangsspenningen med last
+med utgangsspenningen uten last. Vi har følgende målinger for
+$40$~\milli\volt\ inn på inngangen:
+\begin{center}
+  \begin{tabular}{llll}
+    \textbf{Frekvens} & \textbf{Uten last} & \textbf{Ved 1~$\bm{\Omega}$} &
+    \textbf{Tap}\\ \midrule
+    $40$~\hertz & $v_o = \unit{833,40}{\milli\volt}$ & $v_{oL} =
+    \unit{830,50}{\milli\volt}$ & $\Delta v_o =
+    \unit{2,9}{\milli\volt}$\\
+    $1$~\kilo\hertz  &  $v_o = \unit{834,78}{\milli\volt}$ & $v_{oL} =
+    \unit{832,08}{\milli\volt}$ & $\Delta v_o =
+    \unit{2,7}{\milli\volt}$\\
+    $16$~\kilo\hertz &  $v_o = \unit{833,90}{\milli\volt}$ & $v_{oL} =
+    \unit{831,90}{\milli\volt}$ & $\Delta v_o = \unit{2,0}{\milli\volt}$
+  \end{tabular}
+\end{center}
+Gjennomsnittlig verdi for utgangsspenning uten last blir
+$\overline{v_o} = \unit{834,03}{\milli\volt}$, for utgangsspenning med
+last $\overline{v_{oL}} = \unit{831,49}{\milli\volt}$ og for tap
+$\overline{\Delta v_o} = \unit{2,5}{\milli\volt}$.
+
+For å finne utgangsimpedansen, la oss betrakte en skjematisk
+fremstilling av forsterkeren uten last:
+\begin{center}
+  \includegraphics[height=3.5cm]{fig/uimp1}
+\end{center}
+Ettersom det ikke går noen strøm i forsterkeren, er spenningsfallet
+over utgangsimpedansen, $R_o$, lik null, og vi har $v_o = Av_i$. Med
+last:
+\begin{center}
+  \includegraphics[height=3.5cm,clip=true,trim={0 12 0 0}]{fig/uimp2}
+\end{center}
+Her har vi følgende spenningsdeling over $R_o$ og
+\index{RL@$R_L$|(}$R_L$:
+\begin{displaymath}
+  \begin{split}
+    v_{oL} &= Av_i\frac{R_L}{R_o + R_L}\\
+    &= v_o\frac{R_L}{R_o + R_L}
+  \end{split}
+\end{displaymath}
+hvor vi utnytter at $v_o = Av_i$ for å få en sammenheng mellom
+$v_{oL}$ og $v_o$. Uttrykket kan så ordnes for $R_o$:
+\begin{displaymath}
+  \begin{split}
+    R_o &= R_L\left(\frac{v_o - v_{oL}}{v_{oL}}\right)\\
+    &= \frac{v_o - v_{oL}}{v_{oL}}\quad\text{dersom $R_L =
+      \unit{1}{\ohm}$}
+  \end{split}
+\end{displaymath}
+Her ser vi verdien av å måle med en utgangslast på
+$1$~\ohm~\textendash\ uttrykket blir enklere. Vi setter inn for
+gjennomsnittsverdiene og får en
+\index{utgangsimpedans!målt}utgangsimpedans på
+\begin{displaymath}
+  R_o = \frac{\overline{v_o} -
+    \overline{v_{oL}}}{\overline{v_{oL}}}
+  = \frac{\unit{834,03}{\milli\volt} -
+    \unit{831,49}{\milli\volt}}{\unit{831,49}{\milli\volt}} = \unit{0,003}{\ohm}
+\end{displaymath}
+\index{utgangsimpedans!og negativ tilbakekobling}På grunn av
+forsterkerens negative tilbakekobling (se s.~\pageref{tilbakekobling})
+blir utgangsimpedansen mindre enn den ellers ville ha
+vært.\index{utgangsimpedans|)}
+
+% Jf. http://www.bcae1.com/outptimp.htm
+
+% $40$~\milli\volt\ inn gir for $v_o$:
+% \begin{center}
+%   \begin{tabular}{llll}
+%     \textbf{Frekvens} & \textbf{Uten last} & \textbf{Ved 1~$\bm{\Omega}$} &
+%     \textbf{Tap}\\ \midrule
+%     $40$~\hertz & $v_o = \unit{833,40}{\milli\volt}$ & $v_o =
+%     \unit{830,50}{\milli\volt}$ & $\Delta v_o =
+%     \unit{2,9}{\milli\volt}$\\
+%     $1$~\kilo\hertz  &  $v_o = \unit{834,78}{\milli\volt}$ & $v_o =
+%     \unit{832,08}{\milli\volt}$ & $\Delta v_o =
+%     \unit{2,7}{\milli\volt}$\\
+%     $16$~\kilo\hertz &  $v_o = \unit{833,90}{\milli\volt}$ & $v_o =
+%     \unit{831,90}{\milli\volt}$ & $\Delta v_o = \unit{2,0}{\milli\volt}$
+%   \end{tabular}
+% \end{center}
+% Det gir for utgangsimpedansen:
+% \begin{displaymath}
+%   R_o = \frac{\unit{2,53}{\milli\volt}}{\unit{40}{\milli\volt} -
+%     \unit{2,53}{\milli\volt}} = \unit{0,067}{\ohm}
+% \end{displaymath}
+
+% \newpage
+
+\subsection{\index{dempningsfaktor|(}Dempningsfaktor}
+
+\vspace{-2\baselineskip}
+
+\epigraph{Damping factor~\dots\ is probably the all-time least
+  important and over-used non-specification for an amplifer.}{Richard
+  D.\ Pierce,\\
+  rec.audio.high-end}
+
+\vspace{-2\baselineskip}
+
+\noindent Dempningsfaktor ved $8$~\ohm:
+\index{RL@$R_L$|)}\begin{displaymath} \frac{R_L}{R_o} =
+  \frac{\unit{8}{\ohm}}{\unit{0,003}{\ohm}} = 2667
+\end{displaymath}\index{dempningsfaktor|)}
+
+\subsection{\index{klirr|(}Klirr}
+
+I et lydsignal er det ved siden av grunntonen også til stede flere
+overharmoniske toner. Disse overharmoniske tonene er toner med
+frekvenser som er $N$ ganger høyere enn grunntonens frekvens. Det er
+denne sammensetningen av de overharmoniske tonene sammen med
+grunntonen som bestemmer klangen til en tone.
+
+Når vi skal forsterke et signal, er vi kun interessert i å forsterke
+grunnfrekvensen, og unngå å få med andre overtoner enn de som allerede
+er i signalet. Får vi med flere overharmoniske toner, har vi fått det
+som kalles klirr. Får man med veldig mange overtoner, blir
+klirrfaktoren stor og signalet blir deformert gjennom forsterkeren.
+
+En måte klirr ofte oppstår på er hvis en eller flere transistorer
+jobber på feil arbeidspunkt. Det vil da oppstå klirr på signalet.
+Klirr måles ved hjelp av et klirrmeter som registrerer de
+overharmoniske komponentene til et sinussignal og returnerer en
+prosentverdi.
+
+For å beregne \index{klirr!beregning av}klirr har man følgende formel:
+\begin{displaymath}
+  K = \sqrt{\frac{\rule{0pt}{0.88em}\smash{\hat{U}_2^2 + \hat{U}_3^2 + \hat{U}_4^2 + \dotsb}}{\hat{U}_1^2}} \cdot \unit{100}{\%}
+\end{displaymath}
+Vi målte \index{klirr!måling av}klirr ved å koble opp og måle som vist
+på figuren:
+\begin{center}
+  \includegraphics[width=0.9\linewidth]{fig/klirr}
+\end{center}
+\index{forvrengning}Vi målte en klirrfaktor på $0,015$~\% ved
+$1$~\watt\ og $1$~\kilo\hertz.\index{klirr|)}
+
+\subsection{\index{bzndbredde@båndbredde|(}Båndbredde}
+
+Båndbredden er $20$~\hertz\textendash $20$~\kilo\hertz. Målinger ved
+$8$~\ohm\ og $1$~\watt\ ga:
+\begin{center}
+  \begin{tabular}{ll}
+    $20$~\hertz & $2,933$~\milli\volt\\
+    $100$~\hertz & $2,948$~\milli\volt\\
+    $1000$~\hertz & $2,950$~\milli\volt\\
+    $10\:000$~\hertz & $2,949$~\milli\volt\\
+    $20\:000$~\hertz & $2,946$~\milli\volt
+  \end{tabular}
+\end{center}
+Dermed har vi
+\begin{displaymath}
+  \unit{2,950}{\milli\volt} - \unit{2,933}{\milli\volt} = \unit{17}{\milli\volt}
+\end{displaymath}
+som gir
+\begin{displaymath}
+  20\lg\Biggl(\frac{\unit{17}{\milli\volt}}{\unit{2,950}{\milli\volt}}\Biggr)
+  = \unit{0,05}{\deci\bel}
+\end{displaymath}\index{bzndbredde@båndbredde|)}
+
+\subsection{\index{effekt|(}Effekt}
+
+Utgangseffekten målt med effektmeter var $2 \times 55$~\watt\ ved
+$8$~\ohm.
+
+En dobling av effekten vil ikke gi mer enn $3$~\deci\bel\ økning i
+lyden. For eksempel vil en høyttaler med sensitivitet lik
+driftseffekten $96$~\deci\bel\ ved $1$~\meter\ $1$~\watt\ gi:
+\begin{displaymath}
+  I_{\mathrm{dB}_{\mathrm{maks}}} = I_{\mathrm{sens}} +
+  10\lg\Biggl(\frac{P_{\mathrm{maks}}}{\unit{1}{\watt}}\Biggr) =
+  \unit{96}{\deci\bel} +
+  10\lg\Biggl(\frac{\unit{55}{\watt}}{\unit{1}{\watt}}\Biggr) = \unit{113,4}{\deci\bel}
+\end{displaymath}
+Dette vil ved en sitteavstand på $4$~\meter\ gi:
+\begin{displaymath}
+  I_{\mathrm{dB}_{\mathrm{maks}}} = I_{\mathrm{sens}} -
+  20\lg\Biggl(\frac{\unit{4}{\meter}}{\unit{1}{\meter}}\Biggr) =
+  \unit{113,4}{\deci\bel} -
+  20\lg\Biggl(\frac{\unit{4}{\meter}}{\unit{1}{\meter}}\Biggr) = \unit{101,36}{\deci\bel}
+\end{displaymath}
+hvor vi ser bort fra akustikk i
+vegger.\index{effekt|)}\index{mZlinger@målinger|)}
+
+\chapter{Kretsskjema}
+
+\begin{figure}[h]
+  \centering\footnotesize
+  \begin{sideways}
+    \includegraphics[width=1.3\linewidth]{fig/kretsskjema}\label{fig:kretsskjema}
+  \end{sideways}
+  \hspace{\baselineskip}
+  \begin{sideways}
+    \parbox{1.3\linewidth}{\centering\footnotesize Kretsskjema fra
+      Multisim. For det opprinnelige kretsskjemaet til Rod
+      Elliot, se s.~\pageref{fig:elliot}.\\
+      For et modifisert skjema som viser hvordan kretsen ble etter
+      egne justeringer, se s.~\pageref{fig:mod}. }
+  \end{sideways}\index{kretsskjema|textit}
+  \vspace*{-10\baselineskip}
+\end{figure}
+
+\chapter{\index{kretsanalyse|(}Kretsanalyse} \label{analyse}
+
+\section{Grunnleggende begreper}
+
+Den følgende kretsanalysen forutsetter en viss kjennskap til
+elektroniske kretser og modellering av disse. For å gjøre den mer
+tilgjengelig, men også for presisjonens skyld, gjennomgår vi her noen
+av de grunnleggende begrepene som analysen baserer seg på.
+
+Denne seksjonen kan skumleses eller hoppes over av dem som allerede er
+kjent med elementær elektronisk kretsteori.
+
+\subsection{Forspenning av transistorer i det aktive området}
+
+En transistor har tre utganger eller \emph{terminaler}
+\textendash~base (B), emitter (E) og kollektor (C)~\textendash\ og
+dermed også tre \emph{overganger}~\textendash\ base\textendash
+emitter-, base\textendash kollektor- og kollektor\textendash
+emitter-overgangen. Transistorens <<oppførsel>> eller \emph{modus}
+avhenger av hvilke spenninger man påtrykker disse overgangene, dvs.\
+av hvordan man \emph{forspenner} transistoren. Den modusen man typisk
+er interessert i hva forsterkere angår, kalles \index{transistor!det
+  aktive området|(}\emph{det aktive området}, og er kjennetegnet ved
+at \emph{små} endringer i base\textendash emitter-spenningen
+($v_{BE}$) gir \emph{store} endringer i kollektorstrømmen ($i_C$).
+Kollektorstrømmen er relatert til den mye mindre basestrømmen ($i_B$)
+ved $i_C = \beta i_B$, der $\beta$ er transistorens
+\index{betas@$\beta$ (strømforsterkning)}\emph{strømforsterkning}.
+
+Såkalte BJT-transistorer (bipolare transistorer) kommer i to
+varianter: \index{transistor!NPN|(}\emph{NPN-transistorer} og
+\index{transistor!PNP|(}\emph{PNP-transistorer}. I en NPN-transistor
+går strømmen \emph{inn i} basen og kollektoren og kommer \emph{ut av}
+emitteren. I en PNP-transistor går strømmen \emph{inn i} emitteren og
+kommer \emph{ut av} basen og kollektoren. (For begge transistorer er
+emitterstrømmen lik summen av base- og kollektorstrømmen, dvs.\ $i_E =
+i_B + i_C$.) Transistorene symboliseres med en pil på emitterutgangen
+som indikerer strømretningen og dermed også transistortypen.
+\begin{center} \footnotesize
+  \parbox{5cm}{\includegraphics[width=5cm]{fig/npn}
+    NPN-transistor i det aktive
+    området.}\hspace{4em}\parbox{5cm}{\includegraphics[width=5cm]{fig/pnp}
+    PNP-transistor i det aktive området.}
+\end{center}
+For å forspenne en NPN-transistor i det aktive området må
+base\textendash emitter-spenningen være rundt $0,7$~\volt, dvs.\
+basespenningen må ligge ca.\ $0,7$~\volt\ \emph{over}
+emitterspenningen (eller \emph{under} for en
+PNP-transistor).\footnote{\index{spenning!bruk av ordet|nn}Vi kan ikke
+  snakke om <<spenningen i et punkt>> i kretsen på samme måte som vi
+  snakker om strømmen i punktet (strømgjennomgangen målt i coulomb per
+  sekund eller ampere), for spenning er alltid \emph{over en
+    strekning}, dvs.\ mellom to ytterpunkter. Når vi f.eks.\ sier at
+  <<kollektorspenningen er $12$~\volt>>, mener vi alltid at
+  kollektorutgangens \emph{spenningspotensial i forhold til jord} er
+  $12$~\volt\ (hvor \index{jord|nn}jord er nullpotensialet,
+  $0$~\volt); eller med andre ord, spenningen over strekningen fra
+  kollektorutgangen til jord er $12$~\volt\ (dersom det er flere slike
+  strekninger, spiller det ingen rolle hvilken man betrakter ettersom
+  spenningen er den samme over alle grener i en parallellkobling). At
+  spenningen i et punkt ligger <<over>> spenningen i et annet, er å
+  forstå som at det første punktets spenningspotensial i forhold til
+  jord er større enn det andres. I denne rapporten bruker vi om
+  hverandre uttrykksmåter som <<basespenningen>> (baseutgangens
+  spenningspotensial i forhold til jord, dvs.\ spenningen over
+  strekningen fra basen til jord), <<base\textendash
+  emitter-spenningen>> (spenningen over strekningen fra basen til
+  emitteren, eller \emph{mer presist}, baseutgangens
+  spenningspotensial i forhold til jord minus emitterutgangens
+  spenningspotensial i forhold til jord) og <<spenningsfallet over
+  motstanden>> (spenningen over motstanden, dvs.\ mellom motstandens
+  to terminaler).} Dessuten må kollektorspenningen ikke ligge mer enn
+ca.\ $0,4$~\volt\ \emph{under} basespenningen (eller \emph{over} for
+en PNP-transistor); vanligvis ligger kollektorspenningen godt over
+(eller under) basespenningen, som på figuren.\index{transistor!det
+  aktive
+  området|)textit}\index{transistor!NPN|)textit}\index{transistor!PNP|)textit}
+
+% For å forspenne en PNP-transistor i det aktive området må
+% emitter\textendash base-spenningen være rundt $0,7$~\volt, dvs.\
+% basespenningen må ligge ca.\ $0,7$~\volt\ \emph{under}
+% emitterspenningen. Dessuten må kollektorspenningen ikke ligge mer
+% enn ca.\ $0,4$~\volt\ \emph{over} basespenningen (vanligvis ligger
+% den under, som på figuren).
+
+\subsection{\index{arbeidspunkt|(}Arbeidspunkt og
+  \index{småsignal|(}småsignal}
+
+En forsterkerkrets inneholder \emph{flere}
+\index{spenning!spenningskilde}spenningskilder, både konstantkilder
+(DC-spenning) og en signalkilde (AC-spenning). Ifølge
+\emph{\index{superposisjonsprinsippet|(}superposisjonsprinsippet} kan
+en hvilken som helst spenning eller strøm i kretsen finnes ved å
+beregne \index{strømkilde}\emph{summen av strøm- og spenningskildenes
+  enkeltbidrag}, der bidraget fra en strøm- eller spenningskilde
+finnes ved å erstatte de øvrige strøm- eller spenningskildene med
+hhv.\ brudd eller kortslutninger, og så beregne den resulterende
+spenningen eller strømmen. For~eksempel: Hvis kretsen inneholder
+DC-kildene $V_+$ og $V_-$ og AC-kilden $v_{\sim}$ (og ingen
+strømkilder), kan spenningspotensialet i punktet $P$, $v_P$, uttrykkes
+som
+\begin{displaymath}
+  v_P = v_P'(V_+) + v_P''(V_-) + v_P'''(v_{\sim})
+\end{displaymath}
+hvor $v_P'(V_+)$ er spenningspotensialet i $P$ når $V_-$ og $v_{\sim}$
+erstattes med kortslutninger, $v_P''(V_-)$ er spenningspotensialet i
+$P$ når $V_+$ og $v_{\sim}$ erstattes med kortslutninger,
+osv.\footnote{Det er vanlig å bare skrive $v_P'$, $v_P''$, osv.\ Her
+  anfører vi spenningskilden i parentes for å gjøre notasjonen
+  tydeligere.} La oss gruppere enkeltbidragene i DC- og AC-bidrag:
+\begin{displaymath}
+  \begin{split}
+    v_P &= \underbrace{v_P'(V_+) + v_P''(V_-)}_{\mathrm{DC}} +
+    \underbrace{v_P'''(v_{\sim})}_{\mathrm{AC}}\\
+    &= V_{PQ} + v_p
+  \end{split}
+\end{displaymath}
+hvor $V_{PQ} = v_P'(V_+) + v_P''(V_-)$ og $v_p = v_P'''(v_{\sim})$. Vi
+kan nå innføre følgende terminologi: $V_{PQ}$ er \emph{arbeidspunktet
+  til $v_P$}, og $v_p$ er \emph{småsignalet til $v_P$}. Arbeidspunktet
+er DC-delen av $v_P$, som AC-delen
+\textendash~småsignalet~\textendash\ varierer rundt.
+
+Siden superposisjonsprinsippet gjelder for strømmer så vel som
+spenninger, kan alle strømmer og spenninger i kretsen deles opp i en
+arbeidspunktsdel og en
+småsignalsdel.\index{arbeidspunkt|)}\index{superposisjonsprinsippet|)}
+
+\subsection{\index{småsignal!småsignalmodell|(}Småsignalmodeller}
+
+Superposisjonsprinsippet gjør det mulig å betrakte kretsens DC- og
+AC-egenskaper hver for seg. Ved å fjerne alle konstantkildene, men
+beholde signalkilden, får man et
+\emph{\index{småsignal!småsignalskjema}småsignalskjema}, som gjør det
+mulig å analysere og beregne forsterkerens signalegenskaper, f.eks.\
+\index{forsterkning!signalforsterkning}signalforsterkningen.
+
+Slike analyser \emph{modellerer} transistorenes småsignalegenskaper.
+De to mest brukte småsignalmodellene er den \emph{forenklede hybride
+  $\pi$-modellen} og \emph{T-modellen}. Disse modellene inneholder en
+styrt strømkilde som tilsvarer \index{betas@$\beta$
+  (strømforsterkning)|(}strømforsterkningen ($\beta$), samt en
+inngangsmotstand enten på basen (\index{rpi@$r_\pi$}$r_\pi$) eller
+emitteren (\index{re@$r_e$}$r_e$).
+\begin{center}
+  \footnotesize
+  \parbox{8.5cm}{\includegraphics[height=7cm,clip=true,trim={0 0 15
+      0}]{fig/hybridpimodell} \centering Forenklet hybrid
+    $\otherpi$-modell
+    (NPN-transistor).}\index{småsignal!småsignalmodell!forenklet
+    hybrid
+    $\otherpi$-modell|textit}\hspace{4em}\parbox{4cm}{\includegraphics[height=7cm,clip=true,trim={0
+      0 11 0}]{fig/tmodell} \centering T-modell
+    (NPN-transistor).}\index{småsignal!småsignalmodell!T-modell|textit}
+\end{center}
+Modellenes parametre avhenger av transistorens parametre. $\beta$ er
+her transistorens
+\emph{småsignal}-strømforsterkning, altså forholdet mellom
+\emph{småsignal}-kollektorstrømmen og \emph{småsignal}-basestrømmen
+($\beta = i_c / i_b$). Den er ofte oppgitt i databladet som $h_{fe}$
+(hvis den ikke er oppgitt, kan den tilnærmes med DC-forsterkningen
+$h_{FE}$).\index{hfe@$h_{FE}$ (og $h_{fe}$)}
+
+\index{rpi@$r_\pi$|(}$r_\pi$, brukt i den hybride $\otherpi$-modellen,
+er inngangsmotstanden til base\textendash emitter-overgangen
+\emph{sett fra basen}. Den er definert som
+\emph{småsignal}-base\textendash emitter-spenningen delt på
+\emph{småsignal}-basestrømmen:
+\begin{displaymath}
+  r_\pi = \frac{v_{be}}{i_b}
+\end{displaymath}
+For å finne $r_\pi$ er det vanlig å gå veien om
+\emph{transkonduktansen}, \index{gm@$g_m$}$g_m$, som er forholdet
+mellom \emph{småsignal}-kollektorstrømmen og
+\emph{småsignal}-base\textendash emitter-spenningen:
+\begin{displaymath}
+  g_m = \frac{i_c}{v_{be}} = \frac{I_{CQ}}{nV_T} = \frac{I_{CQ}}{V_T}\quad\text{dersom $n = 1$}
+\end{displaymath}
+der $n = \text{$1$\textendash $2$}$ (ofte settes $n = 1$ slik at den
+kan sløyfes) og \index{VT@$V_T$}$V_T = \unit{25}{\milli\volt}$ ved en
+omgivelsestemperatur på $25$~\degreecelsius. Dersom transistoren er i
+\index{transistor!det aktive området|(}det aktive området, er
+forholdet nesten konstant, og transkonduktansen kan forstås som
+\emph{stigningsgraden} til $i_C$\textendash $v_{BE}$-kurven \emph{i
+  arbeidspunktet}:
+% Det er vanlig å gå veien om \emph{transkonduktansen}, $g_m$, for å
+% finne $r_\pi$. Transkonduktansen er forholdet mellom
+% \emph{småsignal}-kollektorstrømmen og
+% \emph{småsignal}-base\textendash emitter-spenningen ($g_m = i_c /
+% v_{be}$), og dette forholdet er nesten \emph{konstant} når
+% transistoren er i det aktive området. Dette innebærer at
+% transkonduktansen kan forstås som \emph{stigningsgraden} til
+% $i_C$\textendash $v_{BE}$-kurven \emph{i arbeidspunktet}:
+\begin{displaymath}
+  % g_m \approx
+  % \left.\frac{\mathrm{d}i_C}{\mathrm{d}v_{BE}}\right|_{i_C = I_{CQ}}
+  g_m \approx \left.\frac{\partial i_C}{\partial v_{BE}}\right|_{i_C = I_{CQ}}
+\end{displaymath}
+Ettersom $i_c = g_mv_{be}$, er basestrømmen gitt ved $i_b = i_c /
+\beta = g_mv_{be} / \beta$, og vi får for $r_\pi$:
+\begin{displaymath}
+  r_\pi = \frac{v_{be}}{i_b}
+  = \frac{v_{be}}{g_mv_{be} / \beta}
+  = \frac{\beta}{g_m}
+\end{displaymath}
+Tilsvarende er \index{re@$r_e$|(}$r_e$, brukt i T-modellen,
+inngangsmotstanden til base\textendash emitter-overgangen \emph{sett
+  fra emitteren}:
+\begin{displaymath}
+  r_e = \frac{v_{be}}{i_e}
+\end{displaymath}
+Ettersom $i_e = i_b + i_c$ og $i_c = \beta i_b$, er $i_e = (\beta +
+1)i_b$. Det gir for $r_e$:
+\begin{displaymath}
+  r_e = \frac{v_{be}}{(\beta + 1)i_b}
+  = \frac{v_{be}}{(\beta + 1)g_mv_{be} / \beta}
+  = \frac{\beta}{(\beta + 1)g_m}
+  = \frac{\alpha}{g_m}
+  \approx \frac{1}{g_m}
+  = \frac{V_T}{I_{CQ}}
+\end{displaymath}
+der \index{alfa@$\alpha $}$\alpha$ er forholdet mellom emitterstrømmen
+og kollektorstrømmen ($i_c = \alpha i_e$) og er tilnærmet lik $1$. Da
+$v_{be} = i_br_\pi = i_er_e$, finnes følgende sammenheng mellom
+\index{rpi@$r_\pi$|)}$r_\pi$ og \index{re@$r_e$|)}$r_e$:
+\begin{displaymath}
+  r_\pi = (\beta + 1)r_e
+\end{displaymath}\index{betas@$\beta$ (strømforsterkning)|)}\index{småsignal!småsignalmodell|)}\index{småsignal|)}
+
+\vspace*{-\baselineskip}
+
+\section{Råforsterkning og
+  \index{tilbakekobling!negativ}tilbakekobling} \label{tilbakekobling}
+
+En \index{forsterkertype!klasse AB}klasse AB-forsterker kombinerer
+egenskapene til en \index{forsterkertype!klasse A}klasse A-forsterker og
+en \index{forsterkertype!klasse B}klasse B-forsterker. For \emph{små}
+inngangssignaler (lav musikk) fungerer forsterkeren som en
+\index{forsterkertype!klasse A}klasse A-forsterker, og
+\index{utgangstransistorer}utgangstransistorene er i det aktive
+området. For \emph{store} signaler (høy musikk) fungerer forsterkeren
+som en \index{forsterkertype!klasse B}klasse B-forsterker, og
+\index{utgangstransistorer}utgangstransistorene bytter på å forsterke
+henholdsvis positive halvperioder og negative halvperioder (for et
+sinussignal). Når forsterkeren fungerer som en
+\index{forsterkertype!klasse B}klasse B-forsterker, påtrykkes
+\index{utgangstransistorer}utgangstransistorene spenninger langt
+utover det aktive området. Forsterkningen blir dermed ikke
+\index{linearitet|(}lineær, ettersom transistorene bare er i det
+aktive området for \emph{små} strømmer og
+spenninger.\index{transistor!det aktive området|)}
+
+For å oppnå en kraftig forsterkning som også er lineær, anvendes
+\emph{\index{tilbakekobling!negativ}negativ tilbakekobling}: Det
+ulineært forsterkede signalet fra
+\index{utgangstransistorer}utgangstransistorene sendes tilbake inn på
+en \index{differensialforsterker!og negativ
+  tilbakekobling|(}\emph{differensialforsterker ved inngangen}
+(utgjøres av transistorene \index{Q1@$Q_1$}$Q_1$ og
+\index{Q2@$Q_2$}$Q_2$). I dette oppsettet \emph{tvinges de to
+  inngangssignalene til å være så like hverandre som mulig}, noe som
+har en fordelaktig effekt på det ulineært forsterkede signalet.
+
+Med andre ord gjør den negative tilbakekoblingen den ulineære
+forsterkningen \emph{mindre}. \index{differensialforsterker!og negativ
+  tilbakekobling|)}Differensialforsterkeren sammenligner det
+<<lineære>> inngangssignalet med det <<ulineære>>
+forsterkningssignalet og gir
+\index{utgangstransistorer}utgangstransistorene det signalet de
+trenger for å \textit{summa summarum} produsere en nær
+\index{linearitet|)}lineær forsterkning.
+\begin{center}
+  \includegraphics[width=14cm]{fig/flyt}\index{tilbakekobling!negativ!flytskjema|textit}\index{tilbakekobling!negativ!flytskjema|textit}\index{kretsskjema!flytskjema|textit}
+\end{center}
+For å finne forsterkningen med tilbakekobling må vi først finne
+forsterkningen \emph{uten} tilbakekobling, dvs.\ råforsterkningen. Det
+betyr å følge signalets bane gjennom kretsen og, for hvert trinn i
+forsterkeren, beregne forsterkningen.\footnote{Her bruker vi ordet
+  <<\index{forsterkning!bruk av ordet|nn}forsterkning>> i en noe
+  utvidet betydning, dvs.\ som en multiplikator som godt kan være
+  under $1$. En verdi på f.eks.\ $0,8$, som effektivt vil
+  \emph{forminske} signalet snarere enn forsterke det i den ordinære
+  betydningen, betraktes altså også som en <<forsterkning>>.} Den
+totale råforsterkningen er dermed gitt som produktet av alle
+enkelttrinnforsterkningene. Fordi vi får behov for å beregne
+utgangslasten til hvert trinn, går vi gjennom kretsen \emph{baklengs}
+\textendash~fra utgangssignalet til inngangssignalet~\textendash\ slik
+at vi kan uttrykke utgangslasten til tidligere trinn med utgangspunkt
+i inngangsimpedansen til senere trinn.
+\begin{center}
+  \footnotesize \includegraphics[width=\linewidth,clip=true,trim={0 16
+    0 16}]{fig/p3a-f1}\label{fig:elliot}\index{kretsskjema!etter Rod
+    Elliot|textit}
+
+  Det opprinnelige kretsskjemaet for forsterken, etter Rod Elliot.\\
+  Komponenter markert med $*$ er utelatt fra kretskortet.
+\end{center}
+
+\subsection{\index{utgangstransistorer|(}Utgangstransistorene}
+
+Forsterkeren har to store
+\index{utgangstransistorer}utgangstransistorer, $Q_7$ og $Q_8$, som
+forsterker henholdsvis positive og negative halvperioder av signalet
+når den fungerer som en \index{forsterkertype!klasse B|(}klasse
+B-forsterker, som vi i denne analysen vil betrakte den som. Vi vil
+derfor begrense oss til å se på $Q_7$, som er koblet sammen med $Q_5$
+i en såkalt \index{Sziklai-kobling|(}\emph{Sziklai-kobling}. Denne
+koblingen gjør det mulig å betrakte $Q_7$ og $Q_5$ som én stor
+transistor med strømforsterkning lik produktet av strømforsterkningene
+til $Q_7$ og $Q_5$ (noe som vil vises under),\index{forsterkning!for
+  Sziklai-koblingen} og det er dermed rimelig å regne også $Q_5$ som
+en del av dette trinnet.
+\begin{center}
+  \includegraphics[height=7cm,clip=true,trim={445 190 25
+    24}]{fig/p3a-f1}\index{CZ+@$C_+$|textit}\index{R911@$R_{11}$|textit}\index{R913@$R_{13}$|textit}\index{Q5@$Q_5$|textit}\index{Q7@$Q_7$|textit}
+\end{center}
+Strømmen avhenger av utgangslasten (dvs.\ impedansverdien til
+høyttaleren), som vi kaller \index{RL@$R_L$}$R_L$, og som typisk er på
+$8$~\ohm. Verdien er imidlertid ikke relevant før vi har foretatt en
+\emph{arbeidspunktanalyse} av kretsen som gir oss den informasjonen vi
+trenger for numeriske utregninger. Inntil videre begrenser vi oss til
+\emph{småsignalanalyser}, som gir oss symbolske uttrykk for
+enkelttrinnforsterkningene. De numeriske verdiene fyller vi inn siden.
+
+For å analysere Sziklai-koblingen av $Q_5$ og $Q_7$ bytter vi ut begge
+transistorene med forenklede hybride $\otherpi$-modeller. Vi får
+dermed to basemotstander, $r_{\pi5}$ og $r_{\pi7}$, og to styrte
+strømkilder med forsterkningsgrad $\beta_5$ og $\beta_7$, henholdsvis.
+Basestrømmen til $Q_5$ kaller vi $i_{b5}$, emitterstrømmen $i_{e5}$ og
+kollektorstrømmen $i_{c5}$, mens basestrømmen til $Q_7$ kaller vi
+$i_{b7}$, osv. Dette navngivningssystemet følger vi konsekvent i hele
+analysen for å skille kretsens mange størrelser fra hverandre.
+\begin{center}
+  \includegraphics[height=9cm,clip=true,trim={0 10 0
+    0}]{fig/sziklai}\index{småsignal!småsignalskjema|textit}\index{småsignal!småsignalmodell!forenklet
+    hybrid $\otherpi$-modell|textit}
+\end{center}
+Vi tar utgangspunkt i $i_{b5}$, som vi betrakter som trinnets
+inngangsstrøm~\textendash\ og basespenningen til
+\index{Q5@$Q_5$|(}$Q_5$, $v_{b5}$, er tilsvarende inngangsspenningen.
+Trinnets utgangsspenning er spenningen over \index{RL@$R_L$}$R_L$,
+$v_o$, som skapes av utgangsstrømmen $i_o$. Vi vil i analysen anta at
+den samme strømmen går gjennom \index{R913@$R_{13}$|(}$R_{13}$ og
+\index{RL@$R_L$}$R_L$: Strømmen fra $R_{13}$ går riktignok også til
+\index{R5@$R_5$}$R_5$, \index{R914@$R_{14}$}$R_{14}$ og
+\index{R915@$R_{15}$}$R_{15}$, men \index{R5@$R_5$}$R_5$ ses bort fra
+ettersom vi beregner forsterkningen \emph{uten tilbakekobling},
+\index{R915@$R_{15}$}$R_{15}$ er koblet i serie med kondensatoren
+\index{C7@$C_7$}$C_7$, som har veldig lav kapasitans og dermed høy
+reaktans for alle frekvenser unntatt de aller høyeste, og
+\index{R914@$R_{14}$}$R_{14}$ går til utgangstransistoren
+\index{Q6@$Q_6$}$Q_6$, som under analysens antagelser ikke er aktiv
+når \index{Q7@$Q_7$|(}$Q_7$ er aktiv og forsterkeren fungerer som en
+\index{forsterkertype!klasse B|)}klasse B-forsterker.
+
+Det første vi kan se er at $i_{c5}$ er lik summen av $i_{b7}$ og
+strømmen gjennom \index{R911@$R_{11}$|(}$R_{11}$, og da kan vi bruke
+strømdelingsprinsippet for å finne $i_{b7}$ uttrykt ved $i_{c5}$. Vi
+får \index{R911@$R_{11}$}\begin{displaymath} i_{b7} =
+  \frac{R_{11}}{R_{11} + r_{\pi7}}i_{c5} = \frac{R_{11}}{R_{11} +
+    r_{\pi7}}\beta_5i_{b5}
+\end{displaymath}
+der vi bruker strømforsterkningen til $Q_5$, $\beta_5$, for å uttrykke
+$i_{c5}$ med $i_{b5}$. Tilsvarende er $i_{c7} = \beta_7i_{b7}$, og vi
+har \index{R911@$R_{11}$}\begin{displaymath} i_{c7} =
+  \frac{R_{11}}{R_{11} + r_{\pi7}}\beta_5\beta_7i_{b5}
+\end{displaymath}
+mens $i_{e5} = (\beta_5 + 1)i_{b5}$. Utgangsstrømmen, $i_o$, er nå
+gitt ved \index{R911@$R_{11}$}\begin{displaymath}
+  \begin{split}
+    i_o &= i_{e5} + i_{c7}\\
+    &= (\beta_5 + 1)i_{b5} + \frac{R_{11}}{R_{11} +
+      r_{\pi7}}\beta_5\beta_7i_{b5}\\
+    &= i_{b5}\Biggl(\underbrace{(\beta_5 + 1) + \frac{R_{11}}{R_{11} +
+        r_{\pi7}}\beta_5\beta_7}_{\beta_{57}}\Biggr)
+  \end{split}
+\end{displaymath}
+der vi kan betrakte $\beta_{57}$ (uttrykket i parentesen) som den
+totale forsterkningen til Sziklai-koblingen av $Q_5$ og
+\index{Q7@$Q_7$|)}$Q_7$. Ved hjelp av noen avrundinger kan vi gjøre
+uttrykket for denne forsterkningen en hel del enklere:
+\index{R911@$R_{11}$|)}\begin{displaymath}
+  \begin{split}
+    \beta_{57} &= (\beta_5 + 1) + \frac{R_{11}}{R_{11} +
+      r_{\pi7}}\beta_5\beta_7 = \frac{R_{11}\beta_5\beta_7}{R_{11} +
+      r_{\pi7}} + \beta_5 + 1\\
+    &= \frac{\beta_5\beta_7}{1 + \frac{r_{\pi7}}{R_{11}}} + \beta_5 +
+    1 \approx \beta_5\beta_7 + \beta_5 + 1\quad\text{ettersom
+      $r_{\pi7} \ll R_{11}$}\\
+    &\approx \beta_5\beta_7 + \beta_5 = \beta_5(\beta_7 + 1)\\
+    &\approx \beta_5\beta_7
+  \end{split}
+\end{displaymath}
+Her har vi bekreftet det vi sa om Sziklai-koblingen
+innledningsvis~\textendash\ at den totale strømforsterkningen er
+(tilnærmet) lik produktet av strømforsterkningene til
+\index{Q7@$Q_7$}$Q_7$ og~$Q_5$.\index{forsterkning!for
+  Sziklai-koblingen}\index{Sziklai-kobling|)}
+
+Utgangsspenningen er gitt ved $v_o = i_oR_L =
+i_{b5}\beta_{57}R_L$.\index{RL@$R_L$} Inngangsspenningen er lik summen
+av alle spenningsfallene fra basen til $Q_5$ til jord:
+\index{RL@$R_L$}\begin{displaymath}
+  \begin{split}
+    v_{b5} &= i_{b5}r_{\pi5} + i_oR_{13} + i_oR_L\\
+    &= i_{b5}r_{\pi5} + i_{b5}\beta_{57}(R_{13} + R_L)\\
+    &= i_{b5}(\underbrace{r_{\pi5} + \beta_{57}(R_{13} +
+      R_L)}_{R_{iu}})
+  \end{split}
+\end{displaymath}
+der innholdet i parentesen, $R_{iu}$, er
+\emph{\index{inngangsimpedans!til utgangstrinnet}inngangsimpedansen}
+til trinnet. \emph{Forsterkningen}, som vi kan kalle $A_u$, blir
+\index{RL@$R_L$}\index{R913@$R_{13}$|)}\begin{displaymath} A_u =
+  \frac{v_o}{v_{b5}} = \frac{i_{b5}\beta_{57}R_L}{i_{b5}(r_{\pi5} +
+    \beta_{57}(R_{13} + R_L))} = \frac{\beta_{57}R_L}{r_{\pi5} +
+    \beta_{57}(R_{13} + R_L)}
+\end{displaymath}
+Ettersom $\beta_{57} \approx \beta_5\beta_7$ og $r_{\pi5} \approx
+\beta_5r_{e5}$, kan uttrykket avrundes og forenkles:
+\index{forsterkning!for
+  utgangstransistorene}\index{RL@$R_L$}\begin{equation}
+  \label{eq:au}
+  \begin{split}
+    A_u &\approx \frac{\beta_5\beta_7R_L}{\beta_5r_{e5} +
+      \beta_5\beta_7(R_{13} + R_L)} =
+    \frac{\beta_5\beta_7R_L}{\beta_5(r_{e5} + \beta_7(R_{13} + R_L))}
+    = \frac{\beta_7R_L}{r_{e5} + \beta_7(R_{13} + R_L)}\\
+    &\approx \frac{\beta_7R_L}{\beta_7(R_{13} + R_L)} =
+    \frac{R_L}{R_{13} + R_L}
+  \end{split}
+\end{equation}
+Ettersom telleren er mindre enn nevneren, er $A_u <
+1$.\index{utgangstransistorer|)}
+
+\subsection{\index{klasse A-driver|(}Klasse A-driveren}
+
+Av de foregående resultatene er to av avgjørende viktighet for
+analysen av klasse A-driveren (transistoren $Q_4$). Det ene er
+inngangsimpedansen til utgangstransistortrinnet, $R_{iu}$. Det andre
+er nevnte trinns forsterkning, $A_{u}$.
+\begin{center}
+  \includegraphics[height=10cm,clip=true,trim={309 25 24
+    40}]{fig/p3a-f1}\index{CZ+@$C_+$|textit}\index{CZ-@$C_-$|textit}\index{C5@$C_5$|textit}\index{C6@$C_6$|textit}\index{C7@$C_7$|textit}\index{F2@$F_2$|textit}\index{Q4@$Q_4$|textit}\index{Q6@$Q_6$|textit}\index{Q7@$Q_7$|textit}\index{Q8@$Q_8$|textit}\index{Q9@$Q_9$|textit}\index{R5@$R_5$|textit}\index{R9@$R_9$|textit}\index{R910@$R_{10}$|textit}\index{R911@$R_{11}$|textit}\index{R912@$R_{12}$|textit}\index{R913@$R_{13}$|textit}\index{R914@$R_{14}$|textit}\index{R915@$R_{15}$|textit}\index{R916@$R_{16}$|textit}\index{VR1@${V"\"!R}_1$}
+\end{center}
+$Q_4$ er koblet til en
+\index{vBE-multiplikator@$v_{BE}$-multiplikator}\emph{$v_{BE}$-multiplikator}
+som sørger for en konstant DC-spenning mellom $Q_5$ og $Q_6$, og som
+utgjøres av transistoren $Q_9$, motstanden $R_{16}$ og potensiometeret
+${V\!R}_1$. Multiplikatoren kan erstattes med en konstant
+\index{spenning!spenningskilde}spenningskilde, som i småsignalskjemaet
+erstattes med en kortslutning. Således får vi kollektoren til $Q_4$
+koblet til en parallellkobling av $Q_5$, \index{Q6@$Q_6$|(}$Q_6$ og
+\index{bootstrap-kobling@\emph{bootstrap}-kobling|(}\emph{bootstrap}-motstanden
+\index{R9@$R_9$|(}$R_9$. Vi ser bort fra kondensatoren
+\index{C4@$C_4$}$C_4$, som er en koblingskondensator som fjerner
+<<parasitt>>-oscillasjoner.
+\begin{center}
+  \includegraphics[height=10cm,clip=true,trim={0 10 0
+    10}]{fig/driver}\index{småsignal!småsignalskjema|textit}\index{småsignal!småsignalmodell!forenklet
+    hybrid $\otherpi$-modell|textit}
+\end{center}
+Når vi skal finne utgangslasten til klasse A-driveren, er
+inngangsimpedansen til $Q_5$ (så vel som $Q_6$) gitt ved $R_{iu}$.
+Spenningsfallet over bootstrap-motstanden \index{R9@$R_9$}$R_9$
+avhenger imidlertid av forsterkningen til utgangstransistorene, $A_u$:
+Spenningspotensialet i den \emph{øvre} terminalen til
+\index{R9@$R_9$}$R_9$ er $v_{b5}$, mens spenningspotensialet i den
+\emph{nedre} terminalen er $v_o$, som er gitt ved $v_o = A_uv_{b5}$.
+Spenningsfallet over motstanden er differansen mellom disse to
+potensialene, og vi får at $v_{R_9} = v_{b5} - v_o = v_{b5} -
+A_uv_{b5}$.
+\begin{center}
+  \footnotesize \includegraphics[width=6cm,clip=true,trim={0 10 0
+    0}]{fig/bootstrap}\index{bootstrap-kobling@\emph{bootstrap}-kobling!skjematisk
+    fremstilling av|textit}
+
+  Skjematisk fremstilling av bootstrap-koblingen.
+\end{center}
+Vi kan nå finne \emph{strømmen} gjennom
+\index{R9@$R_9$}$R_9$-motstanden, som vi kaller $i_9$. Den er gitt ved
+spenningsfallet delt på resistansen:
+\index{R9@$R_9$}\begin{displaymath} i_9 = \frac{v_{b5} -
+    A_uv_{b5}}{R_9} = \frac{1 - A_u}{R_9}v_{b5}
+\end{displaymath}
+\index{bootstrap-kobling@\emph{bootstrap}-kobling!\emph{bootstrap}-resistansen}\emph{Bootstrap-resistansen}
+til \index{R9@$R_9$}$R_9$, dvs.\ \index{inngangsimpedans!til
+  bootstrap-koblingen}inngangsimpedansen til bootstrap-koblingen, er
+gitt ved spenningspotensialet ved inngangen (den øvre terminalen til
+\index{R9@$R_9$}$R_9$) delt på strømmen gjennom dette punktet. Vi
+kaller denne størrelsen for $R_9'$ og får
+\index{bootstrap-kobling@\emph{bootstrap}-kobling!\emph{bootstrap}-resistansen}\index{R9@$R_9$}\begin{displaymath}
+  R_9' = \frac{v_{b5}}{i_9} = \frac{v_{b5}}{v_{b5}(1 - A_u)/R_9} =
+  \frac{R_9}{1 - A_u}
+\end{displaymath}
+Vi vet at $A_u < 1$, og det betyr at
+\index{bootstrap-kobling@\emph{bootstrap}-kobling!\emph{bootstrap}-resistansen}$R_9'
+> R_9$\index{R9@$R_9$} (med en faktor på $\frac{1}{1 - A_u}$). Så er
+også dette selve formålet med bootstrap-koblingen~\textendash\ å oppnå
+en <<større>>
+\index{bootstrap-kobling@\emph{bootstrap}-kobling!\emph{bootstrap}-resistansen}resistans
+AC-messig enn den rene motstandsverdien til \index{R9@$R_9$|)}$R_9$.
+Dermed blir forsterkningen større.
+
+Nå kan vi finne utgangslasten til klasse A-driveren, $R_{La}$. Dersom
+forsterkeren fungerer som en \index{forsterkertype!klasse B}klasse
+B-forsterker, får vi inngangsimpedansen til $Q_5$ (eller
+\index{Q6@$Q_6$|)}$Q_6$), $R_{iu}$, i parallell med inngangsimpedansen
+til
+\index{bootstrap-kobling@\emph{bootstrap}-kobling|)}bootstrap-koblingen,
+$R_9'$:
+\begin{displaymath}
+  R_{La} = R_{iu} \parallel R_9' = \frac{R_{iu}R_9'}{R_{iu} + R_9'}
+\end{displaymath}
+(Dersom forsterkeren fungerer som en \index{forsterkertype!klasse A}klasse
+A-forsterker, er både $Q_5$ og \index{Q6@$Q_6$}$Q_6$ aktive, og vi får
+$R_{La} = R_{iu} \parallel R_{iu} \parallel R_9' =
+\frac{1}{2}R_{iu} \parallel R_9'$.) Utgangsstrømmen, kollektorstrømmen
+til \index{Q4@$Q_4$}$Q_4$, er tilnærmet lik $i_9$ ettersom
+basestrømmen til \index{Q5@$Q_5$|)}$Q_5$ er neglisjerbar.
+Utgangsspenningen, kollektorspenningen til \index{Q4@$Q_4$}$Q_4$, er
+dermed gitt ved $v_{c4} = i_{c4}R_{La} \approx i_9R_{La}$.
+
+Ettersom det eneste som står mellom basen til \index{Q4@$Q_4$}$Q_4$ og
+jord er basemotstanden $r_{\pi4}$ (som dermed er
+\index{inngangsimpedans!til klasse A-driveren}inngangsimpedansen), er
+inngangsspenningen, $v_{b4}$, gitt ved
+\begin{displaymath}
+  v_{b4} = i_{b4}r_{\pi4}
+\end{displaymath}
+\emph{Forsterkningen}, som vi kan kalle $A_a$, blir
+\index{forsterkning!for klasse A-driveren}\begin{equation}
+  \label{eq:aa}
+  A_a = \frac{v_{c4}}{v_{b4}} =
+  \frac{\beta_4i_{b4}R_{La}}{i_{b4}r_{\pi4}}
+  = \frac{\beta_4R_{La}}{r_{\pi4}}
+\end{equation}\index{klasse A-driver|)}
+
+\subsection{\index{differensialforsterker|(}Differensialforsterkeren}
+
+\begin{center}
+  \footnotesize
+  \parbox{4.5cm}{\includegraphics[width=4.5cm,clip=true,trim={0 10 0
+      0}]{fig/diff1}}\hspace{4em}\parbox{4.5cm}{\includegraphics[width=4.5cm,clip=true,trim={0
+      10 0 0}]{fig/diff2}}\index{differensialforsterker!konseptualisert
+    som operasjonsforsterker|textit}
+
+  Differensialforsterkeren konseptualisert som en
+  operasjonsforsterker.\\
+  \emph{Til venstre:} med den ene inngangen jordet. \emph{Til høyre:}
+  med \index{tilbakekobling!negativ|textit}negativ tilbakekobling.
+\end{center}
+
+\begin{wrapfigure}{r}{2.25cm}
+  \includegraphics[width=2.25cm,clip=true,trim={197 29 428
+    190}]{fig/p3a-f1}\index{Q3@$Q_3$|textit}\index{R7@$R_7$|textit}
+\end{wrapfigure}
+
+\noindent Differensialforsterkeren på inngangen realiseres av et
+såkalt \index{long-tailed pair@\emph{long-tailed pair}
+  (LTP)}\textit{long-tailed pair} som utgjøres av de identiske
+transistorene \index{Q1@$Q_1$|(}$Q_1$ og \index{Q2@$Q_2$|(}$Q_2$.
+Transistoren $Q_3$, som dette er koblet videre til, utgjør sammen med
+lysdioden, \index{D1@$D_1$}$D_1$, en
+\emph{\index{strømkilde}strømkilde}. I et småsignalskjema erstattes
+strømkilder med brudd, og dermed kan vi eliminere $Q_3$ fra analysen.
+
+\emph{Basen til $Q_{\mathit{1}}$} er differensialforsterkerens ene
+inngang. \emph{Basen til $Q_{\mathit{2}}$} er dens andre inngang.
+\emph{Kollektoren til $Q_{\mathit{1}}$} er utgangen.\footnote{En
+  differensialforsterker har vanligvis \emph{to} utganger s.a.\
+  utgangsspenningen er gitt ved differansen mellom
+  spenningspotensialene. Her er imidlertid kollektoren til $Q_2$
+  jordet, så utgangsspenningen kan sies å utgjøres av
+  spenningspotensialet til kollektoren til $Q_1$ alene.} For å finne
+\index{forsterkning!for
+  differensialforsterkeren}\emph{differensialforsterkningen uten
+  tilbakekobling} kobler vi basen til \index{Q2@$Q_2$}$Q_2$ til jord,
+og bytter så ut \index{Q1@$Q_1$}$Q_1$ og \index{Q2@$Q_2$}$Q_2$ med
+T-modeller.
+\begin{center}
+  \includegraphics[height=7.5cm,clip=true,trim={197 155 428
+    25}]{fig/p3a-f1}\hspace{5em}\includegraphics[height=7.5cm,clip=true,trim={5
+    0 5
+    0}]{fig/ltp}\index{småsignal!småsignalskjema|textit}\index{småsignal!småsignalmodell!T-modell|textit}\index{Q1@$Q_1$}\index{Q2@$Q_2$}\index{R6@$R_6$}
+\end{center}
+Fordi emitterne er koblet sammen og \index{Q3@$Q_3$}$Q_3$ faller bort,
+går den samme signalstrømmen gjennom emittermotstandene til
+\index{Q1@$Q_1$}$Q_1$ og \index{Q2@$Q_2$}$Q_2$, som er identiske
+($r_{e1} = r_{e2}$). Ettersom basen til \index{Q2@$Q_2$}$Q_2$ i denne
+analysen er koblet til jord, er spenningen over motstandene lik
+basespenningen til \index{Q1@$Q_1$}$Q_1$, $v_{b1}$. Dermed er
+emitterstrømmen til begge transistorene gitt ved
+\begin{displaymath}
+  i_{e1} = i_{e2} = \frac{v_{b1}}{2r_{e1}}
+\end{displaymath}
+Emitterstrømmen til \index{Q1@$Q_1$}$Q_1$ er relatert til
+kollektorstrømmen til \index{Q1@$Q_1$}$Q_1$ med faktoren $\alpha$, som
+er tilnærmet lik $1$ ettersom disse strømmene er nesten identiske:
+$i_{c1} = \alpha i_{e1} \approx
+i_{e1}$.\footnote{\index{alfa@$\alpha$|nn}$\alpha$ kan uttrykkes med
+  $\beta$ slik:
+  \begin{displaymath}
+    \alpha = \frac{i_C}{i_E} = \frac{\beta i_B}{(\beta + 1)i_B} =
+    \frac{\beta}{\beta + 1}
+  \end{displaymath}
+  som er tilnærmet lik $1$ ettersom $\beta \gg 1$.} Når vi kjenner
+kollektorstrømmen til \index{Q1@$Q_1$}$Q_1$, kan vi beregne
+kollektorspenningen til \index{Q1@$Q_1$}$Q_1$
+\textendash~utgangsspenningen til
+differensialforsterkeren~\textendash\ ved å finne spenningsfallet fra
+kollektoren til jord (dvs.\ signaljord, jord i
+småsignalskjemaet).\index{småsignal!signaljord}
+
+Imidlertid er kollektoren til \index{Q1@$Q_1$}$Q_1$ koblet til
+\emph{to} komponenter i parallell~\textendash\ motstanden
+\index{R6@$R_6$}$R_6$ og transistoren \index{Q4@$Q_4$}$Q_4$. For å
+finne spenningsfallet mot jord erstatter vi \index{Q4@$Q_4$}$Q_4$ med
+en forenklet hybrid $\otherpi$-modell, slik at vi får basemotstanden
+$r_{\pi4}$ i parallell med \index{R6@$R_6$}$R_6$.
+\begin{center}
+  \includegraphics[height=4cm,clip=true,trim={210 304 349
+    28}]{fig/p3a-f1}\hspace{4em}\includegraphics[height=4cm,clip=true,trim={0
+    4 12
+    0}]{fig/q4}\index{småsignal!småsignalskjema|textit}\index{småsignal!småsignalmodell!forenklet
+    hybrid
+    $\otherpi$-modell|textit}\index{R6@$R_6$|textit}\index{C4@$C_4$|textit}
+\end{center}
+Skjemaet viser at vi også får kondensatoren $C_4$ i parallell med
+$r_{\pi4}$. Men vi ser bort fra $C_4$ og betrakter parallellkoblingen
+av $R_6$ og $r_{\pi4}$, som vi kaller $R_6'$ (dvs.\ $R_6' =
+R_6 \parallel r_{\pi4}$). Denne går til jord, og kollektorspenningen
+er dermed gitt ved
+\begin{displaymath}
+  v_{c1} = i_{c1}R_6' \approx i_{e1}R_6' = v_{b1}\frac{R_6'}{2r_{e1}}
+\end{displaymath}
+Nå er $v_{b1}$ inngangsspenningen til differensialforsterkeren, og
+$v_{c1}$ er utgangsspenningen. \emph{Forsterkningen} til
+differensialforsterkeren, som vi kan kalle $A_d$, blir da
+\index{forsterkning!for differensialforsterkeren}\begin{equation}
+  \label{eq:ad}
+  A_d = \frac{v_{c1}}{v_{b1}} = \frac{R_6'}{2r_{e1}}
+\end{equation}\index{differensialforsterker|)}
+
+\subsection{\index{inngang (krets)|(}Inngangen}
+
+\begin{center}
+  \includegraphics[width=8cm,clip=true,trim={20 90 430
+    205}]{fig/p3a-f1}\index{C1@$C_1$|textit}\index{C2@$C_2$|textit}\index{Q1@$Q_1$|textit}\index{Q2@$Q_2$|textit}\index{Q3@$Q_3$|textit}\index{R1@$R_1$|textit}\index{R2@$R_2$|textit}\index{R3@$R_3$|textit}\index{R8@$R_8$|textit}
+\end{center}
+Mellom differensialforsterkeren og inngangen er det plassert noen
+kondensatorer og motstander som filtrerer bort DC-spenning og
+\index{stZy@støy}støy, samt sørger for korrekte inngangsstrømmer og
+-spenninger. Vi ser bort fra kondensatorene, men er interessert i å
+finne spenningsforsterkningen. Først finner vi utgangsspenningen,
+$v_{b1}$, som er summen av alle spenningsfallene fra basen til
+\index{Q1@$Q_1$}$Q_1$ og jord:
+\begin{displaymath}
+  v_{b1} = i_{e1}(r_{e1} + r_{e2}) = (\beta_1 + 1)i_{b1}(r_{e1} +
+  r_{e2}) \approx i_{b1}(\underbrace{2\beta_1r_{e1}}_{R_{Li}})
+\end{displaymath}
+Her er kollektoren til \index{Q2@$Q_2$|)}$Q_2$ fortsatt koblet til
+jord. $i_{b1}$ er trinnets utgangsstrøm, mens $R_{Li}$ er
+utgangslasten, som kan betraktes som i serie med
+\index{R3@$R_3$}$R_3$. La \index{R2@$R_2$}$R_p = R_2 \parallel (R_3 +
+R_{Li})$.\index{R3@$R_3$} Spenningsdelingsprinsippet gir følgende
+sammenheng mellom inngangsspenningen, $v_i$, og spenningen over
+parallellkoblingen, $v_p$: \index{R1@$R_1$}\begin{displaymath} v_p =
+  v_i\frac{R_p}{R_1 + R_p}
+\end{displaymath}
+Ettersom $v_p$ er spenningen over seriekoblingen av
+\index{R3@$R_3$}$R_3$ og $R_{Li}$, er også utgangsspenningen gitt ved
+spenningsdeling: \index{R3@$R_3$}\begin{displaymath} v_{b1} =
+  v_p\frac{R_{Li}}{R_3 + R_{Li}}
+\end{displaymath}
+De to uttrykkene kan settes sammen til ett stort uttrykk.
+Forsterkningen, som vi kan kalle $A_i$, blir dermed
+\index{forsterkning!for
+  inngangen}\index{R1@$R_1$}\index{R3@$R_3$}\begin{equation}
+  \label{eq:ai}
+  A_i = \frac{R_p}{R_1 + R_p} \cdot \frac{R_{Li}}{R_3 + R_{Li}}
+\end{equation}
+der \index{R2@$R_2$}$R_p = R_2(R_3 + R_{Li})/(R_2 + R_3 +
+R_{Li})$.\index{inngang (krets)|)}
+
+\newpage
+
+\subsection{\index{tilbakekobling!negativ|(}Tilbakekoblingen}
+
+\begin{wrapfigure}[7]{r}{3.5cm}
+  \includegraphics[width=3.5cm,clip=true,trim={248 65 360
+    205}]{fig/p3a-f1}\index{C3@$C_3$|textit}\index{R4@$R_4$|textit}\index{R5@$R_5$|textit}\index{Q2@$Q_2$|textit}
+\end{wrapfigure}
+Selve tilbakekoblingen er en enkel spenningsdeler inn på basen til
+$Q_2$ (kondensatoren $C_3$ ignoreres). Vi går fra høyre til venstre,
+slik at inngangsspenningen til tilbakekoblingen er
+\emph{utgangsspenningen} til forsterkeren, $v_o$, mens
+utgangsspenningen til tilbakekoblingen er basespenningen til $Q_2$,
+$v_{b2}$. Basestrømmen er neglisjerbar, og spenningsdeleren gir
+følgende sammenheng mellom spenningene:
+\begin{displaymath}
+  v_o\frac{R_4}{R_4 + R_5} = v_{b2}
+\end{displaymath}
+\index{betat@$\beta$ (tilbakekoblingsfaktor)}Tilbakekoblingsfaktoren,
+som vi kaller $\beta$, blir dermed
+\begin{equation}
+  \label{eq:beta}
+  \beta = \frac{v_{b2}}{v_o} = \frac{R_4}{R_4 + R_5}
+\end{equation}\index{tilbakekobling!negativ|)}
+
+\subsection{\index{arbeidspunkt|(}Arbeidspunktanalyse}
+
+For å bestemme kretsens \emph{DC}-egenskaper tar vi utgangspunkt i
+\emph{hvilestrømmen} gjennom motstandene
+\index{R913@$R_{13}$|(}$R_{13}$ og \index{R914@$R_{14}$|(}$R_{14}$.
+Den stilles inn med potensiometeret \index{VR1@${V"\"!R}_1$}${V\!R}_1$
+og bør ifølge Rod Elliot ligge på ca.\ $75$~\milli\ampere, som svarer
+til $50$~\milli\volt\ over $R_{13}$ og \index{R914@$R_{14}$}$R_{14}$
+(se s.~\pageref{trimming}).
+
+Vi kaller denne strømmen \index{IQ@$I_Q$}$I_Q$ (for \textit{quiescent
+  current}). (Ettersom spenningen over base\textendash
+emitter-overgangen til $Q_5$ og \index{Q7@$Q_7$|(}$Q_7$ er ca.\
+$0,7$~\volt\ \textendash~et
+\index{diodedropp}<<diodedropp>>~\textendash\ når transistorene er i
+\index{transistor!det aktive området}det aktive området, er spenningen
+over
+\index{vBE-multiplikator@$v_{BE}$-multiplikator}$v_{BE}$-multiplikatoren
+gitt ved $2 \cdot \unit{0,7}{\volt} + \unit{50}{\milli\volt} =
+\unit{1,45}{\volt}$.)
+
+Da kollektoren til $Q_7$ leverer brorparten av hvilestrømmen fra
+$+35$~\volt\ til jord (utgangen er DC-jord, ettersom den bare leverer
+signalspenning), og kollektoren til \index{Q8@$Q_8$}$Q_8$ leverer
+brorparten fra jord til $-35$~\volt, er
+\begin{displaymath}
+  I_{C7Q} = I_{C8Q} = I_Q = \unit{75}{\milli\ampere}
+\end{displaymath}
+Dersom $Q_7$ er av typen MJL1302A, er \index{betas@$\beta$
+  (strømforsterkning)!for Q7@for $Q_7$}strømforsterkningen $\beta_7 =
+100$. Ettersom kollektorstrømmen til \index{Q5@$Q_5$}$Q_5$ er
+tilnærmet lik basestrømmen til \index{Q7@$Q_7$|)}$Q_7$ (strømmen
+gjennom \index{R911@$R_{11}$}$R_{11}$ er veldig liten), får vi at
+\begin{displaymath}
+  I_{C5Q} = \frac{I_{C7Q}}{\beta_7} = \frac{\unit{75}{\milli\ampere}}{100} =
+  \unit{750}{\micro\ampere}
+\end{displaymath}
+\index{Q5@$Q_5$}$Q_5$ er av typen BD139, og har for denne strømmen
+\index{Q5@$Q_5$}\index{betas@$\beta$ (strømforsterkning)!for Q5@for
+  $Q_5$}forsterkning $\beta_5 = 25$. Dens småsignal-motstander blir
+\begin{align*}
+  r_{e5} &= \frac{V_T}{I_{C5Q}} =
+  \frac{\unit{25}{\milli\volt}}{\unit{750}{\micro\ampere}} =
+  \unit{33,3}{\ohm}\\
+  r_{\pi5} &= (\beta_5 + 1)r_{e5} = (25 + 1) \cdot \unit{33,3}{\ohm} =
+  \unit{866}{\ohm}
+\end{align*}
+Av ligning~\eqref{eq:au} blir utgangstransistorenes
+\index{forsterkning!for
+  utgangstransistorene}\index{utgangstransistorer}forsterkning dermed:
+\index{RL@$R_L$}\begin{displaymath} A_u = \frac{\beta_7R_L}{r_{e5} +
+    \beta_7(R_{13} + R_L)} = \frac{100 \cdot
+    \unit{8}{\ohm}}{\unit{33,3}{\ohm} + 100 \cdot (\unit{0,33}{\ohm} +
+    \unit{8}{\ohm})} = 0,92
+\end{displaymath}
+som er tilnærmet lik $R_L/(R_{13} + R_L) =
+\unit{8}{\ohm}/(\unit{0,33}{\ohm} + \unit{8}{\ohm}) =
+0,96$.\index{RL@$R_L$}
+
+For å beregne forsterkningen til klasse A-driveren, $A_a$, må vi først
+finne kollektorlasten til \index{Q4@$Q_4$|(}$Q_4$, $R_{La}$. Den er
+gitt ved parallellkoblingen av $R_{iu}$ og $R_9'$, der
+\index{bootstrap-kobling@\emph{bootstrap}-kobling!\emph{bootstrap}-resistansen}\index{inngangsimpedans!til
+  bootstrap-koblingen}\index{RL@$R_L$}\index{R913@$R_{13}$|)}\begin{align*}
+  R_{iu} &= r_{\pi5} + \beta_{57}(R_{13} + R_L)\\
+  &= \unit{866}{\ohm} + 25 \cdot 100 \cdot (\unit{0,33}{\ohm} +
+  \unit{8}{\ohm})\quad\text{der $\beta_{57} \approx \beta_5\beta_7$}\\
+  &= \unit{21,7}{\kilo\ohm} \shortintertext{og} R_9' &= \frac{R_9}{1 -
+    A_u} = \frac{\unit{3,3}{\kilo\ohm}}{1 - 0,92} =
+  \unit{41,3}{\kilo\ohm}
+\end{align*}
+$R_{La}$ blir dermed
+\begin{displaymath}
+  R_{La} = R_{iu} \parallel R_9' = \frac{R_{iu}R_9'}{R_{iu} + R_9'} =
+  \frac{\unit{21,7}{\kilo\ohm} \cdot
+    \unit{41,3}{\kilo\ohm}}{\unit{21,7}{\kilo\ohm} +
+    \unit{41,3}{\kilo\ohm}} = \unit{14,2}{\kilo\ohm}
+\end{displaymath}
+Videre må vi finne kollektorstrømmen til \index{Q4@$Q_4$}$Q_4$, som er
+omtrent den samme strømmen som går gjennom \index{R9@$R_9$|(}$R_9$ og
+\index{R910@$R_{10}$}$R_{10}$. Spenningspotensialet i den nedre
+terminalen til \index{R910@$R_{10}$|(}$R_{10}$ er $-35$~\volt, mens
+potensialet i den øvre terminalen til \index{R9@$R_9$}$R_9$ er
+\index{R914@$R_{14}$|)}$-I_QR_{14} - V_{BE6} = -\unit{25}{\milli\volt}
+- \unit{0,7}{\volt} = -\unit{0,73}{\volt}$. Strømmen blir dermed
+\index{R9@$R_9$|)}\index{R910@$R_{10}$|)}\begin{displaymath} I_{C4Q} =
+  \frac{-\unit{0,73}{\volt} - (-\unit{35}{\volt})}{R_9 + R_{10}} =
+  \frac{\unit{34,27}{\volt}}{\unit{3,3}{\kilo\ohm} +
+    \unit{3,3}{\kilo\ohm}} = \unit{5,19}{\milli\ampere}
+\end{displaymath}
+\index{Q4@$Q_4$}$Q_4$ er av typen BD140, som for denne strømmen har
+\index{Q4@$Q_4$}\index{betas@$\beta$ (strømforsterkning)!for Q4@for
+  $Q_4$}forsterkning $\beta_4 = 140$. Dens småsignal-basemotstand blir
+\begin{displaymath}
+  r_{\pi4} = (\beta_4 + 1)\frac{V_T}{I_{C4Q}} = (140 +
+  1)\frac{\unit{25}{\milli\volt}}{\unit{5,19}{\milli\ampere}} = \unit{680}{\ohm}
+\end{displaymath}
+Av \eqref{eq:aa} blir klasse A-driverens \index{forsterkning!for
+  klasse A-driveren}\index{klasse A-driver}forsterkning dermed:
+\begin{displaymath}
+  A_a = \frac{\beta_4R_{La}}{r_{\pi4}} = \frac{140 \cdot
+    \unit{14,2}{\kilo\ohm}}{\unit{680}{\ohm}} = 2924
+\end{displaymath}
+For å beregne forsterkningen til differensialforsterkeren, $A_d$, må
+vi finne kollektorstrømmen til \index{Q1@$Q_1$}$Q_1$. Den går gjennom
+motstanden \index{R6@$R_6$}$R_6$, som er koblet over base\textendash
+emitter-overgangen til \index{Q4@$Q_4$|)}$Q_4$. Vi kan dermed anta at
+spenningsfallet over motstanden er om lag $0,7$~\volt, hvilket gir
+\index{R6@$R_6$}\begin{displaymath} I_{C1Q} = \frac{V_{EB4}}{R_6} =
+  \frac{\unit{0,7}{\volt}}{\unit{560}{\ohm}} =
+  \unit{1,25}{\milli\ampere}
+\end{displaymath}
+\index{Q1@$Q_1$}$Q_1$, som er av typen BC546, har
+\index{Q1@$Q_1$}\index{betas@$\beta$ (strømforsterkning)!for Q1@for
+  $Q_1$}strømforsterkning $\beta_1 = 200$ for denne kollektorstrømmen.
+Småsignal-emittermotstanden blir
+\begin{displaymath}
+  r_{e1} = \frac{V_T}{I_{C1Q}} =
+  \frac{\unit{25}{\milli\volt}}{\unit{1,25}{\milli\ampere}} = \unit{20}{\ohm}
+\end{displaymath}
+Videre trenger vi $R_6'$, som er parallellkoblingen av
+\index{R6@$R_6$}$R_6$ og $r_{\pi4}$:
+\index{R6@$R_6$}\begin{displaymath} R_6' = R_6 \parallel r_{\pi4} =
+  \frac{R_6r_{\pi4}}{R_6 + r_{\pi4}} = \frac{\unit{560}{\ohm} \cdot
+    \unit{680}{\ohm}}{\unit{560}{\ohm} + \unit{680}{\ohm}} =
+  \unit{307}{\ohm}
+\end{displaymath}
+Av \eqref{eq:ad} blir differensialforsterkerens
+\index{forsterkning!for
+  differensialforsterkeren}\index{differensialforsterker}forsterkning
+dermed:
+\begin{displaymath}
+  A_d = \frac{R_6'}{2r_{e1}} = \frac{\unit{307}{\ohm}}{2 \cdot
+    \unit{20}{\ohm}} = 7,7
+\end{displaymath}
+For å beregne forsterkningen til inngangen, $A_i$, må vi finne
+utgangslasten til trinnet, $R_{Li}$. Den er gitt ved
+\begin{displaymath}
+  R_{Li} = 2\beta_1r_{e1} = 2 \cdot 200 \cdot \unit{20}{\ohm} = \unit{8}{\kilo\ohm}
+\end{displaymath}
+Vi trenger også $R_p$, som er parallellkoblingen av
+\index{R2@$R_2$}$R_2$ og \index{R3@$R_3$}$R_3 + R_{Li}$:
+\index{R2@$R_2$}\index{R3@$R_3$}\begin{displaymath} R_p =
+  R_2 \parallel (R_3 + R_{Li}) = \frac{R_2(R_3 + R_{Li})}{R_2 + R_3 +
+    R_{Li}} = \frac{\unit{22}{\kilo\ohm} \cdot (\unit{2,2}{\kilo\ohm}
+    + \unit{8}{\kilo\ohm})}{\unit{22}{\kilo\ohm} +
+    \unit{2,2}{\kilo\ohm} + \unit{8}{\kilo\ohm}} = \unit{7}{\kilo\ohm}
+\end{displaymath}
+Av \eqref{eq:ai} blir inngangens \index{forsterkning!for
+  inngangen}\index{inngang (krets)}forsterkning dermed:
+\index{R1@$R_1$}\index{R3@$R_3$}\begin{displaymath} A_i =
+  \frac{R_p}{R_1 + R_p} \cdot \frac{R_{Li}}{R_3 + R_{Li}} =
+  \frac{\unit{7}{\kilo\ohm}}{\unit{2,2}{\kilo\ohm} +
+    \unit{7}{\kilo\ohm}} \cdot
+  \frac{\unit{8}{\kilo\ohm}}{\unit{2,2}{\kilo\ohm} +
+    \unit{8}{\kilo\ohm}} = 0,6
+\end{displaymath}
+\index{betat@$\beta$ (tilbakekoblingsfaktor)}Til slutt er
+tilbakekoblingsfaktoren, $\beta$, gitt av \eqref{eq:beta}, og vi får
+\index{R4@$R_4$}\index{R5@$R_5$}\begin{displaymath} \beta =
+  \frac{R_4}{R_4 + R_5} =
+  \frac{\unit{1}{\kilo\ohm}}{\unit{1}{\kilo\ohm} +
+    \unit{22}{\kilo\ohm}} = \frac{1}{23} = 0,043
+\end{displaymath}\index{arbeidspunkt|)}
+
+\subsection{\index{forsterkning!for forsterkeren|(}Forsterkning}
+
+Nå kan vi beregne forsterkningen. Råforsterkningen fra
+differensialforsterkeren til utgangstransistorene er
+\index{forsterkning!for
+  forsterkeren!råforsterkning}\begin{displaymath} A_o = A_d \cdot A_a
+  \cdot A_u = 7,7 \cdot 2924 \cdot 0,92 = 20714
+\end{displaymath}
+Forsterkningen når vi tar med tilbakekoblingen, men ser bort fra
+inngangen, er
+\begin{displaymath}
+  A_f = \frac{A_o}{1 + \beta A_o} = \frac{20714}{1 + 0,043 \cdot
+    20714} = 23,2
+\end{displaymath}
+\index{betat@$\beta$ (tilbakekoblingsfaktor)}Da råforsterkningen er
+stor, er $\beta A_o \gg 1$, og brøken kan rundes av til $A_o/\beta
+A_o$, som tilsvarer $1/\beta$. Ettersom utregningen for
+tilbakekoblingsfaktoren ga $\beta = \frac{1}{23}$, ser vi at dette
+stemmer bra med den nøyaktige utregningen av $A_f$.
+
+\newpage
+
+\index{forsterkning!for forsterkeren!med negativ tilbakekobling}Den
+totale forsterkningen fås nå ved å multiplisere med
+inngangsforsterkningen:
+\begin{displaymath}
+  A = A_i \cdot A_f = 0,6 \cdot 23,2 = 14
+\end{displaymath}
+I desibel tilsvarer dette
+\begin{displaymath}
+  A_{\mathrm{dB}} = 20\lg{14} = \unit{23}{\deci\bel}
+\end{displaymath}\index{forsterkning!for forsterkeren|)}\index{kretsanalyse|)}
+
+\chapter{\index{strømforsyning|(}Strømforsyning} \label{stromforsyning}
+
+\index{spenning!spenningskilde|(}Strømmen kommer fra lysnettet og inn
+gjennom \index{transformator (trafo)|(}transformatoren. Den omgjør
+$230$~\volt\ fra lysnettet til et spenningsnivå som passer for
+elektronikken. Den gir også et galvanisk skille mellom lysnettet og
+forsterkerkretsen. I vårt tilfelle bruker vi en \index{transformator
+  (trafo)!ringkjerne}ringkjernetrafo. Fordelen med å bruke en
+ringkjernetrafo er at den gir liten lekkasjefluks, en viktig egenskap
+i en lydforsterker. Strømmen går så videre gjennom en
+\index{brolikeretter}likeretterbro. Der foregår omformingen fra AC til
+DC. Til slutt har vi fire $10$~\milli\farad\
+\index{glattekondensatorer}glattekondensatorer som reduserer
+rippelspenningen.
+
+\begin{figure}[h]
+  \centering
+  \includegraphics[width=0.9\linewidth]{fig/stromf}\index{strømforsyning!kretsskjema|textit}\index{kretsanalyse|(}
+\end{figure}
+
+\noindent For å oppnå en \index{effekt}effekt på $2 \times 60$~\watt\
+i $8$~\ohm\ trenger vi en spenningsforsyning på
+\index{RL@$R_L$}\begin{displaymath} U_{\mathrm{maks}} = \sqrt{2 \cdot
+    P \cdot R_L} = \sqrt{2 \cdot \unit{60}{\watt} \cdot
+    \unit{8}{\ohm}} \approx \unit{31}{\volt}
+\end{displaymath}
+$U_{CC}$ blir da:
+\begin{displaymath}
+  \begin{split}
+    U_{CC} &= U_{\mathrm{maks}} + U_{CE\mathrm{sat}} +
+    \text{sikkerhetsmargin}\\
+    &= \unit{31}{\volt} + \unit{1}{\volt} + \unit{10}{\%} \approx
+    \unit{35}{\volt}
+  \end{split}
+\end{displaymath}
+Dette oppnår vi med en \index{transformator (trafo)}trafospenning på
+\begin{displaymath}
+  \frac{\unit{35}{\volt}}{\sqrt{2}} \approx \unit{24,7}{\volt}
+\end{displaymath}
+\index{maksstrøm}Maks strøm med en last på $8$~\ohm\ og $2$~\volt\
+tap:
+\begin{displaymath}
+  I_{\mathrm{maks}} = \frac{\unit{35}{\volt} -
+    \unit{2}{\volt}_{U_{CE\mathrm{sat}}}}{\unit{8}{\ohm}} = \unit{4,125}{\ampere}
+\end{displaymath}
+Vi trenger dermed en forsyning på
+\begin{displaymath}
+  2 \cdot I_{\mathrm{maks}} \cdot U_{CC} = 2 \cdot
+  \unit{4,125}{\ampere} \cdot \unit{35}{\volt} = 2 \cdot
+  \unit{144,4}{\volt\ampere} \approx \unit{290}{\volt\ampere}
+\end{displaymath}
+Vi ser at en \index{transformator (trafo)}trafo på $300$~\volt\ampere\
+oppfyller kravet.\index{kretsanalyse|)}
+
+\begin{figure}
+  \centering \footnotesize
+  \fbox{\includegraphics[width=6.5cm]{fig/skopbilde1}}\hspace{2em}\fbox{\includegraphics[width=6.5cm]{fig/skopbilde2}}\index{simulering|(}\index{simulering!av
+    rippel|textit}
+
+  \vspace*{0.5\baselineskip}
+
+  Skopbilder fra \index{glattekondensatorer|textit}glattekondensatorene
+  (\emph{venstre}) og utgangen
+  (\emph{høyre})\\
+  med forsterkeren på tomgang og $29$\textendash $0$\textendash
+  $24$~\volt\ trafo.\
+
+  \vspace*{0.5\baselineskip}
+
+  \fbox{\includegraphics[width=6.5cm]{fig/skopbilde3}}\hspace{2em}\fbox{\includegraphics[width=6.5cm]{fig/skopbilde4}}
+
+  \vspace*{0.5\baselineskip}
+
+  Skopbilder fra glattekondensatorene (\emph{venstre}) og utgangen
+  (\emph{høyre})\\
+  med forsterkeren på tomgang og $24$\textendash $0$\textendash
+  $24$~\volt\ trafo.\
+\end{figure}
+
+Vår trafo ytte over $600$~\volt\ampere, men siden den ikke hadde de
+rette spenningene ($29$\textendash $0$\textendash $24$~\volt), oppsto
+det en del problemer. Forsterkeren ville kanskje ha virket, men som
+man ser av figurene over, ble det simulert at dette ville føre til
+dobbelt så stor \index{simulering!av
+  rippel}rippel.\index{simulering|)} Etter mye om og men ble vi til
+slutt tilbudt en $200$~\volt\ampere\ $24$\textendash $0$\textendash
+$24$~\volt\ \index{transformator (trafo)|)}trafo. Denne vil ikke
+ødelegge forsterkerens lydegenskaper annet enn ved maks belastning,
+som vil medføre spenningsfall og klipping.\index{forvrengning}
+\index{effekt}\begin{align*} I &=
+  \frac{\unit{200}{\volt\ampere}}{\unit{35}{\volt}} =
+  \unit{5,714}{\ampere} = 2 \cdot \unit{2,857}{\ampere}\\
+  P &= 2 \cdot ((\unit{8}{\ohm} \cdot \unit{2,857}{\ampere}) - 2 \cdot
+  \unit{1}{\volt_{\mathrm{sat}}}) \cdot \unit{2,857}{\ampere}\\
+  &= \unit{119,2}{\watt} = 2 \cdot
+  \unit{59,6}{\watt}\quad(\unit{8}{\ohm})
+\end{align*}\index{spenning!spenningskilde|)}\index{strømforsyning|)}
+
+\chapter{Konstruksjon}
+
+\vspace*{-0.25\baselineskip}
+
+\section{\index{kabinett|(}Kabinettet}
+
+\vspace*{-0.25\baselineskip}
+
+\begin{center}
+  \footnotesize
+  \parbox{7cm}{\fbox{\includegraphics[width=7cm,clip=true,trim={1 2 1
+        1}]{fig/topp}}
+    \vspace*{-1.5\baselineskip}\center{Topp.}}\hspace{2em}\parbox{7cm}{\fbox{\includegraphics[width=7cm,clip=true,trim={1
+        2 1 1}]{fig/bunn}}
+    \vspace*{-1.5\baselineskip}\center{Bunn.}}\vspace{0.5\baselineskip}
+
+  \parbox{7cm}{\fbox{\includegraphics[width=7cm]{fig/front}}
+    \vspace*{-1.5\baselineskip}\center{Front.}}\hspace{2em}\parbox{7cm}{\fbox{\includegraphics[width=7cm]{fig/bak}}
+    \vspace*{-1.5\baselineskip}\center{Bak.}}\vspace{0.5\baselineskip}
+
+  \parbox{7cm}{\fbox{\includegraphics[width=7cm,clip=true,trim={1 2 1
+        1}]{fig/side}}
+    \vspace*{-1.5\baselineskip}\center{Side.}}\hspace{2em}\parbox{7cm}{\fbox{\includegraphics[width=7cm,clip=true,trim={1
+        2 1 1}]{fig/perspektiv}}
+    \vspace*{-1.5\baselineskip}\center{Perspektiv.}}
+\end{center} \vspace*{-0.25\baselineskip} \index{kabinett!mål}Selve
+kabinettet måler $46,1 \times 40 \times 10,2$~\centi\meter\
+($\text{bredde} \times \text{dybde} \times \text{høyde}$). Dersom ytre
+ekstremiteter som føtter og volumkontroll medregnes, måler
+forsterkeren om lag $46,1 \times 43,5 \times 11,7$~\centi\meter.
+
+Kabinettskruene er markert med piler: seks på oversiden, og to på hver
+side. \index{kabinett!demontering av}For å åpne kabinettet, skru ut
+skruene og løft opp kabinettets øvre del. Sørg for at luftehullene
+ligger over kjøleribben når kabinettet skrus sammen
+igjen.\index{kabinett|)}
+
+\section{Innsiden}
+
+\begin{center}
+  \footnotesize
+  \fbox{\includegraphics[width=\linewidth,clip=true,trim={1 1 1
+      1}]{fig/innside}}\index{strømforsyning|textit}
+
+  \textbf{1.}~\index{strømforsyning|(textit}Strøminngang.
+  \textbf{2.}~\index{hovedsikring|textit}Hovedsikring.
+  \textbf{3.}~\index{transformator (trafo)|textit}Transformator.
+  \index{jord|(textit}\textbf{4.}~Jordingspunkt~(stjernejord).
+  \textbf{5.}~\index{brolikeretter}Brolikeretter.
+  \textbf{6.}~Glattefilter~(fire
+  \index{glattekondensatorer|textit}glattekondensatorer).
+  \textbf{7.}~Av/på-knapp.
+  \textbf{8.}~Lysdiode.
+  \textbf{9.}~\index{volumkontroll|textit}Volumkontroll~(potensiometer).
+  \textbf{10.}~\index{kretskort|textit}Venstre forsterkerkrets.
+  \textbf{11.}~Høyre forsterkerkrets.
+  \textbf{12.}~\index{kjøleribbe|textit}Kjøleribbe.
+  \textbf{13.}~\index{utganger|textit}Utganger.
+  \textbf{14.}~\index{innganger|textit}Innganger.
+\end{center}
+
+\subsection{\index{ledninger|(}Ledninger}
+
+\begin{center}
+  \fbox{\includegraphics[height=4cm]{fig/ledninger}}
+\end{center}
+Gulgrønne ledninger går til jord. Ledninger merket med gulgrønn
+elektrikertape er også jordledninger.
+
+\begin{wrapfigure}{r}{3.25cm}\vspace*{-0.7\baselineskip}
+  \fbox{\includegraphics[width=3.25cm]{fig/stjernejord}}\index{jord|)textit}
+\end{wrapfigure}
+
+For å unngå \index{stZy@støy}støy har forsterkeren ett
+jordingspunkt~\textendash\ stjernejord. Det befinner seg i nærheten av
+transformatoren og kan demonteres ved å skru ut skruen som holder
+kablene sammen.\index{ledninger|)}
+
+\subsection{Strømforsyningen}
+
+\begin{center}
+  \fbox{\includegraphics[width=0.85\linewidth]{fig/stromfbilde}}\index{strømforsyning|textit}\index{glattekondensatorer|textit}\index{brolikeretter|(textit}\index{transformator
+    (trafo)|textit}
+\end{center}
+Strømforsyningen omfatter en strøminngang, en hovedsikring, en
+transformator, en brolikeretter, et glattefilter og en av/på-knapp.
+(For et kretsskjema og teoretisk utdypning, se
+s.~\pageref{stromforsyning}.)
+\begin{center}
+  \footnotesize\parbox{5.1cm}{\fbox{\includegraphics[height=3cm]{fig/strominngang}}
+    \centering
+    Strøminngang.}\hspace{2em}\parbox{3cm}{\fbox{\includegraphics[height=3cm]{fig/sikring}}\index{hovedsikring|textit}
+    \centering
+    Hovedsikring.}\hspace{2em}\parbox{2.6cm}{\fbox{\includegraphics[height=3cm]{fig/knapp}}
+    \centering Av/på-knapp.}
+\end{center}
+Strøminngangen er festet til kabinettet med to skruer fra utsiden. Den
+er koblet videre til hovedsikringen, som kan skiftes ut uten å åpne
+kabinettet. Av/på-knappen, som fungerer som et brudd når den er av og
+leder strøm når den er på, er ikke festet med skruer, men er klemt på
+plass. Koblingspunktene er isolert med tape.
+\begin{center}
+  \footnotesize\parbox{3.5cm}{\fbox{\includegraphics[height=3cm]{fig/trafo}}
+    \centering
+    Transformator.}\hspace{2em}\parbox{2.8cm}{\fbox{\includegraphics[height=3cm]{fig/brolikeretter}}
+    \centering
+    Brolikeretter.}\hspace{2em}\parbox{4.7cm}{\fbox{\includegraphics[height=3cm]{fig/glattek}}
+    \centering
+    Glattekondensatorer.}\index{strømforsyning|)textit}\index{transformator
+    (trafo)|textit}\index{brolikeretter|)textit}\index{glattekondensatorer|textit}
+\end{center}
+Strømmen går videre til transformatoren og derfra til brolikeretteren,
+som hver er festet til kabinettet med en skrue fra undersiden.
+Glattekondensatorene, som strømmen så går videre til, er festet parvis
+til kabinettet med en holder fra oversiden og en skrue fra undersiden.
+
+\subsection{\index{lysdiode!rød|(}Lysdiode}
+
+\begin{center}
+  \includegraphics[height=3.5cm]{fig/redled}
+
+  \footnotesize Dioden er koblet i serie med tre motstander for å gi
+  riktig strøm.
+\end{center}
+Som en visuell indikator er det koblet en rød lysdiode over
+\index{pZtrykksspenning@påtrykksspenning}påtrykksspenningene på $+35$~\volt\ og
+$-35$~\volt. \index{strømforsyning!utlading
+  av|(}\index{glattekondensatorer!utlading av|(}Så lenge det er spenning
+i glattekondensatorene, vil dioden lyse, så den vil ikke umiddelbart
+slukne når forsterkeren slås av ettersom utladningen tar litt tid. Det
+er imidlertid slett ikke noen ulempe med en pålitelig indikator på
+glattefilterets spenningsstatus (se under).
+\begin{center}
+  \fbox{\includegraphics[height=4cm]{fig/diode}}\hspace{3em}\fbox{\includegraphics[height=4cm]{fig/diodetape}}
+
+  \footnotesize \textit{Venstre:} Dioden forfra. \emph{Høyre:}
+  Diodekretsen er festet til kabinettet med tape.
+\end{center}\index{lysdiode!rød|)}
+
+\subsection{Innganger og utganger}
+
+\begin{center}
+  \footnotesize\parbox{8.2cm}{\fbox{\includegraphics[height=2.5cm]{fig/inng}}
+    \centering Inngangene
+    utenfra.}\hspace{2em}\parbox{4.6cm}{\fbox{\includegraphics[height=2.5cm]{fig/inngbak}}
+    \centering Inngangene innenfra.} \index{innganger|textit}
+\end{center}
+Inngangene er festet til kabinettet med to skruer utenfra. De har
+felles \index{jord|(}jord.
+\begin{center}
+  \footnotesize\parbox{4.9cm}{\fbox{\includegraphics[height=4cm]{fig/utg}}
+    \centering Utgangene
+    utenfra.}\hspace{3em}\parbox{4.4cm}{\fbox{\includegraphics[height=4cm]{fig/utgbak}}
+    \centering Utgangene innenfra.}\index{utganger|textit}
+\end{center}
+Utgangene har felles jord og er festet med mutter og plastskiver for å
+isolere dem fra kabinettet. \textbf{Det er ekstremt viktig å unngå at
+  utgangene og kabinettet kortsluttes. En
+  \index{utgangstransistorer!kortslutning av}kortslutning vil
+  resultere i en så stor strøm at
+  \index{utgangstransistorer}utgangstransistorene står i fare for å
+  brenne opp.} Her kan det være lurt å bruke den røde lysdioden som
+referanse~\textendash\ dersom det fortsatt er spenning igjen i
+glattekondensatorene, vil dioden lyse, og da gjelder det å utøve den
+største forsiktighet ved bytting av høyttalerledningene. Fortrinnsvis
+bør man spille litt ekstra musikk etter å ha slått av forsterkeren
+slik at kondensatorene utlades skikkelig. (Automatisk utladning kan
+fås ved å koble en effektmotstand \textendash~en
+\textit{glider}~\textendash\ over kondensatorene; høyttalerne kan
+vernes ved å montere et \index{DC-vern}DC-vern på
+utgangstrinnet.)\index{glattekondensatorer!utlading
+  av|)}\index{strømforsyning!utlading av|)}
+
+\subsection{Volumkontroll}
+
+\begin{center}
+  \footnotesize
+  \parbox{4cm}{\fbox{\includegraphics[height=4cm]{fig/volumknott}}
+    \centering
+    Volumkontrollen.}\hspace{3em}\parbox{4.3cm}{\fbox{\includegraphics[height=4cm]{fig/volumpot}}
+    \centering Volumpotensiometeret.}\index{volumkontroll|textit}
+\end{center}
+Før det når forsterkerkretsen går inngangssignalet gjennom
+volumkontrollen, som utgjøres av et dobbelt potensiometer
+\textendash~et for hver kanal. Potensiometerene fungerer som en
+variabel spenningsdeler som bestemmer hvor mye av inngangssignalet som
+skal sendes videre til forsterkerkretsen. Hvis inngangssignalet
+($v_i$) og jord kan betraktes som ytterpunkter, er det utgangssignalet
+($v_o$) sin <<plassering>> mellom dem som bestemmes ved å skru på
+volumkontrollen. Hvert potensiometer har tre terminaler:
+utgangssignalet tas ut fra den midterste, mens de to andre kobles til
+inngangssignalet og \index{jord|)}jord.
+\begin{center}
+  \footnotesize
+  \parbox{2cm}{\includegraphics[width=2cm,clip=true,trim={15 5 0
+      0}]{fig/potmeter1} (\centering
+    \emph{a})}\hspace{3em}\parbox{2cm}{\includegraphics[width=2cm,clip=true,trim={0
+      5 0 0}]{fig/potmeter2}
+    (\centering\emph{b})}\hspace{3em}\parbox{2cm}{\includegraphics[width=2cm,clip=true,trim={0
+      5 0 0}]{fig/potmeter3}
+    (\centering\emph{c})}\hspace{3em}\parbox{2cm}{\includegraphics[width=2cm,clip=true,trim={0
+      5 0 0}]{fig/potmeter4}
+    (\centering\emph{d})}\vspace{0.5\baselineskip}\index{potensiometer|textit}
+
+  Et potensiometer (\emph{a}) kan betraktes som en enkel
+  spenningsdeler over to motstander (\emph{b}).\\
+  Når volumet er null, er $v_o$ lik jord (\emph{c}). Når volumet er på
+  fullt, er $v_o = v_i$ (\emph{d}).
+\end{center}
+
+\subsection{Kjøleribben}
+
+\begin{center}
+  \fbox{\includegraphics[height=4cm]{fig/kjoleskrue1}}\hspace{3em}\fbox{\includegraphics[height=4cm]{fig/kjoleskrue2}}\index{kjøleribbe|textit}
+\end{center}
+Kjøleribben er plassert mellom de to kretskortene og er festet til
+kabinettet med fire skruer fra oversiden. Hver skrue har fire muttere
+mellom kjøleribben og kabinettet for å gi riktig høyde over
+kretskortene. For enkel tilgang til skruene (ovenfra) er det borret
+hull i kjøleribben.
+
+Utgangstransistorene er festet til kjøleribben med skruer fra
+undersiden. Disse kan nås gjennom hull i kabinettet.
+\begin{center}
+  \fbox{\includegraphics[height=3.5cm]{fig/transhull}}\index{utgangstransistorer|textit}\index{utgangstransistorer!og
+    kjøleribben|textit}
+\end{center}
+\textbf{Ikke løft opp kjøleribben uten å ha skrudd kretskortene fra
+  kabinettet eller utgangstransistorene fra kjøleribben.}
+
+\chapter{\index{kretskort|(}Kretskort}
+
+\begin{center}
+  \fbox{\includegraphics[width=0.75\linewidth,clip=true,trim={1 2 1
+      1}]{fig/kort}}
+
+  \footnotesize Hvert kretskort er festet til kabinettet med to
+  skruer, her markert med piler.
+\end{center}
+Forsterkeren inneholder to kretskort, et for hver lydkanal. Hvert kort
+\index{kretskort!mål}måler $10 \times 16$~\centi\meter\ og er festet
+til kabinettet med to skruer fra undersiden. Hver skrue har to muttere
+mellom kortet og kabinettet for å gi kortene riktig høyde.
+
+Kortene har kobberbaner kun på undersiden, mens komponentene er på
+oversiden. Til oversiden er det festet et plastoverlegg (transparent)
+som viser hvor komponentene skal stå (<<\textit{silk screen}>>).
+\vspace{0.5\baselineskip}
+
+\noindent \textbf{Advarsel: Det er avvik mellom overlegget og
+  komponentplasseringen. Ved reparasjon på kortet \emph{må} man først
+  lese denne teksten.} \vspace{0.5\baselineskip}
+
+\newpage
+
+\begin{figure}[h]
+  \centering \footnotesize
+  \includegraphics[width=0.9\linewidth]{fig/copperb}
+
+  Kobberbunn.\index{kretskort!kobberbunn|textit}
+
+  \includegraphics[width=0.9\linewidth]{fig/silkscreen}
+
+  <<Silk screen>>. Kobberbanene er vist i
+  grått.\index{kretskort!silk screen@\textit{silk screen}|(}
+\end{figure}
+
+\section{Feil i <<silk screen>>}
+
+På grunn av noen feil gjort under konstrueringen av kretskortutlegget,
+kan ikke plastoverlegget stoles på hundre prosent. Skjønt det viser
+hvor de ulike komponentene skal stå, er ikke \emph{monteringen} alltid
+korrekt. Vær oppmersom på følgende:
+\begin{itemize}
+\item \textbf{Elektrolyttkondensatorene} (\index{C1@$C_1$}$C_1$,
+  \index{C3@$C_3$}$C_3$ og \index{C5@$C_5$}$C_5$) skal stå
+  \emph{motsatt vei}~\textendash\ plussterminalen skal \emph{ikke}
+  kobles til <<\texttt{+}>> på overlegget. Riktig montering av f.eks.\
+  \index{C1@$C_1$}$C_1$ er altså med plussterminalen til
+  <<\texttt{IN}>> og den andre til <<\texttt{+}>>.
+\item \textbf{BC546-transistorene} (\index{Q1@$Q_1$}$Q_1$,
+  \index{Q2@$Q_2$}$Q_2$, \index{Q3@$Q_3$}$Q_3$ og
+  \index{Q9@$Q_9$|(}$Q_9$) har \emph{byttet om på emitteren og
+    kollektoren} (de ytterste benene; det midterste er basen).
+  Monteringen blir altså motsatt vei av halvsirkelformen på overlegget
+  (det er nødvendig å bøye benene på transistorene noe for å få dem
+  til å treffe hullene). Pga.\ endringer beskrevet under er $Q_9$
+  koblet til \index{kjøleribbe|(}kjøleribben via gule ledninger, men
+  prinsippet er det samme.
+\item \textbf{\index{utgangstransistorer!montering
+      av}Utgangstransistorene} (\index{Q7@$Q_7$}$Q_7$ og
+  \index{Q8@$Q_8$}$Q_8$) er koblet til \index{kjøleribbe}kjøleribben
+  med ledninger med følgende \emph{fargekode}: basen~\textendash\ rød,
+  kollektoren~\textendash\ grønn, emitteren~\textendash\ blå. (På
+  overlegget er emitteren og kollektoren til \index{Q7@$Q_7$}$Q_7$
+  byttet om~\textendash\ fargekoden tar høyde for dette.) \emph{Bruk
+    fargekoden for å beholde oversikten.}
+\item \textbf{Lysdioden} (\index{D1@$D_1$}$D_1$) er oppført som
+  <<\texttt{LED1}>>. (For øvrig er \index{CZ+@$C_+$}$C_+$ og
+  \index{CZ-@$C_-$}$C_-$ oppført som <<\texttt{Cpluss}>> og
+  <<\texttt{Cminus}>>, henholdsvis.)
+\end{itemize}
+Dersom det er tvil om hvordan komponentene skal monteres, så konsulter
+kretsskjemaet (s.~\pageref{fig:kretsskjema}).\index{kretskort!silk screen@\textit{silk screen}|)}
+
+\section{\index{modifikasjoner av
+    kretsen|(}Modifikasjoner} \label{modifikasjoner}
+
+\begin{wrapfigure}[7]{r}{2.25cm}\vspace{-0.5\baselineskip}
+  \fbox{\includegraphics[width=2.25cm]{fig/ekstrac}}\index{Q6@$Q_6$|textit}
+\end{wrapfigure}
+
+Kretsen er noe modifisert for å fungere optimalt.
+
+Pga.\ problemer med \index{stZy@støy}støy ($1$~\mega\hertz) koblet vi
+$368$~\pico\farad\ kondensatorer i parallell med \index{C4@$C_4$}$C_4$
+og \index{C6@$C_6$}$C_6$, for å øke kapasitansen. De ekstra
+kondensatorene er loddet fast til benene til transistorene
+\index{Q4@$Q_4$}$Q_4$ og $Q_6$ (se bilde).
+
+Videre er \index{CZ+@$C_+$}$C_+$ og \index{CZ-@$C_-$}$C_-$
+parallellkoblet med $100$~\nano\farad\ kondensatorer på motsatt side
+av sikringene (\index{F1@$F_1$}$F_1$ og \index{F2@$F_2$}$F_2$). Disse
+er festet på undersiden av kortet.
+
+\begin{center}
+  \includegraphics[width=\textwidth]{fig/kretsmod}\label{fig:mod}\index{kretsskjema!modifisert|textit}
+
+  \footnotesize Modifisert kretsskjema.
+\end{center}
+
+\begin{wrapfigure}{r}{5cm}
+  \footnotesize \fbox{\includegraphics[width=5cm]{fig/termisk}} Termisk
+  tilbakekobling av $Q_9$.
+\end{wrapfigure}
+
+For å oppnå \emph{\index{tilbakekobling!termisk|(}termisk
+  tilbakekobling} er transistoren i
+\index{vBE-multiplikator@$v_{BE}$-multiplikator}$v_{BE}$-multiplikatoren,
+$Q_9$, limt fast til \index{kjøleribbe}kjøleribben.
+\index{utgangstransistorer!varmeutvikling i}Utgangstransistorene i en
+lydforsterker blir gjerne svært varme, og når temperaturen i en
+transistor eller diode øker, øker også strømgjennomgangen. (Dette til
+forskjell fra en opphetet \emph{motstand}: Resistansen øker og
+strømgjennomgangen minker.) Dersom temperaturen blir kritisk, oppstår
+det en selvforsterkende utvikling hvor den økte strømmen øker
+temperaturen og omvendt, inntil transistoren brenner opp. Dette er
+kjent som \textit{\index{thermal runaway@\textit{thermal
+      runaway}}thermal runaway}~\textendash\ transistorene <<løper
+løpsk>>.\footnote{Det kan legges til at vi ikke hadde noen problemer
+  med varmeutvikling i denne forsterkeren, hverken med eller uten
+  termisk tilbakekobling. Kjøleribben og utgangstransistorene ble bare
+  varme (men ikke faretruende varme) ved langvarig bruk på fullt
+  volum. Ingen komponenter brant opp under testingen av forsterkeren.}
+
+Termisk tilbakekobling tar sikte på å motvirke denne utviklingen ved å
+overføre noe av varmen som genereres av
+\index{utgangstransistorer}utgangstransistorene til $Q_9$. Når $Q_9$
+blir varm, går det mer strøm i $Q_9$~\textendash\ og når det går mer
+strøm i \index{Q9@$Q_9$|)}$Q_9$, går det \emph{mindre} strøm i
+\index{utgangstransistorer}utgangstransistorene. Dermed blir
+temperaturen til \index{utgangstransistorer}utgangstransistorene
+stabilisert.
+
+I denne forsterkeren overføres varmen via
+\index{kjøleribbe}kjøleribben, men i prinsippet kan det også fungere å
+feste transistoren til en av kollektormotstandene
+\index{R913@$R_{13}$}$R_{13}$ og \index{R914@$R_{14}$}$R_{14}$, som
+også vil utvikle varme når strømmen i
+\index{utgangstransistorer}utgangstransistorene øker. Imidlertid har
+vi benyttet kraftige $10$~\watt\ motstander som i så stor grad <<tåler
+en støyt>> at de ikke er egnet for tilbakekobling. Dersom $5$~\watt\
+motstander ble brukt i stedet, ville ikke bare
+\index{R913@$R_{13}$}\index{R914@$R_{14}$}varmeutviklingen ha blitt
+større,\index{tilbakekobling!termisk|)} men størrelsen på kortet kunne
+ha blitt redusert betraktelig (til om lag $10 \times 8$~\centi\meter).
+Et mindre kort betyr kortere baner og dermed mindre
+\index{stZy@støy}støy.
+
+Ved å speilvende kretskortet vil man for øvrig kunne feste
+transistorene til \index{kjøleribbe}kjøleribben på en annen
+måte~\textendash\ oppå \index{kjøleribbe|)}kjøleribben i stedet for
+under.\index{modifikasjoner av kretsen|)}
+
+\section{Trimming} \label{trimming}
+
+Første gang man skal starte opp forsterkeren, anbefales det at man
+gjør det med en \emph{ekstern}
+\index{spenning!spenningskilde}spenningskilde med strømbegrensning.
+Ved feil kan en ekstern kilde kuttes, mens den interne
+strømforsyningen har ingen slik sikkerhet pga.\
+\index{glattekondensatorer}glattekondensatorene.
+
+\begin{wrapfigure}[3]{r}{2cm}\vspace*{-1.15\baselineskip}
+  \fbox{\includegraphics[width=2cm]{fig/vr1}}\index{potensiometer|textit}\index{VR1@${V"\"!R}_1$|textit}
+\end{wrapfigure}
+
+Hvilestrømmen (\index{IQ@$I_Q$!innjustering av}$I_Q$) stilles inn med
+potensiometeret ${V\!R}_1$. Skru det til full motstand (med klokken)
+og følg med på spenningen over motstandene
+\index{R913@$R_{13}$}$R_{13}$ og \index{R914@$R_{14}$}$R_{14}$ med et
+multimeter. Hvis spenningen plutselig skulle begynne å stige, er noe
+galt~\textendash\ skru av
+\index{spenning!spenningskilde}spenningskilden og feilsøk kretsen.
+
+Når \index{pZtrykksspenning@påtrykksspenning}påtrykksspenningen er på $\pm 35$~\volt,
+justeres \index{IQ@$I_Q$!innjustering av}\emph{hvilestrømmen} gjennom
+\index{R913@$R_{13}$}$R_{13}$ og \index{R914@$R_{14}$}$R_{14}$ ved å
+stille på potensiometeret. Ifølge Rod Elliot bør strømmen gjennom
+motstandene ligge på $75$~\milli\ampere, som svarer til et
+spenningsfall på $50$~\milli\volt:
+\begin{quote}
+  When you are satisfied that all is well, set the bias current.
+  Connect a multimeter between the collectors of \index{Q7@$Q_7$}$Q_7$
+  and \index{Q8@$Q_8$}$Q_8$~\textendash\ you are measuring the voltage
+  drop across the two $0.33$~\ohm\ resistors. The most desirable
+  quiescent current is \index{IQ@$I_Q$!anbefalt
+    verdi}$75$~\milli\ampere, so the voltage you measure across the
+  resistors should be set to $50$~\milli\volt${}\pm 5$~\milli\volt.
+  The setting is not overly critical, but at lower currents, there is
+  less dissipation in the output transistors. Current is approximately
+  $1.5$~\milli\ampere\per\milli\volt, so $50$~\milli\volt\ will
+  represent $75$~\milli\ampere\ quiescent current.\footnote{Fra
+    \url{http://sound.westhost.com/project3a.htm}. Gjengitt her med
+    typografiske justeringer.}
+\end{quote}
+\index{IQ@$I_Q$}Hvilestrømmen avgjør balansen mellom forsterkerens
+klasse A- og B-funksjonalitet. For lav hvilestrøm gir
+\index{forvrengning}overgangsforvrengning.\index{kretskort|)}
+
+\chapter{\index{komponentliste|(}Komponentliste}
+
+\subsection{Motstander}
+
+\begin{center}
+  \footnotesize
+  \begin{tabular}{@{}llllll@{}}
+    \textbf{Komponent} & \textbf{Verdi} & \textbf{Komponent} &
+    \textbf{Verdi} & \textbf{Komponent} & \textbf{Verdi}\\
+    \midrule
+    \index{R1@$R_1$}$R_1$, \index{R3@$R_3$}$R_3$ & $2,2$~\kilo\ohm &
+    \index{R2@$R_2$}$R_2$, \index{R5@$R_5$}$R_5$, \index{R8@$R_8$}$R_8$ & $22$~\kilo\ohm & \index{R4@$R_4$}$R_4$,
+    \index{R916@$R_{16}$}$R_{16}$ & $1$~\kilo\ohm\\
+    \index{R6@$R_6$}$R_6$, \index{R7@$R_7$}$R_7$ & $560$~\ohm &
+    \index{R9@$R_9$}$R_9$, \index{R910@$R_{10}$}$R_{10}$ & $3,3$~\kilo\ohm\ $1/2$~\watt &
+    \index{R911@$R_{11}$}$R_{11}$, \index{R912@$R_{12}$}$R_{12}$ & $220$~\ohm\\
+    \index{R913@$R_{13}$}$R_{13}$, \index{R914@$R_{14}$}$R_{14}$ &
+    $0,33$~\ohm\ $5$~\watt & \index{R915@$R_{15}$}$R_{15}$ & $10$~\ohm\ $1/2$~\watt & & \\
+    \index{VR1@${V"\"!R}_1$}${V\!R}_1$ & $2$~\kilo\ohm\ potensiometer & & & & \\
+    \multicolumn{6}{@{}l}{Diodemotstander: $2 \times 10$~\kilo\ohm, $1
+      \times 2,2$~\kilo\ohm}\\
+    \multicolumn{6}{@{}l}{Volumpotensiometer}
+  \end{tabular}
+\end{center}
+
+\subsection{Kondensatorer}
+
+\newcolumntype{Y}{>{\RaggedRight}X}
+
+\begin{center}
+  \footnotesize
+  \begin{tabularx}{0.9\textwidth}{@{}lYlYlY@{}}
+    \textbf{Komponent} & \textbf{Verdi} & \textbf{Komponent} &
+    \textbf{Verdi} & \textbf{Komponent} & \textbf{Verdi}\\
+    \midrule \index{C1@$C_1$}$C_1$ & $4,7$~\micro\farad\ (bipolar
+    elektrolytt) & \index{C2@$C_2$}$C_2$ & $220$~\pico\farad &
+    \index{C3@$C_3$}$C_3$ & $100$~\micro\farad\
+    $16$~\volt\ (electrolytt)\\
+    \index{C4@$C_4$}$C_4$, \index{C6@$C_6$}$C_6$ & $100$~\pico\farad\
+    $500$~\volt & \index{C5@$C_5$}$C_5$ & $100$~\micro\farad\
+    $63$~\volt\ (elektrolytt) & \index{C7@$C_7$}$C_7$,
+    \index{CZ+@$C_+$}$C_+$, \index{CZ-@$C_-$}$C_-$ &
+    $100$~\nano\farad\\
+    \multicolumn{6}{@{}l}{Ladekondensatorer:
+      $4 \times 10\:000$~\micro\farad\ $50$~\volt}\\
+    \multicolumn{6}{@{}l}{\index{modifikasjoner av
+        kretsen}Modifikasjoner: $4 \times 368$~\pico\farad, $4 \times
+      100$~\nano\farad}
+  \end{tabularx}
+\end{center}
+
+\newpage
+
+\subsection{Halvledere}
+
+\begin{center}
+  \footnotesize
+  \begin{tabularx}{0.9\textwidth}{@{}lllllY@{}}
+    \textbf{Komponent} & \textbf{Type} & \textbf{Komponent} &
+    \textbf{Type} & \textbf{Komponent} & \textbf{Type}\\
+    \midrule \index{Q1@$Q_1$}$Q_1$, \index{Q2@$Q_2$}$Q_2$,
+    \index{Q3@$Q_3$}$Q_3$, \index{Q9@$Q_9$}$Q_9$ & BC546 &
+    \index{Q4@$Q_4$}$Q_4$, \index{Q6@$Q_6$}$Q_6$ & BD140 &
+    \index{Q5@$Q_5$}$Q_5$ &
+    BD139\\
+    \index{Q7@$Q_7$}$Q_7$ & MJL1302A & \index{Q8@$Q_8$}$Q_8$ &
+    MJL3281A & $D_1$ & LED
+    (grønn)\footnotemark\\
+    \multicolumn{6}{@{}l}{Rød lysdiode}
+  \end{tabularx}
+\end{center}
+\footnotetext{\index{D1@$D_1$|nn}Merk at fargen på lysdioden er
+  avgjørende. Som Rod Elliot sier det: <<This is not for appearance
+  (although the green LED looks pretty neat on the board), but for the
+  voltage drop~\textendash\ different coloured LEDs have a slightly
+  different voltage drop.>>}
+
+\subsection{Annet}
+
+Forsterkeren består for øvrig av:
+\begin{itemize}[itemsep=0pt]
+\item Fire $5$~\ampere\ sikringer (\index{F1@$F_1$}$F_1$ og
+  \index{F2@$F_2$}$F_2$) og tilhørende sikringsfester
+\item En $2,5$~\ampere\ \index{hovedsikring}hovedsikring
+\item Strøminngang og strømkabel
+\item Av/på-knapp
+\item \index{transformator (trafo)}$24$\textendash $0$\textendash
+  $24$~\volt\ \index{transformator
+    (trafo)!ringkjerne}ringkjernetransformator (minst
+  $200$~\volt\ampere, fortrinnsvis $300$~\volt\ampere)
+\item \index{brolikeretter}Brolikeretter
+\item \index{kjøleribbe}Kjøleribbe
+\item Inngangsterminaler
+\item Utgangsterminaler
+\end{itemize}\index{komponentliste|)}
+
+\chapter{\index{budsjett|(}Budsjett}
+
+\begin{center}
+  \footnotesize
+  \begin{longtable}{@{}rlrrl@{}}
+    \textbf{Kvanta} & \textbf{Type} & \textbf{Brukte penger} &
+    \textbf{Produksjonspris} & \\ \midrule
+    \endhead
+    \midrule \multicolumn{5}{r}{\emph{Fortsetter på neste side}}
+    \endfoot
+    \midrule \textbf{Sum} & & \textbf{1085,70} & \textbf{1616,20} &
+    \endlastfoot
+    4 & $5$~\watt\ effektmotstand 0,3 & 19 & 19 & \\
+    2 & $1/2$~\watt\ $1$~\% 10 & & \\
+    4 & $1/2$~\watt\ $1$~\% 220 & & \\
+    4 & $1/2$~\watt\ $1$~\% 560 & & \\
+    4 & $1/2$~\watt\ $1$~\% 1K & & \\
+    4 & $1/2$~\watt\ $1$~\% 2,2K & & \\
+    4 & $1/2$~\watt\ $1$~\% 3,3K & & \\
+    6 & $1/2$~\watt\ $1$~\% 22K & 12 & 12\\
+    2 & Variabel motstand 2K & 8 & 6\\
+    1 & Volumkontroll & 94,5 & 81\\ \addlinespace
+    4 & $100$~\pico\farad\ keramisk & 2 & 2 & \\
+    2 & $220$~\pico\farad\ keramisk & 1 & 1 & \\
+    4 & $390$~\pico\farad\ keramisk & 2 & 2 & \\
+    4 & $100$~\nano\farad\ keramisk & 4 & 4 & \\
+    2 & $100$~\nano\farad\ polyester & 7,6 & 7,6 & \\
+    4 & Pluss-utgang $100$~\nano\farad\ polyester & 15,2 & 15,2 & \\
+    4 & Minus-utgang $100$~\nano\farad\ polyester & 15,2 & 15,2 & \\
+    2 & $4,7$~\micro\farad\ elektrolytt & 3 & 3 & \\
+    3 & $100$~\micro\farad\ elektrolytt & 7 & 5 & 2 stk.\\
+    3 & $100$~\micro\farad\ $35$~\volt\ elektrolytt & 7 & 5 & 2 stk.\\
+    \addlinespace
+    8 & BC546 NPN $80$~\volt & 11,2 & 11,2 & \\
+    4 & BD139 NPN & 10 & 10 & \\
+    2 & BD140 PNP & 9 & 9 & \\
+    2 & Power PNP MJL1302A & 142 & 142 & \\
+    2 & Power NPN MJL3281A & 148 & 148 & \\ \addlinespace 1 &
+    Ringkjerne $24$\textendash $0$\textendash $24$~\volt\
+    $200$~\volt\ampere & 0 & 400 & Min.\ $290$~\volt\ampere\\
+    1 & Brolikeretter $280$~\volt\ $400$~\volt\ $15$~\ampere\
+    $300$~\ampere & 30 & 30 & \\
+    4 & $10\:000$~\micro\farad\ $50$~\volt\ ladekondensator & 218 &
+    218 & \\ \addlinespace
+    1 & Rød lysdiode & 0 & 1 & \\
+    2 & Grønn lysdiode & 0 & 3 & \\
+    8 & Sikringsholder (klips) & 11 & 11 & \\
+    1 & Primærsikring $2,5$~\ampere & 0 & 4 & \\
+    4 & $5$~\ampere\ sikringer & 0 & 17 & \\
+    1 & Strømkontakt & 0 & 10 & \\
+    1 & Strømkabel & 0 & 20 & \\
+    1 & Strømbryter & 21 & 21 & \\
+    2 & Audioplugger & 25 & 25 & \\
+    2 & Høyttalerterminaler & 0 & 45 & \\ \addlinespace
+    1 & Kjøleribbe & 0 & 50 & \\
+    & Annet & 20 & 20 & \\
+    $0,544$~\square\meter & Aluminium & 163 & 163 & \\
+    $3,2$~\deci\square\meter & Ensides printkort & 80 & 80\\
+  \end{longtable}
+\end{center}\index{budsjett|)}
+
+\chapter{Konklusjon}
+
+Det ble en forsterker med et imponerende lydbilde. Valg av
+\index{utgangstransistorer!valg av}utgangstransistorer hadde noe å si
+for lydkvaliteten: For testing benyttet vi først billige BD911- og
+BD912-transistorer, som ga et greit resultat, men uten presis
+lydgjengivning ved komplekse signaler.\index{forvrengning} Vi byttet
+dem siden ut med dyrere MJL3281A- og MJL1302A-transistorer og opplevde
+en dramatisk økning i lydkvalitet (og pris).
+\index{utgangstransistorer!varmeutvikling i}Temperaturutviklingen i
+transistorene ble lavere ettersom de dyre transistorene har en større
+flate og dermed overfører temperaturen bedre til
+\index{kjøleribbe}kjøleribben.
+\begin{center}
+  \includegraphics[height=5cm,page=3,clip=true,trim={90 535 330
+    132}]{fig/bd91x}\hspace{3em}\includegraphics[height=5cm,page=3,clip=true,trim={305
+    315 60 312}]{fig/mjl3}
+
+  \footnotesize\textbf{Kvalitet koster:} \index{BD911|textit}BD911
+  (\emph{venstre}) kontra \index{MJL3281A|textit}MJL3281A
+  (\emph{høyre}).
+\end{center}
+Budsjettet skulle ligge på 1000,\textendash~kr, noe vi \emph{nesten}
+overholdt med våre totale utgifter på 1085,70~kr. Forsterkeren ville
+ha blitt dyrere å produsere på egen hånd ettersom vi anskaffet en del
+materiale gratis under prosjektet (\index{kjøleribbe}kjøleribbe,
+transformator).
+
+Forsterkerens største svakhet er helt klart \index{transformator
+  (trafo)}transformatoren på $200$~\volt\ampere~\textendash\ det er
+egentlig meningen at en transformator på $300$~\volt\ampere\ skal
+benyttes. \index{pZtrykksspenning@påtrykksspenning}Påtrykksspenningen kan også økes til
+$\pm 42$~\volt, noe som vil gi kraftigere \index{effekt}effekt for en
+$8$~\ohm\ høyttaler (men som på den annen side umuliggjør bruk av
+$4$~\ohm\ høyttalere). Det er godt med plass i kabinettet til en
+større transformator. \index{kjøleribbe}Kjøleribben ble plukket fra en
+annen forsterker og er noe underdimensjonert for full
+\index{effekt}effekt ved $4$~\ohm\ last.
+
+\index{strømforsyning!utlading av|(}\index{glattekondensatorer!utlading
+  av|(}En annen svakhet er at glattekondensatorene ikke utlades
+automatisk. Dette kan ordnes ved å koble en effektmotstand over dem,
+som vil trekke strøm inntil kondensatorene er utladet. Dersom
+utgangene og kabinettet \index{utgangstransistorer!kortslutning
+  av}kortsluttes mens det er spenning i filteret, kan høyttalerne
+skades.\index{glattekondensatorer!utlading
+  av|)}\index{strømforsyning!utlading av|)} Ved å montere et
+\index{DC-vern}DC-vern på utgangstrinnet unngås denne risikoen.
+DC-vernet er imidlertid en forholdsvis omfattende krets; en enklere
+løsning kan være et relé som aktiveres av spenningsfall over
+\index{R913@$R_{13}$}$R_{13}$ og \index{R914@$R_{14}$}$R_{14}$.
+
+En ytterligere forbedring av forsterkeren ville være å installere et
+delefilter ved inngangen, for å tilpasse lyden til høyttalerne.
+
+\vspace*{3.6\baselineskip}
+
+% \RaggedRight
+
+\makeatletter \renewenvironment{theindex}{%
+  \if@twocolumn \@restonecolfalse \else \@restonecoltrue \fi
+  \columnseprule \z@ \columnsep 35\p@ \rule{0pt}{2.6\baselineskip}
+  \setchapterpreamble{\index@preamble}%
+  \idx@heading%
+  \thispagestyle{\indexpagestyle}\parindent\z@
+  \setlength{\parskip}{\z@ \@plus .3\p@}%
+  \setlength{\parfillskip}{\z@ \@plus 1fil}%
+  \let\item\@idxitem \RaggedRight }{%
+  \if@restonecol\onecolumn\else\clearpage\fi }
+
+\makeatother
+
+
+% Kryssreferanser
+
+% \def\seealso#1#2{{\em see also\/} #1}
+\def\suppresscomma#1,{\hbox{}\ignorespaces}
+
+% \index{box!ZZ@\suppresscomma|seealso{circle}}
+
+\index{BC546|see{$Q_1$, $Q_2$, $Q_3$, $Q_9$}}
+
+\index{BD139|see{$Q_5$}}
+
+\index{BD140|see{$Q_4$, $Q_6$}}
+
+\index{betat@$\beta$
+  (tilbakekoblingsfaktor)!ZZ@\suppresscomma|seealsounder{tilbakekobling}}
+
+\index{differensialforsterker!forsterkning for|seeunder{forsterkning}}
+
+\index{differensialforsterker!ZZ@\suppresscomma|seealso{$Q_1$, $Q_2$}}
+
+\index{flaskehals|seeunder{modifikasjoner av kretsen}}
+
+\index{trimming|see{$I_Q$}}
+
+\index{forsterkertype!ZZ@\suppresscomma|seealso{Project 3A~(P3A)}}
+
+\index{forsterkning!ZZ@\suppresscomma|seealso{$\beta$~(strømforsterkning)}}
+
+\index{forvrengning!ZZ@\suppresscomma|seealso{klirr, støy}}
+
+\index{hfe@$h_{FE}$ (og
+  $h_{fe}$)!ZZ@\suppresscomma|seealso{$\beta$~(strømforsterkning)}}
+
+\index{hvilestrøm|see{$I_Q$}}
+
+\index{hZyttalerimpedans@høyttalerimpedans|see{$R_L$}}
+
+\index{inngang (krets)!forsterkning for|seeunder{forsterkning}}
+
+\index{inngang (krets)!ZZ@\suppresscomma|seealso{$C_1$, $C_2$, $R_1$,
+    $R_2$, $R_3$}}
+
+\index{klasse A-driver!ZZ@\suppresscomma|seealso{$Q_4$}}
+
+\index{klasse A-driver!forsterkning for|seeunder{forsterkning}}
+
+\index{kortslutning|seeunder{utgangstransistorer}}
+
+\index{kretsskjema!ZZ@\suppresscomma|seealsounder{strømforsyning}}
+
+\index{likeretterbro|see{brolikeretter}}
+
+\index{linearitet!ZZ@\suppresscomma|seealso{negativ tilbakekobling}}
+
+\index{long-tailed pair@\emph{long-tailed pair}
+  (LTP)!ZZ@\suppresscomma|seealso{differensialforsterker, $Q_1$,
+    $Q_2$}}
+
+\index{lysdiode!grønn|see{$D_1$}}
+
+\index{MJL1302A|see{$Q_7$}}
+
+\index{MJL3281A!ZZ@\suppresscomma|see{$Q_8$}}
+
+\index{negativ tilbakekobling|seeunder{tilbakekobling}}
+
+\index{tilbakekobling!negativ!ZZ@\suppresscomma|seealso{$\beta$~(tilbakekoblingsfaktor),
+    linearitet, $R_4$, $R_5$}}
+
+\index{strømforsterkning|see{$\beta$~(strømforsterkning)}}
+
+\index{sikring|see{$F_1$, $F_2$, hovedsikring}}
+
+\index{silk screen@\textit{silk screen}|seeunder{kretskort}}
+
+\index{spenning!ZZ@\suppresscomma|seealso{påtrykksspenning}}
+
+\index{spesifikasjoner|see{Project 3A~(P3A)}}
+
+\index{stZy@støy!ZZ@\suppresscomma|seealso{forvrengning, klirr}}
+
+\index{Sziklai-kobling!ZZ@\suppresscomma|seealsounder{forsterkning}}
+
+\index{termisk tilbakekobling|seeunder{tilbakekobling}}
+
+\index{transistor!ZZ@\suppresscomma|seealso{småsignalmodell}}
+
+\index{transistor!strømforsterkning|see{$\beta$~(strømforsterkning)}}
+
+\index{transkonduktans|see{$g_m$}}
+
+\index{utgangstransistorer!forsterkning for|seeunder{forsterkning}}
+
+\index{utgangstransistorer!ZZ@\suppresscomma|seealso{$Q_7$, $Q_8$}}
+
+\index{vBE-multiplikator@$v_{BE}$-multiplikator!ZZ@\suppresscomma|seealso{$Q_9$,
+    $R_{16}$, ${V"\"!R}_1$}}
+
+\printindex
+
+\pagestyle{empty}
+
+\cleardoublepage
+
+\ifpdf
+\includepdf[pages={1-4}]{fig/bc546}
+\includepdf[pages={1-8}]{fig/bd139}
+\includepdf[pages={1-8}]{fig/bd140}
+\includepdf[pages=-]{fig/mjl3}
+\fi
+
+\cleardoublepage
+
+\fvset{baselinestretch=0.9,fontsize=\footnotesize}
+
+\addtolength{\oddsidemargin}{0.75cm}
+\addtolength{\evensidemargin}{-0.75cm}
+\addtolength{\topmargin}{-2\baselineskip}
+\addtolength{\textheight}{7\baselineskip}
+
+\VerbatimInput{txt/2008-01-21.txt}
+
+\cleardoublepage
+
+\VerbatimInput{txt/2008-01-28.txt}
+
+\cleardoublepage
+
+\VerbatimInput{txt/2008-02-04.txt}
+
+\cleardoublepage
+
+\VerbatimInput{txt/2008-02-11.txt}
+
+\cleardoublepage
+
+\VerbatimInput{txt/2008-03-03.txt}
+
+\cleardoublepage
+
+\VerbatimInput{txt/2008-03-31.txt}
+
+\end{document}

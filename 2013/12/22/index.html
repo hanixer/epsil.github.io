@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="no">
+<head>
+<title>Last.fm Search Links</title>
+<meta content="text/html; charset=utf-8" http-equiv="Content-Type">
+<meta content="text/css" http-equiv="Content-Style-Type">
+<meta content="width=device-width, initial-scale=1" name="viewport">
+<link href="../../../favicon.ico" rel="icon" type="image/x-icon">
+<link href="../../../css/markdown-template.css" rel="stylesheet">
+<link href="index.txt" rel="alternate" title="Markdown" type="text/markdown">
+<script async="" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-MML-AM_CHTML" type="text/javascript">
+</script>
+<script src="../../../js/markdown-template.js">
+</script>
+</head>
+<body>
+<nav class="navbar navbar-default navbar-fixed-top">
+<div class="container-fluid">
+<ul class="nav nav-pills navbar-left">
+<li role="presentation"><a href="/" title="Return home"><i class="fa fa-home"></i></a>
+</li>
+</ul>
+
+<ul class="nav nav-pills navbar-right">
+<li role="presentation"><a href="http://www.facebook.com/share.php?u=about%3Ablank" title="Share on Facebook"><i class="fa fa-facebook-square"></i></a>
+</li>
+
+<li role="presentation"><a href="https://twitter.com/intent/tweet?url=about%3Ablank" title="Share on Twitter"><i class="fa fa-twitter-square"></i></a>
+</li>
+
+<li role="presentation"><a href="mailto:?body=about%3Ablank" title="Share by mail"><i class="fa fa-envelope"></i></a>
+</li>
+
+<li role="presentation"><a href="https://github.com/epsil/epsil.github.io/tree/master/blank/index.txt" title="Edit on GitHub"><i class="fa fa-edit"></i></a>
+</li>
+
+<li role="presentation"><a href="index.txt" title="Get Markdown source"><i class="fa fa-download"></i></a>
+</li>
+
+<li role="presentation"><a data-toggle="collapse" href="#toc" title="Table of contents"><i class="fa fa-bars"></i></a>
+</li>
+</ul>
+</div>
+
+<div class="collapse" id="toc" title="Innhold">
+</div>
+</nav>
+
+<div class="container">
+<article>
+<header>
+<h1 class="title">Last.fm Search Links</h1>
+
+<p><time><i class="fa fa-calendar-o"></i> 2013-12-22</time>
+</p>
+</header>
+
+<section id="content">
+<p><a href="http://userscripts.org/scripts/show/20252">Last.fm Search Links</a> er et nyttig skript for diverse musikknettsteder. Dessverre har den siste offisielle versjonen (2012.12.09) problemer med <a href="http://rateyourmusic.com/">Rate Your Music</a>. En uoffisiell <a href="http://userscripts.org/topics/131464">versjon 2013.09.10</a> gjør noen endringer:</p>
+
+<pre>
+<code class="language-javascript">{       <span class="hljs-comment">// rym artist</span>
+        url:<span class="hljs-regexp">/^http:\/\/(?:www\.)?rateyourmusic\.com\/artist\/[\w#!:.?+=&amp;%@!\-]+\/?$/i</span>,
+        mainPath:<span class="hljs-string">"div.profilehir"</span>,
+        search:rymSearch
+},
+</code>
+</pre>
+
+<p>Men nå har Rate Your Music endret <abbr class="acronym" title="HyperText Markup Language">HTML</abbr>-koden igjen, så dette virker ikke lenger. Det følgende ser ut til å fungere:</p>
+
+<pre>
+<code class="language-javascript">{       <span class="hljs-comment">// rym artist</span>
+        url:<span class="hljs-regexp">/^http:\/\/(?:www\.)?rateyourmusic\.com\/artist\/[\w#!:.?+=&amp;%@!\-]+\/?$/i</span>,
+        mainPath:<span class="hljs-string">"div.section_artist_name"</span>,
+        search:rymSearch
+},
+{       <span class="hljs-comment">// rym album</span>
+        url:<span class="hljs-regexp">/^http:\/\/(?:www\.)?rateyourmusic\.com\/release\/\w+\/[\w#!:.?+=&amp;%@!\-]+\/[\w#!:.?+=&amp;%@!\-]+\/?$/i</span>,
+        search:rymSearch,
+        mainPath:<span class="hljs-string">"div#content"</span>,
+        artistPath:<span class="hljs-string">"table.album_info a.artist"</span>,
+        albumPath:<span class="hljs-string">"div.album_title"</span>,
+        placePath:<span class="hljs-string">"div.album_title"</span>
+},
+</code>
+</pre>
+
+<hr>
+
+<p><strong>Oppdatering 2015-04-29:</strong> En bruker ved navn <a href="http://userscripts-mirror.org/topics/131464.html">rocketman</a> har vedlikeholdt koden.</p>
+</section>
+</article>
+</div>
+</body>
+</html>

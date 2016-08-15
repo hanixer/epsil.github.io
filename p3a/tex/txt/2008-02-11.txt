@@ -1,0 +1,53 @@
+ __ __  __  _____ __ __     __ __
+|_ /  \|__)(_  | |_ |__)|_/|_ |__)  _    _
+|  \__/| \ __) | |__| \ | \|__| \  | |  | |
+         _ __  _ __ ___  ___ _  ___| | _| |_
+        | '_ \| '__/ _ \/ __| |/ _ \ |/ / __|
+        | |_) | | | (_) \__ \ |  __/   <| |_
+        | .__/|_|  \___/|___/ |\___|_|\_\\__|
+        | |                _/ |
+        |_|               |__/    Møtereferat
+                                   2008-02-11
+MØTT OPP:
+
+    Aleksander Uthus
+    Stian Rishaug
+    Vegard Øye
+
+HVA BLE GJENNOMGÅTT?
+
+    Bastian har laget en framifrå kretsanalyse.
+
+    Multisim-modell er laget, men SPICE-modellene fungerer ikke
+    (kretsen sier «poff»).
+
+    Bestillingsliste: ELFA-alternativer er funnet for alle
+    transistorene, men noen av dem er forholdsvis dyre.
+
+    Strømforsyning: Primærsiden skal også ha sikringer.
+
+HVA SKAL GJØRES TIL NESTE MØTE?
+
+    Bestillingslisten skal sendes inn, mens det stadig søkes etter
+    billigere komponenter (for testing).
+
+    Multisim-modellen skal fikses.
+
+MØTEPLAN
+
+    Kl. 13.25 hver mandag.
+
+MØTELEDER (NESTE MØTE):
+
+    Aleksander «the man» Uthus.
+
+     ,_     _
+     |\\_,-~/
+     / _  _ |    ,--.
+    (  @  @ )   / ,-'
+     \  _T_/-._( (
+     /         `. \
+    |         _  \ |
+     \ \ ,  /      |
+      || |-_\__   /
+     ((_/`(____,-'

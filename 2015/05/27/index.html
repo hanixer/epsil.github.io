@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="no">
+<head>
+<title>Gollum og Pandoc</title>
+<meta content="text/html; charset=utf-8" http-equiv="Content-Type">
+<meta content="text/css" http-equiv="Content-Style-Type">
+<meta content="width=device-width, initial-scale=1" name="viewport">
+<link href="../../../favicon.ico" rel="icon" type="image/x-icon">
+<link href="../../../css/markdown-template.css" rel="stylesheet">
+<link href="index.txt" rel="alternate" title="Markdown" type="text/markdown">
+<script async="" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-MML-AM_CHTML" type="text/javascript">
+</script>
+<script src="../../../js/markdown-template.js">
+</script>
+</head>
+<body>
+<nav class="navbar navbar-default navbar-fixed-top">
+<div class="container-fluid">
+<ul class="nav nav-pills navbar-left">
+<li role="presentation"><a href="/" title="Return home"><i class="fa fa-home"></i></a>
+</li>
+</ul>
+
+<ul class="nav nav-pills navbar-right">
+<li role="presentation"><a href="http://www.facebook.com/share.php?u=about%3Ablank" title="Share on Facebook"><i class="fa fa-facebook-square"></i></a>
+</li>
+
+<li role="presentation"><a href="https://twitter.com/intent/tweet?url=about%3Ablank" title="Share on Twitter"><i class="fa fa-twitter-square"></i></a>
+</li>
+
+<li role="presentation"><a href="mailto:?body=about%3Ablank" title="Share by mail"><i class="fa fa-envelope"></i></a>
+</li>
+
+<li role="presentation"><a href="https://github.com/epsil/epsil.github.io/tree/master/blank/index.txt" title="Edit on GitHub"><i class="fa fa-edit"></i></a>
+</li>
+
+<li role="presentation"><a href="index.txt" title="Get Markdown source"><i class="fa fa-download"></i></a>
+</li>
+
+<li role="presentation"><a data-toggle="collapse" href="#toc" title="Table of contents"><i class="fa fa-bars"></i></a>
+</li>
+</ul>
+</div>
+
+<div class="collapse" id="toc" title="Innhold">
+</div>
+</nav>
+
+<div class="container">
+<article>
+<header>
+<h1 class="title">Gollum og Pandoc</h1>
+
+<p><time><i class="fa fa-calendar-o"></i> 2015-05-27</time>
+</p>
+</header>
+
+<section id="content">
+<p>En oppgradering av Gollum til versjon 4.0.0 skapte visse problemer med Markdown-koden (ingen støtte for gjennomstreking, problemer med underlister). Det ser ut til at denne versjonen bruker Gem-pakken <code>github-markup</code> for å håndtere Markdown, ikke <code>redcarpet</code> eller <code>kramdown</code>.</p>
+
+<p>Martin Wolf har laget en <code>config.rb</code>-fil som gjør at Gollum bruker <a href="http://mwolf.net/2014/04/29/adding-pandoc-to-gollum/">Pandoc</a>:</p>
+
+<pre>
+<code class="language-ruby"><span class="hljs-keyword">require</span> <span class="hljs-string">"github/markup"</span>
+
+ci = GitHub::Markup::CommandImplementation.new(
+    <span class="hljs-regexp">/md|mkdn?|mdwn|mdown|markdown|litcoffee/</span>,
+      <span class="hljs-string">"pandoc -f markdown-tex_math_dollars-raw_tex"</span>)
+<span class="hljs-comment"># Our command needs to go to the front of the queue, in order to take</span>
+<span class="hljs-comment"># precedence before the stock GitHub::Markup::Markdown implementation</span>
+GitHub::Markup::markups.unshift(ci)
+</code>
+</pre>
+
+<p>Dette forutsetter at Gollum startes med opsjonen <code>--config</code>.</p>
+</section>
+</article>
+</div>
+</body>
+</html>

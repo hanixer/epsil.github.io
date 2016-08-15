@@ -1,0 +1,16 @@
+title: Bruke `find` på filnavn med mellomrom
+date: 2010-11-14
+---
+
+Hvis man skal bruke `find` sammen med, si, `rm` på filnavn som inneholder mellomrom, må man ta visse forhåndsregler. Den mest opplagte besvergelsen ville være:
+
+    find -name <PATTERN> | xargs rm
+
+Men dette fungerer altså bare på filnavn uten mellomrom. For mer kronglete filer må man bruke en av disse:
+
+    find -name <PATTERN> -exec rm {} \;
+    find -name <PATTERN> -print0 | xargs -0 rm
+
+Den første eksekverer `rm` via `find`. Den siste bruker opsjonen `-print0` for å terminere filnavn med `\0` istedenfor linjeskift, og `rm` gjøres oppmerksom på dette med opsjonen `-0`. Begge programmer må altså tilpasses for å kunne samarbeide om spesielle filnavn.
+
+Fortrinnet med `\0`-metoden er at den håndterer de mest outrerte filnavn, selv navn som inneholder linjeskift! Jeg visste ikke at det var mulig før jeg leste `man find`, men `touch 'some\` + <kbd>Enter</kbd> + `file'` vil lage en slik fil. (Bytt ut «`touch`» med «`rm`» for å slette filen.)

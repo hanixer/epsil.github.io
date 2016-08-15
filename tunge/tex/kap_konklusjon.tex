@@ -1,0 +1,62 @@
+\chapter{Konklusjon}
+
+Prototypen som er laget, kan utføre alle standard musefunksjoner i Microsoft
+Windows, så vel som alle andre operativsystemer.
+
+For kontrollering av musepekeren er det laget en <<ett-trykk-funksjonalitet>>,
+som hindrer at tungen slites ut etter langvarig bruk. Brukeren starter en
+bevegelse og stopper eller endrer retning ved ønsket plassering. Under denne
+funksjonen beveger pekeren seg langsomt til å begynne med for å gi god
+presisjon.
+
+Man kan snakke mens man beveger musepekeren over skjermen, og det er mulig å be
+venstre museknapp være aktiv mens man beveger musepekeren over skjermen. Det er
+også mulig å sette musen i en <<scroll>>-modus som gjør surfing av nettsider og
+lesing av dokumenter meget behagelig.
+
+Den største utfordringen er å lære opp tungen til å huske sensorenes plassering
+på kinnet. Dette blir bedre over tid, men krever litt tålmodighet og innsats.
+
+De utdelte sensorene (FSR-400 og FSR-402) er veldig følsomme, men det kan være
+vanskelig å få utslag med tungen. Forskning på hvordan sensorene er i kontakt
+med kinnet kan forbedre dette.
+
+Det ble laget en hodebøyle for å gi riktig plassering av sensorene på kinnet. På
+grunn av lite bakgrunnskunskap og utstyr, oppfyller ikke hodebøylen alle kravene
+i produktspesifikasjonen. Sensorene er plassert utenpå kinnene -- to store
+knappsensorer på venstre og fire små bevegelsessensorer på høyre. Prototypen har
+et problem med at sensorene ligger litt dårlig mot kinnet.
+
+Ved bruk av sensorene er det erfart at det må være et godt press mot kinnet, og
+de må ligge lengst mulig fram mot munnen for at sensortypen skal kunne brukes i
+et endelig produkt. Justeringsdelen er også litt vanskelig, men designet har
+potensial for videreutvikling.
+
+Elektronikken som ble valgt for tolkning av sensordata, er demokretsen
+AT90USBKey fra Atmel. Denne er basert på mikrokontrolleren AT90USB1287 og
+fungerte bra til utvikling av en prototype. Kretsen har innebygd åtte ADC-er,
+hvorav seks blir benyttet til tolking av sensordata. Kretsen gjør bruk av
+USB-grensesnittet for overføring av data, så vel som energitilførsel. Det er
+integrert en spenningsregulator som benyttes til å forspenne sensorene. Denne er
+sterk nok til å forsyne eventuelle tilleggskretser.
+
+Det er laget en boks som omkapsler AT90USBKey (<<X-box>>), fordi demokretsen er
+for stor til å festes på hodebøylen.
+
+Programkoden er skrevet for å være fleksibel angående antall sensorer og portene
+de kobles til, så vel som valg av mikrokontroller. Teorien og målingene tilsier
+at sensorene setter krav til en dynamisk verdi for hendelsesaktivering, og
+kontinuerlig kalibrering. Dette problemet er løst med programvare.
+
+Programmeringsmessig er det lite som kan videreutvikles, ettersom programmet
+implementerer alle funksjonene i HID-standarden. Flere funksjoner kan bare
+implementeres på toppen av det gjeldende grensesnittet, ved å skrive et program
+eller driver på PC-siden som håndterer signalene på en egen måte. Fordelen med å
+begrense seg til HID-standarden er at musen ikke krever en egen driver og kan
+dermed brukes overalt, også på Mac og Linux.
+
+Utgiftene ved prosjektet var minimale, estimert til ca. 2000~NOK.\\
+
+\noindent På bakgrunn av rapporten, konkluderer prosjektgruppen med at det er
+mulig å lage en tungestyrt musepeker som anvist. Det mekaniske og ergonomiske må
+imidlertid forbedres for å få et salgbart produkt. % end

@@ -1,0 +1,65 @@
+ __ __  __  _____ __ __     __ __
+|_ /  \|__)(_  | |_ |__)|_/|_ |__)  _    _
+|  \__/| \ __) | |__| \ | \|__| \  | |  | |
+         _ __  _ __ ___  ___ _  ___| | _| |_
+        | '_ \| '__/ _ \/ __| |/ _ \ |/ / __|
+        | |_) | | | (_) \__ \ |  __/   <| |_
+        | .__/|_|  \___/|___/ |\___|_|\_\\__|
+        | |                _/ |
+        |_|               |__/    Møtereferat
+                                   2008-01-28
+MØTT OPP:
+
+    Aleksander Uthus
+    Bastian S. Solem
+    Johan Wiggen
+    Stian Rishaug
+    Vegard Øye
+
+HVA BLE GJENNOMGÅTT?
+
+    Ettersom A-forsterkere har dårlig effektforbruk og B-forsterkere
+    har for mange feil («fungerer ikke i det hele tatt» - Bastian),
+    går vi for AB-forsterker.
+
+    AB-forsterkeren vi valgte (de andre det sto mellom, var
+    60 W-forsterkeren og leach-forsterkeren), er beskrevet på
+
+    http://sound.westhost.com/project3a.htm
+
+    Aleksander fant ikke trafo.
+
+HVA SKAL GJØRES TIL NESTE MØTE?
+
+    Sende ut møteinnkallelse til Herman.
+
+    Legge koblingsskjemaet til forsterkeren inn i Multisim.
+
+    Finne komponenter og -priser (Stian).
+
+    Bestemme strømforsyningen (trafoen): størrelse, pris og hvor vi
+    kan få tak i den.
+
+    Skaffe ringperm og legge ut data sheets på it's learning
+    (Aleksander).
+
+    Alle skal sette seg inn i forsterkeren!
+
+MØTEPLAN
+
+    Kl. 13.25 hver mandag.
+
+MØTELEDER (NESTE MØTE):
+
+    Aleksander «the man» Uthus.
+
+     ,_     _
+     |\\_,-~/
+     / _  _ |    ,--.
+    (  @  @ )   / ,-'
+     \  _T_/-._( (
+     /         `. \
+    |         _  \ |
+     \ \ ,  /      |
+      || |-_\__   /
+     ((_/`(____,-'

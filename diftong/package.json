@@ -1,0 +1,17 @@
+{
+  "name": "Diftongmaskinen",
+  "author": "Vegard Øye",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/epsil/diftong.git"
+  },
+  "scripts": {
+    "start": "start index.html",
+    "test": "npm run spec && npm run lint",
+    "lint": "jshint diftong.js test/test.js && standard diftong.js test/test.js",
+    "spec": "start test/index.html",
+    "commit": "npm run lint && git commit -a",
+    "amend": "npm run lint && git commit -a --amend"
+  },
+  "url": "https://github.com/epsil/diftong"
+}

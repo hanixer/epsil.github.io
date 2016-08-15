@@ -1,0 +1,1036 @@
+Archive member included because of file (symbol)
+
+e:/innstalerte/avrstudio/winavr/bin/../lib/gcc/avr/4.3.2/avr51\libgcc.a(_udivmodhi4.o)
+                              default/sensors.o (__udivmodhi4)
+e:/innstalerte/avrstudio/winavr/bin/../lib/gcc/avr/4.3.2/avr51\libgcc.a(_exit.o)
+                              e:/innstalerte/avrstudio/winavr/bin/../lib/gcc/avr/4.3.2/../../../../avr/lib/avr51/crtusb1287.o (exit)
+e:/innstalerte/avrstudio/winavr/bin/../lib/gcc/avr/4.3.2/avr51\libgcc.a(_clear_bss.o)
+                              default/wdt_drv.o (__do_clear_bss)
+
+Allocating common symbols
+Common symbol       size              file
+
+endpoint_status     0x7               default/usb_standard_request.o
+g_u8_cpt_sof        0x1               default/mouse_task.o
+g_b_send_ack_report
+                    0x1               default/mouse_task.o
+g_b_send_report     0x1               default/mouse_task.o
+g_hid_mouse_report  0x4               default/mouse_task.o
+usb_configuration_nb
+                    0x1               default/usb_standard_request.o
+data_to_transfer    0x1               default/usb_standard_request.o
+pbuffer             0x2               default/usb_standard_request.o
+
+Discarded input sections
+
+ .data          0x00000000        0x0 e:/innstalerte/avrstudio/winavr/bin/../lib/gcc/avr/4.3.2/../../../../avr/lib/avr51/crtusb1287.o
+ .bss           0x00000000        0x0 e:/innstalerte/avrstudio/winavr/bin/../lib/gcc/avr/4.3.2/../../../../avr/lib/avr51/crtusb1287.o
+ .text          0x00000000        0x0 default/wdt_drv.o
+ .data          0x00000000        0x0 default/wdt_drv.o
+ .bss           0x00000000        0x0 default/wdt_drv.o
+ .text.wdtdrv_enable
+                0x00000000        0x0 default/wdt_drv.o
+ .text.wdtdrv_interrupt_enable
+                0x00000000        0x0 default/wdt_drv.o
+ .text.wdtdrv_interrupt_reset_enable
+                0x00000000        0x0 default/wdt_drv.o
+ .text          0x00000000        0x0 default/adc_drv.o
+ .data          0x00000000        0x0 default/adc_drv.o
+ .bss           0x00000000        0x0 default/adc_drv.o
+ .text          0x00000000        0x0 default/scheduler.o
+ .data          0x00000000        0x0 default/scheduler.o
+ .bss           0x00000000        0x0 default/scheduler.o
+ .text          0x00000000        0x0 default/power_drv.o
+ .data          0x00000000        0x0 default/power_drv.o
+ .bss           0x00000000        0x0 default/power_drv.o
+ .text.set_idle_mode
+                0x00000000        0x0 default/power_drv.o
+ .text.set_adc_noise_reduction_mode
+                0x00000000        0x0 default/power_drv.o
+ .text.set_power_save_mode
+                0x00000000        0x0 default/power_drv.o
+ .text.set_standby_mode
+                0x00000000        0x0 default/power_drv.o
+ .text.set_ext_standby_mode
+                0x00000000        0x0 default/power_drv.o
+ .text          0x00000000        0x0 default/usb_drv.o
+ .data          0x00000000        0x0 default/usb_drv.o
+ .bss           0x00000000        0x0 default/usb_drv.o
+ .text.usb_select_enpoint_interrupt
+                0x00000000        0x0 default/usb_drv.o
+ .text.usb_send_packet
+                0x00000000        0x0 default/usb_drv.o
+ .text.usb_read_packet
+                0x00000000        0x0 default/usb_drv.o
+ .text.usb_halt_endpoint
+                0x00000000        0x0 default/usb_drv.o
+ .text          0x00000000        0x0 default/usb_device_task.o
+ .data          0x00000000        0x0 default/usb_device_task.o
+ .text          0x00000000        0x0 default/usb_standard_request.o
+ .data          0x00000000        0x0 default/usb_standard_request.o
+ .text          0x00000000        0x0 default/usb_task.o
+ .data          0x00000000        0x0 default/usb_task.o
+ .text          0x00000000        0x0 default/usb_specific_request.o
+ .data          0x00000000        0x0 default/usb_specific_request.o
+ .text          0x00000000        0x0 default/usb_descriptors.o
+ .data          0x00000000        0x0 default/usb_descriptors.o
+ .bss           0x00000000        0x0 default/usb_descriptors.o
+ .text          0x00000000        0x0 default/sensors.o
+ .text          0x00000000        0x0 default/mouse_task.o
+ .data          0x00000000        0x0 default/mouse_task.o
+ .bss           0x00000000        0x0 default/mouse_task.o
+ .text          0x00000000        0x0 default/main.o
+ .data          0x00000000        0x0 default/main.o
+ .bss           0x00000000        0x0 default/main.o
+ .text          0x00000000        0x0 e:/innstalerte/avrstudio/winavr/bin/../lib/gcc/avr/4.3.2/avr51\libgcc.a(_udivmodhi4.o)
+ .data          0x00000000        0x0 e:/innstalerte/avrstudio/winavr/bin/../lib/gcc/avr/4.3.2/avr51\libgcc.a(_udivmodhi4.o)
+ .bss           0x00000000        0x0 e:/innstalerte/avrstudio/winavr/bin/../lib/gcc/avr/4.3.2/avr51\libgcc.a(_udivmodhi4.o)
+ .text          0x00000000        0x0 e:/innstalerte/avrstudio/winavr/bin/../lib/gcc/avr/4.3.2/avr51\libgcc.a(_exit.o)
+ .data          0x00000000        0x0 e:/innstalerte/avrstudio/winavr/bin/../lib/gcc/avr/4.3.2/avr51\libgcc.a(_exit.o)
+ .bss           0x00000000        0x0 e:/innstalerte/avrstudio/winavr/bin/../lib/gcc/avr/4.3.2/avr51\libgcc.a(_exit.o)
+ .text.libgcc   0x00000000        0x0 e:/innstalerte/avrstudio/winavr/bin/../lib/gcc/avr/4.3.2/avr51\libgcc.a(_exit.o)
+ .text          0x00000000        0x0 e:/innstalerte/avrstudio/winavr/bin/../lib/gcc/avr/4.3.2/avr51\libgcc.a(_clear_bss.o)
+ .data          0x00000000        0x0 e:/innstalerte/avrstudio/winavr/bin/../lib/gcc/avr/4.3.2/avr51\libgcc.a(_clear_bss.o)
+ .bss           0x00000000        0x0 e:/innstalerte/avrstudio/winavr/bin/../lib/gcc/avr/4.3.2/avr51\libgcc.a(_clear_bss.o)
+ .text.libgcc   0x00000000        0x0 e:/innstalerte/avrstudio/winavr/bin/../lib/gcc/avr/4.3.2/avr51\libgcc.a(_clear_bss.o)
+
+Memory Configuration
+
+Name             Origin             Length             Attributes
+text             0x00000000         0x00020000         xr
+data             0x00800060         0x0000ffa0         rw !x
+eeprom           0x00810000         0x00010000         rw !x
+fuse             0x00820000         0x00000400         rw !x
+lock             0x00830000         0x00000400         rw !x
+signature        0x00840000         0x00000400         rw !x
+*default*        0x00000000         0xffffffff
+
+Linker script and memory map
+
+Address of section .data set to 0x800100
+LOAD e:/innstalerte/avrstudio/winavr/bin/../lib/gcc/avr/4.3.2/../../../../avr/lib/avr51/crtusb1287.o
+LOAD default/wdt_drv.o
+LOAD default/adc_drv.o
+LOAD default/scheduler.o
+LOAD default/power_drv.o
+LOAD default/usb_drv.o
+LOAD default/usb_device_task.o
+LOAD default/usb_standard_request.o
+LOAD default/usb_task.o
+LOAD default/usb_specific_request.o
+LOAD default/usb_descriptors.o
+LOAD default/sensors.o
+LOAD default/mouse_task.o
+LOAD default/main.o
+LOAD e:/innstalerte/avrstudio/winavr/bin/../lib/gcc/avr/4.3.2/avr51\libgcc.a
+LOAD e:/innstalerte/avrstudio/winavr/bin/../lib/gcc/avr/4.3.2/../../../../avr/lib/avr51\libc.a
+LOAD e:/innstalerte/avrstudio/winavr/bin/../lib/gcc/avr/4.3.2/avr51\libgcc.a
+
+.hash
+ *(.hash)
+
+.dynsym
+ *(.dynsym)
+
+.dynstr
+ *(.dynstr)
+
+.gnu.version
+ *(.gnu.version)
+
+.gnu.version_d
+ *(.gnu.version_d)
+
+.gnu.version_r
+ *(.gnu.version_r)
+
+.rel.init
+ *(.rel.init)
+
+.rela.init
+ *(.rela.init)
+
+.rel.text
+ *(.rel.text)
+ *(.rel.text.*)
+ *(.rel.gnu.linkonce.t*)
+
+.rela.text
+ *(.rela.text)
+ *(.rela.text.*)
+ *(.rela.gnu.linkonce.t*)
+
+.rel.fini
+ *(.rel.fini)
+
+.rela.fini
+ *(.rela.fini)
+
+.rel.rodata
+ *(.rel.rodata)
+ *(.rel.rodata.*)
+ *(.rel.gnu.linkonce.r*)
+
+.rela.rodata
+ *(.rela.rodata)
+ *(.rela.rodata.*)
+ *(.rela.gnu.linkonce.r*)
+
+.rel.data
+ *(.rel.data)
+ *(.rel.data.*)
+ *(.rel.gnu.linkonce.d*)
+
+.rela.data
+ *(.rela.data)
+ *(.rela.data.*)
+ *(.rela.gnu.linkonce.d*)
+
+.rel.ctors
+ *(.rel.ctors)
+
+.rela.ctors
+ *(.rela.ctors)
+
+.rel.dtors
+ *(.rel.dtors)
+
+.rela.dtors
+ *(.rela.dtors)
+
+.rel.got
+ *(.rel.got)
+
+.rela.got
+ *(.rela.got)
+
+.rel.bss
+ *(.rel.bss)
+
+.rela.bss
+ *(.rela.bss)
+
+.rel.plt
+ *(.rel.plt)
+
+.rela.plt
+ *(.rela.plt)
+
+.text           0x00000000     0x2682
+ *(.vectors)
+ .vectors       0x00000000       0x98 e:/innstalerte/avrstudio/winavr/bin/../lib/gcc/avr/4.3.2/../../../../avr/lib/avr51/crtusb1287.o
+                0x00000000                __vectors
+                0x00000000                __vector_default
+ *(.vectors)
+ *(.progmem.gcc*)
+ *(.progmem*)
+ .progmem.data  0x00000098       0x9c default/usb_descriptors.o
+                0x000000fc                usb_user_language_id
+                0x00000098                usb_dev_desc
+                0x000000d6                usb_user_product_string_descriptor
+                0x000000cc                usb_user_manufacturer_string_descriptor
+                0x00000100                usb_hid_report_descriptor_mouse
+                0x000000aa                usb_conf_desc
+                0x00000134                . = ALIGN (0x2)
+                0x00000134                __trampolines_start = .
+ *(.trampolines)
+ .trampolines   0x00000134        0x0 linker stubs
+ *(.trampolines*)
+                0x00000134                __trampolines_end = .
+ *(.jumptables)
+ *(.jumptables*)
+ *(.lowtext)
+ *(.lowtext*)
+                0x00000134                __ctors_start = .
+ *(.ctors)
+                0x00000134                __ctors_end = .
+                0x00000134                __dtors_start = .
+ *(.dtors)
+                0x00000134                __dtors_end = .
+ SORT(*)(.ctors)
+ SORT(*)(.dtors)
+ *(.init0)
+ .init0         0x00000134        0x0 e:/innstalerte/avrstudio/winavr/bin/../lib/gcc/avr/4.3.2/../../../../avr/lib/avr51/crtusb1287.o
+                0x00000134                __init
+ *(.init0)
+ *(.init1)
+ *(.init1)
+ *(.init2)
+ .init2         0x00000134        0xc e:/innstalerte/avrstudio/winavr/bin/../lib/gcc/avr/4.3.2/../../../../avr/lib/avr51/crtusb1287.o
+ *(.init2)
+ *(.init3)
+ .init3         0x00000140       0x1a default/main.o
+                0x00000140                __low_level_init
+ *(.init3)
+ *(.init4)
+ .init4         0x0000015a       0x1c e:/innstalerte/avrstudio/winavr/bin/../lib/gcc/avr/4.3.2/../../../../avr/lib/avr51/crtusb1287.o
+                0x0000015a                __do_copy_data
+ .init4         0x00000176       0x10 e:/innstalerte/avrstudio/winavr/bin/../lib/gcc/avr/4.3.2/avr51\libgcc.a(_clear_bss.o)
+                0x00000176                __do_clear_bss
+ *(.init4)
+ *(.init5)
+ *(.init5)
+ *(.init6)
+ *(.init6)
+ *(.init7)
+ *(.init7)
+ *(.init8)
+ *(.init8)
+ *(.init9)
+ .init9         0x00000186        0x8 e:/innstalerte/avrstudio/winavr/bin/../lib/gcc/avr/4.3.2/../../../../avr/lib/avr51/crtusb1287.o
+ *(.init9)
+ *(.text)
+ .text          0x0000018e        0x2 e:/innstalerte/avrstudio/winavr/bin/../lib/gcc/avr/4.3.2/../../../../avr/lib/avr51/crtusb1287.o
+                0x0000018e                __vector_22
+                0x0000018e                __vector_28
+                0x0000018e                __vector_1
+                0x0000018e                __vector_32
+                0x0000018e                __vector_34
+                0x0000018e                __vector_24
+                0x0000018e                __vector_12
+                0x0000018e                __bad_interrupt
+                0x0000018e                __vector_6
+                0x0000018e                __vector_31
+                0x0000018e                __vector_35
+                0x0000018e                __vector_3
+                0x0000018e                __vector_23
+                0x0000018e                __vector_30
+                0x0000018e                __vector_25
+                0x0000018e                __vector_11
+                0x0000018e                __vector_13
+                0x0000018e                __vector_17
+                0x0000018e                __vector_19
+                0x0000018e                __vector_7
+                0x0000018e                __vector_27
+                0x0000018e                __vector_5
+                0x0000018e                __vector_33
+                0x0000018e                __vector_37
+                0x0000018e                __vector_4
+                0x0000018e                __vector_2
+                0x0000018e                __vector_21
+                0x0000018e                __vector_15
+                0x0000018e                __vector_36
+                0x0000018e                __vector_29
+                0x0000018e                __vector_8
+                0x0000018e                __vector_26
+                0x0000018e                __vector_14
+                0x0000018e                __vector_16
+                0x0000018e                __vector_18
+                0x0000018e                __vector_20
+                0x00000190                . = ALIGN (0x2)
+ *(.text.*)
+ .text.wdtdrv_disable
+                0x00000190       0x3e default/wdt_drv.o
+                0x00000190                wdtdrv_disable
+ .text.init_adc
+                0x000001ce       0x82 default/adc_drv.o
+                0x000001ce                init_adc
+ .text.scheduler_init
+                0x00000250       0x16 default/scheduler.o
+                0x00000250                scheduler_init
+ .text.scheduler_tasks
+                0x00000266       0x12 default/scheduler.o
+                0x00000266                scheduler_tasks
+ .text.scheduler
+                0x00000278       0x12 default/scheduler.o
+                0x00000278                scheduler
+ .text.scheduler_empty_fct
+                0x0000028a        0xe default/scheduler.o
+                0x0000028a                scheduler_empty_fct
+ .text.set_power_down_mode
+                0x00000298       0x24 default/power_drv.o
+                0x00000298                set_power_down_mode
+ .text.usb_config_ep
+                0x000002bc       0x66 default/usb_drv.o
+                0x000002bc                usb_config_ep
+ .text.usb_init_device
+                0x00000322       0x5e default/usb_drv.o
+                0x00000322                usb_init_device
+ .text.usb_device_task_init
+                0x00000380       0x3c default/usb_device_task.o
+                0x00000380                usb_device_task_init
+ .text.usb_start_device
+                0x000003bc       0x62 default/usb_device_task.o
+                0x000003bc                usb_start_device
+ .text.usb_device_task
+                0x0000041e       0xec default/usb_device_task.o
+                0x0000041e                usb_device_task
+ .text.usb_process_request
+                0x0000050a      0x160 default/usb_standard_request.o
+                0x0000050a                usb_process_request
+ .text.usb_set_address
+                0x0000066a       0x6c default/usb_standard_request.o
+ .text.usb_set_configuration
+                0x000006d6       0x54 default/usb_standard_request.o
+ .text.usb_get_descriptor
+                0x0000072a      0x22e default/usb_standard_request.o
+ .text.usb_get_configuration
+                0x00000958       0x70 default/usb_standard_request.o
+ .text.usb_get_status
+                0x000009c8      0x108 default/usb_standard_request.o
+ .text.usb_set_feature
+                0x00000ad0      0x15a default/usb_standard_request.o
+ .text.usb_clear_feature
+                0x00000c2a      0x15a default/usb_standard_request.o
+ .text.usb_get_interface
+                0x00000d84       0xc0 default/usb_standard_request.o
+ .text.usb_set_interface
+                0x00000e44       0x96 default/usb_standard_request.o
+ .text.usb_generate_remote_wakeup
+                0x00000eda       0x62 default/usb_standard_request.o
+                0x00000eda                usb_generate_remote_wakeup
+ .text.usb_task_init
+                0x00000f3c       0x3a default/usb_task.o
+                0x00000f3c                usb_task_init
+ .text.usb_task
+                0x00000f76       0x10 default/usb_task.o
+                0x00000f76                usb_task
+ .text.__vector_10
+                0x00000f86      0x296 default/usb_task.o
+                0x00000f86                __vector_10
+ .text.usb_user_read_request
+                0x0000121c      0x106 default/usb_specific_request.o
+                0x0000121c                usb_user_read_request
+ .text.usb_user_endpoint_init
+                0x00001322       0x24 default/usb_specific_request.o
+                0x00001322                usb_user_endpoint_init
+ .text.usb_user_interface_get
+                0x00001346       0x1a default/usb_specific_request.o
+                0x00001346                usb_user_interface_get
+ .text.usb_user_interface_reset
+                0x00001360       0x58 default/usb_specific_request.o
+                0x00001360                usb_user_interface_reset
+ .text.usb_user_get_descriptor
+                0x000013b8       0xa0 default/usb_specific_request.o
+                0x000013b8                usb_user_get_descriptor
+ .text.hid_get_report_descriptor
+                0x00001458      0x1ca default/usb_specific_request.o
+                0x00001458                hid_get_report_descriptor
+ .text.usb_hid_set_report_ouput
+                0x00001622       0x66 default/usb_specific_request.o
+                0x00001622                usb_hid_set_report_ouput
+ .text.usb_hid_set_idle
+                0x00001688       0x6e default/usb_specific_request.o
+                0x00001688                usb_hid_set_idle
+ .text.usb_hid_get_idle
+                0x000016f6       0xb4 default/usb_specific_request.o
+                0x000016f6                usb_hid_get_idle
+ .text.hid_get_hid_descriptor
+                0x000017aa      0x1ca default/usb_specific_request.o
+                0x000017aa                hid_get_hid_descriptor
+ .text.is_mouse_event
+                0x00001974       0xc2 default/sensors.o
+                0x00001974                is_mouse_event
+ .text.Default_func
+                0x00001a36       0xa6 default/sensors.o
+                0x00001a36                Default_func
+ .text.Mov_count_func
+                0x00001adc       0x82 default/sensors.o
+                0x00001adc                Mov_count_func
+ .text.Mov_press_func
+                0x00001b5e       0x58 default/sensors.o
+                0x00001b5e                Mov_press_func
+ .text.Mov_touch_func
+                0x00001bb6       0xb0 default/sensors.o
+                0x00001bb6                Mov_touch_func
+ .text.Button_wait_func
+                0x00001c66       0xb8 default/sensors.o
+                0x00001c66                Button_wait_func
+ .text.Scroll_func
+                0x00001d1e       0xe6 default/sensors.o
+                0x00001d1e                Scroll_func
+ .text.Maybe_slow_cursor
+                0x00001e04       0x40 default/sensors.o
+                0x00001e04                Maybe_slow_cursor
+ .text.Maybe_left_holddown
+                0x00001e44       0x40 default/sensors.o
+                0x00001e44                Maybe_left_holddown
+ .text.is_movement_sensor
+                0x00001e84       0x4a default/sensors.o
+                0x00001e84                is_movement_sensor
+ .text.is_button_sensor
+                0x00001ece       0x32 default/sensors.o
+                0x00001ece                is_button_sensor
+ .text.adc_reader
+                0x00001f00       0x90 default/sensors.o
+                0x00001f00                adc_reader
+ .text.Read_sensors
+                0x00001f90       0x4e default/sensors.o
+                0x00001f90                Read_sensors
+ .text.Calibrate
+                0x00001fde       0x40 default/sensors.o
+                0x00001fde                Calibrate
+ .text.is_sensor_step
+                0x0000201e       0x58 default/sensors.o
+                0x0000201e                is_sensor_step
+ .text.is_sensor_active
+                0x00002076       0x3e default/sensors.o
+                0x00002076                is_sensor_active
+ .text.is_more_active
+                0x000020b4       0x56 default/sensors.o
+                0x000020b4                is_more_active
+ .text.find_active_sensor
+                0x0000210a       0x38 default/sensors.o
+                0x0000210a                find_active_sensor
+ .text.check_nearby_sensor
+                0x00002142       0x6a default/sensors.o
+                0x00002142                check_nearby_sensor
+ .text.Check_hang
+                0x000021ac       0x54 default/sensors.o
+                0x000021ac                Check_hang
+ .text.Inc_speed
+                0x00002200       0x4c default/sensors.o
+                0x00002200                Inc_speed
+ .text.Modify_report
+                0x0000224c       0xb4 default/sensors.o
+                0x0000224c                Modify_report
+ .text.mouse_task_init
+                0x00002300       0xe0 default/mouse_task.o
+                0x00002300                mouse_task_init
+ .text.mouse_task
+                0x000023e0      0x13c default/mouse_task.o
+                0x000023e0                mouse_task
+ .text.sof_action
+                0x0000251c       0x18 default/mouse_task.o
+                0x0000251c                sof_action
+ .text.suspend_action
+                0x00002534       0x62 default/mouse_task.o
+                0x00002534                suspend_action
+ .text.__vector_9
+                0x00002596       0x8a default/mouse_task.o
+                0x00002596                __vector_9
+ .text.main     0x00002620       0x36 default/main.o
+                0x00002620                main
+ .text.libgcc   0x00002656       0x28 e:/innstalerte/avrstudio/winavr/bin/../lib/gcc/avr/4.3.2/avr51\libgcc.a(_udivmodhi4.o)
+                0x00002656                __udivmodhi4
+                0x0000267e                . = ALIGN (0x2)
+ *(.fini9)
+ .fini9         0x0000267e        0x0 e:/innstalerte/avrstudio/winavr/bin/../lib/gcc/avr/4.3.2/avr51\libgcc.a(_exit.o)
+                0x0000267e                exit
+                0x0000267e                _exit
+ *(.fini9)
+ *(.fini8)
+ *(.fini8)
+ *(.fini7)
+ *(.fini7)
+ *(.fini6)
+ *(.fini6)
+ *(.fini5)
+ *(.fini5)
+ *(.fini4)
+ *(.fini4)
+ *(.fini3)
+ *(.fini3)
+ *(.fini2)
+ *(.fini2)
+ *(.fini1)
+ *(.fini1)
+ *(.fini0)
+ .fini0         0x0000267e        0x4 e:/innstalerte/avrstudio/winavr/bin/../lib/gcc/avr/4.3.2/avr51\libgcc.a(_exit.o)
+ *(.fini0)
+                0x00002682                _etext = .
+
+.data           0x00800100       0x40 load address 0x00002682
+                0x00800100                PROVIDE (__data_start, .)
+ *(.data)
+ .data          0x00800100       0x40 default/sensors.o
+                0x00800100                Nearby_sensors
+ *(.data*)
+ *(.rodata)
+ *(.rodata*)
+ *(.gnu.linkonce.d*)
+                0x00800140                . = ALIGN (0x2)
+                0x00800140                _edata = .
+                0x00800140                PROVIDE (__data_end, .)
+
+.bss            0x00800140       0x31
+                0x00800140                PROVIDE (__bss_start, .)
+ *(.bss)
+ .bss           0x00800140        0x2 default/usb_device_task.o
+                0x00800141                usb_suspended
+                0x00800140                usb_connected
+ .bss           0x00800142        0x2 default/usb_standard_request.o
+                0x00800142                remote_wakeup_feature
+ .bss           0x00800144        0x2 default/usb_task.o
+                0x00800144                g_usb_event
+ .bss           0x00800146        0x1 default/usb_specific_request.o
+                0x00800146                g_u8_report_rate
+ .bss           0x00800147       0x18 default/sensors.o
+                0x0080014b                Left_holddown
+                0x0080014d                Zerovalue
+                0x0080015e                Neighbor_sensor
+                0x00800147                State
+                0x0080014a                Slow_cursor
+                0x0080015d                Active_sensor
+                0x0080014c                Report_filled
+                0x00800155                Invalue
+                0x00800148                State_counter
+ *(.bss*)
+ *(COMMON)
+ COMMON         0x0080015f        0xb default/usb_standard_request.o
+                0x0080015f                endpoint_status
+                0x00800166                usb_configuration_nb
+                0x00800167                data_to_transfer
+                0x00800168                pbuffer
+ COMMON         0x0080016a        0x7 default/mouse_task.o
+                0x0080016a                g_u8_cpt_sof
+                0x0080016b                g_b_send_ack_report
+                0x0080016c                g_b_send_report
+                0x0080016d                g_hid_mouse_report
+                0x00800171                PROVIDE (__bss_end, .)
+                0x00002682                __data_load_start = LOADADDR (.data)
+                0x000026c2                __data_load_end = (__data_load_start + SIZEOF (.data))
+
+.noinit         0x00800171        0x0
+                0x00800171                PROVIDE (__noinit_start, .)
+ *(.noinit*)
+                0x00800171                PROVIDE (__noinit_end, .)
+                0x00800171                _end = .
+                0x00800171                PROVIDE (__heap_start, .)
+
+.eeprom         0x00810000        0x0
+ *(.eeprom*)
+                0x00810000                __eeprom_end = .
+
+.fuse
+ *(.fuse)
+ *(.lfuse)
+ *(.hfuse)
+ *(.efuse)
+
+.lock
+ *(.lock*)
+
+.signature
+ *(.signature*)
+
+.stab
+ *(.stab)
+
+.stabstr
+ *(.stabstr)
+
+.stab.excl
+ *(.stab.excl)
+
+.stab.exclstr
+ *(.stab.exclstr)
+
+.stab.index
+ *(.stab.index)
+
+.stab.indexstr
+ *(.stab.indexstr)
+
+.comment
+ *(.comment)
+
+.debug
+ *(.debug)
+
+.line
+ *(.line)
+
+.debug_srcinfo
+ *(.debug_srcinfo)
+
+.debug_sfnames
+ *(.debug_sfnames)
+
+.debug_aranges  0x00000000      0x388
+ *(.debug_aranges)
+ .debug_aranges
+                0x00000000       0x38 default/wdt_drv.o
+ .debug_aranges
+                0x00000038       0x20 default/adc_drv.o
+ .debug_aranges
+                0x00000058       0x38 default/scheduler.o
+ .debug_aranges
+                0x00000090       0x48 default/power_drv.o
+ .debug_aranges
+                0x000000d8       0x48 default/usb_drv.o
+ .debug_aranges
+                0x00000120       0x30 default/usb_device_task.o
+ .debug_aranges
+                0x00000150       0x70 default/usb_standard_request.o
+ .debug_aranges
+                0x000001c0       0x30 default/usb_task.o
+ .debug_aranges
+                0x000001f0       0x68 default/usb_specific_request.o
+ .debug_aranges
+                0x00000258       0xc8 default/sensors.o
+ .debug_aranges
+                0x00000320       0x40 default/mouse_task.o
+ .debug_aranges
+                0x00000360       0x28 default/main.o
+
+.debug_pubnames
+                0x00000000      0x8de
+ *(.debug_pubnames)
+ .debug_pubnames
+                0x00000000       0x75 default/wdt_drv.o
+ .debug_pubnames
+                0x00000075       0x1f default/adc_drv.o
+ .debug_pubnames
+                0x00000094       0x5f default/scheduler.o
+ .debug_pubnames
+                0x000000f3       0xa3 default/power_drv.o
+ .debug_pubnames
+                0x00000196       0x97 default/usb_drv.o
+ .debug_pubnames
+                0x0000022d       0x78 default/usb_device_task.o
+ .debug_pubnames
+                0x000002a5       0xb1 default/usb_standard_request.o
+ .debug_pubnames
+                0x00000356       0x51 default/usb_task.o
+ .debug_pubnames
+                0x000003a7      0x130 default/usb_specific_request.o
+ .debug_pubnames
+                0x000004d7       0xc5 default/usb_descriptors.o
+ .debug_pubnames
+                0x0000059c      0x258 default/sensors.o
+ .debug_pubnames
+                0x000007f4       0xba default/mouse_task.o
+ .debug_pubnames
+                0x000008ae       0x30 default/main.o
+
+.debug_info     0x00000000     0x23b0
+ *(.debug_info)
+ .debug_info    0x00000000      0x153 default/wdt_drv.o
+ .debug_info    0x00000153       0x9b default/adc_drv.o
+ .debug_info    0x000001ee       0xd7 default/scheduler.o
+ .debug_info    0x000002c5       0xff default/power_drv.o
+ .debug_info    0x000003c4      0x1f2 default/usb_drv.o
+ .debug_info    0x000005b6      0x128 default/usb_device_task.o
+ .debug_info    0x000006de      0x779 default/usb_standard_request.o
+ .debug_info    0x00000e57      0x10a default/usb_task.o
+ .debug_info    0x00000f61      0x764 default/usb_specific_request.o
+ .debug_info    0x000016c5      0x555 default/usb_descriptors.o
+ .debug_info    0x00001c1a      0x4f9 default/sensors.o
+ .debug_info    0x00002113      0x1a5 default/mouse_task.o
+ .debug_info    0x000022b8       0xf8 default/main.o
+ *(.gnu.linkonce.wi.*)
+
+.debug_abbrev   0x00000000      0x978
+ *(.debug_abbrev)
+ .debug_abbrev  0x00000000       0x8c default/wdt_drv.o
+ .debug_abbrev  0x0000008c       0x4a default/adc_drv.o
+ .debug_abbrev  0x000000d6       0x4a default/scheduler.o
+ .debug_abbrev  0x00000120       0x4a default/power_drv.o
+ .debug_abbrev  0x0000016a       0xb0 default/usb_drv.o
+ .debug_abbrev  0x0000021a       0x80 default/usb_device_task.o
+ .debug_abbrev  0x0000029a      0x1aa default/usb_standard_request.o
+ .debug_abbrev  0x00000444       0x95 default/usb_task.o
+ .debug_abbrev  0x000004d9      0x193 default/usb_specific_request.o
+ .debug_abbrev  0x0000066c       0xbc default/usb_descriptors.o
+ .debug_abbrev  0x00000728      0x101 default/sensors.o
+ .debug_abbrev  0x00000829       0xc5 default/mouse_task.o
+ .debug_abbrev  0x000008ee       0x8a default/main.o
+
+.debug_line     0x00000000     0x27a8
+ *(.debug_line)
+ .debug_line    0x00000000      0x19a default/wdt_drv.o
+ .debug_line    0x0000019a       0xbf default/adc_drv.o
+ .debug_line    0x00000259      0x115 default/scheduler.o
+ .debug_line    0x0000036e      0x163 default/power_drv.o
+ .debug_line    0x000004d1      0x240 default/usb_drv.o
+ .debug_line    0x00000711      0x239 default/usb_device_task.o
+ .debug_line    0x0000094a      0x8af default/usb_standard_request.o
+ .debug_line    0x000011f9      0x221 default/usb_task.o
+ .debug_line    0x0000141a      0x617 default/usb_specific_request.o
+ .debug_line    0x00001a31       0xc9 default/usb_descriptors.o
+ .debug_line    0x00001afa      0x8cc default/sensors.o
+ .debug_line    0x000023c6      0x2ea default/mouse_task.o
+ .debug_line    0x000026b0       0xf8 default/main.o
+
+.debug_frame    0x00000000      0x590
+ *(.debug_frame)
+ .debug_frame   0x00000000       0x50 default/wdt_drv.o
+ .debug_frame   0x00000050       0x20 default/adc_drv.o
+ .debug_frame   0x00000070       0x50 default/scheduler.o
+ .debug_frame   0x000000c0       0x70 default/power_drv.o
+ .debug_frame   0x00000130       0x70 default/usb_drv.o
+ .debug_frame   0x000001a0       0x40 default/usb_device_task.o
+ .debug_frame   0x000001e0       0xc0 default/usb_standard_request.o
+ .debug_frame   0x000002a0       0x40 default/usb_task.o
+ .debug_frame   0x000002e0       0xb0 default/usb_specific_request.o
+ .debug_frame   0x00000390      0x170 default/sensors.o
+ .debug_frame   0x00000500       0x60 default/mouse_task.o
+ .debug_frame   0x00000560       0x30 default/main.o
+
+.debug_str      0x00000000      0xe41
+ *(.debug_str)
+ .debug_str     0x00000000      0x158 default/wdt_drv.o
+                                0x191 (size before relaxing)
+ .debug_str     0x00000158       0x32 default/adc_drv.o
+                                0x136 (size before relaxing)
+ .debug_str     0x0000018a       0x6e default/scheduler.o
+                                0x172 (size before relaxing)
+ .debug_str     0x000001f8       0x9c default/power_drv.o
+                                0x1a0 (size before relaxing)
+ .debug_str     0x00000294       0xda default/usb_drv.o
+                                0x1de (size before relaxing)
+ .debug_str     0x0000036e       0xbd default/usb_device_task.o
+                                0x1c1 (size before relaxing)
+ .debug_str     0x0000042b      0x4f2 default/usb_standard_request.o
+                                0x621 (size before relaxing)
+ .debug_str     0x0000091d       0x43 default/usb_task.o
+                                0x17e (size before relaxing)
+ .debug_str     0x00000960      0x228 default/usb_specific_request.o
+                                0x602 (size before relaxing)
+ .debug_str     0x00000b88       0x15 default/usb_descriptors.o
+                                0x506 (size before relaxing)
+ .debug_str     0x00000b9d      0x203 default/sensors.o
+                                0x313 (size before relaxing)
+ .debug_str     0x00000da0       0x81 default/mouse_task.o
+                                0x1d2 (size before relaxing)
+ .debug_str     0x00000e21       0x20 default/main.o
+                                0x12c (size before relaxing)
+
+.debug_loc
+ *(.debug_loc)
+
+.debug_macinfo
+ *(.debug_macinfo)
+OUTPUT(series6-hidmouse.elf elf32-avr)
+LOAD linker stubs
+
+.debug_ranges   0x00000000      0x328
+ .debug_ranges  0x00000000       0x30 default/wdt_drv.o
+ .debug_ranges  0x00000030       0x18 default/adc_drv.o
+ .debug_ranges  0x00000048       0x30 default/scheduler.o
+ .debug_ranges  0x00000078       0x40 default/power_drv.o
+ .debug_ranges  0x000000b8       0x40 default/usb_drv.o
+ .debug_ranges  0x000000f8       0x28 default/usb_device_task.o
+ .debug_ranges  0x00000120       0x68 default/usb_standard_request.o
+ .debug_ranges  0x00000188       0x28 default/usb_task.o
+ .debug_ranges  0x000001b0       0x60 default/usb_specific_request.o
+ .debug_ranges  0x00000210       0xc0 default/sensors.o
+ .debug_ranges  0x000002d0       0x38 default/mouse_task.o
+ .debug_ranges  0x00000308       0x20 default/main.o
+
+Cross Reference Table
+
+Symbol                                            File
+Active_sensor                                     default/sensors.o
+Button_wait_func                                  default/sensors.o
+Calibrate                                         default/sensors.o
+Check_hang                                        default/sensors.o
+Default_func                                      default/sensors.o
+Inc_speed                                         default/sensors.o
+Invalue                                           default/sensors.o
+Left_holddown                                     default/sensors.o
+Maybe_left_holddown                               default/sensors.o
+Maybe_slow_cursor                                 default/sensors.o
+Modify_report                                     default/sensors.o
+Mov_count_func                                    default/sensors.o
+Mov_press_func                                    default/sensors.o
+Mov_touch_func                                    default/sensors.o
+Nearby_sensors                                    default/sensors.o
+Neighbor_sensor                                   default/sensors.o
+Read_sensors                                      default/sensors.o
+Report_filled                                     default/sensors.o
+Scroll_func                                       default/sensors.o
+Slow_cursor                                       default/sensors.o
+State                                             default/sensors.o
+State_counter                                     default/sensors.o
+Zerovalue                                         default/sensors.o
+                                                  default/mouse_task.o
+__bad_interrupt                                   e:/innstalerte/avrstudio/winavr/bin/../lib/gcc/avr/4.3.2/../../../../avr/lib/avr51/crtusb1287.o
+__bss_end                                         e:/innstalerte/avrstudio/winavr/bin/../lib/gcc/avr/4.3.2/avr51\libgcc.a(_clear_bss.o)
+__bss_start                                       e:/innstalerte/avrstudio/winavr/bin/../lib/gcc/avr/4.3.2/avr51\libgcc.a(_clear_bss.o)
+__data_end                                        e:/innstalerte/avrstudio/winavr/bin/../lib/gcc/avr/4.3.2/../../../../avr/lib/avr51/crtusb1287.o
+__data_load_start                                 e:/innstalerte/avrstudio/winavr/bin/../lib/gcc/avr/4.3.2/../../../../avr/lib/avr51/crtusb1287.o
+__data_start                                      e:/innstalerte/avrstudio/winavr/bin/../lib/gcc/avr/4.3.2/../../../../avr/lib/avr51/crtusb1287.o
+__do_clear_bss                                    e:/innstalerte/avrstudio/winavr/bin/../lib/gcc/avr/4.3.2/avr51\libgcc.a(_clear_bss.o)
+                                                  default/main.o
+                                                  default/mouse_task.o
+                                                  default/sensors.o
+                                                  default/usb_descriptors.o
+                                                  default/usb_specific_request.o
+                                                  default/usb_task.o
+                                                  default/usb_standard_request.o
+                                                  default/usb_device_task.o
+                                                  default/usb_drv.o
+                                                  default/power_drv.o
+                                                  default/scheduler.o
+                                                  default/adc_drv.o
+                                                  default/wdt_drv.o
+__do_copy_data                                    e:/innstalerte/avrstudio/winavr/bin/../lib/gcc/avr/4.3.2/../../../../avr/lib/avr51/crtusb1287.o
+                                                  default/main.o
+                                                  default/mouse_task.o
+                                                  default/sensors.o
+                                                  default/usb_descriptors.o
+                                                  default/usb_specific_request.o
+                                                  default/usb_task.o
+                                                  default/usb_standard_request.o
+                                                  default/usb_device_task.o
+                                                  default/usb_drv.o
+                                                  default/power_drv.o
+                                                  default/scheduler.o
+                                                  default/adc_drv.o
+                                                  default/wdt_drv.o
+__heap_end                                        e:/innstalerte/avrstudio/winavr/bin/../lib/gcc/avr/4.3.2/../../../../avr/lib/avr51/crtusb1287.o
+__init                                            e:/innstalerte/avrstudio/winavr/bin/../lib/gcc/avr/4.3.2/../../../../avr/lib/avr51/crtusb1287.o
+__low_level_init                                  default/main.o
+__stack                                           e:/innstalerte/avrstudio/winavr/bin/../lib/gcc/avr/4.3.2/../../../../avr/lib/avr51/crtusb1287.o
+__udivmodhi4                                      e:/innstalerte/avrstudio/winavr/bin/../lib/gcc/avr/4.3.2/avr51\libgcc.a(_udivmodhi4.o)
+                                                  default/sensors.o
+__vector_1                                        e:/innstalerte/avrstudio/winavr/bin/../lib/gcc/avr/4.3.2/../../../../avr/lib/avr51/crtusb1287.o
+__vector_10                                       default/usb_task.o
+                                                  e:/innstalerte/avrstudio/winavr/bin/../lib/gcc/avr/4.3.2/../../../../avr/lib/avr51/crtusb1287.o
+__vector_11                                       e:/innstalerte/avrstudio/winavr/bin/../lib/gcc/avr/4.3.2/../../../../avr/lib/avr51/crtusb1287.o
+__vector_12                                       e:/innstalerte/avrstudio/winavr/bin/../lib/gcc/avr/4.3.2/../../../../avr/lib/avr51/crtusb1287.o
+__vector_13                                       e:/innstalerte/avrstudio/winavr/bin/../lib/gcc/avr/4.3.2/../../../../avr/lib/avr51/crtusb1287.o
+__vector_14                                       e:/innstalerte/avrstudio/winavr/bin/../lib/gcc/avr/4.3.2/../../../../avr/lib/avr51/crtusb1287.o
+__vector_15                                       e:/innstalerte/avrstudio/winavr/bin/../lib/gcc/avr/4.3.2/../../../../avr/lib/avr51/crtusb1287.o
+__vector_16                                       e:/innstalerte/avrstudio/winavr/bin/../lib/gcc/avr/4.3.2/../../../../avr/lib/avr51/crtusb1287.o
+__vector_17                                       e:/innstalerte/avrstudio/winavr/bin/../lib/gcc/avr/4.3.2/../../../../avr/lib/avr51/crtusb1287.o
+__vector_18                                       e:/innstalerte/avrstudio/winavr/bin/../lib/gcc/avr/4.3.2/../../../../avr/lib/avr51/crtusb1287.o
+__vector_19                                       e:/innstalerte/avrstudio/winavr/bin/../lib/gcc/avr/4.3.2/../../../../avr/lib/avr51/crtusb1287.o
+__vector_2                                        e:/innstalerte/avrstudio/winavr/bin/../lib/gcc/avr/4.3.2/../../../../avr/lib/avr51/crtusb1287.o
+__vector_20                                       e:/innstalerte/avrstudio/winavr/bin/../lib/gcc/avr/4.3.2/../../../../avr/lib/avr51/crtusb1287.o
+__vector_21                                       e:/innstalerte/avrstudio/winavr/bin/../lib/gcc/avr/4.3.2/../../../../avr/lib/avr51/crtusb1287.o
+__vector_22                                       e:/innstalerte/avrstudio/winavr/bin/../lib/gcc/avr/4.3.2/../../../../avr/lib/avr51/crtusb1287.o
+__vector_23                                       e:/innstalerte/avrstudio/winavr/bin/../lib/gcc/avr/4.3.2/../../../../avr/lib/avr51/crtusb1287.o
+__vector_24                                       e:/innstalerte/avrstudio/winavr/bin/../lib/gcc/avr/4.3.2/../../../../avr/lib/avr51/crtusb1287.o
+__vector_25                                       e:/innstalerte/avrstudio/winavr/bin/../lib/gcc/avr/4.3.2/../../../../avr/lib/avr51/crtusb1287.o
+__vector_26                                       e:/innstalerte/avrstudio/winavr/bin/../lib/gcc/avr/4.3.2/../../../../avr/lib/avr51/crtusb1287.o
+__vector_27                                       e:/innstalerte/avrstudio/winavr/bin/../lib/gcc/avr/4.3.2/../../../../avr/lib/avr51/crtusb1287.o
+__vector_28                                       e:/innstalerte/avrstudio/winavr/bin/../lib/gcc/avr/4.3.2/../../../../avr/lib/avr51/crtusb1287.o
+__vector_29                                       e:/innstalerte/avrstudio/winavr/bin/../lib/gcc/avr/4.3.2/../../../../avr/lib/avr51/crtusb1287.o
+__vector_3                                        e:/innstalerte/avrstudio/winavr/bin/../lib/gcc/avr/4.3.2/../../../../avr/lib/avr51/crtusb1287.o
+__vector_30                                       e:/innstalerte/avrstudio/winavr/bin/../lib/gcc/avr/4.3.2/../../../../avr/lib/avr51/crtusb1287.o
+__vector_31                                       e:/innstalerte/avrstudio/winavr/bin/../lib/gcc/avr/4.3.2/../../../../avr/lib/avr51/crtusb1287.o
+__vector_32                                       e:/innstalerte/avrstudio/winavr/bin/../lib/gcc/avr/4.3.2/../../../../avr/lib/avr51/crtusb1287.o
+__vector_33                                       e:/innstalerte/avrstudio/winavr/bin/../lib/gcc/avr/4.3.2/../../../../avr/lib/avr51/crtusb1287.o
+__vector_34                                       e:/innstalerte/avrstudio/winavr/bin/../lib/gcc/avr/4.3.2/../../../../avr/lib/avr51/crtusb1287.o
+__vector_35                                       e:/innstalerte/avrstudio/winavr/bin/../lib/gcc/avr/4.3.2/../../../../avr/lib/avr51/crtusb1287.o
+__vector_36                                       e:/innstalerte/avrstudio/winavr/bin/../lib/gcc/avr/4.3.2/../../../../avr/lib/avr51/crtusb1287.o
+__vector_37                                       e:/innstalerte/avrstudio/winavr/bin/../lib/gcc/avr/4.3.2/../../../../avr/lib/avr51/crtusb1287.o
+__vector_4                                        e:/innstalerte/avrstudio/winavr/bin/../lib/gcc/avr/4.3.2/../../../../avr/lib/avr51/crtusb1287.o
+__vector_5                                        e:/innstalerte/avrstudio/winavr/bin/../lib/gcc/avr/4.3.2/../../../../avr/lib/avr51/crtusb1287.o
+__vector_6                                        e:/innstalerte/avrstudio/winavr/bin/../lib/gcc/avr/4.3.2/../../../../avr/lib/avr51/crtusb1287.o
+__vector_7                                        e:/innstalerte/avrstudio/winavr/bin/../lib/gcc/avr/4.3.2/../../../../avr/lib/avr51/crtusb1287.o
+__vector_8                                        e:/innstalerte/avrstudio/winavr/bin/../lib/gcc/avr/4.3.2/../../../../avr/lib/avr51/crtusb1287.o
+__vector_9                                        default/mouse_task.o
+                                                  e:/innstalerte/avrstudio/winavr/bin/../lib/gcc/avr/4.3.2/../../../../avr/lib/avr51/crtusb1287.o
+__vector_default                                  e:/innstalerte/avrstudio/winavr/bin/../lib/gcc/avr/4.3.2/../../../../avr/lib/avr51/crtusb1287.o
+__vectors                                         e:/innstalerte/avrstudio/winavr/bin/../lib/gcc/avr/4.3.2/../../../../avr/lib/avr51/crtusb1287.o
+_exit                                             e:/innstalerte/avrstudio/winavr/bin/../lib/gcc/avr/4.3.2/avr51\libgcc.a(_exit.o)
+adc_reader                                        default/sensors.o
+                                                  default/mouse_task.o
+check_nearby_sensor                               default/sensors.o
+data_to_transfer                                  default/usb_specific_request.o
+                                                  default/usb_standard_request.o
+endpoint_status                                   default/usb_standard_request.o
+exit                                              e:/innstalerte/avrstudio/winavr/bin/../lib/gcc/avr/4.3.2/avr51\libgcc.a(_exit.o)
+                                                  e:/innstalerte/avrstudio/winavr/bin/../lib/gcc/avr/4.3.2/../../../../avr/lib/avr51/crtusb1287.o
+find_active_sensor                                default/sensors.o
+g_b_send_ack_report                               default/mouse_task.o
+g_b_send_report                                   default/mouse_task.o
+g_hid_mouse_report                                default/mouse_task.o
+                                                  default/sensors.o
+g_u8_cpt_sof                                      default/mouse_task.o
+g_u8_report_rate                                  default/usb_specific_request.o
+g_usb_event                                       default/usb_task.o
+                                                  default/usb_device_task.o
+hid_get_hid_descriptor                            default/usb_specific_request.o
+hid_get_report_descriptor                         default/usb_specific_request.o
+init_adc                                          default/adc_drv.o
+                                                  default/scheduler.o
+is_button_sensor                                  default/sensors.o
+is_more_active                                    default/sensors.o
+is_mouse_event                                    default/sensors.o
+                                                  default/mouse_task.o
+is_movement_sensor                                default/sensors.o
+is_sensor_active                                  default/sensors.o
+is_sensor_step                                    default/sensors.o
+main                                              default/main.o
+                                                  e:/innstalerte/avrstudio/winavr/bin/../lib/gcc/avr/4.3.2/../../../../avr/lib/avr51/crtusb1287.o
+mouse_task                                        default/mouse_task.o
+                                                  default/scheduler.o
+mouse_task_init                                   default/mouse_task.o
+                                                  default/usb_device_task.o
+                                                  default/scheduler.o
+pbuffer                                           default/usb_specific_request.o
+                                                  default/usb_standard_request.o
+remote_wakeup_feature                             default/usb_standard_request.o
+                                                  default/mouse_task.o
+                                                  default/usb_task.o
+                                                  default/usb_device_task.o
+scheduler                                         default/scheduler.o
+                                                  default/main.o
+scheduler_empty_fct                               default/scheduler.o
+scheduler_init                                    default/scheduler.o
+scheduler_tasks                                   default/scheduler.o
+set_adc_noise_reduction_mode                      default/power_drv.o
+set_ext_standby_mode                              default/power_drv.o
+set_idle_mode                                     default/power_drv.o
+set_power_down_mode                               default/power_drv.o
+                                                  default/mouse_task.o
+set_power_save_mode                               default/power_drv.o
+set_standby_mode                                  default/power_drv.o
+sof_action                                        default/mouse_task.o
+                                                  default/usb_task.o
+suspend_action                                    default/mouse_task.o
+                                                  default/usb_task.o
+usb_conf_desc                                     default/usb_descriptors.o
+                                                  default/usb_specific_request.o
+                                                  default/usb_standard_request.o
+usb_config_ep                                     default/usb_drv.o
+                                                  default/usb_specific_request.o
+usb_configuration_nb                              default/mouse_task.o
+                                                  default/usb_task.o
+                                                  default/usb_standard_request.o
+                                                  default/usb_device_task.o
+usb_connected                                     default/usb_device_task.o
+usb_dev_desc                                      default/usb_descriptors.o
+                                                  default/usb_standard_request.o
+usb_device_task                                   default/usb_device_task.o
+                                                  default/usb_task.o
+usb_device_task_init                              default/usb_device_task.o
+                                                  default/usb_task.o
+usb_generate_remote_wakeup                        default/usb_standard_request.o
+                                                  default/mouse_task.o
+usb_halt_endpoint                                 default/usb_drv.o
+usb_hid_get_idle                                  default/usb_specific_request.o
+usb_hid_report_descriptor_mouse                   default/usb_descriptors.o
+                                                  default/usb_specific_request.o
+usb_hid_set_idle                                  default/usb_specific_request.o
+usb_hid_set_report_ouput                          default/usb_specific_request.o
+usb_init_device                                   default/usb_drv.o
+                                                  default/usb_task.o
+                                                  default/usb_device_task.o
+usb_process_request                               default/usb_standard_request.o
+                                                  default/usb_device_task.o
+usb_read_packet                                   default/usb_drv.o
+usb_select_enpoint_interrupt                      default/usb_drv.o
+usb_send_packet                                   default/usb_drv.o
+usb_start_device                                  default/usb_device_task.o
+usb_suspended                                     default/usb_device_task.o
+usb_task                                          default/usb_task.o
+                                                  default/scheduler.o
+usb_task_init                                     default/usb_task.o
+                                                  default/scheduler.o
+usb_user_endpoint_init                            default/usb_specific_request.o
+                                                  default/usb_standard_request.o
+usb_user_get_descriptor                           default/usb_specific_request.o
+                                                  default/usb_standard_request.o
+usb_user_interface_get                            default/usb_specific_request.o
+                                                  default/usb_standard_request.o
+usb_user_interface_reset                          default/usb_specific_request.o
+                                                  default/usb_standard_request.o
+usb_user_language_id                              default/usb_descriptors.o
+                                                  default/usb_specific_request.o
+usb_user_manufacturer_string_descriptor           default/usb_descriptors.o
+                                                  default/usb_specific_request.o
+usb_user_product_string_descriptor                default/usb_descriptors.o
+                                                  default/usb_specific_request.o
+usb_user_read_request                             default/usb_specific_request.o
+                                                  default/usb_standard_request.o
+wdtdrv_disable                                    default/wdt_drv.o
+                                                  default/main.o
+wdtdrv_enable                                     default/wdt_drv.o
+wdtdrv_interrupt_enable                           default/wdt_drv.o
+wdtdrv_interrupt_reset_enable                     default/wdt_drv.o

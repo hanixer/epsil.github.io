@@ -1,0 +1,2427 @@
+<!DOCTYPE html>
+<html lang="no">
+<head>
+<title>
+</title>
+<meta content="text/html; charset=utf-8" http-equiv="Content-Type">
+<meta content="text/css" http-equiv="Content-Style-Type">
+<meta content="width=device-width, initial-scale=1" name="viewport">
+<link href="../favicon.ico" rel="icon" type="image/x-icon">
+<link href="../css/markdown-template.css" rel="stylesheet">
+<link href="index.txt" rel="alternate" title="Markdown" type="text/markdown">
+<link href="css/custom.css" rel="stylesheet" type="text/css">
+<script src="js/custom.js" type="text/javascript">
+</script>
+<script src="js/mathjax.js" type="text/x-mathjax-config">
+</script>
+<script async="" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-MML-AM_CHTML" type="text/javascript">
+</script>
+<script src="../js/markdown-template.js">
+</script>
+</head>
+<body>
+<nav class="navbar navbar-default navbar-fixed-top">
+<div class="container-fluid">
+<ul class="nav nav-pills navbar-left">
+<li role="presentation"><a href="/" title="Return home"><i class="fa fa-home"></i></a>
+</li>
+</ul>
+
+<ul class="nav nav-pills navbar-right">
+<li role="presentation"><a href="http://www.facebook.com/share.php?u=about%3Ablank" title="Share on Facebook"><i class="fa fa-facebook-square"></i></a>
+</li>
+
+<li role="presentation"><a href="https://twitter.com/intent/tweet?url=about%3Ablank" title="Share on Twitter"><i class="fa fa-twitter-square"></i></a>
+</li>
+
+<li role="presentation"><a href="mailto:?body=about%3Ablank" title="Share by mail"><i class="fa fa-envelope"></i></a>
+</li>
+
+<li role="presentation"><a href="https://github.com/epsil/epsil.github.io/tree/master/blank/index.txt" title="Edit on GitHub"><i class="fa fa-edit"></i></a>
+</li>
+
+<li role="presentation"><a href="index.txt" title="Get Markdown source"><i class="fa fa-download"></i></a>
+</li>
+
+<li role="presentation"><a data-toggle="collapse" href="#toc" title="Table of contents"><i class="fa fa-bars"></i></a>
+</li>
+</ul>
+</div>
+
+<div class="collapse" id="toc" title="Innhold">
+</div>
+</nav>
+
+<div class="container">
+<article>
+<header>
+</header>
+
+<section id="content">
+<p>Rapport om prototype til en tungestyrt musepeker for bevegelseshemmede. <strong><a href="rapport.pdf"><abbr class="acronym" title="Portable Document Format">PDF</abbr>-utgave</a></strong>.</p>
+
+<hr>
+
+<section id="virtuell-arm-for-funksjonshemmede">
+<h1><a aria-hidden="true" class="header-anchor" href="#virtuell-arm-for-funksjonshemmede" title="Virtuell arm for funksjonshemmede"></a> Virtuell arm for funksjonshemmede</h1>
+
+<div id="virtuell-arm-for-funksjonshemmede-section">
+<p class="center"><img alt="" src="fig/hist-logo.png">
+</p>
+
+<p>Stian Rishaug, Bastian S. Solem, Aleksander Uthus og Vegard Øye.</p>
+
+<p>Veileder: Herman Ranes.</p>
+
+<p>Oppdragsgiver: <abbr class="acronym" title="Selskapet for industriell og teknisk forskning ved Norges tekniske høgskole">SINTEF</abbr>.</p>
+
+<hr>
+
+<section id="sammendrag">
+<h3><a aria-hidden="true" class="header-anchor" href="#sammendrag" title="Sammendrag"></a> Sammendrag<a aria-controls="sammendrag-section" aria-expanded="true" aria-hidden="true" class="collapse-button" data-toggle="collapse" href="#sammendrag-section" role="button"></a></h3>
+
+<div class="collapse in" id="sammendrag-section">
+<p>På oppdrag fra <abbr class="acronym" title="Selskapet for industriell og teknisk forskning ved Norges tekniske høgskole">SINTEF</abbr> er det laget en prototype til en <em>tungestyrt musepeker</em> som kan brukes på Microsoft Windows via standard <abbr class="acronym" title="Human Interface Device">HID</abbr>-musegrensesnitt. Musepekeren aktiveres av forspente trykkfølsomme resistanser av typen FSR-400 og FSR-402. Disse sensorene er svært følsomme, og har en hysteresefunksjon ved kontinuerlig trykk. Det er derfor laget en automatisk kalibreringsrutine som bruker av musen kan aktivere manuelt i tilfellet musepekeren oppfører seg uønsket.</p>
+
+<p>For plassering av sensorene er det laget en justerbar <em>hodebøyle</em>. Hodebøylen er bygd av et noe svakt material, og måten sensorene er festet på, bør forskes videre på. Ved videreutvikling av den valgte designen kan hodebøylen bli meget bra.</p>
+
+<p>Elektronikken som behandler data og «styrer» musepekeren, er demokretsen <em>AT90USBKey</em> fra Atmel. Kretsen har innebygde <abbr class="acronym" title="Analog-to-Digital Converter">ADC</abbr>-er, som benyttes til tolking av sensordata. Den gjør bruk av <abbr class="acronym" title="Universal Serial Bus">USB</abbr>-grensesnittet for overføring av data, så vel som energitilførsel. Det er integrert en spenningsregulator som benyttes til å forspenne sensorene. Regulatoren er sterk nok til å forsyne eventuelle tilleggskretser.</p>
+
+<p>Programkoden er skrevet for å være fleksibel angående antall sensorer og portene de kobles til, så vel som valg av mikrokontroller. Programkoden foreligger som vedlegg til rapporten.</p>
+
+<p>Bruk av musen fungerer slik: Brukeren starter en bevegelse og stopper eller endrer retning ved ønsket plassering. Pekeren seg langsomt til å begynne med for å gi god presisjon. Man kan snakke mens man beveger musepekeren over skjermen, og det er mulig å be venstre museknapp være aktiv mens man beveger musepekeren over skjermen. Det er også mulig å sette musen i en «scroll»-modus som gjør surfing av nettsider og lesing av dokumenter meget behagelig.</p>
+
+<p>Utgiftene ved prosjektet var minimale, estimert til <abbr title="cirka">ca.</abbr> 2000 <abbr class="acronym" title="kroner">NOK</abbr>.</p>
+
+<p>På bakgrunn av rapporten konkluderer prosjektgruppen med at <em>det er mulig å lage en tungestyrt musepeker med de valgte sensorene</em>. Det mekaniske og ergonomiske må imidlertid forbedres for å få et salgbart produkt.</p>
+</div>
+</section>
+</div>
+</section>
+
+<section id="forord">
+<h1><a aria-hidden="true" class="header-anchor" href="#forord" title="Forord"></a> Forord</h1>
+
+<div id="forord-section">
+<p>Rapporten er en avsluttende bacheloroppgave i elektro- og datateknikk: fordypning i elektronikk ved Høyskolen i Sør-Trøndelag. Oppgaven er definert i sammarbeid med <abbr class="acronym" title="Selskapet for industriell og teknisk forskning ved Norges tekniske høgskole">SINTEF</abbr> og veileder Herman Ranes fra <abbr title="Høgskolen i Sør-Trøndelag">HiST</abbr>. Arbeidet er utført i <abbr title="Høgskolen i Sør-Trøndelag">HiST</abbr> sine lokaler og har hatt en varighet fra 26. januar 2009 frem til 25. mai 2009. Rapporten er et resultat av drøye 4 måneders forskning og uttesting av en prototype for en tungestyrt datamus som kan brukes i Microsoft Windows. Bakgrunnen for oppgaven er å gi en konklusjon til <abbr class="acronym" title="Selskapet for industriell og teknisk forskning ved Norges tekniske høgskole">SINTEF</abbr>, om det er mulig bruke trykkresistive følere av typen FSR-400 og FSR-402 for dette formålet. Det er ønsket å kunne gi et svar på om denne teknologien er tilstrekkelig for å gi en løsning på problemstillingen.</p>
+
+<p><strong>Vi vil i denne anledning rette en takk til</strong>
+</p>
+
+<p><em>Ansatte ved <abbr title="Høgskolen i Sør-Trøndelag">HiST</abbr></em>
+</p>
+
+<ul>
+<li>Herman Ranes</li>
+
+<li>Rolf Kristian Snilsberg</li>
+</ul>
+
+<p><em>Personer med tilknytning til rapporten</em>
+</p>
+
+<ul>
+<li>Tone Berg</li>
+
+<li>Mats Ekström</li>
+</ul>
+
+<p>Trondheim, 24. mai 2009</p>
+</div>
+</section>
+
+<section id="1-innledning">
+<h1><a aria-hidden="true" class="header-anchor" href="#1-innledning" title="1 Innledning"></a> 1 Innledning</h1>
+
+<div id="1-innledning-section">
+<blockquote>
+<p>Resultatet av prosjektet skal bli en prototype for tungestyrt musepeker som kan brukes på Microsoft Windows. Denne prototypen skal lages med trykkfølsomme resistanser. Ettersom det ikke finnes noe tilsvarende produkt på det norske markedet, kan et vellykket produkt dekke et viktig behov for funksjonshemmede som er ute av stand til å bruke en håndstyrt datamus.</p>
+</blockquote>
+
+<section id="11-bakgrunntidligere-losninger">
+<h2><a aria-hidden="true" class="header-anchor" href="#11-bakgrunntidligere-losninger" title="1.1 Bakgrunn/tidligere løsninger"></a> 1.1 Bakgrunn/tidligere løsninger<a aria-controls="11-bakgrunntidligere-losninger-section" aria-expanded="true" aria-hidden="true" class="collapse-button" data-toggle="collapse" href="#11-bakgrunntidligere-losninger-section" role="button"></a></h2>
+
+<div class="collapse in" id="11-bakgrunntidligere-losninger-section">
+<p>Bacheloroppgave på oppdrag fra <abbr class="acronym" title="Selskapet for industriell og teknisk forskning ved Norges tekniske høgskole">SINTEF</abbr>: Det skal bygges et verktøy for funksjonshemmede som lar datamusen styres med tungen. Prosjektet fokuserer på å kartlegge hvor godt ideen med tungesensorer fungerer i praksis. Overfor oppdragsgiver er det <em>toårig taushetsplikt</em>, siden oppdragsgiver ønsker å kunne bruke resultatene av prosjektet til egne formål. Prosjektgruppen består av fire studenter på tredje året bachelor i elektro- og datateknikk: fordypning i elektronikk ved Høyskolen i Sør-Trøndelag. Ved tidligere prosjekter er det gjort forsøk med:</p>
+
+<ul>
+<li>Induktive følere (reagerer på metall og er billige i innkjøp)</li>
+
+<li>Touch (en form for kapasitiv føler)</li>
+
+<li><abbr class="acronym" title="Infrared">IR</abbr> (vanskelig metode for avlesning)</li>
+
+<li>Kapasitive følere (svært dyre i innkjøp)</li>
+</ul>
+
+<p>Det er ønskelig at gruppen starter prosjektet fra «scratch», for å se om resultatet benytter seg av alternative metoder til dem som er brukt tidligere.</p>
+</div>
+</section>
+
+<section id="sec-hovedproblemstilling">
+<h2><a aria-hidden="true" class="header-anchor" href="#sec-hovedproblemstilling" title="1.2 Problemstilling"></a> 1.2 Problemstilling<a aria-controls="sec-hovedproblemstilling-section" aria-expanded="true" aria-hidden="true" class="collapse-button" data-toggle="collapse" href="#sec-hovedproblemstilling-section" role="button"></a></h2>
+
+<div class="collapse in" id="sec-hovedproblemstilling-section">
+<p>Ved endt prosjekt skal det legges frem en prototype som kan styre musepekeren i Microsoft Windows ved bruk av tungen, og som har de samme mulighetene som en ordinær mus. Prosjektgruppen har fått utdelt trykksensorer (FSR-400 og FSR-402), produsert av Interlink Electronics (sensorene <a href="#sec-sensorkap" title="2 Sensorene">kapittel 2</a>). Prosjektet skal kunne svare på om sensorene kan brukes til et ferdig produkt. Det skal kommes frem til en konfigurasjon av sensorplassering, og algoritmer for behandling av sensordata.</p>
+
+<section id="121-hva-skal-gjores-og-hvordan">
+<h3><a aria-hidden="true" class="header-anchor" href="#121-hva-skal-gjores-og-hvordan" title="1.2.1 Hva skal gjøres og hvordan"></a> 1.2.1 Hva skal gjøres og hvordan<a aria-controls="121-hva-skal-gjores-og-hvordan-section" aria-expanded="true" aria-hidden="true" class="collapse-button" data-toggle="collapse" href="#121-hva-skal-gjores-og-hvordan-section" role="button"></a></h3>
+
+<div class="collapse in" id="121-hva-skal-gjores-og-hvordan-section">
+<ul>
+<li>Kartlegge hvordan de utdelte sensorene kan brukes (<a href="#sec-sensorkap" title="2 Sensorene"><abbr title="kapittel">kap.</abbr> 2</a>).</li>
+
+<li>Det skal lages en hodebøyle for enkel bruk av datamusen (<a href="#sec-hodeboyle" title="3 Hodebøyle"><abbr title="kapittel">kap.</abbr> 3</a>).</li>
+
+<li>Det skal lages en krets for signalbehandling, fortrinnsvis en mikrokontroller med <abbr class="acronym" title="Analog-to-Digital Converter">ADC</abbr> (<a href="#sec-elektronikk" title="5 Elektronikk"><abbr title="kapittel">kap.</abbr> 5</a>).</li>
+
+<li>Overføringsgrensesnitt mot Microsoft Windows – Bluetooth/<abbr class="acronym" title="Universal Serial Bus">USB</abbr> (<a href="#sec-elektronikk" title="5 Elektronikk"><abbr title="kapittel">kap.</abbr> 5</a>).</li>
+
+<li>Det skal tas standpunkt til hvor prosesseringen av data skal foregå, før eller etter signalet har kommet til datamaskinen (<a href="#sec-elektronikk" title="5 Elektronikk"><abbr title="kapittel">kap.</abbr> 5</a>).</li>
+
+<li>Valg av sensorkonfigurasjon, antall og plassering, brukergrensesnitt (<a href="#sec-funksjonalitet" title="6 Funksjonalitet"><abbr title="kapittel">kap.</abbr> 6</a>).</li>
+
+<li>Program for tolkning av avlest sensordata må skrives (<a href="#sec-funksjonalitet" title="6 Funksjonalitet"><abbr title="kapittel">kap.</abbr> 6</a>).</li>
+</ul>
+</div>
+</section>
+
+<section id="sec-produktspes">
+<h3><a aria-hidden="true" class="header-anchor" href="#sec-produktspes" title="1.2.2 Overordnet spesifikasjon av konseptet"></a> 1.2.2 Overordnet spesifikasjon av konseptet<a aria-controls="sec-produktspes-section" aria-expanded="true" aria-hidden="true" class="collapse-button" data-toggle="collapse" href="#sec-produktspes-section" role="button"></a></h3>
+
+<div class="collapse in" id="sec-produktspes-section">
+<p>Bruken av funksjonene er beskrevet i <a href="#sec-funksjonalitet" title="6 Funksjonalitet">kapittel 6</a>, som tar for seg funksjonalitet og brukergrensesnitt. Konseptet skal inneholde disse standard musefunksjonene:</p>
+
+<ul>
+<li>Bevegelse
+
+<ul>
+<li>Horisontal</li>
+
+<li>Vertikal</li>
+
+<li>Diagonalt</li>
+
+<li>3 Hastigheter</li>
+</ul></li>
+
+<li>Knapper
+
+<ul>
+<li>Venstre museknapp</li>
+
+<li>Høyre museknapp</li>
+
+<li>Scroll</li>
+</ul></li>
+</ul>
+
+<p>Festemekanismen beskrevet i <a href="#sec-hodeboyle" title="3 Hodebøyle">kapittel 3</a> er en hodebøyle med disse spesifikasjonene:</p>
+
+<ul>
+<li>Behagelig å bruke, også over lengre tid (viktig at det ikke er for tungt).</li>
+
+<li>Uproblematisk å ta utstyret av/på for en person som skal hjelpe brukeren.</li>
+
+<li>Tilpassningsmulighet for flere brukere uansett hodestørrelse/form.</li>
+
+<li>Det skal være et godt press på sensorene mot kinnet, slik at det er lett å bruke musen.</li>
+</ul>
+
+<p>For hodebøylen er utseendemessig design nedprioritert. Av funksjoner er ingen valgt bort.</p>
+</div>
+</section>
+</div>
+</section>
+</div>
+</section>
+
+<section id="sec-sensorkap">
+<h1><a aria-hidden="true" class="header-anchor" href="#sec-sensorkap" title="2 Sensorene"></a> 2 Sensorene</h1>
+
+<div id="sec-sensorkap-section">
+<blockquote>
+<p>Tar for seg forspenningskretsen i teori og praksis. Teorien tilsier at sensorene bør forspennes med en motstand på 8–15 <abbr title="kiloohm">kΩ</abbr>. Målingene viser hvordan sensorene oppfører seg under ulike omstendigheter. Sensorkarakteristikken setter krav til en dynamisk verdi for hendelsesaktivering, og kontinuerlig kalibrering.</p>
+</blockquote>
+
+<section id="21-teori-forspenning-av-trykksensorene">
+<h2><a aria-hidden="true" class="header-anchor" href="#21-teori-forspenning-av-trykksensorene" title="2.1 Teori: forspenning av trykksensorene"></a> 2.1 Teori: forspenning av trykksensorene<a aria-controls="21-teori-forspenning-av-trykksensorene-section" aria-expanded="true" aria-hidden="true" class="collapse-button" data-toggle="collapse" href="#21-teori-forspenning-av-trykksensorene-section" role="button"></a></h2>
+
+<div class="collapse in" id="21-teori-forspenning-av-trykksensorene-section">
+<blockquote>
+<p class="center" id="fig-trykksensorer"><img alt="" src="fig/trykksensor.png">
+</p>
+
+<p><strong>Figur 2.1:</strong> Resistive trykksensorer</p>
+</blockquote>
+
+<p>Sensorene som brukes, er <em>resistive trykksensorer</em> (<a href="#fig-trykksensorer" title=""><abbr title="figur">fig.</abbr> 2.1</a>), eller trykkfølsomme motstander. De består av av to deler: polymerbasert tykkfilm koblet til et resistivt materiale, og polymerbasert tykkfilm koblet til elektroniske kontakter. Polymer er en type bindingsmiddel som brukes på motstander og ledere. Når dette presses sammen, gir det økt konduktivitans (lederevne) gjennom kretsen [<a href="#ref-interlink" title="[Vedlegg 2] Datablad for Interlink-sensorer.">Vedlegg 2</a>].</p>
+
+<p>Dermed fungerer sensorene som en variabel motstand under trykk (jo høyere trykk, jo lavere resistans), og som et brudd (uendelig resistans) ellers.</p>
+
+<blockquote>
+<p class="center" id="fig-sensortyper"><img alt="" src="fig/fsrguide.png">
+</p>
+
+<p><strong>Figur 2.2:</strong> Sensor type FSR-400 (a), sensor type FSR-402 (b). Millimetermål er gitt i klammer.</p>
+</blockquote>
+
+<p>Sensorene, som produseres av Interlink Electronics,<sup class="footnote-ref"><a href="#fn1" id="fnref1" title="Nettside: http://www.interlinkelectronics.com/.">[1]</a></sup> kommer i to typer (<a href="#fig-sensortyper" title=""><abbr title="figur">fig.</abbr> 2.2</a>): (a) en <em>liten</em> sensor med en diameter på 8 <abbr title="millimeter">mm</abbr> (FSR-400), og (b) en <em>stor</em> sensor på 18 <abbr title="millimeter">mm</abbr> (FSR-402). Det trykkfølsomme området er litt mindre og er på hhv. 5 <abbr title="millimeter">mm</abbr> og 14 <abbr title="millimeter">mm</abbr>.</p>
+
+<blockquote>
+<p class="center" id="fig-sensor"><img alt="" src="fig/sensor.png">
+</p>
+
+<p><strong>Figur 2.3:</strong> Forspenning av trykksensor (a), spenningsdeling (b) og brudd (c)</p>
+</blockquote>
+
+<p>For å få målbare trykkverdier, må sensorene <em>forspennes</em> (<a href="#fig-sensor" title=""><abbr title="figur">fig.</abbr> 2.3a</a>). Hver sensor kobles i serie med en motstand \(R\), som går til jord. I den andre enden påtrykkes en tilførselsspenning \(V_{CC}\) på 3,3 V. Dette oppsettet gir en spenningsdeling mellom sensorresistansen, \(R_S\), og \(R\):</p>
+
+<p>\[\begin{equation}\label{eq:spenningsdeling} V_{IN} = V_{CC} \cdot \frac{R}{R_S + R} \end{equation}\]</p>
+
+<p>\(V_{IN}\) sendes inn på analog-til-digital-omformeren på kortet (<abbr class="acronym" title="Analog-to-Digital Converter">ADC</abbr>-en), og er altså verdien som programmet på mikrokontrolleren «ser». Gjennom <abbr class="acronym" title="Analog-to-Digital Converter">ADC</abbr>-en får vi en overgang fra den <em>fysiske</em> størrelsen \(V_{IN}\) til den <em>digitale</em> 8-bit verdien <code>ADC_VARIABEL</code> i programkoden:</p>
+
+<p>\[\begin{equation}\label{eq:datablad} \text{ADC_VARIABEL} = \frac{V_{IN} \cdot 255}{V_{REF}} \end{equation}\]</p>
+
+<p>\(V_{REF}\) er <em>referansespenningen</em> og er lik \(V_{CC}\). Den maksimale verdien for <code>ADC_VARIABEL</code>, 255, svarer dermed til 3,3 V, og <code>ADC_VARIABEL</code> er proporsjonal med \(V_{IN}\).</p>
+
+<p>For å velge en passende verdi for forspenningsmotstanden \(R\), må vi se hvordan den påvirker forholdet mellom trykk og spenning. Dette forholdet kan brytes opp i to mindre: forholdet mellom trykk (\(\rho\)) og sensorresistans (\(R_S\)), og forholdet mellom sensorresistans (\(R_S\)) og målt spenning (\(V_{IN}\)).</p>
+
+<p>Målinger på \(\rho\)–\(R_S\)-forholdet er gitt i <a href="#sec-malinger" title="2.2 Målinger">avsnitt 2.2</a>, og kan i korte trekk oppsummeres slik: for lette trykk er \(R_S \approx 100\) <abbr title="kiloohm">kΩ</abbr>, og for harde trykk går \(R_S\) ned til 20 <abbr title="kiloohm">kΩ</abbr>, med sterkt avtagende stigning (<a href="#fig-litenok" title="Figur 2.10: Liten sensor, økende vekt, vektene ikke av mellom målingene (tabell 2.5)"><abbr title="figur">fig.</abbr> 2.10</a>). Forholdet er altså sterkt ulineært: \(R_S\) er stor når \(\rho\) er liten, og \(R_S\) er liten når \(\rho\) er stor.</p>
+
+<p id="sec-nullnivaa">Det samme gjelder for \(R_S\)–\(V_{IN}\)-forholdet, gitt i ligning \(\eqref{eq:spenningsdeling}\): når den ene går opp, går den andre ned. Summen av disse to «inverse» forholdene er at \(\rho\) og \(V_{IN}\) øker i takt: når trykket øker, så øker den målte spenningen, og når trykket minker, så minker spenningen. Når \(\rho = 0\), så er også \(V_{IN} = 0\), og i programkoden har <code>ADC_VARIABEL</code> verdien 0. Dette er det ideelle <em>nullnivået</em>, verdien når sensoren ikke er i bruk.</p>
+
+<blockquote>
+<p class="center" id="fig-vin"><img alt="" src="fig/vin.png">
+</p>
+
+<p><strong>Figur 2.4:</strong> \(V_{IN}\) som funksjon av \(R\) og \(R_S\), ligning \(\eqref{eq:spenningsdeling}\)</p>
+</blockquote>
+
+<p>Hvis 0 V er spenningen som måles for intet trykk, hva er da spenningen for et lett trykk (når \(R_S = 100\) <abbr title="kiloohm">kΩ</abbr>)? Det er viktig at denne verdien ikke er for lav, ellers vil den ikke reliabelt kunne skilles fra nullnivået: \(V_{IN\text{min}} &gt; 0\) V. <a href="#fig-vin" title="">Figur 2.4</a> viser hvordan forspenningsmotstanden \(R\) innvirker på forholdet mellom \(R_S\) og \(V_{IN}\). Når sensoren tas i bruk, vil vi få et <em>sprang</em> på minst minimumsverdien, \(V_{IN\text{min}}\), som selvfølgelig ikke bør være så lav at spranget ikke registreres. Men den bør heller ikke være for høy, ellers får vi ikke utnyttet intervallet av \(V_{IN}\)-verdier (verdiområdet) skikkelig.</p>
+
+<p>Vi ser også at sammenhengen mellom \(R_S\) og \(V_{IN}\) blir <em>mer ulineær</em> for lavere verdier av \(R\). Ulinearitet er ikke nødvendigvis negativt. Si at vi ønsker at pekerfarten skal være konstant for lette trykk (\(R_S = \text{40--100}\) <abbr title="kiloohm">kΩ</abbr>), men at den skal øke for harde trykk (\(R_S &lt; 40\) <abbr title="kiloohm">kΩ</abbr>). Da er det gunstig med <em>lav oppløsning</em> for «lette trykk» og <em>høy oppløsning</em> for «harde trykk». Det vil si at vi bruker en større del av intervallet av \(V_{IN}\)-verdier til å differensiere mellom de «harde trykkene», mens de «lette trykkene» delegeres til et snevrere utsnitt.</p>
+
+<p>Veier vi disse hensynene opp mot hverandre, ser vi at en motstand på 8–15 <abbr title="kiloohm">kΩ</abbr> kan være egnet. Dette gir \(V_{IN\text{min}} = \text{0,24--0,43}\) V, som svarer til <code>ADC_VARIABEL</code> = 19–33: godt over det ideelle nullnivået, og god utnyttelse av verdiområdet.</p>
+
+<p>Men hvordan fungerer sensorene i praksis? Endres sensorresistansen over tid? Er nullnivået alltid 0 V? For å få svar på disse spørsmålene, må vi foreta noen målinger.</p>
+</div>
+</section>
+
+<section id="sec-malinger">
+<h2><a aria-hidden="true" class="header-anchor" href="#sec-malinger" title="2.2 Målinger"></a> 2.2 Målinger<a aria-controls="sec-malinger-section" aria-expanded="true" aria-hidden="true" class="collapse-button" data-toggle="collapse" href="#sec-malinger-section" role="button"></a></h2>
+
+<div class="collapse in" id="sec-malinger-section">
+<p>For å fastslå hvordan sensorene oppfører seg under ulike omstendigheter, er det foretatt tre forskjellige typer målinger på sensorene. Denne informasjonen er nødvendig for å avgjøre sensorenes muligheter og begrensninger. Utstyret som er benyttet for disse målingene er gitt i <a href="#tab-utstyrliste" title="Tabell 2.1: Utstyrsliste">tabell 2.1</a>.</p>
+
+<blockquote>
+<p id="tab-utstyrliste"><strong>Tabell 2.1:</strong> Utstyrsliste</p>
+
+<table class="table table-striped table-bordered table-hover">
+<tbody>
+<tr>
+<td>Instrument/maskin</td>
+<td>Type/data</td>
+</tr>
+
+<tr>
+<td>Motstand</td>
+<td>8,2 <abbr title="kiloohm">kΩ</abbr></td>
+</tr>
+
+<tr>
+<td>Spenningsforsyning</td>
+<td>4,5 V</td>
+</tr>
+
+<tr>
+<td>Vektenhet</td>
+<td>4,35 <abbr title="gram">g</abbr> (kronestykke)</td>
+</tr>
+
+<tr>
+<td>Vektarm</td>
+<td>18 <abbr title="gram">g</abbr></td>
+</tr>
+
+<tr>
+<td>Multimeter</td>
+<td>
+</td>
+</tr>
+</tbody>
+</table>
+</blockquote>
+
+<p>For å øve et konstant trykk på sensorene, er det brukt en arm som det blir lagt vektenheter på, <a href="#fig-malepinne" title="">figur 2.6</a>. Hvor på sensorens overflate trykket settes, innvirker på motstandsverdien, men armen sørger for å holde kontaktflaten og trykkområdet tilnærmet konstant, <a href="#fig-sensorpress" title="">figur 2.7</a>. Uten vektenheter veier armen 18 <abbr title="gram">g</abbr>.</p>
+
+<section id="sec-litenvar">
+<h3><a aria-hidden="true" class="header-anchor" href="#sec-litenvar" title="2.2.1 Motstandsverdi ved varierende trykk FSR-400"></a> 2.2.1 Motstandsverdi ved varierende trykk FSR-400<a aria-controls="sec-litenvar-section" aria-expanded="true" aria-hidden="true" class="collapse-button" data-toggle="collapse" href="#sec-litenvar-section" role="button"></a></h3>
+
+<div class="collapse in" id="sec-litenvar-section">
+<p>Motstandsverdien til \(R_S\) (i <abbr title="kiloohm">kΩ</abbr>) måles som direkte følge av trykk på overflaten til en sensor av typen FSR-400 (liten sensor). Målingene foretas med 5 s mellomrom. Hensikten med denne målingen er å se hvordan et konstant trykk påvirker \(R_S\) over tid og hva som skjer når trykket minker. Går \(R_S\)-verdien tilbake til utgangspunktet, eller er den endret som følge av at sensoren har vært i bruk? Dette er et viktig spørsmål hva <a href="#sec-nullnivaa" title="Det samme gjelder for \(R_S\)–\(V_{IN}\)-forholdet, gitt i ligning \(\eqref{eq:spenningsdeling}\): når den ene går opp, går den andre ned. Summen av disse to «inverse» forholdene er at \(\rho\) og \(V_{IN}\) øker i takt: når trykket øker, så øker den målte spenningen, og når trykket minker, så minker spenningen. Når \(\rho = 0\), så er også \(V_{IN} = 0\), og i programkoden har ADC_VARIABEL verdien 0. Dette er det ideelle nullnivået, verdien når sensoren ikke er i bruk.">nullnivået</a> angår.</p>
+
+<p>Måleresultatene er gitt i <a href="#tab-litenvar" title="Tabell 2.2: Liten sensor, varierende vekt">tabell 2.2</a> og <a href="#fig-litenvar" title="">figur 2.5</a>.</p>
+
+<section id="2211-drofting-av-resultatene">
+<h4><a aria-hidden="true" class="header-anchor" href="#2211-drofting-av-resultatene" title="2.2.1.1 Drøfting av resultatene"></a> 2.2.1.1 Drøfting av resultatene<a aria-controls="2211-drofting-av-resultatene-section" aria-expanded="true" aria-hidden="true" class="collapse-button" data-toggle="collapse" href="#2211-drofting-av-resultatene-section" role="button"></a></h4>
+
+<div class="collapse in" id="2211-drofting-av-resultatene-section">
+<p>Som man kan se av <a href="#tab-litenvar" title="Tabell 2.2: Liten sensor, varierende vekt">tabell 2.2</a> er resistansen i sensoren ved 26,7 <abbr title="gram">g</abbr> (tilstand 0) lik uendelig – sensoren leder ikke. Når trykket så øker til 31,05 <abbr title="gram">g</abbr> (tilstand 1), leder sensoren. Deretter lar man sensoren være i tilstand 1 i 20 s, og observerer at resistansen minker, se <a href="#fig-litenvar" title="">figur 2.5</a>. Men når man nå går tilbake til tilstand 0, kan man se at sensoren <em>fortsatt leder</em>.</p>
+
+<p>Sensorresistansen har altså en slags <em>hysteresefunksjon</em>. Over tid vil denne hysteresen øke noe. Dette må det tas høyde for når sensorene skal avleses: Man kan ikke sammenligne de avleste verdiene med et fastsatt nullnivå på 0 V, men må i stedet sørge for å <em>kalibrere</em> nullnivået med jevne mellomrom.</p>
+
+<blockquote>
+<p id="tab-litenvar"><strong>Tabell 2.2:</strong> Liten sensor, varierende vekt</p>
+
+<table class="table table-striped table-bordered table-hover">
+<thead>
+<tr>
+<th>Vektenheter [<abbr title="stykker">stk.</abbr>]</th>
+<th>Tillegg til arm [<abbr title="gram">g</abbr>]</th>
+<th>Total vekt [<abbr title="gram">g</abbr>]</th>
+<th>\(R_S\) [<abbr title="kiloohm">kΩ</abbr>]</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+<td>0</td>
+<td>0,00</td>
+<td>18,00</td>
+<td>–</td>
+</tr>
+
+<tr>
+<td>2</td>
+<td>8,70</td>
+<td>26,70</td>
+<td>–</td>
+</tr>
+
+<tr>
+<td>3</td>
+<td>13,05</td>
+<td>31,05</td>
+<td>111</td>
+</tr>
+
+<tr>
+<td>3</td>
+<td>13,05</td>
+<td>31,05</td>
+<td>97</td>
+</tr>
+
+<tr>
+<td>3</td>
+<td>13,05</td>
+<td>31,05</td>
+<td>93</td>
+</tr>
+
+<tr>
+<td>3</td>
+<td>13,05</td>
+<td>31,05</td>
+<td>70</td>
+</tr>
+
+<tr>
+<td>2</td>
+<td>8,70</td>
+<td>26,70</td>
+<td>120</td>
+</tr>
+
+<tr>
+<td>3</td>
+<td>13,05</td>
+<td>31,05</td>
+<td>74</td>
+</tr>
+
+<tr>
+<td>2</td>
+<td>8,70</td>
+<td>26,70</td>
+<td>108</td>
+</tr>
+
+<tr>
+<td>3</td>
+<td>13,05</td>
+<td>31,05</td>
+<td>71</td>
+</tr>
+
+<tr>
+<td>3</td>
+<td>13,05</td>
+<td>31,05</td>
+<td>69</td>
+</tr>
+
+<tr>
+<td>3</td>
+<td>13,05</td>
+<td>31,05</td>
+<td>66</td>
+</tr>
+
+<tr>
+<td>2</td>
+<td>8,70</td>
+<td>26,70</td>
+<td>87</td>
+</tr>
+</tbody>
+</table>
+</blockquote>
+
+<blockquote>
+<p class="center" id="fig-litenvar"><img alt="" src="fig/sensormalinger1.png">
+</p>
+
+<p><strong>Figur 2.5:</strong> Liten sensor, varierende vekt (<a href="#tab-litenvar" title="Tabell 2.2: Liten sensor, varierende vekt">tabell 2.2</a>)</p>
+</blockquote>
+</div>
+</section>
+</div>
+</section>
+
+<section id="sec-okav">
+<h3><a aria-hidden="true" class="header-anchor" href="#sec-okav" title="2.2.2 Spenningsverdi ved økende trykk, vektene av mellom hver måling"></a> 2.2.2 Spenningsverdi ved økende trykk, vektene av mellom hver måling<a aria-controls="sec-okav-section" aria-expanded="true" aria-hidden="true" class="collapse-button" data-toggle="collapse" href="#sec-okav-section" role="button"></a></h3>
+
+<div class="collapse in" id="sec-okav-section">
+<p>Sensorene blir koblet opp som i <a href="#fig-sensor" title="">figur 2.3</a> og spenningen over \(R\) blir målt ved trykk på sensoren. Mellom hver måling tas vektene av, og trykket blir 18 <abbr title="gram">g</abbr>.<sup class="footnote-ref"><a href="#fn2" id="fnref2" title="Lar målearmen ligge for å holde trykkområdet konstant. Vekten på armen er så liten at sensorene påvirkes minimalt av denne, se kapittel 2.2.1.">[2]</a></sup> Målingene foretas 5 s etter at vekten er lagt på. Spenningen som måles er spenningen <abbr class="acronym" title="Analog-to-Digital Converter">ADC</abbr>-en på kortet ser, så hensikten er å måle hvordan spenningen stiger ved enkelttrykk.</p>
+
+<p>For målingene gjelder ligning \(\eqref{eq:spenningsdeling}\), samt sammenhengene</p>
+
+<p>\[\begin{aligned} R_S &amp;= \frac{V_{CC} - V_R}{I_R}\label{eq:resistans}\\ I_R &amp;= \frac{U_R}{R}\label{eq:strom}\end{aligned}\]</p>
+
+<p>Målingene er foretatt med \(V_{CC} = 4,5\) V og \(R = 8,2\) <abbr title="kiloohm">kΩ</abbr>. Valget av verdier er basert på utstyret som var tilgjengelig da målingene ble foretatt.</p>
+
+<p>Resultatene for <em>liten sensor</em> (FSR-400) er gitt i <a href="#tab-litenokav" title="Tabell 2.3: Liten sensor, økende vekt, vektene av mellom hver måling">tabell 2.3</a> og <a href="#fig-litenokav" title="Figur 2.8: Liten sensor, økende vekt, vektene av mellom hver måling (tabell 2.3)">figur 2.8</a>, og resultatene for <em>stor sensor</em> (FSR-402) er gitt i <a href="#tab-storokav" title="Tabell 2.4: Stor sensor, økende vekt, vektene av mellom hver måling">tabell 2.4</a> og <a href="#fig-storokav" title="Figur 2.9: Stor sensor, økende vekt, vektene av mellom hver måling (tabell 2.4)">figur 2.9</a>.</p>
+
+<section id="2221-drofting-av-resultatene">
+<h4><a aria-hidden="true" class="header-anchor" href="#2221-drofting-av-resultatene" title="2.2.2.1 Drøfting av resultatene"></a> 2.2.2.1 Drøfting av resultatene<a aria-controls="2221-drofting-av-resultatene-section" aria-expanded="true" aria-hidden="true" class="collapse-button" data-toggle="collapse" href="#2221-drofting-av-resultatene-section" role="button"></a></h4>
+
+<div class="collapse in" id="2221-drofting-av-resultatene-section">
+<p>Av <a href="#fig-litenokav" title="Figur 2.8: Liten sensor, økende vekt, vektene av mellom hver måling (tabell 2.3)">figur 2.8</a> og <a href="#fig-storok" title="Figur 2.11: Stor sensor, økende vekt, vektene ikke av mellom målingene (tabell 2.6)">2.11</a>, som viser spenning og motstand mot trykk for hhv. liten og stor sensor, kan man se at de to typene gir ganske like resultater. Den store sensoren har en noe brattere kurve. Dette kan komme av den større overflaten, og at buen på overflatemembranen minker resistansen over et større område enn det som faktisk er i kontakt med armen, illustrert i <a href="#fig-sensorpress" title="">figur 2.7</a>.</p>
+
+<p>Det kommer frem av resultatene i <a href="#fig-litenokavspenning" title="">figur 2.8a</a> og <a href="#fig-storokavspenning" title="">figur 2.9a</a> at spenningens stigningsendring er ganske jevnt fordelt over trykkområdet. Det er derimot ikke den fallende endringen til sensorverdien som man kan se i <a href="#fig-litenokavmotstand" title="">figur 2.8b</a> og <a href="#fig-storokavmotstand" title="">figur 2.9b</a>. Dette skyldes den ulineære sammenhengen i ligning \(\eqref{eq:spenningsdeling}\).</p>
+
+<p>Spenningsstigningen har noen ujevnheter, dette kan være fordi kontaktpunktet har en unøyaktighet på \(\pm 1\) <abbr title="millimeter">mm</abbr> når vektene tas av.</p>
+
+<blockquote>
+<p class="center" id="fig-malepinne"><img alt="" src="fig/malepinne.png">
+</p>
+
+<p><strong>Figur 2.6:</strong> Arm for å legge vekt(er) på sensorene</p>
+</blockquote>
+
+<blockquote>
+<p class="center" id="fig-sensorpress"><img alt="" src="fig/sensorpress.png">
+</p>
+
+<p><strong>Figur 2.7:</strong> Sensor under trykk</p>
+</blockquote>
+
+<blockquote>
+<p id="tab-litenokav"><strong>Tabell 2.3:</strong> Liten sensor, økende vekt, vektene av mellom hver måling</p>
+
+<table class="table table-striped table-bordered table-hover">
+<thead>
+<tr>
+<th>\(V_R\) [V]</th>
+<th>Vekt [<abbr title="gram">g</abbr>]</th>
+<th>Vektenheter [<abbr title="stykker">stk.</abbr>]</th>
+<th>Utr. \(I_R\) [µA]</th>
+<th>Utr. \(R_S\) [<abbr title="kiloohm">kΩ</abbr>]</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+<td>0,20</td>
+<td>18,00</td>
+<td>0</td>
+<td>24,39</td>
+<td>176,30</td>
+</tr>
+
+<tr>
+<td>0,38</td>
+<td>22,35</td>
+<td>1</td>
+<td>46,34</td>
+<td>88,91</td>
+</tr>
+
+<tr>
+<td>0,72</td>
+<td>26,70</td>
+<td>2</td>
+<td>87,80</td>
+<td>43,05</td>
+</tr>
+
+<tr>
+<td>1,02</td>
+<td>31,05</td>
+<td>3</td>
+<td>124,39</td>
+<td>27,98</td>
+</tr>
+
+<tr>
+<td>1,13</td>
+<td>35,40</td>
+<td>4</td>
+<td>137,80</td>
+<td>24,45</td>
+</tr>
+
+<tr>
+<td>1,28</td>
+<td>39,75</td>
+<td>5</td>
+<td>156,10</td>
+<td>20,63</td>
+</tr>
+
+<tr>
+<td>1,29</td>
+<td>44,10</td>
+<td>6</td>
+<td>157,32</td>
+<td>20,40</td>
+</tr>
+
+<tr>
+<td>1,56</td>
+<td>48,45</td>
+<td>7</td>
+<td>190,24</td>
+<td>15,45</td>
+</tr>
+
+<tr>
+<td>1,60</td>
+<td>52,80</td>
+<td>8</td>
+<td>195,12</td>
+<td>14,86</td>
+</tr>
+
+<tr>
+<td>1,70</td>
+<td>57,15</td>
+<td>9</td>
+<td>207,32</td>
+<td>13,51</td>
+</tr>
+
+<tr>
+<td>1,67</td>
+<td>61,50</td>
+<td>10</td>
+<td>203,66</td>
+<td>13,90</td>
+</tr>
+
+<tr>
+<td>1,75</td>
+<td>65,85</td>
+<td>11</td>
+<td>213,41</td>
+<td>12,89</td>
+</tr>
+
+<tr>
+<td>1,90</td>
+<td>70,20</td>
+<td>12</td>
+<td>231,71</td>
+<td>11,22</td>
+</tr>
+
+<tr>
+<td>1,96</td>
+<td>74,55</td>
+<td>13</td>
+<td>239,02</td>
+<td>10,63</td>
+</tr>
+
+<tr>
+<td>2,01</td>
+<td>78,90</td>
+<td>14</td>
+<td>245,12</td>
+<td>10,16</td>
+</tr>
+
+<tr>
+<td>2,07</td>
+<td>83,25</td>
+<td>15</td>
+<td>252,44</td>
+<td>9,63</td>
+</tr>
+
+<tr>
+<td>2,12</td>
+<td>87,60</td>
+<td>16</td>
+<td>258,54</td>
+<td>9,21</td>
+</tr>
+
+<tr>
+<td>2,18</td>
+<td>91,95</td>
+<td>17</td>
+<td>265,85</td>
+<td>8,73</td>
+</tr>
+
+<tr>
+<td>2,20</td>
+<td>96,30</td>
+<td>18</td>
+<td>268,29</td>
+<td>8,57</td>
+</tr>
+</tbody>
+</table>
+</blockquote>
+
+<blockquote>
+<p id="tab-storokav"><strong>Tabell 2.4:</strong> Stor sensor, økende vekt, vektene av mellom hver måling</p>
+
+<table class="table table-striped table-bordered table-hover">
+<thead>
+<tr>
+<th>\(V_R\) [V]</th>
+<th>Vekt [<abbr title="gram">g</abbr>]</th>
+<th>Vektenheter [<abbr title="stykker">stk.</abbr>]</th>
+<th>Utr. \(I_R\) [µA]</th>
+<th>Utr. \(R_S\) [<abbr title="kiloohm">kΩ</abbr>]</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+<td>0,27</td>
+<td>18,00</td>
+<td>0</td>
+<td>32,93</td>
+<td>128,47</td>
+</tr>
+
+<tr>
+<td>0,63</td>
+<td>22,35</td>
+<td>1</td>
+<td>76,83</td>
+<td>50,37</td>
+</tr>
+
+<tr>
+<td>0,96</td>
+<td>26,70</td>
+<td>2</td>
+<td>117,07</td>
+<td>30,24</td>
+</tr>
+
+<tr>
+<td>1,25</td>
+<td>31,05</td>
+<td>3</td>
+<td>152,44</td>
+<td>21,32</td>
+</tr>
+
+<tr>
+<td>1,35</td>
+<td>35,40</td>
+<td>4</td>
+<td>164,63</td>
+<td>19,13</td>
+</tr>
+
+<tr>
+<td>1,54</td>
+<td>39,75</td>
+<td>5</td>
+<td>187,80</td>
+<td>15,76</td>
+</tr>
+
+<tr>
+<td>1,65</td>
+<td>44,10</td>
+<td>6</td>
+<td>201,22</td>
+<td>14,16</td>
+</tr>
+
+<tr>
+<td>1,65</td>
+<td>48,45</td>
+<td>7</td>
+<td>201,22</td>
+<td>14,16</td>
+</tr>
+
+<tr>
+<td>1,67</td>
+<td>52,80</td>
+<td>8</td>
+<td>203,66</td>
+<td>13,90</td>
+</tr>
+
+<tr>
+<td>1,80</td>
+<td>57,15</td>
+<td>9</td>
+<td>219,51</td>
+<td>12,30</td>
+</tr>
+
+<tr>
+<td>1,90</td>
+<td>61,50</td>
+<td>10</td>
+<td>231,71</td>
+<td>11,22</td>
+</tr>
+
+<tr>
+<td>1,94</td>
+<td>65,85</td>
+<td>11</td>
+<td>236,59</td>
+<td>10,82</td>
+</tr>
+
+<tr>
+<td>2,08</td>
+<td>70,20</td>
+<td>12</td>
+<td>253,66</td>
+<td>9,54</td>
+</tr>
+</tbody>
+</table>
+</blockquote>
+
+<blockquote>
+<p class="center" id="fig-litenokavspenning"><img alt="" src="fig/sensormalinger2.png">
+</p>
+
+<p>(a) Spenning mot trykk</p>
+
+<p class="center" id="fig-litenokavmotstand"><img alt="" src="fig/sensormalinger3.png">
+</p>
+
+<p>(b) Motstand mot trykk, utregnet fra (a)</p>
+
+<p id="fig-litenokav"><strong>Figur 2.8:</strong> Liten sensor, økende vekt, vektene av mellom hver måling (<a href="#tab-litenokav" title="Tabell 2.3: Liten sensor, økende vekt, vektene av mellom hver måling">tabell 2.3</a>)</p>
+</blockquote>
+
+<blockquote>
+<p class="center" id="fig-storokavspenning"><img alt="" src="fig/sensormalinger4.png">
+</p>
+
+<p>(a) Spenning mot trykk</p>
+
+<p class="center" id="fig-storokavmotstand"><img alt="" src="fig/sensormalinger5.png">
+</p>
+
+<p>(b) Motstand mot trykk, utregnet fra (a)</p>
+
+<p id="fig-storokav"><strong>Figur 2.9:</strong> Stor sensor, økende vekt, vektene av mellom hver måling (<a href="#tab-storokav" title="Tabell 2.4: Stor sensor, økende vekt, vektene av mellom hver måling">tabell 2.4</a>)</p>
+</blockquote>
+</div>
+</section>
+</div>
+</section>
+
+<section id="223-spenningsverdi-ved-okende-trykk-vektene-ikke-av">
+<h3><a aria-hidden="true" class="header-anchor" href="#223-spenningsverdi-ved-okende-trykk-vektene-ikke-av" title="2.2.3 Spenningsverdi ved økende trykk, vektene ikke av"></a> 2.2.3 Spenningsverdi ved økende trykk, vektene ikke av<a aria-controls="223-spenningsverdi-ved-okende-trykk-vektene-ikke-av-section" aria-expanded="true" aria-hidden="true" class="collapse-button" data-toggle="collapse" href="#223-spenningsverdi-ved-okende-trykk-vektene-ikke-av-section" role="button"></a></h3>
+
+<div class="collapse in" id="223-spenningsverdi-ved-okende-trykk-vektene-ikke-av-section">
+<p>Som tidligere i <a href="#sec-okav" title="2.2.2 Spenningsverdi ved økende trykk, vektene av mellom hver måling">avsnitt 2.2.2</a> måles spenningen over \(R\), men vektene blir nå <em>ikke</em> tatt av mellom hver måling. Dette er for å minske muligheten for bevegelse på armen, og for å vise forventet spenning/spenningsendring i tilfelle konstant trykk på sensoren. Her venter man 15 s mellom målingene for å la verdien bli tilnærmet stabil før vekten økes.</p>
+
+<p>Resultatene for liten sensor er gitt i <a href="#tab-litenok" title="Tabell 2.5: Liten sensor, økende vekt, vektene ikke av mellom målingene">tabell 2.5</a> og <a href="#fig-litenok" title="Figur 2.10: Liten sensor, økende vekt, vektene ikke av mellom målingene (tabell 2.5)">figur 2.10</a>, og resultatene for stor sensor er gitt i <a href="#tab-storok" title="Tabell 2.6: Stor sensor, økende vekt, vektene ikke av mellom målingene">tabell 2.6</a> og <a href="#fig-storok" title="Figur 2.11: Stor sensor, økende vekt, vektene ikke av mellom målingene (tabell 2.6)">figur 2.11</a>.</p>
+
+<section id="2231-drofting-av-resultatene">
+<h4><a aria-hidden="true" class="header-anchor" href="#2231-drofting-av-resultatene" title="2.2.3.1 Drøfting av resultatene"></a> 2.2.3.1 Drøfting av resultatene<a aria-controls="2231-drofting-av-resultatene-section" aria-expanded="true" aria-hidden="true" class="collapse-button" data-toggle="collapse" href="#2231-drofting-av-resultatene-section" role="button"></a></h4>
+
+<div class="collapse in" id="2231-drofting-av-resultatene-section">
+<p>Ved å sammenligne figurene <a href="#fig-litenokav" title="Figur 2.8: Liten sensor, økende vekt, vektene av mellom hver måling (tabell 2.3)">2.8</a> og <a href="#fig-litenok" title="Figur 2.10: Liten sensor, økende vekt, vektene ikke av mellom målingene (tabell 2.5)">2.10</a> (for liten sensor) og <a href="#fig-storokav" title="Figur 2.9: Stor sensor, økende vekt, vektene av mellom hver måling (tabell 2.4)">2.9</a> og <a href="#fig-storok" title="Figur 2.11: Stor sensor, økende vekt, vektene ikke av mellom målingene (tabell 2.6)">2.11</a> (for stor sensor), kan man se at de er ganske like. Den første avlesningen gir imidlertid en mye høyere spenning enn tidligere: Det er nå en differanse på <abbr title="cirka">ca.</abbr> 0,25–0,50 V. Denne differansen synker til <abbr title="cirka">ca.</abbr> 0,00–0,15 V ved 70,20 <abbr title="gram">g</abbr>. Følgen er en lavere stigning enn for enkelttrykkene.</p>
+
+<p>Dette understreker viktigheten av kontinuerlig kalibrering av nullnivået. Det de avleste sensorverdiene blir sammenlignet med for å fastslå om de er i bruk, kan ikke være en konstant – ellers vil man kunne få hendelsesaktivering som følge av at hodebøylen presser mot kinnet. Sensorene setter krav til en <em>dynamisk verdi</em> for hendelsesaktivering.</p>
+
+<blockquote>
+<p id="tab-litenok"><strong>Tabell 2.5:</strong> Liten sensor, økende vekt, vektene ikke av mellom målingene</p>
+
+<table class="table table-striped table-bordered table-hover">
+<thead>
+<tr>
+<th>\(V_R\) [V]</th>
+<th>Vekt [<abbr title="gram">g</abbr>]</th>
+<th>Vektenheter [<abbr title="stykker">stk.</abbr>]</th>
+<th>Utr. \(I_R\) [µA]</th>
+<th>Utr. \(R_S\) [<abbr title="kiloohm">kΩ</abbr>]</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+<td>0,66</td>
+<td>18,00</td>
+<td>0</td>
+<td>80,49</td>
+<td>47,71</td>
+</tr>
+
+<tr>
+<td>0,79</td>
+<td>22,35</td>
+<td>1</td>
+<td>96,34</td>
+<td>38,51</td>
+</tr>
+
+<tr>
+<td>0,94</td>
+<td>26,70</td>
+<td>2</td>
+<td>114,63</td>
+<td>31,06</td>
+</tr>
+
+<tr>
+<td>1,14</td>
+<td>31,05</td>
+<td>3</td>
+<td>139,02</td>
+<td>24,17</td>
+</tr>
+
+<tr>
+<td>1,30</td>
+<td>35,40</td>
+<td>4</td>
+<td>158,54</td>
+<td>20,18</td>
+</tr>
+
+<tr>
+<td>1,50</td>
+<td>39,75</td>
+<td>5</td>
+<td>182,93</td>
+<td>16,40</td>
+</tr>
+
+<tr>
+<td>1,62</td>
+<td>44,10</td>
+<td>6</td>
+<td>197,56</td>
+<td>14,58</td>
+</tr>
+
+<tr>
+<td>1,71</td>
+<td>48,45</td>
+<td>7</td>
+<td>208,54</td>
+<td>13,38</td>
+</tr>
+
+<tr>
+<td>1,79</td>
+<td>52,80</td>
+<td>8</td>
+<td>218,29</td>
+<td>12,41</td>
+</tr>
+
+<tr>
+<td>1,89</td>
+<td>57,15</td>
+<td>9</td>
+<td>230,49</td>
+<td>11,32</td>
+</tr>
+
+<tr>
+<td>1,96</td>
+<td>61,50</td>
+<td>10</td>
+<td>239,02</td>
+<td>10,63</td>
+</tr>
+
+<tr>
+<td>2,03</td>
+<td>65,85</td>
+<td>11</td>
+<td>247,56</td>
+<td>9,98</td>
+</tr>
+
+<tr>
+<td>2,07</td>
+<td>70,20</td>
+<td>12</td>
+<td>252,44</td>
+<td>9,63</td>
+</tr>
+
+<tr>
+<td>2,10</td>
+<td>74,55</td>
+<td>13</td>
+<td>256,10</td>
+<td>9,37</td>
+</tr>
+
+<tr>
+<td>2,14</td>
+<td>78,90</td>
+<td>14</td>
+<td>260,98</td>
+<td>9,04</td>
+</tr>
+
+<tr>
+<td>2,17</td>
+<td>83,25</td>
+<td>15</td>
+<td>264,63</td>
+<td>8,80</td>
+</tr>
+
+<tr>
+<td>2,20</td>
+<td>87,60</td>
+<td>16</td>
+<td>268,29</td>
+<td>8,57</td>
+</tr>
+
+<tr>
+<td>2,23</td>
+<td>91,95</td>
+<td>17</td>
+<td>271,95</td>
+<td>8,35</td>
+</tr>
+
+<tr>
+<td>2,25</td>
+<td>96,30</td>
+<td>18</td>
+<td>274,39</td>
+<td>8,20</td>
+</tr>
+</tbody>
+</table>
+</blockquote>
+
+<blockquote>
+<p class="center" id="fig-litenokspenning"><img alt="" src="fig/sensormalinger6.png">
+</p>
+
+<p>(a) Spenning mot trykk</p>
+
+<p class="center" id="fig-litenokmotstand"><img alt="" src="fig/sensormalinger7.png">
+</p>
+
+<p>(b) Motstand mot trykk, utregnet fra (a)</p>
+
+<p id="fig-litenok"><strong>Figur 2.10:</strong> Liten sensor, økende vekt, vektene ikke av mellom målingene (<a href="#tab-litenok" title="Tabell 2.5: Liten sensor, økende vekt, vektene ikke av mellom målingene">tabell 2.5</a>)</p>
+</blockquote>
+
+<blockquote>
+<p id="tab-storok"><strong>Tabell 2.6:</strong> Stor sensor, økende vekt, vektene ikke av mellom målingene</p>
+
+<table class="table table-striped table-bordered table-hover">
+<thead>
+<tr>
+<th>\(V_R\) [V]</th>
+<th>Vekt [<abbr title="gram">g</abbr>]</th>
+<th>Vektenheter [<abbr title="stykker">stk.</abbr>]</th>
+<th>Utr. \(I_R\) [µA]</th>
+<th>Utr. \(R_S\) [<abbr title="kiloohm">kΩ</abbr>]</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+<td>0,48</td>
+<td>18,00</td>
+<td>0</td>
+<td>58,54</td>
+<td>68,68</td>
+</tr>
+
+<tr>
+<td>0,73</td>
+<td>22,35</td>
+<td>1</td>
+<td>89,02</td>
+<td>42,35</td>
+</tr>
+
+<tr>
+<td>1,10</td>
+<td>26,70</td>
+<td>2</td>
+<td>134,15</td>
+<td>25,35</td>
+</tr>
+
+<tr>
+<td>1,28</td>
+<td>31,05</td>
+<td>3</td>
+<td>156,10</td>
+<td>20,63</td>
+</tr>
+
+<tr>
+<td>1,42</td>
+<td>35,40</td>
+<td>4</td>
+<td>173,17</td>
+<td>17,79</td>
+</tr>
+
+<tr>
+<td>1,50</td>
+<td>39,75</td>
+<td>5</td>
+<td>182,93</td>
+<td>16,40</td>
+</tr>
+
+<tr>
+<td>1,63</td>
+<td>44,10</td>
+<td>6</td>
+<td>198,78</td>
+<td>14,44</td>
+</tr>
+
+<tr>
+<td>1,71</td>
+<td>48,45</td>
+<td>7</td>
+<td>208,54</td>
+<td>13,38</td>
+</tr>
+
+<tr>
+<td>1,80</td>
+<td>52,80</td>
+<td>8</td>
+<td>219,51</td>
+<td>12,30</td>
+</tr>
+
+<tr>
+<td>1,89</td>
+<td>57,15</td>
+<td>9</td>
+<td>230,49</td>
+<td>11,32</td>
+</tr>
+
+<tr>
+<td>1,97</td>
+<td>61,50</td>
+<td>10</td>
+<td>240,24</td>
+<td>10,53</td>
+</tr>
+
+<tr>
+<td>2,08</td>
+<td>65,85</td>
+<td>11</td>
+<td>253,66</td>
+<td>9,54</td>
+</tr>
+
+<tr>
+<td>2,15</td>
+<td>70,20</td>
+<td>12</td>
+<td>262,20</td>
+<td>8,96</td>
+</tr>
+
+<tr>
+<td>2,22</td>
+<td>74,55</td>
+<td>13</td>
+<td>270,73</td>
+<td>8,42</td>
+</tr>
+
+<tr>
+<td>2,27</td>
+<td>78,90</td>
+<td>14</td>
+<td>276,83</td>
+<td>8,06</td>
+</tr>
+
+<tr>
+<td>2,32</td>
+<td>83,25</td>
+<td>15</td>
+<td>282,93</td>
+<td>7,71</td>
+</tr>
+
+<tr>
+<td>2,35</td>
+<td>87,60</td>
+<td>16</td>
+<td>286,59</td>
+<td>7,50</td>
+</tr>
+
+<tr>
+<td>2,39</td>
+<td>91,95</td>
+<td>17</td>
+<td>291,46</td>
+<td>7,24</td>
+</tr>
+
+<tr>
+<td>2,42</td>
+<td>96,30</td>
+<td>18</td>
+<td>295,12</td>
+<td>7,05</td>
+</tr>
+</tbody>
+</table>
+</blockquote>
+
+<blockquote>
+<p class="center" id="fig-storokspenning"><img alt="" src="fig/sensormalinger8.png">
+</p>
+
+<p>(a) Spenning mot trykk</p>
+
+<p class="center" id="fig-storokmotstand"><img alt="" src="fig/sensormalinger9.png">
+</p>
+
+<p>(b) Motstand mot trykk, utregnet fra (a)</p>
+
+<p id="fig-storok"><strong>Figur 2.11:</strong> Stor sensor, økende vekt, vektene ikke av mellom målingene (<a href="#tab-storok" title="Tabell 2.6: Stor sensor, økende vekt, vektene ikke av mellom målingene">tabell 2.6</a>)</p>
+</blockquote>
+</div>
+</section>
+</div>
+</section>
+</div>
+</section>
+</div>
+</section>
+
+<section id="sec-hodeboyle">
+<h1><a aria-hidden="true" class="header-anchor" href="#sec-hodeboyle" title="3 Hodebøyle"></a> 3 Hodebøyle</h1>
+
+<div id="sec-hodeboyle-section">
+<blockquote>
+<p>Inneholder en oversikt over hvordan gruppen gikk frem og laget en prototype helt fra bunn. Den skal holde sensorene inntil kinnet og sende informasjon videre til kretskortet som behandler dataene. Prototypen som ble laget, oppfyller til en viss grad alle kravene satt i <a href="#sec-produktspes" title="1.2.2 Overordnet spesifikasjon av konseptet">produktspesifikasjonen</a>, men sensorene ligger litt dårlig mot kinnet og justeringsdelen er litt hard.</p>
+</blockquote>
+
+<section id="sec-hodeprob">
+<h2><a aria-hidden="true" class="header-anchor" href="#sec-hodeprob" title="3.1 Problemstilling"></a> 3.1 Problemstilling<a aria-controls="sec-hodeprob-section" aria-expanded="true" aria-hidden="true" class="collapse-button" data-toggle="collapse" href="#sec-hodeprob-section" role="button"></a></h2>
+
+<div class="collapse in" id="sec-hodeprob-section">
+<blockquote>
+<p class="center" id="fig-gammelprototype"><img alt="" src="fig/prototypeGammel.png">
+</p>
+
+<p><strong>Figur 3.1:</strong> Skisse av prototype, laget i AutoCAD</p>
+</blockquote>
+
+<p>For å benytte sensorene som tenkt, blir prosjektgruppen nødt til å konstruere noe som holder sensorene på plass på utsiden av hvert kinn. Siden ingen av gruppedeltagerne har noe erfaring fra lignende prosjekter før, og det skal være en prototype, blir design nedprioritert. Prototypen skal være behagelig å bruke, må kunne brukes av flere brukere og være uproblematisk å ta av og på (se <a href="#sec-produktspes" title="1.2.2 Overordnet spesifikasjon av konseptet">produktspesifikasjonen</a>).</p>
+</div>
+</section>
+
+<section id="32-gjennomforing">
+<h2><a aria-hidden="true" class="header-anchor" href="#32-gjennomforing" title="3.2 Gjennomføring"></a> 3.2 Gjennomføring<a aria-controls="32-gjennomforing-section" aria-expanded="true" aria-hidden="true" class="collapse-button" data-toggle="collapse" href="#32-gjennomforing-section" role="button"></a></h2>
+
+<div class="collapse in" id="32-gjennomforing-section">
+<p>Første tanke var å ta en allerede utviklet hodebøyle og sette på sensorene. Problemet var at ingen hodebøyler til en rimelig pris var mulig å ha helt ned til kinnet fra over hodet. Vi ble derfor nødt til å lage det hele fra bunn av.</p>
+
+<p>Ettersom utseendet ikke var så relevant, ble det i første omgang brukt spikerbånd, som er ganske bøyelig og enkelt å arbeide med. Det ble satt sammen med en skrue og en mutter på hver side av hodet. Det ene båndet gikk over hodet, det andre bak (<a href="#fig-prototype" title=""><abbr title="figur">fig.</abbr> 3.2a</a>). Dette fungerte, men det var uten muligheter til å justere og oppfylte derfor ikke alle kravene i produktspesifikasjonen.</p>
+
+<blockquote>
+<p class="center" id="fig-prototype"><img alt="" src="fig/prototype1.png">
+</p>
+
+<p><strong>Figur 3.2:</strong> Første (a) og andre (b) utkast av prototype for hodebøylen</p>
+</blockquote>
+
+<p>Inspirasjon til videreutvikling ble hentet fra en Koss PortaPro-hodebøyle, og det ble funnet en måte å justere hodebøylen på (<a href="#fig-prototype" title=""><abbr title="figur">fig.</abbr> 3.2b</a>). Kravet om å lage en justerbar prototype som kunne tilpasses hver enkelt bruker, ble dermed oppfylt. Noe som først ble ansett som en fordel for å holde hodebøylen godt på plass, viste seg etter hvert å være en ulempe, for med ett bånd som gikk over hodet, og ett som gikk bak hodet, ble det veldig problematiskt å ta hodebøylen på og av hodet. Det ble altså nok en gang en konflikt mellom kravene i produktspesifikasjonen og resultatet.</p>
+
+<p>Etter flere forsøk med spikerbånd, ble det konkludert med at det ikke var det best egnet metallet, siden det var svakt og knakk ofte ved mye bøying. Det ble derfor behov for noe annet. Alternativet ble metallet som blir brukt for å rense kloakkrør. Fordelen med dette metallet er at det er veldig solid og meget slitesterkt, og hvis en bøyer det i forkant, er det veldig stivt. Derfor er det mulighet til å få det veldig stramt imellom kinn og sensor.</p>
+
+<blockquote>
+<p class="center" id="fig-justeringsboks"><img alt="" src="fig/justering.png">
+</p>
+
+<p><strong>Figur 3.3:</strong> Justeringsboks med lokk (a) og uten lokk (b)</p>
+</blockquote>
+
+<p>Med det nye «vidundermetallet» kunne det lages en helt ny måte å justere hodebøylen på ut ifra inspirasjonen fra Koss PortaPro. Dette er illustrert i <a href="#fig-justeringsboks" title="">figur 3.3</a> og <a href="#fig-prototype3" title="">3.4</a>. Hodebøylen ble laget med tre bånd på hver side og koblet sammen med noen justeringsbokser på toppen av hodet. Det nye justeringssystemet fungerte mye bedre enn det vi hadde fra før. Hodebøylen var justerbart til flere brukere; å sette det av og på var uproblematisk, og det var behagelig å ha på seg. Men kravet om at det skulle legges press på sensorene mot kinnet, var fortsatt ikke oppfylt.</p>
+
+<p>Siden det hadde blitt bestemt at det ikke skulle være noe bak hodet for å stramme opp, pga. praktiske årsaker, kom vi frem til at det måtte legges et tykkere lag med metall litt lengre frem, som ble festet til det punktet som sensorene på hodebøylen skulle festes. Ved hjelp av dette oppfyltes alle kravene som hadde blitt satt. Det eneste som manglet nå var å plassere sensorene og få det hele koblet til kretskortet med mikroprosessoren. (Mer om sensorkonfigurasjon i <a href="#sec-funksjonalitet" title="6 Funksjonalitet">kapittel 6</a>.)</p>
+
+<p>Det å få festet sensorene på hodebøylen ble gjort veldig enkelt: Først ble det brukt to metallplater, en på hver side. Deretter ble de små kretskortene som sensorene er koblet sammen på, festet på metallplatene.</p>
+
+<blockquote>
+<p class="center" id="fig-prototype3"><img alt="" src="fig/heleGreia.png">
+</p>
+
+<p><strong>Figur 3.4:</strong> Tegning av hodebøylens justeringsmuligheter</p>
+</blockquote>
+
+<p>Det som nå ble vurdert, var om kretskortet som inneholder mikroprosessoren, skulle plasseres på hodebøylen. Siden det i utgangspunktet skulle være minst mulig på hodebøylen – både fordi at det skulle være så lett som mulig, og at det ikke skulle bli mye elektronikk som en må ta hensyn til når en skal plassere hodebøylen på brukeren – måtte det finnes et annet alternativ. Det ble anskaffet en større kabel med flere ledere i som ble festet på toppen av hodebøylen og koblet til sensorene på hver sin side, slik at alle signalene fra sensorene blir sendt samlet gjennom en kabel til prosessoren som skal ta imot. På enden av kabelen ble det montert et motstykke til en <abbr class="acronym" title="Communication Port">COM</abbr>-port, dette for å gjøre det enkelt å koble hodebøylen til «X-box»-en i <a href="#sec-xbox" title="4 X-box">kapittel 4</a> (<a href="#fig-signalkabel" title=""><abbr title="figur">fig.</abbr> 3.5</a>).</p>
+
+<blockquote>
+<p class="center" id="fig-signalkabel"><img alt="" src="fig/overgangtilCOM.png">
+</p>
+
+<p><strong>Figur 3.5:</strong> Bilde av signalkabel</p>
+</blockquote>
+</div>
+</section>
+
+<section id="33-resultat">
+<h2><a aria-hidden="true" class="header-anchor" href="#33-resultat" title="3.3 Resultat"></a> 3.3 Resultat<a aria-controls="33-resultat-section" aria-expanded="true" aria-hidden="true" class="collapse-button" data-toggle="collapse" href="#33-resultat-section" role="button"></a></h2>
+
+<div class="collapse in" id="33-resultat-section">
+<p>En prototype av en hodebøyle som oppfylte de kravene som hadde blitt satt i forkant (<a href="#fig-ferdigprototype" title="">figur 3.6</a>). Det passer til flere brukere ved hjelp av justeringsmulighetene, og det er lett å koble opp og komme igang med. Det er to ulemper med den ferdige prototypen. Den ene er at justeringsdelen er litt hard. Den andre er at hodebøylen ikke har nok press mot kinnet hvor sensorene ligger. (Begge disse problemene vil være enkelt å løse på en <abbr title="eventuelt">ev.</abbr> ferdig versjon ved hjelp av noen som har en bedre bakgrunn i mekanikk og <abbr title="eventuelt">ev.</abbr> annet utstyr som gruppen ikke hadde til rådighet.)</p>
+
+<blockquote>
+<p class="center" id="fig-ferdigprototype"><img alt="" src="fig/prototype2.png">
+</p>
+
+<p><strong>Figur 3.6:</strong> Ferdig prototype</p>
+</blockquote>
+</div>
+</section>
+</div>
+</section>
+
+<section id="sec-xbox">
+<h1><a aria-hidden="true" class="header-anchor" href="#sec-xbox" title="4 X-box"></a> 4 X-box</h1>
+
+<div id="sec-xbox-section">
+<blockquote>
+<p>Inneholder en kort beskrivelse av hvordan «X-box»-en ble laget og hva den brukes til. Bakgrunnen til at «X-box»-en ble laget er gitt i <a href="#sec-hodeboyle" title="3 Hodebøyle">kapittel 3</a>. «X-box»-en skal inneholde elektronikken som behandler dataen fra hodebøylen, og sender den videre til <abbr class="acronym" title="Personal Computer">PC</abbr>-en.</p>
+</blockquote>
+
+<section id="41-problemstilling">
+<h2><a aria-hidden="true" class="header-anchor" href="#41-problemstilling" title="4.1 Problemstilling"></a> 4.1 Problemstilling<a aria-controls="41-problemstilling-section" aria-expanded="true" aria-hidden="true" class="collapse-button" data-toggle="collapse" href="#41-problemstilling-section" role="button"></a></h2>
+
+<div class="collapse in" id="41-problemstilling-section">
+<blockquote>
+<p class="center" id="fig-xboxacad"><img alt="" src="fig/x-boxsalangt.png">
+</p>
+
+<p><strong>Figur 4.1:</strong> Skisse av «X-box», laget i AutoCAD</p>
+</blockquote>
+
+<p>Det var et behov for et mellomledd mellom selve musen (hodebøylen, <a href="#sec-hodeboyle" title="3 Hodebøyle"><abbr title="kapittel">kap.</abbr> 3</a>) og datamaskinen. Dette bindingspunktet måtte enkelt kunne kobles til hodebøylen via <abbr class="acronym" title="Communication Port">COM</abbr>-port og samtidig kunne kobles videre via <abbr class="acronym" title="Universal Serial Bus">USB</abbr> til <abbr class="acronym" title="Personal Computer">PC</abbr>-en. Det måtte inneholde kretskortet til mikroprosessoren.</p>
+</div>
+</section>
+
+<section id="42-gjennomforing">
+<h2><a aria-hidden="true" class="header-anchor" href="#42-gjennomforing" title="4.2 Gjennomføring"></a> 4.2 Gjennomføring<a aria-controls="42-gjennomforing-section" aria-expanded="true" aria-hidden="true" class="collapse-button" data-toggle="collapse" href="#42-gjennomforing-section" role="button"></a></h2>
+
+<div class="collapse in" id="42-gjennomforing-section">
+<p>Prosjektgruppen fant ut at det skulle lages en boks som skulle ha to kontakter: En <abbr class="acronym" title="Communication Port">COM</abbr>-port som skulle kobles til hodebøylen, den andre kontakten skulle være <abbr class="acronym" title="Universal Serial Bus">USB</abbr> for å kommunisere videre inn til datamaskinen. Inne i boksen skulle det også være plass til kretskortet, samt til å sette på testutstyr for å resette/justere koden underveis. Det ble brukt en metalplate som bøydes 90° på hver side. Dette utgjorde underlaget til boksen og 2 «vegger». Kretskortet ble festet inne i boksen ved hjelp av gaffateip, og plasseringen av kortet var så nær den ene kanten uten «vegg» slik at den lett kan kobles til <abbr class="acronym" title="Universal Serial Bus">USB</abbr>-kabelen (som en kan se på <a href="#fig-xboxtopp" title=""><abbr title="figur">fig.</abbr> 4.2</a>). Siden det skulle være <abbr class="acronym" title="Communication Port">COM</abbr>-kontakt mot hodebøylen, ble det laget et hull i den ene siden hvor <abbr class="acronym" title="Communication Port">COM</abbr>-porten ble satt inn. Det ble strukket ledninger som på den ene siden var loddet fast til kretskortet, den andre enden til <abbr class="acronym" title="Communication Port">COM</abbr>-porten. Nå var det altså bare å koble i headsettet på den ene siden, og maskinen med <abbr class="acronym" title="Universal Serial Bus">USB</abbr> på den andre. «That’s Plug 'n’ Play!»</p>
+
+<blockquote>
+<p class="center" id="fig-xboxtopp"><img alt="" src="fig/x-box2.png">
+</p>
+
+<p><strong>Figur 4.2:</strong> Bilde av «X-box» fra toppen</p>
+</blockquote>
+</div>
+</section>
+
+<section id="43-resultat">
+<h2><a aria-hidden="true" class="header-anchor" href="#43-resultat" title="4.3 Resultat"></a> 4.3 Resultat<a aria-controls="43-resultat-section" aria-expanded="true" aria-hidden="true" class="collapse-button" data-toggle="collapse" href="#43-resultat-section" role="button"></a></h2>
+
+<div class="collapse in" id="43-resultat-section">
+<p>En boks som skal være et bindeledd mellom <abbr class="acronym" title="Personal Computer">PC</abbr>-en og musen (<a href="#fig-xboxferdig" title="">figur 4.3</a>). Den har en <abbr class="acronym" title="Communication Port">COM</abbr>-port som var gruppens løsning for å på en enkel måte koble til hodebøylen. Videre går data fra hodebøylen inn til kretskortet, og videre til maskinen som utfører ønskede operasjoner.</p>
+
+<blockquote>
+<p class="center" id="fig-xboxferdig"><img alt="" src="fig/x-box1.png">
+</p>
+
+<p><strong>Figur 4.3:</strong> Bilde av ferdig «X-box»</p>
+</blockquote>
+</div>
+</section>
+</div>
+</section>
+
+<section id="sec-elektronikk">
+<h1><a aria-hidden="true" class="header-anchor" href="#sec-elektronikk" title="5 Elektronikk"></a> 5 Elektronikk</h1>
+
+<div id="sec-elektronikk-section">
+<blockquote>
+<p>Dette kapittelet tar for seg valg av krets for tolking og digitalisering av sensordata og begrunnelse for valget. Det omhandler også litt om den innebygde spenningsregulatoren som bruker strøm fra <abbr class="acronym" title="Universal Serial Bus">USB</abbr> eller batteri. Kapittelet avrundes med en begrunnelse for valg av <abbr class="acronym" title="Personal Computer">PC</abbr>-grensesnitt. AT90USBkey har de funksjonene vi lette etter. Den kommuniserer og får strøm via <abbr class="acronym" title="Universal Serial Bus">USB</abbr>-porten, og har en innebygd spenningsregulator som blir brukt til forspenning av de trykkfølsome motstandene.</p>
+</blockquote>
+
+<section id="51-problemstilling">
+<h2><a aria-hidden="true" class="header-anchor" href="#51-problemstilling" title="5.1 Problemstilling"></a> 5.1 Problemstilling<a aria-controls="51-problemstilling-section" aria-expanded="true" aria-hidden="true" class="collapse-button" data-toggle="collapse" href="#51-problemstilling-section" role="button"></a></h2>
+
+<div class="collapse in" id="51-problemstilling-section">
+<p>Det skal lages en krets for kommunikasjon med <abbr class="acronym" title="Personal Computer">PC</abbr> og Microsoft Windows. Prosjektgruppen fokuserer på de to grensesnittene Bluetooth og <abbr class="acronym" title="Universal Serial Bus">USB</abbr>. Bluetooth er et trådløst grensesnitt som de fleste moderne <abbr class="acronym" title="Personal Computer">PC</abbr>-er enten allerede har mottager for eller mulighet for å installere. <abbr class="acronym" title="Universal Serial Bus">USB</abbr> er det mest brukte grensesnittet mot <abbr class="acronym" title="Personal Computer">PC</abbr> i dag. Det er også standard grensesnitt for <abbr class="acronym" title="Personal Computer">PC</abbr>-mus.</p>
+
+<p>Det skal tas stilling til hvor behandlingen av data skal foregå. Skal data behandles i et bakgrunnsprogram på Microsoft Windows, eller skal all prosessering av data foregå før oversending til <abbr class="acronym" title="Personal Computer">PC</abbr>?</p>
+
+<p>Kretsen skal ikke sette krav til brukerens tekniske kunnskaper. Kretsen må kunne lese analoge data og digitalisere den å sende den videre (analog-til-digital-omformer, <abbr class="acronym" title="Analog-to-Digital Converter">ADC</abbr>). Den skal også være den billigste mulige løsningen som kan tilfredsstille alle <a href="#sec-produktspes" title="1.2.2 Overordnet spesifikasjon av konseptet">spesifikasjonene</a>.</p>
+</div>
+</section>
+
+<section id="52-valg-av-krets">
+<h2><a aria-hidden="true" class="header-anchor" href="#52-valg-av-krets" title="5.2 Valg av krets"></a> 5.2 Valg av krets<a aria-controls="52-valg-av-krets-section" aria-expanded="true" aria-hidden="true" class="collapse-button" data-toggle="collapse" href="#52-valg-av-krets-section" role="button"></a></h2>
+
+<div class="collapse in" id="52-valg-av-krets-section">
+<p>Prosjektgruppen velger å bruke AT90USBKey, som er en demokrets fra Atmel [<a href="#ref-usbkey" title="[Vedlegg 3] Datablad for AT90USBKey.">Vedlegg 3</a>].<sup class="footnote-ref"><a href="#fn3" id="fnref3" title="http://www.atmel.com/dyn/products/tools_card.asp?tool_id=3879.">[3]</a></sup> Kretsen inneholder mikrokontrolleren AT90USB1287 [<a href="#ref-uk" title="[Vedlegg 4] Datablad for mikrokontrolleren.">Vedlegg 4</a>].</p>
+
+<p>Denne kretsen ble valgt på grunnlag av at den inneholder <abbr class="acronym" title="Universal Serial Bus">USB</abbr>-brukergrensesnitt mot <abbr class="acronym" title="Personal Computer">PC</abbr>, og er tidsbesparende siden prosjektgruppen slipper å designe en egen krets. Mikrokontrolleren har en krystall på 8 <abbr title="megahertz">MHz</abbr> og 128 <abbr title="kilobyte">kB</abbr> minne. Den har også en åtte-ports <abbr class="acronym" title="Analog-to-Digital Converter">ADC</abbr>.</p>
+
+<p>Siden kretsen er ment som en demonstrasjonskrets, bruker den to av <abbr class="acronym" title="Analog-to-Digital Converter">ADC</abbr>-portene til temperaturavlesning (PF0 og PF3). Dette er ikke et problem for prototypen, som bare bruker seks <abbr class="acronym" title="Analog-to-Digital Converter">ADC</abbr>-porter. Men ønsker man å bruke portene PF0 og PF3, kan kretsen endres ved å fysisk fjerne tilkoblingen til temperaturavlesningen.</p>
+
+<blockquote>
+<p class="center" id="fig-at90usbkey"><img alt="" src="fig/USBkey.png">
+</p>
+
+<p><strong>Figur 5.1:</strong> AT90USBKey</p>
+</blockquote>
+
+<p>Atmel har laget et <abbr class="acronym" title="Universal Serial Bus">USB</abbr> Human Interface Device (<abbr class="acronym" title="Human Interface Device">HID</abbr>)-kompatibelt musegrensesnitt for mikrokontrolleren.<sup class="footnote-ref"><a href="#fn4" id="fnref4" title="Lisensen for den medfølgende programvaren til Atmel er gitt i LICENSE.TXT i [Vedlegg 1].">[4]</a></sup> Ved å bruke dette sparer prosjektgruppen ytterligere med arbeidstid, men dette betyr at avlest data må behandles av mikrokontrolleren før den sendes til <abbr class="acronym" title="Personal Computer">PC</abbr> (for databehandling, se <a href="#sec-funksjonalitet" title="6 Funksjonalitet">kapittel 6</a>).</p>
+
+<p>Alternativet til denne kretsen var å designe en egen krets med Bluetooth/<abbr class="acronym" title="Universal Serial Bus">USB</abbr>-grensesnitt mot <abbr class="acronym" title="Personal Computer">PC</abbr> for bruker, og et programmeringsgrensesnitt for utvikling. Denne kretsen ville også blitt bygd rundt en mikrokontroller fra Atmel, grunnet faglig kompetanse hos <abbr title="Høgskolen i Sør-Trøndelag">HiST</abbr>. Mer om hva som kan gjøres videre er gitt i <a href="#sec-veienvidere" title="10 Veien videre">kapittel 10</a> – design av kretsen(e) er utenfor prosjektgruppens <a href="#sec-hovedproblemstilling" title="1.2 Problemstilling">hovedproblemstilling</a>.</p>
+</div>
+</section>
+
+<section id="sec-stromforsyning">
+<h2><a aria-hidden="true" class="header-anchor" href="#sec-stromforsyning" title="5.3 Strømforsyning"></a> 5.3 Strømforsyning<a aria-controls="sec-stromforsyning-section" aria-expanded="true" aria-hidden="true" class="collapse-button" data-toggle="collapse" href="#sec-stromforsyning-section" role="button"></a></h2>
+
+<div class="collapse in" id="sec-stromforsyning-section">
+<p>Den innebygde spenningskretsen på AT90USBKey gjør det mulig å bruke strøm direkte fra <abbr class="acronym" title="Universal Serial Bus">USB</abbr>-porten eller fra et eksternt batteri (se <a href="#sec-veienvidere" title="10 Veien videre">kapittel 10</a> for bruk av batteri). I vårt tilfelle bruker vi 5 V spenningen fra <abbr class="acronym" title="Universal Serial Bus">USB</abbr>-kontakten for å forsyne kretsen. Se <a href="#fig-powerkrets-usb" title="">figur 5.2</a> for skjemategning over strømforsyningen fra <abbr class="acronym" title="Universal Serial Bus">USB</abbr>. Fordelene med dette er at kretsen blir billigere og mindre komplisert. Spenningen blir gjort om til <abbr title="cirka">ca.</abbr> 3,3 V ved hjelp av en lineær <abbr class="acronym" title="Complimentary Metal Oxide Semiconductor">CMOS</abbr>-spenningsregulator. Den nøyaktige utspenningen fra denne kan beregnes fra formelen</p>
+
+<p>\[V_{CC3} = 1,25 \cdot \left(1 + \frac{R_{15}+R_{18}}{R_{19}}\right)\]</p>
+
+<p>Dette gir en utspenning på \(V_{CC3} = 3,266\) V. Denne spenningen blir også benyttet av sensorene som er koblet til.</p>
+
+<blockquote>
+<p class="center" id="fig-powerkrets-usb"><img alt="" src="fig/power.png">
+</p>
+
+<p><strong>Figur 5.2:</strong> AT90USBKey-powerkrets</p>
+</blockquote>
+</div>
+</section>
+
+<section id="usb-grensesnitt">
+<h2><a aria-hidden="true" class="header-anchor" href="#usb-grensesnitt" title="USB-grensesnitt"></a> <abbr class="acronym" title="Universal Serial Bus">USB</abbr>-grensesnitt<a aria-controls="usb-grensesnitt-section" aria-expanded="true" aria-hidden="true" class="collapse-button" data-toggle="collapse" href="#usb-grensesnitt-section" role="button"></a></h2>
+
+<div class="collapse in" id="usb-grensesnitt-section">
+<p><abbr class="acronym" title="Universal Serial Bus">USB</abbr>-teknologien har mange fordeler fremfor <abbr title="for eksempel">f.eks.</abbr> PS2, RS232, LPT1 <abbr title="med flere">mfl.</abbr> Siden <abbr class="acronym" title="Universal Serial Bus">USB</abbr> er det mest brukte <abbr class="acronym" title="Personal Computer">PC</abbr>-grensesnittet i dag, er alle nye datamaskiner og maskiner fra tilbake til begynnelsen av 2000-tallet utrustet og klargjort for dette. Enheter kan bli koblet til og fra uten å måtte restarte systemet. Drivere blir automatisk lastet inn og enheten blir dermed gjenkjent og gjort klar til bruk («Plug 'n’ Play»). En <abbr class="acronym" title="Universal Serial Bus">USB</abbr>-inngang kan tilkobles så mange som 127 enheter og kan levere totalt opp til en halv ampere strøm til periferiutstyr.<sup class="footnote-ref"><a href="#fn5" id="fnref5" title="Standard 100 mA, maksimalt 500 mA etter forespørsel.">[5]</a></sup></p>
+</div>
+</section>
+</div>
+</section>
+
+<section id="sec-funksjonalitet">
+<h1><a aria-hidden="true" class="header-anchor" href="#sec-funksjonalitet" title="6 Funksjonalitet"></a> 6 Funksjonalitet</h1>
+
+<div id="sec-funksjonalitet-section">
+<blockquote>
+<p>Sensorene plasseres utenpå kinnene, to store knappsensorer og fire små bevegelsessensorer. Avlesningen av sensorverdiene er selvkalibrerende, og kan også kalibreres manuelt. I utgangspunktet måtte man presse kontinuerlig på bevegelsessensorene for å flytte pekeren, men dette gjorde tungemuskelen fort sliten. På bakgrunn av dette er sensorplasseringen justert lengst mulig frem på kinnet, og «ett-trykk-funksjonalitet» gjør det mulig å styre pekeren med lette trykk. Scroll og mulighet for å «dra» pekeren realiseres gjennom moduser, som aktiveres og deaktiveres ved å presse på knappsensorene.</p>
+</blockquote>
+
+<section id="61-problemstilling">
+<h2><a aria-hidden="true" class="header-anchor" href="#61-problemstilling" title="6.1 Problemstilling"></a> 6.1 Problemstilling<a aria-controls="61-problemstilling-section" aria-expanded="true" aria-hidden="true" class="collapse-button" data-toggle="collapse" href="#61-problemstilling-section" role="button"></a></h2>
+
+<div class="collapse in" id="61-problemstilling-section">
+<p>Plug ‘n’ Play <abbr class="acronym" title="Universal Serial Bus">USB</abbr>-musegrensesnittet mot <abbr class="acronym" title="Personal Computer">PC</abbr>, valgt i <a href="#sec-elektronikk" title="5 Elektronikk">kapittel 5</a>, begrenser funksjonaliteten til <em>standard musefunksjoner</em>: horisontal, vertikal og diagonal bevegelse, venstre- og høyre museknapp, og scroll.<sup class="footnote-ref"><a href="#fn6" id="fnref6" title="Se produktspesifikasjonen.">[6]</a></sup> Den videre problemstillingen er hvordan disse funksjonene skal aktiveres ved å bruke sensorene.</p>
+
+<p>Den fysiske plasseringen av sensorene må være enkel og intuitiv. Implementeringen av musefunksjonene må gjøres på bakgrunn av antall sensorer og plassering.</p>
+
+<p>Det må også tas stilling til hvordan hver enkelt sensor avleses. Avleste verdier må nødvendigvis sammenlignes med et <em>nullnivå</em> for å avgjøre om de er i bruk. Målingene i <a href="#sec-sensorkap" title="2 Sensorene">kapittel 2</a> tilsier at dette nullnivået bør oppdateres med jevne mellomrom – mikrokontrolleren bør ta høyde for at sensorene kan henge seg opp, og kalibrere deretter.</p>
+</div>
+</section>
+
+<section id="62-plassering-av-sensorene">
+<h2><a aria-hidden="true" class="header-anchor" href="#62-plassering-av-sensorene" title="6.2 Plassering av sensorene"></a> 6.2 Plassering av sensorene<a aria-controls="62-plassering-av-sensorene-section" aria-expanded="true" aria-hidden="true" class="collapse-button" data-toggle="collapse" href="#62-plassering-av-sensorene-section" role="button"></a></h2>
+
+<div class="collapse in" id="62-plassering-av-sensorene-section">
+<blockquote>
+<p class="center" id="fig-trebevsensorer"><img alt="" src="fig/bevsensor.png">
+</p>
+
+<p><strong>Figur 6.1:</strong> Sensorplate med tre bevegelsessensorer i linje (a) og trekant (b)</p>
+</blockquote>
+
+<p>For at tungen skal kunne ha noen innvirkning på sensorene uten å være i direkte kontakt, må sensorene festes utenpå kinnet. Dermed unngår man også spørsmål rundt hygiene ved brukerbytte.</p>
+
+<p>Sensorene kan festes på kinnet på flere måter. Det er valgt å bruke en hodebøyle (se <a href="#sec-hodeboyle" title="3 Hodebøyle"><abbr title="kapittel">kap.</abbr> 3</a>) med plater som sensorene festes på.<sup class="footnote-ref"><a href="#fn7" id="fnref7" title="Festemekanismen kan videreutvikles, se kapittel 10.">[7]</a></sup> Platene må ha riktig antall sensorer, som igjen må ha riktig plassering mellom hverandre for å gi en god brukerfølelse. For å gjøre det intuitivt, er knapp- og bevegelsessensorene plassert på hvert sitt kinn.</p>
+
+<p>De <em>fire hovedretningene</em> regner vi som oppover, nedover, til venstre og til høyre. Dersom <em>diagonal bevegelse</em> (kombinasjoner av hovedretningene) også er et krav, må det plasseres minst tre sensorer på «bevegelseskinnet».<sup class="footnote-ref"><a href="#fn8" id="fnref8" title="Man kan klare seg med færre dersom man bruker ulikt trykk for ulike retninger, men kapittel 2 antyder at dette blir vanskelig.">[8]</a></sup> Disse må kunne aktiveres samtidig, og det må tas hensyn til hvilken sensor som er mest aktiv.</p>
+
+<p>Som vi ser av <a href="#fig-trebevsensorer" title="">figur 6.1</a>, krever minst én av hovedretningene at man trykker på to av de tre sensorene samtidig. Dette blir veldig vanskelig å skille fra diagonal bevegelse, og derfor forkaster vi disse konfigurasjonene. <em>Hovedretningene er viktigere enn diagonalretningene.</em> Ved å bruke fire sensorer for bevegelse, får hver hovedretning sin egen sensor, og diagonal bevegelse fås ved å aktivere to sensorer samtidig. Det er dette oppsettet vi bruker i vår <em>første tilnærming</em>.</p>
+</div>
+</section>
+
+<section id="sec-forstetilnerming">
+<h2><a aria-hidden="true" class="header-anchor" href="#sec-forstetilnerming" title="6.3 Første tilnærming"></a> 6.3 Første tilnærming<a aria-controls="sec-forstetilnerming-section" aria-expanded="true" aria-hidden="true" class="collapse-button" data-toggle="collapse" href="#sec-forstetilnerming-section" role="button"></a></h2>
+
+<div class="collapse in" id="sec-forstetilnerming-section">
+<blockquote>
+<p class="center" id="fig-sensorknapper1"><img alt="" src="fig/bevsensorfirkant1.png">
+</p>
+
+<p><strong>Figur 6.2:</strong> Første tilnærming: knapper på venstre kinn (a) og bevegelse på høyre kinn (b)</p>
+</blockquote>
+
+<p>Den første tilnærmingen anvender fire <em>små</em> sensorer (type FSR-400) for bevegelse på venstre kinn og to <em>store</em> sensorer (type FSR-402) for knapper på høyre kinn (<a href="#fig-sensorknapper1" title=""><abbr title="figur">fig.</abbr> 6.2</a>). Bevegelsessensorene er plassert i «stjerne» og svarer til himmelretningene på et kompass – ved å presse på den øverste sensoren, går pekeren oppover, <abbr title="og så videre">osv.</abbr> Når trykket forsvinner, slutter bevegelsen.</p>
+
+<blockquote>
+<p class="center" id="fig-retninger"><img alt="" src="fig/retninger.png">
+</p>
+
+<p><strong>Figur 6.3:</strong> Retninger i intervallet 0–90°. Tallene på aksene ganges med basishastigheten.</p>
+</blockquote>
+
+<p>Diagonal bevegelse fås ved å trykke på to nærliggende sensorer samtidig. Dersom man presser ekstra hardt, beveger pekeren seg opptil fem ganger raskere. Dette gir teoretisk 72 flere retninger dersom man øver ulikt trykk på to nærliggende sensorer (<a href="#fig-retninger" title=""><abbr title="figur">fig.</abbr> 6.3</a>), <abbr title="det vil si">dvs.</abbr> en gjennomsnittlig oppløsning på 4,5°. (I praksis er bare de fire første hastighetene oppnåelige, noe som gir 40 ekstra retninger og 7,5° gjennomsnittlig oppløsning.)</p>
+
+<p>Knappsensorene er plassert side om side og svarer til henholdsvis venstre og høyre museknapp. Et enkelt trykk gir et enkelt klikk. For å dobbeltklikke, kan man presse kontinuerlig slik at to klikk produseres i rask rekkefølge.</p>
+
+<p>Hvis en sensor kommer under uønsket press, kan brukeren <em>rekalibrere</em> den ved å trykke på motsatt kinn. Da tas den gjeldende sensorverdien som nullnivå, og fremtidige sensorverdier sammenlignes med denne. Ellers kalibreres sensorene automatisk når de ikke er i bruk.</p>
+
+<p><em>Manglende funksjoner</em> er scroll og å «dra» musepekeren, <abbr title="det vil si">dvs.</abbr> holde venstre museknapp inne mens pekeren beveges.</p>
+
+<section id="avlesning-av-en-sensor">
+<h3><a aria-hidden="true" class="header-anchor" href="#avlesning-av-en-sensor" title="Avlesning av én sensor"></a> Avlesning av én sensor<a aria-controls="avlesning-av-en-sensor-section" aria-expanded="true" aria-hidden="true" class="collapse-button" data-toggle="collapse" href="#avlesning-av-en-sensor-section" role="button"></a></h3>
+
+<div class="collapse in" id="avlesning-av-en-sensor-section">
+<p>Hver sensor er forspent og koblet til en egen analog-til-digital-omformer (<abbr class="acronym" title="Analog-to-Digital Converter">ADC</abbr>) som beskrevet i <a href="#sec-sensorkap" title="2 Sensorene">kapittel 2</a>. <abbr class="acronym" title="Analog-to-Digital Converter">ADC</abbr>-ene avleses kontinuerlig – opptil 125 ganger i sekundet – og verdiene analyseres for å fastslå om en sensor er i bruk.</p>
+
+<p>For å finne ut om en sensor er aktiv, må den avleste verdien sammenlignes med en verdi for når sensoren <em>ikke</em> er i bruk, nullnivået. Hvis den avleste verdien er større enn nullnivået med en viss margin – <em>spranget</em> – er sensoren aktiv:</p>
+
+<p>\[\begin{equation}\label{eq:sprang} \text{avlest verdi} &gt; \text{nullnivå} + \text{sprang} \end{equation}\]</p>
+
+<p>Når dette er oppfylt, sier vi at vi «har et sprang». Marginen er fastsatt på forhånd, og er litt større for de store sensorene på knappkinnet enn de små sensorene på bevegelseskinnet.</p>
+
+<blockquote>
+<p class="center" id="fig-kalibrering"><img alt="" src="fig/kalibrering.png">
+</p>
+
+<p><strong>Figur 6.4:</strong> Selvkalibrering og avlesning av sensor</p>
+</blockquote>
+
+<p>Ideelt sett er nullnivået 0 V. Men det er alltid en fare for at en av sensorene kommer i klem, og dermed gir en høyere verdi. Derfor bør ikke nullnivået fastsettes på forhånd, men i stedet <em>kalibreres</em> automatisk med utgangspunkt i de avleste verdiene.</p>
+
+<p><a href="#fig-kalibrering" title="">Figur 6.4</a> viser avlesing og kalibrering av én enkelt sensor. Den første avlesningen av sensoren etablerer nullnivået, som videre avlesninger sammenlignes med. Deretter avleses sensoren kontinuerlig og sammenlignes med nullnivået. Hvis differansen er stor nok, betraktes sensoren som aktiv, og en musefunksjon utføres. Hvis differansen ikke er stor nok, derimot, blir nullnivået <em>rekalibrert</em>: nullnivået settes til den avleste verdien.</p>
+
+<p>Rekalibreringen begrenset til hver 250. gjennomgang i programmet [<a href="#ref-program" title="[Vedlegg 1] Programkode, dokumentert.">Vedlegg 1</a>], slik at bare 250 påfølgende avlesninger uten «sprang» gir rekalibrering. Dette medfører at dersom sensoren gradvis kommer under press (eller presset gradvis opphører), vil nullnivået oppdateres, mens hvis sensoren plutselig tas i bruk, vil en musefunksjon utføres.</p>
+
+<p>Det kan tenkes at en sensor plutselig kommer under varig press selv om den ikke er i bruk, <abbr title="for eksempel">f.eks.</abbr> ved å flytte på hodebøylen. I slike tilfeller kan det være nødvendig å kalibrere manuelt, noe som gjøres ved å aktivere en sensor på motsatt kinn. Hvis begge kinnene er «aktive», sett fra programmets synspunkt, settes nullnivået på nytt.</p>
+</div>
+</section>
+
+<section id="632-avlesning-av-flere-sensorer">
+<h3><a aria-hidden="true" class="header-anchor" href="#632-avlesning-av-flere-sensorer" title="6.3.2 Avlesning av flere sensorer"></a> 6.3.2 Avlesning av flere sensorer<a aria-controls="632-avlesning-av-flere-sensorer-section" aria-expanded="true" aria-hidden="true" class="collapse-button" data-toggle="collapse" href="#632-avlesning-av-flere-sensorer-section" role="button"></a></h3>
+
+<div class="collapse in" id="632-avlesning-av-flere-sensorer-section">
+<p>Programmet lagrer de siste avleste verdiene til de seks sensorene i én tabell, og de seks nullnivåene, som disse sammenlignes med, i en annen. Det går så igjennom tabellene parvis og sjekker dem opp mot ligning (6.1) – på leting etter en aktiv sensor.</p>
+
+<blockquote>
+<p class="center" id="fig-sensortabenkel"><img alt="" src="fig/sensortabenkel.png">
+</p>
+
+<p class="center" id="fig-sensortabtung"><img alt="" src="fig/sensortabtung.png">
+</p>
+
+<p id="fig-sensortab"><strong>Figur 6.5:</strong> Avlesningsløkker: enkel (a) og avansert (b)</p>
+</blockquote>
+
+<p>Når en aktiv sensor er funnet, er det to muligheter (<a href="#fig-sensortab" title="Figur 6.5: Avlesningsløkker: enkel (a) og avansert (b)"><abbr title="figur">fig.</abbr> 6.5</a>). Skal (a) resten av sensorene også undersøkes, eller (b) søket avsluttes og den aktive sensoren returneres? Hvis vi bare returnerer den første aktive sensoren, må vi legge inn en ekstra «nabosjekk» av nærliggende sensorer for å oppdage om to bevegelsessensor brukes samtidig (diagonal bevegelse).<sup class="footnote-ref"><a href="#fn9" id="fnref9" title="Dette gjøres ved å slå opp i en matrise som inneholder informasjon om hvilke sensorer som er i nærheten av hverandre. Hvis sensoren for bevegelse oppover er i bruk, for eksempel, ønsker vi bare å undersøke sensorene for bevegelse til venstre og høyre, ikke sensoren for bevegelse nedover.">[9]</a></sup> Hvis vi søker gjennom hele tabellen, derimot, vil alle aktive sensorer gi musefunksjoner (noe som håndterer diagonal bevegelse automatisk), men kan gi uønskede eller ingen musebevegelse ved noen sensorkombinasjoner.</p>
+
+<p>Fordelen med å gjøre det på den andre og mer «tungvinte» måten i <a href="#fig-sensortabtung" title="">figur 6.5b</a>, hvor vi stanser søket når en aktiv sensor er funnet og sjekker om denne sensoren har en aktiv «nabosensor», er er at den er mer fleksibel. Det er lettere å «gardere» mot aktive sensorer på begge kinn, som er signalet for manuell rekalibrering. Dessuten kan funksjonen som returnerer den første aktive sensoren, lett skrives om til å returnere den <em>mest</em> aktive sensoren dersom det viser seg vesentlig å skille mellom flere sensortrykk.<sup class="footnote-ref"><a href="#fn10" id="fnref10" title="Dette gjør vi i andre tilnærming.">[10]</a></sup> I vår første tilnærming returneres bare den første aktive sensoren, men forholdene ligger til rette for en omskrivning.</p>
+
+<p>For å produsere ett klikk av gangen, er det bygd inn en forsinkelse som overser aktive knappsensorer etter at de er funnet aktive første gang. Dette forhindrer hundrevis av klikk mens sensoren er i bruk. Forsinkelsen er innstilt slik at brukeren kan dobbeltklikke ved å presse kontinuerlig.</p>
+</div>
+</section>
+
+<section id="sec-forstedrofting">
+<h3><a aria-hidden="true" class="header-anchor" href="#sec-forstedrofting" title="6.3.3 Drøfting"></a> 6.3.3 Drøfting<a aria-controls="sec-forstedrofting-section" aria-expanded="true" aria-hidden="true" class="collapse-button" data-toggle="collapse" href="#sec-forstedrofting-section" role="button"></a></h3>
+
+<div class="collapse in" id="sec-forstedrofting-section">
+<p>Tilnærmingen er utførlig testet i <a href="#sec-testingmedtungen" title="7 Testing med tungen">kapittel 7</a>. De viktigste funnene er at tungemuskelen fort blir sliten av å kontinuerlig presse på sensorene, og at det er tyngre dess lengre bak på kinnet man kommer. Med venstre og høyre knappsensor plassert side om side, kommer venstre knappsensor langt bak på kinnet (<a href="#fig-sensorknapper1" title=""><abbr title="figur">fig.</abbr> 6.2a</a>). Det samme gjelder høyre bevegelsessensor, som er plassert i «stjerne» med de andre bevegelsessensorene (<a href="#fig-sensorknapper1" title=""><abbr title="figur">fig.</abbr> 6.2b</a>).</p>
+
+<p>Det er også et problem at det ikke er mulig å «dra» musepekeren. Ettersom tungen ikke kan presse på begge kinnene samtidig, kan dette bare implementeres ved å aktivere en egen <em>modus</em> hvor museknappen holdes nede. Støtte for moduser vil også gjøre det mulig å implementere scroll.</p>
+
+<p>I vår <em>andre tilnærming</em> roterer vi sensorplasseringen slik at den blir mer vertikal med hensyn til munnen, og vi skriver om programmet til å «huske» en oppgave over flere sensoravlesninger. Resultatet er mer omfattende, men også mer komfortabelt.</p>
+</div>
+</section>
+</div>
+</section>
+
+<section id="sec-andretilnerming">
+<h2><a aria-hidden="true" class="header-anchor" href="#sec-andretilnerming" title="6.4 Andre tilnærming"></a> 6.4 Andre tilnærming<a aria-controls="sec-andretilnerming-section" aria-expanded="true" aria-hidden="true" class="collapse-button" data-toggle="collapse" href="#sec-andretilnerming-section" role="button"></a></h2>
+
+<div class="collapse in" id="sec-andretilnerming-section">
+<blockquote>
+<p class="center" id="fig-sensorknapper2"><img alt="" src="fig/bevsensorfirkant2.png">
+</p>
+
+<p><strong>Figur 6.6:</strong> Andre tilnærming: knapper (a) og bevegelse (b).</p>
+</blockquote>
+
+<p>I andre tilnærming plasserer vi bevegelsessensorene i «firkant» istedenfor «stjerne» for å få dem lengre frem på kinnet (<a href="#fig-sensorknapper2" title=""><abbr title="figur">fig.</abbr> 6.6</a>). Knappsensorene er plassert ovenfor hverandre istedenfor side om side.</p>
+
+<p>Programmet tar nå utgangspunkt i den <em>mest</em> aktive sensoren, ikke bare den første.</p>
+
+<p>Sensorenes funksjoner avhenger av hvilken <em>modus</em> programmet befinner seg i. I utgangspunktet befinner programmet seg i <em>normalmodus</em>, hvor knappsensorene produserer klikk og bevegelsessensorene styrer pekeren. Den viktigste forskjellen er måten pekeren styres på.</p>
+
+<section id="sec-normmodus">
+<h3><a aria-hidden="true" class="header-anchor" href="#sec-normmodus" title="6.4.1 Normalmodus"></a> 6.4.1 Normalmodus<a aria-controls="sec-normmodus-section" aria-expanded="true" aria-hidden="true" class="collapse-button" data-toggle="collapse" href="#sec-normmodus-section" role="button"></a></h3>
+
+<div class="collapse in" id="sec-normmodus-section">
+<blockquote>
+<p class="center" id="fig-normalmodusstart"><img alt="" src="fig/normalmodusstart.png">
+</p>
+
+<p class="center" id="fig-normalmodusbev"><img alt="" src="fig/normalmodusbev.png">
+</p>
+
+<p id="fig-normalmodus"><strong>Figur 6.7:</strong> Normalmodus: klikk (a) og bevegelse (b)</p>
+</blockquote>
+
+<p>Dette er programmets utgangspunkt (<a href="#fig-normalmodus" title="Figur 6.7: Normalmodus: klikk (a) og bevegelse (b)"><abbr title="figur">fig.</abbr> 6.7</a>). Hvis brukeren trykker lett på en knappsensor, produseres et klikk. Hvis brukeren trykker lett på en bevegelsessensor, beveger pekeren seg i sensorens retning, og <em>fortsetter å bevege seg</em> selv om brukeren ikke presser kontinuerlig. Pekeren styres med lette trykk istedenfor kontinuerlig pressing, noe som er mer behagelig for tungen.</p>
+
+<p>Når pekeren beveger seg, kan brukeren skifte retning ved å trykke på en annen bevegelsessensor, og få bevegelsen til å opphøre ved å trykke på samme sensor en gang til. Pekeren beveger seg langsomt til å begynne med, for presisjonens skyld, og så raskere dersom brukeren ikke har skiftet retning etter et par sekunder. Dette gjør det lettere å bruke menyer og andre små områder på skjermen, uten at pekeren er like treg når den skal flyttes over større områder.</p>
+
+<p>Det er mulig å bevege pekeren enda raskere ved å presse kontinuerlig på en bevegelsessensor istedenfor å bruke «ett-trykk-funksjonaliteten». Da vil pekeren bevege seg raskere dess hardere man presser, og slutte å bevege seg når trykket opphører, akkurat som i første tilnærming. Dette er praktisk for å bevege seg over store deler av skjermen effektivt.</p>
+
+<p>For presisjonens skyld er diagonal bevegelse <em>deaktivert</em> når pekeren beveges med lette trykk. Det er bare mulig å bevege seg diagonalt ved å presse kontinuerlig på sensorene.</p>
+
+<blockquote>
+<p class="center" id="fig-dramodus"><img alt="" src="fig/dramodus.png">
+</p>
+
+<p><strong>Figur 6.8:</strong> «Dra»-modus</p>
+</blockquote>
+
+<blockquote>
+<p class="center" id="fig-scrollmodus"><img alt="" src="fig/scrollmodus.png">
+</p>
+
+<p><strong>Figur 6.9:</strong> «Scroll»-modus</p>
+</blockquote>
+</div>
+</section>
+
+<section id="642-dra-modus">
+<h3><a aria-hidden="true" class="header-anchor" href="#642-dra-modus" title="6.4.2 «Dra»-modus"></a> 6.4.2 «Dra»-modus<a aria-controls="642-dra-modus-section" aria-expanded="true" aria-hidden="true" class="collapse-button" data-toggle="collapse" href="#642-dra-modus-section" role="button"></a></h3>
+
+<div class="collapse in" id="642-dra-modus-section">
+<p>Ved å presse kontinuerlig på knappsensorene istedenfor å bare trykke, bytter man fra normalmodus til andre moduser. Venstre knappsensor bytter til «dra»-modus (<a href="#fig-dramodus" title=""><abbr title="figur">fig.</abbr> 6.8</a>), slik at venstre museknapp holdes nede også når sensoren slippes. Dermed kan tungen flyttes over på bevegelseskinnet for å «dra» pekeren.</p>
+
+<p class="startsWithDoubleQuote">«Dra»-modus fungerer ellers som normalmodus; pekeren styres på akkurat samme måte. For å gå tilbake til normalmodus, er det bare å berøre knappsensoren en gang til.</p>
+</div>
+</section>
+
+<section id="643-scroll-modus">
+<h3><a aria-hidden="true" class="header-anchor" href="#643-scroll-modus" title="6.4.3 «Scroll»-modus"></a> 6.4.3 «Scroll»-modus<a aria-controls="643-scroll-modus-section" aria-expanded="true" aria-hidden="true" class="collapse-button" data-toggle="collapse" href="#643-scroll-modus-section" role="button"></a></h3>
+
+<div class="collapse in" id="643-scroll-modus-section">
+<p>Høyre knappsensor bytter til «scroll»-modus (<a href="#fig-scrollmodus" title=""><abbr title="figur">fig.</abbr> 6.9</a>). Man scroller oppover ved å presse på øvre bevegelsessensor, og nedover ved å presse på nedre bevegelsessensor. For å gå tilbake til normalmodus, trykker man på en av knappsensorene.</p>
+</div>
+</section>
+
+<section id="sec-andredrofting">
+<h3><a aria-hidden="true" class="header-anchor" href="#sec-andredrofting" title="6.4.4 Drøfting"></a> 6.4.4 Drøfting<a aria-controls="sec-andredrofting-section" aria-expanded="true" aria-hidden="true" class="collapse-button" data-toggle="collapse" href="#sec-andredrofting-section" role="button"></a></h3>
+
+<div class="collapse in" id="sec-andredrofting-section">
+<p>Andre tilnærming er utførlig testet i <a href="#sec-testingmedtungen" title="7 Testing med tungen">kapittel 7</a>. Den viktigste forskjellen fra første tilnærming er «ett-trykk-funksjonaliteten», som hindrer at tungen slites ut selv etter langvarig bruk. Den forbedrede sensorplasseringen motvirker også dette.</p>
+
+<p>Presisjonen er betraktelig bedre takket være den langsommere pekerhastigheten til å begynne med. Disse funksjonene kan kombineres: Ved å trykke fort to ganger, kan man bevege pekeren i små, presise «steg», <abbr title="for eksempel">f.eks.</abbr> fra ett menyelement til et annet.</p>
+
+<p class="startsWithDoubleQuote">«Ett-trykk-funksjonaliteten» gjør det dessuten mulig å snakke mens man bruker musen.</p>
+
+<p>Høyere presisjon er viktig når man har behov for å «dra» pekeren, <abbr title="for eksempel">f.eks.</abbr> for å flytte vinduer. Å innføre moduser for slik funksjonalitet hever brukerterskelen, men det viser seg enkelt å aktivere og deaktivere «dra»- og «scroll»-modusene. Scrolling er en stor fordel når man surfer på nettet, samt i alle sammenhenger hvor man har behov for å rulle tekst. Disse to modusene gjør funksjonaliteten komplett.</p>
+
+<p>Den største utfordringen er å lære opp tungen til å huske sensorenes plassering på kinnet. Dette blir bedre over tid, men krever litt tålmodighet og innsats.</p>
+</div>
+</section>
+</div>
+</section>
+</div>
+</section>
+
+<section id="sec-testingmedtungen">
+<h1><a aria-hidden="true" class="header-anchor" href="#sec-testingmedtungen" title="7 Testing med tungen"></a> 7 Testing med tungen</h1>
+
+<div id="sec-testingmedtungen-section">
+<blockquote>
+<p>Inneholder en grundig test – med resultater – av funksjonaliteten og brukervennlighet til de to tilnærmingene i <a href="#sec-funksjonalitet" title="6 Funksjonalitet">kapittel 6</a>. Viser at andre tilnærming er en god forbedring av den første. Videre drøfting er gitt i forrige kapittel, <a href="#sec-forstedrofting" title="6.3.3 Drøfting">avsnitt 6.3.3</a> og <a href="#sec-andredrofting" title="6.4.4 Drøfting">6.4.4</a>.</p>
+</blockquote>
+
+<section id="71-problemstilling">
+<h2><a aria-hidden="true" class="header-anchor" href="#71-problemstilling" title="7.1 Problemstilling"></a> 7.1 Problemstilling<a aria-controls="71-problemstilling-section" aria-expanded="true" aria-hidden="true" class="collapse-button" data-toggle="collapse" href="#71-problemstilling-section" role="button"></a></h2>
+
+<div class="collapse in" id="71-problemstilling-section">
+<p>Det er et behov for å teste om datamusen kan brukes til en dagligdags dataøkt. Testen gjennomføres etter endringer i programmet som påvirker brukerfunksjonaliteten. Testen brukes også for å finne optimal plassering av sensorene på sensorplatene.</p>
+</div>
+</section>
+
+<section id="72-tester">
+<h2><a aria-hidden="true" class="header-anchor" href="#72-tester" title="7.2 Tester"></a> 7.2 Tester<a aria-controls="72-tester-section" aria-expanded="true" aria-hidden="true" class="collapse-button" data-toggle="collapse" href="#72-tester-section" role="button"></a></h2>
+
+<div class="collapse in" id="72-tester-section">
+<p>Når man skal bruke en datamus, har man enkelte krav. Den skal være lett å styre, og den skal være nøyaktig. En økt frran datamaskinen tar gjerne litt tid, så hvor lenge kan man sitte før tungen blir sliten? Hvor god følelse av kontroll oppnår brukeren – oppleves frustrasjon over datamusen under bruk? For å kunne teste dette, er det laget noen enkle tester med stigende vanskelighetsgrad.</p>
+
+<p><strong>Metode:</strong>
+</p>
+
+<ol>
+<li><strong>Åpne en snarvei fra skrivebordet:</strong> velg en snarvei, før musepekeren over den og dobbeltklikk/åpne.</li>
+
+<li><strong>Åpne en snarvei fra startmenyen:</strong> åpne «Start»-menyen og «Programmer». Åpne nå en forhåndsbestemt snarvei fra denne menyen.</li>
+
+<li><strong>Bruke nettleseren:</strong> Åpne Mozilla, gå til en avisside fra «Favoritter» eller hurtigmeny (<abbr title="for eksempel">f.eks.</abbr> <a href="http://www.vg.no/">http://www.vg.no/</a>), bla ned på siden og åpne en artikkel.</li>
+
+<li><strong>Bruk over tid:</strong> åpne Microsoft Paint og prøv å tegne en kopi av <a href="#fig-brukertest1" title="">figur 7.1a</a>. Etter 15 minutter avsluttes testen, og resultatet sammenlignes med originalen. Er resultatet bra, og er tungen sliten? Utfør testen to ganger for å se om det er en liten tilvenningskurve fra brukersiden.</li>
+</ol>
+
+<p>Testen er utført med hodebøylen, men testeren har lagt ekstra trykk bak sensorplatene med hendene. Med en bedre hodebøyle vil dette være unødvendig (se <a href="#sec-veienvidere" title="10 Veien videre">kapittel 10</a>).</p>
+
+<section id="721-resultater-forste-tilnaerming">
+<h3><a aria-hidden="true" class="header-anchor" href="#721-resultater-forste-tilnaerming" title="7.2.1 Resultater første tilnærming"></a> 7.2.1 Resultater første tilnærming<a aria-controls="721-resultater-forste-tilnaerming-section" aria-expanded="true" aria-hidden="true" class="collapse-button" data-toggle="collapse" href="#721-resultater-forste-tilnaerming-section" role="button"></a></h3>
+
+<div class="collapse in" id="721-resultater-forste-tilnaerming-section">
+<blockquote>
+<p class="center" id="fig-brukertest1"><img alt="" src="fig/brukertest.png">
+</p>
+
+<p class="center" id="fig-brukertestresultat1a"><img alt="" src="fig/brukertestresultat1a.png">
+</p>
+
+<p id="fig-forstebrukertest"><strong>Figur 7.1:</strong> Testtegning for bruk over tid (a), resultat i første tilnærming (b), første og eneste forsøk</p>
+</blockquote>
+
+<p>Se <a href="#sec-forstetilnerming" title="6.3 Første tilnærming">avsnitt 6.3</a> for detaljer om første tilnærming.</p>
+
+<ol>
+<li><strong>Åpne en snarvei fra skrivebordet:</strong> Musepekeren danser litt over skjermen, men med litt godvilje blir pekeren plassert over den forhåndsvalgte snarveien (Papirkurven). Musebevegelsen går litt for fort, noe som gjør det vanskelig å treffe ikonet. Det føles også litt tungt å holde sensoren inne for å bevege pekeren over skjermen. Holder venstre muspeker inne for å dobbeltklikke.</li>
+
+<li><strong>Åpne en snarvei fra startmenyen:</strong> Merker at det krever mer presisjon og konsentrasjon å gå inn i «Programmer»-menyen. Musepekeren beveger seg litt for fort, noe som fører til at «Start»-meny-grenen til tider lukker seg. Det kommer frem at musen trenger en ny måte å prioritere mellom sensoren(e) som er i bruk på. Det hender musepekeren bytter retning uten at man vil det, og dette føltes ikke behagelig.</li>
+
+<li><strong>Bruke nettleseren:</strong> Velger å åpne nettsiden fra hurtigmenyen, blar nedover ved å trykke nederst på rullefeltet. Det er noe vanskelig å treffe det, savner en scrollfunksjon. Følelsen av kontroll over bevegelsen er også her litt dårlig, men knappene (høyre/venstre) er lette å bruke. Litt tungt å bevege musepekeren rundt på skjermen.</li>
+
+<li><strong>Bruk over tid:</strong> Ga opp etter syv minutter. Ble utrolig hemmet av at pekeren beveget seg for fort, og ble veldig sliten. Resultatet er gitt i <a href="#fig-brukertestresultat1a" title="">figur 7.1b</a>.</li>
+</ol>
+
+<p>For drøfting av resultatene, se <a href="#sec-forstedrofting" title="6.3.3 Drøfting">avsnitt 6.3.3</a>.</p>
+</div>
+</section>
+
+<section id="722-resultater-andre-tilnaerming">
+<h3><a aria-hidden="true" class="header-anchor" href="#722-resultater-andre-tilnaerming" title="7.2.2 Resultater andre tilnærming"></a> 7.2.2 Resultater andre tilnærming<a aria-controls="722-resultater-andre-tilnaerming-section" aria-expanded="true" aria-hidden="true" class="collapse-button" data-toggle="collapse" href="#722-resultater-andre-tilnaerming-section" role="button"></a></h3>
+
+<div class="collapse in" id="722-resultater-andre-tilnaerming-section">
+<blockquote>
+<p class="center" id="fig-brukertest2"><img alt="" src="fig/brukertest.png">
+</p>
+
+<p class="center" id="fig-brukertestresultat2a"><img alt="" src="fig/brukertestresultat2a.png">
+</p>
+
+<p class="center" id="fig-brukertestresultat2b"><img alt="" src="fig/brukertestresultat2b.png">
+</p>
+
+<p id="fig-andrebrukertest"><strong>Figur 7.2:</strong> Testtegning for bruk over tid (a), resultat i andre tilnærming første forsøk (b), andre forsøk (c)</p>
+</blockquote>
+
+<p>Se <a href="#sec-andretilnerming" title="6.4 Andre tilnærming">avsnitt 6.4</a> for detaljer om andre tilnærming.</p>
+
+<ol>
+<li><strong>Åpne en snarvei fra skrivebordet:</strong> Litt vansker med å treffe rett sensor gjør at pekeren til tider beveger seg feil vei. Trykker to ganger på venstre musetast for å åpne den forhåndsvalgte snarveien.</li>
+
+<li><strong>Åpne en snarvei fra startmenyen:</strong> Bruker «ett-trykk-funksjonaliteten» for å bevege pekeren. Ingen problemer.</li>
+
+<li><strong>Bruke nettleseren:</strong> Glimrende. Gjorde speielt mye bruk av «ett-trykk-funksjonaliteten» og scrollfunksjonen, svært behagelig i bruk.</li>
+
+<li><strong>Bruk over tid:</strong> Den delen av tegningen som krever høyest presisjon, blomsten med blad og den dråpeformede figuren, er litt vanskelig. Men av fremskrittet fra <a href="#fig-brukertestresultat2a" title="">figur 7.2b</a> til <a href="#fig-brukertestresultat2b" title="">figur 7.2c</a> ser man at dette kan bli meget bra med litt øvelse.</li>
+</ol>
+
+<p>For drøfting av resultatene, se <a href="#sec-andredrofting" title="6.4.4 Drøfting">avsnitt 6.4.4</a>.</p>
+</div>
+</section>
+</div>
+</section>
+</div>
+</section>
+
+<section id="8-prisestimering">
+<h1><a aria-hidden="true" class="header-anchor" href="#8-prisestimering" title="8 Prisestimering"></a> 8 Prisestimering</h1>
+
+<div id="8-prisestimering-section">
+<blockquote>
+<p>Kapittelet inneholder en tilnærming over prosjektets kostnad. Det er også eksempler på pris for egenproduksjon av krets. Prosjektets tilnærmede utgifter er drøyt 2000 <abbr class="acronym" title="kroner">NOK</abbr>.</p>
+</blockquote>
+
+<section id="81-utviklingskostnader">
+<h2><a aria-hidden="true" class="header-anchor" href="#81-utviklingskostnader" title="8.1 Utviklingskostnader"></a> 8.1 Utviklingskostnader<a aria-controls="81-utviklingskostnader-section" aria-expanded="true" aria-hidden="true" class="collapse-button" data-toggle="collapse" href="#81-utviklingskostnader-section" role="button"></a></h2>
+
+<div class="collapse in" id="81-utviklingskostnader-section">
+<p>Prosjektet er en bacheloroppgave på <abbr title="Høgskolen i Sør-Trøndelag">HiST</abbr>. Studentene får ikke lønn under arbeidet, så utgiftene er konsentrert rundt materialkostnadene i <a href="#tab-utviklingskostnader" title="Tabell 8.1: Materialkostnader uten frakt">tabell 8.1</a>. Sensorene ble kjøpt inn av <abbr class="acronym" title="Selskapet for industriell og teknisk forskning ved Norges tekniske høgskole">SINTEF</abbr>, og AT90USBKey ble kjøpt inn av <abbr title="Høgskolen i Sør-Trøndelag">HiST</abbr>. Tabellen lister opp antatte kostnader for disse. Prosjektets tilnærmede utgifter er 1949 <abbr class="acronym" title="kroner">NOK</abbr> i materialkostnader. Siden dette er de eneste utgiftene, kan man konkludere med at prosjektet har vært særdeles billig for oppdragsgiver.</p>
+
+<p>Forslag til løskomponenter består av en liste som inneholder overslag over priser en eventuell egenproduksjon av kretsen vil koste. For 100 enheter vil de løse materialene til kretskortet tilnærme en kostnad på 13 518 <abbr class="acronym" title="kroner">NOK</abbr>. Siden kretsen ikke er designet, kan denne prisen avvike noe. Det er ikke laget noen liste for materialpris til produksjon av hodebøylen. Det forventes at designen og materialvalget på denne må utvikles videre (se <a href="#sec-veienvidere" title="10 Veien videre">kapittel 10</a>).</p>
+
+<blockquote>
+<p id="tab-utviklingskostnader"><strong>Tabell 8.1:</strong> Materialkostnader uten frakt</p>
+
+<table class="table table-striped table-bordered table-hover">
+<thead>
+<tr>
+<th>Produktnavn</th>
+<th>Produsent</th>
+<th>Type</th>
+<th>Antall</th>
+<th>Enhetspris [<abbr class="acronym" title="kroner">NOK</abbr>]</th>
+<th>Total pris [<abbr class="acronym" title="kroner">NOK</abbr>]</th>
+<th>Firma</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+<td>AT90USBKey</td>
+<td>Atmel</td>
+<td>Demokrets<sup class="footnote-ref"><a href="#fn11" id="fnref11" title="Tilnærmede priser.">[11]</a></sup></td>
+<td>2</td>
+<td>229</td>
+<td>458</td>
+<td>Mouser electronics</td>
+</tr>
+
+<tr>
+<td>FSR-400</td>
+<td>Interlink</td>
+<td>Trykkfølsom resistans<sup class="footnote-ref"><a href="#fn11" id="fnref11:1" title="Tilnærmede priser.">[11:1]</a></sup></td>
+<td>25</td>
+<td>23</td>
+<td>575</td>
+<td>Interlink Electronics</td>
+</tr>
+
+<tr>
+<td>FSR-402</td>
+<td>Interlink</td>
+<td>Trykkfølsom resistans<sup class="footnote-ref"><a href="#fn11" id="fnref11:2" title="Tilnærmede priser.">[11:2]</a></sup></td>
+<td>25</td>
+<td>26</td>
+<td>650</td>
+<td>Interlink Electronics</td>
+</tr>
+
+<tr>
+<td>Veroboard</td>
+<td>
+</td>
+<td>Koblingsbrett</td>
+<td>1</td>
+<td>59</td>
+<td>59</td>
+<td>Clas Ohlson</td>
+</tr>
+
+<tr>
+<td>Teip</td>
+<td>
+</td>
+<td>Gaffateip</td>
+<td>1</td>
+<td>79</td>
+<td>79</td>
+<td>Clas Ohlson</td>
+</tr>
+
+<tr>
+<td>Metall 1</td>
+<td>
+</td>
+<td>Stakepinne</td>
+<td>7,6 m</td>
+<td>39</td>
+<td>39</td>
+<td>Jula</td>
+</tr>
+
+<tr>
+<td>Metall 2</td>
+<td>
+</td>
+<td>Spikerbånd 20 × 1 <abbr title="millimeter">mm</abbr></td>
+<td>10 m</td>
+<td>89</td>
+<td>89</td>
+<td>Clas Ohlson</td>
+</tr>
+
+<tr>
+<td>
+</td>
+<td>
+</td>
+<td>Koblingsenheter<sup class="footnote-ref"><a href="#fn12" id="fnref12" title="Skruer/muttrer/ledninger og lignende.">[12]</a></sup></td>
+<td>1</td>
+<td>–</td>
+<td>–</td>
+<td><abbr title="Høgskolen i Sør-Trøndelag">HiST</abbr>
+</td>
+</tr>
+
+<tr>
+<td>
+</td>
+<td>
+</td>
+<td>
+</td>
+<td>
+</td>
+<td>
+</td>
+<td>
+</td>
+<td>
+</td>
+</tr>
+
+<tr>
+<td>
+</td>
+<td>
+</td>
+<td>Forslag til løskomponenter</td>
+<td>
+</td>
+<td>
+</td>
+<td>
+</td>
+<td>
+</td>
+</tr>
+
+<tr>
+<td>
+</td>
+<td>
+</td>
+<td>
+</td>
+<td>
+</td>
+<td>
+</td>
+<td>
+</td>
+<td>
+</td>
+</tr>
+
+<tr>
+<td>AT90USB1287</td>
+<td>Atmel</td>
+<td>Mikrokontroller</td>
+<td>1</td>
+<td>87</td>
+<td>87</td>
+<td>Mouser electronics</td>
+</tr>
+
+<tr>
+<td>AT90USB1287</td>
+<td>
+</td>
+<td>
+</td>
+<td>25</td>
+<td>68</td>
+<td>1700</td>
+<td>
+</td>
+</tr>
+
+<tr>
+<td>AT90USB1287</td>
+<td>
+</td>
+<td>
+</td>
+<td>100</td>
+<td>61,182</td>
+<td>6118</td>
+<td>
+</td>
+</tr>
+
+<tr>
+<td>LP3982IMM-ADJ</td>
+<td>National Semiconductor</td>
+<td>Spenningsregulator</td>
+<td>10</td>
+<td>14,65</td>
+<td>146,5</td>
+<td>Arrow Electronics</td>
+</tr>
+
+<tr>
+<td>LP3982IMM-ADJ</td>
+<td>
+</td>
+<td>
+</td>
+<td>100</td>
+<td>5,15</td>
+<td>515</td>
+<td>
+</td>
+</tr>
+
+<tr>
+<td>LP3982IMM-ADJ</td>
+<td>
+</td>
+<td>
+</td>
+<td>1000</td>
+<td>4,25</td>
+<td>4250</td>
+<td>
+</td>
+</tr>
+
+<tr>
+<td>774-MXO45HS-3C-8.0</td>
+<td>CTS Electronic Components</td>
+<td>Crystal Oscillators 8 <abbr title="megahertz">MHz</abbr></td>
+<td>1</td>
+<td>19,50</td>
+<td>19,50</td>
+<td>Mouser electronics</td>
+</tr>
+
+<tr>
+<td>774-MXO45HS-3C-8.0</td>
+<td>
+</td>
+<td>
+</td>
+<td>100</td>
+<td>15,24</td>
+<td>1524</td>
+<td>
+</td>
+</tr>
+
+<tr>
+<td>774-MXO45HS-3C-8. 0</td>
+<td>
+</td>
+<td>
+</td>
+<td>1000</td>
+<td>9,966</td>
+<td>9996</td>
+<td>
+</td>
+</tr>
+
+<tr>
+<td>500075-1517</td>
+<td>Molex</td>
+<td><abbr class="acronym" title="Universal Serial Bus">USB</abbr> Mini-B vert</td>
+<td>1</td>
+<td>51</td>
+<td>51</td>
+<td>Mouser electronics</td>
+</tr>
+
+<tr>
+<td>500075-1517</td>
+<td>
+</td>
+<td>
+</td>
+<td>100</td>
+<td>29,43</td>
+<td>2943</td>
+<td>
+</td>
+</tr>
+
+<tr>
+<td>500075-1517</td>
+<td>
+</td>
+<td>
+</td>
+<td>1000</td>
+<td>24,09</td>
+<td>24090</td>
+<td>
+</td>
+</tr>
+
+<tr>
+<td>Motstander</td>
+<td>
+</td>
+<td>Laveffektmotstander<sup class="footnote-ref"><a href="#fn11" id="fnref11:3" title="Tilnærmede priser.">[11:3]</a></sup></td>
+<td>1000</td>
+<td>0,0594</td>
+<td>59,4</td>
+<td>
+</td>
+</tr>
+
+<tr>
+<td>Kretskort</td>
+<td>
+</td>
+<td>To-lags PCB<sup class="footnote-ref"><a href="#fn11" id="fnref11:4" title="Tilnærmede priser.">[11:4]</a></sup></td>
+<td>100</td>
+<td>21,4</td>
+<td>2140 + 278</td>
+<td>Microcirtec</td>
+</tr>
+
+<tr>
+<td>Kretskort</td>
+<td>
+</td>
+<td>
+</td>
+<td>1000</td>
+<td>3,219</td>
+<td>3219 + 730</td>
+<td>
+</td>
+</tr>
+</tbody>
+</table>
+
+<p>Tabellen benytter seg av omregningene <abbr class="acronym" title="euro">€</abbr> = 8,7 <abbr class="acronym" title="kroner">NOK</abbr> og <abbr class="acronym" title="dollar">$</abbr> = 6,6 <abbr class="acronym" title="kroner">NOK</abbr>.</p>
+</blockquote>
+</div>
+</section>
+</div>
+</section>
+
+<section id="9-konklusjon">
+<h1><a aria-hidden="true" class="header-anchor" href="#9-konklusjon" title="9 Konklusjon"></a> 9 Konklusjon</h1>
+
+<div id="9-konklusjon-section">
+<p>Prototypen som er laget, kan utføre alle standard musefunksjoner i Microsoft Windows, så vel som alle andre operativsystemer.</p>
+
+<p>For kontrollering av musepekeren er det laget en «ett-trykk-funksjonalitet», som hindrer at tungen slites ut etter langvarig bruk. Brukeren starter en bevegelse og stopper eller endrer retning ved ønsket plassering. Under denne funksjonen beveger pekeren seg langsomt til å begynne med for å gi god presisjon.</p>
+
+<p>Man kan snakke mens man beveger musepekeren over skjermen, og det er mulig å be venstre museknapp være aktiv mens man beveger musepekeren over skjermen. Det er også mulig å sette musen i en «scroll»-modus som gjør surfing av nettsider og lesing av dokumenter meget behagelig.</p>
+
+<p>Den største utfordringen er å lære opp tungen til å huske sensorenes plassering på kinnet. Dette blir bedre over tid, men krever litt tålmodighet og innsats.</p>
+
+<p>De utdelte sensorene (FSR-400 og FSR-402) er veldig følsomme, men det kan være vanskelig å få utslag med tungen. Forskning på hvordan sensorene er i kontakt med kinnet kan forbedre dette.</p>
+
+<p>Det ble laget en hodebøyle for å gi riktig plassering av sensorene på kinnet. På grunn av lite bakgrunnskunskap og utstyr, oppfyller ikke hodebøylen alle kravene i produktspesifikasjonen. Sensorene er plassert utenpå kinnene – to store knappsensorer på venstre og fire små bevegelsessensorer på høyre. Prototypen har et problem med at sensorene ligger litt dårlig mot kinnet.</p>
+
+<p>Ved bruk av sensorene er det erfart at det må være et godt press mot kinnet, og de må ligge lengst mulig fram mot munnen for at sensortypen skal kunne brukes i et endelig produkt. Justeringsdelen er også litt vanskelig, men designet har potensial for videreutvikling.</p>
+
+<p>Elektronikken som ble valgt for tolkning av sensordata, er demokretsen AT90USBKey fra Atmel. Denne er basert på mikrokontrolleren AT90USB1287 og fungerte bra til utvikling av en prototype. Kretsen har innebygd åtte <abbr class="acronym" title="Analog-to-Digital Converter">ADC</abbr>-er, hvorav seks blir benyttet til tolking av sensordata. Kretsen gjør bruk av <abbr class="acronym" title="Universal Serial Bus">USB</abbr>-grensesnittet for overføring av data, så vel som energitilførsel. Det er integrert en spenningsregulator som benyttes til å forspenne sensorene. Denne er sterk nok til å forsyne eventuelle tilleggskretser.</p>
+
+<p>Det er laget en boks som omkapsler AT90USBKey («X-box»), fordi demokretsen er for stor til å festes på hodebøylen.</p>
+
+<p>Programkoden er skrevet for å være fleksibel angående antall sensorer og portene de kobles til, så vel som valg av mikrokontroller. Teorien og målingene tilsier at sensorene setter krav til en dynamisk verdi for hendelsesaktivering, og kontinuerlig kalibrering. Dette problemet er løst med programvare.</p>
+
+<p>Programmeringsmessig er det lite som kan videreutvikles, ettersom programmet implementerer alle funksjonene i <abbr class="acronym" title="Human Interface Device">HID</abbr>-standarden. Flere funksjoner kan bare implementeres på toppen av det gjeldende grensesnittet, ved å skrive et program eller driver på <abbr class="acronym" title="Personal Computer">PC</abbr>-siden som håndterer signalene på en egen måte. Fordelen med å begrense seg til <abbr class="acronym" title="Human Interface Device">HID</abbr>-standarden er at musen ikke krever en egen driver og kan dermed brukes overalt, også på <abbr title="Macintosh">Mac</abbr> og Linux.</p>
+
+<p>Utgiftene ved prosjektet var minimale, estimert til <abbr title="cirka">ca.</abbr> 2000 <abbr class="acronym" title="kroner">NOK</abbr>.</p>
+
+<p>På bakgrunn av rapporten, konkluderer prosjektgruppen med at det er mulig å lage en tungestyrt musepeker som anvist. Det mekaniske og ergonomiske må imidlertid forbedres for å få et salgbart produkt.</p>
+</div>
+</section>
+
+<section id="sec-veienvidere">
+<h1><a aria-hidden="true" class="header-anchor" href="#sec-veienvidere" title="10 Veien videre"></a> 10 Veien videre</h1>
+
+<div id="sec-veienvidere-section">
+<blockquote>
+<p>Inneholder en oversikt over hva prosjektgruppen mener kan vidreutvikles for enten å forbedre noe som allerede er implementert, eller forslag til hva som kan implementeres.</p>
+</blockquote>
+
+<section id="sec-vvidere-hodeboyle">
+<h2><a aria-hidden="true" class="header-anchor" href="#sec-vvidere-hodeboyle" title="10.1 Hodebøylen"></a> 10.1 Hodebøylen<a aria-controls="sec-vvidere-hodeboyle-section" aria-expanded="true" aria-hidden="true" class="collapse-button" data-toggle="collapse" href="#sec-vvidere-hodeboyle-section" role="button"></a></h2>
+
+<div class="collapse in" id="sec-vvidere-hodeboyle-section">
+<p>Hvis man designer et eget kretskort, kan kortets størrelse minskes betraktelig, slik at det kan gjøres plass til det på hodebøylen. Dette vil være mer praktisk framfor å ha et mellomledd som «<a href="#sec-xbox" title="4 X-box">X-box</a>». Den eneste kabelen fra hodebøylen vil da være <abbr class="acronym" title="Universal Serial Bus">USB</abbr>-kabelen, som settes rett i <abbr class="acronym" title="Personal Computer">PC</abbr>-en. Denne kabelen vil også kunne tas helt av i andre enden. Det vil da være enklere å sette hodebøylen på bruker, og feste <abbr class="acronym" title="Universal Serial Bus">USB</abbr>-kabelen etter at alt av utstyr er på plass.</p>
+
+<p>Det neste vil være å forme platene brukt til justeringsboksen eller <abbr title="eventuelt">ev.</abbr> hele justeringsboksen. Det vil være ønskelig å kunne sette en «styrke» som skal til for å justere hodebøylen ved behov. Slik som prototypen er nå, er justeringen hard og ikke så brukervennlig. Dette vil være noe som en person med litt bakgrunnskunnskaper om mekanikk/design kan utføre.</p>
+
+<p>Det vil være en forbedring å skjule ledningene som går fra sensorene som er plassert nede på hver side. Disse er på dagens prototype synlige, og veldig sårbare. Et lite rykk i en av disse kan føre til at kabelen mister kontakt med sensor, og musen vil være ubrukelig (noe som for øvrig skjedde under det ene møtet mellom <abbr class="acronym" title="Selskapet for industriell og teknisk forskning ved Norges tekniske høgskole">SINTEF</abbr> og prosjektgruppen).</p>
+
+<p>Det er også et behov å se på metallet som er brukt og alternativer til dette, for å få bedre trykk mot kinnet. Samme metall, men en tykkere utgave kan være en god forbedring.</p>
+
+<p>Sensorplatene til prototypen består av to kretskort som sensorene er teipet til. Dette har vist seg lite slitesterkt, man bør finne en alternativ løsning. Det kan være ønskelig for den enkelte bruker å rotere platene 180–360°, for optimal brukervennlighet. Videre kan det hende at en buet eller fleksibel plate kan fungere bedre som festepunkt til sensorene. Dette kan skape et mer nøyaktig bilde av hvor tungen trykker, og en bedre brukeropplevelse. Det kan være ønskelig med et «mellomlegg» mellom kinnet og sensorene for å kontrolere treffpunktet.</p>
+</div>
+</section>
+
+<section id="sec-vvidere-krets">
+<h2><a aria-hidden="true" class="header-anchor" href="#sec-vvidere-krets" title="10.2 Elektronikk"></a> 10.2 Elektronikk<a aria-controls="sec-vvidere-krets-section" aria-expanded="true" aria-hidden="true" class="collapse-button" data-toggle="collapse" href="#sec-vvidere-krets-section" role="button"></a></h2>
+
+<div class="collapse in" id="sec-vvidere-krets-section">
+<p>Det vil være nødvendig å designe en egen krets rundt AT90USB1287-mikrokontrolleren for eventuell produksjon. Når man først er i gang med dette, kan man se på mulighetene for Bluetooth-implementering i tillegg til <abbr class="acronym" title="Universal Serial Bus">USB</abbr>. Ved å bruke et litium-batteri med laderkrets mot <abbr class="acronym" title="Universal Serial Bus">USB</abbr>, kan produktet lades når det ikke er i bruk, og det vil ikke være nødvendig med batteribytte eller ekstern lader. Om batteriet ikke får ladet lenge nok, bør det være mulig å bruke <abbr class="acronym" title="Universal Serial Bus">USB</abbr>-grensesnittet.</p>
+
+<section id="sec-bbstrom">
+<h3><a aria-hidden="true" class="header-anchor" href="#sec-bbstrom" title="10.2.1 Bruk av batteri som strømforsyning"></a> 10.2.1 Bruk av batteri som strømforsyning<a aria-controls="sec-bbstrom-section" aria-expanded="true" aria-hidden="true" class="collapse-button" data-toggle="collapse" href="#sec-bbstrom-section" role="button"></a></h3>
+
+<div class="collapse in" id="sec-bbstrom-section">
+<p>Den innebygde spenningskretsen på AT90USBKey gjør at den kan forsynes med batterispenninger mellom 8–15 V (<abbr class="acronym" title="Direct Current">DC</abbr>). Ved normal bruk blir det målt at kretsen trekker mellom 7,5–10 <abbr title="milliampere">mA</abbr> med et 9 V batteri tilkoblet. I tilegg kommer Bluetooth-adapteren, som også får spenningsforsyningen fra AT90USBKey. Ved opperasjon vil denne øke forbruket med 18,3 <abbr title="milliampere">mA</abbr>, slik at totalforbruket blir <abbr title="cirka">ca.</abbr> 28 <abbr title="milliampere">mA</abbr>.</p>
+
+<p>En oversikt over brukertid med ulike batterier tilkoblet kretsen er gitt i <a href="#tab-batteri" title="Tabell 10.1: Teoretisk operasjonstid med ulike batterityper">tabell 10.1</a>. Det er også mulig å legge en funksjon inn i programkoden som gjør at Bluetooth-modulen går i hvilemodus ved inaktivitet. Funksjoner som ikke er i bruk, vil slås av, og strømforbruket vil falle betraktelig.</p>
+
+<p>Som man kan se av <a href="#tab-batteri" title="Tabell 10.1: Teoretisk operasjonstid med ulike batterityper">tabell 10.1</a>, gir litiumbatterier overlegen kapasitet fremfor standard NiMh-batterier (nikkel-metalhydrid). For å få samme kapasitet fra NiMh-batterier, vil vekten og størrelsen disse krever gjøre det vanskelig å integrere kretsen på hodebøylen. Ulempen med litiumbatterier er at de krever en dedikert lader, og at de kan eksplodere ved overoppheting/belastning.</p>
+
+<p>En liten innebygd krets hindrer at batteriet blir utladet under en gitt spenning, og ved ladning fungerer den samme kretsen slik at batteriet ikke skal overlades. Uten denne ville batteriet ha blitt ødelagt.</p>
+
+<blockquote>
+<p id="tab-batteri"><strong>Tabell 10.1:</strong> Teoretisk operasjonstid med ulike batterityper</p>
+
+<table class="table table-striped table-bordered table-hover">
+<thead>
+<tr>
+<th>Batteritype</th>
+<th>Spenning [V]</th>
+<th>Kapasitet [<abbr title="milliamperetimer">mAh</abbr>]</th>
+<th>Belastningsstrøm [<abbr title="milliampere">mA</abbr>]</th>
+<th>Operasjonstid [<abbr title="timer">h</abbr>]</th>
+<th>Vekt [<abbr title="gram">g</abbr>]</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+<td>HR6F22 Ni-MH</td>
+<td>8,4</td>
+<td>200</td>
+<td>30,0</td>
+<td>6,7</td>
+<td>39</td>
+</tr>
+
+<tr>
+<td>6F22 Litium<sup class="footnote-ref"><a href="#fn13" id="fnref13" title="Tilpasset lader må anvendes for lading av litiumbatterier.">[13]</a></sup></td>
+<td>9,0</td>
+<td>500</td>
+<td>28,0</td>
+<td>17,9</td>
+<td>28</td>
+</tr>
+
+<tr>
+<td>U9VLJ10 Litium<sup class="footnote-ref"><a href="#fn13" id="fnref13:1" title="Tilpasset lader må anvendes for lading av litiumbatterier.">[13:1]</a></sup></td>
+<td>9,0</td>
+<td>1200</td>
+<td>28,0</td>
+<td>42,9</td>
+<td>38</td>
+</tr>
+
+<tr>
+<td>AAA Ni-MH 8x serie</td>
+<td>8 × 1,2</td>
+<td>1000</td>
+<td>26,3</td>
+<td>38,0</td>
+<td>8 × 16</td>
+</tr>
+
+<tr>
+<td>AA Ni-MH 8x serie</td>
+<td>8 × 1,2</td>
+<td>2700</td>
+<td>26,3</td>
+<td>102,7</td>
+<td>8 × 30</td>
+</tr>
+</tbody>
+</table>
+</blockquote>
+</div>
+</section>
+
+<section id="1022-bluetooth">
+<h3><a aria-hidden="true" class="header-anchor" href="#1022-bluetooth" title="10.2.2 Bluetooth"></a> 10.2.2 Bluetooth<a aria-controls="1022-bluetooth-section" aria-expanded="true" aria-hidden="true" class="collapse-button" data-toggle="collapse" href="#1022-bluetooth-section" role="button"></a></h3>
+
+<div class="collapse in" id="1022-bluetooth-section">
+<p>For eventuell trådløs dataoverføring kan det benyttes Bluetooth som overføringsprotokoll. Dette vil <abbr title="for eksempel">f.eks.</abbr> gjøre det enklere for brukeren å koble seg til en annen datamaskin når dette først er konfigurert. Datamaskinen vil da automatisk kjenne igjen den virtuelle armen og vil av den kunne vekkes fra en eventuell dvalemodus.</p>
+
+<p>Teknologien benytter seg av radiofrekvensbåndets 2,4 <abbr title="gigahertz">GHz</abbr>-område og har en rekkevidde på <abbr title="cirka">ca.</abbr> 10 m. Overføringshastigheten ligger på <abbr title="cirka">ca.</abbr> 1,0 <abbr title="megabit">Mb</abbr>/s. Da det benyttes radiobølger, vil brukeren ikke hindres av at objekter i veien hindrer signalet. For å øke båndbredden og sikkerheten, benytter Bluetooth seg av frekvens-hopping (Frequency Hopping Spread Spectrum, FHSS). Dette fungerer ved at sender og mottager «hopper» fra frekvens til frekvens hele tiden etter et bestemt mønster, i frekvensområdet 2,402 <abbr title="gigahertz">GHz</abbr> til 2,480 <abbr title="gigahertz">GHz</abbr> [<a href="#ref-bluetooth" title="[Bluetooth] http://www.bluetooth.com/Bluetooth/Technology/Works/.">Bluetooth</a>]. En ulempe ved bruk av denne teknologien som brukergrensesnitt, er at det kan oppstå forsinkelse hvis datamaskinen belastes med parallelle oppgaver. Siden kretsen ikke lenger vil være tilkoblet <abbr class="acronym" title="Universal Serial Bus">USB</abbr>, må den få strømtilførsel fra et batteri eller annen ekstern strømforsyning, som beskrevet i <a href="#sec-elektronikk" title="5 Elektronikk">kapittel 5</a> og <a href="#sec-bbstrom" title="10.2.1 Bruk av batteri som strømforsyning">kapittel 10.2.1</a>.</p>
+</div>
+</section>
+</div>
+</section>
+</div>
+</section>
+
+<section id="bibliografi">
+<h1><a aria-hidden="true" class="header-anchor" href="#bibliografi" title="Bibliografi"></a> Bibliografi</h1>
+
+<div id="bibliografi-section">
+<p id="ref-bluetooth">[Bluetooth] <a href="http://www.bluetooth.com/Bluetooth/Technology/Works/">http://www.bluetooth.com/Bluetooth/Technology/Works/</a>.</p>
+
+<p id="ref-program">[Vedlegg 1] Programkode, dokumentert.</p>
+
+<p id="ref-interlink">[Vedlegg 2] Datablad for Interlink-sensorer.</p>
+
+<p id="ref-usbkey">[Vedlegg 3] Datablad for AT90USBKey.</p>
+
+<p id="ref-uk">[Vedlegg 4] Datablad for mikrokontrolleren.</p>
+</div>
+</section>
+
+<section id="sec-cd">
+<h1><a aria-hidden="true" class="header-anchor" href="#sec-cd" title="Bilag: CD"></a> Bilag: <abbr class="acronym" title="Compact Disc">CD</abbr></h1>
+
+<div id="sec-cd-section">
+<p>Vedlegg 1–4 foreligger på <a href="https://github.com/epsil/tunge/tree/master/cd"><abbr class="acronym" title="Compact Disc">CD</abbr></a>, organisert som følger:</p>
+
+<section id="vedlegg-1-programkode">
+<h2><a aria-hidden="true" class="header-anchor" href="#vedlegg-1-programkode" title="Vedlegg 1: Programkode"></a> Vedlegg 1: Programkode<a aria-controls="vedlegg-1-programkode-section" aria-expanded="true" aria-hidden="true" class="collapse-button" data-toggle="collapse" href="#vedlegg-1-programkode-section" role="button"></a></h2>
+
+<div class="collapse in" id="vedlegg-1-programkode-section">
+<p>Plassert i mappen <code>/Program</code>. Lisens for Atmel-kode har plasseringen <code>/Program/at90usb128/demo/series6-hidmouse/LICENSE.txt</code>.</p>
+</div>
+</section>
+
+<section id="vedlegg-2-datablad-for-interlink-sensorer">
+<h2><a aria-hidden="true" class="header-anchor" href="#vedlegg-2-datablad-for-interlink-sensorer" title="Vedlegg 2: Datablad for Interlink-sensorer"></a> Vedlegg 2: Datablad for Interlink-sensorer<a aria-controls="vedlegg-2-datablad-for-interlink-sensorer-section" aria-expanded="true" aria-hidden="true" class="collapse-button" data-toggle="collapse" href="#vedlegg-2-datablad-for-interlink-sensorer-section" role="button"></a></h2>
+
+<div class="collapse in" id="vedlegg-2-datablad-for-interlink-sensorer-section">
+<p>Plassert i mappen <code>/Datablader/Trykksensorer</code>.</p>
+</div>
+</section>
+
+<section id="vedlegg-3-datablad-for-at90usbkey">
+<h2><a aria-hidden="true" class="header-anchor" href="#vedlegg-3-datablad-for-at90usbkey" title="Vedlegg 3: Datablad for AT90USBKey"></a> Vedlegg 3: Datablad for AT90USBKey<a aria-controls="vedlegg-3-datablad-for-at90usbkey-section" aria-expanded="true" aria-hidden="true" class="collapse-button" data-toggle="collapse" href="#vedlegg-3-datablad-for-at90usbkey-section" role="button"></a></h2>
+
+<div class="collapse in" id="vedlegg-3-datablad-for-at90usbkey-section">
+<p>Plassert i mappen <code>/Datablader/Kretskort</code>.</p>
+</div>
+</section>
+
+<section id="vedlegg-4-datablad-for-mikrokontrolleren">
+<h2><a aria-hidden="true" class="header-anchor" href="#vedlegg-4-datablad-for-mikrokontrolleren" title="Vedlegg 4: Datablad for mikrokontrolleren"></a> Vedlegg 4: Datablad for mikrokontrolleren<a aria-controls="vedlegg-4-datablad-for-mikrokontrolleren-section" aria-expanded="true" aria-hidden="true" class="collapse-button" data-toggle="collapse" href="#vedlegg-4-datablad-for-mikrokontrolleren-section" role="button"></a></h2>
+
+<div class="collapse in" id="vedlegg-4-datablad-for-mikrokontrolleren-section">
+<p>Plassert i mappen <code>/Datablader/Mikrokontroller</code>.</p>
+
+<hr class="footnotes-sep">
+
+<section class="footnotes">
+<ol class="footnotes-list">
+<li class="footnote-item" id="fn1">
+<p>Nettside: <a href="http://www.interlinkelectronics.com/">http://www.interlinkelectronics.com/</a>. <a class="footnote-backref" href="#fnref1" title="Sensorene, som produseres av Interlink Electronics,[1] kommer i to typer (fig. 2.2): (a) en liten sensor med en diameter på 8 mm (FSR-400), og (b) en stor sensor på 18 mm (FSR-402). Det trykkfølsomme området er litt mindre og er på hhv. 5 mm og 14 mm.">↩︎</a></p>
+</li>
+
+<li class="footnote-item" id="fn2">
+<p>Lar målearmen ligge for å holde trykkområdet konstant. Vekten på armen er så liten at sensorene påvirkes minimalt av denne, se <a href="#sec-litenvar" title="2.2.1 Motstandsverdi ved varierende trykk FSR-400">kapittel 2.2.1</a>. <a class="footnote-backref" href="#fnref2" title="Sensorene blir koblet opp som i figur 2.3 og spenningen over \(R\) blir målt ved trykk på sensoren. Mellom hver måling tas vektene av, og trykket blir 18 g.[2] Målingene foretas 5 s etter at vekten er lagt på. Spenningen som måles er spenningen ADC-en på kortet ser, så hensikten er å måle hvordan spenningen stiger ved enkelttrykk.">↩︎</a></p>
+</li>
+
+<li class="footnote-item" id="fn3">
+<p><a href="http://www.atmel.com/dyn/products/tools_card.asp?tool_id=3879">http://www.atmel.com/dyn/products/tools_card.asp?tool_id=3879</a>. <a class="footnote-backref" href="#fnref3" title="Prosjektgruppen velger å bruke AT90USBKey, som er en demokrets fra Atmel [Vedlegg 3].[3] Kretsen inneholder mikrokontrolleren AT90USB1287 [Vedlegg 4].">↩︎</a></p>
+</li>
+
+<li class="footnote-item" id="fn4">
+<p>Lisensen for den medfølgende programvaren til Atmel er gitt i <code>LICENSE.TXT</code> i [<a href="#ref-program" title="[Vedlegg 1] Programkode, dokumentert.">Vedlegg 1</a>]. <a class="footnote-backref" href="#fnref4" title="Atmel har laget et USB Human Interface Device (HID)-kompatibelt musegrensesnitt for mikrokontrolleren.[4] Ved å bruke dette sparer prosjektgruppen ytterligere med arbeidstid, men dette betyr at avlest data må behandles av mikrokontrolleren før den sendes til PC (for databehandling, se kapittel 6).">↩︎</a></p>
+</li>
+
+<li class="footnote-item" id="fn5">
+<p>Standard 100 <abbr title="milliampere">mA</abbr>, maksimalt 500 <abbr title="milliampere">mA</abbr> etter forespørsel. <a class="footnote-backref" href="#fnref5" title="USB-teknologien har mange fordeler fremfor f.eks. PS2, RS232, LPT1 mfl. Siden USB er det mest brukte PC-grensesnittet i dag, er alle nye datamaskiner og maskiner fra tilbake til begynnelsen av 2000-tallet utrustet og klargjort for dette. Enheter kan bli koblet til og fra uten å måtte restarte systemet. Drivere blir automatisk lastet inn og enheten blir dermed gjenkjent og gjort klar til bruk («Plug 'n’ Play»). En USB-inngang kan tilkobles så mange som 127 enheter og kan levere totalt opp til en halv ampere strøm til periferiutstyr.[5]">↩︎</a></p>
+</li>
+
+<li class="footnote-item" id="fn6">
+<p>Se <a href="#sec-produktspes" title="1.2.2 Overordnet spesifikasjon av konseptet">produktspesifikasjonen</a>. <a class="footnote-backref" href="#fnref6" title="Plug ‘n’ Play USB-musegrensesnittet mot PC, valgt i kapittel 5, begrenser funksjonaliteten til standard musefunksjoner: horisontal, vertikal og diagonal bevegelse, venstre- og høyre museknapp, og scroll.[6] Den videre problemstillingen er hvordan disse funksjonene skal aktiveres ved å bruke sensorene.">↩︎</a></p>
+</li>
+
+<li class="footnote-item" id="fn7">
+<p>Festemekanismen kan videreutvikles, se <a href="#sec-veienvidere" title="10 Veien videre">kapittel 10</a>. <a class="footnote-backref" href="#fnref7" title="Sensorene kan festes på kinnet på flere måter. Det er valgt å bruke en hodebøyle (se kap. 3) med plater som sensorene festes på.[7] Platene må ha riktig antall sensorer, som igjen må ha riktig plassering mellom hverandre for å gi en god brukerfølelse. For å gjøre det intuitivt, er knapp- og bevegelsessensorene plassert på hvert sitt kinn.">↩︎</a></p>
+</li>
+
+<li class="footnote-item" id="fn8">
+<p>Man <em>kan</em> klare seg med færre dersom man bruker ulikt trykk for ulike retninger, men <a href="#sec-sensorkap" title="2 Sensorene">kapittel 2</a> antyder at dette blir vanskelig. <a class="footnote-backref" href="#fnref8" title="De fire hovedretningene regner vi som oppover, nedover, til venstre og til høyre. Dersom diagonal bevegelse (kombinasjoner av hovedretningene) også er et krav, må det plasseres minst tre sensorer på «bevegelseskinnet».[8] Disse må kunne aktiveres samtidig, og det må tas hensyn til hvilken sensor som er mest aktiv.">↩︎</a></p>
+</li>
+
+<li class="footnote-item" id="fn9">
+<p>Dette gjøres ved å slå opp i en matrise som inneholder informasjon om hvilke sensorer som er i nærheten av hverandre. Hvis sensoren for bevegelse oppover er i bruk, for eksempel, ønsker vi bare å undersøke sensorene for bevegelse til venstre og høyre, ikke sensoren for bevegelse nedover. <a class="footnote-backref" href="#fnref9" title="Når en aktiv sensor er funnet, er det to muligheter (fig. 6.5). Skal (a) resten av sensorene også undersøkes, eller (b) søket avsluttes og den aktive sensoren returneres? Hvis vi bare returnerer den første aktive sensoren, må vi legge inn en ekstra «nabosjekk» av nærliggende sensorer for å oppdage om to bevegelsessensor brukes samtidig (diagonal bevegelse).[9] Hvis vi søker gjennom hele tabellen, derimot, vil alle aktive sensorer gi musefunksjoner (noe som håndterer diagonal bevegelse automatisk), men kan gi uønskede eller ingen musebevegelse ved noen sensorkombinasjoner.">↩︎</a></p>
+</li>
+
+<li class="footnote-item" id="fn10">
+<p>Dette gjør vi i <a href="#sec-andretilnerming" title="6.4 Andre tilnærming">andre tilnærming</a>. <a class="footnote-backref" href="#fnref10" title="Fordelen med å gjøre det på den andre og mer «tungvinte» måten i figur 6.5b, hvor vi stanser søket når en aktiv sensor er funnet og sjekker om denne sensoren har en aktiv «nabosensor», er er at den er mer fleksibel. Det er lettere å «gardere» mot aktive sensorer på begge kinn, som er signalet for manuell rekalibrering. Dessuten kan funksjonen som returnerer den første aktive sensoren, lett skrives om til å returnere den mest aktive sensoren dersom det viser seg vesentlig å skille mellom flere sensortrykk.[10] I vår første tilnærming returneres bare den første aktive sensoren, men forholdene ligger til rette for en omskrivning.">↩︎</a></p>
+</li>
+
+<li class="footnote-item" id="fn11">
+<p>Tilnærmede priser. <a class="footnote-backref" href="#fnref11" title="To-lags PCB[11:4]">↩︎</a> <a class="footnote-backref" href="#fnref11:1" title="To-lags PCB[11:4]">↩︎</a> <a class="footnote-backref" href="#fnref11:2" title="To-lags PCB[11:4]">↩︎</a> <a class="footnote-backref" href="#fnref11:3" title="To-lags PCB[11:4]">↩︎</a> <a class="footnote-backref" href="#fnref11:4" title="To-lags PCB[11:4]">↩︎</a></p>
+</li>
+
+<li class="footnote-item" id="fn12">
+<p>Skruer/muttrer/ledninger og lignende. <a class="footnote-backref" href="#fnref12" title="Koblingsenheter[12]">↩︎</a></p>
+</li>
+
+<li class="footnote-item" id="fn13">
+<p>Tilpasset lader må anvendes for lading av litiumbatterier. <a class="footnote-backref" href="#fnref13" title="U9VLJ10 Litium[13:1]">↩︎</a> <a class="footnote-backref" href="#fnref13:1" title="U9VLJ10 Litium[13:1]">↩︎</a></p>
+</li>
+</ol>
+</section>
+</div>
+</section>
+</div>
+</section>
+</section>
+</article>
+</div>
+</body>
+</html>

@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="no">
+<head>
+<title>Musikkimporteringsrutiner</title>
+<meta content="text/html; charset=utf-8" http-equiv="Content-Type">
+<meta content="text/css" http-equiv="Content-Style-Type">
+<meta content="width=device-width, initial-scale=1" name="viewport">
+<link href="../../../favicon.ico" rel="icon" type="image/x-icon">
+<link href="../../../css/markdown-template.css" rel="stylesheet">
+<link href="index.txt" rel="alternate" title="Markdown" type="text/markdown">
+<script async="" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-MML-AM_CHTML" type="text/javascript">
+</script>
+<script src="../../../js/markdown-template.js">
+</script>
+</head>
+<body>
+<nav class="navbar navbar-default navbar-fixed-top">
+<div class="container-fluid">
+<ul class="nav nav-pills navbar-left">
+<li role="presentation"><a href="/" title="Return home"><i class="fa fa-home"></i></a>
+</li>
+</ul>
+
+<ul class="nav nav-pills navbar-right">
+<li role="presentation"><a href="http://www.facebook.com/share.php?u=about%3Ablank" title="Share on Facebook"><i class="fa fa-facebook-square"></i></a>
+</li>
+
+<li role="presentation"><a href="https://twitter.com/intent/tweet?url=about%3Ablank" title="Share on Twitter"><i class="fa fa-twitter-square"></i></a>
+</li>
+
+<li role="presentation"><a href="mailto:?body=about%3Ablank" title="Share by mail"><i class="fa fa-envelope"></i></a>
+</li>
+
+<li role="presentation"><a href="https://github.com/epsil/epsil.github.io/tree/master/blank/index.txt" title="Edit on GitHub"><i class="fa fa-edit"></i></a>
+</li>
+
+<li role="presentation"><a href="index.txt" title="Get Markdown source"><i class="fa fa-download"></i></a>
+</li>
+
+<li role="presentation"><a data-toggle="collapse" href="#toc" title="Table of contents"><i class="fa fa-bars"></i></a>
+</li>
+</ul>
+</div>
+
+<div class="collapse" id="toc" title="Innhold">
+</div>
+</nav>
+
+<div class="container">
+<article>
+<header>
+<h1 class="title">Musikkimporteringsrutiner</h1>
+
+<p><time><i class="fa fa-calendar-o"></i> 2014-01-27</time>
+</p>
+</header>
+
+<section id="content">
+<ol>
+<li>Konverter <abbr class="acronym" title="Free Lossless Audio Codec">FLAC</abbr> til <abbr class="acronym" title="MPEG Audio Layer III">MP3</abbr> med <a href="http://www.foobar2000.org/">foobar2000</a>.
+
+<ul>
+<li>Lagre disse innstillingene som et oppsett «<abbr class="acronym" title="MPEG Audio Layer III">MP3</abbr> 320»: <em>Format: <abbr class="acronym" title="MPEG Audio Layer III">MP3</abbr> (<abbr class="acronym" title="LAME Ain't an Mp3 Encoder">LAME</abbr>), 320 kbps <abbr class="acronym" title="Constant Bit Rate">CBR</abbr>. Output to source track folder. File name pattern: <code>%filename%</code>.</em></li>
+
+<li>Husk å slette <abbr class="acronym" title="Free Lossless Audio Codec">FLAC</abbr>-filene etterpå (kan i foobar2000 gjøres med <em>File Operations</em> -&gt; <em>Delete files</em>).</li>
+</ul></li>
+
+<li>Last ned bilder med <a href="http://sourceforge.net/projects/album-art/">Album Art Downloader</a>. (Man kan også bruke iTunes’ <em>Get Album Artwork</em>-funksjon, men denne krever Apple-<abbr class="acronym" title="Identifikasjon">ID</abbr>.)
+
+<ul>
+<li><code>folder%preset%.%extension%|cover%preset%.%extension%</code>
+</li>
+
+<li><em>Automatically download and save the first result that meets set criteria</em>
+</li>
+
+<li><em>Last.fm Cover</em> først, deretter <em>All</em> for gjenværende album.</li>
+
+<li><strong>Merk:</strong> Programmet krasjer for mer enn 150 album, så stykk opp arbeidet om nødvendig.</li>
+</ul></li>
+
+<li>Tagg filene med <a href="http://www.mp3tag.de/en/">Mp3tag</a>.
+
+<ul>
+<li>For bildetagging, bruk en egendefinert regel som velger <code>folder.jpg</code>, <code>folder.png</code>, <code>cover.jpg</code> eller <code>cover.png</code>, i den rekkefølgen.</li>
+</ul></li>
+
+<li>Kopier filene over i nye mapper.
+
+<ul>
+<li>Mapper og filnavn bør være på formen: <code>Artist/Album/Spornummer Tittel.mp3</code></li>
+
+<li>I foobar2000 med <em>File Operations</em> -&gt; <em>Copy to</em>: <code>$ascii(%album artist%\%album%\$if(%discnumber%, %discnumber%-)%tracknumber% %title%)</code></li>
+
+<li>Påse at <em>Copy entire source code content</em> er krysset av.</li>
+</ul></li>
+
+<li>Slett spillelister:
+
+<ul>
+<li><abbr class="acronym" title="MP3 Uniform Resource Locator">M3U</abbr>- og <abbr class="acronym" title="MP3 Uniform Resource Locator (Unicode)">M3U8</abbr>-filer: <code>find . -iname "*.m3u*" -exec rm {} \;</code></li>
+
+<li><abbr class="acronym" title="MPEG Playlist">PLS</abbr>-filer: <code>find . -iname "*.pls" -exec rm {} \;</code></li>
+</ul></li>
+</ol>
+</section>
+</article>
+</div>
+</body>
+</html>

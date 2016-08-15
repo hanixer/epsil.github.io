@@ -1,0 +1,94 @@
+\chapter{Innledning}
+
+\begin{quote}\it
+  \textbf{Sammendrag:} Resultatet av prosjektet skal bli en prototype for
+  tungestyrt musepeker som kan brukes på Microsoft Windows. Denne prototypen
+  skal lages med trykkfølsomme resistanser. Ettersom det ikke finnes noe
+  tilsvarende produkt på det norske markedet, kan et vellykket produkt dekke et
+  viktig behov for funksjonshemmede som er ute av stand til å bruke en håndstyrt
+  datamus.
+\end{quote}
+
+\section{Bakgrunn/tidligere løsninger} % kort!
+
+Bacheloroppgave på oppdrag fra SINTEF: Det skal bygges et verktøy for
+funksjonshemmede som lar datamusen styres med tungen. Prosjektet fokuserer på å
+kartlegge hvor godt ideen med tungesensorer fungerer i praksis. Overfor
+oppdragsgiver er det \emph{toårig taushetsplikt}, siden oppdragsgiver ønsker å
+kunne bruke resultatene av prosjektet til egne formål. Prosjektgruppen består av
+fire studenter på tredje året bachelor i elektro- og datateknikk: fordypning i
+elektronikk ved Høyskolen i Sør-Trøndelag. Ved tidligere prosjekter er det gjort
+forsøk med:
+\begin{itemize}
+\item Induktive følere (reagerer på metall og er billige i innkjøp)
+\item Touch (en form for kapasitiv føler)
+\item IR (Vanskelig metode for avlesning)
+\item Kapasitive følere (svært dyre i innkjøp)
+\end{itemize}
+Det er ønskelig at gruppen starter prosjektet fra <<scratch>>, for å se om
+resultatet benytter seg av alternative metoder til dem som er brukt tidligere.
+
+\section{Problemstilling}
+\label{sec:hovedproblemstilling}
+
+Ved endt prosjekt skal det legges frem en prototype som kan styre musepekeren i
+Microsoft Windows ved bruk av tungen, og som har de samme mulighetene som en
+ordinær mus. Prosjektgruppen har fått utdelt trykksensorer (FSR-400 og FSR-402),
+produsert av Interlink Electronics (sensorene kapittel~\ref{sec:sensorkap}).
+Prosjektet skal kunne svare på om sensorene kan brukes til et ferdig produkt.
+Det skal kommes frem til en konfigurasjon av sensorplassering, og algoritmer for
+behandling av sensordata.
+
+\subsection{Hva skal gjøres og hvordan}
+
+\begin{itemize}
+  % tekts sensortesting hær vegard (egentlig til bastian, men skriver vegard for
+  % god søknings venlighet,)
+\item Kartlegge hvordan de utdelte sensorene kan brukes
+  (kap.~\ref{sec:sensorkap}).
+\item Det skal lages en hodebøyle for enkel bruk av datamusen
+  (kap.~\ref{sec:hodeboyle}).
+\item Det skal lages en krets for signalbehandling, fortrinnsvis en
+  mikrokontroller med ADC (kap.~\ref{sec:elektronikk}).
+\item Overføringsgrensesnitt mot Microsoft Windows -- Bluetooth/USB
+  (kap.~\ref{sec:elektronikk}).
+\item Det skal tas standpunkt til hvor prosesseringen av data skal foregå, før
+  eller etter signalet har kommet til datamaskinen (kap.~\ref{sec:elektronikk}).
+\item Valg av sensorkonfigurasjon, antall og plassering, brukergrensesnitt
+  (kap.~\ref{sec:funksjonalitet}).
+\item Program for tolkning av avlest sensordata må skrives
+  (kap.~\ref{sec:funksjonalitet}).
+\end{itemize}
+
+\subsection{Overordnet spesifikasjon av konseptet}
+\label{sec:produktspes}
+
+Bruken av funksjonene er beskrevet i kapittel~\ref{sec:funksjonalitet}, som tar
+for seg funksjonalitet og brukergrensesnitt. Konseptet skal inneholde disse
+standard musefunksjonene:
+\begin{itemize}
+\item Bevegelse
+  \begin{itemize}
+  \item Horisontal
+  \item Vertikal
+  \item Diagonalt
+  \item 3 Hastigheter
+  \end{itemize}
+\item Knapper
+  \begin{itemize}
+  \item Venstre museknapp
+  \item Høyre museknapp
+  \item Scroll
+  \end{itemize}
+\end{itemize}
+Festemekanismen beskrevet i kapittel~\ref{sec:hodeboyle} er en hodebøyle med
+disse spesifikasjonene:
+\begin{itemize}
+\item Behagelig å bruke, også over lengre tid (viktig at det ikke er for tungt).
+\item Uproblematisk å ta utstyret av/på for en person som skal hjelpe brukeren.
+\item Tilpassningsmulighet for flere brukere uansett hodestørrelse/form.
+\item Det skal være et godt press på sensorene mot kinnet, slik at det er lett å
+  bruke musen.
+\end{itemize}
+For hodebøylen er utseendemessig design nedprioritert. Av funksjoner er ingen
+valgt bort.

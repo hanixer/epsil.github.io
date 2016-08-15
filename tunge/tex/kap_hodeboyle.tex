@@ -1,0 +1,142 @@
+\chapter[Hodebøyle (Uthus)]{Hodebøyle}
+\label{sec:hodeboyle}
+
+\begin{figure}[h]
+  \centering
+  \includegraphics[height=10cm]{fig/prototypeGammel.png}
+  \caption[Skisse av prototype]{Skisse av prototype, laget i AutoCAD}
+  \label{fig:gammelprototype}
+\end{figure}
+
+\begin{quote}\it
+  \textbf{Sammendrag:} Inneholder en oversikt over hvordan gruppen gikk frem og
+  laget en prototype helt fra bunn. Den skal holde sensorene inntil kinnet og
+  sende informasjon videre til kretskortet som behandler dataene. Prototypen som
+  ble laget, oppfyller til en viss grad alle kravene satt i
+  produktspesifikasjonen side~\pageref{sec:produktspes}, men sensorene ligger
+  litt dårlig mot kinnet og justeringsdelen er litt hard.
+\end{quote}
+
+\section{Problemstilling}
+\label{sec:hodeprob}
+
+For å benytte sensorene som tenkt, blir prosjektgruppen nødt til å konstruere
+noe som holder sensorene på plass på utsiden av hvert kinn. Siden ingen av
+gruppedeltagerne har noe erfaring fra lignende prosjekter før, og det skal være
+en prototype, blir design nedprioritert. Prototypen skal være behagelig å bruke,
+må kunne brukes av flere brukere og være uproblematisk å ta av og på. (For
+detaljert oversikt over produktspesifikasjoner, se
+s.~\pageref{sec:produktspes}.)
+
+\section{Gjennomføring}
+
+Første tanke var å ta en allerede utviklet hodebøyle og sette på sensorene.
+Problemet var at ingen hodebøyler til en rimelig pris var mulig å ha helt ned
+til kinnet fra over hodet. Vi ble derfor nødt til å lage det hele fra bunn av.
+
+Ettersom utseendet ikke var så relevant, ble det i første omgang brukt
+spikerbånd, som er ganske bøyelig og enkelt å arbeide med. Det ble satt sammen
+med en skrue og en mutter på hver side av hodet. Det ene båndet gikk over hodet,
+det andre bak (fig.~\ref{fig:prototype1}). Dette fungerte, men det var uten
+muligheter til å justere og oppfylte derfor ikke alle kravene i
+produktspesifikasjonen.
+
+\begin{figure}[b]
+  \centering
+  \subfloat[]{\label{fig:prototype1}\includegraphics[height=6.5cm]{fig/prototype1.jpg}}\qquad\qquad
+  \subfloat[]{\label{fig:prototype2}\includegraphics[height=6.5cm]{fig/prototype2.jpg}}
+  \caption[1. og 2. utkast av prototype]{Første~\subref{fig:prototype1}
+    og andre~\subref{fig:prototype2} utkast av prototype for hodebøylen}
+  \label{fig:prototype}
+\end{figure}
+
+Inspirasjon til videreutvikling ble hentet fra en Koss PortaPro-hodebøyle, og
+det ble funnet en måte å justere hodebøylen på (fig.~\ref{fig:prototype2}).
+Kravet om å lage en justerbar prototype som kunne tilpasses hver enkelt bruker,
+ble dermed oppfylt. Noe som først ble ansett som en fordel for å holde
+hodebøylen godt på plass, viste seg etter hvert å være en ulempe, for med ett
+bånd som gikk over hodet, og ett som gikk bak hodet, ble det veldig
+problematiskt å ta hodebøylen på og av hodet. Det ble altså nok en gang en
+konflikt mellom kravene i produktspesifikasjonen og resultatet.
+
+Etter flere forsøk med spikerbånd, ble det konkludert med at det ikke var det
+best egnet metallet, siden det var svakt og knakk ofte ved mye bøying. Det ble
+derfor behov for noe annet. Alternativet ble metallet som blir brukt for å rense
+kloakkrør. Fordelen med dette metallet er at det er veldig solid og meget
+slitesterkt, og hvis en bøyer det i forkant, er det veldig stivt. Derfor er det
+mulighet til å få det veldig stramt imellom kinn og sensor.
+
+Med det nye <<vidundermetallet>> kunne det lages en helt ny måte å justere
+hodebøylen på ut ifra inspirasjonen fra Koss PortaPro. Dette er illustrert i
+figur~\ref{fig:justeringsboks} og~\ref{fig:prototype3}. Hodebøylen ble laget med
+tre bånd på hver side og koblet sammen med noen justeringsbokser på toppen av
+hodet. Det nye justeringssystemet fungerte mye bedre enn det vi hadde fra før.
+Hodebøylen var justerbart til flere brukere; å sette det av og på var
+uproblematisk, og det var behagelig å ha på seg. Men kravet om at det skulle
+legges press på sensorene mot kinnet, var fortsatt ikke oppfylt.
+
+\begin{figure}[t]
+  \centering
+  \subfloat[]{\label{fig:justeringMedlokk}\includegraphics[height=3cm]{fig/justeringMedLokk.png}}\qquad\qquad
+  \subfloat[]{\label{fig:justeringUtenTopp}{\includegraphics[height=3cm]{fig/justeringUtenTopp.jpg}}}
+  \caption[Justeringsboks]{Justeringsboks med lokk~\subref{fig:justeringMedlokk}
+    og uten lokk~\subref{fig:justeringUtenTopp}.}
+  \label{fig:justeringsboks}
+\end{figure}
+
+\begin{figure}[b]
+  \centering
+  \includegraphics[height=5cm]{fig/heleGreia.jpg}
+  \caption[Tegning av 3. prototype]{Tegning av hodebøylens
+    justeringsmuligheter}
+  \label{fig:prototype3}
+\end{figure}
+
+Siden det hadde blitt bestemt at det ikke skulle være noe bak hodet for å
+stramme opp, pga. praktiske årsaker, kom vi frem til at det måtte legges et
+tykkere lag med metall litt lengre frem, som ble festet til det punktet som
+sensorene på hodebøylen skulle festes. Ved hjelp av dette oppfyltes alle kravene
+som hadde blitt satt. Det eneste som manglet nå var å plassere sensorene og få
+det hele koblet til kretskortet med mikroprosessoren. (Mer om
+sensorkonfigurasjon i kapittel~\ref{sec:funksjonalitet}.)
+
+Det å få festet sensorene på hodebøylen ble gjort veldig enkelt: Først ble det
+brukt to metallplater, en på hver side. Deretter ble de små kretskortene som
+sensorene er koblet sammen på, festet på metallplatene.
+
+Det som nå ble vurdert, var om kretskortet som inneholder mikroprosessoren,
+skulle plasseres på hodebøylen. Siden det i utgangspunktet skulle være minst
+mulig på hodebøylen -- både fordi at det skulle være så lett som mulig, og at
+det ikke skulle bli mye elektronikk som en må ta hensyn til når en skal plassere
+hodebøylen på brukeren -- måtte det finnes et annet alternativ. Det ble
+anskaffet en større kabel med flere ledere i som ble festet på toppen av
+hodebøylen og koblet til sensorene på hver sin side, slik at alle signalene fra
+sensorene blir sendt samlet gjennom en kabel til prosessoren som skal ta imot.
+På enden av kabelen ble det montert et motstykke til en COM-port, dette for å
+gjøre det enkelt å koble hodebøylen til «X-box»-en i kapittel~\ref{sec:xbox}
+(fig.~\ref{fig:signalkabel}).
+
+\begin{figure}[t]
+  \centering
+  \includegraphics[width=0.7\linewidth]{fig/overgangtilCOM.jpg}
+  \caption[Signalkabel]{Bilde av signalkabel}
+  \label{fig:signalkabel}
+\end{figure}
+
+\section{Resultat} % bilde-shait og -shit
+
+En prototype av en hodebøyle som oppfylte de kravene som hadde blitt satt i
+forkant(figur~\ref{fig:ferdigprototype}). Det passer til flere brukere ved hjelp
+av justeringsmulighetene, og det er lett å koble opp og komme igang med. Det er
+to ulemper med den ferdige prototypen. Den ene er at justeringsdelen er litt
+hard. Den andre er at hodebøylen ikke har nok press mot kinnet hvor sensorene
+ligger. (Begge disse problemene vil være enkelt å løse på en ev. ferdig versjon
+ved hjelp av noen som har en bedre bakgrunn i mekanikk og ev. annet utstyr som
+gruppen ikke hadde til rådighet.)
+
+\begin{figure}[h]
+  \centering
+  \includegraphics[height=15cm]{fig/prototype3.jpg}
+  \caption{Ferdig prototype}
+  \label{fig:ferdigprototype}
+\end{figure}

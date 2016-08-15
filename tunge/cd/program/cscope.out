@@ -1,0 +1,22981 @@
+cscope 15 j:/Bachelor/series6-hidmouse-2_0_4-doc               0000138600
+	@at90usb128/demo/series6-hidmouse/conf/conf_scheduler.h
+
+41 #iâdeà
+_CONF_SCHEDULER_H_
+
+
+42 
+	#_CONF_SCHEDULER_H_
+
+
+	)
+
+48 
+	#SCHEDULER_TYPE
+ 
+SCHEDULER_FREE
+
+
+49 
+	#ScheduËr_sk_1_š™
+ 
+usb_sk_š™
+
+
+	)
+
+50 
+	#ScheduËr_sk_1
+ 
+usb_sk
+
+
+	)
+
+51 
+	#ScheduËr_sk_2_š™
+ 
+š™_adc
+
+
+	)
+
+52 
+	#ScheduËr_sk_2
+ 
+mou£_sk
+
+
+	)
+
+53 
+	#ScheduËr_sk_3_š™
+ 
+mou£_sk_š™
+
+
+	)
+
+	@at90usb128/demo/series6-hidmouse/conf/conf_usb.h
+
+40 #iâdeà
+_CONF_USB_H_
+
+
+41 
+	#_CONF_USB_H_
+
+
+	)
+
+43 
+	~"moduËs/usb/usb_commun.h
+"
+
+44 
+	~"moduËs/usb/usb_commun_hid.h
+"
+
+62 
+	#USB_HOST_FEATURE
+ 
+DISABLED
+
+
+	)
+
+67 
+	#USB_DEVICE_FEATURE
+ 
+ENABLED
+
+
+	)
+
+80 #iâdeà
+USE_USB_PADS_REGULATOR
+
+
+81 
+	#USE_USB_PADS_REGULATOR
+ 
+ENABLE
+
+
+84 
+
+	)
+
+99 
+	#VID_PID_TABLE
+ {
+VID_ATMEL
+, 2, 
+PID_MegaHIDMou£
+, 0x2014 \
+
+100 ,0x0123, 3, 0x2000, 0x2100, 0x1258}
+
+	)
+
+112 
+	#CLASS_SUBCLASS_PROTOCOL
+ {0x0A, 0x00, 0x00, \
+
+114 0xFF,0x00,0x00}
+
+	)
+
+117 
+	#SIZEOF_DATA_STAGE
+ 250
+
+	)
+
+120 
+	#DEVICE_ADDRESS
+ 0x05
+
+	)
+
+125 
+	#HOST_STRICT_VID_PID_TABLE
+ 
+DISABLE
+
+
+	)
+
+128 
+	#HOST_AUTO_CFG_ENDPOINT
+ 
+ENABLE
+
+
+	)
+
+131 
+	#HOST_CONTINUOUS_SOF_INTERRUPT
+ 
+DISABLE
+
+
+	)
+
+134 
+	#HOST_ERROR_RESTART
+ 
+ENABLE
+
+
+	)
+
+137 
+	#ID_PIN_CHANGE_GENERATE_RESET
+ 
+DISABLE
+
+
+	)
+
+140 
+	#NAK_TIMEOUT_DELAY
+ 1
+
+	)
+
+142 #ià(
+HOST_AUTO_CFG_ENDPOINT
+==
+FALSE
+)
+
+144 
+	#U£r_cÚfigu»_’dpošt
+()
+
+	)
+
+152 
+	#Usb_id_Œªs™iÚ_aùiÚ
+()
+
+	)
+
+153 
+	#Ho¡_deviû_discÚÃùiÚ_aùiÚ
+()
+
+	)
+
+154 
+	#Ho¡_deviû_cÚÃùiÚ_aùiÚ
+()
+
+	)
+
+155 
+	#Ho¡_sof_aùiÚ
+()
+
+	)
+
+156 
+	#Ho¡_su¥’d_aùiÚ
+()
+
+	)
+
+157 
+	#Ho¡_hwup_aùiÚ
+()
+
+	)
+
+158 
+	#Ho¡_deviû_nÙ_suµÜ‹d_aùiÚ
+()
+
+	)
+
+159 
+	#Ho¡_deviû_suµÜ‹d_aùiÚ
+()
+
+	)
+
+160 
+	#Ho¡_deviû_”rÜ_aùiÚ
+()
+
+	)
+
+172 
+	#USB_DEVICE_SN_USE
+ 
+DISABLE
+
+
+173 
+	#USE_DEVICE_SN_UNIQUE
+ 
+DISABLE
+
+
+174 
+
+	)
+
+175 
+	#NB_ENDPOINTS
+ 2
+
+176 
+	#EP_MOUSE_IN
+ 1
+
+177 
+
+	)
+
+179 
+	#USB_LOW_SPEED_DEVICE
+ 
+DISABLE
+
+
+	)
+
+181 
+	#USB_REMOTE_WAKEUP_FEATURE
+ 
+ENABLE
+
+
+182 
+
+	)
+
+183 
+	#Usb_unicode
+(
+a
+è((
+U16
+)×))
+
+	)
+
+190 
+	#Usb_sof_aùiÚ
+(è
+	`sof_aùiÚ
+();
+
+	)
+
+191 
+	#Usb_wake_up_aùiÚ
+()
+
+	)
+
+192 
+	#Usb_»sume_aùiÚ
+()
+
+	)
+
+193 
+	#Usb_su¥’d_aùiÚ
+(è
+	`su¥’d_aùiÚ
+();
+
+	)
+
+194 
+	#Usb_»£t_aùiÚ
+()
+
+	)
+
+195 
+	#Usb_vbus_Ú_aùiÚ
+(è
+	`mou£_sk_š™
+()
+
+	)
+
+196 
+	#Usb_vbus_off_aùiÚ
+()
+
+	)
+
+197 
+	#Usb_£t_cÚfigu¿tiÚ_aùiÚ
+()
+
+	)
+
+200 
+sof_aùiÚ
+();
+
+201 
+su¥’d_aùiÚ
+();
+
+202 
+vbus_off_aùiÚ
+();
+
+203 
+mou£_sk_š™
+();
+
+	@at90usb128/demo/series6-hidmouse/conf/config.h
+
+41 #iâdeà
+_CONFIG_H_
+
+
+42 
+	#_CONFIG_H_
+
+
+	)
+
+45 
+	~"lib_mcu/comp”.h
+"
+
+46 #ifdeà
+__GNUC__
+
+
+47 
+	~<avr/io.h
+>
+
+48 #–ià
+__ICCAVR__
+
+
+49 
+	#ENABLE_BIT_DEFINITIONS
+
+
+	)
+
+50 
+	~<ißvr.h
+>
+
+52 #”rÜ 
+Cu¼’t
+ 
+COMPILER
+ 
+nÙ
+ 
+suµÜ‹d
+
+
+59 
+	~"cÚf/cÚf_scheduËr.h
+"
+
+63 
+	#TARGET_BOARD
+ 
+USBKEY
+
+
+	)
+
+66 
+	#FOSC
+ 8000
+
+	)
+
+71 
+	#USE_ADC
+
+
+72 
+	#ADC_PRESCALER
+ 64
+
+73 
+	#ADC_RIGHT_ADJUST_RESULT
+ 0
+
+74 
+	#ADC_INTERNAL_VREF
+ 1
+
+75 
+	#ADC_IT
+ 0
+
+76 
+	#ADC_DIGITAL_OFF
+ 1
+
+78 
+
+	)
+
+83 
+	#NB_IDLE_POLLING_SOF
+ 3
+
+84 
+	#MOUSE_SPEED
+ 1
+
+	)
+
+85 
+	#DEBUG
+ 0
+
+87 
+
+	)
+
+93 
+	#STK525
+ 1
+
+	)
+
+94 
+	#USBKEY
+ 2
+
+	)
+
+95 
+	#STK600
+ 3
+
+	)
+
+96 #ià(
+TARGET_BOARD
+==
+USBKEY
+)
+
+97 
+	~"lib_bßrd\usb_key\usb_key.h
+"
+
+98 #–ià(
+TARGET_BOARD
+==
+STK525
+)
+
+99 
+	~"lib_bßrd\¡k_525\¡k_525.h
+"
+
+100 #–ià(
+TARGET_BOARD
+==
+STK600
+)
+
+101 
+	~"lib_bßrd\¡k_600\¡k_600.h
+"
+
+103 #”rÜ 
+TARGET_BOARD
+ 
+mu¡
+ 
+be
+ 
+defšed
+ 
+somewh”e
+
+
+	@at90usb128/demo/series6-hidmouse/main.c
+
+74 
+	~"cÚfig.h
+"
+
+75 
+	~"moduËs/scheduËr/scheduËr.h
+"
+
+76 
+	~"lib_mcu/wdt/wdt_drv.h
+"
+
+77 
+	~"lib_mcu/pow”/pow”_drv.h
+"
+
+83 
+	$maš
+()
+
+85 
+	`wdtdrv_di§bË
+();
+
+86 
+	`CË¬_´esÿËr
+();
+
+87 
+	`scheduËr
+();
+
+89 
+	}
+}
+
+94 #ifdeà 
+__GNUC__
+
+
+97 
+	$__low_Ëv–_š™
+(è
+	`__©Œibu‹__
+ ((
+	`£ùiÚ
+ (".š™3"),
+Çked
+));
+
+100 #ifdeà
+__ılu¥lus
+
+
+103 
+	`__low_Ëv–_š™
+()
+
+105 
+	`CË¬_´esÿËr
+();
+
+108 #ifdeà
+__ılu¥lus
+
+
+109 
+	}
+}
+
+	@at90usb128/demo/series6-hidmouse/mouse_task.c
+
+43 
+	~"cÚfig.h
+"
+
+44 
+	~"cÚf_usb.h
+"
+
+46 
+	~"mou£_sk.h
+"
+
+47 
+	~"usb_desütÜs.h
+"
+
+49 
+	~"lib_mcu/usb/usb_drv.h
+"
+
+50 
+	~"lib_mcu/adc/adc_drv.h
+"
+
+51 
+	~"lib_mcu/wdt/wdt_drv.h
+"
+
+52 
+	~"lib_mcu/pow”/pow”_drv.h
+"
+
+54 
+	~"moduËs/usb/deviû_ch­9/usb_¡ªd¬d_»que¡.h
+"
+
+56 
+	~"£nsÜs.h
+"
+
+61 
+BoŞ
+ 
+	gg_b_£nd_»pÜt
+;
+
+63 
+BoŞ
+ 
+	gg_b_£nd_ack_»pÜt
+;
+
+65 
+U8
+ 
+	gg_hid_mou£_»pÜt
+[4];
+
+66 #ià(
+TARGET_BOARD
+==
+STK525
+)
+
+68 
+U16
+ 
+	gg_u16_pos_süŞl
+;
+
+71 vŞ©
+U8
+ 
+	gg_u8_ıt_sof
+;
+
+74 
+U8
+ 
+Z”ov®ue
+[8];
+
+80 
+	$mou£_sk_š™
+()
+
+83 
+g_u8_ıt_sof
+=0;
+
+84 
+	`Usb_’abË_sof_š‹¼u±
+();
+
+87 
+	`Joy_š™
+();
+
+88 
+	`Hwb_bu‰Ú_š™
+();
+
+89 
+	`Leds_š™
+();
+
+90 
+	`Led1_Ú
+();
+
+91 
+	`Led0_off
+();
+
+92 #ià(
+TARGET_BOARD
+==
+STK525
+)
+
+93 
+	`š™_adc
+();
+
+94 
+g_u16_pos_süŞl
+=
+	`G‘_adc_pÙ_v®
+();
+
+98 
+g_b_£nd_»pÜt
+ = 
+FALSE
+;
+
+99 
+g_b_£nd_ack_»pÜt
+ = 
+TRUE
+;
+
+102 
+U8
+ 
+i
+ = 0;
+
+103 
+i
+ = 
+ADC_START_CHANNEL
+; i <ğ
+ADC_END_CHANNEL
+; i++) {
+
+104 if(
+i
+ != 3) {
+
+105 
+Z”ov®ue
+[
+i
+] = 
+	`adc_»ad”
+(i);
+
+108 
+	}
+}
+
+113 
+	$mou£_sk
+()
+
+115 if(
+	`Is_usb_vbus_low
+())
+
+117 
+	`S‘up_pow”_down_mode
+();
+
+118 
+	`SË•_š¡ruùiÚ
+();
+
+121 if(!
+	`Is_deviû_’um”©ed
+())
+
+124 #ià(
+USB_LOW_SPEED_DEVICE
+==
+DISABLE
+)
+
+127 if(
+g_u8_ıt_sof
+<
+NB_IDLE_POLLING_SOF
+)
+
+129 
+g_u8_ıt_sof
+=0;
+
+132 if(!
+g_b_£nd_»pÜt
+)
+
+135 if(
+	`is_mou£_ev’t
+())
+
+138 
+g_b_£nd_»pÜt
+ = 
+TRUE
+;
+
+142 if((!
+g_b_£nd_»pÜt
+)&&(!
+g_b_£nd_ack_»pÜt
+))
+
+146 
+	`Usb_£Ëù_’dpošt
+(
+EP_MOUSE_IN
+);
+
+147 if(!
+	`Is_usb_wr™e_’abËd
+())
+
+150 
+	`Led0_Ú
+();
+
+151 ifĞ
+g_b_£nd_»pÜt
+ )
+
+153 
+g_b_£nd_»pÜt
+ = 
+FALSE
+;
+
+155 
+g_b_£nd_ack_»pÜt
+ = (0!=
+g_hid_mou£_»pÜt
+[0]);
+
+159 
+	`Hid_mou£_»pÜt_»£t
+();
+
+160 
+g_b_£nd_ack_»pÜt
+ = 
+FALSE
+;
+
+163 
+	`Usb_wr™e_by‹
+(
+g_hid_mou£_»pÜt
+[0]);
+
+164 
+	`Usb_wr™e_by‹
+(
+g_hid_mou£_»pÜt
+[1]);
+
+165 
+	`Usb_wr™e_by‹
+(
+g_hid_mou£_»pÜt
+[2]);
+
+166 
+	`Usb_wr™e_by‹
+(
+g_hid_mou£_»pÜt
+[3]);
+
+167 
+	`Usb_ack_š_»ady
+();
+
+168 
+	`Led0_off
+();
+
+169 
+	}
+}
+
+179 
+	$sof_aùiÚ
+()
+
+181 
+g_u8_ıt_sof
+++;
+
+182 
+	}
+}
+
+191 
+	$su¥’d_aùiÚ
+()
+
+193 #ià(
+USB_REMOTE_WAKEUP_FEATURE
+ =ğ
+ENABLED
+)
+
+194 ià(
+»mÙe_wakeup_ã©u»
+ =ğ
+ENABLED
+)
+
+196 
+	`Sw™ches_’abË_™
+();
+
+198 
+	`Led1_off
+();
+
+199 
+	`EÇbË_š‹¼u±
+();
+
+200 
+	`EÁ”_pow”_down_mode
+();
+
+201 
+	`Led1_Ú
+();
+
+203 
+	}
+}
+
+206 #ià(
+USB_REMOTE_WAKEUP_FEATURE
+ =ğ
+ENABLED
+)
+
+213 #ifdeà
+__GNUC__
+
+
+214 
+	$ISR
+(
+PCINT0_veù
+)
+
+216 #´agm¨
+veùÜ
+ = 
+PCINT0_veù
+
+
+217 
+__š‹¼u±
+ 
+	$sw™ch_ev’t_št
+()
+
+220 
+	`Sw™ches_di§bË_™
+();
+
+221 
+	`usb_g’”©e_»mÙe_wakeup
+();
+
+222 
+	}
+}
+
+	@at90usb128/demo/series6-hidmouse/mouse_task.h
+
+41 #iâdeà
+_MOUSE_TASK_H_
+
+
+42 
+	#_MOUSE_TASK_H_
+
+
+	)
+
+45 
+	~"cÚfig.h
+"
+
+49 
+mou£_sk_š™
+ ();
+
+50 
+mou£_sk
+ ();
+
+52 
+sof_aùiÚ
+();
+
+	@at90usb128/demo/series6-hidmouse/sensors.c
+
+12 
+	~"£nsÜs.h
+"
+
+17 
+U8
+ 
+	gS‹
+ = 
+DEFAULT_STATE
+;
+
+21 
+U16
+ 
+	gS‹_couÁ”
+ = 0;
+
+24 
+b™
+ 
+	gSlow_cursÜ
+ = 
+FALSE
+;
+
+27 
+b™
+ 
+	gLeá_hŞddown
+ = 
+FALSE
+;
+
+31 
+b™
+ 
+	gR•Üt_fËd
+ = 
+FALSE
+;
+
+34 
+U8
+ 
+g_hid_mou£_»pÜt
+[4];
+
+37 
+U8
+ 
+	gZ”ov®ue
+[8] = {0};
+
+40 
+U8
+ 
+	gInv®ue
+[8] = {0};
+
+43 
+U8
+ 
+	gAùive_£nsÜ
+ = 0;
+
+46 
+U8
+ 
+	gNeighbÜ_£nsÜ
+ = 0;
+
+52 
+b™
+ 
+	gN—rby_£nsÜs
+[8][8] = {{0, 0, 0, 0, 0, 0, 0, 0},
+
+78 
+b™
+ 
+	$is_mou£_ev’t
+() {
+
+80 
+	`Hid_mou£_»pÜt_»£t
+();
+
+82 
+	`R—d_£nsÜs
+();
+
+84 
+S‹
+) {
+
+85 
+DEFAULT_STATE
+ :
+
+86 
+R•Üt_fËd
+ = 
+	`DeçuÉ_func
+();
+
+89 
+MOV_COUNT_STATE
+ :
+
+90 
+R•Üt_fËd
+ = 
+	`Mov_couÁ_func
+();
+
+93 
+MOV_PRESS_STATE
+ :
+
+94 
+R•Üt_fËd
+ = 
+	`Mov_´ess_func
+();
+
+97 
+MOV_TOUCH_STATE
+ :
+
+98 
+R•Üt_fËd
+ = 
+	`Mov_touch_func
+();
+
+101 
+BUTTON_WAIT_STATE
+ :
+
+102 
+R•Üt_fËd
+ = 
+	`Bu‰Ú_wa™_func
+();
+
+105 
+SCROLL_STATE
+ :
+
+106 
+R•Üt_fËd
+ = 
+	`SüŞl_func
+();
+
+110 
+S‹
+ = 
+DEFAULT_STATE
+;
+
+111 
+R•Üt_fËd
+ = 
+FALSE
+;
+
+115 
+R•Üt_fËd
+ = 
+	`Maybe_¦ow_cursÜ
+();
+
+116 
+R•Üt_fËd
+ = 
+	`Maybe_Ëá_hŞddown
+();
+
+118  
+R•Üt_fËd
+;
+
+119 
+	}
+}
+
+140 
+b™
+ 
+	$DeçuÉ_func
+() {
+
+141 
+Aùive_£nsÜ
+ = 
+NO_SENSOR
+;
+
+142 
+NeighbÜ_£nsÜ
+ = 
+NO_SENSOR
+;
+
+145 
+Aùive_£nsÜ
+ = 
+	`fšd_aùive_£nsÜ
+();
+
+147 if(
+	`is_bu‰Ú_£nsÜ
+(
+Aùive_£nsÜ
+)) {
+
+148 if(
+Leá_hŞddown
+) {
+
+149 
+Leá_hŞddown
+ = 
+FALSE
+;
+
+150 
+Aùive_£nsÜ
+ = 
+NO_SENSOR
+;
+
+152 
+S‹_couÁ”
+ = 0;
+
+153 
+S‹
+ = 
+BUTTON_WAIT_STATE
+;
+
+154  
+TRUE
+;
+
+156 if(
+	`is_movem’t_£nsÜ
+(
+Aùive_£nsÜ
+)) {
+
+157 
+	`Modify_»pÜt
+(
+Aùive_£nsÜ
+);
+
+158 
+S‹_couÁ”
+ = 0;
+
+159 
+Slow_cursÜ
+ = 
+TRUE
+;
+
+160 
+S‹
+ = 
+MOV_COUNT_STATE
+;
+
+161  
+TRUE
+;
+
+165 if(
+S‹_couÁ”
+ > 250) {
+
+166 
+S‹_couÁ”
+ = 0;
+
+167 
+	`C®ib¿‹
+();
+
+169 
+S‹_couÁ”
+++;
+
+171  
+FALSE
+;
+
+172 
+	}
+}
+
+187 
+b™
+ 
+	$Mov_couÁ_func
+() {
+
+188 
+S‹_couÁ”
+++;
+
+190 if(!
+	`is_£nsÜ_aùive
+(
+Aùive_£nsÜ
+è&& 
+S‹_couÁ”
+ > 10) {
+
+191 
+S‹_couÁ”
+ = 0;
+
+192 
+S‹
+ = 
+MOV_TOUCH_STATE
+;
+
+193  
+TRUE
+;
+
+195 if(
+S‹_couÁ”
+ > 250) {
+
+196 
+S‹_couÁ”
+ = 0;
+
+197 
+Slow_cursÜ
+ = 
+FALSE
+;
+
+198 
+S‹
+ = 
+MOV_PRESS_STATE
+;
+
+199  
+TRUE
+;
+
+202 
+	`Modify_»pÜt
+(
+Aùive_£nsÜ
+);
+
+203  
+TRUE
+;
+
+204 
+	}
+}
+
+215 
+b™
+ 
+	$Mov_´ess_func
+() {
+
+216 
+Aùive_£nsÜ
+ = 
+	`fšd_aùive_£nsÜ
+();
+
+218 if(
+	`is_movem’t_£nsÜ
+(
+Aùive_£nsÜ
+)) {
+
+219 
+NeighbÜ_£nsÜ
+ = 
+	`check_Ã¬by_£nsÜ
+(
+Aùive_£nsÜ
+);
+
+221 
+	`Check_hªg
+(
+Aùive_£nsÜ
+);
+
+223 
+	`Modify_»pÜt
+(
+Aùive_£nsÜ
+);
+
+224 
+	`Modify_»pÜt
+(
+NeighbÜ_£nsÜ
+);
+
+226 
+	`Inc_¥“d
+(
+Aùive_£nsÜ
+);
+
+227 
+	`Inc_¥“d
+(
+NeighbÜ_£nsÜ
+);
+
+229  
+TRUE
+;
+
+232 
+S‹
+ = 
+DEFAULT_STATE
+;
+
+233  
+FALSE
+;
+
+234 
+	}
+}
+
+259 
+b™
+ 
+	$Mov_touch_func
+() {
+
+260 if(
+Leá_hŞddown
+) {
+
+261 
+Leá_hŞddown
+ = !
+	`is_bu‰Ú_£nsÜ
+(
+	`fšd_aùive_£nsÜ
+());
+
+264 if(
+	`is_bu‰Ú_£nsÜ
+(
+	`fšd_aùive_£nsÜ
+()) ||
+
+265 
+Aùive_£nsÜ
+ =ğ
+	`fšd_aùive_£nsÜ
+()) {
+
+267 
+Aùive_£nsÜ
+ = 
+NO_SENSOR
+;
+
+268 
+S‹_couÁ”
+ = 0;
+
+269 
+S‹
+ = 
+BUTTON_WAIT_STATE
+;
+
+270  
+FALSE
+;
+
+272 if(
+	`is_movem’t_£nsÜ
+(
+	`fšd_aùive_£nsÜ
+())) {
+
+273 
+Aùive_£nsÜ
+ = 
+	`fšd_aùive_£nsÜ
+();
+
+274 
+S‹_couÁ”
+ = 0;
+
+275 
+S‹
+ = 
+MOV_COUNT_STATE
+;
+
+276  
+TRUE
+;
+
+279 if(
+S‹_couÁ”
+ <= 1000) {
+
+280 
+S‹_couÁ”
+++;
+
+283 
+Slow_cursÜ
+ = 
+FALSE
+;
+
+286 
+	`Modify_»pÜt
+(
+Aùive_£nsÜ
+);
+
+287  
+TRUE
+;
+
+288 
+	}
+}
+
+315 
+b™
+ 
+	$Bu‰Ú_wa™_func
+() {
+
+316 
+Aùive_£nsÜ
+) {
+
+317 
+NO_SENSOR
+ :
+
+318 
+S‹_couÁ”
+++;
+
+320 if(
+S‹_couÁ”
+ > 100 &&
+
+321 !
+	`is_bu‰Ú_£nsÜ
+(
+	`fšd_aùive_£nsÜ
+())) {
+
+323 
+S‹_couÁ”
+ = 0;
+
+324 
+S‹
+ = 
+DEFAULT_STATE
+;
+
+326  
+FALSE
+;
+
+329 if(!
+	`is_bu‰Ú_£nsÜ
+(
+	`fšd_aùive_£nsÜ
+())) {
+
+330 if(
+S‹_couÁ”
+ > 100) {
+
+331 
+Leá_hŞddown
+ = 
+FALSE
+;
+
+333 if(
+Aùive_£nsÜ
+ =ğ
+LCLICK_SENSOR
+) {
+
+334 
+Leá_hŞddown
+ = 
+TRUE
+;
+
+337 
+S‹
+ = 
+SCROLL_STATE
+;
+
+338  
+FALSE
+;
+
+341 
+	`Modify_»pÜt
+(
+Aùive_£nsÜ
+);
+
+342 
+S‹_couÁ”
+ = 0;
+
+343 
+S‹
+ = 
+DEFAULT_STATE
+;
+
+344  
+TRUE
+;
+
+346 
+S‹_couÁ”
+++;
+
+347  
+FALSE
+;
+
+349 
+	}
+}
+
+363 
+b™
+ 
+	$SüŞl_func
+() {
+
+364 
+Aùive_£nsÜ
+ = 
+	`fšd_aùive_£nsÜ
+();
+
+365 
+S‹_couÁ”
+++;
+
+367 if(
+S‹_couÁ”
+ > 50 || 
+	`is_bu‰Ú_£nsÜ
+(
+Aùive_£nsÜ
+)) {
+
+368 
+S‹_couÁ”
+ = 0;
+
+370 
+Aùive_£nsÜ
+) {
+
+371 
+UP_SENSOR
+ :
+
+372 
+	`Hid_mou£_»pÜt_süŞl_up
+();
+
+373  
+TRUE
+;
+
+375 
+DOWN_SENSOR
+ :
+
+376 
+	`Hid_mou£_»pÜt_süŞl_down
+();
+
+377  
+TRUE
+;
+
+379 
+RCLICK_SENSOR
+ :
+
+380 
+Aùive_£nsÜ
+ = 
+NO_SENSOR
+;
+
+381 
+S‹_couÁ”
+ = 0;
+
+382 
+S‹
+ = 
+BUTTON_WAIT_STATE
+;
+
+383  
+TRUE
+;
+
+385 
+LCLICK_SENSOR
+ :
+
+386 
+Aùive_£nsÜ
+ = 
+NO_SENSOR
+;
+
+387 
+S‹_couÁ”
+ = 0;
+
+388 
+S‹
+ = 
+BUTTON_WAIT_STATE
+;
+
+389  
+FALSE
+;
+
+392  
+FALSE
+;
+
+393 
+	}
+}
+
+405 
+b™
+ 
+	$Maybe_¦ow_cursÜ
+() {
+
+406 if(
+Slow_cursÜ
+ && 
+S‹_couÁ”
+ % 5 != 0) {
+
+407 
+g_hid_mou£_»pÜt
+[1] = 0;
+
+408 
+g_hid_mou£_»pÜt
+[2] = 0;
+
+409  
+FALSE
+;
+
+411  
+TRUE
+;
+
+412 
+	}
+}
+
+419 
+b™
+ 
+	$Maybe_Ëá_hŞddown
+() {
+
+420 if(
+Leá_hŞddown
+) {
+
+421 
+	`Modify_»pÜt
+(
+LCLICK_SENSOR
+);
+
+423  (
+R•Üt_fËd
+ || 
+Leá_hŞddown
+);
+
+424 
+	}
+}
+
+436 
+b™
+ 
+	$is_movem’t_£nsÜ
+(
+U8
+ 
+£nsÜ
+) {
+
+437 if(
+£nsÜ
+ =ğ
+DOWN_SENSOR
+) {
+
+438  
+TRUE
+;
+
+440 if(
+£nsÜ
+ =ğ
+LEFT_SENSOR
+) {
+
+441  
+TRUE
+;
+
+443 if(
+£nsÜ
+ =ğ
+RIGHT_SENSOR
+) {
+
+444  
+TRUE
+;
+
+446 if(
+£nsÜ
+ =ğ
+UP_SENSOR
+) {
+
+447  
+TRUE
+;
+
+449  
+FALSE
+;
+
+450 
+	}
+}
+
+461 
+b™
+ 
+	$is_bu‰Ú_£nsÜ
+(
+U8
+ 
+£nsÜ
+) {
+
+462 if(
+£nsÜ
+ =ğ
+LCLICK_SENSOR
+) {
+
+463  
+TRUE
+;
+
+465 if(
+£nsÜ
+ =ğ
+RCLICK_SENSOR
+) {
+
+466  
+TRUE
+;
+
+468  
+FALSE
+;
+
+469 
+	}
+}
+
+480 
+U8
+ 
+	$adc_»ad”
+(
+U8
+ 
+chªÃl
+) {
+
+481 
+	`CË¬_adc_æag
+();
+
+482 
+	`EÇbË_adc
+();
+
+483 
+	`S‘_´esÿËr
+(6);
+
+484 
+	`S¹_cÚv_chªÃl
+(
+chªÃl
+);
+
+485 !
+	`Is_adc_cÚv_fšished
+());
+
+486  
+	`Adc_g‘_8_b™s_»suÉ
+();
+
+487 
+	}
+}
+
+491 
+	$R—d_£nsÜs
+() {
+
+492 
+U8
+ 
+£nsÜ
+;
+
+493 
+£nsÜ
+ = 
+ADC_START_CHANNEL
+; s’sÜ <ğ
+ADC_END_CHANNEL
+; sensor++) {
+
+494 if(
+	`is_movem’t_£nsÜ
+(
+£nsÜ
+è|| 
+	`is_bu‰Ú_£nsÜ
+(sensor)) {
+
+495 
+Inv®ue
+[
+£nsÜ
+] = 
+	`adc_»ad”
+(sensor);
+
+498 
+	}
+}
+
+504 
+	$C®ib¿‹
+() {
+
+505 
+U8
+ 
+£nsÜ
+;
+
+506 
+£nsÜ
+ = 
+ADC_START_CHANNEL
+; s’sÜ <ğ
+ADC_END_CHANNEL
+; sensor++) {
+
+507 
+Z”ov®ue
+[
+£nsÜ
+] = 
+Inv®ue
+[sensor];
+
+509 
+	}
+}
+
+522 
+b™
+ 
+	$is_£nsÜ_¡•
+(
+U8
+ 
+£nsÜ
+, U8 
+¡•
+) {
+
+523  (
+Inv®ue
+[
+£nsÜ
+] > (
+Z”ov®ue
+[£nsÜ] + 
+¡•
+));
+
+524 
+	}
+}
+
+536 
+b™
+ 
+	$is_£nsÜ_aùive
+(
+U8
+ 
+£nsÜ
+) {
+
+537 if(
+	`is_bu‰Ú_£nsÜ
+(
+£nsÜ
+)) {
+
+538  
+	`is_£nsÜ_¡•
+(
+£nsÜ
+, 
+STEP2
+);
+
+540 if(
+	`is_movem’t_£nsÜ
+(
+£nsÜ
+)) {
+
+541  
+	`is_£nsÜ_¡•
+(
+£nsÜ
+, 
+STEP
+);
+
+543  
+FALSE
+;
+
+544 
+	}
+}
+
+556 
+b™
+ 
+	$is_mÜe_aùive
+(
+U8
+ 
+uµ”
+, U8 
+low”
+) {
+
+557  ((
+Inv®ue
+[
+uµ”
+] > Inv®ue[
+low”
+] &&
+
+558 
+	`is_£nsÜ_aùive
+(
+uµ”
+)));
+
+559 
+	}
+}
+
+568 
+U8
+ 
+	$fšd_aùive_£nsÜ
+() {
+
+569 
+U8
+ 
+£nsÜ
+ = 
+NO_SENSOR
+;
+
+570 
+U8
+ 
+i
+;
+
+571 
+i
+ = 
+ADC_START_CHANNEL
+; i <ğ
+ADC_END_CHANNEL
+; i++) {
+
+572 if(
+	`is_mÜe_aùive
+(
+i
+, 
+£nsÜ
+)) {
+
+573 
+£nsÜ
+ = 
+i
+;
+
+576  
+£nsÜ
+;
+
+577 
+	}
+}
+
+588 
+U8
+ 
+	$check_Ã¬by_£nsÜ
+(
+U8
+ 
+£nsÜ
+) {
+
+589 
+U8
+ 
+ÃighbÜ
+ = 
+NO_SENSOR
+;
+
+590 
+U8
+ 
+i
+;
+
+591 
+i
+ = 
+£nsÜ
+ + 1; i <ğ
+ADC_END_CHANNEL
+; i++) {
+
+592 if(
+N—rby_£nsÜs
+[
+£nsÜ
+][
+i
+] && 
+	`is_mÜe_aùive
+(i, 
+ÃighbÜ
+)) {
+
+593 
+ÃighbÜ
+ = 
+i
+;
+
+596  
+ÃighbÜ
+;
+
+597 
+	}
+}
+
+607 
+	$Check_hªg
+(
+U8
+ 
+£nsÜ
+) {
+
+608 
+U8
+ 
+i
+;
+
+609 
+i
+ = 
+ADC_START_CHANNEL
+; i <ğ
+ADC_END_CHANNEL
+; i++) {
+
+610 if(
+	`is_£nsÜ_aùive
+(
+i
+) &&
+
+611 ((
+	`is_movem’t_£nsÜ
+(
+£nsÜ
+è&& 
+	`is_bu‰Ú_£nsÜ
+(
+i
+)) ||
+
+612 (
+	`is_bu‰Ú_£nsÜ
+(
+£nsÜ
+è&& 
+	`is_movem’t_£nsÜ
+(
+i
+)))) {
+
+614 
+	`C®ib¿‹
+();
+
+618 
+	}
+}
+
+628 
+	$Inc_¥“d
+(
+U8
+ 
+£nsÜ
+) {
+
+629 if(
+	`is_£nsÜ_¡•
+(
+£nsÜ
+, 
+STEP3
+)) {
+
+630 
+	`Modify_»pÜt
+(
+£nsÜ
+);
+
+632 if(
+	`is_£nsÜ_¡•
+(
+£nsÜ
+, 
+STEP4
+)) {
+
+633 
+	`Modify_»pÜt
+(
+£nsÜ
+);
+
+635 if(
+	`is_£nsÜ_¡•
+(
+£nsÜ
+, 
+STEP5
+)) {
+
+636 
+	`Modify_»pÜt
+(
+£nsÜ
+);
+
+638 if(
+	`is_£nsÜ_¡•
+(
+£nsÜ
+, 
+STEP6
+)) {
+
+639 
+	`Modify_»pÜt
+(
+£nsÜ
+);
+
+641 
+	}
+}
+
+648 
+	$Modify_»pÜt
+(
+U8
+ 
+£nsÜ
+) {
+
+649 
+£nsÜ
+) {
+
+650 
+NO_SENSOR
+ :
+
+653 
+UP_SENSOR
+ :
+
+654 
+	`Hid_mou£_»pÜt_up
+();
+
+657 
+LEFT_SENSOR
+ :
+
+658 
+	`Hid_mou£_»pÜt_Ëá
+();
+
+661 
+RIGHT_SENSOR
+ :
+
+662 
+	`Hid_mou£_»pÜt_right
+();
+
+665 
+DOWN_SENSOR
+ :
+
+666 
+	`Hid_mou£_»pÜt_down
+();
+
+669 
+RCLICK_SENSOR
+ :
+
+670 
+	`Hid_mou£_»pÜt_şick_right
+();
+
+673 
+LCLICK_SENSOR
+ :
+
+674 
+	`Hid_mou£_»pÜt_şick_Ëá
+();
+
+677 
+	}
+}
+
+	@at90usb128/demo/series6-hidmouse/sensors.h
+
+13 
+	~"cÚfig.h
+"
+
+14 
+	~"lib_mcu/adc/adc_drv.h
+"
+
+20 
+	#Hid_mou£_»pÜt_up
+(è(
+g_hid_mou£_»pÜt
+[2] -ğ
+MOUSE_SPEED
+)
+
+	)
+
+21 
+	#Hid_mou£_»pÜt_down
+(è(
+g_hid_mou£_»pÜt
+[2] +ğ
+MOUSE_SPEED
+)
+
+	)
+
+22 
+	#Hid_mou£_»pÜt_Ëá
+(è(
+g_hid_mou£_»pÜt
+[1] -ğ
+MOUSE_SPEED
+)
+
+	)
+
+23 
+	#Hid_mou£_»pÜt_right
+(è(
+g_hid_mou£_»pÜt
+[1] +ğ
+MOUSE_SPEED
+)
+
+	)
+
+25 
+	#Hid_mou£_»pÜt_süŞl_up
+(è(
+g_hid_mou£_»pÜt
+[3] +ğ
+MOUSE_SPEED
+)
+
+	)
+
+26 
+	#Hid_mou£_»pÜt_süŞl_down
+(è(
+g_hid_mou£_»pÜt
+[3] -ğ
+MOUSE_SPEED
+)
+
+	)
+
+28 
+	#Hid_mou£_»pÜt_şick_Ëá
+(è(
+g_hid_mou£_»pÜt
+[0] |ğ0x01)
+
+	)
+
+29 
+	#Hid_mou£_»pÜt_şick_right
+(è(
+g_hid_mou£_»pÜt
+[0] |ğ0x02)
+
+	)
+
+30 
+	#Hid_mou£_»pÜt_şick_middË
+(è(
+g_hid_mou£_»pÜt
+[0] |ğ0x04)
+
+	)
+
+32 
+	#Hid_mou£_»pÜt_»£t
+(è(
+g_hid_mou£_»pÜt
+[0] = 0, \
+
+33 
+g_hid_mou£_»pÜt
+[1] = 0, \
+
+34 
+g_hid_mou£_»pÜt
+[2] = 0, \
+
+35 
+g_hid_mou£_»pÜt
+[3] = 0)
+
+	)
+
+37 
+	#NO_SENSOR
+ 0
+
+	)
+
+38 
+	#UP_SENSOR
+ 1
+
+	)
+
+39 
+	#LEFT_SENSOR
+ 2
+
+	)
+
+40 
+	#TEMP_SENSOR
+ 3
+
+	)
+
+41 
+	#RIGHT_SENSOR
+ 4
+
+	)
+
+42 
+	#DOWN_SENSOR
+ 5
+
+	)
+
+43 
+	#RCLICK_SENSOR
+ 6
+
+	)
+
+44 
+	#LCLICK_SENSOR
+ 7
+
+	)
+
+47 
+	#DEFAULT_STATE
+ 0
+
+	)
+
+48 
+	#MOV_COUNT_STATE
+ 1
+
+	)
+
+49 
+	#MOV_PRESS_STATE
+ 2
+
+	)
+
+50 
+	#MOV_TOUCH_STATE
+ 3
+
+	)
+
+51 
+	#BUTTON_WAIT_STATE
+ 4
+
+	)
+
+52 
+	#SCROLL_STATE
+ 5
+
+	)
+
+56 #ià(
+DEBUG
+ == 1)
+
+57 
+	#ADC_START_CHANNEL
+ 1
+
+	)
+
+58 
+	#ADC_END_CHANNEL
+ 3
+
+	)
+
+60 
+	#ADC_START_CHANNEL
+ 1
+
+	)
+
+61 
+	#ADC_END_CHANNEL
+ 7
+
+	)
+
+65 
+	#STEP
+ ((
+U8
+)0x04)
+
+	)
+
+66 
+	#STEP2
+ ((
+U8
+)0x15)
+
+	)
+
+67 
+	#STEP3
+ ((
+U8
+)0x50)
+
+	)
+
+68 
+	#STEP4
+ ((
+U8
+)0x80)
+
+	)
+
+69 
+	#STEP5
+ ((
+U8
+)0xB0)
+
+	)
+
+70 
+	#STEP6
+ ((
+U8
+)0xFF)
+
+	)
+
+74 
+b™
+ 
+is_mou£_ev’t
+ ();
+
+75 
+b™
+ 
+DeçuÉ_func
+ ();
+
+76 
+b™
+ 
+Mov_couÁ_func
+ ();
+
+77 
+b™
+ 
+Mov_´ess_func
+ ();
+
+78 
+b™
+ 
+Mov_touch_func
+ ();
+
+79 
+b™
+ 
+Bu‰Ú_wa™_func
+ ();
+
+80 
+b™
+ 
+SüŞl_func
+ ();
+
+81 
+b™
+ 
+Maybe_¦ow_cursÜ
+ ();
+
+82 
+b™
+ 
+Maybe_Ëá_hŞddown
+ ();
+
+83 
+b™
+ 
+is_movem’t_£nsÜ
+ (
+U8
+ 
+£nsÜ
+);
+
+84 
+b™
+ 
+is_bu‰Ú_£nsÜ
+ (
+U8
+ 
+£nsÜ
+);
+
+85 
+U8
+ 
+adc_»ad”
+ (U8 
+chªÃl
+);
+
+86 
+R—d_£nsÜs
+ ();
+
+87 
+C®ib¿‹
+ ();
+
+88 
+b™
+ 
+is_£nsÜ_¡•
+ (
+U8
+ 
+£nsÜ
+, U8 
+¡•
+);
+
+89 
+b™
+ 
+is_£nsÜ_aùive
+ (
+U8
+ 
+£nsÜ
+);
+
+90 
+b™
+ 
+is_mÜe_aùive
+ (
+U8
+ 
+uµ”
+, U8 
+low”
+);
+
+91 
+U8
+ 
+fšd_aùive_£nsÜ
+ ();
+
+92 
+U8
+ 
+check_Ã¬by_£nsÜ
+ (U8 
+£nsÜ
+);
+
+93 
+Check_hªg
+ (
+U8
+ 
+£nsÜ
+);
+
+94 
+Inc_¥“d
+ (
+U8
+ 
+£nsÜ
+);
+
+95 
+Modify_»pÜt
+ (
+U8
+ 
+£nsÜ
+);
+
+	@at90usb128/demo/series6-hidmouse/usb_descriptors.c
+
+47 
+	~"cÚfig.h
+"
+
+48 
+	~"cÚf_usb.h
+"
+
+50 
+	~"lib_mcu/usb/usb_drv.h
+"
+
+51 
+	~"usb_desütÜs.h
+"
+
+52 
+	~"moduËs/usb/deviû_ch­9/usb_¡ªd¬d_»que¡.h
+"
+
+53 
+	~"usb_¥ecific_»que¡.h
+"
+
+54 #ià((
+USB_DEVICE_SN_USE
+==
+ENABLE
+è&& (
+USE_DEVICE_SN_UNIQUE
+==ENABLE))
+
+55 
+	~"lib_mcu/æash/æash_drv.h
+"
+
+66 
+code
+ 
+S_usb_deviû_desütÜ
+ 
+	gusb_dev_desc
+ =
+
+68 (
+usb_dev_desc
+)
+
+69 , 
+DESCRIPTOR_DEVICE
+
+
+70 , 
+Usb_wr™e_wÜd_’um_¡ruc
+(
+USB_SPECIFICATION
+)
+
+71 , 
+DEVICE_CLASS
+
+
+72 , 
+DEVICE_SUB_CLASS
+
+
+73 , 
+DEVICE_PROTOCOL
+
+
+74 , 
+EP_CONTROL_LENGTH
+
+
+75 , 
+Usb_wr™e_wÜd_’um_¡ruc
+(
+VENDOR_ID
+)
+
+76 , 
+Usb_wr™e_wÜd_’um_¡ruc
+(
+PRODUCT_ID
+)
+
+77 , 
+Usb_wr™e_wÜd_’um_¡ruc
+(
+RELEASE_NUMBER
+)
+
+78 , 
+MAN_INDEX
+
+
+79 , 
+PROD_INDEX
+
+
+80 , 
+SN_INDEX
+
+
+81 , 
+NB_CONFIGURATION
+
+
+85 
+code
+ 
+S_usb_u£r_cÚfigu¿tiÚ_desütÜ
+ 
+	gusb_cÚf_desc
+ = {
+
+86 { (
+S_usb_cÚfigu¿tiÚ_desütÜ
+)
+
+87 , 
+DESCRIPTOR_CONFIGURATION
+
+
+88 , 
+Usb_wr™e_wÜd_’um_¡ruc
+((
+S_usb_cÚfigu¿tiÚ_desütÜ
+)\
+
+89 +(
+S_usb_š‹rçû_desütÜ
+) \
+
+90 +(
+S_usb_hid_desütÜ
+) \
+
+91 +(
+S_usb_’dpošt_desütÜ
+) \
+
+93 , 
+NB_INTERFACE
+
+
+94 , 
+CONF_NB
+
+
+95 , 
+CONF_INDEX
+
+
+96 , 
+CONF_ATTRIBUTES
+
+
+97 , 
+MAX_POWER
+
+
+100 { (
+S_usb_š‹rçû_desütÜ
+)
+
+101 , 
+DESCRIPTOR_INTERFACE
+
+
+102 , 
+INTERFACE_NB_MOUSE
+
+
+103 , 
+ALTERNATE_MOUSE
+
+
+104 , 
+NB_ENDPOINT_MOUSE
+
+
+105 , 
+INTERFACE_CLASS_MOUSE
+
+
+106 , 
+INTERFACE_SUB_CLASS_MOUSE
+
+
+107 , 
+INTERFACE_PROTOCOL_MOUSE
+
+
+108 , 
+INTERFACE_INDEX_MOUSE
+
+
+111 { (
+S_usb_hid_desütÜ
+)
+
+112 , 
+DESCRIPTOR_HID
+
+
+113 , 
+HID_BDC
+
+
+114 , 
+HID_NO_COUNTRY_CODE
+
+
+115 , 
+HID_CLASS_DESC_NB_DEFAULT
+
+
+116 , 
+DESCRIPTOR_REPORT
+
+
+117 , 
+Usb_wr™e_wÜd_’um_¡ruc
+((
+S_usb_hid_»pÜt_desütÜ_mou£
+))
+
+120 { (
+S_usb_’dpošt_desütÜ
+)
+
+121 , 
+DESCRIPTOR_ENDPOINT
+
+
+122 , 
+ENDPOINT_NB_1
+
+
+123 , 
+EP_ATTRIBUTES_1
+
+
+124 , 
+Usb_wr™e_wÜd_’um_¡ruc
+(
+EP_SIZE_1
+)
+
+125 , 
+EP_INTERVAL_1
+
+
+132 
+code
+ 
+S_usb_mªuçùu»r_¡ršg_desütÜ
+ 
+	gusb_u£r_mªuçùu»r_¡ršg_desütÜ
+ = {
+
+133 (
+usb_u£r_mªuçùu»r_¡ršg_desütÜ
+)
+
+134 , 
+DESCRIPTOR_STRING
+
+
+135 , 
+USB_MANUFACTURER_NAME
+
+
+141 
+code
+ 
+S_usb_´oduù_¡ršg_desütÜ
+ 
+	gusb_u£r_´oduù_¡ršg_desütÜ
+ = {
+
+142 (
+usb_u£r_´oduù_¡ršg_desütÜ
+)
+
+143 , 
+DESCRIPTOR_STRING
+
+
+144 , 
+USB_PRODUCT_NAME
+
+
+149 #ià(
+USB_DEVICE_SN_USE
+==
+ENABLE
+)
+
+150 
+code
+ 
+S_usb_£rŸl_numb”
+ 
+	gusb_u£r_£rŸl_numb”
+ = {
+
+151 #ià(
+USE_DEVICE_SN_UNIQUE
+==
+ENABLE
+)
+
+152 (
+usb_u£r_£rŸl_numb”
+)+4*
+SN_LENGTH
+
+
+153 , 
+DESCRIPTOR_STRING
+
+
+155 (
+usb_u£r_£rŸl_numb”
+)
+
+156 , 
+DESCRIPTOR_STRING
+
+
+157 , 
+USB_SERIAL_NUMBER
+
+
+164 
+code
+ 
+S_usb_Ïnguage_id
+ 
+	gusb_u£r_Ïnguage_id
+ = {
+
+165 (
+usb_u£r_Ïnguage_id
+)
+
+166 , 
+DESCRIPTOR_STRING
+
+
+167 , 
+Usb_wr™e_wÜd_’um_¡ruc
+(
+LANGUAGE_ID
+)
+
+170 
+code
+ 
+S_usb_hid_»pÜt_desütÜ_mou£
+ 
+	gusb_hid_»pÜt_desütÜ_mou£
+ = {{
+
+	@at90usb128/demo/series6-hidmouse/usb_descriptors.h
+
+44 #iâdeà
+_USB_DESCRIPTORS_H_
+
+
+45 
+	#_USB_DESCRIPTORS_H_
+
+
+	)
+
+49 
+	~"cÚfig.h
+"
+
+50 
+	~"moduËs/usb/deviû_ch­9/usb_¡ªd¬d_»que¡.h
+"
+
+51 
+	~"cÚf_usb.h
+"
+
+55 
+	#Usb_g‘_dev_desc_poš‹r
+(è(&(
+usb_dev_desc
+.
+bL’gth
+))
+
+	)
+
+56 
+	#Usb_g‘_dev_desc_Ëngth
+(è( (
+usb_dev_desc
+))
+
+	)
+
+57 
+	#Usb_g‘_cÚf_desc_poš‹r
+(è(&(
+usb_cÚf_desc
+.
+cfg_mou£
+.
+bL’gth
+))
+
+	)
+
+58 
+	#Usb_g‘_cÚf_desc_Ëngth
+(è( (
+usb_cÚf_desc
+))
+
+	)
+
+63 
+	#USB_SPECIFICATION
+ 0x0200
+
+	)
+
+64 
+	#DEVICE_CLASS
+ 0
+
+65 
+	#DEVICE_SUB_CLASS
+ 0
+
+66 
+	#DEVICE_PROTOCOL
+ 0
+
+67 #ià(
+USB_LOW_SPEED_DEVICE
+==
+ENABLE
+)
+
+	)
+
+68 
+	#EP_CONTROL_LENGTH
+ 8
+
+	)
+
+70 
+	#EP_CONTROL_LENGTH
+ 64
+
+	)
+
+72 
+	#VENDOR_ID
+ 
+VID_ATMEL
+
+
+	)
+
+73 
+	#PRODUCT_ID
+ 
+PID_MegaHIDMou£
+
+
+	)
+
+74 
+	#RELEASE_NUMBER
+ 0x1000
+
+	)
+
+75 
+	#MAN_INDEX
+ 0x01
+
+	)
+
+76 
+	#PROD_INDEX
+ 0x02
+
+	)
+
+77 #ià(
+USB_DEVICE_SN_USE
+==
+ENABLE
+)
+
+78 
+	#SN_INDEX
+ 0x03
+
+	)
+
+80 
+	#SN_INDEX
+ 0x00
+
+82 
+	#NB_CONFIGURATION
+ 1
+
+	)
+
+85 
+	#NB_INTERFACE
+ 1
+
+86 
+	#CONF_NB
+ 1
+
+	)
+
+87 
+	#CONF_INDEX
+ 0
+
+	)
+
+88 #ià(
+USB_REMOTE_WAKEUP_FEATURE
+ =ğ
+ENABLED
+)
+
+89 
+	#CONF_ATTRIBUTES
+ (
+USB_CONFIG_BUSPOWERED
+ | 
+USB_CONFIG_REMOTEWAKEUP
+)
+
+	)
+
+91 
+	#CONF_ATTRIBUTES
+ 
+USB_CONFIG_BUSPOWERED
+
+
+	)
+
+93 
+	#MAX_POWER
+ 50
+
+94 
+
+	)
+
+96 
+	#INTERFACE_NB_MOUSE
+ 0
+
+97 
+	#ALTERNATE_MOUSE
+ 0
+
+	)
+
+98 
+	#NB_ENDPOINT_MOUSE
+ 1
+
+	)
+
+99 
+	#INTERFACE_CLASS_MOUSE
+ 
+HID_CLASS
+
+
+	)
+
+100 
+	#INTERFACE_SUB_CLASS_MOUSE
+ 
+NO_SUBCLASS
+
+
+101 
+	#INTERFACE_PROTOCOL_MOUSE
+ 
+HID_PROTOCOL_MOUSE
+
+
+102 
+	#INTERFACE_INDEX_MOUSE
+ 0
+
+	)
+
+104 
+	#DEVICE_STATUS
+ 
+USB_DEVICE_STATUS_BUS_POWERED
+
+
+	)
+
+106 
+	#LANG_ID
+ 0x00
+
+	)
+
+110 
+	#ENDPOINT_NB_1
+ (
+EP_MOUSE_IN
+ | 
+USB_ENDPOINT_IN
+)
+
+	)
+
+111 
+	#EP_ATTRIBUTES_1
+ 0x03
+
+112 
+	#EP_IN_LENGTH_1
+ 8
+
+	)
+
+113 
+	#EP_SIZE_1
+ 
+EP_IN_LENGTH_1
+
+
+	)
+
+114 
+	#EP_INTERVAL_1
+ 0x02
+
+115 
+
+	)
+
+117 
+	#USB_MN_LENGTH
+ 4
+
+	)
+
+118 
+	#USB_MANUFACTURER_NAME
+ \
+
+119 { 
+	`Usb_unicode
+('T') \
+
+120 , 
+	`Usb_unicode
+('E') \
+
+121 , 
+	`Usb_unicode
+('A') \
+
+122 , 
+	`Usb_unicode
+('M') \
+
+123 }
+
+	)
+
+125 
+	#USB_PN_LENGTH
+ 18
+
+	)
+
+126 
+	#USB_PRODUCT_NAME
+ \
+
+127 { 
+	`Usb_unicode
+('S') \
+
+128 ,
+	`Usb_unicode
+('U') \
+
+129 ,
+	`Usb_unicode
+('P') \
+
+130 ,
+	`Usb_unicode
+('E') \
+
+131 ,
+	`Usb_unicode
+('R') \
+
+132 ,
+	`Usb_unicode
+(' ') \
+
+133 ,
+	`Usb_unicode
+('B') \
+
+134 ,
+	`Usb_unicode
+('A') \
+
+135 ,
+	`Usb_unicode
+('S') \
+
+136 ,
+	`Usb_unicode
+('I') \
+
+137 ,
+	`Usb_unicode
+('C') \
+
+138 ,
+	`Usb_unicode
+('!') \
+
+139 ,
+	`Usb_unicode
+('T') \
+
+140 ,
+	`Usb_unicode
+('O') \
+
+141 ,
+	`Usb_unicode
+('U') \
+
+142 ,
+	`Usb_unicode
+('N') \
+
+143 ,
+	`Usb_unicode
+('G') \
+
+144 ,
+	`Usb_unicode
+('E') \
+
+145 }
+
+	)
+
+147 
+	#USB_SN_LENGTH
+ 0x05
+
+	)
+
+148 
+	#USB_SERIAL_NUMBER
+ \
+
+149 { 
+	`Usb_unicode
+('0') \
+
+150 ,
+	`Usb_unicode
+('0') \
+
+151 ,
+	`Usb_unicode
+('0') \
+
+152 ,
+	`Usb_unicode
+('0') \
+
+153 ,
+	`Usb_unicode
+('0') \
+
+154 }
+
+	)
+
+156 
+	#LANGUAGE_ID
+ 0x0409
+
+	)
+
+162 
+U8
+ 
+	mbmReque¡Ty³
+;
+
+163 
+U8
+ 
+	mbReque¡
+;
+
+164 
+U16
+ 
+	mwV®ue
+;
+
+165 
+U16
+ 
+	mwIndex
+;
+
+166 
+U16
+ 
+	mwL’gth
+;
+
+167 } 
+	tS_UsbReque¡
+;
+
+171 
+U8
+ 
+	mbL’gth
+;
+
+172 
+U8
+ 
+	mbDesütÜTy³
+;
+
+173 
+U16
+ 
+	mbscUSB
+;
+
+174 
+U8
+ 
+	mbDeviûCÏss
+;
+
+175 
+U8
+ 
+	mbDeviûSubCÏss
+;
+
+176 
+U8
+ 
+	mbDeviûPrÙocŞ
+;
+
+177 
+U8
+ 
+	mbMaxPack‘Size0
+;
+
+178 
+U16
+ 
+	midV’dÜ
+;
+
+179 
+U16
+ 
+	midProduù
+;
+
+180 
+U16
+ 
+	mbcdDeviû
+;
+
+181 
+U8
+ 
+	miMªuçùu»r
+;
+
+182 
+U8
+ 
+	miProduù
+;
+
+183 
+U8
+ 
+	miS”ŸlNumb”
+;
+
+184 
+U8
+ 
+	mbNumCÚfigu¿tiÚs
+;
+
+185 } 
+	tS_usb_deviû_desütÜ
+;
+
+190 
+U8
+ 
+	mbL’gth
+;
+
+191 
+U8
+ 
+	mbDesütÜTy³
+;
+
+192 
+U16
+ 
+	mwTÙ®L’gth
+;
+
+193 
+U8
+ 
+	mbNumIÁ”çûs
+;
+
+194 
+U8
+ 
+	mbCÚfigu¿tiÚV®ue
+;
+
+195 
+U8
+ 
+	miCÚfigu¿tiÚ
+;
+
+196 
+U8
+ 
+	mbmA‰ibu‹s
+;
+
+197 
+U8
+ 
+	mMaxPow”
+;
+
+198 } 
+	tS_usb_cÚfigu¿tiÚ_desütÜ
+;
+
+203 
+U8
+ 
+	mbL’gth
+;
+
+204 
+U8
+ 
+	mbDesütÜTy³
+;
+
+205 
+U8
+ 
+	mbIÁ”çûNumb”
+;
+
+206 
+U8
+ 
+	mbAÉ”Ç‹S‘tšg
+;
+
+207 
+U8
+ 
+	mbNumEndpošts
+;
+
+208 
+U8
+ 
+	mbIÁ”çûCÏss
+;
+
+209 
+U8
+ 
+	mbIÁ”çûSubCÏss
+;
+
+210 
+U8
+ 
+	mbIÁ”çûPrÙocŞ
+;
+
+211 
+U8
+ 
+	miIÁ”çû
+;
+
+212 } 
+	tS_usb_š‹rçû_desütÜ
+;
+
+217 
+U8
+ 
+	mbL’gth
+;
+
+218 
+U8
+ 
+	mbDesütÜTy³
+;
+
+219 
+U8
+ 
+	mbEndpoštAdd»ss
+;
+
+220 
+U8
+ 
+	mbmA‰ribu‹s
+;
+
+221 
+U16
+ 
+	mwMaxPack‘Size
+;
+
+222 
+U8
+ 
+	mbIÁ”v®
+;
+
+223 } 
+	tS_usb_’dpošt_desütÜ
+;
+
+228 
+U8
+ 
+	mbL’gth
+;
+
+229 
+U8
+ 
+	mbDesütÜTy³
+;
+
+230 
+U16
+ 
+	mwÏngid
+;
+
+231 } 
+	tS_usb_Ïnguage_id
+;
+
+239 
+U8
+ 
+	mbL’gth
+;
+
+240 
+U8
+ 
+	mbDesütÜTy³
+;
+
+241 
+U16
+ 
+	mw¡ršg
+[
+USB_MN_LENGTH
+];
+
+242 } 
+	tS_usb_mªuçùu»r_¡ršg_desütÜ
+;
+
+250 
+U8
+ 
+	mbL’gth
+;
+
+251 
+U8
+ 
+	mbDesütÜTy³
+;
+
+252 
+U16
+ 
+	mw¡ršg
+[
+USB_PN_LENGTH
+];
+
+253 } 
+	tS_usb_´oduù_¡ršg_desütÜ
+;
+
+259 #ià(
+USB_DEVICE_SN_USE
+==
+ENABLE
+)
+
+262 
+U8
+ 
+	mbL’gth
+;
+
+263 
+U8
+ 
+	mbDesütÜTy³
+;
+
+264 #ià(
+USE_DEVICE_SN_UNIQUE
+==
+ENABLE
+)
+
+267 
+U16
+ 
+	mw¡ršg
+[
+USB_SN_LENGTH
+];
+
+269 } 
+	tS_usb_£rŸl_numb”
+;
+
+276 
+U8
+ 
+	mbL’gth
+;
+
+277 
+U8
+ 
+	mbDesütÜTy³
+;
+
+278 
+U16
+ 
+	mbscHID
+;
+
+279 
+U8
+ 
+	mbCouÁryCode
+;
+
+280 
+U8
+ 
+	mbNumDesütÜs
+;
+
+281 
+U8
+ 
+	mbRDesütÜTy³
+;
+
+282 
+U16
+ 
+	mwDesütÜL’gth
+;
+
+283 } 
+	tS_usb_hid_desütÜ
+;
+
+290 
+S_usb_cÚfigu¿tiÚ_desütÜ
+ 
+	mcfg_mou£
+;
+
+291 
+S_usb_š‹rçû_desütÜ
+ 
+	mifc_mou£
+;
+
+292 
+S_usb_hid_desütÜ
+ 
+	mhid_mou£
+;
+
+293 
+S_usb_’dpošt_desütÜ
+ 
+	m•1_mou£
+;
+
+294 } 
+	tS_usb_u£r_cÚfigu¿tiÚ_desütÜ
+;
+
+	@at90usb128/demo/series6-hidmouse/usb_specific_request.c
+
+47 
+	~"cÚfig.h
+"
+
+48 
+	~"cÚf_usb.h
+"
+
+49 
+	~"lib_mcu/usb/usb_drv.h
+"
+
+50 
+	~"usb_desütÜs.h
+"
+
+51 
+	~"moduËs/usb/deviû_ch­9/usb_¡ªd¬d_»que¡.h
+"
+
+52 
+	~"usb_¥ecific_»que¡.h
+"
+
+53 #ià((
+USB_DEVICE_SN_USE
+==
+ENABLE
+è&& (
+USE_DEVICE_SN_UNIQUE
+==ENABLE))
+
+54 
+	~"lib_mcu/æash/æash_drv.h
+"
+
+59 #ifdeà
+__GNUC__
+
+
+60 
+PGM_VOID_P
+ 
+pbufãr
+;
+
+62 
+U8
+ 
+code
+ *
+pbufãr
+;
+
+64 
+U8
+ 
+d©a_to_Œªsãr
+;
+
+65 
+code
+ 
+S_usb_hid_»pÜt_desütÜ_mou£
+ 
+usb_hid_»pÜt_desütÜ_mou£
+;
+
+67 
+U8
+ 
+	gg_u8_»pÜt_¿‹
+=0;
+
+71 
+hid_g‘_»pÜt_desütÜ
+();
+
+72 
+usb_hid_£t_»pÜt_ouput
+();
+
+73 
+usb_hid_£t_idË
+ (
+U8
+ 
+u8_»pÜt_id
+, U8 
+u8_du¿tiÚ
+ );
+
+74 
+usb_hid_g‘_idË
+ (
+U8
+ 
+u8_»pÜt_id
+);
+
+75 
+hid_g‘_hid_desütÜ
+();
+
+86 
+BoŞ
+ 
+	$usb_u£r_»ad_»que¡
+(
+U8
+ 
+ty³
+, U8 
+»que¡
+)
+
+88 
+U8
+ 
+wV®ue_msb
+;
+
+89 
+U8
+ 
+wV®ue_lsb
+;
+
+92 
+wV®ue_lsb
+ = 
+	`Usb_»ad_by‹
+();
+
+93 
+wV®ue_msb
+ = 
+	`Usb_»ad_by‹
+();
+
+96 ifĞ
+USB_SETUP_GET_STAND_INTERFACE
+ =ğ
+ty³
+ )
+
+98  
+»que¡
+ )
+
+100 
+SETUP_GET_DESCRIPTOR
+:
+
+101  
+wV®ue_msb
+ )
+
+103 
+DESCRIPTOR_HID
+:
+
+104 
+	`hid_g‘_hid_desütÜ
+();
+
+105  
+TRUE
+;
+
+108 
+DESCRIPTOR_REPORT
+:
+
+109 
+	`hid_g‘_»pÜt_desütÜ
+();
+
+110  
+TRUE
+;
+
+112 
+DESCRIPTOR_PHYSICAL
+:
+
+119 ifĞ
+USB_SETUP_SET_CLASS_INTER
+ =ğ
+ty³
+ )
+
+121  
+»que¡
+ )
+
+123 
+SETUP_HID_SET_REPORT
+:
+
+126 
+wV®ue_msb
+)
+
+128 
+REPORT_TYPE_INPUT
+:
+
+132 
+REPORT_TYPE_OUTPUT
+:
+
+133 
+	`usb_hid_£t_»pÜt_ouput
+();
+
+134  
+TRUE
+;
+
+137 
+REPORT_TYPE_FEATURE
+:
+
+142 
+SETUP_HID_SET_IDLE
+:
+
+143 
+	`usb_hid_£t_idË
+(
+wV®ue_lsb
+,
+wV®ue_msb
+);
+
+144  
+TRUE
+;
+
+146 
+SETUP_HID_SET_PROTOCOL
+:
+
+151 ifĞ
+USB_SETUP_GET_CLASS_INTER
+ =ğ
+ty³
+ )
+
+153  
+»que¡
+ )
+
+155 
+SETUP_HID_GET_REPORT
+:
+
+158 
+SETUP_HID_GET_IDLE
+:
+
+159 
+	`usb_hid_g‘_idË
+(
+wV®ue_lsb
+);
+
+160  
+TRUE
+;
+
+161 
+SETUP_HID_GET_PROTOCOL
+:
+
+166  
+FALSE
+;
+
+167 
+	}
+}
+
+174 
+	$usb_u£r_’dpošt_š™
+(
+U8
+ 
+cÚf_nb
+)
+
+176 
+	`usb_cÚfigu»_’dpošt
+Ğ
+EP_MOUSE_IN
+, \
+
+177 
+TYPE_INTERRUPT
+,\
+
+178 
+DIRECTION_IN
+, \
+
+179 
+SIZE_8
+, \
+
+180 
+ONE_BANK
+, \
+
+181 
+NYET_ENABLED
+);
+
+182 
+	}
+}
+
+191 
+U8
+ 
+	$usb_u£r_š‹rçû_g‘
+Ğ
+U16
+ 
+wIÁ”çû
+ )
+
+194 
+	}
+}
+
+202 
+	$usb_u£r_š‹rçû_»£t
+(
+U16
+ 
+wIÁ”çû
+, 
+U8
+ 
+®‹º©e_£‰šg
+)
+
+205 ifĞ
+INTERFACE_NB_MOUSE
+ =ğ
+wIÁ”çû
+ )
+
+208 
+	`Usb_£Ëù_’dpošt
+(
+EP_MOUSE_IN
+);
+
+209 
+	`Usb_di§bË_¡®l_hªdshake
+();
+
+210 
+	`Usb_»£t_’dpošt
+(
+EP_MOUSE_IN
+);
+
+211 
+	`Usb_»£t_d©a_toggË
+();
+
+213 
+	}
+}
+
+223 
+BoŞ
+ 
+	$usb_u£r_g‘_desütÜ
+(
+U8
+ 
+ty³
+, U8 
+¡ršg
+)
+
+225 
+ty³
+)
+
+227 
+DESCRIPTOR_STRING
+:
+
+228 
+¡ršg
+)
+
+230 
+LANG_ID
+:
+
+231 
+d©a_to_Œªsãr
+ =  (
+usb_u£r_Ïnguage_id
+);
+
+232 
+pbufãr
+ = &(
+usb_u£r_Ïnguage_id
+.
+bL’gth
+);
+
+233  
+TRUE
+;
+
+236 
+MAN_INDEX
+:
+
+237 
+d©a_to_Œªsãr
+ =  (
+usb_u£r_mªuçùu»r_¡ršg_desütÜ
+);
+
+238 
+pbufãr
+ = &(
+usb_u£r_mªuçùu»r_¡ršg_desütÜ
+.
+bL’gth
+);
+
+239  
+TRUE
+;
+
+242 
+PROD_INDEX
+:
+
+243 
+d©a_to_Œªsãr
+ =  (
+usb_u£r_´oduù_¡ršg_desütÜ
+);
+
+244 
+pbufãr
+ = &(
+usb_u£r_´oduù_¡ršg_desütÜ
+.
+bL’gth
+);
+
+245  
+TRUE
+;
+
+248 #ià(
+USB_DEVICE_SN_USE
+==
+ENABLE
+)
+
+249 
+SN_INDEX
+:
+
+250 
+d©a_to_Œªsãr
+ =  (
+usb_u£r_£rŸl_numb”
+);
+
+251 
+pbufãr
+ = &(
+usb_u£r_£rŸl_numb”
+.
+bL’gth
+);
+
+252 #ià(
+USE_DEVICE_SN_UNIQUE
+==
+ENABLE
+)
+
+253 
+f_g‘_£rŸl_¡ršg
+=
+TRUE
+;
+
+254 
+d©a_to_Œªsãr
+ +ğ(
+SN_LENGTH
+*4);
+
+256  
+TRUE
+;
+
+262  
+FALSE
+;
+
+263 
+	}
+}
+
+268 
+	$hid_g‘_»pÜt_desütÜ
+()
+
+270 
+U16
+ 
+wL’gth
+;
+
+271 
+U8
+ 
+nb_by‹
+;
+
+272 
+b™
+ 
+zÍ
+ = 
+FALSE
+;
+
+273 
+U16
+ 
+wIÁ”çû
+;
+
+275 
+	`LSB
+(
+wIÁ”çû
+)=
+	`Usb_»ad_by‹
+();
+
+276 
+	`MSB
+(
+wIÁ”çû
+)=
+	`Usb_»ad_by‹
+();
+
+278 
+d©a_to_Œªsãr
+ = (
+usb_hid_»pÜt_desütÜ_mou£
+);
+
+279 
+pbufãr
+ = &(
+usb_hid_»pÜt_desütÜ_mou£
+.
+»pÜt
+[0]);
+
+281 
+	`LSB
+(
+wL’gth
+èğ
+	`Usb_»ad_by‹
+();
+
+282 
+	`MSB
+(
+wL’gth
+èğ
+	`Usb_»ad_by‹
+();
+
+283 
+	`Usb_ack_»ûive_£tup
+();
+
+285 ià(
+wL’gth
+ > 
+d©a_to_Œªsãr
+)
+
+287 ià((
+d©a_to_Œªsãr
+ % 
+EP_CONTROL_LENGTH
+è=ğ0è{ 
+zÍ
+ = 
+TRUE
+; }
+
+288 { 
+zÍ
+ = 
+FALSE
+; }
+
+292 
+d©a_to_Œªsãr
+ = (
+U8
+)
+wL’gth
+;
+
+295 (
+d©a_to_Œªsãr
+ !ğ0è&& (!
+	`Is_usb_»ûive_out
+()))
+
+297 !
+	`Is_usb_»ad_cÚŒŞ_’abËd
+());
+
+299 
+nb_by‹
+=0;
+
+300 
+d©a_to_Œªsãr
+ != 0)
+
+302 if(
+nb_by‹
+++==
+EP_CONTROL_LENGTH
+)
+
+306 #iâdeà
+__GNUC__
+
+
+307 
+	`Usb_wr™e_by‹
+(*
+pbufãr
+++);
+
+310 
+	`Usb_wr™e_by‹
+(
+	`pgm_»ad_by‹_Ã¬
+(()
+pbufãr
+++));
+
+312 
+d©a_to_Œªsãr
+ --;
+
+314 
+	`Usb_£nd_cÚŒŞ_š
+();
+
+317 if(
+	`Is_usb_»ûive_out
+())
+
+320 
+	`Usb_ack_»ûive_out
+();
+
+323 if(
+zÍ
+ =ğ
+TRUE
+)
+
+325 !
+	`Is_usb_»ad_cÚŒŞ_’abËd
+());
+
+326 
+	`Usb_£nd_cÚŒŞ_š
+();
+
+329 !
+	`Is_usb_»ûive_out
+());
+
+330 
+	`Usb_ack_»ûive_out
+();
+
+331 
+	}
+}
+
+336 
+	$usb_hid_£t_»pÜt_ouput
+ ()
+
+338 
+	`Usb_ack_»ûive_£tup
+();
+
+339 
+	`Usb_£nd_cÚŒŞ_š
+();
+
+341 !
+	`Is_usb_»ûive_out
+());
+
+342 
+	`Usb_ack_»ûive_out
+();
+
+343 
+	`Usb_£nd_cÚŒŞ_š
+();
+
+344 
+	}
+}
+
+352 
+	$usb_hid_£t_idË
+ (
+U8
+ 
+u8_»pÜt_id
+, U8 
+u8_du¿tiÚ
+ )
+
+354 
+U16
+ 
+wIÁ”çû
+;
+
+357 
+	`LSB
+(
+wIÁ”çû
+)=
+	`Usb_»ad_by‹
+();
+
+358 
+	`MSB
+(
+wIÁ”çû
+)=
+	`Usb_»ad_by‹
+();
+
+359 
+	`Usb_ack_»ûive_£tup
+();
+
+361 
+g_u8_»pÜt_¿‹
+ = 
+u8_du¿tiÚ
+;
+
+363 
+	`Usb_£nd_cÚŒŞ_š
+();
+
+364 !
+	`Is_usb_š_»ady
+());
+
+365 
+	}
+}
+
+372 
+	$usb_hid_g‘_idË
+ (
+U8
+ 
+u8_»pÜt_id
+)
+
+374 
+U16
+ 
+wL’gth
+;
+
+375 
+U16
+ 
+wIÁ”çû
+;
+
+378 
+	`LSB
+(
+wIÁ”çû
+)ğ
+	`Usb_»ad_by‹
+();
+
+379 
+	`MSB
+(
+wIÁ”çû
+)ğ
+	`Usb_»ad_by‹
+();
+
+380 
+	`LSB
+(
+wL’gth
+èğ
+	`Usb_»ad_by‹
+();
+
+381 
+	`MSB
+(
+wL’gth
+èğ
+	`Usb_»ad_by‹
+();
+
+382 
+	`Usb_ack_»ûive_£tup
+();
+
+384 ifĞ
+wL’gth
+ != 0 )
+
+386 
+	`Usb_wr™e_by‹
+(
+g_u8_»pÜt_¿‹
+);
+
+387 
+	`Usb_£nd_cÚŒŞ_š
+();
+
+390 !
+	`Is_usb_»ûive_out
+());
+
+391 
+	`Usb_ack_»ûive_out
+();
+
+392 
+	}
+}
+
+397 
+	$hid_g‘_hid_desütÜ
+()
+
+399 
+U16
+ 
+wL’gth
+;
+
+400 
+U8
+ 
+nb_by‹
+;
+
+401 
+b™
+ 
+zÍ
+=
+FALSE
+;
+
+402 
+U16
+ 
+wIÁ”çû
+;
+
+404 
+	`LSB
+(
+wIÁ”çû
+)=
+	`Usb_»ad_by‹
+();
+
+405 
+	`MSB
+(
+wIÁ”çû
+)=
+	`Usb_»ad_by‹
+();
+
+407 
+d©a_to_Œªsãr
+ = (
+usb_cÚf_desc
+.
+hid_mou£
+);
+
+408 
+pbufãr
+ = &(
+usb_cÚf_desc
+.
+hid_mou£
+.
+bL’gth
+);
+
+410 
+	`LSB
+(
+wL’gth
+èğ
+	`Usb_»ad_by‹
+();
+
+411 
+	`MSB
+(
+wL’gth
+èğ
+	`Usb_»ad_by‹
+();
+
+412 
+	`Usb_ack_»ûive_£tup
+();
+
+414 ià(
+wL’gth
+ > 
+d©a_to_Œªsãr
+)
+
+416 ià((
+d©a_to_Œªsãr
+ % 
+EP_CONTROL_LENGTH
+è=ğ0è{ 
+zÍ
+ = 
+TRUE
+; }
+
+417 { 
+zÍ
+ = 
+FALSE
+; }
+
+421 
+d©a_to_Œªsãr
+ = (
+U8
+)
+wL’gth
+;
+
+424 (
+d©a_to_Œªsãr
+ !ğ0è&& (!
+	`Is_usb_»ûive_out
+()))
+
+426 !
+	`Is_usb_»ad_cÚŒŞ_’abËd
+());
+
+428 
+nb_by‹
+=0;
+
+429 
+d©a_to_Œªsãr
+ != 0)
+
+431 if(
+nb_by‹
+++==
+EP_CONTROL_LENGTH
+)
+
+435 #iâdeà
+__GNUC__
+
+
+436 
+	`Usb_wr™e_by‹
+(*
+pbufãr
+++);
+
+439 
+	`Usb_wr™e_by‹
+(
+	`pgm_»ad_by‹_Ã¬
+(()
+pbufãr
+++));
+
+441 
+d©a_to_Œªsãr
+ --;
+
+443 
+	`Usb_£nd_cÚŒŞ_š
+();
+
+446 if(
+	`Is_usb_»ûive_out
+())
+
+449 
+	`Usb_ack_»ûive_out
+();
+
+452 if(
+zÍ
+ =ğ
+TRUE
+)
+
+454 !
+	`Is_usb_»ad_cÚŒŞ_’abËd
+());
+
+455 
+	`Usb_£nd_cÚŒŞ_š
+();
+
+458 !
+	`Is_usb_»ûive_out
+());
+
+459 
+	`Usb_ack_»ûive_out
+();
+
+460 
+	}
+}
+
+	@at90usb128/demo/series6-hidmouse/usb_specific_request.h
+
+41 #iâdeà
+_USB_SPECIFIC_REQUEST_H_
+
+
+42 
+	#_USB_SPECIFIC_REQUEST_H_
+
+
+	)
+
+46 
+	~"cÚfig.h
+"
+
+51 
+code
+ 
+S_usb_deviû_desütÜ
+ 
+usb_dev_desc
+;
+
+52 
+code
+ 
+S_usb_u£r_cÚfigu¿tiÚ_desütÜ
+ 
+usb_cÚf_desc
+;
+
+53 
+code
+ 
+S_usb_mªuçùu»r_¡ršg_desütÜ
+ 
+usb_u£r_mªuçùu»r_¡ršg_desütÜ
+;
+
+54 
+code
+ 
+S_usb_´oduù_¡ršg_desütÜ
+ 
+usb_u£r_´oduù_¡ršg_desütÜ
+;
+
+55 #ià(
+USB_DEVICE_SN_USE
+==
+ENABLE
+)
+
+56 
+code
+ 
+S_usb_£rŸl_numb”
+ 
+usb_u£r_£rŸl_numb”
+;
+
+58 
+code
+ 
+S_usb_Ïnguage_id
+ 
+usb_u£r_Ïnguage_id
+;
+
+63 
+BoŞ
+ 
+usb_u£r_»ad_»que¡
+ ( 
+U8
+, U8 );
+
+64 
+usb_u£r_’dpošt_š™
+ ( 
+U8
+ );
+
+65 
+U8
+ 
+usb_u£r_š‹rçû_g‘
+ ( 
+U16
+ 
+wIÁ”çû
+ );
+
+66 
+usb_u£r_š‹rçû_»£t
+ ( 
+U16
+ 
+wIÁ”çû
+, 
+U8
+ 
+®‹º©e_£‰šg
+ );
+
+67 
+BoŞ
+ 
+usb_u£r_g‘_desütÜ
+ ( 
+U8
+ , U8 );
+
+71 
+U8
+ 
+	m»pÜt
+[0x34];
+
+72 } 
+	tS_usb_hid_»pÜt_desütÜ_mou£
+;
+
+	@at90usb128/lib_board/usb_key/usb_key.c
+
+43 
+	~"cÚfig.h
+"
+
+44 
+	~"usb_key.h
+"
+
+46 #ià(
+TARGET_BOARD
+==
+USBKEY
+)
+
+48 #ifdeà
+USE_ADC2
+
+
+49 
+	~"lib_mcu/adc/adc_drv.h
+"
+
+65 
+code
+ 
+U16
+ 
+	g‹m³¿tu»_code
+[]={ 0x3B4,0x3B0,0x3AB,0x3A6,0x3A0,0x39A,0x394,0x38E,0x388,0x381,0x37A,0x373,
+
+79 #ifdeà
+__ICCAVR__
+
+
+80 #´agm¨
+dŸg_suµ»ss
+=
+Pa082
+
+
+83 
+U16
+ 
+	$G‘_adc_‹mp_v®
+()
+
+85 
+	`S¹_cÚv_chªÃl
+(
+ADC_TEMP_CH
+);
+
+86 !
+	`Is_adc_cÚv_fšished
+());
+
+87  
+	`Adc_g‘_10_b™s_»suÉ
+();
+
+88 
+	}
+}
+
+90 
+S16
+ 
+	$R—d_‹m³¿tu»
+()
+
+92 #iâdeà
+__GNUC__
+
+
+93 
+U16
+ 
+adc_code
+;
+
+94 
+S8
+ 
+šdex
+=0;
+
+95 
+adc_code
+=
+	`G‘_adc_‹mp_v®
+();
+
+96 if(
+adc_code
+>
+‹m³¿tu»_code
+[0])
+
+98  (
+S16
+)(-20);
+
+102 
+‹m³¿tu»_code
+[
+šdex
+++]>
+adc_code
+);
+
+103  (
+S16
+)(
+šdex
+-1-20);
+
+106 
+U16
+ 
+adc_code
+;
+
+107 
+S8
+ 
+šdex
+=0;
+
+108 
+adc_code
+=
+	`G‘_adc_‹mp_v®
+();
+
+109 if(
+adc_code
+>
+	`pgm_»ad_wÜd_Ã¬
+(&
+‹m³¿tu»_code
+))
+
+111  (
+S16
+)(-20);
+
+115 
+	`pgm_»ad_wÜd_Ã¬
+(&
+‹m³¿tu»_code
+[
+šdex
+++])>
+adc_code
+);
+
+116  (
+S16
+)(
+šdex
+-1-20);
+
+120 
+	}
+}
+
+	@at90usb128/lib_board/usb_key/usb_key.h
+
+41 #iâdeà
+USB_KEY_H
+
+
+42 
+	#USB_KEY_H
+
+
+	)
+
+46 
+	~"cÚfig.h
+"
+
+47 #ià(
+TARGET_BOARD
+==
+USBKEY
+)
+
+64 
+	#LED_PORT
+ 
+PORTD
+
+
+	)
+
+65 
+	#LED_DDR
+ 
+DDRD
+
+
+	)
+
+66 
+	#LED_PIN
+ 
+PIND
+
+
+	)
+
+67 
+	#LED0_BIT
+ 
+PIND4
+
+
+	)
+
+68 
+	#LED1_BIT
+ 
+PIND5
+
+
+	)
+
+69 
+	#LED2_BIT
+ 
+PIND6
+
+
+	)
+
+70 
+	#LED3_BIT
+ 
+PIND7
+
+
+	)
+
+72 
+	#Leds_š™
+(è(
+LED_DDR
+ |ğ(1<<
+LED0_BIT
+è| (1<<
+LED1_BIT
+è| (1<<
+LED2_BIT
+è| (1<<
+LED3_BIT
+))
+
+	)
+
+73 
+	#Leds_Ú
+(è(
+LED_PORT
+ |ğ(1<<
+LED0_BIT
+è| (1<<
+LED1_BIT
+è| (1<<
+LED2_BIT
+è| (1<<
+LED3_BIT
+))
+
+	)
+
+74 
+	#Leds_off
+(è(
+LED_PORT
+ &ğ~((1<<
+LED0_BIT
+è| (1<<
+LED1_BIT
+è| (1<<
+LED2_BIT
+è| (1<<
+LED3_BIT
+)))
+
+	)
+
+75 
+	#Leds_£t_v®
+(
+c
+è(
+	`Leds_off
+(),
+LED_PORT
+ |ğ(c<<4)&((1<<
+LED0_BIT
+è| (1<<
+LED1_BIT
+è| (1<<
+LED2_BIT
+è| (1<<
+LED3_BIT
+)))
+
+	)
+
+76 
+	#Leds_g‘_v®
+(è(
+LED_PORT
+>>4)
+
+	)
+
+78 
+	#Led0_Ú
+(è(
+LED_PORT
+ |ğ(1<<
+LED0_BIT
+))
+
+	)
+
+79 
+	#Led1_Ú
+(è(
+LED_PORT
+ |ğ(1<<
+LED1_BIT
+))
+
+	)
+
+80 
+	#Led2_Ú
+(è(
+LED_PORT
+ |ğ(1<<
+LED2_BIT
+))
+
+	)
+
+81 
+	#Led3_Ú
+(è(
+LED_PORT
+ |ğ(1<<
+LED3_BIT
+))
+
+	)
+
+82 
+	#Led0_off
+(è(
+LED_PORT
+ &ğ~(1<<
+LED0_BIT
+))
+
+	)
+
+83 
+	#Led1_off
+(è(
+LED_PORT
+ &ğ~(1<<
+LED1_BIT
+))
+
+	)
+
+84 
+	#Led2_off
+(è(
+LED_PORT
+ &ğ~(1<<
+LED2_BIT
+))
+
+	)
+
+85 
+	#Led3_off
+(è(
+LED_PORT
+ &ğ~(1<<
+LED3_BIT
+))
+
+	)
+
+86 
+	#Led0_toggË
+(è(
+LED_PIN
+ |ğ(1<<
+LED0_BIT
+))
+
+	)
+
+87 
+	#Led1_toggË
+(è(
+LED_PIN
+ |ğ(1<<
+LED1_BIT
+))
+
+	)
+
+88 
+	#Led2_toggË
+(è(
+LED_PIN
+ |ğ(1<<
+LED2_BIT
+))
+
+	)
+
+89 
+	#Led3_toggË
+(è(
+LED_PIN
+ |ğ(1<<
+LED3_BIT
+))
+
+	)
+
+90 
+	#Is_Ëd0_Ú
+(è(
+LED_PIN
+ & (1<<
+LED0_BIT
+è? 
+TRUE
+ : 
+FALSE
+)
+
+	)
+
+91 
+	#Is_Ëd1_Ú
+(è(
+LED_PIN
+ & (1<<
+LED1_BIT
+è? 
+TRUE
+ : 
+FALSE
+)
+
+	)
+
+92 
+	#Is_Ëd2_Ú
+(è(
+LED_PIN
+ & (1<<
+LED2_BIT
+è? 
+TRUE
+ : 
+FALSE
+)
+
+	)
+
+93 
+	#Is_Ëd3_Ú
+(è(
+LED_PIN
+ & (1<<
+LED3_BIT
+è? 
+TRUE
+ : 
+FALSE
+)
+
+	)
+
+99 
+	#Joy_š™
+(è(
+DDRB
+ &ğ~((1<<
+PINB7
+)|(1<<
+PINB6
+)|(1<<
+PINB5
+)), 
+PORTB
+ |ğ((1<<PINB7)|(1<<PINB6)|(1<<PINB5)), 
+DDRE
+ &ğ~((1<<
+PINE5
+)|(1<<
+PINE4
+)), 
+PORTE
+ |ğ((1<<PINE5)|(1<<PINE4)))
+
+	)
+
+101 
+	#Is_bŠ_Ëá
+(è
+	`Is_hwb
+()
+
+	)
+
+102 
+	#Is_bŠ_middË
+(è((
+PINB
+ & (1<<
+PINB5
+)è? 
+FALSE
+ : 
+TRUE
+)
+
+	)
+
+103 
+	#Is_bŠ_right
+(è
+FALSE
+
+
+	)
+
+105 
+	#Is_joy_up
+(è((
+PINB
+ & (1<<
+PINB7
+)è? 
+FALSE
+ : 
+TRUE
+)
+
+	)
+
+106 
+	#Is_joy_Ëá
+(è((
+PINB
+ & (1<<
+PINB6
+)è? 
+FALSE
+ : 
+TRUE
+)
+
+	)
+
+107 
+	#Is_joy_down
+(è((
+PINE
+ & (1<<
+PINE5
+)è? 
+FALSE
+ : 
+TRUE
+)
+
+	)
+
+108 
+	#Is_joy_right
+(è((
+PINE
+ & (1<<
+PINE4
+)è? 
+FALSE
+ : 
+TRUE
+)
+
+	)
+
+110 
+	#Is_bŠ_nÙ_Ëá
+(è
+	`Is_nÙ_hwb
+()
+
+	)
+
+111 
+	#Is_bŠ_nÙ_middË
+(è((
+PINB
+ & (1<<
+PINB5
+)è? 
+TRUE
+ : 
+FALSE
+)
+
+	)
+
+112 
+	#Is_bŠ_nÙ_right
+(è
+TRUE
+
+
+	)
+
+114 
+	#Is_joy_nÙ_up
+(è((
+PINB
+ & (1<<
+PINB7
+)è? 
+TRUE
+ : 
+FALSE
+)
+
+	)
+
+115 
+	#Is_joy_nÙ_Ëá
+(è((
+PINB
+ & (1<<
+PINB6
+)è? 
+TRUE
+ : 
+FALSE
+)
+
+	)
+
+116 
+	#Is_joy_nÙ_down
+(è((
+PINE
+ & (1<<
+PINE5
+)è? 
+TRUE
+ : 
+FALSE
+)
+
+	)
+
+117 
+	#Is_joy_nÙ_right
+(è((
+PINE
+ & (1<<
+PINE4
+)è? 
+TRUE
+ : 
+FALSE
+)
+
+	)
+
+123 
+	#Sw™ches_’abË_™
+() { \
+
+124 
+PCMSK0
+ |ğ(1<<
+PCINT5
+)|(1<<
+PCINT6
+)|(1<<
+PCINT7
+);\
+
+125 
+PCIFR
+ |ğ(1<<
+PCIF0
+); \
+
+126 
+PCICR
+ |ğ(1<<
+PCIE0
+);}
+
+	)
+
+132 
+	#Sw™ches_di§bË_™
+() { \
+
+133 
+PCICR
+ &ğ~(1<<
+PCIE0
+); \
+
+134 
+PCIFR
+ |ğ(1<<
+PCIF0
+); \
+
+135 
+PCMSK0
+ &ğ~((1<<
+PCINT5
+)|(1<<
+PCINT6
+)|(1<<
+PCINT7
+));}
+
+	)
+
+143 
+	#Hwb_bu‰Ú_š™
+(è(
+DDRE
+ &ğ~(1<<
+PINE2
+), 
+PORTE
+ |ğ(1<<PINE2))
+
+	)
+
+144 
+	#Is_hwb
+(è((
+PINE
+ & (1<<
+PINE2
+)è? 
+FALSE
+ : 
+TRUE
+)
+
+	)
+
+145 
+	#Is_nÙ_hwb
+(è((
+PINE
+ & (1<<
+PINE2
+)è? 
+TRUE
+ : 
+FALSE
+)
+
+	)
+
+154 
+	#DF_8_MB
+
+
+	)
+
+155 
+	#DF_NB_MEM
+ 2
+
+	)
+
+164 
+	#Df_š™_¥i
+(è(
+DDRB
+ &ğ~((1<<
+PINB3
+)), \
+
+165 
+DDRB
+ |ğ((1<<
+PINB2
+)|(1<<
+PINB1
+)|(1<<
+PINB0
+)), \
+
+166 
+PORTB
+ |ğ((1<<
+PINB3
+)|(1<<
+PINB2
+)|(1<<
+PINB1
+)|(1<<
+PINB0
+)),\
+
+167 
+DDRE
+ |ğ((1<<
+PINE1
+)|(1<<
+PINE0
+)), \
+
+168 
+PORTE
+ |ğ((1<<
+PINE1
+)|(1<<
+PINE0
+)è)
+
+	)
+
+169 
+	#Df_£Ëù_0
+(è(
+PORTE
+ &ğ~(1<<
+PINE0
+))
+
+	)
+
+170 
+	#Df_£Ëù_1
+(è(
+PORTE
+ &ğ~(1<<
+PINE1
+))
+
+	)
+
+171 
+	#Df_de£l_®l
+(è(
+PORTE
+ |ğ((1<<
+PINE1
+)|(1<<
+PINE0
+)))
+
+	)
+
+179 
+	#ADC_TEMP_CH
+ 0x00
+
+	)
+
+181 #ifdeà
+USE_ADC
+
+
+194 
+U16
+ 
+G‘_adc_‹mp_v®
+();
+
+206 
+S16
+ 
+R—d_‹m³¿tu»
+();
+
+	@at90usb128/lib_mcu/pll/pll_drv.h
+
+41 #iâdeà
+PLL_DRV_H
+
+
+42 
+	#PLL_DRV_H
+
+
+	)
+
+54 
+	#PLLx24
+ ( (0<<
+PLLP2
+è| (0<<
+PLLP1
+è| (0<<
+PLLP0
+è)
+
+	)
+
+55 
+	#PLLx12
+ ( (0<<
+PLLP2
+è| (0<<
+PLLP1
+è| (1<<
+PLLP0
+è)
+
+	)
+
+56 
+	#PLLx08
+ ( (0<<
+PLLP2
+è| (1<<
+PLLP1
+è| (0<<
+PLLP0
+è)
+
+	)
+
+57 
+	#PLLx06
+ ( (0<<
+PLLP2
+è| (1<<
+PLLP1
+è| (1<<
+PLLP0
+è)
+
+	)
+
+58 
+	#PLLx04
+ ( (1<<
+PLLP2
+è| (0<<
+PLLP1
+è| (0<<
+PLLP0
+è)
+
+	)
+
+60 #ifdeà
+__ICCAVR__
+
+
+61 #ià(
+defšed
+(
+__AT90USB1287__
+è|| defšed(
+__AT90USB1286__
+))
+
+62 
+	#PLLx03
+ ( (1<<
+PLLP2
+è| (0<<
+PLLP1
+è| (1<<
+PLLP0
+è)
+
+	)
+
+63 #–ià(
+defšed
+(
+__AT90USB647__
+è|| defšed(
+__AT90USB646__
+))
+
+64 
+	#PLLx03
+ ( (1<<
+PLLP2
+è| (1<<
+PLLP1
+è| (0<<
+PLLP0
+è)
+
+	)
+
+66 #”rÜ 
+TARGET
+ 
+should
+ 
+be
+ 
+defšed
+
+
+68 #–ià
+defšed
+ 
+__GNUC__
+
+
+69 #ià(
+defšed
+(
+__AVR_AT90USB1287__
+è|| defšed(
+__AVR_AT90USB1286__
+))
+
+70 
+	#PLLx03
+ ( (1<<
+PLLP2
+è| (0<<
+PLLP1
+è| (1<<
+PLLP0
+è)
+
+	)
+
+71 #–ià(
+defšed
+(
+__AVR_AT90USB647__
+è|| defšed(
+__AVR_AT90USB646__
+))
+
+72 
+	#PLLx03
+ ( (1<<
+PLLP2
+è| (1<<
+PLLP1
+è| (0<<
+PLLP0
+è)
+
+	)
+
+75 #”rÜ 
+Comp”
+ 
+unknow
+
+
+78 
+	#PLLx04_8
+ ( (1<<
+PLLP2
+è| (1<<
+PLLP1
+è| (0<<
+PLLP0
+è)
+
+	)
+
+79 
+	#PLLx02
+ ( (1<<
+PLLP2
+è| (1<<
+PLLP1
+è| (1<<
+PLLP0
+è)
+
+	)
+
+86 
+	#S¹_¶l
+(
+şockçùÜ
+) \
+
+87 (
+PLLCSR
+ = ( 
+şockçùÜ
+ | (1<<
+PLLE
+è))
+
+	)
+
+90 
+	#Is_¶l_»ady
+(è(
+PLLCSR
+ & (1<<
+PLOCK
+è)
+
+	)
+
+93 
+	#Wa™_¶l_»ady
+(è!(
+PLLCSR
+ & (1<<
+PLOCK
+)))
+
+	)
+
+96 
+	#Stİ_¶l
+(è(
+PLLCSR
+ &ğ(~(1<<
+PLLE
+)),PLLCSR=0 )
+
+	)
+
+99 #ifdeà
+CUSTOM_PLL_START_AUTO
+
+
+100 
+	#PÎ_¡¬t_auto
+(è
+CUSTOM_PLL_START_AUTO
+
+
+	)
+
+104 #ià (
+FOSC
+==2000)
+
+107 
+	#PÎ_¡¬t_auto
+(è
+	`S¹_¶l
+(
+PLLx24
+)
+
+	)
+
+108 #–ià(
+FOSC
+==4000)
+
+109 
+	#PÎ_¡¬t_auto
+(è
+	`S¹_¶l
+(
+PLLx12
+)
+
+	)
+
+110 #–ià(
+FOSC
+==6000)
+
+111 
+	#PÎ_¡¬t_auto
+(è
+	`S¹_¶l
+(
+PLLx08
+)
+
+	)
+
+112 #–ià(
+FOSC
+==8000)
+
+115 
+	#PÎ_¡¬t_auto
+(è
+	`S¹_¶l
+(
+PLLx06
+)
+
+	)
+
+116 #–ià(
+FOSC
+==12000)
+
+117 
+	#PÎ_¡¬t_auto
+(è
+	`S¹_¶l
+(
+PLLx04
+)
+
+	)
+
+118 #–ià(
+FOSC
+==16000)
+
+119 
+	#PÎ_¡¬t_auto
+(è
+	`S¹_¶l
+(
+PLLx03
+)
+
+	)
+
+120 #–ià(
+FOSC
+==20000)
+
+121 
+	#PÎ_¡¬t_auto
+(è
+	`S¹_¶l
+(
+PLLx04_8
+)
+
+	)
+
+122 #–ià(
+FOSC
+==24000)
+
+123 
+	#PÎ_¡¬t_auto
+(è
+	`S¹_¶l
+(
+PLLx02
+)
+
+	)
+
+	@at90usb128/lib_mcu/power/power_drv.c
+
+43 
+	~"cÚfig.h
+"
+
+44 
+	~"pow”_drv.h
+"
+
+54 #iâdeà
+__GNUC__
+
+
+56 #´agm¨
+İtimize
+=
+nÚe
+
+
+57 
+	$S‘_ıu_´esÿËr
+(
+U8
+ 
+x
+)
+
+59 
+U8
+ 
+§ve_št
+=
+	`G‘_š‹¼u±_¡©e
+();
+
+60 
+	`Di§bË_š‹¼u±
+();
+
+61 
+CLKPR
+=(1<<
+CLKPCE
+);
+
+62 
+CLKPR
+=
+x
+;
+
+63 if(
+§ve_št
+è{ 
+	`EÇbË_š‹¼u±
+(); }
+
+64 
+	}
+}
+
+70 
+	$£t_pow”_down_mode
+()
+
+72 
+	`S‘up_pow”_down_mode
+();
+
+73 
+	`SË•_š¡ruùiÚ
+();
+
+74 
+	}
+}
+
+79 
+	$£t_idË_mode
+()
+
+81 
+	`S‘up_idË_mode
+();
+
+82 
+	`SË•_š¡ruùiÚ
+();
+
+83 
+	}
+}
+
+88 
+	$£t_adc_noi£_»duùiÚ_mode
+()
+
+90 
+	`S‘up_adc_noi£_»duùiÚ_mode
+();
+
+91 
+	`SË•_š¡ruùiÚ
+();
+
+92 
+	}
+}
+
+97 
+	$£t_pow”_§ve_mode
+()
+
+99 
+	`S‘up_pow”_§ve_mode
+();
+
+100 
+	`SË•_š¡ruùiÚ
+();
+
+101 
+	}
+}
+
+106 
+	$£t_¡ªdby_mode
+()
+
+108 
+	`S‘up_¡ªdby_mode
+();
+
+109 
+	`SË•_š¡ruùiÚ
+();
+
+110 
+	}
+}
+
+115 
+	$£t_ext_¡ªdby_mode
+()
+
+117 
+	`S‘up_ext_¡ªdby_mode
+();
+
+118 
+	`SË•_š¡ruùiÚ
+();
+
+119 
+	}
+}
+
+	@at90usb128/lib_mcu/power/power_drv.h
+
+45 #iâdeà
+_POWER_DRV_H_
+
+
+46 
+	#_POWER_DRV_H_
+
+
+	)
+
+48 #ifdeà 
+__GNUC__
+
+
+49 
+	~<avr/pow”.h
+>
+
+57 
+	#S‘up_idË_mode
+(è(
+SMCR
+=0,SMCR |ğ(1<<
+SE
+))
+
+	)
+
+58 
+	#S‘up_pow”_down_mode
+(è(
+SMCR
+=0,SMCR |ğ(1<<
+SE
+)+(1<<
+SM1
+))
+
+	)
+
+59 
+	#S‘up_adc_noi£_»duùiÚ_mode
+(è(
+SMCR
+=0,SMCR |ğ(1<<
+SE
+)+(1<<
+SM0
+))
+
+	)
+
+60 
+	#S‘up_pow”_§ve_mode
+(è(
+SMCR
+=0,SMCR |ğ(1<<
+SE
+)+(1<<
+SM1
+)+(1<<
+SM0
+))
+
+	)
+
+61 
+	#S‘up_¡ªdby_mode
+(è(
+SMCR
+=0,SMCR |ğ(1<<
+SE
+)+(1<<
+SM2
+)+(1<<
+SM1
+))
+
+	)
+
+62 
+	#S‘up_ext_¡ªdby_mode
+(è(
+SMCR
+=0,SMCR |ğ(1<<
+SE
+)+(1<<
+SM2
+)+(1<<
+SM1
+)+(1<<
+SM0
+))
+
+	)
+
+73 #ifdeà 
+__GNUC__
+
+
+74 
+	#CË¬_´esÿËr
+(è(
+	`şock_´esÿË_£t
+(0))
+
+	)
+
+76 
+	#CË¬_´esÿËr
+(è(
+	`S‘_ıu_´esÿËr
+(0))
+
+	)
+
+88 #ifdeà 
+__GNUC__
+
+
+89 
+	#S‘_ıu_´esÿËr
+(
+x
+è(
+	`şock_´esÿË_£t
+(x))
+
+	)
+
+91 
+S‘_ıu_´esÿËr
+(
+U8
+ 
+x
+);
+
+95 
+	#SË•_š¡ruùiÚ
+(è{
+	`asm
+("SLEEP");}
+
+	)
+
+98 
+	#S‘_pow”_down_mode
+(è
+	`£t_pow”_down_mode
+()
+
+	)
+
+99 
+	#S‘_idË_mode
+(è
+	`£t_idË_mode
+()
+
+	)
+
+103 
+£t_idË_mode
+();
+
+104 
+£t_pow”_down_mode
+();
+
+105 
+£t_adc_noi£_»duùiÚ_mode
+();
+
+106 
+£t_pow”_§ve_mode
+();
+
+107 
+£t_¡ªdby_mode
+();
+
+108 
+£t_ext_¡ªdby_mode
+();
+
+118 
+	#EÁ”_idË_mode
+(è(
+	`£t_idË_mode
+())
+
+	)
+
+128 
+	#EÁ”_pow”_down_mode
+(è(
+	`£t_pow”_down_mode
+())
+
+	)
+
+138 
+	#EÁ”_adc_noi£_»duùiÚ_mode
+(è(
+	`£t_adc_noi£_»duùiÚ_mode
+())
+
+	)
+
+148 
+	#EÁ”_pow”_§ve_mode
+(è(
+	`£t_pow”_§ve_mode
+())
+
+	)
+
+158 
+	#EÁ”_¡ªdby_mode
+(è(
+	`£t_¡ªdby_mode
+())
+
+	)
+
+168 
+	#EÁ”_ext_¡ªdby_mode
+(è(
+	`£t_ext_¡ªdby_mode
+())
+
+	)
+
+	@at90usb128/lib_mcu/usb/usb_drv.c
+
+43 
+	~"cÚfig.h
+"
+
+44 
+	~"cÚf_usb.h
+"
+
+45 
+	~"usb_drv.h
+"
+
+51 #ià(
+USB_DEVICE_FEATURE
+==
+DISABLED
+ && 
+USB_HOST_FEATURE
+==DISABLED)
+
+52 #”rÜ 
+©
+ 
+Ëa¡
+ 
+Úe
+ 
+of
+ 
+USB_DEVICE_FEATURE
+ 
+Ü
+ 
+USB_HOST_FEATURE
+ 
+should
+ 
+be
+ 
+uÇbËd
+
+
+55 #ià(
+USB_DEVICE_FEATURE
+ =ğ
+ENABLED
+)
+
+67 
+U8
+ 
+	$usb_cÚfig_•
+(
+U8
+ 
+cÚfig0
+, U8 
+cÚfig1
+)
+
+69 
+	`Usb_’abË_’dpošt
+();
+
+70 
+UECFG0X
+ = 
+cÚfig0
+;
+
+71 
+UECFG1X
+ = (UECFG1X & (1<<
+ALLOC
+)è| 
+cÚfig1
+;
+
+72 
+	`Usb_®loÿ‹_memÜy
+();
+
+73  (
+	`Is_’dpošt_cÚfigu»d
+());
+
+74 
+	}
+}
+
+87 
+U8
+ 
+	$usb_£Ëù_’pošt_š‹¼u±
+()
+
+89 
+U8
+ 
+š‹¼u±_æags
+;
+
+90 
+U8
+ 
+•_num
+;
+
+92 
+•_num
+ = 0;
+
+93 
+š‹¼u±_æags
+ = 
+	`Usb_š‹¼u±_æags
+();
+
+95 
+•_num
+ < 
+MAX_EP_NB
+)
+
+97 ià(
+š‹¼u±_æags
+ & 1)
+
+99  (
+•_num
+);
+
+103 
+•_num
+++;
+
+104 
+š‹¼u±_æags
+ = interrupt_flags >> 1;
+
+108 
+	}
+}
+
+130 
+U8
+ 
+	$usb_£nd_·ck‘
+(
+U8
+ 
+•_num
+, U8* 
+tbuf
+, U8 
+d©a_Ëngth
+)
+
+132 
+U8
+ 
+»maššg_Ëngth
+;
+
+134 
+»maššg_Ëngth
+ = 
+d©a_Ëngth
+;
+
+135 
+	`Usb_£Ëù_’dpošt
+(
+•_num
+);
+
+136 
+	`Is_usb_wr™e_’abËd
+(è&& (0 !ğ
+»maššg_Ëngth
+))
+
+138 
+	`Usb_wr™e_by‹
+(*
+tbuf
+);
+
+139 
+»maššg_Ëngth
+--;
+
+140 
+tbuf
+++;
+
+142  
+»maššg_Ëngth
+;
+
+143 
+	}
+}
+
+165 
+U8
+ 
+	$usb_»ad_·ck‘
+(
+U8
+ 
+•_num
+, U8* 
+rbuf
+, U8 
+d©a_Ëngth
+)
+
+167 
+U8
+ 
+»maššg_Ëngth
+;
+
+169 
+»maššg_Ëngth
+ = 
+d©a_Ëngth
+;
+
+170 
+	`Usb_£Ëù_’dpošt
+(
+•_num
+);
+
+172 
+	`Is_usb_»ad_’abËd
+(è&& (0 !ğ
+»maššg_Ëngth
+))
+
+174 *
+rbuf
+ = 
+	`Usb_»ad_by‹
+();
+
+175 
+»maššg_Ëngth
+--;
+
+176 
+rbuf
+++;
+
+178  
+»maššg_Ëngth
+;
+
+179 
+	}
+}
+
+191 
+	$usb_h®t_’dpošt
+ (
+U8
+ 
+•_num
+)
+
+193 
+	`Usb_£Ëù_’dpošt
+(
+•_num
+);
+
+194 
+	`Usb_’abË_¡®l_hªdshake
+();
+
+195 
+	}
+}
+
+207 
+U8
+ 
+	$usb_š™_deviû
+ ()
+
+209 
+	`Usb_£Ëù_deviû
+();
+
+210 if(
+	`Is_usb_id_deviû
+())
+
+212 
+	`Usb_£Ëù_’dpošt
+(
+EP_CONTROL
+);
+
+213 if(!
+	`Is_usb_’dpošt_’abËd
+())
+
+215 #ià(
+USB_LOW_SPEED_DEVICE
+==
+DISABLE
+)
+
+216  
+	`usb_cÚfigu»_’dpošt
+(
+EP_CONTROL
+, \
+
+217 
+TYPE_CONTROL
+, \
+
+218 
+DIRECTION_OUT
+, \
+
+219 
+SIZE_64
+, \
+
+220 
+ONE_BANK
+, \
+
+221 
+NYET_DISABLED
+);
+
+223  
+	`usb_cÚfigu»_’dpošt
+(
+EP_CONTROL
+, \
+
+224 
+TYPE_CONTROL
+, \
+
+225 
+DIRECTION_OUT
+, \
+
+226 
+SIZE_8
+, \
+
+227 
+ONE_BANK
+, \
+
+228 
+NYET_DISABLED
+);
+
+232  
+FALSE
+;
+
+233 
+	}
+}
+
+241 #ià(
+USB_HOST_FEATURE
+ =ğ
+ENABLED
+)
+
+252 
+U8
+ 
+	$ho¡_cÚfig_pe
+(
+U8
+ 
+cÚfig0
+, U8 
+cÚfig1
+)
+
+254 
+	`Ho¡_’abË_pe
+();
+
+255 
+UPCFG0X
+ = 
+cÚfig0
+;
+
+256 
+UPCFG1X
+ = 
+cÚfig1
+;
+
+257 
+	`Ho¡_®loÿ‹_memÜy
+();
+
+258  (
+	`Is_pe_cÚfigu»d
+());
+
+259 
+	}
+}
+
+268 
+U8
+ 
+	$ho¡_d‘”mše_pe_size
+(
+U16
+ 
+size
+)
+
+270 if(
+size
+ <ğ8 ) { (
+SIZE_8
+ );}
+
+271 if(
+size
+ <ğ16 ) { (
+SIZE_16
+ );}
+
+272 if(
+size
+ <ğ32 ) { (
+SIZE_32
+ );}
+
+273 if(
+size
+ <ğ64 ) { (
+SIZE_64
+ );}
+
+274 if(
+size
+ <ğ128è{ (
+SIZE_128
+ );}
+
+275 if(
+size
+ <ğ256è{ (
+SIZE_256
+ );}
+
+276 if(
+size
+ <ğ512è{ (
+SIZE_512
+ );}
+
+277 { (
+SIZE_1024
+);}
+
+279 
+	}
+}
+
+288 
+	$ho¡_di§bË_®l_pe
+()
+
+290 
+U8
+ 
+i
+;
+
+291 
+i
+=0;i<7;i++)
+
+293 
+	`Ho¡_»£t_pe
+(
+i
+);
+
+294 
+	`Ho¡_£Ëù_pe
+(
+i
+);
+
+295 
+	`Ho¡_uÇÎoÿ‹_memÜy
+();
+
+296 
+	`Ho¡_di§bË_pe
+();
+
+298 
+	}
+}
+
+309 
+U8
+ 
+	$usb_g‘_nb_pe_š‹¼u±
+()
+
+311 
+U8
+ 
+š‹¼u±_æags
+;
+
+312 
+U8
+ 
+i
+;
+
+314 
+š‹¼u±_æags
+ = 
+	`Ho¡_g‘_pe_š‹¼u±
+();
+
+315 
+i
+=0;i< 
+MAX_EP_NB
+;i++)
+
+317 ià(
+š‹¼u±_æags
+ & (1<<
+i
+))
+
+319  (
+i
+);
+
+323  
+MAX_EP_NB
++1;
+
+324 
+	}
+}
+
+	@at90usb128/lib_mcu/usb/usb_drv.h
+
+42 #iâdeà
+_USB_DRV_H_
+
+
+43 
+	#_USB_DRV_H_
+
+
+	)
+
+48 
+	e’dpošt_·¿m‘”
+{
+	m•_num
+, 
+	m•_ty³
+, 
+	m•_dœeùiÚ
+, 
+	m•_size
+, 
+	m•_bªk
+, 
+	mny‘_¡©us
+} 
+	tt_’dpošt_·¿m‘”
+;
+
+56 
+	#MAX_EP_NB
+ 7
+
+	)
+
+58 
+	#EP_CONTROL
+ 0
+
+	)
+
+59 
+	#EP_1
+ 1
+
+	)
+
+60 
+	#EP_2
+ 2
+
+	)
+
+61 
+	#EP_3
+ 3
+
+	)
+
+62 
+	#EP_4
+ 4
+
+	)
+
+63 
+	#EP_5
+ 5
+
+	)
+
+64 
+	#EP_6
+ 6
+
+	)
+
+65 
+	#EP_7
+ 7
+
+	)
+
+67 
+	#PIPE_CONTROL
+ 0
+
+	)
+
+68 
+	#PIPE_0
+ 0
+
+	)
+
+69 
+	#PIPE_1
+ 1
+
+	)
+
+70 
+	#PIPE_2
+ 2
+
+	)
+
+71 
+	#PIPE_3
+ 3
+
+	)
+
+72 
+	#PIPE_4
+ 4
+
+	)
+
+73 
+	#PIPE_5
+ 5
+
+	)
+
+74 
+	#PIPE_6
+ 6
+
+	)
+
+75 
+	#PIPE_7
+ 7
+
+	)
+
+78 
+	#MSK_EP_DIR
+ 0x7F
+
+	)
+
+79 
+	#MSK_UADD
+ 0x7F
+
+	)
+
+80 
+	#MSK_EPTYPE
+ 0xC0
+
+	)
+
+81 
+	#MSK_EPSIZE
+ 0x70
+
+	)
+
+82 
+	#MSK_EPBK
+ 0x0C
+
+	)
+
+83 
+	#MSK_DTSEQ
+ 0x0C
+
+	)
+
+84 
+	#MSK_NBUSYBK
+ 0x03
+
+	)
+
+85 
+	#MSK_CURRBK
+ 0x03
+
+	)
+
+86 
+	#MSK_DAT
+ 0xFF
+
+87 
+	#MSK_BYCTH
+ 0x07
+
+88 
+	#MSK_BYCTL
+ 0xFF
+
+89 
+	#MSK_EPINT
+ 0x7F
+
+90 
+	#MSK_HADDR
+ 0xFF
+
+91 
+
+	)
+
+93 
+	#MSK_PNUM
+ 0x07
+
+94 
+	#MSK_PRST
+ 0x7F
+
+95 
+	#MSK_PTYPE
+ 0xC0
+
+96 
+	#MSK_PTOKEN
+ 0x30
+
+	)
+
+97 
+	#MSK_PEPNUM
+ 0x0F
+
+	)
+
+98 
+	#MSK_PSIZE
+ 0x70
+
+99 
+	#MSK_PBK
+ 0x0C
+
+	)
+
+101 
+	#MSK_NBUSYBK
+ 0x03
+
+	)
+
+103 
+	#MSK_ERROR
+ 0x1F
+
+	)
+
+105 
+	#MSK_PTYPE
+ 0xC0
+
+106 
+	#MSK_PTOKEN
+ 0x30
+
+	)
+
+107 
+	#MSK_TOKEN_SETUP
+ 0x30
+
+	)
+
+108 
+	#MSK_TOKEN_IN
+ 0x10
+
+	)
+
+109 
+	#MSK_TOKEN_OUT
+ 0x20
+
+	)
+
+110 
+	#MSK_PEPNUM
+ 0x0F
+
+	)
+
+112 
+	#MSK_PSIZE
+ 0x70
+
+113 
+	#MSK_PBK
+ 0x0C
+
+	)
+
+118 
+	#TYPE_CONTROL
+ 0
+
+	)
+
+119 
+	#TYPE_ISOCHRONOUS
+ 1
+
+	)
+
+120 
+	#TYPE_BULK
+ 2
+
+	)
+
+121 
+	#TYPE_INTERRUPT
+ 3
+
+	)
+
+124 
+	#DIRECTION_OUT
+ 0
+
+	)
+
+125 
+	#DIRECTION_IN
+ 1
+
+	)
+
+128 
+	#SIZE_8
+ 0
+
+	)
+
+129 
+	#SIZE_16
+ 1
+
+	)
+
+130 
+	#SIZE_32
+ 2
+
+	)
+
+131 
+	#SIZE_64
+ 3
+
+	)
+
+132 
+	#SIZE_128
+ 4
+
+	)
+
+133 
+	#SIZE_256
+ 5
+
+	)
+
+134 
+	#SIZE_512
+ 6
+
+	)
+
+135 
+	#SIZE_1024
+ 7
+
+	)
+
+139 
+	#ONE_BANK
+ 0
+
+	)
+
+140 
+	#TWO_BANKS
+ 1
+
+	)
+
+143 
+	#NYET_ENABLED
+ 0
+
+	)
+
+144 
+	#NYET_DISABLED
+ 1
+
+	)
+
+147 
+	#TOKEN_SETUP
+ 0
+
+	)
+
+148 
+	#TOKEN_IN
+ 1
+
+	)
+
+149 
+	#TOKEN_OUT
+ 2
+
+	)
+
+151 
+	#Is_•_addr_š
+(
+x
+èĞ(x&
+USB_ENDPOINT_DIR_MASK
+)? 
+TRUE
+ : 
+FALSE
+)
+
+	)
+
+155 
+	#VBUSRISE_20MS
+ 0x00
+
+156 
+	#VBUSRISE_50MS
+ 0x01
+
+	)
+
+157 
+	#VBUSRISE_70MS
+ 0x02
+
+	)
+
+158 
+	#VBUSRISE_100MS
+ 0x03
+
+	)
+
+160 
+	#VBUSPULSE_15MS
+ 0x20
+
+161 
+	#VBUSPULSE_23MS
+ 0x21
+
+	)
+
+162 
+	#VBUSPULSE_31MS
+ 0x22
+
+	)
+
+163 
+	#VBUSPULSE_40MS
+ 0x23
+
+	)
+
+165 
+	#VFALLTMOUT_93MS
+ 0x40
+
+166 
+	#VFALLTMOUT_105MS
+ 0x41
+
+	)
+
+167 
+	#VFALLTMOUT_118MS
+ 0x42
+
+	)
+
+168 
+	#VFALLTMOUT_131MS
+ 0x43
+
+	)
+
+170 
+	#SRPMINDET_10US
+ 0x60
+
+171 
+	#SRPMINDET_100US
+ 0x61
+
+	)
+
+172 
+	#SRPMINDET_1MS
+ 0x62
+
+	)
+
+173 
+	#SRPMINDET_11MS
+ 0x63
+
+	)
+
+179 
+	#Usb_bud_•_cÚfig0
+(
+ty³
+, 
+dœ
+, 
+ny‘
+è(Ñy³<<6è| (ny‘<<1è| (dœ))
+
+	)
+
+180 
+	#Usb_bud_•_cÚfig1
+(
+size
+, 
+bªk
+ ) ((size<<4è| (bªk<<2è)
+
+	)
+
+181 
+	#usb_cÚfigu»_’dpošt
+(
+num
+, 
+ty³
+, 
+dœ
+, 
+size
+, 
+bªk
+, 
+ny‘
+) \
+
+182 Ğ
+	`Usb_£Ëù_’dpošt
+(
+num
+), \
+
+183 
+	`usb_cÚfig_•
+(
+	`Usb_bud_•_cÚfig0
+(
+ty³
+, 
+dœ
+, 
+ny‘
+),\
+
+184 
+	`Usb_bud_•_cÚfig1
+(
+size
+, 
+bªk
+è))
+
+	)
+
+186 
+	#Ho¡_bud_pe_cÚfig0
+(
+ty³
+, 
+tok’
+, 
+•_num
+è(Ñy³<<6è| (tok’<<4è| (•_num))
+
+	)
+
+187 
+	#Ho¡_bud_pe_cÚfig1
+(
+size
+, 
+bªk
+ ) ((size<<4è| (bªk<<2è)
+
+	)
+
+188 
+	#ho¡_cÚfigu»_pe
+(
+num
+, 
+ty³
+, 
+tok’
+,
+•_num
+, 
+size
+, 
+bªk
+, 
+äeq
+) \
+
+189 Ğ
+	`Ho¡_£Ëù_pe
+(
+num
+), \
+
+190 
+	`Ho¡_£t_š‹¼u±_äequ’cy
+(
+äeq
+), \
+
+191 
+	`ho¡_cÚfig_pe
+(
+	`Ho¡_bud_pe_cÚfig0
+(
+ty³
+, 
+tok’
+, 
+•_num
+),\
+
+192 
+	`Ho¡_bud_pe_cÚfig1
+(
+size
+, 
+bªk
+è))
+
+	)
+
+199 
+	#Usb_’abË_»guÏtÜ
+(è(
+UHWCON
+ |ğ(1<<
+UVREGE
+))
+
+	)
+
+201 
+	#Usb_di§bË_»guÏtÜ
+(è(
+UHWCON
+ &ğ~(1<<
+UVREGE
+))
+
+	)
+
+203 
+	#Is_usb_»guÏtÜ_’abËd
+(è((
+UHWCON
+ & (1<<
+UVREGE
+)è? 
+TRUE
+ : 
+FALSE
+)
+
+	)
+
+210 
+	#Usb_’abË_uid_pš
+(è(
+UHWCON
+ |ğ(1<<
+UIDE
+))
+
+	)
+
+212 
+	#Usb_di§bË_uid_pš
+(è(
+UHWCON
+ &ğ~(1<<
+UIDE
+))
+
+	)
+
+214 
+	#Usb_fÜû_deviû_mode
+(è(
+	`Usb_di§bË_uid_pš
+(), 
+UHWCON
+ |ğ(1<<
+UIMOD
+))
+
+	)
+
+216 
+	#Usb_fÜû_ho¡_mode
+(è(
+	`Usb_di§bË_uid_pš
+(), 
+UHWCON
+ &ğ~(1<<
+UIMOD
+))
+
+	)
+
+218 
+	#Usb_’abË_uvcÚ_pš
+(è(
+UHWCON
+ |ğ(1<<
+UVCONE
+))
+
+	)
+
+220 
+	#Usb_di§bË_uvcÚ_pš
+(è(
+UHWCON
+ &ğ~(1<<
+UVCONE
+))
+
+	)
+
+222 
+	#Usb_fuÎ_¥“d_mode
+(è(
+UHWCON
+ |ğ(1<<
+UDSS
+))
+
+	)
+
+224 
+	#Usb_low_¥“d_mode
+(è(
+UHWCON
+ &ğ~(1<<
+UDSS
+))
+
+	)
+
+227 
+	#Usb_’abË
+(è(
+USBCON
+ |ğ((1<<
+USBE
+è| (1<<
+OTGPADE
+)))
+
+	)
+
+229 
+	#Usb_di§bË
+(è(
+USBCON
+ &ğ~((1<<
+USBE
+è| (1<<
+OTGPADE
+)))
+
+	)
+
+230 
+	#Is_usb_’abËd
+(è((
+USBCON
+ & (1<<
+USBE
+)è? 
+TRUE
+ : 
+FALSE
+)
+
+	)
+
+233 
+	#Usb_’gše_’abË
+(è(
+USBCON
+ |ğ(1<<
+USBE
+è)
+
+	)
+
+235 
+	#Usb_’gše_di§bË
+(è(
+USBCON
+ &ğ~(1<<
+USBE
+))
+
+	)
+
+239 
+	#Usb_’abË_vbus_·d
+(è(
+USBCON
+ |ğ(1<<
+OTGPADE
+))
+
+	)
+
+241 
+	#Usb_di§bË_vbus_·d
+(è(
+USBCON
+ &ğ~(1<<
+OTGPADE
+))
+
+	)
+
+243 
+	#Usb_£Ëù_deviû
+(è(
+USBCON
+ &ğ~(1<<
+HOST
+))
+
+	)
+
+244 
+	#Usb_£Ëù_ho¡
+(è(
+USBCON
+ |ğ(1<<
+HOST
+))
+
+	)
+
+245 
+	#Is_usb_ho¡_’abËd
+(è((
+USBCON
+ & (1<<
+HOST
+)è? 
+TRUE
+ : 
+FALSE
+)
+
+	)
+
+246 
+	#Is_usb_deviû_’abËd
+(è((
+USBCON
+ & (1<<
+HOST
+)è? 
+FALSE
+ : 
+TRUE
+)
+
+	)
+
+249 
+	#S–eù_fuÎ_¥“d_İ”©iÚ
+(è(
+UDCON
+ &ğ~(1<<
+LSM
+))
+
+	)
+
+251 
+	#S–eù_low_¥“d_İ”©iÚ
+(è(
+UDCON
+ |ğ(1<<
+LSM
+))
+
+	)
+
+254 
+	#Usb_ä“ze_şock
+(è(
+USBCON
+ |ğ(1<<
+FRZCLK
+))
+
+	)
+
+255 
+	#Usb_unä“ze_şock
+(è(
+USBCON
+ &ğ~(1<<
+FRZCLK
+))
+
+	)
+
+256 
+	#Is_usb_şock_ä“zed
+(è((
+USBCON
+ & (1<<
+FRZCLK
+)è? 
+TRUE
+ : 
+FALSE
+)
+
+	)
+
+258 
+	#Usb_’abË_id_š‹¼u±
+(è(
+USBCON
+ |ğ(1<<
+IDTE
+))
+
+	)
+
+259 
+	#Usb_di§bË_id_š‹¼u±
+(è(
+USBCON
+ &ğ~(1<<
+IDTE
+))
+
+	)
+
+260 
+	#Is_usb_id_š‹¼u±_’abËd
+(è((
+USBCON
+ & (1<<
+IDTE
+)è? 
+TRUE
+ : 
+FALSE
+)
+
+	)
+
+261 
+	#Is_usb_id_deviû
+(è((
+USBSTA
+ & (1<<
+ID
+)è? 
+TRUE
+ : 
+FALSE
+)
+
+	)
+
+262 
+	#Is_usb_id_ho¡
+(è((
+USBSTA
+ & (1<<
+ID
+)è? 
+FALSE
+ : 
+TRUE
+)
+
+	)
+
+263 
+	#Usb_ack_id_Œªs™iÚ
+(è(
+USBINT
+ = ~(1<<
+IDTI
+))
+
+	)
+
+264 
+	#Is_usb_id_Œªs™iÚ
+(è((
+USBINT
+ & (1<<
+IDTI
+)è? 
+TRUE
+ : 
+FALSE
+)
+
+	)
+
+266 
+	#Usb_’abË_vbus_š‹¼u±
+(è(
+USBCON
+ |ğ(1<<
+VBUSTE
+))
+
+	)
+
+267 
+	#Usb_di§bË_vbus_š‹¼u±
+(è(
+USBCON
+ &ğ~(1<<
+VBUSTE
+))
+
+	)
+
+268 
+	#Is_usb_vbus_š‹¼u±_’abËd
+(è((
+USBCON
+ & (1<<
+VBUSTE
+)è? 
+TRUE
+ : 
+FALSE
+)
+
+	)
+
+269 
+	#Is_usb_vbus_high
+(è((
+USBSTA
+ & (1<<
+VBUS
+)è? 
+TRUE
+ : 
+FALSE
+)
+
+	)
+
+270 
+	#Is_usb_vbus_low
+(è((
+USBSTA
+ & (1<<
+VBUS
+)è? 
+FALSE
+ : 
+TRUE
+)
+
+	)
+
+271 
+	#Usb_ack_vbus_Œªs™iÚ
+(è(
+USBINT
+ = ~(1<<
+VBUSTI
+))
+
+	)
+
+272 
+	#Is_usb_vbus_Œªs™iÚ
+(è((
+USBINT
+ & (1<<
+VBUSTI
+)è? 
+TRUE
+ : 
+FALSE
+)
+
+	)
+
+275 
+	#Usb_g‘_g’”®_š‹¼u±
+(è(
+USBINT
+ & (
+USBCON
+ & 
+MSK_IDTE_VBUSTE
+))
+
+	)
+
+277 
+	#Usb_ack_®l_g’”®_š‹¼u±
+(è(
+USBINT
+ = ~(
+USBCON
+ & 
+MSK_IDTE_VBUSTE
+))
+
+	)
+
+278 
+	#Usb_ack_ÿche_id_Œªs™iÚ
+(
+x
+è((xè&ğ~(1<<
+IDTI
+))
+
+	)
+
+279 
+	#Usb_ack_ÿche_vbus_Œªs™iÚ
+(
+x
+è((xè&ğ~(1<<
+VBUSTI
+))
+
+	)
+
+280 
+	#Is_usb_ÿche_id_Œªs™iÚ
+(
+x
+è(((xè& (1<<
+IDTI
+)è)
+
+	)
+
+281 
+	#Is_usb_ÿche_vbus_Œªs™iÚ
+(
+x
+è(((xè& (1<<
+VBUSTI
+)))
+
+	)
+
+284 
+	#Usb_g‘_Ùg_š‹¼u±
+(è(
+OTGINT
+ & 
+OTGIEN
+)
+
+	)
+
+286 
+	#Usb_ack_®l_Ùg_š‹¼u±
+(è(
+OTGINT
+ = ~
+OTGIEN
+)
+
+	)
+
+287 
+	#Is_Ùg_ÿche_bcÚÃùiÚ_”rÜ
+(
+x
+è(((xè& 
+MSK_BCERRI
+))
+
+	)
+
+288 
+	#Usb_ack_ÿche_bcÚÃùiÚ_”rÜ
+(
+x
+è((xè&ğ~
+MSK_BCERRI
+)
+
+	)
+
+290 
+	#Usb_’‹r_d´am_mode
+(è(
+UDPADDH
+ = (1<<
+DPACC
+))
+
+	)
+
+291 
+	#Usb_ex™_d´am_mode
+(è(
+UDPADDH
+ = (
+U8
+)~(1<<
+DPACC
+))
+
+	)
+
+292 
+	#Usb_£t_d´am_add»ss
+(
+addr
+è(
+UDPADDH
+ = (1<<
+DPACC
+è+ ((
+Ušt16
+ïdd¸>> 8), 
+UDPADDL
+ = (
+Uch¬
+ïddr)
+
+	)
+
+293 
+	#Usb_wr™e_d´am_by‹
+(
+v®
+è(
+UEDATX
+=v®)
+
+	)
+
+294 
+	#Usb_»ad_d´am_by‹
+(è(
+UEDATX
+)
+
+	)
+
+297 
+	#Usb_’abË_vbus
+(è(
+OTGCON
+ |ğ(1<<
+VBUSREQ
+))
+
+	)
+
+299 
+	#Usb_di§bË_vbus
+(è(
+OTGCON
+ |ğ(1<<
+VBUSRQC
+))
+
+	)
+
+301 
+	#Usb_’abË_mªu®_vbus
+(è(
+PORTE
+|=0x80,
+DDRE
+|=0x80,
+	`Usb_di§bË_uvcÚ_pš
+())
+
+	)
+
+303 
+	#Usb_di§bË_mªu®_vbus
+(è(
+PORTE
+&=~0x80,
+DDRE
+|=0x80,
+	`Usb_’abË_uvcÚ_pš
+())
+
+	)
+
+305 
+	#Is_usb_vbus_mªu®_Ú
+(è(((
+PINE
+&0x80è!ğ0è? 
+TRUE
+ : 
+FALSE
+)
+
+	)
+
+308 
+	#Usb_deviû_š™Ÿ‹_hÅ
+(è(
+OTGCON
+ |ğ(1<<
+HNPREQ
+))
+
+	)
+
+310 
+	#Usb_deviû_¡İ_hÅ
+(è(
+OTGCON
+ &ğ~(1<<
+HNPREQ
+))
+
+	)
+
+312 
+	#Usb_ho¡_acû±_hÅ
+(è(
+OTGCON
+ |ğ(1<<
+HNPREQ
+))
+
+	)
+
+314 
+	#Usb_ho¡_»jeù_hÅ
+(è(
+OTGCON
+ &ğ~(1<<
+HNPREQ
+))
+
+	)
+
+316 
+	#Usb_deviû_š™Ÿ‹_¤p
+(è(
+OTGCON
+ |ğ(1<<
+SRPREQ
+))
+
+	)
+
+318 
+	#Usb_£Ëù_vbus_¤p_m‘hod
+(è(
+OTGCON
+ |ğ(1<<
+SRPSEL
+))
+
+	)
+
+320 
+	#Usb_£Ëù_d©a_¤p_m‘hod
+(è(
+OTGCON
+ &ğ~(1<<
+SRPSEL
+))
+
+	)
+
+322 
+	#Usb_’abË_vbus_hw_cÚŒŞ
+(è(
+OTGCON
+ &ğ~(1<<
+VBUSHWC
+))
+
+	)
+
+324 
+	#Usb_di§bË_vbus_hw_cÚŒŞ
+(è(
+OTGCON
+ |ğ(1<<
+VBUSHWC
+))
+
+	)
+
+326 
+	#Is_usb_vbus_’abËd
+(è((
+OTGCON
+ & (1<<
+VBUSREQ
+)è? 
+TRUE
+ : 
+FALSE
+)
+
+	)
+
+328 
+	#Is_usb_hÅ
+(è((
+OTGCON
+ & (1<<
+HNPREQ
+)è? 
+TRUE
+ : 
+FALSE
+)
+
+	)
+
+330 
+	#Is_usb_deviû_¤p
+(è((
+OTGCON
+ & (1<<
+SRPREQ
+)è? 
+TRUE
+ : 
+FALSE
+)
+
+	)
+
+332 
+	#Is_usb_deviû_š™Ÿtšg_¤p
+(è((
+OTGCON
+ & (1<<
+SRPREQ
+)è? 
+TRUE
+ : 
+FALSE
+)
+
+	)
+
+335 
+	#S‘_Ùg_cu¡om_tim”
+(
+£l
+è(
+OTGTCON
+ = s–)
+
+	)
+
+338 
+	#Usb_’abË_su¥’d_time_out_š‹¼u±
+(è(
+OTGIEN
+ |ğ(1<<
+STOE
+))
+
+	)
+
+340 
+	#Usb_di§bË_su¥’d_time_out_š‹¼u±
+(è(
+OTGIEN
+ &ğ~(1<<
+STOE
+))
+
+	)
+
+341 
+	#Is_su¥’d_time_out_š‹¼u±_’abËd
+(è((
+OTGIEN
+ & (1<<
+STOE
+)è? 
+TRUE
+ : 
+FALSE
+)
+
+	)
+
+343 
+	#Usb_ack_su¥’d_time_out_š‹¼u±
+(è(
+OTGINT
+ &ğ~(1<<
+STOI
+))
+
+	)
+
+345 
+	#Is_usb_su¥’d_time_out_š‹¼u±
+(è((
+OTGINT
+ & (1<<
+STOI
+)è? 
+TRUE
+ : 
+FALSE
+)
+
+	)
+
+348 
+	#Usb_’abË_hÅ_”rÜ_š‹¼u±
+(è(
+OTGIEN
+ |ğ(1<<
+HNPERRE
+))
+
+	)
+
+350 
+	#Usb_di§bË_hÅ_”rÜ_š‹¼u±
+(è(
+OTGIEN
+ &ğ~(1<<
+HNPERRE
+))
+
+	)
+
+351 
+	#Is_hÅ_”rÜ_š‹¼u±_’abËd
+(è((
+OTGIEN
+ & (1<<
+HNPERRE
+)è? 
+TRUE
+ : 
+FALSE
+)
+
+	)
+
+353 
+	#Usb_ack_hÅ_”rÜ_š‹¼u±
+(è(
+OTGINT
+ &ğ~(1<<
+HNPERRI
+))
+
+	)
+
+355 
+	#Is_usb_hÅ_”rÜ_š‹¼u±
+(è((
+OTGINT
+ & (1<<
+HNPERRI
+)è? 
+TRUE
+ : 
+FALSE
+)
+
+	)
+
+358 
+	#Usb_’abË_rŞe_exchªge_š‹¼u±
+(è(
+OTGIEN
+ |ğ(1<<
+ROLEEXE
+))
+
+	)
+
+360 
+	#Usb_di§bË_rŞe_exchªge_š‹¼u±
+(è(
+OTGIEN
+ &ğ~(1<<
+ROLEEXE
+))
+
+	)
+
+361 
+	#Is_rŞe_exchªge_š‹¼u±_’abËd
+(è((
+OTGIEN
+ & (1<<
+ROLEEXE
+)è? 
+TRUE
+ : 
+FALSE
+)
+
+	)
+
+363 
+	#Usb_ack_rŞe_exchªge_š‹¼u±
+(è(
+OTGINT
+ &ğ~(1<<
+ROLEEXI
+))
+
+	)
+
+365 
+	#Is_usb_rŞe_exchªge_š‹¼u±
+(è((
+OTGINT
+ & (1<<
+ROLEEXI
+)è? 
+TRUE
+ : 
+FALSE
+)
+
+	)
+
+368 
+	#Usb_’abË_bcÚÃùiÚ_”rÜ_š‹¼u±
+(è(
+OTGIEN
+ |ğ(1<<
+BCERRE
+))
+
+	)
+
+370 
+	#Usb_di§bË_bcÚÃùiÚ_”rÜ_š‹¼u±
+(è(
+OTGIEN
+ &ğ~(1<<
+BCERRE
+))
+
+	)
+
+371 
+	#Is_bcÚÃùiÚ_”rÜ_š‹¼u±_’abËd
+(è((
+OTGIEN
+ & (1<<
+BCERRE
+)è? 
+TRUE
+ : 
+FALSE
+)
+
+	)
+
+373 
+	#Usb_ack_bcÚÃùiÚ_”rÜ_š‹¼u±
+(è(
+OTGINT
+ &ğ~(1<<
+BCERRI
+))
+
+	)
+
+375 
+	#Is_usb_bcÚÃùiÚ_”rÜ_š‹¼u±
+(è((
+OTGINT
+ & (1<<
+BCERRI
+)è? 
+TRUE
+ : 
+FALSE
+)
+
+	)
+
+378 
+	#Usb_’abË_vbus_”rÜ_š‹¼u±
+(è(
+OTGIEN
+ |ğ(1<<
+VBERRE
+))
+
+	)
+
+380 
+	#Usb_di§bË_vbus_”rÜ_š‹¼u±
+(è(
+OTGIEN
+ &ğ~(1<<
+VBERRE
+))
+
+	)
+
+381 
+	#Is_vbus_”rÜ_š‹¼u±_’abËd
+(è((
+OTGIEN
+ & (1<<
+VBERRE
+)è? 
+TRUE
+ : 
+FALSE
+)
+
+	)
+
+383 
+	#Usb_ack_vbus_”rÜ_š‹¼u±
+(è(
+OTGINT
+ &ğ~(1<<
+VBERRI
+))
+
+	)
+
+385 
+	#Is_usb_vbus_”rÜ_š‹¼u±
+(è((
+OTGINT
+ & (1<<
+VBERRI
+)è? 
+TRUE
+ : 
+FALSE
+)
+
+	)
+
+388 
+	#Usb_’abË_¤p_š‹¼u±
+(è(
+OTGIEN
+ |ğ(1<<
+SRPE
+))
+
+	)
+
+390 
+	#Usb_di§bË_¤p_š‹¼u±
+(è(
+OTGIEN
+ &ğ~(1<<
+SRPE
+))
+
+	)
+
+391 
+	#Is_¤p_š‹¼u±_’abËd
+(è((
+OTGIEN
+ & (1<<
+SRPE
+)è? 
+TRUE
+ : 
+FALSE
+)
+
+	)
+
+393 
+	#Usb_ack_¤p_š‹¼u±
+(è(
+OTGINT
+ &ğ~(1<<
+SRPI
+))
+
+	)
+
+395 
+	#Is_usb_¤p_š‹¼u±
+(è((
+OTGINT
+ & (1<<
+SRPI
+)è? 
+TRUE
+ : 
+FALSE
+)
+
+	)
+
+403 
+	#Usb_š™Ÿ‹_»mÙe_wake_up
+(è(
+UDCON
+ |ğ(1<<
+RMWKUP
+))
+
+	)
+
+405 
+	#Usb_d‘ach
+(è(
+UDCON
+ |ğ(1<<
+DETACH
+))
+
+	)
+
+407 
+	#Usb_©ch
+(è(
+UDCON
+ &ğ~(1<<
+DETACH
+))
+
+	)
+
+409 
+	#Is_usb_³ndšg_»mÙe_wake_up
+(è((
+UDCON
+ & (1<<
+RMWKUP
+)è? 
+TRUE
+ : 
+FALSE
+)
+
+	)
+
+411 
+	#Is_usb_d‘ached
+(è((
+UDCON
+ & (1<<
+DETACH
+)è? 
+TRUE
+ : 
+FALSE
+)
+
+	)
+
+414 
+	#Usb_g‘_deviû_š‹¼u±
+(è(
+UDINT
+ & (1<<
+UDIEN
+))
+
+	)
+
+416 
+	#Usb_ack_®l_deviû_š‹¼u±
+(è(
+UDINT
+ = ~(1<<
+UDIEN
+))
+
+	)
+
+419 
+	#Usb_’abË_»mÙe_wake_up_š‹¼u±
+(è(
+UDIEN
+ |ğ(1<<
+UPRSME
+))
+
+	)
+
+421 
+	#Usb_di§bË_»mÙe_wake_up_š‹¼u±
+(è(
+UDIEN
+ &ğ~(1<<
+UPRSME
+))
+
+	)
+
+422 
+	#Is_»mÙe_wake_up_š‹¼u±_’abËd
+(è((
+UDIEN
+ & (1<<
+UPRSME
+)è? 
+TRUE
+ : 
+FALSE
+)
+
+	)
+
+424 
+	#Usb_ack_»mÙe_wake_up_¡¬t
+(è(
+UDINT
+ = ~(1<<
+UPRSMI
+))
+
+	)
+
+426 
+	#Is_usb_»mÙe_wake_up_¡¬t
+(è((
+UDINT
+ & (1<<
+UPRSMI
+)è? 
+TRUE
+ : 
+FALSE
+)
+
+	)
+
+429 
+	#Usb_’abË_»sume_š‹¼u±
+(è(
+UDIEN
+ |ğ(1<<
+EORSME
+))
+
+	)
+
+431 
+	#Usb_di§bË_»sume_š‹¼u±
+(è(
+UDIEN
+ &ğ~(1<<
+EORSME
+))
+
+	)
+
+432 
+	#Is_»sume_š‹¼u±_’abËd
+(è((
+UDIEN
+ & (1<<
+EORSME
+)è? 
+TRUE
+ : 
+FALSE
+)
+
+	)
+
+434 
+	#Usb_ack_»sume
+(è(
+UDINT
+ = ~(1<<
+EORSMI
+))
+
+	)
+
+436 
+	#Is_usb_»sume
+(è((
+UDINT
+ & (1<<
+EORSMI
+)è? 
+TRUE
+ : 
+FALSE
+)
+
+	)
+
+439 
+	#Usb_’abË_wake_up_š‹¼u±
+(è(
+UDIEN
+ |ğ(1<<
+WAKEUPE
+))
+
+	)
+
+441 
+	#Usb_di§bË_wake_up_š‹¼u±
+(è(
+UDIEN
+ &ğ~(1<<
+WAKEUPE
+))
+
+	)
+
+442 
+	#Is_wake_up_š‹¼u±_’abËd
+(è((
+UDIEN
+ & (1<<
+WAKEUPE
+)è? 
+TRUE
+ : 
+FALSE
+)
+
+	)
+
+444 
+	#Usb_ack_wake_up
+(è(
+UDINT
+ = ~(1<<
+WAKEUPI
+))
+
+	)
+
+446 
+	#Is_usb_wake_up
+(è((
+UDINT
+ & (1<<
+WAKEUPI
+)è? 
+TRUE
+ : 
+FALSE
+)
+
+	)
+
+449 
+	#Usb_’abË_»£t_š‹¼u±
+(è(
+UDIEN
+ |ğ(1<<
+EORSTE
+))
+
+	)
+
+451 
+	#Usb_di§bË_»£t_š‹¼u±
+(è(
+UDIEN
+ &ğ~(1<<
+EORSTE
+))
+
+	)
+
+452 
+	#Is_»£t_š‹¼u±_’abËd
+(è((
+UDIEN
+ & (1<<
+EORSTE
+)è? 
+TRUE
+ : 
+FALSE
+)
+
+	)
+
+454 
+	#Usb_ack_»£t
+(è(
+UDINT
+ = ~(1<<
+EORSTI
+))
+
+	)
+
+456 
+	#Is_usb_»£t
+(è((
+UDINT
+ & (1<<
+EORSTI
+)è? 
+TRUE
+ : 
+FALSE
+)
+
+	)
+
+459 
+	#Usb_’abË_sof_š‹¼u±
+(è(
+UDIEN
+ |ğ(1<<
+SOFE
+))
+
+	)
+
+461 
+	#Usb_di§bË_sof_š‹¼u±
+(è(
+UDIEN
+ &ğ~(1<<
+SOFE
+))
+
+	)
+
+462 
+	#Is_sof_š‹¼u±_’abËd
+(è((
+UDIEN
+ & (1<<
+SOFE
+)è? 
+TRUE
+ : 
+FALSE
+)
+
+	)
+
+464 
+	#Usb_ack_sof
+(è(
+UDINT
+ = ~(1<<
+SOFI
+))
+
+	)
+
+466 
+	#Is_usb_sof
+(è((
+UDINT
+ & (1<<
+SOFI
+)è? 
+TRUE
+ : 
+FALSE
+)
+
+	)
+
+469 
+	#Usb_’abË_su¥’d_š‹¼u±
+(è(
+UDIEN
+ |ğ(1<<
+SUSPE
+))
+
+	)
+
+471 
+	#Usb_di§bË_su¥’d_š‹¼u±
+(è(
+UDIEN
+ &ğ~(1<<
+SUSPE
+))
+
+	)
+
+472 
+	#Is_su¥’d_š‹¼u±_’abËd
+(è((
+UDIEN
+ & (1<<
+SUSPE
+)è? 
+TRUE
+ : 
+FALSE
+)
+
+	)
+
+474 
+	#Usb_ack_su¥’d
+(è(
+UDINT
+ = ~(1<<
+SUSPI
+))
+
+	)
+
+476 
+	#Is_usb_su¥’d
+(è((
+UDINT
+ & (1<<
+SUSPI
+)è? 
+TRUE
+ : 
+FALSE
+)
+
+	)
+
+479 
+	#Usb_’abË_add»ss
+(è(
+UDADDR
+ |ğ(1<<
+ADDEN
+))
+
+	)
+
+481 
+	#Usb_di§bË_add»ss
+(è(
+UDADDR
+ &ğ~(1<<
+ADDEN
+))
+
+	)
+
+483 
+	#Usb_cÚfigu»_add»ss
+(
+addr
+è(
+UDADDR
+ = (UDADDR & (1<<
+ADDEN
+)è| ((
+U8
+ïdd¸& 
+MSK_UADD
+))
+
+	)
+
+486 
+	#Usb_äame_numb”
+(è((
+U16
+)((((U16)
+UDFNUMH
+è<< 8è| ((U16)
+UDFNUML
+)))
+
+	)
+
+488 
+	#Is_usb_äame_numb”_üc_”rÜ
+(è((
+UDMFN
+ & (1<<
+FNCERR
+)è? 
+TRUE
+ : 
+FALSE
+)
+
+	)
+
+498 
+	#Usb_£Ëù_’dpošt
+(
+•
+è(
+UENUM
+ = (
+U8
+ë°)
+
+	)
+
+501 
+	#Usb_g‘_£Ëùed_’dpošt
+(è(
+UENUM
+ )
+
+	)
+
+504 
+	#Usb_»£t_’dpošt
+(
+•
+è(
+UERST
+ = 1 << (
+U8
+ëp, UERST = 0)
+
+	)
+
+507 
+	#Usb_’abË_’dpošt
+(è(
+UECONX
+ |ğ(1<<
+EPEN
+))
+
+	)
+
+509 
+	#Usb_’abË_¡®l_hªdshake
+(è(
+UECONX
+ |ğ(1<<
+STALLRQ
+))
+
+	)
+
+511 
+	#Usb_»£t_d©a_toggË
+(è(
+UECONX
+ |ğ(1<<
+RSTDT
+))
+
+	)
+
+513 
+	#Usb_di§bË_’dpošt
+(è(
+UECONX
+ &ğ~(1<<
+EPEN
+))
+
+	)
+
+515 
+	#Usb_di§bË_¡®l_hªdshake
+(è(
+UECONX
+ |ğ(1<<
+STALLRQC
+))
+
+	)
+
+517 
+	#Usb_£Ëù_•num_fÜ_ıu
+(è(
+UECONX
+ &ğ~(1<<
+EPNUMS
+))
+
+	)
+
+519 
+	#Is_usb_’dpošt_’abËd
+(è((
+UECONX
+ & (1<<
+EPEN
+)è? 
+TRUE
+ : 
+FALSE
+)
+
+	)
+
+521 
+	#Is_usb_’dpošt_¡®l_»que¡ed
+(è((
+UECONX
+ & (1<<
+STALLRQ
+)è? 
+TRUE
+ : 
+FALSE
+)
+
+	)
+
+524 
+	#Usb_cÚfigu»_’dpošt_ty³
+(
+ty³
+è(
+UECFG0X
+ = (UECFG0X & ~(
+MSK_EPTYPE
+)è| ((
+U8
+éy³ << 6))
+
+	)
+
+526 
+	#Usb_cÚfigu»_’dpošt_dœeùiÚ
+(
+dœ
+è(
+UECFG0X
+ = (UECFG0X & ~(1<<
+EPDIR
+)è| ((
+U8
+)dœ))
+
+	)
+
+529 
+	#Usb_cÚfigu»_’dpošt_size
+(
+size
+è(
+UECFG1X
+ = (UECFG1X & ~
+MSK_EPSIZE
+è| ((
+U8
+)siz<< 4))
+
+	)
+
+531 
+	#Usb_cÚfigu»_’dpošt_bªk
+(
+bªk
+è(
+UECFG1X
+ = (UECFG1X & ~
+MSK_EPBK
+è| ((
+U8
+)bªk << 2))
+
+	)
+
+533 
+	#Usb_®loÿ‹_memÜy
+(è(
+UECFG1X
+ |ğ(1<<
+ALLOC
+))
+
+	)
+
+535 
+	#Usb_uÇÎoÿ‹_memÜy
+(è(
+UECFG1X
+ &ğ~(1<<
+ALLOC
+))
+
+	)
+
+538 
+	#Usb_ack_ov”æow_š‹¼u±
+(è(
+UESTA0X
+ &ğ~(1<<
+OVERFI
+))
+
+	)
+
+540 
+	#Usb_ack_und”æow_š‹¼u±
+(è(
+UESTA0X
+ &ğ~(1<<
+UNDERFI
+))
+
+	)
+
+542 
+	#Usb_ack_zÍ
+(è(
+UESTA0X
+ &ğ~(1<<
+ZLPSEEN
+))
+
+	)
+
+544 
+	#Usb_d©a_toggË
+(è((
+UESTA0X
+&
+MSK_DTSEQ
+è>> 2)
+
+	)
+
+546 
+	#Usb_nb_busy_bªk
+(è(
+UESTA0X
+ & 
+MSK_NBUSYBK
+)
+
+	)
+
+548 
+	#Is_usb_Úe_bªk_busy
+(è((
+UESTA0X
+ & 
+MSK_NBUSYBK
+è=ğ0 ? 
+FALSE
+ : 
+TRUE
+)
+
+	)
+
+550 
+	#Is_’dpošt_cÚfigu»d
+(è((
+UESTA0X
+ & (1<<
+CFGOK
+)è? 
+TRUE
+ : 
+FALSE
+)
+
+	)
+
+552 
+	#Is_usb_ov”æow
+(è((
+UESTA0X
+ & (1<<
+OVERFI
+)è? 
+TRUE
+ : 
+FALSE
+)
+
+	)
+
+554 
+	#Is_usb_und”æow
+(è((
+UESTA0X
+ & (1<<
+UNDERFI
+)è? 
+TRUE
+ : 
+FALSE
+)
+
+	)
+
+556 
+	#Is_usb_zÍ
+(è((
+UESTA0X
+ & (1<<
+ZLPSEEN
+)è? 
+TRUE
+ : 
+FALSE
+)
+
+	)
+
+559 
+	#Usb_cÚŒŞ_dœeùiÚ
+(è((
+UESTA1X
+ & (1<<
+CTRLDIR
+)è>> 2)
+
+	)
+
+561 
+	#Usb_cu¼’t_bªk
+(èĞ
+UESTA1X
+ & 
+MSK_CURRBK
+)
+
+	)
+
+564 
+	#Usb_ack_fifocÚ
+(è(
+UEINTX
+ &ğ~(1<<
+FIFOCON
+))
+
+	)
+
+566 
+	#Usb_ack_Çk_š
+(è(
+UEINTX
+ &ğ~(1<<
+NAKINI
+))
+
+	)
+
+568 
+	#Usb_ack_Çk_out
+(è(
+UEINTX
+ &ğ~(1<<
+NAKOUTI
+))
+
+	)
+
+570 
+	#Usb_ack_»ûive_£tup
+(è(
+UEINTX
+ &ğ~(1<<
+RXSTPI
+))
+
+	)
+
+572 
+	#Usb_ack_»ûive_out
+(è(
+UEINTX
+ &ğ~(1<<
+RXOUTI
+), 
+	`Usb_ack_fifocÚ
+())
+
+	)
+
+574 
+	#Usb_ack_¡®Ëd
+(è(
+MSK_STALLEDI
+ğ0)
+
+	)
+
+576 
+	#Usb_ack_š_»ady
+(è(
+UEINTX
+ &ğ~(1<<
+TXINI
+), 
+	`Usb_ack_fifocÚ
+())
+
+	)
+
+578 
+	#Usb_kl_Ï¡_š_bªk
+(è(
+UENTTX
+ |ğ(1<<
+RXOUTI
+))
+
+	)
+
+580 
+	#Is_usb_»ad_’abËd
+(è(
+UEINTX
+&(1<<
+RWAL
+))
+
+	)
+
+582 
+	#Is_usb_wr™e_’abËd
+(è(
+UEINTX
+&(1<<
+RWAL
+))
+
+	)
+
+584 
+	#Is_usb_»ad_cÚŒŞ_’abËd
+(è(
+UEINTX
+&(1<<
+TXINI
+))
+
+	)
+
+586 
+	#Is_usb_Çk_š_£Á
+(è(
+UEINTX
+&(1<<
+NAKINI
+))
+
+	)
+
+588 
+	#Is_usb_Çk_out_£Á
+(è(
+UEINTX
+&(1<<
+NAKOUTI
+))
+
+	)
+
+590 
+	#Is_usb_»ûive_£tup
+(è(
+UEINTX
+&(1<<
+RXSTPI
+))
+
+	)
+
+592 
+	#Is_usb_»ûive_out
+(è(
+UEINTX
+&(1<<
+RXOUTI
+))
+
+	)
+
+594 
+	#Is_usb_š_»ady
+(è(
+UEINTX
+&(1<<
+TXINI
+))
+
+	)
+
+596 
+	#Usb_£nd_š
+(è(
+UEINTX
+ &ğ~(1<<
+FIFOCON
+))
+
+	)
+
+598 
+	#Usb_£nd_cÚŒŞ_š
+(è(
+UEINTX
+ &ğ~(1<<
+TXINI
+))
+
+	)
+
+600 
+	#Usb_ä“_out_bªk
+(è(
+UEINTX
+ &ğ~(1<<
+FIFOCON
+))
+
+	)
+
+602 
+	#Usb_ack_cÚŒŞ_out
+(è(
+UEINTX
+ &ğ~(1<<
+RXOUTI
+))
+
+	)
+
+605 
+	#Usb_’abË_æow_”rÜ_š‹¼u±
+(è(
+UEIENX
+ |ğ(1<<
+FLERRE
+))
+
+	)
+
+607 
+	#Usb_’abË_Çk_š_š‹¼u±
+(è(
+UEIENX
+ |ğ(1<<
+NAKINE
+))
+
+	)
+
+609 
+	#Usb_’abË_Çk_out_š‹¼u±
+(è(
+UEIENX
+ |ğ(1<<
+NAKOUTE
+))
+
+	)
+
+611 
+	#Usb_’abË_»ûive_£tup_š‹¼u±
+(è(
+UEIENX
+ |ğ(1<<
+RXSTPE
+))
+
+	)
+
+613 
+	#Usb_’abË_»ûive_out_š‹¼u±
+(è(
+UEIENX
+ |ğ(1<<
+RXOUTE
+))
+
+	)
+
+615 
+	#Usb_’abË_¡®Ëd_š‹¼u±
+(è(
+UEIENX
+ |ğ(1<<
+STALLEDE
+))
+
+	)
+
+617 
+	#Usb_’abË_š_»ady_š‹¼u±
+(è(
+UEIENX
+ |ğ(1<<
+TXIN
+))
+
+	)
+
+619 
+	#Usb_di§bË_æow_”rÜ_š‹¼u±
+(è(
+UEIENX
+ &ğ~(1<<
+FLERRE
+))
+
+	)
+
+621 
+	#Usb_di§bË_Çk_š_š‹¼u±
+(è(
+UEIENX
+ &ğ~(1<<
+NAKINE
+))
+
+	)
+
+623 
+	#Usb_di§bË_Çk_out_š‹¼u±
+(è(
+UEIENX
+ &ğ~(1<<
+NAKOUTE
+))
+
+	)
+
+625 
+	#Usb_di§bË_»ûive_£tup_š‹¼u±
+(è(
+UEIENX
+ &ğ~(1<<
+RXSTPE
+))
+
+	)
+
+627 
+	#Usb_di§bË_»ûive_out_š‹¼u±
+(è(
+UEIENX
+ &ğ~(1<<
+RXOUTE
+))
+
+	)
+
+629 
+	#Usb_di§bË_¡®Ëd_š‹¼u±
+(è(
+UEIENX
+ &ğ~(1<<
+STALLEDE
+))
+
+	)
+
+631 
+	#Usb_di§bË_š_»ady_š‹¼u±
+(è(
+UEIENX
+ &ğ~(1<<
+TXIN
+))
+
+	)
+
+634 
+	#Usb_»ad_by‹
+(è(
+UEDATX
+)
+
+	)
+
+636 
+	#Usb_wr™e_by‹
+(
+by‹
+è(
+UEDATX
+ = (
+U8
+)by‹)
+
+	)
+
+639 
+	#Usb_by‹_couÁ”
+(è((((
+U16
+)
+UEBCHX
+è<< 8è| (
+UEBCLX
+))
+
+	)
+
+641 
+	#Usb_by‹_couÁ”_8
+(è((
+U8
+)
+UEBCLX
+)
+
+	)
+
+644 
+	#Usb_š‹¼u±_æags
+(è(
+UEINT
+)
+
+	)
+
+646 
+	#Is_usb_’dpošt_ev’t
+(è(
+	`Usb_š‹¼u±_æags
+(è!ğ0x00)
+
+	)
+
+655 
+	#Ho¡_®loÿ‹_memÜy
+(è(
+UPCFG1X
+ |ğ(1<<
+ALLOC
+))
+
+	)
+
+657 
+	#Ho¡_uÇÎoÿ‹_memÜy
+(è(
+UPCFG1X
+ &ğ~(1<<
+ALLOC
+))
+
+	)
+
+659 
+	#Is_ho¡_pe_memÜy_®loÿ‹d
+(è(
+UPCFG1X
+ & (1<<
+ALLOC
+è? 
+TRUE
+ : 
+FALSE
+)
+
+	)
+
+662 
+	#Ho¡_’abË
+(è(
+USBCON
+ |ğ(1<<
+HOST
+))
+
+	)
+
+664 #iâdeà 
+SOFEN
+
+
+665 
+	#SOFEN
+ 0
+
+668 
+	#Ho¡_’abË_sof
+(è(
+UHCON
+ |ğ(1<<
+SOFEN
+))
+
+	)
+
+670 
+	#Ho¡_di§bË_sof
+(è(
+UHCON
+ &ğ~(1<<
+SOFEN
+))
+
+	)
+
+672 
+	#Ho¡_£nd_»£t
+(è(
+UHCON
+ |ğ(1<<
+RESET
+))
+
+	)
+
+674 
+	#Ho¡_is_»£t
+(è((
+UHCON
+ & (1<<
+RESET
+)è? 
+TRUE
+ : 
+FALSE
+)
+
+	)
+
+676 
+	#Ho¡_£nd_»sume
+(è(
+UHCON
+ |ğ(1<<
+RESUME
+))
+
+	)
+
+678 
+	#Ho¡_is_»sume
+(è((
+UHCON
+ & (1<<
+RESUME
+)è? 
+TRUE
+ : 
+FALSE
+)
+
+	)
+
+681 
+	#Ho¡_’abË_sof_š‹¼u±
+(è(
+UHIEN
+ |ğ(1<<
+HSOFE
+))
+
+	)
+
+683 
+	#Ho¡_di§bË_sof_š‹¼u±
+(è(
+UHIEN
+ &ğ~(1<<
+HSOFE
+))
+
+	)
+
+684 
+	#Is_ho¡_sof_š‹¼u±_’abËd
+(è((
+UHIEN
+ & (1<<
+HSOFE
+)è? 
+TRUE
+ : 
+FALSE
+)
+
+	)
+
+686 
+	#Ho¡_is_sof
+(è((
+UHINT
+ & (1<<
+HSOFI
+)è? 
+TRUE
+ : 
+FALSE
+)
+
+	)
+
+687 
+	#Is_ho¡_sof
+(è((
+UHINT
+ & (1<<
+HSOFI
+)è? 
+TRUE
+ : 
+FALSE
+)
+
+	)
+
+688 
+	#Ho¡_ack_sof
+(è(
+UHINT
+ &ğ~(1<<
+HSOFI
+))
+
+	)
+
+691 
+	#Ho¡_’abË_hwup_š‹¼u±
+(è(
+UHIEN
+ |ğ(1<<
+HWUPE
+))
+
+	)
+
+693 
+	#Ho¡_di§bË_hwup_š‹¼u±
+(è(
+UHIEN
+ &ğ~(1<<
+HWUPE
+))
+
+	)
+
+694 
+	#Is_ho¡_hwup_š‹¼u±_’abËd
+(è((
+UHIEN
+ & (1<<
+HWUPE
+)è? 
+TRUE
+ : 
+FALSE
+)
+
+	)
+
+696 
+	#Ho¡_is_hwup
+(è((
+UHINT
+ & (1<<
+HWUPI
+)è? 
+TRUE
+ : 
+FALSE
+)
+
+	)
+
+698 
+	#Is_ho¡_hwup
+(è((
+UHINT
+ & (1<<
+HWUPI
+)è? 
+TRUE
+ : 
+FALSE
+)
+
+	)
+
+699 
+	#Ho¡_ack_hwup
+(è(
+UHINT
+ &ğ~(1<<
+HWUPI
+))
+
+	)
+
+702 
+	#Ho¡_’abË_down_¡»am_»sume_š‹¼u±
+(è(
+UHIEN
+ |ğ(1<<
+RSMEDE
+))
+
+	)
+
+704 
+	#Ho¡_di§bË_down_¡»am_»sume_š‹¼u±
+(è(
+UHIEN
+ &ğ~(1<<
+RSMEDE
+))
+
+	)
+
+705 
+	#Is_ho¡_down_¡»am_»sume_š‹¼u±_’abËd
+(è((
+UHIEN
+ & (1<<
+RSMEDE
+)è? 
+TRUE
+ : 
+FALSE
+)
+
+	)
+
+707 
+	#Is_ho¡_down_¡»am_»sume
+(è((
+UHINT
+ & (1<<
+RSMEDI
+)è? 
+TRUE
+ : 
+FALSE
+)
+
+	)
+
+708 
+	#Ho¡_ack_down_¡»am_»sume
+(è(
+UHINT
+ &ğ~(1<<
+RSMEDI
+))
+
+	)
+
+711 
+	#Ho¡_’abË_»mÙe_wakeup_š‹¼u±
+(è(
+UHIEN
+ |ğ(1<<
+RXRSME
+))
+
+	)
+
+713 
+	#Ho¡_di§bË_»mÙe_wakeup_š‹¼u±
+(è(
+UHIEN
+ &ğ~(1<<
+RXRSME
+))
+
+	)
+
+714 
+	#Is_ho¡_»mÙe_wakeup_š‹¼u±_’abËd
+(è((
+UHIEN
+ & (1<<
+RXRSME
+)è? 
+TRUE
+ : 
+FALSE
+)
+
+	)
+
+716 
+	#Ho¡_is_»mÙe_wakeup
+(è((
+UHINT
+ & (1<<
+RXRSMI
+)è? 
+TRUE
+ : 
+FALSE
+)
+
+	)
+
+718 
+	#Is_ho¡_»mÙe_wakeup
+(è((
+UHINT
+ & (1<<
+RXRSMI
+)è? 
+TRUE
+ : 
+FALSE
+)
+
+	)
+
+719 
+	#Ho¡_ack_»mÙe_wakeup
+(è(
+UHINT
+ &ğ~(1<<
+RXRSMI
+))
+
+	)
+
+722 
+	#Ho¡_’abË_deviû_cÚÃùiÚ_š‹¼u±
+(è(
+UHIEN
+ |ğ(1<<
+DCONNE
+))
+
+	)
+
+724 
+	#Ho¡_di§bË_deviû_cÚÃùiÚ_š‹¼u±
+(è(
+UHIEN
+ &ğ~(1<<
+DCONNE
+))
+
+	)
+
+725 
+	#Is_ho¡_deviû_cÚÃùiÚ_š‹¼u±_’abËd
+(è((
+UHIEN
+ & (1<<
+DCONNE
+)è? 
+TRUE
+ : 
+FALSE
+)
+
+	)
+
+727 
+	#Is_deviû_cÚÃùiÚ
+(è(
+UHINT
+ & (1<<
+DCONNI
+))
+
+	)
+
+729 
+	#Ho¡_ack_deviû_cÚÃùiÚ
+(è(
+UHINT
+ = ~(1<<
+DCONNI
+))
+
+	)
+
+732 
+	#Ho¡_’abË_deviû_discÚÃùiÚ_š‹¼u±
+(è(
+UHIEN
+ |ğ(1<<
+DDISCE
+))
+
+	)
+
+734 
+	#Ho¡_di§bË_deviû_discÚÃùiÚ_š‹¼u±
+(è(
+UHIEN
+ &ğ~(1<<
+DDISCE
+))
+
+	)
+
+735 
+	#Is_ho¡_deviû_discÚÃùiÚ_š‹¼u±_’abËd
+(è((
+UHIEN
+ & (1<<
+DDISCE
+)è? 
+TRUE
+ : 
+FALSE
+)
+
+	)
+
+737 
+	#Is_deviû_discÚÃùiÚ
+(è(
+UHINT
+ & (1<<
+DDISCI
+è? 
+TRUE
+ : 
+FALSE
+)
+
+	)
+
+739 
+	#Ho¡_ack_deviû_discÚÃùiÚ
+(è(
+UHINT
+ = ~(1<<
+DDISCI
+))
+
+	)
+
+742 
+	#Ho¡_’abË_»£t_š‹¼u±
+(è(
+UHIEN
+ |ğ(1<<
+RSTE
+))
+
+	)
+
+744 
+	#Ho¡_di§bË_»£t_š‹¼u±
+(è(
+UHIEN
+ &ğ~(1<<
+RSTE
+))
+
+	)
+
+745 
+	#Is_ho¡_»£t_š‹¼u±_’abËd
+(è((
+UHIEN
+ & (1<<
+RSTE
+)è? 
+TRUE
+ : 
+FALSE
+)
+
+	)
+
+747 
+	#Ho¡_ack_»£t
+(è(
+UHINT
+ = ~(1<<
+RSTI
+))
+
+	)
+
+749 
+	#Is_ho¡_»£t
+(è
+	`Ho¡_is_»£t
+()
+
+	)
+
+753 
+	#Ho¡_vbus_»que¡
+(è(
+OTGCON
+ |ğ(1<<
+VBUSREQ
+))
+
+	)
+
+755 
+	#Ho¡_ş—r_vbus_»que¡
+(è(
+OTGCON
+ |ğ(1<<
+VBUSRQC
+))
+
+	)
+
+757 
+	#Ho¡_cÚfigu»_add»ss
+(
+addr
+è(
+UHADDR
+ =‡dd¸& 
+MSK_HADDR
+)
+
+	)
+
+760 
+	#Is_ho¡_fuÎ_¥“d
+(è((
+USBSTA
+ & (1<<
+SPEED
+)è? 
+TRUE
+ : 
+FALSE
+)
+
+	)
+
+769 
+	#Ho¡_£Ëù_pe
+(
+p
+è(
+UPNUM
+ = (
+U8
+í)
+
+	)
+
+772 
+	#Ho¡_g‘_£Ëùed_pe
+(è(
+UPNUM
+ )
+
+	)
+
+775 
+	#Ho¡_’abË_pe
+(è(
+UPCONX
+ |ğ(1<<
+PEN
+))
+
+	)
+
+777 
+	#Ho¡_di§bË_pe
+(è(
+UPCONX
+ &ğ~(1<<
+PEN
+))
+
+	)
+
+780 
+	#Ho¡_£t_tok’_£tup
+(è(
+UPCFG0X
+ = UPCFG0X & ~
+MSK_TOKEN_SETUP
+)
+
+	)
+
+782 
+	#Ho¡_£t_tok’_š
+(è(
+UPCFG0X
+ = (UPCFG0X & ~
+MSK_TOKEN_SETUP
+è| 
+MSK_TOKEN_IN
+)
+
+	)
+
+784 
+	#Ho¡_£t_tok’_out
+(è(
+UPCFG0X
+ = (UPCFG0X & ~
+MSK_TOKEN_SETUP
+è| 
+MSK_TOKEN_OUT
+)
+
+	)
+
+787 
+	#Ho¡_g‘_’dpošt_numb”
+(è(
+UPCFG0X
+ & (
+MSK_PEPNUM
+))
+
+	)
+
+790 
+	#Ho¡_g‘_pe_š‹¼u±
+(è(
+UPINT
+)
+
+	)
+
+793 
+	#Ho¡_£t_š‹¼u±_äequ’cy
+(
+äq
+è(
+UPCFG2X
+ = (
+U8
+)äq)
+
+	)
+
+796 
+	#Is_pe_cÚfigu»d
+(è(
+UPSTAX
+ & (1<<
+CFGOK
+))
+
+	)
+
+798 
+	#Is_ho¡_Úe_bªk_busy
+(è((
+UPSTAX
+ & 
+MSK_NBUSYBK
+è!ğ0)
+
+	)
+
+800 
+	#Ho¡_numb”_of_busy_bªk
+(è(
+UPSTAX
+ & 
+MSK_NBUSYBK
+)
+
+	)
+
+803 
+	#Ho¡_»£t_pe
+(
+p
+è(
+UPRST
+ = 1<<°, UPRST = 0)
+
+	)
+
+806 
+	#Ho¡_wr™e_by‹
+(
+d©
+è(
+UPDATX
+ = d©)
+
+	)
+
+808 
+	#Ho¡_»ad_by‹
+(è(
+UPDATX
+)
+
+	)
+
+811 
+	#Ho¡_ä“ze_pe
+(è(
+UPCONX
+ |ğ(1<<
+PFREEZE
+))
+
+	)
+
+813 
+	#Ho¡_unä“ze_pe
+(è(
+UPCONX
+ &ğ~(1<<
+PFREEZE
+))
+
+	)
+
+815 
+	#Is_ho¡_pe_ä“ze
+(è(
+UPCONX
+ & (1<<
+PFREEZE
+))
+
+	)
+
+818 
+	#Ho¡_»£t_pe_d©a_toggË
+(è(
+UPCONX
+ |ğ(1<<
+RSTDT
+è)
+
+	)
+
+821 
+	#Is_ho¡_£tup_£Á
+(è((
+UPINTX
+ & (1<<
+TXSTPI
+)è? 
+TRUE
+ : 
+FALSE
+)
+
+	)
+
+823 
+	#Is_ho¡_cÚŒŞ_š_»ûived
+(è((
+UPINTX
+ & (1<<
+RXINI
+)è? 
+TRUE
+ : 
+FALSE
+)
+
+	)
+
+825 
+	#Is_ho¡_cÚŒŞ_out_£Á
+(è((
+UPINTX
+ & (1<<
+TXOUTI
+)è? 
+TRUE
+ : 
+FALSE
+)
+
+	)
+
+827 
+	#Is_ho¡_¡®l
+(è((
+UPINTX
+ & (1<<
+RXSTALLI
+)è? 
+TRUE
+ : 
+FALSE
+)
+
+	)
+
+829 
+	#Is_ho¡_pe_”rÜ
+(è((
+UPINTX
+ & (1<<
+PERRI
+)è? 
+TRUE
+ : 
+FALSE
+)
+
+	)
+
+831 
+	#Ho¡_£nd_£tup
+(è(
+UPINTX
+ &ğ~(1<<
+FIFOCON
+))
+
+	)
+
+833 
+	#Ho¡_£nd_cÚŒŞ_š
+(è(
+UPINTX
+ &ğ~(1<<
+FIFOCON
+))
+
+	)
+
+835 
+	#Ho¡_£nd_cÚŒŞ_out
+(è(
+UPINTX
+ &ğ~(1<<
+FIFOCON
+))
+
+	)
+
+837 
+	#Ho¡_ack_cÚŒŞ_out
+(è(
+UPINTX
+ &ğ~(1<<
+TXOUTI
+))
+
+	)
+
+839 
+	#Ho¡_ack_cÚŒŞ_š
+(è(
+UPINTX
+ &ğ~(1<<
+RXINI
+))
+
+	)
+
+841 
+	#Ho¡_ack_£tup
+(è(
+UPINTX
+ &ğ~(1<<
+TXSTPI
+))
+
+	)
+
+843 
+	#Ho¡_ack_¡®l
+(è(
+UPINTX
+ &ğ~(1<<
+RXSTALLI
+))
+
+	)
+
+846 
+	#Ho¡_£nd_out
+(è(
+UPINTX
+ &ğ~(1<<
+FIFOCON
+))
+
+	)
+
+848 
+	#Is_ho¡_out_£Á
+(è((
+UPINTX
+ & (1<<
+TXOUTI
+)è? 
+TRUE
+ : 
+FALSE
+)
+
+	)
+
+850 
+	#Ho¡_ack_out_£Á
+(è(
+UPINTX
+ &ğ~(1<<
+TXOUTI
+))
+
+	)
+
+852 
+	#Is_ho¡_š_»ûived
+(è((
+UPINTX
+ & (1<<
+RXINI
+)è? 
+TRUE
+ : 
+FALSE
+)
+
+	)
+
+854 
+	#Ho¡_ack_š_»ûived
+(è(
+UPINTX
+ &ğ~(1<<
+RXINI
+))
+
+	)
+
+856 
+	#Ho¡_£nd_š
+(è(
+UPINTX
+ &ğ~(1<<
+FIFOCON
+))
+
+	)
+
+858 
+	#Is_ho¡_Çk_»ûived
+(è((
+UPINTX
+ & (1<<
+NAKEDI
+)è? 
+TRUE
+ : 
+FALSE
+)
+
+	)
+
+860 
+	#Ho¡_ack_Çk_»ûived
+(è(
+UPINTX
+ &ğ~(1<<
+NAKEDI
+))
+
+	)
+
+865 
+	#Is_ho¡_»ad_’abËd
+(è(
+UPINTX
+&(1<<
+RWAL
+))
+
+	)
+
+867 
+	#Is_ho¡_wr™e_’abËd
+(è(
+UPINTX
+&(1<<
+RWAL
+))
+
+	)
+
+870 
+	#Ho¡_¡ªd¬d_š_mode
+(è(
+UPCONX
+ &ğ~(1<<
+INMODE
+))
+
+	)
+
+872 
+	#Ho¡_cÚtšuous_š_mode
+(è(
+UPCONX
+ |ğ(1<<
+INMODE
+))
+
+	)
+
+875 
+	#Ho¡_š_»que¡_numb”
+(
+š_num
+è(
+UPINRQX
+ = (
+U8
+)š_num)
+
+	)
+
+877 
+	#Ho¡_g‘_š_»que¡_numb”
+(è(
+UPINRQX
+)
+
+	)
+
+880 
+	#Ho¡_d©a_Ëngth_U8
+(è(
+UPBCLX
+)
+
+	)
+
+882 
+	#Ho¡_d©a_Ëngth_U16
+(è((((
+U16
+)
+UPBCHX
+)<<8è| 
+UPBCLX
+)
+
+	)
+
+884 
+	#Ho¡_by‹_couÁ”
+(è
+	`Ho¡_d©a_Ëngth_U16
+()
+
+	)
+
+886 
+	#Ho¡_by‹_couÁ”_8
+(è
+	`Ho¡_d©a_Ëngth_U8
+()
+
+	)
+
+889 
+	#Ho¡_g‘_pe_Ëngth
+(è((
+U16
+)0x08 << ((
+UPCFG1X
+ & 
+MSK_PSIZE
+)>>4))
+
+	)
+
+892 
+	#Ho¡_g‘_pe_ty³
+(è(
+UPCFG0X
+>>6)
+
+	)
+
+895 
+	#Ho¡_”rÜ_¡©us
+(è(
+UPERRX
+ & 
+MSK_ERROR
+)
+
+	)
+
+897 
+	#Ho¡_ack_®l_”rÜs
+(è(
+UPERRX
+ = 0x00)
+
+	)
+
+900 
+	#Ho¡_’abË_Œªsm™_š‹¼u±
+(è(
+UPIENX
+ |ğ(1<<
+TXOUTE
+))
+
+	)
+
+902 
+	#Ho¡_di§bË_Œªsm™_š‹¼u±
+(è(
+UPIENX
+ &ğ~(1<<
+TXOUTE
+))
+
+	)
+
+905 
+	#Ho¡_’abË_»ûive_š‹¼u±
+(è(
+UPIENX
+ |ğ(1<<
+RXINE
+))
+
+	)
+
+907 
+	#Ho¡_di§bË_»ûive_š‹¼u±
+(è(
+UPIENX
+ &ğ~(1<<
+RXINE
+))
+
+	)
+
+910 
+	#Ho¡_’abË_¡®l_š‹¼u±
+(è(
+UPIENX
+ |ğ(1<<
+RXSTALLE
+))
+
+	)
+
+912 
+	#Ho¡_di§bË_¡®l_š‹¼u±
+(è(
+UPIENX
+ &ğ~(1<<
+RXSTALLE
+))
+
+	)
+
+915 
+	#Ho¡_’abË_”rÜ_š‹¼u±
+(è(
+UPIENX
+ |ğ(1<<
+PERRE
+))
+
+	)
+
+917 
+	#Ho¡_di§bË_”rÜ_š‹¼u±
+(è(
+UPIENX
+ &ğ~(1<<
+PERRE
+))
+
+	)
+
+920 
+	#Ho¡_’abË_Çk_š‹¼u±
+(è(
+UPIENX
+ |ğ(1<<
+NAKEDE
+))
+
+	)
+
+922 
+	#Ho¡_di§bË_Çk_š‹¼u±
+(è(
+UPIENX
+ &ğ~(1<<
+NAKEDE
+))
+
+	)
+
+924 
+	#G‘_pe_tok’
+(
+x
+è((x & (0x80)è? 
+TOKEN_IN
+ : 
+TOKEN_OUT
+)
+
+	)
+
+935 
+	#wSWAP
+(
+x
+) \
+
+936 Ğ(((
+x
+)>>8)&0x00FF) \
+
+937 | (((
+x
+)<<8)&0xFF00) \
+
+938 )
+
+	)
+
+948 #ià!
+defšed
+(
+BIG_ENDIAN
+è&& !defšed(
+LITTLE_ENDIAN
+)
+
+949 #”rÜ 
+YOU
+ 
+MUST
+ 
+Defše
+ 
+the
+ 
+EndŸn
+ 
+Ty³
+ 
+of
+ 
+rg‘
+: 
+LITTLE_ENDIAN
+ 
+Ü
+ 
+BIG_ENDIAN
+
+
+951 #ifdeà
+LITTLE_ENDIAN
+
+
+952 
+	#Usb_wr™e_wÜd_’um_¡ruc
+(
+x
+è(x)
+
+	)
+
+954 
+	#Usb_wr™e_wÜd_’um_¡ruc
+(
+x
+è(
+	`wSWAP
+(x))
+
+	)
+
+962 
+U8
+ 
+usb_cÚfig_•
+ (U8, U8);
+
+963 
+U8
+ 
+usb_£Ëù_’pošt_š‹¼u±
+ ();
+
+964 
+U16
+ 
+usb_g‘_nb_by‹_•w
+ ();
+
+965 
+U8
+ 
+usb_£nd_·ck‘
+ (U8 , U8*, U8);
+
+966 
+U8
+ 
+usb_»ad_·ck‘
+ (U8 , U8*, U8);
+
+967 
+usb_h®t_’dpošt
+ (
+U8
+);
+
+968 
+usb_»£t_’dpošt
+ (
+U8
+);
+
+969 
+U8
+ 
+usb_š™_deviû
+ ();
+
+971 
+U8
+ 
+ho¡_cÚfig_pe
+ (U8, U8);
+
+972 
+U8
+ 
+ho¡_d‘”mše_pe_size
+ (
+U16
+);
+
+973 
+ho¡_di§bË_®l_pe
+ ();
+
+974 
+U8
+ 
+usb_g‘_nb_pe_š‹¼u±
+ ();
+
+	@at90usb128/modules/usb/device_chap9/usb_device_task.c
+
+48 
+	~"cÚfig.h
+"
+
+49 
+	~"cÚf_usb.h
+"
+
+50 
+	~"usb_deviû_sk.h
+"
+
+51 
+	~"moduËs/usb/usb_sk.h
+"
+
+52 #ià(
+USB_OTG_FEATURE
+ =ğ
+ENABLED
+)
+
+53 
+	~"moduËs/usb/ho¡_ch­9/usb_ho¡_sk.h
+"
+
+55 
+	~"lib_mcu/usb/usb_drv.h
+"
+
+56 
+	~"usb_desütÜs.h
+"
+
+57 
+	~"moduËs/usb/deviû_ch­9/usb_¡ªd¬d_»que¡.h
+"
+
+58 
+	~"lib_mcu/¶l/¶l_drv.h
+"
+
+60 #ià((
+TARGET_BOARD
+==
+SPIDER
+è&& (
+USB_OTG_FEATURE
+==
+ENABLED
+))
+
+61 
+	~"lib_bßrd/lcd/lcd_drv.h
+"
+
+76 
+b™
+ 
+	gusb_cÚÃùed
+=
+FALSE
+;
+
+83 
+b™
+ 
+	gusb_su¥’ded
+=
+FALSE
+;
+
+94 
+U8
+ 
+usb_cÚfigu¿tiÚ_nb
+;
+
+97 #ià(
+USB_OTG_FEATURE
+ =ğ
+ENABLED
+)
+
+100 
+U8
+ 
+	gÙg_b_deviû_¡©e
+;
+
+104 
+U8
+ 
+	gÙg_deviû_£ssiÚs
+;
+
+108 
+U8
+ 
+	gÙg_b_deviû_hÅ
+;
+
+112 
+U16
+ 
+	gÙg_tb_¤p_ıt
+;
+
+117 
+U8
+ 
+	gsof_£’_š_£ssiÚ
+;
+
+135 
+	$usb_deviû_sk_š™
+()
+
+137 
+	`EÇbË_š‹¼u±
+();
+
+138 
+	`Usb_di§bË
+();
+
+139 
+	`Usb_’abË
+();
+
+140 
+	`Usb_£Ëù_deviû
+();
+
+141 #ià(
+USB_LOW_SPEED_DEVICE
+==
+ENABLE
+)
+
+142 
+	`Usb_low_¥“d_mode
+();
+
+144 
+	`EÇbË_š‹¼u±
+();
+
+145 #ià(
+USB_OTG_FEATURE
+ =ğ
+ENABLED
+)
+
+146 
+	`Usb_’abË_id_š‹¼u±
+();
+
+147 
+	`CË¬_Ùg_ã©u»s_äom_ho¡
+();
+
+148 
+Ùg_deviû_£ssiÚs
+ = 0;
+
+150 
+	}
+}
+
+165 
+	$usb_¡¬t_deviû
+ ()
+
+167 
+	`PÎ_¡¬t_auto
+();
+
+168 
+	`Wa™_¶l_»ady
+();
+
+169 
+	`Usb_unä“ze_şock
+();
+
+170 
+	`usb_š™_deviû
+();
+
+171 
+	`Usb_©ch
+();
+
+172 
+	`Usb_’abË_su¥’d_š‹¼u±
+();
+
+173 
+	`Usb_’abË_»£t_š‹¼u±
+();
+
+174 #ià(
+USB_OTG_FEATURE
+ =ğ
+ENABLED
+)
+
+175 
+	`Usb_’abË_id_š‹¼u±
+();
+
+177 
+	}
+}
+
+189 
+	$usb_deviû_sk
+()
+
+192 #ià(
+USB_OTG_FEATURE
+ =ğ
+ENABLED
+)
+
+194 if(
+	`Is_usb_ev’t
+(
+EVT_USB_RESET
+))
+
+196 
+	`Usb_ack_ev’t
+(
+EVT_USB_RESET
+);
+
+197 
+	`Usb_»£t_’dpošt
+(0);
+
+198 
+usb_cÚfigu¿tiÚ_nb
+=0;
+
+199 
+Ùg_b_deviû_¡©e
+ = 
+B_IDLE
+;
+
+200 
+	`CË¬_Ùg_ã©u»s_äom_ho¡
+();
+
+204 
+Ùg_b_deviû_¡©e
+)
+
+212 
+B_IDLE
+:
+
+213 ià(
+	`Is_usb_vbus_high
+())
+
+216 
+usb_cÚÃùed
+ = 
+TRUE
+;
+
+217 
+»mÙe_wakeup_ã©u»
+ = 
+DISABLED
+;
+
+218 
+	`usb_¡¬t_deviû
+();
+
+219 
+	`Usb_vbus_Ú_aùiÚ
+();
+
+220 
+	`Usb_©ch
+();
+
+221 
+Ùg_b_deviû_¡©e
+ = 
+B_PERIPHERAL
+;
+
+222 
+	`Ack_u£r_»que¡_¤p
+();
+
+223 
+	`CË¬_Ùg_ã©u»s_äom_ho¡
+();
+
+224 
+»mÙe_wakeup_ã©u»
+ = 
+DISABLED
+;
+
+225 
+	`End_£ssiÚ_w™h_¤p
+();
+
+226 ià(
+	`Is_¤p_£Á_ªd_wa™šg_ªsw”
+(è&& (
+sof_£’_š_£ssiÚ
+ =ğ
+TRUE
+))
+
+228 
+	`Ack_¤p_£Á_ªd_ªsw”
+();
+
+229 
+	`Otg_´št_Ãw_çu»_mes§ge
+(
+OTGMSG_A_RESPONDED
+,
+OTG_TEMPO_2SEC
+);
+
+231 
+	`Usb_’abË_sof_š‹¼u±
+();
+
+236 ià(
+	`Is_u£r_»que¡ed_¤p
+(è&& 
+	`Is_usb_id_deviû
+())
+
+239 
+	`Ack_u£r_»que¡_¤p
+();
+
+240 ià(!
+	`Is_¤p_£Á_ªd_wa™šg_ªsw”
+())
+
+242 
+	`PÎ_¡¬t_auto
+();
+
+243 
+	`Wa™_¶l_»ady
+();
+
+244 
+	`Usb_di§bË
+();
+
+245 
+	`Usb_’abË_uid_pš
+();
+
+246 
+	`Usb_’abË
+();
+
+247 
+	`Usb_unä“ze_şock
+();
+
+248 
+	`Usb_£Ëù_deviû
+();
+
+249 
+	`Usb_©ch
+();
+
+250 
+Ùg_b_deviû_¡©e
+ = 
+B_SRP_INIT
+;
+
+251 
+	`Usb_deviû_š™Ÿ‹_¤p
+();
+
+252 
+sof_£’_š_£ssiÚ
+ = 
+FALSE
+;
+
+255 ià((
+	`Is_¤p_£Á_ªd_wa™šg_ªsw”
+()è&& (
+	`Is_tb_¤p_couÁ”_ov”æow
+()))
+
+258 
+	`End_£ssiÚ_w™h_¤p
+();
+
+259 
+	`Ack_¤p_£Á_ªd_ªsw”
+();
+
+260 
+	`Otg_´št_Ãw_çu»_mes§ge
+(
+OTGMSG_SRP_A_NO_RESP
+,
+OTG_TEMPO_3SEC
+);
+
+272 
+B_SRP_INIT
+:
+
+273 ià(!
+	`Is_usb_deviû_š™Ÿtšg_¤p
+())
+
+275 
+Ùg_b_deviû_¡©e
+ = 
+B_IDLE
+;
+
+276 
+	`S½_£Á_ªd_wa™šg_ªsw”
+();
+
+277 
+	`In™_tb_¤p_couÁ”
+();
+
+278 
+	`S¹_£ssiÚ_w™h_¤p
+();
+
+279 
+	`Otg_´št_Ãw_ev’t_mes§ge
+(
+OTGMSG_SRP_STARTED
+,
+TB_SRP_FAIL_MIN
+);
+
+292 
+B_PERIPHERAL
+:
+
+293 ià(
+	`Is_Ùg_ev’t
+(
+EVT_OTG_DEVICE_CONNECTED
+))
+
+295 
+	`Otg_ack_ev’t
+(
+EVT_OTG_DEVICE_CONNECTED
+);
+
+296 
+	`Otg_´št_Ãw_ev’t_mes§ge
+(
+OTGMSG_CONNECTED_TO_A
+,
+OTG_TEMPO_4SEC
+);
+
+298 ià(
+	`Is_usb_ev’t
+(
+EVT_USB_SUSPEND
+))
+
+302 ià(
+	`Is_¤p_£Á_ªd_wa™šg_ªsw”
+(è&& (
+sof_£’_š_£ssiÚ
+ =ğ
+TRUE
+))
+
+304 
+	`Ack_¤p_£Á_ªd_ªsw”
+();
+
+305 
+	`Otg_´št_Ãw_çu»_mes§ge
+(
+OTGMSG_A_RESPONDED
+,
+OTG_TEMPO_2SEC
+);
+
+307 ià((
+	`Is_¤p_£Á_ªd_wa™šg_ªsw”
+()è&& (
+	`Is_tb_¤p_couÁ”_ov”æow
+()))
+
+310 
+	`End_£ssiÚ_w™h_¤p
+();
+
+311 
+	`Ack_¤p_£Á_ªd_ªsw”
+();
+
+312 
+	`Otg_´št_Ãw_çu»_mes§ge
+(
+OTGMSG_SRP_A_NO_RESP
+,
+OTG_TEMPO_3SEC
+);
+
+315 ià(
+	`Is_usb_ev’t
+(
+EVT_USB_RESUME
+è&& !
+	`Is_usb_³ndšg_»mÙe_wake_up
+())
+
+317 
+	`Usb_ack_ev’t
+(
+EVT_USB_RESUME
+);
+
+318 
+	`Usb_ack_ev’t
+(
+EVT_USB_SUSPEND
+);
+
+319 
+	`Usb_ack_»mÙe_wake_up_¡¬t
+();
+
+321 ià(
+	`Is_usb_ev’t
+(
+EVT_USB_UNPOWERED
+))
+
+323 
+	`Usb_ack_ev’t
+(
+EVT_USB_UNPOWERED
+);
+
+324 
+	`CË¬_®l_u£r_»que¡
+();
+
+325 
+Ùg_b_deviû_¡©e
+ = 
+B_IDLE
+;
+
+327 if(
+	`Is_usb_ev’t
+(
+EVT_USB_RESET
+))
+
+329 
+	`Usb_ack_ev’t
+(
+EVT_USB_RESET
+);
+
+330 
+	`Usb_»£t_’dpošt
+(0);
+
+331 
+usb_cÚfigu¿tiÚ_nb
+=0;
+
+332 
+	`CË¬_Ùg_ã©u»s_äom_ho¡
+();
+
+334 ià(
+	`Is_Ùg_ev’t
+(
+EVT_OTG_HNP_ERROR
+))
+
+336 
+	`Otg_ack_ev’t
+(
+EVT_OTG_HNP_ERROR
+);
+
+337 
+	`Otg_´št_Ãw_çu»_mes§ge
+(
+OTGMSG_DEVICE_NO_RESP
+,
+OTG_TEMPO_4SEC
+);
+
+338 
+PORTC
+ &= ~0x10;
+
+340 ià(
+	`Is_u£r_»que¡ed_disc
+())
+
+342 
+	`Ack_u£r_»que¡_disc
+();
+
+343 ià(
+	`Is_usb_id_deviû
+())
+
+345 
+	`Usb_d‘ach
+();
+
+346 
+	`Usb_ä“ze_şock
+();
+
+347 
+	`Is_usb_vbus_high
+());
+
+348 
+Ùg_b_deviû_¡©e
+ = 
+B_IDLE
+;
+
+349 
+usb_cÚfigu¿tiÚ_nb
+ = 0;
+
+350 
+usb_cÚÃùed
+ = 
+FALSE
+;
+
+351 
+	`CË¬_®l_u£r_»que¡
+();
+
+364 
+B_HOST
+:
+
+365 ià(
+	`Is_Ùg_ev’t
+(
+EVT_OTG_DEV_UNSUPPORTED
+))
+
+367 
+	`Otg_ack_ev’t
+(
+EVT_OTG_DEV_UNSUPPORTED
+);
+
+368 
+	`CË¬_®l_u£r_»que¡
+();
+
+369 
+Ùg_b_deviû_¡©e
+ = 
+B_IDLE
+;
+
+370 
+deviû_¡©e
+ = 
+DEVICE_UNATTACHED
+;
+
+372 ià(
+	`Is_u£r_»que¡ed_disc
+(è|| 
+	`Is_u£r_»que¡ed_su¥’d
+(è|| 
+	`Is_u£r_»que¡ed_hÅ
+())
+
+374 
+	`Ack_u£r_»que¡_disc
+();
+
+375 
+	`Ho¡_di§bË_sof
+();
+
+376 
+	`Usb_ho¡_»jeù_hÅ
+();
+
+377 
+Ùg_b_deviû_¡©e
+ = 
+B_END_HNP_SUSPEND
+;
+
+378 
+	`Usb_ack_su¥’d
+();
+
+379 
+	`Usb_’abË_su¥’d_š‹¼u±
+();
+
+381 ià(
+	`Is_usb_ev’t
+(
+EVT_USB_UNPOWERED
+))
+
+383 
+	`Usb_ack_ev’t
+(
+EVT_USB_UNPOWERED
+);
+
+384 
+	`Usb_ä“ze_şock
+();
+
+385 
+Ùg_b_deviû_¡©e
+ = 
+B_IDLE
+;
+
+386 
+deviû_¡©e
+ = 
+DEVICE_UNATTACHED
+;
+
+388 
+	`usb_ho¡_sk
+();
+
+398 
+B_END_HNP_SUSPEND
+:
+
+399 ià(
+	`Is_usb_ev’t
+(
+EVT_USB_SUSPEND
+))
+
+401 
+	`Usb_ack_ev’t
+(
+EVT_USB_SUSPEND
+);
+
+402 
+	`Usb_deviû_¡İ_hÅ
+();
+
+403 
+	`Usb_£Ëù_deviû
+();
+
+404 
+deviû_¡©e
+ = 
+DEVICE_UNATTACHED
+;
+
+405 ià(
+	`Is_u£r_»que¡ed_hÅ
+(è|| 
+	`Is_u£r_»que¡ed_su¥’d
+())
+
+407 
+Ùg_b_deviû_¡©e
+ = 
+B_PERIPHERAL
+;
+
+408 
+	`Ack_u£r_»que¡_su¥’d
+();
+
+409 
+	`Ack_u£r_»que¡_hÅ
+();
+
+413 
+Ùg_b_deviû_¡©e
+ = 
+B_IDLE
+;
+
+414 
+	`Usb_d‘ach
+();
+
+415 
+	`Usb_ä“ze_şock
+();
+
+422 
+Ùg_b_deviû_¡©e
+ = 
+B_IDLE
+;
+
+423 
+	`CË¬_®l_u£r_»que¡
+();
+
+424 
+deviû_¡©e
+ = 
+DEVICE_UNATTACHED
+;
+
+434 ià(
+	`Is_usb_vbus_high
+()&& (
+usb_cÚÃùed
+==
+FALSE
+))
+
+436 
+usb_cÚÃùed
+ = 
+TRUE
+;
+
+437 
+»mÙe_wakeup_ã©u»
+ = 
+DISABLED
+;
+
+438 
+	`Usb_vbus_Ú_aùiÚ
+();
+
+439 
+	`Usb_£nd_ev’t
+(
+EVT_USB_POWERED
+);
+
+440 
+	`usb_¡¬t_deviû
+();
+
+442 ià(
+	`Is_usb_vbus_low
+()&& (
+usb_cÚÃùed
+==
+TRUE
+))
+
+444 
+usb_cÚÃùed
+ = 
+FALSE
+;
+
+445 
+usb_cÚfigu¿tiÚ_nb
+ = 0;
+
+446 
+	`Usb_£nd_ev’t
+(
+EVT_USB_UNPOWERED
+);
+
+447 
+	`Usb_ä“ze_şock
+();
+
+448 
+	`Usb_vbus_off_aùiÚ
+();
+
+451 if(
+	`Is_usb_ev’t
+(
+EVT_USB_RESET
+))
+
+453 
+	`Usb_ack_ev’t
+(
+EVT_USB_RESET
+);
+
+454 
+	`Usb_»£t_’dpošt
+(0);
+
+455 
+usb_cÚfigu¿tiÚ_nb
+=0;
+
+467 
+	`Usb_£Ëù_’dpošt
+(
+EP_CONTROL
+);
+
+468 ià(
+	`Is_usb_»ûive_£tup
+())
+
+470 
+	`usb_´oûss_»que¡
+();
+
+472 
+	}
+}
+
+	@at90usb128/modules/usb/device_chap9/usb_device_task.h
+
+41 #iâdeà
+_USB_DEVICE_TASK_H_
+
+
+42 
+	#_USB_DEVICE_TASK_H_
+
+
+	)
+
+61 
+b™
+ 
+usb_su¥’ded
+;
+
+67 
+	#B_IDLE
+ 0
+
+	)
+
+68 
+	#B_SRP_INIT
+ 1
+
+	)
+
+69 
+	#B_PERIPHERAL
+ 2
+
+	)
+
+70 
+	#B_WAIT_ACON
+ 3
+
+	)
+
+71 
+	#B_HOST
+ 4
+
+	)
+
+72 
+	#B_END_HNP_SUSPEND
+ 5
+
+	)
+
+77 
+U8
+ 
+Ùg_deviû_£ssiÚs
+;
+
+78 
+U8
+ 
+Ùg_b_deviû_¡©e
+;
+
+79 
+U8
+ 
+sof_£’_š_£ssiÚ
+;
+
+82 
+	#S¹_£ssiÚ_w™h_¤p
+(è(
+Ùg_deviû_£ssiÚs
+ |ğ0x01)
+
+	)
+
+83 
+	#End_£ssiÚ_w™h_¤p
+(è(
+Ùg_deviû_£ssiÚs
+ &ğ~0x01)
+
+	)
+
+84 
+	#Is_£ssiÚ_¡¬‹d_w™h_¤p
+(è(((
+Ùg_deviû_£ssiÚs
+&0x01è!ğ0è? 
+TRUE
+ : 
+FALSE
+)
+
+	)
+
+87 
+	#S½_£Á_ªd_wa™šg_ªsw”
+(è(
+Ùg_deviû_£ssiÚs
+ |ğ0x02)
+
+	)
+
+88 
+	#Ack_¤p_£Á_ªd_ªsw”
+(è(
+Ùg_deviû_£ssiÚs
+ &ğ~0x02)
+
+	)
+
+89 
+	#Is_¤p_£Á_ªd_wa™šg_ªsw”
+(è(((
+Ùg_deviû_£ssiÚs
+&0x02è!ğ0è? 
+TRUE
+ : 
+FALSE
+)
+
+	)
+
+93 
+	#TB_SRP_FAIL_MIN
+ 0x0A28
+
+	)
+
+94 
+U16
+ 
+Ùg_tb_¤p_ıt
+;
+
+95 
+	#In™_tb_¤p_couÁ”
+(è(
+Ùg_tb_¤p_ıt
+ = 0)
+
+	)
+
+96 
+	#Is_tb_¤p_couÁ”_ov”æow
+(è((
+Ùg_tb_¤p_ıt
+ > 
+TB_SRP_FAIL_MIN
+è? 
+TRUE
+ : 
+FALSE
+)
+
+	)
+
+111 
+usb_deviû_sk_š™
+ ();
+
+126 
+usb_¡¬t_deviû
+ ();
+
+138 
+usb_deviû_sk
+ ();
+
+	@at90usb128/modules/usb/device_chap9/usb_standard_request.c
+
+51 
+	~"cÚfig.h
+"
+
+52 
+	~"cÚf_usb.h
+"
+
+53 
+	~"lib_mcu/usb/usb_drv.h
+"
+
+54 
+	~"lib_mcu/¶l/¶l_drv.h
+"
+
+55 
+	~"usb_desütÜs.h
+"
+
+56 
+	~"moduËs/usb/deviû_ch­9/usb_¡ªd¬d_»que¡.h
+"
+
+57 
+	~"usb_¥ecific_»que¡.h
+"
+
+59 #ià((
+USB_DEVICE_SN_USE
+==
+ENABLE
+è&& (
+USE_DEVICE_SN_UNIQUE
+==ENABLE))
+
+60 
+	~"lib_mcu/æash/æash_drv.h
+"
+
+61 
+U8
+ 
+bš_to_ascii
+ (U8 
+b
+);
+
+66 
+BoŞ
+ 
+usb_g‘_desütÜ
+ ( );
+
+67 
+usb_£t_add»ss
+ ( );
+
+68 
+BoŞ
+ 
+usb_£t_cÚfigu¿tiÚ
+( );
+
+69 
+usb_g‘_cÚfigu¿tiÚ
+( );
+
+70 
+BoŞ
+ 
+usb_g‘_¡©us
+ ( 
+U8
+ 
+bmReque¡Ty³
+ );
+
+71 
+BoŞ
+ 
+usb_£t_ã©u»
+ ( 
+U8
+ 
+bmReque¡Ty³
+ );
+
+72 
+BoŞ
+ 
+usb_ş—r_ã©u»
+ ( 
+U8
+ 
+bmReque¡Ty³
+ );
+
+73 
+BoŞ
+ 
+usb_g‘_š‹rçû
+ ( );
+
+74 
+BoŞ
+ 
+usb_£t_š‹rçû
+ ( );
+
+76 #iâdeà
+USB_REMOTE_WAKEUP_FEATURE
+
+
+77 #”rÜ 
+USB_REMOTE_WAKEUP_FEATURE
+ 
+should
+ 
+be
+ 
+defšed
+ 
+as
+ 
+ENABLE
+ 
+Ü
+ 
+DISABLE
+ 
+š
+ 
+cÚf_usb
+.
+h
+
+
+80 #ià(
+USE_DEVICE_SN_UNIQUE
+==
+ENABLE
+)
+
+81 
+U8
+ 
+	gf_g‘_£rŸl_¡ršg
+=
+FALSE
+;
+
+87 #ifdeà
+__GNUC__
+
+
+88 
+PGM_VOID_P
+ 
+	gpbufãr
+;
+
+89 
+	#Usb_wr™e_PGM_by‹
+(
+by‹
+è(
+	`Usb_wr™e_by‹
+(
+	`pgm_»ad_by‹_Ã¬
+(()by‹)))
+
+	)
+
+91 
+U8
+ 
+code
+ *
+	gpbufãr
+;
+
+92 
+	#Usb_wr™e_PGM_by‹
+(
+by‹
+è(
+	`Usb_wr™e_by‹
+(*by‹))
+
+	)
+
+95 
+U8
+ 
+	g’dpošt_¡©us
+[
+MAX_EP_NB
+];
+
+96 
+U8
+ 
+	gd©a_to_Œªsãr
+;
+
+97 
+U8
+ 
+	gusb_cÚfigu¿tiÚ_nb
+;
+
+98 
+U8
+ 
+	g»mÙe_wakeup_ã©u»
+ = 
+DISABLE
+;
+
+99 
+U8
+ 
+	gdeviû_¡©us
+ = 
+DEVICE_STATUS
+;
+
+106 
+	$usb_´oûss_»que¡
+()
+
+108 
+U8
+ 
+bmReque¡Ty³
+;
+
+109 
+U8
+ 
+bmReque¡
+;
+
+111 
+	`Usb_ack_cÚŒŞ_out
+();
+
+112 
+bmReque¡Ty³
+ = 
+	`Usb_»ad_by‹
+();
+
+113 
+bmReque¡
+ = 
+	`Usb_»ad_by‹
+();
+
+115 
+bmReque¡
+)
+
+117 
+SETUP_GET_DESCRIPTOR
+:
+
+118 ià(
+USB_SETUP_GET_STAND_DEVICE
+ =ğ
+bmReque¡Ty³
+)
+
+120 ifĞ
+	`usb_g‘_desütÜ
+() )
+
+125 
+SETUP_GET_CONFIGURATION
+:
+
+126 ià(
+USB_SETUP_GET_STAND_DEVICE
+ =ğ
+bmReque¡Ty³
+)
+
+128 
+	`usb_g‘_cÚfigu¿tiÚ
+();
+
+133 
+SETUP_SET_ADDRESS
+:
+
+134 ià(
+USB_SETUP_SET_STAND_DEVICE
+ =ğ
+bmReque¡Ty³
+)
+
+136 
+	`usb_£t_add»ss
+();
+
+141 
+SETUP_SET_CONFIGURATION
+:
+
+142 ià(
+USB_SETUP_SET_STAND_DEVICE
+ =ğ
+bmReque¡Ty³
+)
+
+144 ifĞ
+	`usb_£t_cÚfigu¿tiÚ
+() )
+
+149 
+SETUP_CLEAR_FEATURE
+:
+
+150 ià(
+	`usb_ş—r_ã©u»
+(
+bmReque¡Ty³
+))
+
+154 
+SETUP_SET_FEATURE
+:
+
+155 ià(
+	`usb_£t_ã©u»
+(
+bmReque¡Ty³
+))
+
+159 
+SETUP_GET_STATUS
+:
+
+160 ià(
+	`usb_g‘_¡©us
+(
+bmReque¡Ty³
+))
+
+164 
+SETUP_GET_INTERFACE
+:
+
+165 ià(
+USB_SETUP_GET_STAND_INTERFACE
+ =ğ
+bmReque¡Ty³
+)
+
+167 ifĞ
+	`usb_g‘_š‹rçû
+() )
+
+172 
+SETUP_SET_INTERFACE
+:
+
+173 ià(
+bmReque¡Ty³
+ =ğ
+USB_SETUP_SET_STAND_INTERFACE
+)
+
+175 ifĞ
+	`usb_£t_š‹rçû
+() )
+
+185 ifĞ!
+	`usb_u£r_»ad_»que¡
+(
+bmReque¡Ty³
+, 
+bmReque¡
+) )
+
+190 
+	`Usb_’abË_¡®l_hªdshake
+();
+
+191 
+	`Usb_ack_»ûive_£tup
+();
+
+192 
+’dpošt_¡©us
+[(
+EP_CONTROL
+ & 
+MSK_EP_DIR
+)] = 0x01;
+
+194 
+	}
+}
+
+200 
+	$usb_£t_add»ss
+()
+
+202 
+U8
+ 
+addr
+ = 
+	`Usb_»ad_by‹
+();
+
+203 
+	`Usb_cÚfigu»_add»ss
+(
+addr
+);
+
+205 
+	`Usb_ack_»ûive_£tup
+();
+
+207 
+	`Usb_£nd_cÚŒŞ_š
+();
+
+208 !
+	`Is_usb_š_»ady
+());
+
+210 
+	`Usb_’abË_add»ss
+();
+
+211 
+	}
+}
+
+219 
+BoŞ
+ 
+	$usb_£t_cÚfigu¿tiÚ
+( )
+
+221 
+U8
+ 
+cÚfigu¿tiÚ_numb”
+;
+
+224 
+cÚfigu¿tiÚ_numb”
+ = 
+	`Usb_»ad_by‹
+();
+
+225 ià(
+cÚfigu¿tiÚ_numb”
+ > 
+NB_CONFIGURATION
+)
+
+226  
+FALSE
+;
+
+227 
+	`Usb_ack_»ûive_£tup
+();
+
+228 
+usb_cÚfigu¿tiÚ_nb
+ = 
+cÚfigu¿tiÚ_numb”
+;
+
+230 
+	`Usb_£nd_cÚŒŞ_š
+();
+
+231 
+	`usb_u£r_’dpošt_š™
+(
+usb_cÚfigu¿tiÚ_nb
+);
+
+232 
+	`Usb_£t_cÚfigu¿tiÚ_aùiÚ
+();
+
+233  
+TRUE
+;
+
+234 
+	}
+}
+
+243 
+BoŞ
+ 
+	$usb_g‘_desütÜ
+()
+
+245 
+BoŞ
+ 
+zÍ
+;
+
+246 
+U16
+ 
+wL’gth
+;
+
+247 
+U8
+ 
+desütÜ_ty³
+ ;
+
+248 
+U8
+ 
+¡ršg_ty³
+;
+
+249 
+U8
+ 
+dummy
+;
+
+250 
+U8
+ 
+nb_by‹
+;
+
+251 
+U8
+ 
+by‹_to_£nd
+;
+
+252 #ià(
+USE_DEVICE_SN_UNIQUE
+==
+ENABLE
+)
+
+253 
+U16
+ 
+¢_šdex
+=0;
+
+254 
+U8
+ 
+š™Ÿl_d©a_to_Œªsãr
+;
+
+257 
+zÍ
+ = 
+FALSE
+;
+
+258 
+¡ršg_ty³
+ = 
+	`Usb_»ad_by‹
+();
+
+259 
+desütÜ_ty³
+ = 
+	`Usb_»ad_by‹
+();
+
+261 
+desütÜ_ty³
+)
+
+263 
+DESCRIPTOR_DEVICE
+:
+
+264 
+d©a_to_Œªsãr
+ = 
+	`Usb_g‘_dev_desc_Ëngth
+();
+
+265 
+pbufãr
+ = 
+	`Usb_g‘_dev_desc_poš‹r
+();
+
+268 
+DESCRIPTOR_CONFIGURATION
+:
+
+269 
+d©a_to_Œªsãr
+ = 
+	`Usb_g‘_cÚf_desc_Ëngth
+();
+
+270 
+pbufãr
+ = 
+	`Usb_g‘_cÚf_desc_poš‹r
+();
+
+274 ifĞ!
+	`usb_u£r_g‘_desütÜ
+(
+desütÜ_ty³
+, 
+¡ršg_ty³
+))
+
+275  
+FALSE
+;
+
+279 
+dummy
+ = 
+	`Usb_»ad_by‹
+();
+
+280 
+dummy
+ = 
+	`Usb_»ad_by‹
+();
+
+281 
+	`LSB
+(
+wL’gth
+èğ
+	`Usb_»ad_by‹
+();
+
+282 
+	`MSB
+(
+wL’gth
+èğ
+	`Usb_»ad_by‹
+();
+
+283 
+	`Usb_ack_»ûive_£tup
+() ;
+
+285 ià(
+wL’gth
+ > 
+d©a_to_Œªsãr
+)
+
+287 ià((
+d©a_to_Œªsãr
+ % 
+EP_CONTROL_LENGTH
+è=ğ0è{ 
+zÍ
+ = 
+TRUE
+; }
+
+288 { 
+zÍ
+ = 
+FALSE
+; }
+
+292 
+d©a_to_Œªsãr
+ = (
+U8
+)
+wL’gth
+;
+
+295 
+	`Usb_ack_Çk_out
+();
+
+297 
+by‹_to_£nd
+=0;
+
+298 #ià(
+USE_DEVICE_SN_UNIQUE
+==
+ENABLE
+)
+
+299 
+š™Ÿl_d©a_to_Œªsãr
+ = 
+d©a_to_Œªsãr
+;
+
+301 (
+d©a_to_Œªsãr
+ !ğ0è&& (!
+	`Is_usb_Çk_out_£Á
+()))
+
+303 !
+	`Is_usb_»ad_cÚŒŞ_’abËd
+())
+
+305 ià(
+	`Is_usb_Çk_out_£Á
+())
+
+309 
+nb_by‹
+=0;
+
+310 
+d©a_to_Œªsãr
+ != 0)
+
+312 if(
+nb_by‹
+++==
+EP_CONTROL_LENGTH
+)
+
+315 #ià(
+USE_DEVICE_SN_UNIQUE
+==
+ENABLE
+)
+
+317 if(
+f_g‘_£rŸl_¡ršg
+ && (
+d©a_to_Œªsãr
+ < (
+š™Ÿl_d©a_to_Œªsãr
+-1)))
+
+320 
+by‹_to_£nd
+)
+
+323 
+	`Usb_wr™e_by‹
+(
+	`bš_to_ascii
+((
+	`FÏsh_»ad_¢
+(
+¢_šdex
+)>>4) & 0x0F));
+
+327 
+	`Usb_wr™e_by‹
+(0);
+
+331 
+	`Usb_wr™e_by‹
+(
+	`bš_to_ascii
+(
+	`FÏsh_»ad_¢
+(
+¢_šdex
+) & 0x0F));
+
+335 
+	`Usb_wr™e_by‹
+(0);
+
+336 
+¢_šdex
+++;
+
+339 
+by‹_to_£nd
+ = (byte_to_send+1)%4;
+
+343 
+	`Usb_wr™e_PGM_by‹
+(
+pbufãr
+++);
+
+346 
+	`Usb_wr™e_PGM_by‹
+(
+pbufãr
+++);
+
+348 
+d©a_to_Œªsãr
+ --;
+
+351 ià(
+	`Is_usb_Çk_out_£Á
+())
+
+354 
+	`Usb_£nd_cÚŒŞ_š
+();
+
+357 #ià(
+USE_DEVICE_SN_UNIQUE
+==
+ENABLE
+)
+
+358 
+f_g‘_£rŸl_¡ršg
+=
+FALSE
+;
+
+361 if((
+zÍ
+ =ğ
+TRUE
+è&& (!
+	`Is_usb_Çk_out_£Á
+()))
+
+363 !
+	`Is_usb_»ad_cÚŒŞ_’abËd
+());
+
+364 
+	`Usb_£nd_cÚŒŞ_š
+();
+
+367 !(
+	`Is_usb_Çk_out_£Á
+()));
+
+368 
+	`Usb_ack_Çk_out
+();
+
+369 
+	`Usb_ack_cÚŒŞ_out
+();
+
+370  
+TRUE
+;
+
+371 
+	}
+}
+
+377 
+	$usb_g‘_cÚfigu¿tiÚ
+()
+
+379 
+	`Usb_ack_»ûive_£tup
+();
+
+381 
+	`Usb_wr™e_by‹
+(
+usb_cÚfigu¿tiÚ_nb
+);
+
+382 
+	`Usb_ack_š_»ady
+();
+
+384  !
+	`Is_usb_»ûive_out
+() );
+
+385 
+	`Usb_ack_»ûive_out
+();
+
+386 
+	}
+}
+
+392 
+BoŞ
+ 
+	$usb_g‘_¡©us
+Ğ
+U8
+ 
+bmReque¡Ty³
+ )
+
+394 
+U8
+ 
+wIndex
+;
+
+395 
+U8
+ 
+dummy
+;
+
+397 
+dummy
+ = 
+	`Usb_»ad_by‹
+();
+
+398 
+dummy
+ = 
+	`Usb_»ad_by‹
+();
+
+399 
+wIndex
+ = 
+	`Usb_»ad_by‹
+();
+
+401 
+bmReque¡Ty³
+)
+
+403 
+USB_SETUP_GET_STAND_DEVICE
+:
+
+404 
+	`Usb_ack_»ûive_£tup
+();
+
+405 
+	`Usb_wr™e_by‹
+(
+deviû_¡©us
+);
+
+408 
+USB_SETUP_GET_STAND_INTERFACE
+:
+
+409 
+	`Usb_ack_»ûive_£tup
+();
+
+410 
+	`Usb_wr™e_by‹
+(0);
+
+413 
+USB_SETUP_GET_STAND_ENDPOINT
+:
+
+414 
+	`Usb_ack_»ûive_£tup
+();
+
+415 
+wIndex
+ = wIndex & 
+MSK_EP_DIR
+;
+
+416 
+	`Usb_wr™e_by‹
+Ğ
+’dpošt_¡©us
+[
+wIndex
+] );
+
+420  
+FALSE
+;
+
+422 
+	`Usb_wr™e_by‹
+(0);
+
+424 
+	`Usb_£nd_cÚŒŞ_š
+();
+
+425  !
+	`Is_usb_»ûive_out
+() );
+
+426 
+	`Usb_ack_»ûive_out
+();
+
+427  
+TRUE
+;
+
+428 
+	}
+}
+
+434 
+BoŞ
+ 
+	$usb_£t_ã©u»
+Ğ
+U8
+ 
+bmReque¡Ty³
+ )
+
+436 
+U8
+ 
+wV®ue
+;
+
+437 
+U8
+ 
+wIndex
+;
+
+438 
+U8
+ 
+dummy
+;
+
+440 
+bmReque¡Ty³
+)
+
+442 
+USB_SETUP_SET_STAND_DEVICE
+:
+
+443 
+wV®ue
+ = 
+	`Usb_»ad_by‹
+();
+
+444 
+wV®ue
+)
+
+446 
+USB_REMOTE_WAKEUP
+:
+
+447 ià((
+wV®ue
+ !ğ
+FEATURE_DEVICE_REMOTE_WAKEUP
+)
+
+448 || (
+USB_REMOTE_WAKEUP_FEATURE
+ !ğ
+ENABLED
+))
+
+449  
+FALSE
+;
+
+450 
+deviû_¡©us
+ |ğ
+USB_DEVICE_STATUS_REMOTEWAKEUP
+;
+
+451 
+»mÙe_wakeup_ã©u»
+ = 
+ENABLED
+;
+
+452 
+	`Usb_ack_»ûive_£tup
+();
+
+453 
+	`Usb_£nd_cÚŒŞ_š
+();
+
+456 #ià(
+USB_OTG_FEATURE
+ =ğ
+ENABLED
+)
+
+457 
+OTG_B_HNP_ENABLE
+:
+
+458 ià(((
+OTG_BMATTRIBUTES
+&
+HNP_SUPPORT
+è=ğ0è|| (
+USB_OTG_FEATURE
+ =ğ
+DISABLED
+))
+
+459  
+FALSE
+;
+
+460 
+Ùg_ã©u»s_suµÜ‹d
+ |ğ
+OTG_B_HNP_ENABLE
+;
+
+461 
+Ùg_deviû_nb_hÅ_»Œy
+ = 
+BDEV_HNP_NB_RETRY
+;
+
+462 
+	`Usb_ack_»ûive_£tup
+();
+
+463 
+	`Usb_£nd_cÚŒŞ_š
+();
+
+466 
+OTG_A_HNP_SUPPORT
+:
+
+467 ià(((
+OTG_BMATTRIBUTES
+&
+HNP_SUPPORT
+è=ğ0è|| (
+USB_OTG_FEATURE
+ =ğ
+DISABLED
+))
+
+468  
+FALSE
+;
+
+469 
+Ùg_ã©u»s_suµÜ‹d
+ |ğ
+OTG_A_HNP_SUPPORT
+;
+
+470 
+	`Usb_ack_»ûive_£tup
+();
+
+471 
+	`Usb_£nd_cÚŒŞ_š
+();
+
+474 
+OTG_A_ALT_HNP_SUPPORT
+:
+
+475 ià(((
+OTG_BMATTRIBUTES
+&
+HNP_SUPPORT
+è=ğ0è|| (
+USB_OTG_FEATURE
+ =ğ
+DISABLED
+))
+
+476  
+FALSE
+;
+
+477 
+Ùg_ã©u»s_suµÜ‹d
+ |ğ
+OTG_A_ALT_HNP_SUPPORT
+;
+
+478 
+	`Usb_ack_»ûive_£tup
+();
+
+479 
+	`Usb_£nd_cÚŒŞ_š
+();
+
+484  
+FALSE
+;
+
+489 
+USB_SETUP_SET_STAND_INTERFACE
+:
+
+490  
+FALSE
+;
+
+493 
+USB_SETUP_SET_STAND_ENDPOINT
+:
+
+494 
+wV®ue
+ = 
+	`Usb_»ad_by‹
+();
+
+495 
+dummy
+ = 
+	`Usb_»ad_by‹
+();
+
+496 ià(
+wV®ue
+ !ğ
+FEATURE_ENDPOINT_HALT
+)
+
+497  
+FALSE
+;
+
+498 
+wIndex
+ = (
+	`Usb_»ad_by‹
+(è& 
+MSK_EP_DIR
+);
+
+499 ià(
+wIndex
+ =ğ
+EP_CONTROL
+)
+
+501 
+	`Usb_’abË_¡®l_hªdshake
+();
+
+502 
+	`Usb_ack_»ûive_£tup
+();
+
+504 
+	`Usb_£Ëù_’dpošt
+(
+wIndex
+);
+
+505 ifĞ!
+	`Is_usb_’dpošt_’abËd
+())
+
+507 
+	`Usb_£Ëù_’dpošt
+(
+EP_CONTROL
+);
+
+508  
+FALSE
+;
+
+510 
+	`Usb_’abË_¡®l_hªdshake
+();
+
+511 
+	`Usb_£Ëù_’dpošt
+(
+EP_CONTROL
+);
+
+512 
+’dpošt_¡©us
+[
+wIndex
+] = 0x01;
+
+513 
+	`Usb_ack_»ûive_£tup
+();
+
+514 
+	`Usb_£nd_cÚŒŞ_š
+();
+
+518  
+FALSE
+;
+
+521  
+TRUE
+;
+
+522 
+	}
+}
+
+527 
+BoŞ
+ 
+	$usb_ş—r_ã©u»
+Ğ
+U8
+ 
+bmReque¡Ty³
+ )
+
+529 
+U8
+ 
+wV®ue
+;
+
+530 
+U8
+ 
+wIndex
+;
+
+531 
+U8
+ 
+dummy
+;
+
+533 
+bmReque¡Ty³
+)
+
+535 
+USB_SETUP_SET_STAND_DEVICE
+:
+
+536 
+wV®ue
+ = 
+	`Usb_»ad_by‹
+();
+
+537 ià((
+wV®ue
+ !ğ
+FEATURE_DEVICE_REMOTE_WAKEUP
+è|| (
+USB_REMOTE_WAKEUP_FEATURE
+ !ğ
+ENABLED
+))
+
+538  
+FALSE
+;
+
+539 
+deviû_¡©us
+ &ğ~
+USB_DEVICE_STATUS_REMOTEWAKEUP
+;
+
+540 
+»mÙe_wakeup_ã©u»
+ = 
+DISABLED
+;
+
+541 
+	`Usb_ack_»ûive_£tup
+();
+
+542 
+	`Usb_£nd_cÚŒŞ_š
+();
+
+545 
+USB_SETUP_SET_STAND_INTERFACE
+:
+
+546  
+FALSE
+;
+
+549 
+USB_SETUP_SET_STAND_ENDPOINT
+:
+
+550 
+wV®ue
+ = 
+	`Usb_»ad_by‹
+();
+
+551 
+dummy
+ = 
+	`Usb_»ad_by‹
+();
+
+552 ià(
+wV®ue
+ !ğ
+FEATURE_ENDPOINT_HALT
+)
+
+553  
+FALSE
+;
+
+554 
+wIndex
+ = (
+	`Usb_»ad_by‹
+(è& 
+MSK_EP_DIR
+);
+
+555 
+	`Usb_£Ëù_’dpošt
+(
+wIndex
+);
+
+556 ifĞ!
+	`Is_usb_’dpošt_’abËd
+())
+
+558 
+	`Usb_£Ëù_’dpošt
+(
+EP_CONTROL
+);
+
+559  
+FALSE
+;
+
+561 if(
+wIndex
+ !ğ
+EP_CONTROL
+)
+
+563 
+	`Usb_di§bË_¡®l_hªdshake
+();
+
+564 
+	`Usb_»£t_’dpošt
+(
+wIndex
+);
+
+565 
+	`Usb_»£t_d©a_toggË
+();
+
+567 
+	`Usb_£Ëù_’dpošt
+(
+EP_CONTROL
+);
+
+568 
+’dpošt_¡©us
+[
+wIndex
+] = 0x00;
+
+569 
+	`Usb_ack_»ûive_£tup
+();
+
+570 
+	`Usb_£nd_cÚŒŞ_š
+();
+
+574  
+FALSE
+;
+
+577  
+TRUE
+;
+
+578 
+	}
+}
+
+583 
+BoŞ
+ 
+	$usb_g‘_š‹rçû
+ ()
+
+585 
+U16
+ 
+wIÁ”çû
+;
+
+586 
+U8
+ 
+wV®ue_msb
+;
+
+587 
+U8
+ 
+wV®ue_lsb
+;
+
+590 
+wV®ue_lsb
+ = 
+	`Usb_»ad_by‹
+();
+
+591 
+wV®ue_msb
+ = 
+	`Usb_»ad_by‹
+();
+
+594 
+	`LSB
+(
+wIÁ”çû
+)=
+	`Usb_»ad_by‹
+();
+
+595 
+	`MSB
+(
+wIÁ”çû
+)=
+	`Usb_»ad_by‹
+();
+
+596 ifĞ(0!=
+wV®ue_msb
+) || (0!=wValue_msb) )
+
+597  
+FALSE
+;
+
+598 
+	`Usb_ack_»ûive_£tup
+();
+
+600 
+	`Usb_wr™e_by‹
+Ğ
+	`usb_u£r_š‹rçû_g‘
+(
+wIÁ”çû
+) );
+
+601 
+	`Usb_£nd_cÚŒŞ_š
+();
+
+603  !
+	`Is_usb_»ûive_out
+() );
+
+604 
+	`Usb_ack_»ûive_out
+();
+
+605  
+TRUE
+;
+
+606 
+	}
+}
+
+611 
+BoŞ
+ 
+	$usb_£t_š‹rçû
+ ()
+
+613 
+U16
+ 
+wIÁ”çû
+;
+
+614 
+U8
+ 
+wV®ue_msb
+;
+
+615 
+U8
+ 
+wV®ue_lsb
+;
+
+618 
+wV®ue_lsb
+ = 
+	`Usb_»ad_by‹
+();
+
+619 
+wV®ue_msb
+ = 
+	`Usb_»ad_by‹
+();
+
+622 
+	`LSB
+(
+wIÁ”çû
+)=
+	`Usb_»ad_by‹
+();
+
+623 
+	`MSB
+(
+wIÁ”çû
+)=
+	`Usb_»ad_by‹
+();
+
+624 ifĞ0!=
+wV®ue_msb
+ )
+
+625  
+FALSE
+;
+
+626 
+	`Usb_ack_»ûive_£tup
+();
+
+628 
+	`usb_u£r_š‹rçû_»£t
+(
+wIÁ”çû
+, 
+wV®ue_lsb
+);
+
+629 
+	`Usb_£Ëù_’dpošt
+(
+EP_CONTROL
+);
+
+631 
+	`Usb_£nd_cÚŒŞ_š
+();
+
+632 !
+	`Is_usb_š_»ady
+());
+
+633  
+TRUE
+;
+
+634 
+	}
+}
+
+639 
+	$usb_g’”©e_»mÙe_wakeup
+()
+
+641 if(
+	`Is_¶l_»ady
+()==
+FALSE
+)
+
+643 
+	`PÎ_¡¬t_auto
+();
+
+644 
+	`Wa™_¶l_»ady
+();
+
+646 
+	`Usb_unä“ze_şock
+();
+
+647 ià(
+»mÙe_wakeup_ã©u»
+ =ğ
+ENABLED
+)
+
+649 
+	`Usb_š™Ÿ‹_»mÙe_wake_up
+();
+
+650 
+»mÙe_wakeup_ã©u»
+ = 
+DISABLED
+;
+
+652 
+	}
+}
+
+655 #ià((
+USB_DEVICE_SN_USE
+==
+ENABLE
+è&& (
+USE_DEVICE_SN_UNIQUE
+==ENABLE))
+
+663 
+U8
+ 
+	$bš_to_ascii
+ (
+U8
+ 
+b
+)
+
+665  ( (
+b
+ <= 0x09) ? (b+'0') : (b+'A'-10) );
+
+666 
+	}
+}
+
+	@at90usb128/modules/usb/device_chap9/usb_standard_request.h
+
+49 #iâdeà
+_USB_STANDARD_REQUEST_H_
+
+
+50 
+	#_USB_STANDARD_REQUEST_H_
+
+
+	)
+
+54 
+	~"moduËs/usb/usb_sk.h
+"
+
+55 
+	~"usb_desütÜs.h
+"
+
+67 
+	#ATTACHED
+ 0
+
+	)
+
+68 
+	#POWERED
+ 1
+
+	)
+
+69 
+	#DEFAULT
+ 2
+
+	)
+
+70 
+	#ADDRESSED
+ 3
+
+	)
+
+71 
+	#CONFIGURED
+ 4
+
+	)
+
+72 
+	#SUSPENDED
+ 5
+
+	)
+
+74 
+	#USB_REMOTE_WAKEUP
+ 1
+
+	)
+
+75 
+	#OTG_B_HNP_ENABLE
+ 3
+
+	)
+
+76 
+	#OTG_A_HNP_SUPPORT
+ 4
+
+	)
+
+77 
+	#OTG_A_ALT_HNP_SUPPORT
+ 5
+
+	)
+
+84 
+	#Is_deviû_’um”©ed
+(è((
+usb_cÚfigu¿tiÚ_nb
+!=0è? 
+TRUE
+ : 
+FALSE
+)
+
+	)
+
+85 
+	#Is_deviû_nÙ_’um”©ed
+(è((
+usb_cÚfigu¿tiÚ_nb
+!=0è? 
+FALSE
+ : 
+TRUE
+)
+
+	)
+
+109 
+usb_´oûss_»que¡
+( );
+
+120 
+usb_g’”©e_»mÙe_wakeup
+();
+
+122 
+U8
+ 
+usb_cÚfigu¿tiÚ_nb
+;
+
+123 
+U8
+ 
+»mÙe_wakeup_ã©u»
+;
+
+126 #ià(
+USE_DEVICE_SN_UNIQUE
+==
+ENABLE
+)
+
+127 
+U8
+ 
+f_g‘_£rŸl_¡ršg
+;
+
+	@at90usb128/modules/usb/usb_commun.h
+
+40 #iâdeà
+_USB_COMMUN_H_
+
+
+41 
+	#_USB_COMMUN_H_
+
+
+	)
+
+44 
+	#VID_ATMEL
+ 0x03EB
+
+	)
+
+49 
+	#PID_MegaHIDG’”ic
+ 0x2013
+
+	)
+
+50 
+	#PID_MegaHIDKeybßrd
+ 0x2017
+
+	)
+
+51 
+	#PID_MegaCDC
+ 0x2018
+
+	)
+
+52 
+	#PID_MegaAUDIO_IN
+ 0x2019
+
+	)
+
+53 
+	#PID_MegaMS
+ 0x201A
+
+	)
+
+54 
+	#PID_MegaAUDIO_IN_OUT
+ 0x201B
+
+	)
+
+55 
+	#PID_MegaHIDMou£
+ 0x201C
+
+	)
+
+56 
+	#PID_MegaHIDMou£_û¹if_U4
+ 0x201D
+
+	)
+
+57 
+	#PID_MegaCDC_muÉi
+ 0x201E
+
+	)
+
+58 
+	#PID_AT90USB128_64_MS_HIDMS_HID_USBKEY
+ 0x2022
+
+	)
+
+59 
+	#PID_AT90USB128_64_MS_HIDMS_HID_STK525
+ 0x2023
+
+	)
+
+60 
+	#PID_AT90USB128_64_MS
+ 0x2029
+
+	)
+
+61 
+	#PID_Mega_MS_HIDMS
+ 0x202A
+
+	)
+
+62 
+	#PID_MegaMS_2
+ 0x2032
+
+	)
+
+63 
+	#PID_MegaLibUsb
+ 0x2050
+
+	)
+
+64 
+	#PID_ATMega16U2_DFU
+ 0x2FEF
+
+	)
+
+65 
+	#PID_ATMega32U2_DFU
+ 0x2FF0
+
+	)
+
+66 
+	#PID_ATMega32U6_DFU
+ 0x2FF2
+
+	)
+
+67 
+	#PID_ATMega16U4_DFU
+ 0x2FF3
+
+	)
+
+68 
+	#PID_ATMega32U4_DFU
+ 0x2FF4
+
+	)
+
+69 
+	#PID_AT90USB82_DFU
+ 0x2FF7
+
+	)
+
+70 
+	#PID_AT90USB64_DFU
+ 0x2FF9
+
+	)
+
+71 
+	#PID_AT90USB162_DFU
+ 0x2FFA
+
+	)
+
+72 
+	#PID_AT90USB128_DFU
+ 0x2FFB
+
+	)
+
+78 
+	#CLASS_APPLICATION
+ 0xFE
+
+79 
+	#CLASS_VENDOR
+ 0xFF
+
+80 
+	#NO_CLASS
+ 0x00
+
+	)
+
+81 
+	#NO_SUBCLASS
+ 0x00
+
+	)
+
+82 
+	#NO_PROTOCOL
+ 0x00
+
+	)
+
+87 
+	#CLASS_IAD
+ 0xEF
+
+	)
+
+88 
+	#SUB_CLASS_IAD
+ 0x02
+
+	)
+
+89 
+	#PROTOCOL_IAD
+ 0x01
+
+	)
+
+98 
+	#USB_DEVICE_STATUS_BUS_POWERED
+ 0x00
+
+	)
+
+99 
+	#USB_DEVICE_STATUS_SELF_POWERED
+ 0x01
+
+	)
+
+100 
+	#USB_DEVICE_STATUS_REMOTEWAKEUP
+ 0x02
+
+	)
+
+101 
+	#USB_DEVICE_STATUS_BATTERYPOWERED
+ 0x04
+
+	)
+
+107 
+	#USB_CONFIG_ATTRIBUTES_RESERVED
+ 0x80
+
+	)
+
+108 
+	#USB_CONFIG_ATTRIBUTES_REMOTEWAKEUP
+ 0x20
+
+	)
+
+109 
+	#USB_CONFIG_ATTRIBUTES_SELFPOWERED
+ 0x40
+
+	)
+
+110 
+	#USB_CONFIG_BUSPOWERED
+ (
+USB_CONFIG_ATTRIBUTES_RESERVED
+)
+
+	)
+
+111 
+	#USB_CONFIG_REMOTEWAKEUP
+ (
+USB_CONFIG_ATTRIBUTES_RESERVED
+ | 
+USB_CONFIG_ATTRIBUTES_REMOTEWAKEUP
+)
+
+	)
+
+112 
+	#USB_CONFIG_SELFPOWERED
+ (
+USB_CONFIG_ATTRIBUTES_RESERVED
+ | 
+USB_CONFIG_ATTRIBUTES_SELFPOWERED
+)
+
+	)
+
+118 
+	#USB_ENDPOINT_BULK
+ 0x02
+
+	)
+
+119 
+	#USB_ENDPOINT_INTERRUPT
+ 0x03
+
+	)
+
+120 
+	#USB_ENDPOINT_OUT
+ 0x00
+
+	)
+
+121 
+	#USB_ENDPOINT_IN
+ 0x80
+
+	)
+
+122 
+	#USB_ENDPOINT_DIR_MASK
+ 0x80
+
+	)
+
+123 
+	#USB_ENDPOINT_NUM_MASK
+ (~
+USB_ENDPOINT_DIR_MASK
+)
+
+	)
+
+138 
+	#USB_SETUP_DIR_HOST_TO_DEVICE
+ (0<<7)
+
+	)
+
+139 
+	#USB_SETUP_DIR_DEVICE_TO_HOST
+ (1<<7)
+
+	)
+
+149 
+	#USB_SETUP_TYPE_STANDARD
+ (0<<5)
+
+	)
+
+150 
+	#USB_SETUP_TYPE_CLASS
+ (1<<5)
+
+	)
+
+151 
+	#USB_SETUP_TYPE_VENDOR
+ (2<<5)
+
+	)
+
+162 
+	#USB_SETUP_RECIPIENT_DEVICE
+ (0)
+
+	)
+
+163 
+	#USB_SETUP_RECIPIENT_INTERFACE
+ (1)
+
+	)
+
+164 
+	#USB_SETUP_RECIPIENT_ENDPOINT
+ (2)
+
+	)
+
+165 
+	#USB_SETUP_RECIPIENT_OTHER
+ (3)
+
+	)
+
+170 
+	#USB_SETUP_SET_STAND_DEVICE
+ (
+USB_SETUP_DIR_HOST_TO_DEVICE
+ |
+USB_SETUP_TYPE_STANDARD
+ |
+USB_SETUP_RECIPIENT_DEVICE
+)
+
+171 
+	#USB_SETUP_GET_STAND_DEVICE
+ (
+USB_SETUP_DIR_DEVICE_TO_HOST
+ |
+USB_SETUP_TYPE_STANDARD
+ |
+USB_SETUP_RECIPIENT_DEVICE
+)
+
+172 
+	#USB_SETUP_SET_STAND_INTERFACE
+ (
+USB_SETUP_DIR_HOST_TO_DEVICE
+ |
+USB_SETUP_TYPE_STANDARD
+ |
+USB_SETUP_RECIPIENT_INTERFACE
+)
+
+173 
+	#USB_SETUP_GET_STAND_INTERFACE
+ (
+USB_SETUP_DIR_DEVICE_TO_HOST
+ |
+USB_SETUP_TYPE_STANDARD
+ |
+USB_SETUP_RECIPIENT_INTERFACE
+)
+
+174 
+	#USB_SETUP_SET_STAND_ENDPOINT
+ (
+USB_SETUP_DIR_HOST_TO_DEVICE
+ |
+USB_SETUP_TYPE_STANDARD
+ |
+USB_SETUP_RECIPIENT_ENDPOINT
+)
+
+175 
+	#USB_SETUP_GET_STAND_ENDPOINT
+ (
+USB_SETUP_DIR_DEVICE_TO_HOST
+ |
+USB_SETUP_TYPE_STANDARD
+ |
+USB_SETUP_RECIPIENT_ENDPOINT
+)
+
+177 
+
+	)
+
+180 
+	#USB_SETUP_SET_CLASS_DEVICE
+ (
+USB_SETUP_DIR_HOST_TO_DEVICE
+ |
+USB_SETUP_TYPE_CLASS
+ |
+USB_SETUP_RECIPIENT_DEVICE
+)
+
+181 
+	#USB_SETUP_GET_CLASS_DEVICE
+ (
+USB_SETUP_DIR_DEVICE_TO_HOST
+ |
+USB_SETUP_TYPE_CLASS
+ |
+USB_SETUP_RECIPIENT_DEVICE
+)
+
+182 
+	#USB_SETUP_SET_CLASS_INTER
+ (
+USB_SETUP_DIR_HOST_TO_DEVICE
+ |
+USB_SETUP_TYPE_CLASS
+ |
+USB_SETUP_RECIPIENT_INTERFACE
+)
+
+183 
+	#USB_SETUP_GET_CLASS_INTER
+ (
+USB_SETUP_DIR_DEVICE_TO_HOST
+ |
+USB_SETUP_TYPE_CLASS
+ |
+USB_SETUP_RECIPIENT_INTERFACE
+)
+
+184 
+	#USB_SETUP_SET_CLASS_ENDPOINT
+ (
+USB_SETUP_DIR_HOST_TO_DEVICE
+ |
+USB_SETUP_TYPE_CLASS
+ |
+USB_SETUP_RECIPIENT_ENDPOINT
+)
+
+185 
+	#USB_SETUP_GET_CLASS_ENDPOINT
+ (
+USB_SETUP_DIR_DEVICE_TO_HOST
+ |
+USB_SETUP_TYPE_CLASS
+ |
+USB_SETUP_RECIPIENT_ENDPOINT
+)
+
+186 
+	#USB_SETUP_SET_CLASS_OTHER
+ (
+USB_SETUP_DIR_HOST_TO_DEVICE
+ |
+USB_SETUP_TYPE_CLASS
+ |
+USB_SETUP_RECIPIENT_OTHER
+)
+
+187 
+	#USB_SETUP_GET_CLASS_OTHER
+ (
+USB_SETUP_DIR_DEVICE_TO_HOST
+ |
+USB_SETUP_TYPE_CLASS
+ |
+USB_SETUP_RECIPIENT_OTHER
+)
+
+188 
+	#USB_SETUP_SET_VENDOR_DEVICE
+ (
+USB_SETUP_DIR_HOST_TO_DEVICE
+ |
+USB_SETUP_TYPE_VENDOR
+ |
+USB_SETUP_RECIPIENT_DEVICE
+)
+
+189 
+	#USB_SETUP_GET_VENDOR_DEVICE
+ (
+USB_SETUP_DIR_DEVICE_TO_HOST
+ |
+USB_SETUP_TYPE_VENDOR
+ |
+USB_SETUP_RECIPIENT_DEVICE
+)
+
+192 
+
+	)
+
+195 
+	#SETUP_GET_STATUS
+ 0x00
+
+	)
+
+196 
+	#SETUP_GET_DEVICE
+ 0x01
+
+	)
+
+197 
+	#SETUP_CLEAR_FEATURE
+ 0x01
+
+	)
+
+198 
+	#SETUP_GET_STRING
+ 0x03
+
+	)
+
+199 
+	#SETUP_SET_FEATURE
+ 0x03
+
+	)
+
+200 
+	#SETUP_SET_ADDRESS
+ 0x05
+
+	)
+
+201 
+	#SETUP_GET_DESCRIPTOR
+ 0x06
+
+	)
+
+202 
+	#SETUP_SET_DESCRIPTOR
+ 0x07
+
+	)
+
+203 
+	#SETUP_GET_CONFIGURATION
+ 0x08
+
+	)
+
+204 
+	#SETUP_SET_CONFIGURATION
+ 0x09
+
+	)
+
+205 
+	#SETUP_GET_INTERFACE
+ 0x0A
+
+	)
+
+206 
+	#SETUP_SET_INTERFACE
+ 0x0B
+
+	)
+
+207 
+	#SETUP_SYNCH_FRAME
+ 0x0C
+
+	)
+
+212 
+	#DESCRIPTOR_DEVICE
+ 0x01
+
+	)
+
+213 
+	#DESCRIPTOR_CONFIGURATION
+ 0x02
+
+	)
+
+214 
+	#DESCRIPTOR_STRING
+ 0x03
+
+	)
+
+215 
+	#DESCRIPTOR_INTERFACE
+ 0x04
+
+	)
+
+216 
+	#DESCRIPTOR_ENDPOINT
+ 0x05
+
+	)
+
+217 
+	#DESCRIPTOR_DEVICE_QUALIFIER
+ 0x06
+
+	)
+
+218 
+	#DESCRIPTOR_CONF_OTHER_SPEED
+ 0x07
+
+	)
+
+219 
+	#DESCRIPTOR_OTG
+ 0x09
+
+	)
+
+220 
+	#DESCRIPTOR_IAD
+ 0x0B
+
+	)
+
+225 
+	#FEATURE_DEVICE_REMOTE_WAKEUP
+ 0x01
+
+	)
+
+226 
+	#FEATURE_DEVICE_TEST
+ 0x02
+
+	)
+
+227 
+	#FEATURE_DEVICE_OTG_B_HNP_ENABLE
+ 0x03
+
+	)
+
+228 
+	#FEATURE_DEVICE_OTG_A_HNP_SUPPORT
+ 0x04
+
+	)
+
+229 
+	#FEATURE_DEVICE_OTG_A_ALT_HNP_SUPPORT
+ 0x05
+
+	)
+
+230 
+	#FEATURE_ENDPOINT_HALT
+ 0x00
+
+	)
+
+235 
+	#FEATURE_DEVICE_TEST_J
+ 0x01
+
+	)
+
+236 
+	#FEATURE_DEVICE_TEST_K
+ 0x02
+
+	)
+
+237 
+	#FEATURE_DEVICE_TEST_SEO_NAK
+ 0x03
+
+	)
+
+238 
+	#FEATURE_DEVICE_TEST_PACKET
+ 0x04
+
+	)
+
+239 
+	#FEATURE_DEVICE_TEST_FORCE_ENABLE
+ 0x05
+
+	)
+
+245 
+	#DESCRIPTOR_OTG_bL’gth
+ 0x03
+
+	)
+
+246 
+	#HNP_SUPPORT
+ 0x02
+
+	)
+
+247 
+	#SRP_SUPPORT
+ 0x01
+
+	)
+
+	@at90usb128/modules/usb/usb_commun_hid.h
+
+41 #iâdeà
+_USB_COMMUN_HID_H_
+
+
+42 
+	#_USB_COMMUN_HID_H_
+
+
+	)
+
+47 
+	#HID_CLASS
+ 0x03
+
+	)
+
+48 
+	#HID_SUB_CLASS_BOOT
+ 0x01
+
+49 
+	#HID_PROTOCOL_KEYBOARD
+ 0x01
+
+50 
+	#HID_PROTOCOL_MOUSE
+ 0x02
+
+52 
+
+	)
+
+56 
+	#SETUP_HID_GET_REPORT
+ 0x01
+
+	)
+
+57 
+	#SETUP_HID_GET_IDLE
+ 0x02
+
+	)
+
+58 
+	#SETUP_HID_GET_PROTOCOL
+ 0x03
+
+	)
+
+59 
+	#SETUP_HID_SET_REPORT
+ 0x09
+
+	)
+
+60 
+	#SETUP_HID_SET_IDLE
+ 0x0A
+
+	)
+
+61 
+	#SETUP_HID_SET_PROTOCOL
+ 0x0B
+
+	)
+
+65 
+	#DESCRIPTOR_HID
+ 0x21
+
+	)
+
+66 
+	#DESCRIPTOR_REPORT
+ 0x22
+
+	)
+
+67 
+	#DESCRIPTOR_PHYSICAL
+ 0x23
+
+	)
+
+72 
+	#REPORT_TYPE_INPUT
+ 0x01
+
+	)
+
+73 
+	#REPORT_TYPE_OUTPUT
+ 0x02
+
+	)
+
+74 
+	#REPORT_TYPE_FEATURE
+ 0x03
+
+	)
+
+79 
+	#HID_BDC
+ 0x0111
+
+80 
+	#HID_CLASS_DESC_NB_DEFAULT
+ 0x01
+
+81 
+
+	)
+
+84 
+	#HID_NO_COUNTRY_CODE
+ 0
+
+85 
+	#HID_COUNTRY_ARABIC
+ 1
+
+86 
+	#HID_COUNTRY_BELGIAN
+ 2
+
+87 
+	#HID_COUNTRY_CANADIAN_BILINGUAL
+ 3
+
+88 
+	#HID_COUNTRY_CANADIAN_FRENCH
+ 4
+
+89 
+	#HID_COUNTRY_CZECH_REPUBLIC
+ 5
+
+90 
+	#HID_COUNTRY_DANISH
+ 6
+
+91 
+	#HID_COUNTRY_FINNISH
+ 7
+
+92 
+	#HID_COUNTRY_FRENCH
+ 8
+
+93 
+	#HID_COUNTRY_GERMAN
+ 9
+
+94 
+	#HID_COUNTRY_GREEK
+ 10
+
+95 
+	#HID_COUNTRY_HEBREW
+ 11
+
+96 
+	#HID_COUNTRY_HUNGARY
+ 12
+
+97 
+	#HID_COUNTRY_INTERNATIONAL_ISO
+ 13
+
+98 
+	#HID_COUNTRY_ITALIAN
+ 14
+
+99 
+	#HID_COUNTRY_JAPAN_KATAKANA
+ 15
+
+100 
+	#HID_COUNTRY_KOREAN
+ 16
+
+101 
+	#HID_COUNTRY_LATIN_AMERICAN
+ 17
+
+102 
+	#HID_COUNTRY_NETHERLANDS_DUTCH
+ 18
+
+103 
+	#HID_COUNTRY_NORWEGIAN
+ 19
+
+104 
+	#HID_COUNTRY_PERSIAN_FARSI
+ 20
+
+105 
+	#HID_COUNTRY_POLAND
+ 21
+
+106 
+	#HID_COUNTRY_PORTUGUESE
+ 22
+
+107 
+	#HID_COUNTRY_RUSSIA
+ 23
+
+108 
+	#HID_COUNTRY_SLOVAKIA
+ 24
+
+109 
+	#HID_COUNTRY_SPANISH
+ 25
+
+110 
+	#HID_COUNTRY_SWEDISH
+ 26
+
+111 
+	#HID_COUNTRY_SWISS_FRENCH
+ 27
+
+112 
+	#HID_COUNTRY_SWISS_GERMAN
+ 28
+
+113 
+	#HID_COUNTRY_SWITZERLAND
+ 29
+
+114 
+	#HID_COUNTRY_TAIWAN
+ 30
+
+115 
+	#HID_COUNTRY_TURKISH_Q
+ 31
+
+116 
+	#HID_COUNTRY_UK
+ 32
+
+117 
+	#HID_COUNTRY_US
+ 33
+
+118 
+	#HID_COUNTRY_YUGOSLAVIA
+ 34
+
+119 
+	#HID_COUNTRY_TURKISH_F
+ 35
+
+123 
+
+	)
+
+127 
+	#HID_A
+ 4
+
+	)
+
+128 
+	#HID_B
+ 5
+
+	)
+
+129 
+	#HID_C
+ 6
+
+	)
+
+130 
+	#HID_D
+ 7
+
+	)
+
+131 
+	#HID_E
+ 8
+
+	)
+
+132 
+	#HID_F
+ 9
+
+	)
+
+133 
+	#HID_G
+ 10
+
+	)
+
+134 
+	#HID_H
+ 11
+
+	)
+
+135 
+	#HID_I
+ 12
+
+	)
+
+136 
+	#HID_J
+ 13
+
+	)
+
+137 
+	#HID_K
+ 14
+
+	)
+
+138 
+	#HID_L
+ 15
+
+	)
+
+139 
+	#HID_M
+ 16
+
+	)
+
+140 
+	#HID_N
+ 17
+
+	)
+
+141 
+	#HID_O
+ 18
+
+	)
+
+142 
+	#HID_P
+ 19
+
+	)
+
+143 
+	#HID_Q
+ 20
+
+	)
+
+144 
+	#HID_R
+ 21
+
+	)
+
+145 
+	#HID_S
+ 22
+
+	)
+
+146 
+	#HID_T
+ 23
+
+	)
+
+147 
+	#HID_U
+ 24
+
+	)
+
+148 
+	#HID_V
+ 25
+
+	)
+
+149 
+	#HID_W
+ 26
+
+	)
+
+150 
+	#HID_X
+ 27
+
+	)
+
+151 
+	#HID_Y
+ 28
+
+	)
+
+152 
+	#HID_Z
+ 29
+
+	)
+
+153 
+	#HID_1
+ 30
+
+	)
+
+154 
+	#HID_2
+ 31
+
+	)
+
+155 
+	#HID_3
+ 32
+
+	)
+
+156 
+	#HID_4
+ 33
+
+	)
+
+157 
+	#HID_5
+ 34
+
+	)
+
+158 
+	#HID_6
+ 35
+
+	)
+
+159 
+	#HID_7
+ 36
+
+	)
+
+160 
+	#HID_8
+ 37
+
+	)
+
+161 
+	#HID_9
+ 38
+
+	)
+
+162 
+	#HID_0
+ 39
+
+	)
+
+163 
+	#HID_ENTER
+ 40
+
+	)
+
+164 
+	#HID_ESCAPE
+ 41
+
+	)
+
+165 
+	#HID_BACKSPACE
+ 42
+
+	)
+
+166 
+	#HID_TAB
+ 43
+
+	)
+
+167 
+	#HID_SPACEBAR
+ 44
+
+	)
+
+168 
+	#HID_UNDERSCORE
+ 45
+
+	)
+
+169 
+	#HID_PLUS
+ 46
+
+	)
+
+174 
+	#HID_BACKSLASH
+ 49
+
+	)
+
+180 
+	#HID_TILDE
+ 53
+
+	)
+
+181 
+	#HID_COMMA
+ 54
+
+	)
+
+182 
+	#HID_DOT
+ 55
+
+	)
+
+183 
+	#HID_SLASH
+ 56
+
+	)
+
+184 
+	#HID_CAPS
+ 
+LOCK
+ 57
+
+	)
+
+185 
+	#HID_F1
+ 58
+
+	)
+
+186 
+	#HID_F2
+ 59
+
+	)
+
+187 
+	#HID_F3
+ 60
+
+	)
+
+188 
+	#HID_F4
+ 61
+
+	)
+
+189 
+	#HID_F5
+ 62
+
+	)
+
+190 
+	#HID_F6
+ 63
+
+	)
+
+191 
+	#HID_F7
+ 64
+
+	)
+
+192 
+	#HID_F8
+ 65
+
+	)
+
+193 
+	#HID_F9
+ 66
+
+	)
+
+194 
+	#HID_F10
+ 67
+
+	)
+
+195 
+	#HID_F11
+ 68
+
+	)
+
+196 
+	#HID_F12
+ 69
+
+	)
+
+197 
+	#HID_PRINTSCREEN
+ 70
+
+	)
+
+198 
+	#HID_SCROLL
+ 
+LOCK
+ 71
+
+	)
+
+199 
+	#HID_PAUSE
+ 72
+
+	)
+
+200 
+	#HID_INSERT
+ 73
+
+	)
+
+201 
+	#HID_HOME
+ 74
+
+	)
+
+202 
+	#HID_PAGEUP
+ 75
+
+	)
+
+203 
+	#HID_DELETE
+ 76
+
+	)
+
+204 
+	#HID_END
+ 77
+
+	)
+
+205 
+	#HID_PAGEDOWN
+ 78
+
+	)
+
+206 
+	#HID_RIGHT
+ 79
+
+	)
+
+207 
+	#HID_LEFT
+ 80
+
+	)
+
+208 
+	#HID_DOWN
+ 81
+
+	)
+
+209 
+	#HID_UP
+ 82
+
+	)
+
+210 
+	#HID_KEYPAD_NUM_LOCK
+ 83
+
+	)
+
+211 
+	#HID_KEYPAD_DIVIDE
+ 84
+
+	)
+
+212 
+	#HID_KEYPAD_AT
+ 85
+
+	)
+
+213 
+	#HID_KEYPAD_MULTIPLY
+ 85
+
+	)
+
+214 
+	#HID_KEYPAD_MINUS
+ 86
+
+	)
+
+215 
+	#HID_KEYPAD_PLUS
+ 87
+
+	)
+
+216 
+	#HID_KEYPAD_ENTER
+ 88
+
+	)
+
+217 
+	#HID_KEYPAD_1
+ 89
+
+	)
+
+218 
+	#HID_KEYPAD_2
+ 90
+
+	)
+
+219 
+	#HID_KEYPAD_3
+ 91
+
+	)
+
+220 
+	#HID_KEYPAD_4
+ 92
+
+	)
+
+221 
+	#HID_KEYPAD_5
+ 93
+
+	)
+
+222 
+	#HID_KEYPAD_6
+ 94
+
+	)
+
+223 
+	#HID_KEYPAD_7
+ 95
+
+	)
+
+224 
+	#HID_KEYPAD_8
+ 96
+
+	)
+
+225 
+	#HID_KEYPAD_9
+ 97
+
+	)
+
+226 
+	#HID_KEYPAD_0
+ 98
+
+	)
+
+230 
+	#HID_MODIFIER_NONE
+ 0x00
+
+	)
+
+231 
+	#HID_MODIFIER_LEFT_CTRL
+ 0x01
+
+	)
+
+232 
+	#HID_MODIFIER_LEFT_SHIFT
+ 0x02
+
+	)
+
+233 
+	#HID_MODIFIER_LEFT_ALT
+ 0x04
+
+	)
+
+234 
+	#HID_MODIFIER_LEFT_GUI
+ 0x08
+
+	)
+
+235 
+	#HID_MODIFIER_RIGHT_CTRL
+ 0x10
+
+	)
+
+236 
+	#HID_MODIFIER_RIGHT_SHIFT
+ 0x20
+
+	)
+
+237 
+	#HID_MODIFIER_RIGHT_ALT
+ 0x40
+
+	)
+
+238 
+	#HID_MODIFIER_RIGHT_GUI
+ 0x80
+
+	)
+
+	@at90usb128/modules/usb/usb_task.c
+
+55 
+	~"cÚfig.h
+"
+
+56 
+	~"cÚf_usb.h
+"
+
+57 
+	~"usb_sk.h
+"
+
+58 
+	~"lib_mcu/usb/usb_drv.h
+"
+
+59 #ià((
+USB_DEVICE_FEATURE
+ =ğ
+ENABLED
+))
+
+60 
+	~"usb_desütÜs.h
+"
+
+62 
+	~"lib_mcu/pow”/pow”_drv.h
+"
+
+63 
+	~"lib_mcu/wdt/wdt_drv.h
+"
+
+64 
+	~"lib_mcu/¶l/¶l_drv.h
+"
+
+66 #ià((
+USB_HOST_FEATURE
+ =ğ
+ENABLED
+))
+
+67 
+	~"moduËs/usb/ho¡_ch­9/usb_ho¡_sk.h
+"
+
+68 
+	~"moduËs/usb/ho¡_ch­9/usb_ho¡_’um.h
+"
+
+69 #ià(
+USB_HOST_PIPE_INTERRUPT_TRANSFER
+ =ğ
+ENABLE
+)
+
+70 
+U8
+ 
+g_§v_št_sof_’abË
+;
+
+74 #ià((
+USB_DEVICE_FEATURE
+ =ğ
+ENABLED
+))
+
+75 
+	~"moduËs/usb/deviû_ch­9/usb_deviû_sk.h
+"
+
+78 #iâdeà 
+USE_USB_PADS_REGULATOR
+
+
+79 #”rÜ "USE_USB_PADS_REGULATOR" 
+should
+ 
+be
+ 
+defšed
+ 
+as
+ 
+ENABLE
+ 
+Ü
+ 
+DISABLE
+ 
+š
+ 
+cÚf_usb
+.
+h
+ 
+fe
+
+
+84 #iâdeà
+LOG_STR_CODE
+
+
+85 
+	#LOG_STR_CODE
+(
+¡r
+)
+
+	)
+
+87 
+U8
+ 
+code
+ 
+	glog_deviû_discÚÃù
+[]="Device Disconnected";
+
+88 
+U8
+ 
+code
+ 
+	glog_id_chªge
+[]="Pin Id Change";
+
+103 vŞ©
+U16
+ 
+	gg_usb_ev’t
+=0;
+
+106 #ià(
+USB_DEVICE_FEATURE
+ =ğ
+ENABLED
+)
+
+113 
+b™
+ 
+usb_cÚÃùed
+;
+
+121 
+U8
+ 
+usb_cÚfigu¿tiÚ_nb
+;
+
+127 
+U8
+ 
+»mÙe_wakeup_ã©u»
+;
+
+129 #ifdeà
+WA_USB_SUSPEND_PERTUBATION
+
+
+130 vŞ©
+U16
+ 
+	gd–ay_usb
+;
+
+131 
+usb_d–ay_ms
+(
+U8
+ 
+ms
+);
+
+136 #ià(
+USB_HOST_FEATURE
+ =ğ
+ENABLED
+)
+
+143 vŞ©
+U8
+ 
+	g´iv©e_sof_couÁ”
+=0;
+
+145 #ià(
+USB_HOST_PIPE_INTERRUPT_TRANSFER
+ =ğ
+ENABLE
+)
+
+146 vŞ©
+S_pe_št
+ 
+™_pe_¡r
+[
+MAX_EP_NB
+];
+
+149 #ià(
+USB_HUB_SUPPORT
+==
+ENABLE
+)
+
+150 vŞ©
+U8
+ 
+hub_š‹¼u±_sof
+;
+
+155 #ià((
+USB_DEVICE_FEATURE
+ =ğ
+ENABLED
+)&& (
+USB_HOST_FEATURE
+ == ENABLED))
+
+161 
+U8
+ 
+	gg_usb_mode
+=
+USB_MODE_UNDEFINED
+;
+
+162 
+U8
+ 
+	gg_Şd_usb_mode
+;
+
+177 
+	$usb_sk_š™
+()
+
+179 #ià(
+USB_HOST_FEATURE
+ =ğ
+ENABLED
+ && 
+USB_DEVICE_FEATURE
+ == ENABLED)
+
+180 
+U8
+ 
+d–ay
+;
+
+183 #ià(
+USE_USB_PADS_REGULATOR
+==
+ENABLE
+)
+
+184 
+	`Usb_’abË_»guÏtÜ
+();
+
+188 #ià((
+USB_DEVICE_FEATURE
+ =ğ
+ENABLED
+)&& (
+USB_HOST_FEATURE
+ == ENABLED))
+
+189 
+	`Usb_’abË_uid_pš
+();
+
+190 
+d–ay
+=
+PORTA
+;
+
+191 
+g_usb_mode
+=
+USB_MODE_UNDEFINED
+;
+
+192 if(
+	`Is_usb_id_deviû
+())
+
+194 
+g_usb_mode
+=
+USB_MODE_DEVICE
+;
+
+195 
+	`usb_deviû_sk_š™
+();
+
+199 
+g_usb_mode
+=
+USB_MODE_HOST
+;
+
+200 
+	`Usb_ack_id_Œªs™iÚ
+();
+
+201 #iàĞ
+ID_PIN_CHANGE_GENERATE_RESET
+ =ğ
+ENABLE
+)
+
+202 
+	`Usb_’abË_id_š‹¼u±
+();
+
+204 
+	`EÇbË_š‹¼u±
+();
+
+205 
+	`usb_ho¡_sk_š™
+();
+
+207 
+g_Şd_usb_mode
+=
+g_usb_mode
+;
+
+211 #–ià((
+USB_DEVICE_FEATURE
+ =ğ
+ENABLED
+)&& (
+USB_HOST_FEATURE
+ =ğ
+DISABLE
+))
+
+212 
+	`Usb_fÜû_deviû_mode
+();
+
+213 
+	`usb_deviû_sk_š™
+();
+
+217 #–ià((
+USB_DEVICE_FEATURE
+ =ğ
+DISABLE
+)&& (
+USB_HOST_FEATURE
+ =ğ
+ENABLED
+))
+
+218 
+	`Usb_fÜû_ho¡_mode
+();
+
+219 
+	`usb_ho¡_sk_š™
+();
+
+220 #–ià((
+USB_DEVICE_FEATURE
+ =ğ
+DISABLE
+)&& (
+USB_HOST_FEATURE
+ == DISABLE))
+
+221 #”rÜ 
+©
+ 
+Ëa¡
+ 
+Úe
+ 
+of
+ 
+USB_DEVICE_FEATURE
+ 
+Ü
+ 
+USB_HOST_FEATURE
+ 
+should
+ 
+be
+ 
+’abËd
+
+
+226 
+	}
+}
+
+238 
+	$usb_sk
+()
+
+241 #ià((
+USB_DEVICE_FEATURE
+ =ğ
+ENABLED
+)&& (
+USB_HOST_FEATURE
+ == ENABLED))
+
+242 if(
+	`Is_usb_id_deviû
+())
+
+243 { 
+g_usb_mode
+=
+USB_MODE_DEVICE
+;}
+
+245 { 
+g_usb_mode
+=
+USB_MODE_HOST
+;}
+
+247 ifĞ
+g_Şd_usb_mode
+ !ğ
+g_usb_mode
+ )
+
+250 #iàĞ
+ID_PIN_CHANGE_GENERATE_RESET
+ =ğ
+ENABLE
+)
+
+252 
+	`wdtdrv_’abË
+(
+WDTO_16MS
+);
+
+256 
+	`Usb_ack_id_Œªs™iÚ
+();
+
+257 ià(
+	`Is_usb_id_ho¡
+())
+
+259 
+	`Usb_di§bË_»sume_š‹¼u±
+();
+
+260 
+	`Usb_di§bË_wake_up_š‹¼u±
+();
+
+261 
+	`Usb_di§bË_su¥’d_š‹¼u±
+();
+
+262 
+	`Usb_di§bË_»£t_š‹¼u±
+();
+
+263 
+	`Usb_d‘ach
+();
+
+264 
+	`Usb_di§bË
+();
+
+265 
+	`usb_ho¡_sk_š™
+();
+
+269 
+	`Ho¡_di§bË_deviû_discÚÃùiÚ_š‹¼u±
+();
+
+270 
+	`Ho¡_di§bË_sof_š‹¼u±
+();
+
+271 
+	`Ho¡_di§bË_sof
+();
+
+272 
+	`Usb_di§bË_vbus
+();
+
+273 
+	`Usb_di§bË_mªu®_vbus
+();
+
+274 
+	`Usb_ä“ze_şock
+();
+
+275 
+	`Usb_di§bË
+();
+
+276 
+	`usb_deviû_sk_š™
+();
+
+282 
+g_Şd_usb_mode
+=
+g_usb_mode
+;
+
+285 
+g_usb_mode
+)
+
+287 
+USB_MODE_DEVICE
+:
+
+288 
+	`usb_deviû_sk
+();
+
+291 
+USB_MODE_HOST
+:
+
+292 
+	`usb_ho¡_sk
+();
+
+295 
+USB_MODE_UNDEFINED
+:
+
+302 #–ià((
+USB_DEVICE_FEATURE
+ =ğ
+ENABLED
+)&& (
+USB_HOST_FEATURE
+ =ğ
+DISABLE
+))
+
+303 
+	`usb_deviû_sk
+();
+
+307 #–ià((
+USB_DEVICE_FEATURE
+ =ğ
+DISABLE
+)&& (
+USB_HOST_FEATURE
+ =ğ
+ENABLED
+))
+
+308 
+	`usb_ho¡_sk
+();
+
+312 #–ià((
+USB_DEVICE_FEATURE
+ =ğ
+DISABLE
+)&& (
+USB_HOST_FEATURE
+ == DISABLE))
+
+313 #”rÜ 
+©
+ 
+Ëa¡
+ 
+Úe
+ 
+of
+ 
+USB_DEVICE_FEATURE
+ 
+Ü
+ 
+USB_HOST_FEATURE
+ 
+should
+ 
+be
+ 
+’abËd
+
+
+314 #”rÜ 
+Ùh”wi£
+ 
+the
+ 
+usb
+ 
+sk
+ 
+has
+ 
+nÙhšg
+ 
+to
+ do ...
+
+318 
+	}
+}
+
+348 #ifdeà
+__GNUC__
+
+
+349 
+	$ISR
+(
+USB_GEN_veù
+)
+
+351 #´agm¨
+veùÜ
+ = 
+USB_G’”®_veù
+
+
+352 
+__š‹¼u±
+ 
+	$usb_g’”®_š‹¼u±
+()
+
+355 #ià(
+USB_HOST_PIPE_INTERRUPT_TRANSFER
+ =ğ
+ENABLE
+)
+
+356 
+U8
+ 
+i
+;
+
+357 
+U8
+ 
+§ve_pe_nb
+;
+
+360 #ià(
+USB_DEVICE_FEATURE
+ =ğ
+ENABLED
+)
+
+363 ià(
+	`Is_usb_sof
+(è&& 
+	`Is_sof_š‹¼u±_’abËd
+())
+
+365 
+	`Usb_ack_sof
+();
+
+366 
+	`Usb_sof_aùiÚ
+();
+
+368 #ifdeà
+WA_USB_SUSPEND_PERTUBATION
+
+
+370 ià(
+	`Is_usb_su¥’d
+(è&& 
+	`Is_su¥’d_š‹¼u±_’abËd
+())
+
+372 
+usb_su¥’ded
+=
+TRUE
+;
+
+373 
+	`Usb_ack_wake_up
+();
+
+374 
+	`Usb_£nd_ev’t
+(
+EVT_USB_SUSPEND
+);
+
+375 
+	`Usb_ack_su¥’d
+();
+
+376 
+	`Usb_’abË_wake_up_š‹¼u±
+();
+
+377 
+	`Usb_di§bË_»sume_š‹¼u±
+();
+
+378 
+	`Usb_ä“ze_şock
+();
+
+379 
+	`Stİ_¶l
+();
+
+380 
+	`Usb_su¥’d_aùiÚ
+();
+
+383 ià(
+	`Is_usb_wake_up
+(è&& 
+	`Is_wake_up_š‹¼u±_’abËd
+())
+
+385 if(
+	`Is_¶l_»ady
+()==
+FALSE
+)
+
+387 
+	`PÎ_¡¬t_auto
+();
+
+388 
+	`Wa™_¶l_»ady
+();
+
+390 
+	`Usb_unä“ze_şock
+();
+
+391 
+	`Usb_ack_wake_up
+();
+
+392 if(
+usb_su¥’ded
+)
+
+394 
+	`Usb_’abË_»sume_š‹¼u±
+();
+
+395 
+	`Usb_’abË_»£t_š‹¼u±
+();
+
+396 
+	`Is_usb_wake_up
+())
+
+398 
+	`Usb_ack_wake_up
+();
+
+400 
+	`usb_d–ay_ms
+(2);
+
+401 if(
+	`Is_usb_sof
+(è|| 
+	`Is_usb_»sume
+(è|| 
+	`Is_usb_»£t
+() )
+
+403 
+	`Usb_di§bË_wake_up_š‹¼u±
+();
+
+404 
+	`Usb_wake_up_aùiÚ
+();
+
+405 
+	`Usb_£nd_ev’t
+(
+EVT_USB_WAKE_UP
+);
+
+406 
+	`Usb_’abË_su¥’d_š‹¼u±
+();
+
+407 
+	`Usb_’abË_»sume_š‹¼u±
+();
+
+408 
+	`Usb_’abË_»£t_š‹¼u±
+();
+
+413 
+	`Usb_ack_wake_up
+();
+
+414 
+	`Usb_£nd_ev’t
+(
+EVT_USB_SUSPEND
+);
+
+415 
+	`Usb_’abË_wake_up_š‹¼u±
+();
+
+416 
+	`Usb_di§bË_»sume_š‹¼u±
+();
+
+417 
+	`Usb_ä“ze_şock
+();
+
+418 
+	`Stİ_¶l
+();
+
+419 
+	`Usb_su¥’d_aùiÚ
+();
+
+424 ià(
+	`Is_usb_»sume
+(è&& 
+	`Is_»sume_š‹¼u±_’abËd
+())
+
+426 
+usb_su¥’ded
+ = 
+FALSE
+;
+
+427 
+	`Usb_di§bË_wake_up_š‹¼u±
+();
+
+428 
+	`Usb_ack_»sume
+();
+
+429 
+	`Usb_di§bË_»sume_š‹¼u±
+();
+
+430 
+	`Usb_»sume_aùiÚ
+();
+
+431 
+	`Usb_£nd_ev’t
+(
+EVT_USB_RESUME
+);
+
+435 ià(
+	`Is_usb_su¥’d
+(è&& 
+	`Is_su¥’d_š‹¼u±_’abËd
+())
+
+438 ià((
+»mÙe_wakeup_ã©u»
+ =ğ
+ENABLED
+è&& (
+usb_cÚfigu¿tiÚ_nb
+ != 0))
+
+440 
+	`Usb_di§bË_su¥’d_š‹¼u±
+();
+
+441 
+	`Usb_ack_wake_up
+();
+
+442 
+	`Usb_’abË_wake_up_š‹¼u±
+();
+
+443 
+	`Stİ_¶l
+();
+
+444 
+	`Usb_ä“ze_şock
+();
+
+445 
+	`Usb_su¥’d_aùiÚ
+();
+
+470 
+	`Usb_ack_wake_up
+();
+
+471 
+	`Usb_£nd_ev’t
+(
+EVT_USB_SUSPEND
+);
+
+472 
+	`Usb_ack_su¥’d
+();
+
+473 
+	`Usb_’abË_wake_up_š‹¼u±
+();
+
+474 
+	`Usb_ä“ze_şock
+();
+
+475 
+	`Stİ_¶l
+();
+
+476 
+	`Usb_su¥’d_aùiÚ
+();
+
+480 ià(
+	`Is_usb_wake_up
+(è&& 
+	`Is_wake_up_š‹¼u±_’abËd
+())
+
+482 if(
+	`Is_¶l_»ady
+()==
+FALSE
+)
+
+484 
+	`PÎ_¡¬t_auto
+();
+
+485 
+	`Wa™_¶l_»ady
+();
+
+487 
+	`Usb_unä“ze_şock
+();
+
+488 
+	`Usb_ack_wake_up
+();
+
+489 
+	`Usb_di§bË_wake_up_š‹¼u±
+();
+
+490 
+	`Usb_wake_up_aùiÚ
+();
+
+491 
+	`Usb_£nd_ev’t
+(
+EVT_USB_WAKE_UP
+);
+
+492 
+	`Usb_’abË_su¥’d_š‹¼u±
+();
+
+495 ià(
+	`Is_usb_»sume
+(è&& 
+	`Is_»sume_š‹¼u±_’abËd
+())
+
+497 
+	`Usb_di§bË_wake_up_š‹¼u±
+();
+
+498 
+	`Usb_ack_»sume
+();
+
+499 
+	`Usb_di§bË_»sume_š‹¼u±
+();
+
+500 
+	`Usb_»sume_aùiÚ
+();
+
+501 
+	`Usb_£nd_ev’t
+(
+EVT_USB_RESUME
+);
+
+505 ià(
+	`Is_usb_»£t
+()&& 
+	`Is_»£t_š‹¼u±_’abËd
+())
+
+507 
+	`Usb_ack_»£t
+();
+
+508 
+	`usb_š™_deviû
+();
+
+509 
+	`Usb_»£t_aùiÚ
+();
+
+510 
+	`Usb_£nd_ev’t
+(
+EVT_USB_RESET
+);
+
+515 #ià(
+USB_HOST_FEATURE
+ =ğ
+ENABLED
+ && 
+USB_DEVICE_FEATURE
+ == ENABLED)
+
+517 if(
+	`Is_usb_id_Œªs™iÚ
+()&&
+	`Is_usb_id_š‹¼u±_’abËd
+())
+
+519 if(
+	`Is_usb_id_deviû
+())
+
+520 { 
+g_usb_mode
+=
+USB_MODE_DEVICE
+;}
+
+522 { 
+g_usb_mode
+=
+USB_MODE_HOST
+;}
+
+523 
+	`Usb_ack_id_Œªs™iÚ
+();
+
+524 ifĞ
+g_usb_mode
+ !ğ
+g_Şd_usb_mode
+)
+
+526 if(
+	`Is_usb_id_deviû
+())
+
+528 
+	`Usb_£nd_ev’t
+(
+EVT_USB_DEVICE_FUNCTION
+);
+
+532 
+	`Usb_£nd_ev’t
+(
+EVT_USB_HOST_FUNCTION
+);
+
+534 
+	`Usb_id_Œªs™iÚ_aùiÚ
+();
+
+535 
+	`LOG_STR_CODE
+(
+log_id_chªge
+);
+
+536 #iàĞ
+ID_PIN_CHANGE_GENERATE_RESET
+ =ğ
+ENABLE
+)
+
+538 
+	`wdtdrv_’abË
+(
+WDTO_16MS
+);
+
+544 #ià(
+USB_HOST_FEATURE
+ =ğ
+ENABLED
+)
+
+546 if(
+	`Is_deviû_discÚÃùiÚ
+(è&& 
+	`Is_ho¡_deviû_discÚÃùiÚ_š‹¼u±_’abËd
+())
+
+548 
+	`ho¡_di§bË_®l_pe
+();
+
+549 
+	`Ho¡_ack_deviû_discÚÃùiÚ
+();
+
+550 
+deviû_¡©e
+=
+DEVICE_DISCONNECTED
+;
+
+551 
+	`Usb_£nd_ev’t
+(
+EVT_HOST_DISCONNECTION
+);
+
+552 
+	`š™_usb_Œ“
+();
+
+553 
+	`LOG_STR_CODE
+(
+log_deviû_discÚÃù
+);
+
+554 
+	`Ho¡_deviû_discÚÃùiÚ_aùiÚ
+();
+
+557 if(
+	`Is_deviû_cÚÃùiÚ
+(è&& 
+	`Is_ho¡_deviû_cÚÃùiÚ_š‹¼u±_’abËd
+())
+
+559 
+	`Ho¡_ack_deviû_cÚÃùiÚ
+();
+
+560 
+	`ho¡_di§bË_®l_pe
+();
+
+561 
+	`Ho¡_deviû_cÚÃùiÚ_aùiÚ
+();
+
+564 ià(
+	`Is_ho¡_sof
+(è&& 
+	`Is_ho¡_sof_š‹¼u±_’abËd
+())
+
+566 
+	`Ho¡_ack_sof
+();
+
+567 
+	`Usb_£nd_ev’t
+(
+EVT_HOST_SOF
+);
+
+568 
+´iv©e_sof_couÁ”
+++;
+
+569 #ià(
+USB_HUB_SUPPORT
+==
+ENABLE
+)
+
+570 
+hub_š‹¼u±_sof
+++;
+
+574 #ià((
+USB_HOST_PIPE_INTERRUPT_TRANSFER
+==
+ENABLE
+è&& (
+TIMEOUT_DELAY_ENABLE
+==ENABLE))
+
+575 ià(
+´iv©e_sof_couÁ”
+>=250)
+
+577 
+´iv©e_sof_couÁ”
+=0;
+
+578 
+i
+=0;i<
+MAX_EP_NB
+;i++)
+
+580 if(
+™_pe_¡r
+[
+i
+].
+’abË
+==
+ENABLE
+)
+
+582 
+§ve_pe_nb
+=
+	`Ho¡_g‘_£Ëùed_pe
+();
+
+583 
+	`Ho¡_£Ëù_pe
+(
+i
+);
+
+584 if((++
+™_pe_¡r
+[
+i
+].
+timeout
+>
+TIMEOUT_DELAY
+è&& (
+	`Ho¡_g‘_pe_ty³
+()!=
+TYPE_INTERRUPT
+))
+
+586 
+™_pe_¡r
+[
+i
+].
+’abË
+=
+DISABLE
+;
+
+587 
+™_pe_¡r
+[
+i
+].
+¡©us
+=
+PIPE_DELAY_TIMEOUT
+;
+
+588 
+	`Ho¡_¡İ_pe_š‹¼u±
+(
+i
+);
+
+589 ià(
+	`is_ªy_š‹¼u±_pe_aùive
+()==
+FALSE
+)
+
+591 ià(
+g_§v_št_sof_’abË
+==
+FALSE
+)
+
+593 
+	`Ho¡_di§bË_sof_š‹¼u±
+();
+
+596 
+™_pe_¡r
+[
+i
+].
+	`hªdË
+(
+PIPE_DELAY_TIMEOUT
+,™_pe_¡r[i].
+nb_by‹_´oûs£d
+);
+
+598 
+	`Ho¡_£Ëù_pe
+(
+§ve_pe_nb
+);
+
+603 
+	`Ho¡_sof_aùiÚ
+();
+
+606 ià(
+	`Is_ho¡_hwup
+(è&& 
+	`Is_ho¡_hwup_š‹¼u±_’abËd
+())
+
+608 
+	`Ho¡_di§bË_hwup_š‹¼u±
+();
+
+610 
+	`PÎ_¡¬t_auto
+();
+
+611 
+	`Wa™_¶l_»ady
+();
+
+612 
+	`Usb_unä“ze_şock
+();
+
+613 
+	`Ho¡_ack_hwup
+();
+
+614 
+	`Usb_£nd_ev’t
+(
+EVT_HOST_HWUP
+);
+
+615 
+	`Ho¡_hwup_aùiÚ
+();
+
+618 
+	}
+}
+
+621 #ià(
+USB_DEVICE_FEATURE
+ =ğ
+ENABLED
+)
+
+622 #ifdeà
+WA_USB_SUSPEND_PERTUBATION
+
+
+623 
+	$usb_d–ay_ms
+(
+U8
+ 
+ms
+)
+
+625 ;
+ms
+;ms--)
+
+627 
+d–ay_usb
+=0;d–ay_usb<
+FOSC
+/16;delay_usb++);
+
+629 
+	}
+}
+
+	@at90usb128/modules/usb/usb_task.h
+
+41 #iâdeà
+_USB_TASK_H_
+
+
+42 
+	#_USB_TASK_H_
+
+
+	)
+
+44 
+	~"moduËs/usb/usb_commun.h
+"
+
+57 
+	#Usb_£nd_ev’t
+(
+x
+è(
+g_usb_ev’t
+ |ğ(1<<x))
+
+	)
+
+58 
+	#Usb_ack_ev’t
+(
+x
+è(
+g_usb_ev’t
+ &ğ~(1<<x))
+
+	)
+
+59 
+	#Usb_ş—r_®l_ev’t
+(è(
+g_usb_ev’t
+ = 0)
+
+	)
+
+60 
+	#Is_usb_ev’t
+(
+x
+è((
+g_usb_ev’t
+ & (1<<x)è? 
+TRUE
+ : 
+FALSE
+)
+
+	)
+
+61 
+	#Is_nÙ_usb_ev’t
+(
+x
+è((
+g_usb_ev’t
+ & (1<<x)è? 
+FALSE
+: 
+TRUE
+)
+
+	)
+
+62 
+	#Is_ho¡_em”g’cy_ex™
+(è(
+	`Is_usb_id_deviû
+())
+
+	)
+
+63 
+	#Is_usb_deviû
+(è(
+g_usb_mode
+==
+USB_MODE_DEVICE
+ ? 
+TRUE
+ : 
+FALSE
+)
+
+	)
+
+64 
+	#Is_usb_ho¡
+(è(
+g_usb_mode
+==
+USB_MODE_HOST
+ ? 
+TRUE
+ : 
+FALSE
+)
+
+	)
+
+66 
+	#Otg_£nd_ev’t
+(
+x
+è(
+g_Ùg_ev’t
+ |ğ(1<<x))
+
+	)
+
+67 
+	#Otg_ack_ev’t
+(
+x
+è(
+g_Ùg_ev’t
+ &ğ~(1<<x))
+
+	)
+
+68 
+	#Otg_ş—r_®l_ev’t
+(è(
+g_Ùg_ev’t
+ = 0)
+
+	)
+
+69 
+	#Is_Ùg_ev’t
+(
+x
+è((
+g_Ùg_ev’t
+ & (1<<x)è? 
+TRUE
+ : 
+FALSE
+)
+
+	)
+
+70 
+	#Is_nÙ_Ùg_ev’t
+(
+x
+è((
+g_Ùg_ev’t
+ & (1<<x)è? 
+FALSE
+: 
+TRUE
+)
+
+	)
+
+72 
+	#EVT_USB_POWERED
+ 1
+
+73 
+	#EVT_USB_UNPOWERED
+ 2
+
+74 
+	#EVT_USB_DEVICE_FUNCTION
+ 3
+
+75 
+	#EVT_USB_HOST_FUNCTION
+ 4
+
+76 
+	#EVT_USB_SUSPEND
+ 5
+
+77 
+	#EVT_USB_WAKE_UP
+ 6
+
+78 
+	#EVT_USB_RESUME
+ 7
+
+79 
+	#EVT_USB_RESET
+ 8
+
+80 
+	#EVT_HOST_SOF
+ 9
+
+81 
+	#EVT_HOST_HWUP
+ 10
+
+82 
+	#EVT_HOST_DISCONNECTION
+ 11
+
+83 
+	#EVT_HOST_REMOTE_WAKEUP
+ 12
+
+84 
+
+	)
+
+85 
+	#EVT_OTG_HNP_ERROR
+ 1
+
+86 
+	#EVT_OTG_HNP_SUCCESS
+ 2
+
+87 
+	#EVT_OTG_SRP_RECEIVED
+ 3
+
+88 
+	#EVT_OTG_DEV_UNSUPPORTED
+ 4
+
+89 
+	#EVT_OTG_DEVICE_CONNECTED
+ 5
+
+91 
+
+	)
+
+92 
+	#USB_MODE_UNDEFINED
+ 0x00
+
+	)
+
+93 
+	#USB_MODE_HOST
+ 0x01
+
+	)
+
+94 
+	#USB_MODE_DEVICE
+ 0x02
+
+	)
+
+97 
+	#VBUS_PULSE
+ 1
+
+	)
+
+98 
+	#DATA_PULSE
+ 0
+
+	)
+
+100 
+	#BDEV_HNP_NB_RETRY
+ 3
+
+102 
+
+	)
+
+107 
+	#USER_RQST_SRP
+ 0x01
+
+	)
+
+108 
+	#USER_RQST_SUSPEND
+ 0x02
+
+	)
+
+109 
+	#USER_RQST_VBUS
+ 0x04
+
+110 
+	#USER_RQST_HNP
+ 0x08
+
+	)
+
+111 
+	#USER_RQST_RESUME
+ 0x10
+
+	)
+
+112 
+	#USER_RQST_RESET
+ 0x20
+
+	)
+
+113 
+	#USER_RQST_DISCONNECT
+ 0x40
+
+	)
+
+116 
+	#Is_u£r_»que¡ed_¤p
+(è(((
+Ùg_u£r_»que¡
+&
+USER_RQST_SRP
+è!ğ0è? 
+TRUE
+ : 
+FALSE
+)
+
+	)
+
+117 
+	#S‘_u£r_»que¡_¤p
+(è(
+Ùg_u£r_»que¡
+ |ğ
+USER_RQST_SRP
+)
+
+	)
+
+118 
+	#Ack_u£r_»que¡_¤p
+(è(
+Ùg_u£r_»que¡
+ &ğ~
+USER_RQST_SRP
+)
+
+	)
+
+121 
+	#Is_u£r_»que¡ed_su¥’d
+(è(((
+Ùg_u£r_»que¡
+&
+USER_RQST_SUSPEND
+è!ğ0è? 
+TRUE
+ : 
+FALSE
+)
+
+	)
+
+122 
+	#S‘_u£r_»que¡_su¥’d
+(è(
+Ùg_u£r_»que¡
+ |ğ
+USER_RQST_SUSPEND
+)
+
+	)
+
+123 
+	#Ack_u£r_»que¡_su¥’d
+(è(
+Ùg_u£r_»que¡
+ &ğ~
+USER_RQST_SUSPEND
+)
+
+	)
+
+126 
+	#Is_u£r_»que¡ed_vbus
+(è(((
+Ùg_u£r_»que¡
+&
+USER_RQST_VBUS
+è!ğ0è? 
+TRUE
+ : 
+FALSE
+)
+
+	)
+
+127 
+	#S‘_u£r_»que¡_vbus
+(è(
+Ùg_u£r_»que¡
+ |ğ
+USER_RQST_VBUS
+)
+
+	)
+
+128 
+	#Ack_u£r_»que¡_vbus
+(è(
+Ùg_u£r_»que¡
+ &ğ~
+USER_RQST_VBUS
+)
+
+	)
+
+131 
+	#Is_u£r_»que¡ed_hÅ
+(è(((
+Ùg_u£r_»que¡
+&
+USER_RQST_HNP
+è!ğ0è? 
+TRUE
+ : 
+FALSE
+)
+
+	)
+
+132 
+	#S‘_u£r_»que¡_hÅ
+(è(
+Ùg_u£r_»que¡
+ |ğ
+USER_RQST_HNP
+)
+
+	)
+
+133 
+	#Ack_u£r_»que¡_hÅ
+(è(
+Ùg_u£r_»que¡
+ &ğ~
+USER_RQST_HNP
+)
+
+	)
+
+136 
+	#Is_u£r_»que¡ed_disc
+(è(((
+Ùg_u£r_»que¡
+&
+USER_RQST_DISCONNECT
+è!ğ0è? 
+TRUE
+ : 
+FALSE
+)
+
+	)
+
+137 
+	#S‘_u£r_»que¡_disc
+(è(
+Ùg_u£r_»que¡
+ |ğ
+USER_RQST_DISCONNECT
+)
+
+	)
+
+138 
+	#Ack_u£r_»que¡_disc
+(è(
+Ùg_u£r_»que¡
+ &ğ~
+USER_RQST_DISCONNECT
+)
+
+	)
+
+153 
+	#CË¬_®l_u£r_»que¡
+(è(
+Ùg_u£r_»que¡
+ = 0)
+
+	)
+
+166 
+	#Otg_tim”_š™
+(è(
+	`Tim”16_£Ëù
+(
+OTG_USE_TIMER
+), 
+	`Tim”16_£t_şock
+(
+TIMER16_CLKIO_BY_256
+), \
+
+167 
+	`Tim”16_£t_mode_ouut_a
+(
+TIMER16_COMP_MODE_NORMAL
+), \
+
+168 
+	`Tim”16_£t_wavefÜm_mode
+(
+TIMER16_WGM_CTC_OCR
+), \
+
+169 
+	`Tim”16_£t_com·»_a
+(62), 
+	`Tim”16_£t_couÁ”
+(0x0000), \
+
+170 
+	`Tim”16_ş—r_com·»_a_™
+(), 
+	`Tim”16_com·»_a_™_’abË
+())
+
+	)
+
+174 vŞ©
+U16
+ 
+g_usb_ev’t
+;
+
+175 
+U8
+ 
+g_usb_mode
+;
+
+176 
+U8
+ 
+»mÙe_wakeup_ã©u»
+;
+
+191 
+usb_sk_š™
+ ();
+
+203 
+usb_sk
+ ();
+
+205 vŞ©
+U8
+ 
+´iv©e_sof_couÁ”
+;
+
+215 vŞ©
+U8
+ 
+Ùg_ã©u»s_suµÜ‹d
+;
+
+216 
+U8
+ 
+Ùg_u£r_»que¡
+;
+
+218 vŞ©
+U16
+ 
+g_Ùg_ev’t
+;
+
+220 #ià(
+OTG_VBUS_AUTO_AFTER_A_PLUG_INSERTION
+ =ğ
+ENABLED
+)
+
+221 
+U8
+ 
+id_chªged_to_ho¡_ev’t
+;
+
+224 
+Ùg_nÙ_suµÜ‹d_deviû
+();
+
+226 #ià(
+USB_OTG_FEATURE
+ =ğ
+ENABLED
+)
+
+234 #iâdeà 
+OTG_COMPLIANCE_TRICKS
+
+
+235 
+	#OTG_COMPLIANCE_TRICKS
+ 
+DISABLED
+
+
+	)
+
+244 #iâdeà 
+OTG_VBUS_AUTO_AFTER_A_PLUG_INSERTION
+
+
+245 
+	#OTG_VBUS_AUTO_AFTER_A_PLUG_INSERTION
+ 
+DISABLED
+
+
+	)
+
+252 #iâdeà 
+OTG_B_DEVICE_AUTORUN_HNP_IF_REQUIRED
+
+
+253 
+	#OTG_B_DEVICE_AUTORUN_HNP_IF_REQUIRED
+ 
+ENABLED
+
+
+	)
+
+259 #iâdeà 
+OTG_RESET_LENGTH
+
+
+260 
+	#OTG_RESET_LENGTH
+ 1
+
+	)
+
+269 
+	#MSG_DISPLAY_NODELAY
+ 0xFFFF
+
+	)
+
+270 
+	#OTG_TEMPO_1SEC
+ 0x01F4
+
+271 
+	#OTG_TEMPO_2SEC
+ 0x03E8
+
+272 
+	#OTG_TEMPO_3SEC
+ 0x05DC
+
+273 
+	#OTG_TEMPO_4SEC
+ 0x07D0
+
+274 
+	#OTR_TEMPO_5SEC
+ 0x09C4
+
+275 
+
+	)
+
+277 
+	#OTGMSG_SRP_STARTED
+ 1
+
+278 
+	#OTGMSG_SRP_A_NO_RESP
+ 2
+
+279 
+	#OTGMSG_A_RESPONDED
+ 3
+
+280 
+	#OTGMSG_CONNECTED_TO_A
+ 4
+
+281 
+	#OTGMSG_UNSUPPORTED
+ 5
+
+282 
+	#OTGMSG_UNSUPPORTED_HUB
+ 6
+
+283 
+	#OTGMSG_SRP_RECEIVED
+ 7
+
+284 
+	#OTGMSG_DEVICE_NO_RESP
+ 8
+
+285 
+	#OTGMSG_VBUS_SURCHARGE
+ 9
+
+286 
+
+	)
+
+288 
+	#OTGSTR_SRP_STARTED
+ "SRP Initiated "
+
+289 
+	#OTGSTR_SRP_A_NO_RESP
+ "A-Dev No Response "
+
+290 
+	#OTGSTR_A_RESPONDED
+ "A-Device Responded"
+
+291 
+	#OTGSTR_CONNECTED_TO_A
+ "Connectedo A-Dev"
+
+292 
+	#OTGSTR_UNSUPPORTED
+ "Unsupported Device"
+
+293 
+	#OTGSTR_UNSUPPORTED_HUB
+ "Hub Unsuppported "
+
+294 
+	#OTGSTR_SRP_RECEIVED
+ "SRP Received "
+
+295 
+	#OTGSTR_DEVICE_NO_RESP
+ "Device No Response"
+
+296 
+	#OTGSTR_VBUS_SURCHARGE
+ "VBUS OverCurrent !"
+
+297 
+
+	)
+
+298 
+U16
+ 
+Ùg_msg_ev’t_d–ay
+;
+
+299 
+U16
+ 
+Ùg_msg_çu»_d–ay
+;
+
+302 
+	#OTGMSG_NONE
+ 0
+
+303 
+	#OTGMSG_FAIL
+ 1
+
+304 
+	#OTGMSG_ALL
+ 2
+
+305 
+
+	)
+
+306 #ià(
+OTG_MESSAGING_OUTPUT
+ =ğ
+OTGMSG_ALL
+)
+
+307 
+Otg_mes§gšg_š™
+();
+
+308 
+Otg_ouut_ev’t_msg
+(
+U8
+);
+
+309 
+Otg_ouut_çu»_msg
+(
+U8
+);
+
+310 
+Otg_ouut_ev’t_ş—r
+();
+
+311 
+Otg_ouut_çu»_ş—r
+();
+
+313 
+	#Otg_´št_Ãw_ev’t_mes§ge
+(
+¡r
+,
+tm
+è(
+	`Otg_ouut_ev’t_msg
+(¡r), 
+Ùg_msg_ev’t_d–ay
+ =m)
+
+	)
+
+314 
+	#Otg_ş—r_ev’t_mes§ge
+(è
+	`Otg_ouut_ev’t_ş—r
+()
+
+	)
+
+315 
+	#G‘_ev’t_msg_d–ay
+(è(
+Ùg_msg_ev’t_d–ay
+)
+
+	)
+
+316 
+	#Deüem’t_ev’t_msg_d–ay
+(è(
+Ùg_msg_ev’t_d–ay
+--)
+
+	)
+
+318 
+	#Otg_´št_Ãw_çu»_mes§ge
+(
+¡r
+,
+tm
+è(
+	`Otg_ouut_çu»_msg
+(¡r), 
+Ùg_msg_çu»_d–ay
+ =m)
+
+	)
+
+319 
+	#Otg_ş—r_çu»_mes§ge
+(è
+	`Otg_ouut_çu»_ş—r
+()
+
+	)
+
+320 
+	#G‘_çu»_msg_d–ay
+(è(
+Ùg_msg_çu»_d–ay
+)
+
+	)
+
+321 
+	#Deüem’t_çu»_msg_d–ay
+(è(
+Ùg_msg_çu»_d–ay
+--)
+
+	)
+
+322 #–ià(
+OTG_MESSAGING_OUTPUT
+ =ğ
+OTGMSG_FAIL
+)
+
+323 
+Otg_mes§gšg_š™
+();
+
+324 
+Otg_ouut_çu»_msg
+(
+U8
+);
+
+325 
+Otg_ouut_çu»_ş—r
+();
+
+326 
+	#Otg_´št_Ãw_ev’t_mes§ge
+(
+¡r
+,
+tm
+)
+
+	)
+
+327 
+	#Otg_ş—r_ev’t_mes§ge
+()
+
+	)
+
+328 
+	#G‘_ev’t_msg_d–ay
+()
+
+	)
+
+329 
+	#Deüem’t_ev’t_msg_d–ay
+()
+
+	)
+
+330 
+	#Otg_´št_Ãw_çu»_mes§ge
+(
+¡r
+,
+tm
+è(
+	`Otg_ouut_çu»_msg
+(¡r), 
+Ùg_msg_çu»_d–ay
+ =m)
+
+	)
+
+331 
+	#Otg_ş—r_çu»_mes§ge
+(è
+	`Otg_ouut_çu»_ş—r
+()
+
+	)
+
+332 
+	#G‘_çu»_msg_d–ay
+(è(
+Ùg_msg_çu»_d–ay
+)
+
+	)
+
+333 
+	#Deüem’t_çu»_msg_d–ay
+(è(
+Ùg_msg_çu»_d–ay
+--)
+
+	)
+
+335 
+	#Otg_mes§gšg_š™
+()
+
+	)
+
+336 
+	#Otg_´št_Ãw_ev’t_mes§ge
+(
+¡r
+,
+tm
+)
+
+	)
+
+337 
+	#Otg_ş—r_ev’t_mes§ge
+()
+
+	)
+
+338 
+	#G‘_ev’t_msg_d–ay
+()
+
+	)
+
+339 
+	#Deüem’t_ev’t_msg_d–ay
+()
+
+	)
+
+340 
+	#Otg_´št_Ãw_çu»_mes§ge
+(
+¡r
+,
+tm
+)
+
+	)
+
+341 
+	#Otg_ş—r_çu»_mes§ge
+()
+
+	)
+
+342 
+	#G‘_çu»_msg_d–ay
+()
+
+	)
+
+343 
+	#Deüem’t_çu»_msg_d–ay
+()
+
+	)
+
+	@common/lib_mcu/adc/adc_drv.c
+
+43 
+	~"cÚfig.h
+"
+
+45 #ifdeà
+USE_ADC
+
+
+46 
+	~"adc_drv.h
+"
+
+62 
+	$š™_adc
+()
+
+64 
+	`EÇbË_adc
+();
+
+65 #ià(
+ADC_RIGHT_ADJUST_RESULT
+ == 1)
+
+66 
+	`Right_adju¡_adc_»suÉ
+();
+
+67 #–ià(
+ADC_RIGHT_ADJUST_RESULT
+ == 0)
+
+68 
+	`Leá_adju¡_adc_»suÉ
+();
+
+70 #”rÜ (
+ADC_RIGHT_ADJUST_RESULT
+ 
+should
+ 
+be
+ 0 
+Ü
+ 1... 
+S“
+ 
+cÚfig
+.
+h
+ 
+fe
+)
+
+73 #ià(
+ADC_HIGH_SPEED_MODE
+ == 1)
+
+74 
+	`EÇbË_adc_high_¥“d_mode
+();
+
+75 #–ià(
+ADC_HIGH_SPEED_MODE
+ == 0)
+
+76 
+	`Di§bË_adc_high_¥“d_mode
+();
+
+78 #”rÜ (
+ADC_HIGH_SPEED_MODE
+ 
+should
+ 
+be
+ 0 
+Ü
+ 1... 
+S“
+ 
+cÚfig
+.
+h
+ 
+fe
+)
+
+81 #ià(
+ADC_INTERNAL_VREF
+ == 2)
+
+82 
+	`EÇbË_ex‹º®_v»f
+();
+
+83 #–ià(
+ADC_INTERNAL_VREF
+ == 1)
+
+84 
+	`EÇbË_š‹º®_v»f
+();
+
+85 #–ià(
+ADC_INTERNAL_VREF
+ == 0)
+
+86 
+	`EÇbË_vcc_v»f
+();
+
+88 #”rÜ (
+ADC_INTERNAL_VREF
+ 
+should
+ 
+be
+ 0, 1 
+Ü
+ 2... 
+S“
+ 
+cÚfig
+.
+h
+ 
+fe
+)
+
+91 #ià(
+ADC_IT
+ == 1)
+
+92 
+	`EÇbË_®l_™
+();
+
+93 
+	`EÇbË_adc_™
+();
+
+94 #–ià(
+ADC_IT
+ == 0)
+
+95 
+	`Di§bË_adc_™
+();
+
+97 #”rÜ (
+ADC_IT
+ 
+should
+ 
+be
+ 0 
+Ü
+ 1... 
+S“
+ 
+cÚfig
+.
+h
+ 
+fe
+)
+
+100 #ià(
+ADC_PRESCALER
+ == 128)
+
+101 
+	`S‘_´esÿËr
+(7);
+
+102 #–ià(
+ADC_PRESCALER
+ == 64)
+
+103 
+	`S‘_´esÿËr
+(6);
+
+104 #–ià(
+ADC_PRESCALER
+ == 32)
+
+105 
+	`S‘_´esÿËr
+(5);
+
+106 #–ià(
+ADC_PRESCALER
+ == 16)
+
+107 
+	`S‘_´esÿËr
+(4);
+
+108 #–ià(
+ADC_PRESCALER
+ == 8)
+
+109 
+	`S‘_´esÿËr
+( 3);
+
+110 #–ià(
+ADC_PRESCALER
+ == 4)
+
+111 
+	`S‘_´esÿËr
+( 2);
+
+112 #–ià(
+ADC_PRESCALER
+ == 2)
+
+113 
+	`S‘_´esÿËr
+( 1);
+
+115 #”rÜ (
+ADC_PRESCALER
+ 
+should
+ 
+be
+ 2, 4, 8, 16, 32, 64 
+Ü
+ 128... 
+S“
+ 
+cÚfig
+.
+h
+ 
+fe
+)
+
+118 #ià(
+ADC_DIGITAL_OFF
+ == 1)
+
+119 
+	`Di§bË_dig™®_šput
+();
+
+123 
+	}
+}
+
+	@common/lib_mcu/adc/adc_drv.h
+
+41 #iâdeà
+ADC_DRV_H
+
+
+42 
+	#ADC_DRV_H
+
+
+	)
+
+46 #iâdeà 
+ADHSM
+
+
+47 
+	#ADHSM
+ 7
+
+	)
+
+62 
+	#EÇbË_adc
+(è(
+ADCSRA
+ |ğ(1<<
+ADEN
+))
+
+	)
+
+68 
+	#Right_adju¡_adc_»suÉ
+(è(
+ADMUX
+ &ğ~(1<<
+ADLAR
+))
+
+	)
+
+69 
+	#Leá_adju¡_adc_»suÉ
+(è(
+ADMUX
+ |ğ(1<<
+ADLAR
+))
+
+	)
+
+75 
+	#EÇbË_adc_high_¥“d_mode
+(è(
+ADCSRB
+ |ğ(1<<
+ADHSM
+))
+
+	)
+
+76 
+	#Di§bË_adc_high_¥“d_mode
+(è(
+ADCSRB
+ &ğ~(1<<
+ADHSM
+))
+
+	)
+
+83 #ià(
+DEBUG
+ == 0)
+
+84 
+	#Di§bË_dig™®_šput
+(è(
+DIDR0
+ |ğ0xFF)
+
+	)
+
+86 
+	#Di§bË_dig™®_šput
+(è(
+DIDR0
+ |ğ((1<<
+ADC1D
+) \
+
+87 |(1<<
+ADC2D
+)))
+
+	)
+
+94 
+	#EÇbË_š‹º®_v»f
+(è(
+ADMUX
+ |ğ((1<<
+REFS1
+)|(1<<
+REFS0
+)è)
+
+	)
+
+95 
+	#EÇbË_ex‹º®_v»f
+(è(
+ADMUX
+ &ğ~((1<<
+REFS1
+)|(1<<
+REFS0
+)è)
+
+	)
+
+96 
+	#EÇbË_vcc_v»f
+(è(
+ADMUX
+ &ğ~(1<<
+REFS1
+), \
+
+97 
+ADMUX
+ |ğ(1<<
+REFS0
+è)
+
+	)
+
+103 
+	#EÇbË_®l_™
+(è(
+SREG
+ |ğ(0x80è)
+
+	)
+
+104 
+	#Di§bË_®l_™
+(è(
+SREG
+ &ğ~(0x80è)
+
+	)
+
+105 
+	#EÇbË_adc_™
+(è(
+ADCSRA
+ |ğ(1<<
+ADIE
+è)
+
+	)
+
+106 
+	#Di§bË_adc_™
+(è(
+ADCSRA
+ |ğ~(1<<
+ADIE
+è)
+
+	)
+
+107 
+	#CË¬_adc_æag
+(è(
+ADCSRA
+ &ğ(1<<
+ADIF
+è)
+
+	)
+
+108 
+	#CË¬_adc_adif
+(è(
+ADCSRA
+ |ğ(1<<
+ADIF
+è)
+
+	)
+
+114 
+	#S‘_´esÿËr
+(
+´esÿËr
+è(
+ADCSRA
+ &ğ~((1<<
+ADPS2
+)|(1<<
+ADPS1
+)|(1<<
+ADPS0
+)),\
+
+115 
+ADCSRA
+ |ğ(
+´esÿËr
+è)
+
+	)
+
+121 
+	#CË¬_adc_mux
+(è(
+ADMUX
+ &ğ~((1<<
+MUX3
+)|(1<<
+MUX2
+)|(1<<
+MUX1
+)|(1<<
+MUX0
+)è)
+
+	)
+
+122 
+	#S–eù_adc_chªÃl
+(
+chªÃl
+è(
+	`CË¬_adc_mux
+(), 
+ADMUX
+ |ğ(chªÃlè)
+
+	)
+
+132 
+	#S¹_cÚv
+(è(
+ADCSRA
+ |ğ(1<<
+ADSC
+è)
+
+	)
+
+133 
+	#S¹_cÚv_chªÃl
+(
+chªÃl
+è(
+	`S–eù_adc_chªÃl
+(chªÃl), 
+	`S¹_cÚv
+(è)
+
+	)
+
+134 
+	#S¹_am¶if›d_cÚv
+(è(
+ADCSRB
+ |ğ(1<<
+ADASCR
+è)
+
+	)
+
+135 
+	#Stİ_am¶if›d_cÚv
+(è(
+ADCSRB
+ &ğ~(1<<
+ADASCR
+è)
+
+	)
+
+136 
+	#S¹_am¶if›d_cÚv_chªÃl
+(
+chªÃl
+è(
+	`S–eù_adc_chªÃl
+(chªÃl), 
+	`S¹_am¶if›d_cÚv
+(è)
+
+	)
+
+142 
+	#S¹_cÚv_idË
+(è(
+SMCR
+ |ğ(1<<
+SM0
+)|(1<<
+SE
+è)
+
+	)
+
+143 
+	#S¹_cÚv_idË_chªÃl
+(
+chªÃl
+è(
+	`S–eù_adc_chªÃl
+(chªÃl), 
+	`S¹_cÚv_idË
+(è)
+
+	)
+
+144 
+	#CË¬_¦“p_mode
+(è(
+SMCR
+ &ğ~(1<<
+SM0
+)|(1<<
+SE
+è)
+
+	)
+
+152 
+	#Adc_g‘_8_b™s_»suÉ
+(è((
+U8
+)(
+ADCH
+))
+
+	)
+
+153 
+	#Adc_g‘_10_b™s_»suÉ
+(è((
+U16
+)(
+ADCL
++((U16)(
+ADCH
+<<8))))
+
+	)
+
+160 
+	#Di§bË_adc
+(è(
+ADCSRA
+ &ğ~(1<<
+ADEN
+))
+
+	)
+
+161 
+	#EÇbË_adc
+(è(
+ADCSRA
+ |ğ(1<<
+ADEN
+))
+
+	)
+
+167 
+	#Is_adc_cÚv_fšished
+(è((
+ADCSRA
+ & (1<<
+ADIF
+)è? 
+TRUE
+ : 
+FALSE
+)
+
+	)
+
+168 
+	#Is_adc_cÚv_nÙ_fšished
+(è((
+ADCSRA
+ | ~(1<<
+ADIF
+)è? 
+TRUE
+ : 
+FALSE
+)
+
+	)
+
+185 
+š™_adc
+();
+
+	@common/lib_mcu/compiler.h
+
+42 #iâdeà
+_COMPILER_H_
+
+
+43 
+	#_COMPILER_H_
+
+
+	)
+
+49 
+	#LITTLE_ENDIAN
+
+
+	)
+
+51 #iâdeà
+ASM_INCLUDE
+
+
+52 
+	tFlßt16
+;
+
+54 
+	tU8
+ ;
+
+55 
+	tU16
+;
+
+56 
+	tU32
+;
+
+57 sigÃd 
+	tS8
+ ;
+
+58 sigÃd 
+	tS16
+;
+
+59 
+	tS32
+;
+
+60 
+	tBoŞ
+;
+
+63 
+U8
+ 
+	tStus
+;
+
+64 
+BoŞ
+ 
+	tStus_boŞ
+;
+
+65 
+	#boŞ
+ 
+BoŞ
+
+
+	)
+
+66 
+	#PASS
+ 0
+
+	)
+
+67 
+	#FAIL
+ 1
+
+	)
+
+71 #ià(
+defšed
+ 
+__C51__
+)
+
+72 
+	#_MEM_TYPE_BIT_
+ 
+bd©a
+
+
+73 
+	#_MEM_TYPE_FAST_
+ 
+d©a
+
+
+	)
+
+74 
+	#_MEM_TYPE_MEDFAST_
+ 
+id©a
+
+
+	)
+
+75 
+	#_MEM_TYPE_MEDSLOW_
+ 
+pd©a
+
+
+	)
+
+76 
+	#_MEM_TYPE_SLOW_
+ 
+xd©a
+
+
+	)
+
+78 
+	#_MEM_TYPE_BIT_
+
+
+	)
+
+79 
+	#_MEM_TYPE_FAST_
+
+
+	)
+
+80 
+	#_MEM_TYPE_MEDFAST_
+
+
+	)
+
+81 
+	#_MEM_TYPE_MEDSLOW_
+
+
+	)
+
+82 
+	#_MEM_TYPE_SLOW_
+
+
+	)
+
+85 
+	tUch¬
+;
+
+88 
+	tUšt8
+;
+
+89 
+	tUšt16
+;
+
+90 
+	tUšt32
+;
+
+92 
+	tIÁ8
+;
+
+93 
+	tIÁ16
+;
+
+94 
+	tIÁ32
+;
+
+96 
+	tBy‹
+;
+
+97 
+	tWÜd
+;
+
+98 
+	tDWÜd
+;
+
+102 
+Ušt32
+ 
+	mdw
+;
+
+103 
+Ušt16
+ 
+	mw
+[2];
+
+104 
+Ušt8
+ 
+	mb
+[4];
+
+105 } 
+	tUniÚ32
+;
+
+109 
+Ušt16
+ 
+	mw
+;
+
+110 
+Ušt8
+ 
+	mb
+[2];
+
+111 } 
+	tUniÚ16
+;
+
+113 #ifdeà
+__IAR_SYSTEMS_ICC__
+
+
+114 
+	tb™
+;
+
+115 
+	tp_u¬t_±ch¬
+;
+
+116 
+	tr_u¬t_±ch¬
+;
+
+118 #ifdeà
+__CODEVISIONAVR__
+
+
+119 
+	tb™
+;
+
+120 
+	tp_u¬t_±ch¬
+;
+
+121 
+	tr_u¬t_±ch¬
+;
+
+123 #ià!
+defšed
+(
+__IAR_SYSTEMS_ICC__
+è&& !defšed(
+___ICC__
+)
+
+124 
+	tp_u¬t_±ch¬
+;
+
+125 
+	tr_u¬t_±ch¬
+;
+
+133 #ifdeà
+__ICC__
+
+
+134 
+	#_CÚ¡Ty³_
+ 
+l™
+
+
+	)
+
+135 
+	#_MemTy³_
+
+
+	)
+
+136 
+	#_G’”icTy³_
+ 
+__g’”ic
+
+
+	)
+
+137 
+	#code
+ 
+l™
+
+
+	)
+
+138 
+	#xd©a
+
+
+	)
+
+139 
+	#id©a
+
+
+	)
+
+140 
+	#d©a
+
+
+	)
+
+145 #ifdeà
+__IAR_SYSTEMS_ICC__
+
+
+146 
+	~"šavr.h
+"
+
+147 
+	#_CÚ¡Ty³_
+ 
+__æash
+
+
+	)
+
+148 
+	#_MemTy³_
+
+
+	)
+
+149 
+	#_G’”icTy³_
+ 
+__g’”ic
+
+
+	)
+
+150 #ifdeà
+__ICCAVR__
+
+
+151 #ià(
+defšed
+(
+__AT90USB1287__
+è|| defšed(
+__AT90USB1286__
+))
+
+152 
+	#code
+ 
+__çræash
+
+
+	)
+
+153 
+	#çrcode
+ 
+__çræash
+
+
+	)
+
+155 
+	#code
+ 
+__æash
+
+
+	)
+
+156 
+	#çrcode
+ 
+__æash
+
+
+	)
+
+158 #–ià
+defšed
+ 
+__GNUC__
+
+
+159 #ià(
+defšed
+(
+__AVR_AT90USB1287__
+è|| defšed(
+__AVR_AT90USB1286__
+))
+
+160 
+	#code
+ 
+__çræash
+
+
+	)
+
+161 
+	#çrcode
+ 
+__çræash
+
+
+	)
+
+163 
+	#code
+ 
+__æash
+
+
+	)
+
+164 
+	#çrcode
+ 
+__æash
+
+
+	)
+
+167 
+	#xd©a
+
+
+	)
+
+168 
+	#id©a
+
+
+	)
+
+169 
+	#d©a
+
+
+	)
+
+170 
+	#At
+(
+x
+è@ 
+	)
+x
+
+171 
+	#pd©a
+
+
+	)
+
+172 
+	#bd©a
+
+
+	)
+
+174 #iâdeà
+_CONST_TYPE_
+
+
+175 
+	#_CONST_TYPE_
+ 
+code
+
+
+	)
+
+178 
+	#EÇbË_š‹¼u±
+(è
+	`__’abË_š‹¼u±
+()
+
+	)
+
+179 
+	#Di§bË_š‹¼u±
+(è
+	`__di§bË_š‹¼u±
+()
+
+	)
+
+180 
+	#G‘_š‹¼u±_¡©e
+(è(
+SREG
+&0x80)
+
+	)
+
+182 
+	~<iomaüo.h
+>
+
+183 
+	#SFR_W_EXT
+(
+a
+,
+b
+è
+	`SFR_W_R
+(b,a)
+
+	)
+
+194 
+	#INTEL_ALIGNMENT
+ 
+LITTLE_ENDIAN
+
+
+	)
+
+195 
+	#MOTOROLA_ALIGNMENT
+ 
+BIG_ENDIAN
+
+
+	)
+
+198 #ifdeà
+LITTLE_ENDIAN
+
+
+199 
+	#MSB
+(
+u16
+è(((
+U8
+* )&u16)[1])
+
+	)
+
+200 
+	#LSB
+(
+u16
+è(((
+U8
+* )&u16)[0])
+
+	)
+
+201 
+	#MSW
+(
+u32
+è(((
+U16
+*)&u32)[1])
+
+	)
+
+202 
+	#LSW
+(
+u32
+è(((
+U16
+*)&u32)[0])
+
+	)
+
+203 
+	#MSB0
+(
+u32
+è(((
+U8
+* )&u32)[3])
+
+	)
+
+204 
+	#MSB1
+(
+u32
+è(((
+U8
+* )&u32)[2])
+
+	)
+
+205 
+	#MSB2
+(
+u32
+è(((
+U8
+* )&u32)[1])
+
+	)
+
+206 
+	#MSB3
+(
+u32
+è(((
+U8
+* )&u32)[0])
+
+	)
+
+207 
+	#LSB0
+(
+u32
+è
+	`MSB3
+(u32)
+
+	)
+
+208 
+	#LSB1
+(
+u32
+è
+	`MSB2
+(u32)
+
+	)
+
+209 
+	#LSB2
+(
+u32
+è
+	`MSB1
+(u32)
+
+	)
+
+210 
+	#LSB3
+(
+u32
+è
+	`MSB0
+(u32)
+
+	)
+
+212 
+	#MSB
+(
+u16
+è(((
+U8
+* )&u16)[0])
+
+	)
+
+213 
+	#LSB
+(
+u16
+è(((
+U8
+* )&u16)[1])
+
+	)
+
+214 
+	#MSW
+(
+u32
+è(((
+U16
+*)&u32)[0])
+
+	)
+
+215 
+	#LSW
+(
+u32
+è(((
+U16
+*)&u32)[1])
+
+	)
+
+216 
+	#MSB0
+(
+u32
+è(((
+U8
+* )&u32)[0])
+
+	)
+
+217 
+	#MSB1
+(
+u32
+è(((
+U8
+* )&u32)[1])
+
+	)
+
+218 
+	#MSB2
+(
+u32
+è(((
+U8
+* )&u32)[2])
+
+	)
+
+219 
+	#MSB3
+(
+u32
+è(((
+U8
+* )&u32)[3])
+
+	)
+
+220 
+	#LSB0
+(
+u32
+è
+	`MSB3
+(u32)
+
+	)
+
+221 
+	#LSB1
+(
+u32
+è
+	`MSB2
+(u32)
+
+	)
+
+222 
+	#LSB2
+(
+u32
+è
+	`MSB1
+(u32)
+
+	)
+
+223 
+	#LSB3
+(
+u32
+è
+	`MSB0
+(u32)
+
+	)
+
+227 
+	#Le16
+(
+b
+) \
+
+228 Ğ((
+U16
+)Ğ(
+b
+) & 0xFF) << 8) \
+
+229 | ( ((
+U16
+)(
+b
+) & 0xFF00) >> 8) \
+
+230 )
+
+	)
+
+231 
+	#Le32
+(
+b
+) \
+
+232 Ğ((
+U32
+)Ğ(
+b
+) & 0xFF) << 24) \
+
+233 | ((
+U32
+)((
+U16
+)(
+b
+) & 0xFF00) << 8) \
+
+234 | ( ((
+U32
+)(
+b
+) & 0xFF0000) >> 8) \
+
+235 | ( ((
+U32
+)(
+b
+) & 0xFF000000) >> 24) \
+
+236 )
+
+	)
+
+242 #ifdeà
+LITTLE_ENDIAN
+
+
+243 
+	#htÚs
+(
+a
+è
+	`Le16
+×)
+
+	)
+
+244 
+	#Áohs
+(
+a
+è
+	`htÚs
+×)
+
+	)
+
+245 
+	#htÚl
+(
+a
+è
+	`Le32
+×)
+
+	)
+
+246 
+	#Áohl
+(
+a
+è
+	`htÚl
+×)
+
+	)
+
+248 
+	#htÚs
+(
+a
+è×)
+
+	)
+
+249 
+	#Áohs
+(
+a
+è×)
+
+	)
+
+250 
+	#htÚl
+(
+a
+è×)
+
+	)
+
+251 
+	#Áohl
+(
+a
+è×)
+
+	)
+
+256 
+	#ENABLE
+ 1
+
+	)
+
+257 
+	#ENABLED
+ 1
+
+	)
+
+258 
+	#DISABLED
+ 0
+
+	)
+
+259 
+	#DISABLE
+ 0
+
+	)
+
+260 
+	#FALSE
+ (0==1)
+
+	)
+
+261 
+	#TRUE
+ (1==1)
+
+	)
+
+262 
+	#Œue
+ 
+TRUE
+
+
+	)
+
+263 
+	#çl£
+ 
+FALSE
+
+
+	)
+
+266 
+	#KO
+ 0
+
+	)
+
+267 
+	#OK
+ 1
+
+	)
+
+268 
+	#OFF
+ 0
+
+	)
+
+269 
+	#ON
+ 1
+
+	)
+
+270 #iâdeà
+NULL
+
+
+271 
+	#NULL
+ 0
+
+	)
+
+273 #iâdeà
+ASM_INCLUDE
+
+
+274 
+	#CLR
+ 0
+
+	)
+
+275 
+	#SET
+ 1
+
+	)
+
+279 
+	#LOW
+(
+U16
+è((
+Uch¬
+)U16)
+
+	)
+
+280 
+	#HIGH
+(
+U16
+è((
+Uch¬
+)(U16>>8))
+
+	)
+
+281 
+	#TST_BIT_X
+(
+addrx
+,
+mask
+è(*addrx & mask)
+
+	)
+
+282 
+	#SET_BIT_X
+(
+addrx
+,
+mask
+è(*addrx = (*addrx | mask))
+
+	)
+
+283 
+	#CLR_BIT_X
+(
+addrx
+,
+mask
+è(*addrx = (*addrx & ~mask))
+
+	)
+
+284 
+	#OUT_X
+(
+addrx
+,
+v®ue
+è(*addrx = v®ue)
+
+	)
+
+285 
+	#IN_X
+(
+addrx
+è(*addrx)
+
+	)
+
+287 
+	#Max
+(
+a
+, 
+b
+) ( (a)>(b) ? (a) : (b) )
+
+288 
+	#Mš
+(
+a
+, 
+b
+) ( (a)<(b) ? (a) : (b) )
+
+289 
+
+	)
+
+297 
+	#Uµ”
+(
+v®
+, 
+n
+èĞ((v®)+Ò)è& ~(Ò)-1è)
+
+	)
+
+306 
+	#Align_up
+(
+v®
+, 
+n
+èĞ((v®)+Ò)-1è& ~(Ò)-1è)
+
+	)
+
+315 
+	#Align_down
+(
+v®
+, 
+n
+èĞ(v®è& ~(Ò)-1è)
+
+	)
+
+332 
+	#LÚg_ÿÎ
+(
+addr
+è((*((
+_CÚ¡Ty³_
+*)())×ddr))())
+
+	)
+
+344 
+	#SET_SFR_BIT
+(
+sä_»g
+, 
+b™_pos
+, 
+b™_v®
+è{ sä_»g &ğ~(1<<(b™_pos)); sä_»g |ğ((b™_v®)<<(b™_pos));}
+
+	)
+
+354 
+	#b™_is_ş—r
+(
+PORT
+,
+POSITION
+è((PORT & (1<<POSITION)è=ğ0 )
+
+	)
+
+364 
+	#b™_is_£t
+(
+PORT
+,
+POSITION
+è((PORT & (1<<POSITION)è!ğ0 )
+
+	)
+
+370 
+	#TID_GUARD
+(
+´oc
+è((
+__TID__
+ & 0x7FF0è!ğ((90 << 8è| (Õrocè<< 4)))
+
+	)
+
+377 #ifdeà
+__GNUC__
+
+
+378 
+	#_CONST_TYPE_
+
+
+	)
+
+379 
+	#_CÚ¡Ty³_
+ 
+__æash
+
+
+	)
+
+380 
+	#_MemTy³_
+
+
+	)
+
+381 
+	#_G’”icTy³_
+ 
+__g’”ic
+
+
+	)
+
+382 
+	#code
+ 
+PROGMEM
+
+
+	)
+
+383 
+	#xd©a
+
+
+	)
+
+384 
+	#id©a
+
+
+	)
+
+385 
+	#d©a
+
+
+	)
+
+386 
+	#At
+(
+x
+è@ 
+	)
+x
+
+387 
+	#pd©a
+
+
+	)
+
+388 
+	#bd©a
+
+
+	)
+
+389 
+	#b™
+ 
+U8
+
+
+	)
+
+390 
+	~<avr/š‹¼u±.h
+>
+
+391 
+	~<avr/pgm¥aû.h
+>
+
+392 
+	#EÇbË_š‹¼u±
+(è
+	`£i
+()
+
+	)
+
+393 
+	#Di§bË_š‹¼u±
+(è
+	`şi
+()
+
+	)
+
+394 
+	#G‘_š‹¼u±_¡©e
+(è(
+SREG
+&0x80)
+
+	)
+
+	@common/lib_mcu/wdt/wdt_drv.c
+
+43 
+	~"cÚfig.h
+"
+
+44 
+	~"wdt_drv.h
+"
+
+48 #ifdeà
+__GNUC__
+
+
+49 
+	#Wdt_»£t_š¡ruùiÚ
+(è
+	`wdt_»£t
+()
+
+	)
+
+51 
+	#Wdt_»£t_š¡ruùiÚ
+(è
+	`__w©chdog_»£t
+()
+
+	)
+
+57 #iâdeà
+__GNUC__
+
+
+59 #´agm¨
+İtimize
+=
+nÚe
+
+
+61 
+	$wdtdrv_di§bË
+()
+
+63 
+U8
+ 
+§ve_št
+=
+	`G‘_š‹¼u±_¡©e
+();
+
+64 
+	`Di§bË_š‹¼u±
+();
+
+65 #ifdeà 
+__GNUC__
+
+
+66 
+	`Ack_wdt_»£t
+();
+
+67 
+	`wdt_di§bË
+();
+
+69 
+	`Ack_wdt_»£t
+();
+
+70 
+	`Wdt_»£t_š¡ruùiÚ
+();
+
+71 
+WDTCSR
+ = (1<<
+WDCE
+è| (1<<
+WDE
+);
+
+72 
+WDTCSR
+ = 0x00;
+
+74 if(
+§ve_št
+è{ 
+	`EÇbË_š‹¼u±
+(); }
+
+75 
+	}
+}
+
+82 #iâdeà
+__GNUC__
+
+
+84 #´agm¨
+İtimize
+=
+nÚe
+
+
+86 
+	$wdtdrv_’abË
+Ğ
+U8
+ 
+timeout
+ )
+
+88 
+U8
+ 
+§ve_št
+=
+	`G‘_š‹¼u±_¡©e
+();
+
+89 
+	`Di§bË_š‹¼u±
+();
+
+90 #ifdeà 
+__GNUC__
+
+
+91 
+	`Ack_wdt_»£t
+();
+
+92 
+	`wdt_’abË
+(
+timeout
+);
+
+94 
+timeout
+ = (1<<
+WDE
+)| (timeouˆ& 0x08 ? (1<<
+WDP3
+) : 0x00) | (timeout & 0x07);
+
+95 
+	`Di§bË_š‹¼u±
+();
+
+96 
+	`Wdt_»£t_š¡ruùiÚ
+();
+
+97 
+WDTCSR
+ = (1<<
+WDCE
+è| (1<<
+WDE
+);
+
+98 
+WDTCSR
+ = 
+timeout
+;
+
+100 if(
+§ve_št
+è{ 
+	`EÇbË_š‹¼u±
+(); }
+
+101 
+	}
+}
+
+108 #iâdeà
+__GNUC__
+
+
+110 #´agm¨
+İtimize
+=
+nÚe
+
+
+112 
+	$wdtdrv_š‹¼u±_’abË
+Ğ
+U8
+ 
+timeout
+ )
+
+114 
+U8
+ 
+§ve_št
+=
+	`G‘_š‹¼u±_¡©e
+();
+
+115 #ifdeà 
+__GNUC__
+
+
+116 
+	`Ack_wdt_»£t
+();
+
+117 
+__asm__
+ 
+	`__vŞ©e__
+ ( \
+
+125 : "M" (
+	`_SFR_MEM_ADDR
+(
+_WD_CONTROL_REG
+)), \
+
+126 "r" (
+	`_BV
+(
+_WD_CHANGE_BIT
+è| _BV(
+WDE
+)), \
+
+127 "r" ((
+ušt8_t
+è((
+timeout
+ & 0x08 ? 
+_WD_PS3_MASK
+ : 0x00) | \
+
+128 
+	`_BV
+(
+WDIE
+è| (
+timeout
+ & 0x07)) ) \
+
+132 
+timeout
+ = (1<<
+WDIE
+)| (timeouˆ& 0x08 ? (1<<
+WDP3
+) : 0x00) | (timeout & 0x07);
+
+133 
+	`Di§bË_š‹¼u±
+();
+
+134 
+	`Wdt_»£t_š¡ruùiÚ
+();
+
+135 
+WDTCSR
+ = (1<<
+WDCE
+è| (1<<
+WDE
+);
+
+136 
+WDTCSR
+ = 
+timeout
+;
+
+138 if(
+§ve_št
+è{ 
+	`EÇbË_š‹¼u±
+(); }
+
+139 
+	}
+}
+
+146 #iâdeà
+__GNUC__
+
+
+148 #´agm¨
+İtimize
+=
+nÚe
+
+
+150 
+	$wdtdrv_š‹¼u±_»£t_’abË
+Ğ
+U8
+ 
+timeout
+ )
+
+152 
+U8
+ 
+§ve_št
+=
+	`G‘_š‹¼u±_¡©e
+();
+
+153 
+	`Di§bË_š‹¼u±
+();
+
+154 #ifdeà 
+__GNUC__
+
+
+155 
+	`Ack_wdt_»£t
+();
+
+156 
+__asm__
+ 
+	`__vŞ©e__
+ ( \
+
+164 : "M" (
+	`_SFR_MEM_ADDR
+(
+_WD_CONTROL_REG
+)), \
+
+165 "r" (
+	`_BV
+(
+_WD_CHANGE_BIT
+è| _BV(
+WDE
+)), \
+
+166 "r" ((
+ušt8_t
+è((
+timeout
+ & 0x08 ? 
+_WD_PS3_MASK
+ : 0x00) | \
+
+167 
+	`_BV
+(
+WDE
+è| _BV(
+WDIE
+è| (
+timeout
+ & 0x07)) ) \
+
+171 
+timeout
+ = (1<<
+WDIE
+)|(1<<
+WDE
+)| (timeouˆ& 0x08 ? (1<<
+WDP3
+) : 0x00) | (timeout & 0x07);
+
+172 
+	`Di§bË_š‹¼u±
+();
+
+173 
+	`Wdt_»£t_š¡ruùiÚ
+();
+
+174 
+WDTCSR
+ = (1<<
+WDCE
+è| (1<<
+WDE
+);
+
+175 
+WDTCSR
+ = 
+timeout
+;
+
+177 if(
+§ve_št
+è{ 
+	`EÇbË_š‹¼u±
+(); }
+
+178 
+	}
+}
+
+	@common/lib_mcu/wdt/wdt_drv.h
+
+41 #iâdeà
+_WDT_DRV_H_
+
+
+42 
+	#_WDT_DRV_H_
+
+
+	)
+
+46 #ifdeà
+__GNUC__
+
+
+47 
+	~<avr/io.h
+>
+
+48 
+	~<avr/wdt.h
+>
+
+57 
+	#Is_ext_»£t
+(è((
+MCUSR
+&(1<<
+EXTRF
+)è? 
+TRUE
+:
+FALSE
+)
+
+	)
+
+58 
+	#Ack_ext_»£t
+(è(
+MCUSR
+ğ~(1<<
+EXTRF
+))
+
+	)
+
+59 
+	#Is_POR_»£t
+(è((
+MCUSR
+&(1<<(MCUSRğ~(1<<
+PORF
+)))è? 
+TRUE
+:
+FALSE
+)
+
+	)
+
+60 
+	#Ack_POR_»£t
+(è(
+MCUSR
+ğ~(1<<
+PORF
+))
+
+	)
+
+61 
+	#Is_BOD_»£t
+(è((
+MCUSR
+&(1<<
+BORF
+)è? 
+TRUE
+:
+FALSE
+)
+
+	)
+
+62 
+	#Ack_BOD_»£t
+(è(
+MCUSR
+ğ~(1<<
+BORF
+))
+
+	)
+
+63 
+	#Is_wdt_»£t
+(è((
+MCUSR
+&(1<<
+WDRF
+)è? 
+TRUE
+:
+FALSE
+)
+
+	)
+
+64 
+	#Ack_wdt_»£t
+(è(
+MCUSR
+ğ~(1<<
+WDRF
+))
+
+	)
+
+66 
+	#Wdt_ack_š‹¼u±
+(è(
+WDTCSR
+ = (
+U8
+)(1<<
+WDIF
+))
+
+	)
+
+67 
+	#Is_wdt_š‹¼u±
+(è(
+WDTCSR
+&(1<<
+WDIF
+è? 
+TRUE
+:
+FALSE
+)
+
+	)
+
+68 
+	#Is_nÙ_wdt_š‹¼u±
+(è(
+WDTCSR
+&(1<<
+WDIF
+è? 
+FALSE
+:
+TRUE
+)
+
+	)
+
+69 
+	#Is_wdt_—¾y_w¬nšg
+(è(
+WDTCKD
+&(1<<
+WDEWIF
+è? 
+TRUE
+:
+FALSE
+)
+
+	)
+
+70 
+	#Is_nÙ_wdt_—¾y_w¬nšg
+(è(
+WDTCKD
+&(1<<
+WDEWIF
+è? 
+FALSE
+:
+TRUE
+)
+
+	)
+
+72 
+	#WDTO_16MS
+ 0
+
+	)
+
+73 
+	#WDTO_32MS
+ 1
+
+	)
+
+74 
+	#WDTO_64MS
+ 2
+
+	)
+
+75 
+	#WDTO_125MS
+ 3
+
+	)
+
+76 
+	#WDTO_250MS
+ 4
+
+	)
+
+77 
+	#WDTO_500MS
+ 5
+
+	)
+
+78 
+	#WDTO_1S
+ 6
+
+	)
+
+79 
+	#WDTO_2S
+ 7
+
+	)
+
+80 
+	#WDTO_4S
+ 8
+
+	)
+
+81 
+	#WDTO_8S
+ 9
+
+	)
+
+86 
+wdtdrv_di§bË
+();
+
+93 
+wdtdrv_’abË
+Ğ
+U8
+ 
+timeout
+ );
+
+100 
+wdtdrv_š‹¼u±_’abË
+Ğ
+U8
+ 
+timeout
+ );
+
+107 
+wdtdrv_š‹¼u±_»£t_’abË
+Ğ
+U8
+ 
+timeout
+ );
+
+110 
+	#Soá_»£t
+(è{
+	`asm
+("jm°0000");}
+
+	)
+
+	@common/modules/scheduler/scheduler.c
+
+46 
+	#_SCHEDULER_C_
+
+
+	)
+
+47 
+	~"cÚfig.h
+"
+
+48 
+	~"cÚf/cÚf_scheduËr.h
+"
+
+49 
+	~"scheduËr.h
+"
+
+54 #ià
+SCHEDULER_TYPE
+ !ğ
+SCHEDULER_FREE
+
+
+56 
+b™
+ 
+	gscheduËr_tick_æag
+;
+
+59 #ifdeà
+TOKEN_MODE
+
+
+65 
+Uch¬
+ 
+	gtok’
+;
+
+77 
+	$scheduËr_š™
+ ()
+
+79 #ifdeà
+ScheduËr_time_š™
+
+
+80 
+	`ScheduËr_time_š™
+();
+
+82 #ifdeà
+TOKEN_MODE
+
+
+83 
+tok’
+ = 
+TOKEN_FREE
+;
+
+85 #ifdeà
+ScheduËr_sk_1_š™
+
+
+86 
+	`ScheduËr_sk_1_š™
+();
+
+87 
+	`ScheduËr_ÿÎ_Ãxt_š™
+();
+
+89 #ifdeà
+ScheduËr_sk_2_š™
+
+
+90 
+	`ScheduËr_sk_2_š™
+();
+
+91 
+	`ScheduËr_ÿÎ_Ãxt_š™
+();
+
+93 #ifdeà
+ScheduËr_sk_3_š™
+
+
+94 
+	`ScheduËr_sk_3_š™
+();
+
+95 
+	`ScheduËr_ÿÎ_Ãxt_š™
+();
+
+97 #ifdeà
+ScheduËr_sk_4_š™
+
+
+98 
+	`ScheduËr_sk_4_š™
+();
+
+99 
+	`ScheduËr_ÿÎ_Ãxt_š™
+();
+
+101 #ifdeà
+ScheduËr_sk_5_š™
+
+
+102 
+	`ScheduËr_sk_5_š™
+();
+
+103 
+	`ScheduËr_ÿÎ_Ãxt_š™
+();
+
+105 #ifdeà
+ScheduËr_sk_6_š™
+
+
+106 
+	`ScheduËr_sk_6_š™
+();
+
+107 
+	`ScheduËr_ÿÎ_Ãxt_š™
+();
+
+109 #ifdeà
+ScheduËr_sk_7_š™
+
+
+110 
+	`ScheduËr_sk_7_š™
+();
+
+111 
+	`ScheduËr_ÿÎ_Ãxt_š™
+();
+
+113 #ifdeà
+ScheduËr_sk_8_š™
+
+
+114 
+	`ScheduËr_sk_8_š™
+();
+
+115 
+	`ScheduËr_ÿÎ_Ãxt_š™
+();
+
+117 #ifdeà
+ScheduËr_sk_9_š™
+
+
+118 
+	`ScheduËr_sk_9_š™
+();
+
+119 
+	`ScheduËr_ÿÎ_Ãxt_š™
+();
+
+121 #ifdeà
+ScheduËr_sk_10_š™
+
+
+122 
+	`ScheduËr_sk_10_š™
+();
+
+123 
+	`ScheduËr_ÿÎ_Ãxt_š™
+();
+
+125 #ifdeà
+ScheduËr_sk_11_š™
+
+
+126 
+	`ScheduËr_sk_11_š™
+();
+
+127 
+	`ScheduËr_ÿÎ_Ãxt_š™
+();
+
+129 
+	`ScheduËr_»£t_tick_æag
+();
+
+130 
+	}
+}
+
+138 
+	$scheduËr_sks
+ ()
+
+141 
+	`scheduËr_em±y_fù
+();
+
+145 
+	`ScheduËr_Ãw_scheduË
+();
+
+146 #ifdeà
+ScheduËr_sk_1
+
+
+147 
+	`ScheduËr_sk_1
+();
+
+148 
+	`ScheduËr_ÿÎ_Ãxt_sk
+();
+
+150 #ifdeà
+ScheduËr_sk_2
+
+
+151 
+	`ScheduËr_sk_2
+();
+
+152 
+	`ScheduËr_ÿÎ_Ãxt_sk
+();
+
+154 #ifdeà
+ScheduËr_sk_3
+
+
+155 
+	`ScheduËr_sk_3
+();
+
+156 
+	`ScheduËr_ÿÎ_Ãxt_sk
+();
+
+158 #ifdeà
+ScheduËr_sk_4
+
+
+159 
+	`ScheduËr_sk_4
+();
+
+160 
+	`ScheduËr_ÿÎ_Ãxt_sk
+();
+
+162 #ifdeà
+ScheduËr_sk_5
+
+
+163 
+	`ScheduËr_sk_5
+();
+
+164 
+	`ScheduËr_ÿÎ_Ãxt_sk
+();
+
+166 #ifdeà
+ScheduËr_sk_6
+
+
+167 
+	`ScheduËr_sk_6
+();
+
+168 
+	`ScheduËr_ÿÎ_Ãxt_sk
+();
+
+170 #ifdeà
+ScheduËr_sk_7
+
+
+171 
+	`ScheduËr_sk_7
+();
+
+172 
+	`ScheduËr_ÿÎ_Ãxt_sk
+();
+
+174 #ifdeà
+ScheduËr_sk_8
+
+
+175 
+	`ScheduËr_sk_8
+();
+
+176 
+	`ScheduËr_ÿÎ_Ãxt_sk
+();
+
+178 #ifdeà
+ScheduËr_sk_9
+
+
+179 
+	`ScheduËr_sk_9
+();
+
+180 
+	`ScheduËr_ÿÎ_Ãxt_sk
+();
+
+182 #ifdeà
+ScheduËr_sk_10
+
+
+183 
+	`ScheduËr_sk_10
+();
+
+184 
+	`ScheduËr_ÿÎ_Ãxt_sk
+();
+
+186 #ifdeà
+ScheduËr_sk_11
+
+
+187 
+	`ScheduËr_sk_11
+();
+
+188 
+	`ScheduËr_ÿÎ_Ãxt_sk
+();
+
+191 
+	}
+}
+
+199 
+	$scheduËr
+ ()
+
+201 
+	`scheduËr_š™
+();
+
+202 
+	`scheduËr_sks
+();
+
+203 
+	}
+}
+
+213 
+	$scheduËr_em±y_fù
+ ()
+
+215 
+	}
+}
+
+	@common/modules/scheduler/scheduler.h
+
+46 #iâdeà
+_SCHEDULER_H_
+
+
+47 
+	#_SCHEDULER_H_
+
+
+	)
+
+50 #ifdeà
+KEIL
+
+
+51 
+	~<šŒšs.h
+>
+
+52 
+	#Wa™_£m­hÜe
+(
+a
+è!
+	`_‹¡b™_
+×))
+
+	)
+
+54 
+	#Wa™_£m­hÜe
+(
+a
+è!×)è×èğ
+FALSE
+
+
+	)
+
+63 
+	#TASK_DUMMY
+ 0x00
+
+64 
+	#TASK_0
+ 0x01
+
+	)
+
+65 
+	#TASK_1
+ 0x02
+
+	)
+
+66 
+	#TASK_2
+ 0x04
+
+	)
+
+67 
+	#TASK_3
+ 0x08
+
+	)
+
+68 
+	#TASK_4
+ 0x10
+
+	)
+
+69 
+	#TASK_5
+ 0x20
+
+	)
+
+70 
+	#TASK_6
+ 0x40
+
+	)
+
+71 
+	#TASK_7
+ 0x80
+
+	)
+
+74 
+	#ALL_TASK
+ (
+TASK_0
+|
+TASK_1
+|
+TASK_2
+|
+TASK_3
+|
+TASK_4
+|
+TASK_5
+|
+TASK_6
+|
+TASK_7
+)
+
+	)
+
+78 
+	#SCHEDULER_CUSTOM
+ 0
+
+	)
+
+79 
+	#SCHEDULER_TIMED
+ 1
+
+	)
+
+80 
+	#SCHEDULER_TASK
+ 2
+
+	)
+
+81 
+	#SCHEDULER_FREE
+ 3
+
+	)
+
+85 #ifdeà
+ScheduËr_time_š™
+
+
+86 
+ScheduËr_time_š™
+ ();
+
+89 #ifdeà
+ScheduËr_sk_1_š™
+
+
+90 
+ScheduËr_sk_1_š™
+ ();
+
+94 #”rÜ 
+ScheduËr_sk_1_š™
+ 
+mu¡
+ 
+be
+ 
+defšed
+ 
+š
+ 
+cÚfig
+.
+h
+ 
+fe
+
+
+96 #ifdeà
+ScheduËr_sk_2_š™
+
+
+97 
+ScheduËr_sk_2_š™
+ ();
+
+99 #ifdeà
+ScheduËr_sk_3_š™
+
+
+100 
+ScheduËr_sk_3_š™
+ ();
+
+102 #ifdeà
+ScheduËr_sk_4_š™
+
+
+103 
+ScheduËr_sk_4_š™
+ ();
+
+105 #ifdeà
+ScheduËr_sk_5_š™
+
+
+106 
+ScheduËr_sk_5_š™
+ ();
+
+108 #ifdeà
+ScheduËr_sk_6_š™
+
+
+109 
+ScheduËr_sk_6_š™
+ ();
+
+111 #ifdeà
+ScheduËr_sk_7_š™
+
+
+112 
+ScheduËr_sk_7_š™
+ ();
+
+114 #ifdeà
+ScheduËr_sk_8_š™
+
+
+115 
+ScheduËr_sk_8_š™
+ ();
+
+117 #ifdeà
+ScheduËr_sk_9_š™
+
+
+118 
+ScheduËr_sk_9_š™
+ ();
+
+120 #ifdeà
+ScheduËr_sk_10_š™
+
+
+121 
+ScheduËr_sk_10_š™
+ ();
+
+123 #ifdeà
+ScheduËr_sk_11_š™
+
+
+124 
+ScheduËr_sk_11_š™
+ ();
+
+128 #ifdeà
+ScheduËr_sk_1
+
+
+129 
+ScheduËr_sk_1
+ ();
+
+133 #”rÜ 
+ScheduËr_sk_1
+ 
+mu¡
+ 
+be
+ 
+defšed
+ 
+š
+ 
+cÚfig
+.
+h
+ 
+fe
+
+
+135 #ifdeà
+ScheduËr_sk_2
+
+
+136 
+ScheduËr_sk_2
+ ();
+
+138 #ifdeà
+ScheduËr_sk_3
+
+
+139 
+ScheduËr_sk_3
+ ();
+
+141 #ifdeà
+ScheduËr_sk_4
+
+
+142 
+ScheduËr_sk_4
+ ();
+
+144 #ifdeà
+ScheduËr_sk_5
+
+
+145 
+ScheduËr_sk_5
+ ();
+
+147 #ifdeà
+ScheduËr_sk_6
+
+
+148 
+ScheduËr_sk_6
+ ();
+
+150 #ifdeà
+ScheduËr_sk_7
+
+
+151 
+ScheduËr_sk_7
+ ();
+
+153 #ifdeà
+ScheduËr_sk_8
+
+
+154 
+ScheduËr_sk_8
+ ();
+
+156 #ifdeà
+ScheduËr_sk_9
+
+
+157 
+ScheduËr_sk_9
+ ();
+
+159 #ifdeà
+ScheduËr_sk_10
+
+
+160 
+ScheduËr_sk_10
+ ();
+
+162 #ifdeà
+ScheduËr_sk_11
+
+
+163 
+ScheduËr_sk_11
+ ();
+
+167 #ià
+SCHEDULER_TYPE
+ !ğ
+SCHEDULER_FREE
+
+
+168 
+b™
+ 
+scheduËr_tick_æag
+;
+
+171 #ifdeà
+TOKEN_MODE
+
+
+172 
+Uch¬
+ 
+tok’
+;
+
+173 
+	#TOKEN_FREE
+ 0
+
+	)
+
+177 
+scheduËr_š™
+ ();
+
+178 
+scheduËr_sks
+ ();
+
+179 
+scheduËr
+ ();
+
+180 
+scheduËr_em±y_fù
+ ();
+
+182 #iâdeà
+SCHEDULER_TYPE
+
+
+183 #”rÜ 
+You
+ 
+mu¡
+ 
+defše
+ 
+SCHEDULER_TYPE
+ 
+š
+ 
+cÚfig
+.
+h
+ 
+fe
+
+
+184 #–ià
+SCHEDULER_TYPE
+ =ğ
+SCHEDULER_FREE
+
+
+185 
+	#ScheduËr_£t_tick_æag
+()
+
+	)
+
+186 
+	#ScheduËr_»£t_tick_æag
+()
+
+	)
+
+187 #–ià
+SCHEDULER_TYPE
+ =ğ
+SCHEDULER_TIMED
+
+
+188 
+	#ScheduËr_Ãw_scheduË
+(è
+	`Wa™_£m­hÜe
+(
+scheduËr_tick_æag
+)
+
+	)
+
+189 
+	#ScheduËr_£t_tick_æag
+(è(
+scheduËr_tick_æag
+ = 
+TRUE
+)
+
+	)
+
+190 
+	#ScheduËr_»£t_tick_æag
+(è(
+scheduËr_tick_æag
+ = 
+FALSE
+)
+
+	)
+
+191 #–ià
+SCHEDULER_TYPE
+ =ğ
+SCHEDULER_TASK
+
+
+192 
+	#ScheduËr_ÿÎ_Ãxt_sk
+(è
+	`Wa™_£m­hÜe
+(
+scheduËr_tick_æag
+)
+
+	)
+
+193 
+	#ScheduËr_£t_tick_æag
+(è(
+scheduËr_tick_æag
+ = 
+TRUE
+)
+
+	)
+
+194 
+	#ScheduËr_»£t_tick_æag
+(è(
+scheduËr_tick_æag
+ = 
+FALSE
+)
+
+	)
+
+195 #–ià
+SCHEDULER_TYPE
+ =ğ
+SCHEDULER_CUSTOM
+
+
+196 #”rÜ 
+Make
+ 
+su»
+ 
+you
+ 
+have
+ 
+£tup
+ 
+maüo
+/
+fù
+ 
+ScheduËr_Ãw_scheduË
+ & 
+ScheduËr_ÿÎ_Ãxt_sk
+
+
+197 
+	#ScheduËr_£t_tick_æag
+(è(
+scheduËr_tick_æag
+ = 
+TRUE
+)
+
+	)
+
+198 
+	#ScheduËr_»£t_tick_æag
+(è(
+scheduËr_tick_æag
+ = 
+FALSE
+)
+
+	)
+
+201 #iâdeà
+ScheduËr_ÿÎ_Ãxt_sk
+
+
+202 
+	#ScheduËr_ÿÎ_Ãxt_sk
+()
+
+	)
+
+204 #iâdeà
+ScheduËr_Ãw_scheduË
+
+
+205 
+	#ScheduËr_Ãw_scheduË
+()
+
+	)
+
+207 #iâdeà
+ScheduËr_ÿÎ_Ãxt_š™
+
+
+208 
+	#ScheduËr_ÿÎ_Ãxt_š™
+()
+
+	)
+
+	@
+1
+.
+0
+34
+1420
+at90usb128/demo/series6-hidmouse/conf/conf_scheduler.h
+at90usb128/demo/series6-hidmouse/conf/conf_usb.h
+at90usb128/demo/series6-hidmouse/conf/config.h
+at90usb128/demo/series6-hidmouse/main.c
+at90usb128/demo/series6-hidmouse/mouse_task.c
+at90usb128/demo/series6-hidmouse/mouse_task.h
+at90usb128/demo/series6-hidmouse/sensors.c
+at90usb128/demo/series6-hidmouse/sensors.h
+at90usb128/demo/series6-hidmouse/usb_descriptors.c
+at90usb128/demo/series6-hidmouse/usb_descriptors.h
+at90usb128/demo/series6-hidmouse/usb_specific_request.c
+at90usb128/demo/series6-hidmouse/usb_specific_request.h
+at90usb128/lib_board/usb_key/usb_key.c
+at90usb128/lib_board/usb_key/usb_key.h
+at90usb128/lib_mcu/pll/pll_drv.h
+at90usb128/lib_mcu/power/power_drv.c
+at90usb128/lib_mcu/power/power_drv.h
+at90usb128/lib_mcu/usb/usb_drv.c
+at90usb128/lib_mcu/usb/usb_drv.h
+at90usb128/modules/usb/device_chap9/usb_device_task.c
+at90usb128/modules/usb/device_chap9/usb_device_task.h
+at90usb128/modules/usb/device_chap9/usb_standard_request.c
+at90usb128/modules/usb/device_chap9/usb_standard_request.h
+at90usb128/modules/usb/usb_commun.h
+at90usb128/modules/usb/usb_commun_hid.h
+at90usb128/modules/usb/usb_task.c
+at90usb128/modules/usb/usb_task.h
+common/lib_mcu/adc/adc_drv.c
+common/lib_mcu/adc/adc_drv.h
+common/lib_mcu/compiler.h
+common/lib_mcu/wdt/wdt_drv.c
+common/lib_mcu/wdt/wdt_drv.h
+common/modules/scheduler/scheduler.c
+common/modules/scheduler/scheduler.h
