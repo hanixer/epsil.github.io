@@ -1134,6 +1134,9 @@ module.exports =
   '*[TeX]: TeX\n'
 
 },{}],6:[function(require,module,exports){
+/* global jQuery:true */
+/* exported jQuery */
+
 // Collapsible headers, based on Bootstrap's collapse plugin
 //
 // TODO:
@@ -1155,6 +1158,8 @@ module.exports =
 
 var $ = require('jquery')
 var S = require('string')
+jQuery = $ // needed for Bootstrap
+require('bootstrap')
 
 $.fn.addCollapsibleSections = function (options) {
   var opts = $.extend({}, $.fn.addCollapsibleSections.defaults, options)
@@ -1279,10 +1284,8 @@ $.fn.addCollapsibleSections.defaults = {
   // expand: 'Expand', // expand title
 }
 
-},{"jquery":236,"string":350}],7:[function(require,module,exports){
-/* global document:true, window:true, $:true, jQuery:true */
-/* exported jQuery */
-$ = jQuery = require('jquery')
+},{"bootstrap":17,"jquery":236,"string":350}],7:[function(require,module,exports){
+var $ = require('jquery')
 var markdownit = require('markdown-it')
 var attr = require('markdown-it-attrs')
 var anchor = require('markdown-it-anchor')
@@ -1299,7 +1302,6 @@ var Handlebars = require('handlebars')
 var URI = require('urijs')
 var template = require('./template')
 var abbrev = require('./abbrev')
-require('bootstrap')
 require('./collapse')
 require('./section')
 require('./social')
@@ -1455,7 +1457,7 @@ function convert (data, path) {
 
 module.exports = convert
 
-},{"./abbrev":5,"./collapse":6,"./figure":8,"./hanging":9,"./punctuation":11,"./section":12,"./social":13,"./template":14,"./toc":15,"./util":16,"bootstrap":17,"handlebars":59,"highlight.js":73,"jquery":236,"js-yaml":237,"markdown-it":280,"markdown-it-abbr":267,"markdown-it-anchor":268,"markdown-it-attrs":273,"markdown-it-footnote":275,"markdown-it-mathjax":276,"markdown-it-sub":277,"markdown-it-sup":278,"markdown-it-task-lists":279,"moment":346,"urijs":353}],8:[function(require,module,exports){
+},{"./abbrev":5,"./collapse":6,"./figure":8,"./hanging":9,"./punctuation":11,"./section":12,"./social":13,"./template":14,"./toc":15,"./util":16,"handlebars":59,"highlight.js":73,"jquery":236,"js-yaml":237,"markdown-it":280,"markdown-it-abbr":267,"markdown-it-anchor":268,"markdown-it-attrs":273,"markdown-it-footnote":275,"markdown-it-mathjax":276,"markdown-it-sub":277,"markdown-it-sup":278,"markdown-it-task-lists":279,"moment":346,"urijs":353}],8:[function(require,module,exports){
 var $ = require('jquery')
 
 $.fn.addFigures = function () {
@@ -1529,7 +1531,6 @@ $.fn.addHangingPunctuation = function () {
 },{"jquery":236}],10:[function(require,module,exports){
 /* global MathJax */
 var $ = require('jquery')
-window.$ = window.jQuery = $
 var URI = require('urijs')
 var compile = require('./compiler')
 
