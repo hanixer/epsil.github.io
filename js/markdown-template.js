@@ -529,7 +529,7 @@ function title (view) {
     var content = $('<div>').html(view.content)
     var heading = content.find('h1').first()
     if (heading.length > 0) {
-      view.title = heading.removeAria().text().trim()
+      view.title = heading.removeAriaHidden().html().trim()
       heading.remove()
       view.content = content.html()
     }
@@ -1294,11 +1294,15 @@ $.fn.addPullQuotes = function () {
   })
 }
 
+$.fn.removeAriaHidden = function () {
+  return this.each(function () {
+    $(this).find('[aria-hidden="true"]').remove()
+  })
+}
+
 $.fn.removeAria = function () {
   return this.map(function () {
-    var clone = $(this).clone()
-    clone.find('[aria-hidden="true"]').remove()
-    return clone
+    return $(this).clone().removeAriaHidden()
   })
 }
 
