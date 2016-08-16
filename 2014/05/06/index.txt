@@ -73,7 +73,7 @@ For å liste brukere i kanalen, skriv:
 
     /names
 
-For å scrolle opp/ned: <kbd>Page Up</kbd>/<kbd>Page Down</kbd>.
+For å scrolle opp/ned: <kbd>PgUp</kbd>/<kbd>PgDn</kbd>.
 
 For å starte en privat samtale:
 
