@@ -587,8 +587,8 @@ $.fn.addHotkeys = function () {
     body.find('kbd:contains("Power")').replaceWith('<kbd title="Power"><i class="fa fa-power-off"></i></kbd>')
     body.find('kbd:contains("Left")').replaceWith('<kbd title="Left">\u2190</kbd>') // \u2b05
     body.find('kbd:contains("Right")').replaceWith('<kbd title="Right">\u2192</kbd>') // \u27a1
-    body.find('kbd:contains("Up")').replaceWith('<kbd title="Up">\u2191</kbd>') // \u2b06
-    body.find('kbd:contains("Down")').replaceWith('<kbd title="Down">\u2193</kbd>') // \u2b07
+    body.find('kbd').filter(function () { return $(this).text().trim() === 'Up' }).replaceWith('<kbd title="Up">\u2191</kbd>') // \u2b06
+    body.find('kbd').filter(function () { return $(this).text().trim() === 'Down' }).replaceWith('<kbd title="Down">\u2193</kbd>') // \u2b07
   })
 }
 

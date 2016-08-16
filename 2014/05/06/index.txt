@@ -60,12 +60,12 @@ Hvis din `screen` ikke dukker opp igjen, sjekk om du er på riktig server eller 
 Bruk av `irssi`
 ---------------
 
-For å bytte kanalfane, trykk kombinasjonen: `Alt + tall` (f.eks.
-`Alt + 1`).
+For å bytte kanalfane, trykk kombinasjonen: <kbd>Alt</kbd> + <kbd>*tall*</kbd> (f.eks.
+<kbd>Alt</kbd> + <kbd>1</kbd>).
 
-Alternativt: `Esc + tall` (f.eks. `Esc + 1`).
+Alternativt: <kbd>Esc</kbd> + <kbd>*tall*</kbd> (f.eks. <kbd>Esc</kbd> + <kbd>1</kbd>).
 
-Alternativt: `Ctrl + n` eller `Ctrl + p`.
+Alternativt: <kbd>Ctrl</kbd> + <kbd>N</kbd> eller <kbd>Ctrl</kbd> + <kbd>P</kbd>.
 
 Alternativt: skriv `/win + tall` (f.eks. `/win 2`).
 
@@ -73,7 +73,7 @@ For å liste brukere i kanalen, skriv:
 
     /names
 
-For å scrolle opp/ned: `PageUp`/`PageDown`.
+For å scrolle opp/ned: <kbd>Page Up</kbd>/<kbd>Page Down</kbd>.
 
 For å starte en privat samtale:
 
