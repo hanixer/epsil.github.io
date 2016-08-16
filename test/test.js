@@ -387,7 +387,7 @@
       return url
     }
 
-    var github = 'https://github.com/epsil/epsil.github.io/tree/master/'
+    var github = 'https://github.com/epsil/epsil.github.io/tree/master'
     var file = '/index.txt'
     var path = social.github.path(url)
 
@@ -15343,8 +15343,7 @@ describe('collapse.js', function () {
 
   describe('button()', function () {
     it('should create a button as specified', function () {
-      $.fn.addCollapsibleSections.button('Collapse', 'header').prop('outerHTML').should.equal(
-        '<a aria-hidden="true" aria-expanded="true" role="button" class="collapse-button" data-toggle="collapse" href="#header" aria-controls="header" title="Collapse"></a>')
+      $.fn.addCollapsibleSections.button('header').prop('outerHTML').should.equal('<a aria-hidden="true" aria-expanded="true" role="button" class="collapse-button" data-toggle="collapse" href="#header" aria-controls="header"></a>')
     })
   })
 
@@ -15352,7 +15351,7 @@ describe('collapse.js', function () {
     it('should add button to each header except h1', function () {
       var div = $('<div><h1 id="header">Header</h1><p>Paragraph one</p><p>Paragraph two</p><h2 id="subheader">Subheader</h2><p>Paragraph three</p><p>Paragraph four</p></div>')
       div.addCollapsibleSections().prop('outerHTML').should.equal(
-        '<div><h1 id="header">Header</h1><div id="header-section"><p>Paragraph one</p><p>Paragraph two</p><h2 id="subheader">Subheader<a aria-hidden="true" aria-expanded="true" role="button" class="collapse-button" data-toggle="collapse" href="#subheader-section" aria-controls="subheader-section" title="Collapse"></a></h2><div class="collapse in" id="subheader-section"><p>Paragraph three</p><p>Paragraph four</p></div></div></div>')
+        '<div><h1 id="header">Header</h1><div id="header-section"><p>Paragraph one</p><p>Paragraph two</p><h2 id="subheader">Subheader<a aria-hidden="true" aria-expanded="true" role="button" class="collapse-button" data-toggle="collapse" href="#subheader-section" aria-controls="subheader-section"></a></h2><div class="collapse in" id="subheader-section"><p>Paragraph three</p><p>Paragraph four</p></div></div></div>')
     })
   })
 })
@@ -15366,12 +15365,7 @@ describe('figure.js', function () {
                   '</p>' +
                   '</div>')
       div.addFigures().prop('outerHTML').should.equal(
-        '<div>' +
-        '<div style="width: 209px;" class="figure right">' +
-        '<img alt="Caption text" class="" src="image.png" width="200">' +
-        '<p class="caption">Caption text</p>' +
-        '</div>' +
-        '</div>')
+        '<div><div style="width: 209px;" class="figure right"><img alt="Caption text" src="image.png" width="200"><p class="caption">Caption text</p></div></div>')
     })
 
     it('should handle multiple images within a paragraph', function () {
@@ -15382,16 +15376,7 @@ describe('figure.js', function () {
                   '</p>' +
                   '</div>')
       div.addFigures().prop('outerHTML').should.equal(
-        '<div>' +
-        '<div style="width: 209px;" class="figure right">' +
-        '<img alt="Caption text 1" class="" src="image1.png" width="200">' +
-        '<p class="caption">Caption text 1</p>' +
-        '</div>' +
-        '<div style="width: 209px;" class="figure right">' +
-        '<img alt="Caption text 2" class="" src="image2.png" width="200">' +
-        '<p class="caption">Caption text 2</p>' +
-        '</div>' +
-        '</div>')
+        '<div><div style="width: 209px;" class="figure right"><img alt="Caption text 1" src="image1.png" width="200"><p class="caption">Caption text 1</p></div><div style="width: 209px;" class="figure right"><img alt="Caption text 2" src="image2.png" width="200"><p class="caption">Caption text 2</p></div></div>')
     })
 
     it('should ignore captionless images', function () {
@@ -15461,7 +15446,7 @@ describe('github.js', function () {
 
   describe('github.path()', function () {
     it('should extract relative path', function () {
-      $.fn.github.path('http://www.example.org/foo/').should.equal('foo')
+      $.fn.github.path('http://www.example.org/foo/').should.equal('/foo')
     })
   })
 
@@ -15574,16 +15559,7 @@ describe('util.js', function () {
                   '</section>' +
                   '</div>')
       div.fixFootnotes().prop('outerHTML').should.equal(
-        '<div>' +
-        '<p>This is a test.<sup class="footnote-ref"><a title="This is a footnote." id="fnref1" href="#fn1">[1]</a></sup></p>' +
-        '<hr class="footnotes-sep">' +
-        '<section class="footnotes">' +
-        '<ol class="footnotes-list">' +
-        '<li class="footnote-item" id="fn1"><p>This is a footnote. <a class="footnote-backref" href="#fnref1">\u21a9</a></p>' +
-        '</li>' +
-        '</ol>' +
-        '</section>' +
-        '</div>')
+        '<div><p>This is a test.<sup class="footnote-ref"><a title="This is a footnote." id="fnref1" href="#fn1">[1]</a></sup></p><hr class="footnotes-sep"><section class="footnotes"><ol class="footnotes-list"><li class="footnote-item" id="fn1"><p>This is a footnote. <a title="This is a test.[1]" class="footnote-backref" href="#fnref1">\u21a9</a></p></li></ol></section></div>')
     })
 
     it('should handle multiple usages of the same footnote', function () {
@@ -15598,16 +15574,7 @@ describe('util.js', function () {
                   '</section>' +
                   '</div>')
       div.fixFootnotes().prop('outerHTML').should.equal(
-        '<div>' +
-        '<p>This is a test.<sup class="footnote-ref"><a title="This is a footnote." id="fnref1" href="#fn1">[1]</a></sup> Same footnote again.<sup class="footnote-ref"><a title="This is a footnote." id="fnref2" href="#fn1">[1]</a></sup></p>' +
-        '<hr class="footnotes-sep">' +
-        '<section class="footnotes">' +
-        '<ol class="footnotes-list">' +
-        '<li class="footnote-item" id="fn1"><p>This is a footnote. <a class="footnote-backref" href="#fnref1">\u21a9</a> <a class="footnote-backref" href="#fnref2">\u21a9</a></p>' +
-        '</li>' +
-        '</ol>' +
-        '</section>' +
-        '</div>')
+        '<div><p>This is a test.<sup class="footnote-ref"><a title="This is a footnote." id="fnref1" href="#fn1">[1]</a></sup> Same footnote again.<sup class="footnote-ref"><a title="This is a footnote." id="fnref2" href="#fn1">[1]</a></sup></p><hr class="footnotes-sep"><section class="footnotes"><ol class="footnotes-list"><li class="footnote-item" id="fn1"><p>This is a footnote. <a title="This is a test.[1] Same footnote again.[1]" class="footnote-backref" href="#fnref1">\u21a9</a> <a title="This is a test.[1] Same footnote again.[1]" class="footnote-backref" href="#fnref2">\u21a9</a></p></li></ol></section></div>')
     })
   })
 

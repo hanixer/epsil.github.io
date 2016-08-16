@@ -19,7 +19,7 @@
     "test": "npm run spec && npm run lint",
     "lint": "jshint lib/build.js lib/collapse.js lib/compiler.js lib/figure.js lib/hanging.js lib/punctuation.js lib/abbrev.js lib/template.js lib/section.js lib/social.js lib/toc.js lib/util.js lib/index.js test/index.js && standard lib/build.js lib/collapse.js lib/compiler.js lib/figure.js lib/hanging.js lib/punctuation.js lib/section.js lib/social.js lib/abbrev.js lib/template.js lib/toc.js lib/util.js lib/index.js test/index.js && markdownlint index.txt",
     "phantom": "mocha-phantomjs test/index.html",
-    "spec": "open test/index.html",
+    "spec": "npm run browser && open test/index.html",
     "standalone": "inliner index.html > standalone.html",
     "commit": "git --no-pager status && git --no-pager diff && git commit -a -m \"Updated `git status | sed -n '/modified:/ {s/^[[:space:]]*modified:[[:space:]]*//;s/\\.txt$//;s/\\.md$//;s/\\.html$//;s/\\/index$//;p;q;}'`\"",
     "amend": "git --no-pager status && git --no-pager diff && git commit -a --amend --no-edit",
