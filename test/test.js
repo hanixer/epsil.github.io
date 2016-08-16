@@ -267,9 +267,9 @@
       // https://github.com/kellym/smartquotesjs
       while (node !== null) {
         if (node.nodeType === 3 &&
-            node.nodeName.toUpperCase() !== 'CODE' &&
-            node.nodeName.toUpperCase() !== 'PRE' &&
-            node.nodeName.toUpperCase() !== 'TEXTAREA') {
+            node.nodeName !== 'CODE' &&
+            node.nodeName !== 'PRE' &&
+            node.nodeName !== 'TEXTAREA') {
           node.nodeValue = node.nodeValue
             .replace(/([-([«\s]|^)"(\S)/g, '$1\u201c$2') // beginning "
             .replace(/"/g, '\u201d') // ending "
@@ -311,9 +311,9 @@
             .replace(/:-\(/g, '\u2639') // frowning smiley
         }
         if (node.hasChildNodes() &&
-            node.firstChild.nodeName.toUpperCase() !== 'CODE' &&
-            node.firstChild.nodeName.toUpperCase() !== 'PRE' &&
-            node.firstChild.nodeName.toUpperCase() !== 'TEXTAREA') {
+            node.firstChild.nodeName !== 'CODE' &&
+            node.firstChild.nodeName !== 'PRE' &&
+            node.firstChild.nodeName !== 'TEXTAREA') {
           node = node.firstChild
         } else {
           do {
@@ -321,11 +321,11 @@
               node = node.parentNode
             }
             node = node.nextSibling
-          } while (node && (node.nodeName.toUpperCase() === 'CODE' ||
-                            node.nodeName.toUpperCase() === 'PRE' ||
-                            node.nodeName.toUpperCase() === 'SCRIPT' ||
-                            node.nodeName.toUpperCase() === 'TEXTAREA' ||
-                            node.nodeName.toUpperCase() === 'STYLE'))
+          } while (node && (node.nodeName === 'CODE' ||
+                            node.nodeName === 'PRE' ||
+                            node.nodeName === 'SCRIPT' ||
+                            node.nodeName === 'TEXTAREA' ||
+                            node.nodeName === 'STYLE'))
         }
       }
     })
