@@ -1134,8 +1134,6 @@ module.exports =
   '*[TeX]: TeX\n'
 
 },{}],6:[function(require,module,exports){
-/* global define, jQuery, S */
-
 // Collapsible headers, based on Bootstrap's collapse plugin
 //
 // TODO:
@@ -1155,141 +1153,131 @@ module.exports =
 // - Option like Pandoc's --section-divs
 //   (or does this belong in a plugin of its own?)
 
-(function (factory) {
-  if (typeof define === 'function' && define.amd) {
-    define(['jquery'], factory)
-    define(['string'], factory)
-  } else if (typeof exports === 'object') {
-    module.exports = factory(require('jquery'), require('string'))
-  } else {
-    factory(jQuery, S)
-  }
-}(function ($, S) {
-  $.fn.addCollapsibleSections = function (options) {
-    var opts = $.extend({}, $.fn.addCollapsibleSections.defaults, options)
-    return this.each(function () {
-      var body = $(this)
-      // process innermost sections first
-      $.each(['h6', 'h5', 'h4', 'h3', 'h2', 'h1'],
-             function (i, el) {
-               body.find(el).each(function () {
-                 // add section
-                 var header = $(this)
-                 var section = $.fn.addCollapsibleSections.addSection(header)
+var $ = require('jquery')
+var S = require('string')
 
-                 // skip top-level headers
-                 if ($.inArray(el, opts.include) < 0) {
-                   return
-                 }
+$.fn.addCollapsibleSections = function (options) {
+  var opts = $.extend({}, $.fn.addCollapsibleSections.defaults, options)
+  return this.each(function () {
+    var body = $(this)
+    // process innermost sections first
+    $.each(['h6', 'h5', 'h4', 'h3', 'h2', 'h1'],
+           function (i, el) {
+             body.find(el).each(function () {
+               // add section
+               var header = $(this)
+               var section = $.fn.addCollapsibleSections.addSection(header)
 
-                 // add button to header
-                 $.fn.addCollapsibleSections.addButton(header, section)
-               })
+               // skip top-level headers
+               if ($.inArray(el, opts.include) < 0) {
+                 return
+               }
+
+               // add button to header
+               $.fn.addCollapsibleSections.addButton(header, section)
              })
-    })
+           })
+  })
+}
+
+// add collapsible content for header
+$.fn.addCollapsibleSections.addSection = function (header) {
+  // h1 ends at next h1, h2 ends at next h1 or h2,
+  // h3 ends at next h1, h2 or h3, and so on
+  var stop = []
+  var i = parseInt(header.prop('tagName').match(/\d+/)[0])
+
+  for (var j = 1; j <= i; j++) {
+    stop.push('h' + j)
   }
+  var end = stop.join(', ')
+  var section = header.nextUntil(end)
+  section = section.wrapAll('<div>').parent()
+  $.fn.addCollapsibleSections.sectionId(header, section)
+  return section
+}
 
-  // add collapsible content for header
-  $.fn.addCollapsibleSections.addSection = function (header) {
-    // h1 ends at next h1, h2 ends at next h1 or h2,
-    // h3 ends at next h1, h2 or h3, and so on
-    var stop = []
-    var i = parseInt(header.prop('tagName').match(/\d+/)[0])
+// add button to header
+$.fn.addCollapsibleSections.addButton = function (header, section) {
+  // add button
+  var id = $.fn.addCollapsibleSections.sectionId(header, section)
+  var button = $.fn.addCollapsibleSections.button(id)
+  header.append(button)
 
-    for (var j = 1; j <= i; j++) {
-      stop.push('h' + j)
-    }
-    var end = stop.join(', ')
-    var section = header.nextUntil(end)
-    section = section.wrapAll('<div>').parent()
-    $.fn.addCollapsibleSections.sectionId(header, section)
-    return section
+  // add Bootstrap classes
+  section.addClass('collapse in')
+
+  // allow pre-collapsed sections
+  if (header.hasClass('collapse')) {
+    header.removeClass('collapse').addClass('collapsed')
   }
-
-  // add button to header
-  $.fn.addCollapsibleSections.addButton = function (header, section) {
-    // add button
-    var id = $.fn.addCollapsibleSections.sectionId(header, section)
-    var button = $.fn.addCollapsibleSections.button(id)
-    header.append(button)
-
-    // add Bootstrap classes
-    section.addClass('collapse in')
-
-    // allow pre-collapsed sections
-    if (header.hasClass('collapse')) {
-      header.removeClass('collapse').addClass('collapsed')
-    }
-    if (header.hasClass('collapsed')) {
-      header.removeClass('collapsed')
-      section.removeClass('in')
-      button.attr('aria-expanded', 'false')
-    }
+  if (header.hasClass('collapsed')) {
+    header.removeClass('collapsed')
+    section.removeClass('in')
+    button.attr('aria-expanded', 'false')
   }
+}
 
-  // button
-  $.fn.addCollapsibleSections.button = function (id) {
-    return $('<a aria-hidden="true" aria-expanded="true" role="button" class="collapse-button" data-toggle="collapse" href="#' + id + '" aria-controls="' + id + '"></a>')
+// button
+$.fn.addCollapsibleSections.button = function (id) {
+  return $('<a aria-hidden="true" aria-expanded="true" role="button" class="collapse-button" data-toggle="collapse" href="#' + id + '" aria-controls="' + id + '"></a>')
+}
+
+// header ID (add if missing)
+$.fn.addCollapsibleSections.headerId = function (header) {
+  var id = header.attr('id')
+  if (id === undefined || id === '') {
+    id = S(header.text().trim()).slugify()
+    header.attr('id', id)
   }
+  return id
+}
 
-  // header ID (add if missing)
-  $.fn.addCollapsibleSections.headerId = function (header) {
-    var id = header.attr('id')
-    if (id === undefined || id === '') {
-      id = S(header.text().trim()).slugify()
-      header.attr('id', id)
-    }
-    return id
+// section ID (based on header ID)
+$.fn.addCollapsibleSections.sectionId = function (header, section) {
+  var id = section.attr('id')
+  if (id === undefined || id === '') {
+    var headerId = $.fn.addCollapsibleSections.headerId(header)
+    id = headerId ? headerId + '-section' : ''
+    section.attr('id', id)
   }
+  return id
+}
 
-  // section ID (based on header ID)
-  $.fn.addCollapsibleSections.sectionId = function (header, section) {
-    var id = section.attr('id')
-    if (id === undefined || id === '') {
-      var headerId = $.fn.addCollapsibleSections.headerId(header)
-      id = headerId ? headerId + '-section' : ''
-      section.attr('id', id)
-    }
-    return id
-  }
+// // click handler
+// $.fn.addCollapsibleSections.clickHandler = function (button, header, collapse, expand) {
+//   return function () {
+//     // change glyph
+//     if (header.hasClass('collapsed')) {
+//       button.attr('title', collapse)
+//       header.removeClass('collapsed')
+//     } else {
+//       button.attr('title', expand)
+//       header.addClass('collapsed')
+//     }
+//   }
+// }
 
-  // // click handler
-  // $.fn.addCollapsibleSections.clickHandler = function (button, header, collapse, expand) {
-  //   return function () {
-  //     // change glyph
-  //     if (header.hasClass('collapsed')) {
-  //       button.attr('title', collapse)
-  //       header.removeClass('collapsed')
-  //     } else {
-  //       button.attr('title', expand)
-  //       header.addClass('collapsed')
-  //     }
-  //   }
-  // }
+// // add click handler
+// $.fn.addCollapsibleClickHandlers = function (options) {
+//   return this.each(function () {
+//     $(this).find('.collapse-button').each(function () {
+//       var button = $(this)
+//       var header = button.parent()
+//       var collapse = $.fn.addCollapsibleSections.defaults.collapse
+//       var expand = $.fn.addCollapsibleSections.defaults.expand
+//       var handler = $.fn.addCollapsibleSections.clickHandler(button, header, collapse, expand)
+//       button.click(handler)
+//     })
+//   })
+// }
 
-  // // add click handler
-  // $.fn.addCollapsibleClickHandlers = function (options) {
-  //   return this.each(function () {
-  //     $(this).find('.collapse-button').each(function () {
-  //       var button = $(this)
-  //       var header = button.parent()
-  //       var collapse = $.fn.addCollapsibleSections.defaults.collapse
-  //       var expand = $.fn.addCollapsibleSections.defaults.expand
-  //       var handler = $.fn.addCollapsibleSections.clickHandler(button, header, collapse, expand)
-  //       button.click(handler)
-  //     })
-  //   })
-  // }
-
-  // Default options
-  $.fn.addCollapsibleSections.defaults = {
-    include: ['h2', 'h3', 'h4', 'h5', 'h6'] // skip h1
-    // collapse: 'Collapse', // collapse title
-    // expand: 'Expand', // expand title
-  }
-
-  return $.fn.addCollapsibleSections
-}))
+// Default options
+$.fn.addCollapsibleSections.defaults = {
+  include: ['h2', 'h3', 'h4', 'h5', 'h6'] // skip h1
+  // collapse: 'Collapse', // collapse title
+  // expand: 'Expand', // expand title
+}
 
 },{"jquery":236,"string":350}],7:[function(require,module,exports){
 /* global document:true, window:true, $:true, jQuery:true */
@@ -1468,97 +1456,75 @@ function convert (data, path) {
 module.exports = convert
 
 },{"./abbrev":5,"./collapse":6,"./figure":8,"./hanging":9,"./punctuation":11,"./section":12,"./social":13,"./template":14,"./toc":15,"./util":16,"bootstrap":17,"handlebars":59,"highlight.js":73,"jquery":236,"js-yaml":237,"markdown-it":280,"markdown-it-abbr":267,"markdown-it-anchor":268,"markdown-it-attrs":273,"markdown-it-footnote":275,"markdown-it-mathjax":276,"markdown-it-sub":277,"markdown-it-sup":278,"markdown-it-task-lists":279,"moment":346,"urijs":353}],8:[function(require,module,exports){
-/* global define, jQuery */
-(function (factory) {
-  if (typeof define === 'function' && define.amd) {
-    define(['jquery'], factory)
-  } else if (typeof module === 'object' && typeof module.exports === 'object') {
-    module.exports = factory(require('jquery'))
-  } else {
-    factory(jQuery)
-  }
-}(function ($) {
-  $.fn.addFigures = function () {
-    return this.each(function () {
-      $(this).find('p img').each(function () {
-        var img = $(this)
-        var alt = img.attr('alt')
-        var p = img.parent()
-        while (p.prop('tagName') !== 'P') {
-          p = p.parent()
-        }
+var $ = require('jquery')
 
-        // ignore images without a caption
-        if (alt === '') {
-          var pclass = (p.attr('class') || '').trim()
-          if (pclass === 'center') {
-            // ignore
-          } else if (pclass === '' &&
-              p.text().trim() === '') {
-            p.addClass('center')
-          } else {
-            img.addClass(p.attr('class'))
-            p.removeAttr('class')
-          }
+$.fn.addFigures = function () {
+  return this.each(function () {
+    $(this).find('p img').each(function () {
+      var img = $(this)
+      var alt = img.attr('alt')
+      var p = img.parent()
+      while (p.prop('tagName') !== 'P') {
+        p = p.parent()
+      }
 
-          if (p.is('[width]')) {
-            img.attr('width', p.attr('width'))
-            p.removeAttr('width')
-          }
+      // ignore images without a caption
+      if (alt === '') {
+        var pclass = (p.attr('class') || '').trim()
+        if (pclass === 'center') {
+          // ignore
+        } else if (pclass === '' &&
+            p.text().trim() === '') {
+          p.addClass('center')
         } else {
-          // create figure div
-          var div = $('<div class="figure"></div>')
-          var caption = $('<p class="caption">' + alt + '</p>')
-          div.append(img)
-          div.append(caption)
-
-          // add classes
-          div.addClass(img.attr('class'))
-          img.removeAttr('class')
-          if (img.is('[width]')) {
-            var width = parseInt(img.attr('width'))
-            div.css('width', (width + 9) + 'px')
-          }
-
-          // insert into DOM
-          div.insertBefore(p)
-          if (p.is(':empty')) {
-            p.remove()
-          }
+          img.addClass(p.attr('class'))
+          p.removeAttr('class')
         }
-      })
-    })
-  }
 
-  return $.fn.addFigures
-}))
+        if (p.is('[width]')) {
+          img.attr('width', p.attr('width'))
+          p.removeAttr('width')
+        }
+      } else {
+        // create figure div
+        var div = $('<div class="figure"></div>')
+        var caption = $('<p class="caption">' + alt + '</p>')
+        div.append(img)
+        div.append(caption)
+
+        // add classes
+        div.addClass(img.attr('class'))
+        img.removeAttr('class')
+        if (img.is('[width]')) {
+          var width = parseInt(img.attr('width'))
+          div.css('width', (width + 9) + 'px')
+        }
+
+        // insert into DOM
+        div.insertBefore(p)
+        if (p.is(':empty')) {
+          p.remove()
+        }
+      }
+    })
+  })
+}
 
 },{"jquery":236}],9:[function(require,module,exports){
-/* global define, jQuery */
-(function (factory) {
-  if (typeof define === 'function' && define.amd) {
-    define(['jquery'], factory)
-  } else if (typeof exports === 'object') {
-    module.exports = factory(require('jquery'))
-  } else {
-    factory(jQuery)
-  }
-}(function ($) {
-  $.fn.addHangingPunctuation = function () {
-    return this.each(function () {
-      $(this).find('h1, h2, h3, h4, h5, h6, li, p, th, td').each(function () {
-        var txt = $(this).text().trim()
-        if (txt.match(/^["\u00ab\u201c]/)) {
-          $(this).addClass('startsWithDoubleQuote')
-        } else if (txt.match(/^['\u00b9\u2018]/)) {
-          $(this).addClass('startsWithSingleQuote')
-        }
-      })
-    })
-  }
+var $ = require('jquery')
 
-  return $.fn.addHangingPunctuation
-}))
+$.fn.addHangingPunctuation = function () {
+  return this.each(function () {
+    $(this).find('h1, h2, h3, h4, h5, h6, li, p, th, td').each(function () {
+      var txt = $(this).text().trim()
+      if (txt.match(/^["\u00ab\u201c]/)) {
+        $(this).addClass('startsWithDoubleQuote')
+      } else if (txt.match(/^['\u00b9\u2018]/)) {
+        $(this).addClass('startsWithSingleQuote')
+      }
+    })
+  })
+}
 
 },{"jquery":236}],10:[function(require,module,exports){
 /* global MathJax */
@@ -1673,775 +1639,709 @@ $(function () {
 })
 
 },{"./compiler":7,"jquery":236,"urijs":353}],11:[function(require,module,exports){
-/* global define, jQuery */
-(function (factory) {
-  if (typeof define === 'function' && define.amd) {
-    define(['jquery'], factory)
-  } else if (typeof exports === 'object') {
-    module.exports = factory(require('jquery'))
-  } else {
-    factory(jQuery)
-  }
-}(function ($) {
-  $.fn.addPunctuation = function () {
-    return this.each(function () {
-      var root = this
-      var node = root.childNodes[0]
-      // https://github.com/kellym/smartquotesjs
-      while (node !== null) {
-        if (node.nodeType === 3 &&
-            node.nodeName !== 'CODE' &&
-            node.nodeName !== 'PRE' &&
-            node.nodeName !== 'TEXTAREA') {
-          node.nodeValue = node.nodeValue
-            .replace(/([-([«\s]|^)"(\S)/g, '$1\u201c$2') // beginning "
-            .replace(/"/g, '\u201d') // ending "
-            // .replace(/([^0-9])"/g,'$1\u201d') // remaining " at end of word
-            .replace(/([0-9])('|\u2019)([0-9])/g, '$1\u2032$3') // prime
-            .replace(/([0-9]+)(\s*)x(\s*)([0-9]+)/g, '$1$2\u00d7$3$4') // times
-            .replace(/([-([«\u201c\s]|^)('|\u2019)(\S)/g, '$1\u2018$3') // beginning '
-            .replace(/'/ig, '\u2019') // ending '
-            .replace(/\u2019\u201d/ig, '\u2019\u00a0\u201d') // "'
-            .replace(/\u201d\u2019/ig, '\u201d\u00a0\u2019')
-            .replace(/\u201c\u2018/ig, '\u201c\u00a0\u2018') // '"
-            .replace(/\u2018\u201c/ig, '\u2018\u00a0\u201c')
-            // .replace(/((\u2018[^']*)|[a-z])'([^0-9]|$)/ig, '$1\u2019$3') // conjunction's possession
-            // .replace(/(\u2018)([0-9]{2}[^\u2019]*)(\u2018([^0-9]|$)|$|\u2019[a-z])/ig, '\u2019$2$3') // abbrev. years like '93
-            // .replace(/(\B|^)\u2018(?=([^\u2019]*\u2019\b)*([^\u2019\u2018]*\W[\u2019\u2018]\b|[^\u2019\u2018]*$))/ig, '$1\u2019') // backwards apostrophe
-            .replace(/<-+>/g, '\u2194') // double arrow
-            .replace(/<=+>/g, '\u21D4')
-            .replace(/-+>/g, '\u2192') // right arrow
-            .replace(/=+>/g, '\u21D2')
-            .replace(/<-+?/g, '\u2190') // left arrow
-            .replace(/<=+/g, '\u21D0')
-            .replace(/===/g, '\u2261')
-            .replace(/---/g, '\u2014') // em-dashes
-            .replace(/--/g, '\u2013') // en-dashes
-            // .replace(/ - /g, ' \u2013 ')
-            // .replace(/ -$/gm, ' \u2013')
-            .replace(/,-/g, ',\u2013')
-            .replace(/\.\.\.\./g, '.\u2026') // ellipsis
-            .replace(/\.\.\./g, '\u2026')
-            .replace(/!=/g, '\u2260') // not equal
-            .replace(/=</g, '\u2264') // less than or equal
-            .replace(/>=/g, '\u2265') // more than or equal
-            .replace(/'''/g, '\u2034') // triple prime
-            .replace(/("|'')/g, '\u2033') // double prime
-            .replace(/'/g, '\u2032') // prime
-            .replace(/<3/g, '\u2764') // heart
-            .replace(/!! :\)/g, '\u203c\u032e') // smiley
-            .replace(/:-\)/g, '\u263a') // smiley
-            .replace(/:-\(/g, '\u2639') // frowning smiley
-        }
-        if (node.hasChildNodes() &&
-            node.firstChild.nodeName !== 'CODE' &&
-            node.firstChild.nodeName !== 'PRE' &&
-            node.firstChild.nodeName !== 'TEXTAREA') {
-          node = node.firstChild
-        } else {
-          do {
-            while (node.nextSibling === null && node !== root) {
-              node = node.parentNode
-            }
-            node = node.nextSibling
-          } while (node && (node.nodeName === 'CODE' ||
-                            node.nodeName === 'PRE' ||
-                            node.nodeName === 'SCRIPT' ||
-                            node.nodeName === 'TEXTAREA' ||
-                            node.nodeName === 'STYLE'))
-        }
-      }
-    })
-  }
+var $ = require('jquery')
 
-  return $.fn.addPunctuation
-}))
+$.fn.addPunctuation = function () {
+  return this.each(function () {
+    var root = this
+    var node = root.childNodes[0]
+    // https://github.com/kellym/smartquotesjs
+    while (node !== null) {
+      if (node.nodeType === 3 &&
+          node.nodeName !== 'CODE' &&
+          node.nodeName !== 'PRE' &&
+          node.nodeName !== 'TEXTAREA') {
+        node.nodeValue = node.nodeValue
+          .replace(/([-([«\s]|^)"(\S)/g, '$1\u201c$2') // beginning "
+          .replace(/"/g, '\u201d') // ending "
+          // .replace(/([^0-9])"/g,'$1\u201d') // remaining " at end of word
+          .replace(/([0-9])('|\u2019)([0-9])/g, '$1\u2032$3') // prime
+          .replace(/([0-9]+)(\s*)x(\s*)([0-9]+)/g, '$1$2\u00d7$3$4') // times
+          .replace(/([-([«\u201c\s]|^)('|\u2019)(\S)/g, '$1\u2018$3') // beginning '
+          .replace(/'/ig, '\u2019') // ending '
+          .replace(/\u2019\u201d/ig, '\u2019\u00a0\u201d') // "'
+          .replace(/\u201d\u2019/ig, '\u201d\u00a0\u2019')
+          .replace(/\u201c\u2018/ig, '\u201c\u00a0\u2018') // '"
+          .replace(/\u2018\u201c/ig, '\u2018\u00a0\u201c')
+          // .replace(/((\u2018[^']*)|[a-z])'([^0-9]|$)/ig, '$1\u2019$3') // conjunction's possession
+          // .replace(/(\u2018)([0-9]{2}[^\u2019]*)(\u2018([^0-9]|$)|$|\u2019[a-z])/ig, '\u2019$2$3') // abbrev. years like '93
+          // .replace(/(\B|^)\u2018(?=([^\u2019]*\u2019\b)*([^\u2019\u2018]*\W[\u2019\u2018]\b|[^\u2019\u2018]*$))/ig, '$1\u2019') // backwards apostrophe
+          .replace(/<-+>/g, '\u2194') // double arrow
+          .replace(/<=+>/g, '\u21D4')
+          .replace(/-+>/g, '\u2192') // right arrow
+          .replace(/=+>/g, '\u21D2')
+          .replace(/<-+?/g, '\u2190') // left arrow
+          .replace(/<=+/g, '\u21D0')
+          .replace(/===/g, '\u2261')
+          .replace(/---/g, '\u2014') // em-dashes
+          .replace(/--/g, '\u2013') // en-dashes
+          // .replace(/ - /g, ' \u2013 ')
+          // .replace(/ -$/gm, ' \u2013')
+          .replace(/,-/g, ',\u2013')
+          .replace(/\.\.\.\./g, '.\u2026') // ellipsis
+          .replace(/\.\.\./g, '\u2026')
+          .replace(/!=/g, '\u2260') // not equal
+          .replace(/=</g, '\u2264') // less than or equal
+          .replace(/>=/g, '\u2265') // more than or equal
+          .replace(/'''/g, '\u2034') // triple prime
+          .replace(/("|'')/g, '\u2033') // double prime
+          .replace(/'/g, '\u2032') // prime
+          .replace(/<3/g, '\u2764') // heart
+          .replace(/!! :\)/g, '\u203c\u032e') // smiley
+          .replace(/:-\)/g, '\u263a') // smiley
+          .replace(/:-\(/g, '\u2639') // frowning smiley
+      }
+      if (node.hasChildNodes() &&
+          node.firstChild.nodeName !== 'CODE' &&
+          node.firstChild.nodeName !== 'PRE' &&
+          node.firstChild.nodeName !== 'TEXTAREA') {
+        node = node.firstChild
+      } else {
+        do {
+          while (node.nextSibling === null && node !== root) {
+            node = node.parentNode
+          }
+          node = node.nextSibling
+        } while (node && (node.nodeName === 'CODE' ||
+                          node.nodeName === 'PRE' ||
+                          node.nodeName === 'SCRIPT' ||
+                          node.nodeName === 'TEXTAREA' ||
+                          node.nodeName === 'STYLE'))
+      }
+    }
+  })
+}
 
 },{"jquery":236}],12:[function(require,module,exports){
-/* global define, jQuery, S */
-
 // Hierarchical sections, based on Pandoc's --section-divs
 
-(function (factory) {
-  if (typeof define === 'function' && define.amd) {
-    define(['jquery'], factory)
-    define(['string'], factory)
-  } else if (typeof exports === 'object') {
-    module.exports = factory(require('jquery'), require('string'))
-  } else {
-    factory(jQuery, S)
-  }
-}(function ($, S) {
-  $.fn.addSections = function () {
-    return this.each(function () {
-      var body = $(this)
-      // process innermost sections first
-      $.each(['h6', 'h5', 'h4', 'h3', 'h2', 'h1'],
-             function (i, el) {
-               body.find(el).each(function () {
-                 var header = $(this)
-                 // h1 ends at next h1, h2 ends at next h1 or h2,
-                 // h3 ends at next h1, h2 or h3, and so on
-                 var stop = []
-                 var i = parseInt(header.prop('tagName').match(/\d+/)[0])
-                 for (var j = 1; j <= i; j++) {
-                   stop.push('h' + j)
-                 }
-                 var end = stop.join(', ')
-                 var section = header.nextUntil(end).addBack()
-                 section = section.wrapAll('<section>').parent()
-                 var id = header.attr('id')
-                 if (id === undefined || id === '') {
-                   id = S(header.text().trim()).slugify()
-                   header.attr('id', id)
-                 }
-                 section.attr('id', id)
-                 header.removeAttr('id')
-               })
-             })
-    })
-  }
+var $ = require('jquery')
+var S = require('string')
 
-  return $.fn.addSections
-}))
+$.fn.addSections = function () {
+  return this.each(function () {
+    var body = $(this)
+    // process innermost sections first
+    $.each(['h6', 'h5', 'h4', 'h3', 'h2', 'h1'],
+           function (i, el) {
+             body.find(el).each(function () {
+               var header = $(this)
+               // h1 ends at next h1, h2 ends at next h1 or h2,
+               // h3 ends at next h1, h2 or h3, and so on
+               var stop = []
+               var i = parseInt(header.prop('tagName').match(/\d+/)[0])
+               for (var j = 1; j <= i; j++) {
+                 stop.push('h' + j)
+               }
+               var end = stop.join(', ')
+               var section = header.nextUntil(end).addBack()
+               section = section.wrapAll('<section>').parent()
+               var id = header.attr('id')
+               if (id === undefined || id === '') {
+                 id = S(header.text().trim()).slugify()
+                 header.attr('id', id)
+               }
+               section.attr('id', id)
+               header.removeAttr('id')
+             })
+           })
+  })
+}
 
 },{"jquery":236,"string":350}],13:[function(require,module,exports){
-/* global define, jQuery, URI */
-(function (factory) {
-  if (typeof define === 'function' && define.amd) {
-    define(['jquery'], factory)
-    define(['urijs'], factory)
-  } else if (typeof exports === 'object') {
-    module.exports = factory(require('jquery'), require('urijs'))
-  } else {
-    factory(jQuery, URI)
-  }
-}(function ($, URI) {
-  var social = function () {
-  }
+var $ = require('jquery')
+var URI = require('urijs')
 
-  social.bitbucket = function () {
-    return social.bitbucket.url(window.location.href)
-  }
+var social = function () {
+}
 
-  social.bitbucket.url = function (url) {
-    if (URI(url).protocol() === 'file') {
-      return url
-    }
+social.bitbucket = function () {
+  return social.bitbucket.url(window.location.href)
+}
 
-    var bitbucket = 'https://bitbucket.org/epsil/wiki/wiki/'
-
-    var file = '/index'
-    var path = social.bitbucket.path(url)
-
-    if (path === '') {
-      return 'https://bitbucket.org/epsil/wiki/wiki/index'
-    }
-
-    return bitbucket + path + file
-  }
-
-  social.bitbucket.resource = function (url) {
-    return URI(url).resource()
-  }
-
-  social.bitbucket.path = function (url) {
-    return URI(social.bitbucket.resource(url)).relativeTo('/')
-             .toString()
-             .replace(/#[^\/]*$/, '')
-             .replace(/index\.html?$/, '')
-             .replace(/\/?$/, '')
-  }
-
-  social.github = function () {
-    return social.github.url(window.location.href)
-  }
-
-  social.github.url = function (url) {
-    if (URI(url).protocol() === 'file') {
-      return url
-    }
-
-    var github = 'https://github.com/epsil/epsil.github.io/tree/master'
-    var file = '/index.txt'
-    var path = social.github.path(url)
-
-    if (path === '') {
-      return 'https://github.com/epsil/epsil.github.io/'
-    }
-
-    return github + path + file
-  }
-
-  social.github.resource = function (url) {
-    return URI(url).resource()
-  }
-
-  social.github.path = function (url) {
-    url = URI(social.github.resource(url))
-    if (url.is('absolute')) {
-      url = url.relativeTo('/')
-    }
-    url = url.toString()
-             .replace(/index\.html?$/, '')
-             .replace(/\/?$/, '')
+social.bitbucket.url = function (url) {
+  if (URI(url).protocol() === 'file') {
     return url
   }
 
-  social.mail = function () {
-    return social.mail.url(window.location.href)
+  var bitbucket = 'https://bitbucket.org/epsil/wiki/wiki/'
+
+  var file = '/index'
+  var path = social.bitbucket.path(url)
+
+  if (path === '') {
+    return 'https://bitbucket.org/epsil/wiki/wiki/index'
   }
 
-  social.mail.url = function (url) {
-    if (URI(url).protocol() === 'file') {
-      return url
-    }
+  return bitbucket + path + file
+}
 
-    url = encodeURIComponent(url)
-    return 'mailto:?body=' + url
+social.bitbucket.resource = function (url) {
+  return URI(url).resource()
+}
+
+social.bitbucket.path = function (url) {
+  return URI(social.bitbucket.resource(url)).relativeTo('/')
+           .toString()
+           .replace(/#[^\/]*$/, '')
+           .replace(/index\.html?$/, '')
+           .replace(/\/?$/, '')
+}
+
+social.github = function () {
+  return social.github.url(window.location.href)
+}
+
+social.github.url = function (url) {
+  if (URI(url).protocol() === 'file') {
+    return url
   }
 
-  social.facebook = function () {
-    return social.facebook.url(window.location.href)
+  var github = 'https://github.com/epsil/epsil.github.io/tree/master'
+  var file = '/index.txt'
+  var path = social.github.path(url)
+
+  if (path === '') {
+    return 'https://github.com/epsil/epsil.github.io/'
   }
 
-  social.facebook.url = function (url) {
-    if (URI(url).protocol() === 'file') {
-      return url
-    }
+  return github + path + file
+}
 
-    url = encodeURIComponent(url)
-    return 'http://www.facebook.com/share.php?u=' + url
+social.github.resource = function (url) {
+  return URI(url).resource()
+}
+
+social.github.path = function (url) {
+  url = URI(social.github.resource(url))
+  if (url.is('absolute')) {
+    url = url.relativeTo('/')
+  }
+  url = url.toString()
+           .replace(/index\.html?$/, '')
+           .replace(/\/?$/, '')
+  return url
+}
+
+social.mail = function () {
+  return social.mail.url(window.location.href)
+}
+
+social.mail.url = function (url) {
+  if (URI(url).protocol() === 'file') {
+    return url
   }
 
-  social.linkedin = function () {
-    return social.linkedin.url(window.location.href)
+  url = encodeURIComponent(url)
+  return 'mailto:?body=' + url
+}
+
+social.facebook = function () {
+  return social.facebook.url(window.location.href)
+}
+
+social.facebook.url = function (url) {
+  if (URI(url).protocol() === 'file') {
+    return url
   }
 
-  social.linkedin.url = function (url) {
-    if (URI(url).protocol() === 'file') {
-      return url
-    }
+  url = encodeURIComponent(url)
+  return 'http://www.facebook.com/share.php?u=' + url
+}
 
-    url = encodeURIComponent(url)
-    return 'http://www.linkedin.com/shareArticle?url=' + url
+social.linkedin = function () {
+  return social.linkedin.url(window.location.href)
+}
+
+social.linkedin.url = function (url) {
+  if (URI(url).protocol() === 'file') {
+    return url
   }
 
-  social.twitter = function () {
-    return social.twitter.url(window.location.href)
+  url = encodeURIComponent(url)
+  return 'http://www.linkedin.com/shareArticle?url=' + url
+}
+
+social.twitter = function () {
+  return social.twitter.url(window.location.href)
+}
+
+social.twitter.url = function (url) {
+  if (URI(url).protocol() === 'file') {
+    return url
   }
 
-  social.twitter.url = function (url) {
-    if (URI(url).protocol() === 'file') {
-      return url
-    }
+  url = encodeURIComponent(url)
+  return 'https://twitter.com/intent/tweet?url=' + url
+}
 
-    url = encodeURIComponent(url)
-    return 'https://twitter.com/intent/tweet?url=' + url
-  }
-
-  $.fn.bitbucket = social.bitbucket
-  $.fn.github = social.github
-  $.fn.mail = social.mail
-  $.fn.facebook = social.facebook
-  $.fn.linkedin = social.linkedin
-  $.fn.twitter = social.twitter
-
-  return social
-}))
+$.fn.bitbucket = social.bitbucket
+$.fn.github = social.github
+$.fn.mail = social.mail
+$.fn.facebook = social.facebook
+$.fn.linkedin = social.linkedin
+$.fn.twitter = social.twitter
 
 },{"jquery":236,"urijs":353}],14:[function(require,module,exports){
-/* global define, Handlebars */
-(function (factory) {
-  if (typeof define === 'function' && define.amd) {
-    define(['handlebars'], factory)
-  } else if (typeof exports === 'object') {
-    module.exports = factory(require('handlebars'))
-  } else {
-    factory(Handlebars)
-  }
-}(function (Handlebars) {
-  return Handlebars.compile(
-    '<!DOCTYPE html>\n' +
-    '<html{{#if lang}} lang="{{lang}}"{{/if}}>\n' +
-    '<head>\n' +
-    '<title>{{text title}}</title>\n' +
-    '<meta content="text/html; charset=utf-8" http-equiv="Content-Type">\n' +
-    '<meta content="text/css" http-equiv="Content-Style-Type">\n' +
-    '<meta content="width=device-width, initial-scale=1" name="viewport">\n' +
-    '<link href="{{urlResolve url "/favicon.ico"}}" rel="icon" type="image/x-icon">\n' +
-    '<link href="{{urlResolve url "/css/markdown-template.css"}}" rel="stylesheet">\n' +
-    '<link href="index.txt" rel="alternate" title="Markdown" type="text/markdown">\n' +
-    '{{#if css}}' +
-    '<link href="{{urlResolve url css}}" rel="stylesheet" type="text/css">\n' +
-    '{{/if}}' +
-    '{{#if js}}' +
-    '<script src="{{urlResolve url js}}" type="text/javascript"></script>\n' +
-    '{{/if}}' +
-    '{{#if mathjax}}' +
-    '<script src="{{urlResolve url mathjax}}" type="text/x-mathjax-config"></script>\n' +
-    '{{/if}}' +
-    '<script async src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-MML-AM_CHTML" type="text/javascript"></script>\n' +
-    '<script src="{{urlResolve url "/js/markdown-template.js"}}"></script>\n' +
-    '</head>\n' +
-    '<body>\n' +
-    '<nav class="navbar navbar-default navbar-fixed-top">\n' +
-    '<div class="container-fluid">\n' +
-    '<ul class="nav nav-pills navbar-left">\n' +
-    '<li role="presentation"><a href="/" title="Return home"><i class="fa fa-home"></i></a></li>\n' +
-    '</ul>\n' +
-    '<ul class="nav nav-pills navbar-right">\n' +
-    '<li role="presentation"><a href="{{facebook}}" title="Share on Facebook"><i class="fa fa-facebook-square"></i></a></li>\n' +
-    '<li role="presentation"><a href="{{twitter}}" title="Share on Twitter"><i class="fa fa-twitter-square"></i></a></li>\n' +
-    // '<li role="presentation"><a href="{{linkedin}}" title="Share on LinkedIn"><i class="fa fa-linkedin-square"></i></a></li>\n' +
-    '<li role="presentation"><a href="{{mail}}" title="Share by mail"><i class="fa fa-envelope"></i></a></li>\n' +
-    '<li role="presentation"><a href="{{github}}" title="Edit on GitHub"><i class="fa fa-edit"></i></a></li>\n' +
-    '<li role="presentation"><a href="index.txt" title="Get Markdown source"><i class="fa fa-download"></i></a></li>\n' +
-    '{{#if toc}}' +
-    '<li role="presentation"><a href="#toc" data-toggle="collapse" title="Table of contents"><i class="fa fa-bars"></i></a></li>\n' +
-    '{{/if}}' +
-    '</ul>\n' +
-    '</div>\n' +
-    '{{#if toc}}' +
-    '<div id="toc" class="collapse" title="{{tocTitle}}"></div>\n' +
-    '{{/if}}' +
-    '</nav>\n' +
-    '<div class="container">\n' +
-    '<article>\n' +
-    '<header>\n' +
-    '{{#if title}}' +
-    '<h1 class="title">{{{title}}}</h1>\n' +
-    '{{#if subtitle}}' +
-    '<h2 class="title">{{{subtitle}}}</h2>\n' +
-    '{{/if}}' +
-    '{{#if date}}' +
-    '<p><time><i class="fa fa-calendar-o"></i> {{dateFormat date}}</time></p>\n' +
-    '{{/if}}' +
-    '{{else}}' +
-    '{{#if date}}' +
-    '<h1 class="title">{{dateFormat date}}</h1>\n' +
-    '{{/if}}' +
-    '{{/if}}' +
-    '</header>\n' +
-    '<section id="content">\n' +
-    '{{{content}}}' +
-    '</section>\n' +
-    '</article>\n' +
-    '</div>\n' +
-    '</body>\n' +
-    '</html>')
-}))
+var Handlebars = require('handlebars')
+
+module.exports = Handlebars.compile(
+  '<!DOCTYPE html>\n' +
+  '<html{{#if lang}} lang="{{lang}}"{{/if}}>\n' +
+  '<head>\n' +
+  '<title>{{text title}}</title>\n' +
+  '<meta content="text/html; charset=utf-8" http-equiv="Content-Type">\n' +
+  '<meta content="text/css" http-equiv="Content-Style-Type">\n' +
+  '<meta content="width=device-width, initial-scale=1" name="viewport">\n' +
+  '<link href="{{urlResolve url "/favicon.ico"}}" rel="icon" type="image/x-icon">\n' +
+  '<link href="{{urlResolve url "/css/markdown-template.css"}}" rel="stylesheet">\n' +
+  '<link href="index.txt" rel="alternate" title="Markdown" type="text/markdown">\n' +
+  '{{#if css}}' +
+  '<link href="{{urlResolve url css}}" rel="stylesheet" type="text/css">\n' +
+  '{{/if}}' +
+  '{{#if js}}' +
+  '<script src="{{urlResolve url js}}" type="text/javascript"></script>\n' +
+  '{{/if}}' +
+  '{{#if mathjax}}' +
+  '<script src="{{urlResolve url mathjax}}" type="text/x-mathjax-config"></script>\n' +
+  '{{/if}}' +
+  '<script async src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-MML-AM_CHTML" type="text/javascript"></script>\n' +
+  '<script src="{{urlResolve url "/js/markdown-template.js"}}"></script>\n' +
+  '</head>\n' +
+  '<body>\n' +
+  '<nav class="navbar navbar-default navbar-fixed-top">\n' +
+  '<div class="container-fluid">\n' +
+  '<ul class="nav nav-pills navbar-left">\n' +
+  '<li role="presentation"><a href="/" title="Return home"><i class="fa fa-home"></i></a></li>\n' +
+  '</ul>\n' +
+  '<ul class="nav nav-pills navbar-right">\n' +
+  '<li role="presentation"><a href="{{facebook}}" title="Share on Facebook"><i class="fa fa-facebook-square"></i></a></li>\n' +
+  '<li role="presentation"><a href="{{twitter}}" title="Share on Twitter"><i class="fa fa-twitter-square"></i></a></li>\n' +
+  // '<li role="presentation"><a href="{{linkedin}}" title="Share on LinkedIn"><i class="fa fa-linkedin-square"></i></a></li>\n' +
+  '<li role="presentation"><a href="{{mail}}" title="Share by mail"><i class="fa fa-envelope"></i></a></li>\n' +
+  '<li role="presentation"><a href="{{github}}" title="Edit on GitHub"><i class="fa fa-edit"></i></a></li>\n' +
+  '<li role="presentation"><a href="index.txt" title="Get Markdown source"><i class="fa fa-download"></i></a></li>\n' +
+  '{{#if toc}}' +
+  '<li role="presentation"><a href="#toc" data-toggle="collapse" title="Table of contents"><i class="fa fa-bars"></i></a></li>\n' +
+  '{{/if}}' +
+  '</ul>\n' +
+  '</div>\n' +
+  '{{#if toc}}' +
+  '<div id="toc" class="collapse" title="{{tocTitle}}"></div>\n' +
+  '{{/if}}' +
+  '</nav>\n' +
+  '<div class="container">\n' +
+  '<article>\n' +
+  '<header>\n' +
+  '{{#if title}}' +
+  '<h1 class="title">{{{title}}}</h1>\n' +
+  '{{#if subtitle}}' +
+  '<h2 class="title">{{{subtitle}}}</h2>\n' +
+  '{{/if}}' +
+  '{{#if date}}' +
+  '<p><time><i class="fa fa-calendar-o"></i> {{dateFormat date}}</time></p>\n' +
+  '{{/if}}' +
+  '{{else}}' +
+  '{{#if date}}' +
+  '<h1 class="title">{{dateFormat date}}</h1>\n' +
+  '{{/if}}' +
+  '{{/if}}' +
+  '</header>\n' +
+  '<section id="content">\n' +
+  '{{{content}}}' +
+  '</section>\n' +
+  '</article>\n' +
+  '</div>\n' +
+  '</body>\n' +
+  '</html>')
 
 },{"handlebars":59}],15:[function(require,module,exports){
-/* global define, jQuery, S */
-(function (factory) {
-  if (typeof define === 'function' && define.amd) {
-    define(['jquery'], factory)
-    define(['string'], factory)
-  } else if (typeof exports === 'object') {
-    module.exports = factory(require('jquery'), require('string'))
-  } else {
-    factory(jQuery, S)
-  }
-}(function ($, S) {
-  $.fn.addTableOfContents = function () {
-    return this.map(function () {
-      var body = $(this)
-      var placeholder = body.find('#toc')
-      var title = placeholder.attr('title')
-      var toc = body.tableOfContents(title)
-      placeholder.replaceWith(toc)
-    })
-  }
+var $ = require('jquery')
+var S = require('string')
 
-  $.fn.tableOfContents = function (title) {
-    var body = $(this).find('#content') // FIXME: un-hardcode this
-    var toc = body.listOfContents()
-
-    if (toc === '') {
-      return $('')
-    }
-
-    var block = $('<div id="toc" class="collapse">' + toc + '</div>')
-    block.find('li ul').each(function (i, el) {
-      var ul = $(this)
-      var a = ul.prev()
-      var id = S(a.text().trim()).slugify() + '-link'
-      var span = a.wrap('<span class="collapse" id="' + id + '">').parent()
-      $.fn.addCollapsibleSections.addButton(span, ul)
-    })
-
-    return block
-  }
-
-  $.fn.listOfContents = function () {
+$.fn.addTableOfContents = function () {
+  return this.map(function () {
     var body = $(this)
-    var currentLevel = 0
-    var str = ''
-    var stack = []
+    var placeholder = body.find('#toc')
+    var title = placeholder.attr('title')
+    var toc = body.tableOfContents(title)
+    placeholder.replaceWith(toc)
+  })
+}
 
-    var currentElement = function () {
-      var i = stack.length - 1
-      if (i < 0) {
-        return ''
-      } else {
-        return stack[i]
-      }
-    }
+$.fn.tableOfContents = function (title) {
+  var body = $(this).find('#content') // FIXME: un-hardcode this
+  var toc = body.listOfContents()
 
-    var openTag = function (el, tag) {
-      stack.push(el)
-      str += tag
-    }
-
-    var openElement = function (el) {
-      var tag = '<' + el + '>'
-      openTag(el, tag)
-    }
-
-    var closeElement = function () {
-      var el = stack.pop()
-      var tag = '</' + el + '>'
-      str += tag
-      return el
-    }
-
-    var openListElement = function () {
-      closeListElement() // don't allow li elements to nest
-      openElement('li')
-    }
-
-    var closeListElement = function () {
-      if (currentElement() === 'li') {
-        closeElement()
-      }
-    }
-
-    var addLink = function (id, html) {
-      var a = $('<a href="#' + id + '"></a>')
-      a.html(html)
-      a.find('a').replaceWith(function () {
-        return $(this).html()
-      })
-      a.html(a.html().trim())
-      str += a.prop('outerHTML')
-    }
-
-    var startList = function (level) {
-      while (currentLevel < level) {
-        if (currentElement() === 'ul') {
-          openListElement()
-        }
-        openElement('ul')
-        currentLevel++
-      }
-    }
-
-    var endList = function (level) {
-      while (currentLevel > level) {
-        var el = closeElement()
-        if (el === 'ul') {
-          currentLevel--
-        }
-      }
-    }
-
-    var headers = body.find('h1, h2, h3, h4, h5, h6')
-
-    if (headers.length === 0) {
-      return ''
-    }
-
-    var exclude = '.title' // should be parametrized
-    headers = headers.filter(function () {
-      return !$(this).is(exclude)
-    })
-    headers.each(function (i, el) {
-      var header = $(this).fixHeader()
-      var html = header.html()
-      var id = header.attr('id')
-      var level = parseInt(header.prop('tagName').match(/\d+/)[0])
-      endList(level)
-      startList(level)
-      openListElement()
-      addLink(id, html)
-    })
-
-    // close all tags
-    endList(0)
-
-    // remove superfluous ul elements
-    while (str.match(/^<ul><li><ul><li>/) && str.match(/<\/li><\/ul><\/li><\/ul>$/)) {
-      str = str.substring(8, str.length - 10)
-    }
-
-    return str
+  if (toc === '') {
+    return $('')
   }
 
-  return {}
-}))
+  var block = $('<div id="toc" class="collapse">' + toc + '</div>')
+  block.find('li ul').each(function (i, el) {
+    var ul = $(this)
+    var a = ul.prev()
+    var id = S(a.text().trim()).slugify() + '-link'
+    var span = a.wrap('<span class="collapse" id="' + id + '">').parent()
+    $.fn.addCollapsibleSections.addButton(span, ul)
+  })
+
+  return block
+}
+
+$.fn.listOfContents = function () {
+  var body = $(this)
+  var currentLevel = 0
+  var str = ''
+  var stack = []
+
+  var currentElement = function () {
+    var i = stack.length - 1
+    if (i < 0) {
+      return ''
+    } else {
+      return stack[i]
+    }
+  }
+
+  var openTag = function (el, tag) {
+    stack.push(el)
+    str += tag
+  }
+
+  var openElement = function (el) {
+    var tag = '<' + el + '>'
+    openTag(el, tag)
+  }
+
+  var closeElement = function () {
+    var el = stack.pop()
+    var tag = '</' + el + '>'
+    str += tag
+    return el
+  }
+
+  var openListElement = function () {
+    closeListElement() // don't allow li elements to nest
+    openElement('li')
+  }
+
+  var closeListElement = function () {
+    if (currentElement() === 'li') {
+      closeElement()
+    }
+  }
+
+  var addLink = function (id, html) {
+    var a = $('<a href="#' + id + '"></a>')
+    a.html(html)
+    a.find('a').replaceWith(function () {
+      return $(this).html()
+    })
+    a.html(a.html().trim())
+    str += a.prop('outerHTML')
+  }
+
+  var startList = function (level) {
+    while (currentLevel < level) {
+      if (currentElement() === 'ul') {
+        openListElement()
+      }
+      openElement('ul')
+      currentLevel++
+    }
+  }
+
+  var endList = function (level) {
+    while (currentLevel > level) {
+      var el = closeElement()
+      if (el === 'ul') {
+        currentLevel--
+      }
+    }
+  }
+
+  var headers = body.find('h1, h2, h3, h4, h5, h6')
+
+  if (headers.length === 0) {
+    return ''
+  }
+
+  var exclude = '.title' // should be parametrized
+  headers = headers.filter(function () {
+    return !$(this).is(exclude)
+  })
+  headers.each(function (i, el) {
+    var header = $(this).fixHeader()
+    var html = header.html()
+    var id = header.attr('id')
+    var level = parseInt(header.prop('tagName').match(/\d+/)[0])
+    endList(level)
+    startList(level)
+    openListElement()
+    addLink(id, html)
+  })
+
+  // close all tags
+  endList(0)
+
+  // remove superfluous ul elements
+  while (str.match(/^<ul><li><ul><li>/) && str.match(/<\/li><\/ul><\/li><\/ul>$/)) {
+    str = str.substring(8, str.length - 10)
+  }
+
+  return str
+}
 
 },{"jquery":236,"string":350}],16:[function(require,module,exports){
-/* global define, jQuery, URI, S */
-(function (factory) {
-  if (typeof define === 'function' && define.amd) {
-    define(['jquery'], factory)
-    define(['urijs'], factory)
-    define(['string'], factory)
-  } else if (typeof exports === 'object') {
-    module.exports = factory(require('jquery'), require('urijs'), require('string'))
-  } else {
-    factory(jQuery, URI, S)
-  }
-}(function ($, URI, S) {
-  $.fn.addHotkeys = function () {
-    return this.map(function () {
-      var body = $(this)
-      body.find('kbd:contains("Ctrl")').replaceWith('<kbd title="Control">Ctrl</kbd>')
-      body.find('kbd:contains("Alt")').replaceWith('<kbd title="Alt">Alt</kbd>')
-      body.find('kbd:contains("Esc")').replaceWith('<kbd title="Escape">Esc</kbd>')
-      body.find('kbd:contains("Enter")').replaceWith('<kbd title="Enter">\u21b5</kbd>')
-      body.find('kbd:contains("Tab")').replaceWith('<kbd title="Tab">\u21b9</kbd>')
-      body.find('kbd:contains("Windows")').replaceWith('<kbd title="Windows"><i class="fa fa-windows"></i></kbd>')
-      body.find('kbd:contains("Shift"), kbd:contains("\u21e7")').replaceWith('<kbd title="Shift">\u21e7</kbd>')
-      body.find('kbd:contains("Cmd"), kbd:contains("Command"), kbd:contains("\u2318")').replaceWith('<kbd title="Command">\u2318</kbd>')
-      body.find('kbd:contains("Opt"), kbd:contains("Option"), kbd:contains("\u2325")').replaceWith('<kbd title="Option">\u2325</kbd>')
-      body.find('kbd:contains("Fn"), kbd:contains("Function")').replaceWith('<kbd title="Function">Fn</kbd>')
-      body.find('kbd:contains("Eject")').replaceWith('<kbd title="Eject">\u23cf</kbd>')
-      body.find('kbd:contains("Power")').replaceWith('<kbd title="Power"><i class="fa fa-power-off"></i></kbd>')
-      body.find('kbd:contains("Left")').replaceWith('<kbd title="Left">\u2190</kbd>') // \u2b05
-      body.find('kbd:contains("Right")').replaceWith('<kbd title="Right">\u2192</kbd>') // \u27a1
-      body.find('kbd:contains("Up")').replaceWith('<kbd title="Up">\u2191</kbd>') // \u2b06
-      body.find('kbd:contains("Down")').replaceWith('<kbd title="Down">\u2193</kbd>') // \u2b07
-    })
-  }
+var $ = require('jquery')
+var S = require('string')
 
-  $.fn.addTeXLogos = function () {
-    return this.map(function () {
-      var body = $(this)
-      // cf. http://edward.oconnor.cx/2007/08/tex-poshlet
-      // and http://nitens.org/taraborelli/texlogo
-      var xe = 'X<span class="xetex-e">&#398;</span>'
-      var la = 'L<span class="latex-a">a</span>'
-      var tex = 'T<span class="tex-e">e</span>X'
-      body.find('abbr[title=XeTeX]').html(xe + tex)
-      body.find('abbr[title=LaTeX]').html(la + tex)
-      body.find('abbr[title=LuaTeX]').html('Lua' + tex)
-      body.find('abbr[title=ConTeXt]').html('Con' + tex + 't')
-      body.find('abbr[title=AUCTeX]').html('AUC' + tex)
-      body.find('abbr[title=MiKTeX]').html('MiK' + tex)
-      body.find('abbr[title=PCTeX]').html('PC' + tex)
-      body.find('abbr[title=MacTeX]').html('Mac' + tex)
-      body.find('abbr[title=TeX]').html(tex)
-    })
-  }
+$.fn.addHotkeys = function () {
+  return this.map(function () {
+    var body = $(this)
+    body.find('kbd:contains("Ctrl")').replaceWith('<kbd title="Control">Ctrl</kbd>')
+    body.find('kbd:contains("Alt")').replaceWith('<kbd title="Alt">Alt</kbd>')
+    body.find('kbd:contains("Esc")').replaceWith('<kbd title="Escape">Esc</kbd>')
+    body.find('kbd:contains("Enter")').replaceWith('<kbd title="Enter">\u21b5</kbd>')
+    body.find('kbd:contains("Tab")').replaceWith('<kbd title="Tab">\u21b9</kbd>')
+    body.find('kbd:contains("Windows")').replaceWith('<kbd title="Windows"><i class="fa fa-windows"></i></kbd>')
+    body.find('kbd:contains("Shift"), kbd:contains("\u21e7")').replaceWith('<kbd title="Shift">\u21e7</kbd>')
+    body.find('kbd:contains("Cmd"), kbd:contains("Command"), kbd:contains("\u2318")').replaceWith('<kbd title="Command">\u2318</kbd>')
+    body.find('kbd:contains("Opt"), kbd:contains("Option"), kbd:contains("\u2325")').replaceWith('<kbd title="Option">\u2325</kbd>')
+    body.find('kbd:contains("Fn"), kbd:contains("Function")').replaceWith('<kbd title="Function">Fn</kbd>')
+    body.find('kbd:contains("Eject")').replaceWith('<kbd title="Eject">\u23cf</kbd>')
+    body.find('kbd:contains("Power")').replaceWith('<kbd title="Power"><i class="fa fa-power-off"></i></kbd>')
+    body.find('kbd:contains("Left")').replaceWith('<kbd title="Left">\u2190</kbd>') // \u2b05
+    body.find('kbd:contains("Right")').replaceWith('<kbd title="Right">\u2192</kbd>') // \u27a1
+    body.find('kbd:contains("Up")').replaceWith('<kbd title="Up">\u2191</kbd>') // \u2b06
+    body.find('kbd:contains("Down")').replaceWith('<kbd title="Down">\u2193</kbd>') // \u2b07
+  })
+}
 
-  $.fn.addAcronyms = function () {
-    return this.map(function () {
-      $(this).find('abbr').filter(function () {
-        var text = $(this).text().trim()
-        return text.toUpperCase() === text
-      }).addClass('acronym')
-    })
-  }
+$.fn.addTeXLogos = function () {
+  return this.map(function () {
+    var body = $(this)
+    // cf. http://edward.oconnor.cx/2007/08/tex-poshlet
+    // and http://nitens.org/taraborelli/texlogo
+    var xe = 'X<span class="xetex-e">&#398;</span>'
+    var la = 'L<span class="latex-a">a</span>'
+    var tex = 'T<span class="tex-e">e</span>X'
+    body.find('abbr[title=XeTeX]').html(xe + tex)
+    body.find('abbr[title=LaTeX]').html(la + tex)
+    body.find('abbr[title=LuaTeX]').html('Lua' + tex)
+    body.find('abbr[title=ConTeXt]').html('Con' + tex + 't')
+    body.find('abbr[title=AUCTeX]').html('AUC' + tex)
+    body.find('abbr[title=MiKTeX]').html('MiK' + tex)
+    body.find('abbr[title=PCTeX]').html('PC' + tex)
+    body.find('abbr[title=MacTeX]').html('Mac' + tex)
+    body.find('abbr[title=TeX]').html(tex)
+  })
+}
 
-  $.fn.addSmallCaps = function () {
-    return this.map(function () {
-      $(this).find('sc').replaceWith(function () {
-        var span = $('<span class="small-caps"></span>')
-        span.html($(this).html())
-        return span
-      })
-    })
-  }
+$.fn.addAcronyms = function () {
+  return this.map(function () {
+    $(this).find('abbr').filter(function () {
+      var text = $(this).text().trim()
+      return text.toUpperCase() === text
+    }).addClass('acronym')
+  })
+}
 
-  $.fn.addPullQuotes = function () {
-    return this.map(function () {
-      $(this).find('p.pull-quote').each(function () {
-        var p = $(this)
-        var blockquote = p.parent()
-        if (blockquote.prop('tagName') !== 'BLOCKQUOTE') {
-          blockquote = p.wrap('<blockquote>').parent()
-        }
-        blockquote.addClass(p.attr('class'))
-        p.removeAttr('class')
-      })
+$.fn.addSmallCaps = function () {
+  return this.map(function () {
+    $(this).find('sc').replaceWith(function () {
+      var span = $('<span class="small-caps"></span>')
+      span.html($(this).html())
+      return span
     })
-  }
+  })
+}
 
-  $.fn.removeAria = function () {
-    return this.map(function () {
-      var clone = $(this).clone()
-      clone.find('[aria-hidden="true"]').remove()
-      return clone
+$.fn.addPullQuotes = function () {
+  return this.map(function () {
+    $(this).find('p.pull-quote').each(function () {
+      var p = $(this)
+      var blockquote = p.parent()
+      if (blockquote.prop('tagName') !== 'BLOCKQUOTE') {
+        blockquote = p.wrap('<blockquote>').parent()
+      }
+      blockquote.addClass(p.attr('class'))
+      p.removeAttr('class')
     })
-  }
+  })
+}
 
-  $.fn.fixHeader = function () {
-    return this.each(function () {
-      var header = $(this)
-      var text = header.text().trim()
+$.fn.removeAria = function () {
+  return this.map(function () {
+    var clone = $(this).clone()
+    clone.find('[aria-hidden="true"]').remove()
+    return clone
+  })
+}
+
+$.fn.fixHeader = function () {
+  return this.each(function () {
+    var header = $(this)
+    var text = header.text().trim()
+    var id = header.attr('id')
+
+    if (id === undefined || id === '') {
+      id = S(text).slugify()
+      header.attr('id', id)
+    }
+  })
+}
+
+$.fn.fixHeaders = function () {
+  return this.each(function () {
+    var headers = $(this).find('h1, h2, h3, h4, h5, h6')
+    headers.fixHeader()
+  })
+}
+
+$.fn.fixAnchors = function () {
+  return this.each(function () {
+    $(this).find('h1 a[aria-hidden="true"], h2 a[aria-hidden="true"], h3 a[aria-hidden="true"], h4 a[aria-hidden="true"], h5 a[aria-hidden="true"], h6 a[aria-hidden="true"]').each(function () {
+      var anchor = $(this)
+      var header = anchor.parent()
       var id = header.attr('id')
 
-      if (id === undefined || id === '') {
-        id = S(text).slugify()
-        header.attr('id', id)
+      // ensure href is correct
+      if (id) {
+        anchor.attr('href', '#' + id)
+      }
+
+      // set title attribute
+      if (!anchor.is('[title]')) {
+        var title = header.removeAria().text().trim()
+        anchor.attr('title', title)
+      }
+
+      // remove glyph (provided by CSS)
+      anchor.text('')
+    })
+  })
+}
+
+$.fn.fixBlockquotes = function () {
+  return this.each(function () {
+    $(this).find('blockquote > p:last-child').each(function () {
+      var p = $(this)
+      if (p.text().trim().match(/^[\u2013\u2014]/)) {
+        p.find('em, i').replaceWith(function () {
+          return $('<cite>' + $(this).html() + '</cite>')
+        })
+        var html = p.html().substr(1)
+        var footer = $('<footer>' + html + '</footer>')
+        p.replaceWith(footer)
       }
     })
-  }
+  })
+}
 
-  $.fn.fixHeaders = function () {
-    return this.each(function () {
-      var headers = $(this).find('h1, h2, h3, h4, h5, h6')
-      headers.fixHeader()
+$.fn.fixFootnotes = function () {
+  return this.each(function () {
+    var body = $(this)
+    body.find('.footnote-ref a').each(function () {
+      var link = $(this)
+      var sup = link.parent()
+      var p = sup.parent()
+      var id = link.attr('href').replace(/:.*/, '')
+      link.attr('href', id)
+      var note = body.find(id)
+      var backref = note.find('.footnote-backref')
+      var text = note.text().trim().replace(/(\s*\u21a9.*\s*)+$/, '')
+      var source = p.text().trim()
+      link.attr('title', text)
+      backref.attr('title', source)
     })
-  }
+  })
+}
 
-  $.fn.fixAnchors = function () {
-    return this.each(function () {
-      $(this).find('h1 a[aria-hidden="true"], h2 a[aria-hidden="true"], h3 a[aria-hidden="true"], h4 a[aria-hidden="true"], h5 a[aria-hidden="true"], h6 a[aria-hidden="true"]').each(function () {
-        var anchor = $(this)
-        var header = anchor.parent()
-        var id = header.attr('id')
-
-        // ensure href is correct
-        if (id) {
-          anchor.attr('href', '#' + id)
-        }
-
-        // set title attribute
-        if (!anchor.is('[title]')) {
-          var title = header.removeAria().text().trim()
-          anchor.attr('title', title)
-        }
-
-        // remove glyph (provided by CSS)
-        anchor.text('')
-      })
+$.fn.fixLinks = function () {
+  return this.each(function () {
+    var body = $(this)
+    body.find('a[href^="#"]').each(function () {
+      var link = $(this)
+      var href = link.attr('href')
+      var title = link.attr('title')
+      if (link.attr('aria-hidden') === 'true' || href === '#' ||
+          (title !== undefined && title !== '')) {
+        return
+      }
+      var target = body.find(href)
+      if (target.length <= 0) {
+        return
+      }
+      var text = target.removeAria().text().trim()
+      link.attr('title', text)
     })
-  }
+  })
+}
 
-  $.fn.fixBlockquotes = function () {
-    return this.each(function () {
-      $(this).find('blockquote > p:last-child').each(function () {
-        var p = $(this)
-        if (p.text().trim().match(/^[\u2013\u2014]/)) {
-          p.find('em, i').replaceWith(function () {
-            return $('<cite>' + $(this).html() + '</cite>')
-          })
-          var html = p.html().substr(1)
-          var footer = $('<footer>' + html + '</footer>')
-          p.replaceWith(footer)
-        }
-      })
-    })
-  }
+$.fn.fixTables = function () {
+  return this.each(function () {
+    // add Bootstrap classes
+    $(this).find('table').each(function () {
+      var table = $(this)
 
-  $.fn.fixFootnotes = function () {
-    return this.each(function () {
-      var body = $(this)
-      body.find('.footnote-ref a').each(function () {
-        var link = $(this)
-        var sup = link.parent()
-        var p = sup.parent()
-        var id = link.attr('href').replace(/:.*/, '')
-        link.attr('href', id)
-        var note = body.find(id)
-        var backref = note.find('.footnote-backref')
-        var text = note.text().trim().replace(/(\s*\u21a9.*\s*)+$/, '')
-        var source = p.text().trim()
-        link.attr('title', text)
-        backref.attr('title', source)
-      })
-    })
-  }
-
-  $.fn.fixLinks = function () {
-    return this.each(function () {
-      var body = $(this)
-      body.find('a[href^="#"]').each(function () {
-        var link = $(this)
-        var href = link.attr('href')
-        var title = link.attr('title')
-        if (link.attr('aria-hidden') === 'true' || href === '#' ||
-            (title !== undefined && title !== '')) {
-          return
-        }
-        var target = body.find(href)
-        if (target.length <= 0) {
-          return
-        }
-        var text = target.removeAria().text().trim()
-        link.attr('title', text)
-      })
-    })
-  }
-
-  $.fn.fixTables = function () {
-    return this.each(function () {
       // add Bootstrap classes
-      $(this).find('table').each(function () {
-        var table = $(this)
+      table.addClass('table table-striped table-bordered table-hover')
+      // table.wrap('<div class="table-responsive"></div>')
 
-        // add Bootstrap classes
-        table.addClass('table table-striped table-bordered table-hover')
-        // table.wrap('<div class="table-responsive"></div>')
-
-        // remove empty table headers
-        table.find('thead').filter(function (i) {
-          return $(this).text().trim() === ''
-        }).remove()
-      })
+      // remove empty table headers
+      table.find('thead').filter(function (i) {
+        return $(this).text().trim() === ''
+      }).remove()
     })
-  }
+  })
+}
 
-  // http://stackoverflow.com/questions/10206298/jquery-multiple-selectors-order#answer-10206378
-  $.fn.coalesce = function (selectors) {
-    return this.map(function () {
-      var body = $(this)
-      var match = body.find([])
-      $.each(selectors, function (i, selector) {
-        var res = body.find(selector)
-        if (res.length > 0) {
-          match = res.first()
-          return false
-        }
-      })
-      return match
-    })
-  }
-
-  $.fn.addTitle = function () {
-    return this.each(function () {
-      var title = $(this).find('title')
-      if (title.length === 0) {
-        title = $('title')
-      }
-
-      var meta = $(this).find('meta[name=title]')
-      if (meta.length === 0) {
-        meta = $('meta[name=title]')
-      }
-
-      if (meta.length !== 0) {
-        title.text(meta.attr('content'))
-      } else {
-        // var heading = $(this).coalesce(['h1', 'h2', 'h3', 'h4', 'h5', 'h6', 'strong', 'b', 'em', 'i', 'p']).first()
-        var heading = $(this).find('h1').first()
-        if (heading.length > 0) {
-          var txt = heading.removeAria().text().trim()
-          title.html(txt)
-          var header = $(this).find('header')
-          header.prepend(heading)
-        }
+// http://stackoverflow.com/questions/10206298/jquery-multiple-selectors-order#answer-10206378
+$.fn.coalesce = function (selectors) {
+  return this.map(function () {
+    var body = $(this)
+    var match = body.find([])
+    $.each(selectors, function (i, selector) {
+      var res = body.find(selector)
+      if (res.length > 0) {
+        match = res.first()
+        return false
       }
     })
-  }
+    return match
+  })
+}
 
-  return {}
-}))
+$.fn.addTitle = function () {
+  return this.each(function () {
+    var title = $(this).find('title')
+    if (title.length === 0) {
+      title = $('title')
+    }
 
-},{"jquery":236,"string":350,"urijs":353}],17:[function(require,module,exports){
+    var meta = $(this).find('meta[name=title]')
+    if (meta.length === 0) {
+      meta = $('meta[name=title]')
+    }
+
+    if (meta.length !== 0) {
+      title.text(meta.attr('content'))
+    } else {
+      // var heading = $(this).coalesce(['h1', 'h2', 'h3', 'h4', 'h5', 'h6', 'strong', 'b', 'em', 'i', 'p']).first()
+      var heading = $(this).find('h1').first()
+      if (heading.length > 0) {
+        var txt = heading.removeAria().text().trim()
+        title.html(txt)
+        var header = $(this).find('header')
+        header.prepend(heading)
+      }
+    }
+  })
+}
+
+},{"jquery":236,"string":350}],17:[function(require,module,exports){
 // This file is autogenerated via the `commonjs` Grunt task. You can require() this file in a CommonJS environment.
 require('../../js/transition.js')
 require('../../js/alert.js')
