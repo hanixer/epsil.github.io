@@ -1634,7 +1634,10 @@ $(function () {
       var node = root.childNodes[0]
       // https://github.com/kellym/smartquotesjs
       while (node !== null) {
-        if (node.nodeType === 3 && node.nodeName !== 'TEXTAREA') {
+        if (node.nodeType === 3 &&
+            node.nodeName.toUpperCase() !== 'CODE' &&
+            node.nodeName.toUpperCase() !== 'PRE' &&
+            node.nodeName.toUpperCase() !== 'TEXTAREA') {
           node.nodeValue = node.nodeValue
             .replace(/([-([«\s]|^)"(\S)/g, '$1\u201c$2') // beginning "
             .replace(/"/g, '\u201d') // ending "
@@ -1659,8 +1662,8 @@ $(function () {
             .replace(/===/g, '\u2261')
             .replace(/---/g, '\u2014') // em-dashes
             .replace(/--/g, '\u2013') // en-dashes
-            .replace(/ - /g, ' \u2013 ')
-            .replace(/ -$/gm, ' \u2013')
+            // .replace(/ - /g, ' \u2013 ')
+            // .replace(/ -$/gm, ' \u2013')
             .replace(/,-/g, ',\u2013')
             .replace(/\.\.\.\./g, '.\u2026') // ellipsis
             .replace(/\.\.\./g, '\u2026')
@@ -1675,9 +1678,10 @@ $(function () {
             .replace(/:-\)/g, '\u263a') // smiley
             .replace(/:-\(/g, '\u2639') // frowning smiley
         }
-        if (node.hasChildNodes() && (node.firstChild.nodeName !== 'CODE' ||
-                                     node.firstChild.nodeName !== 'PRE' ||
-                                     node.firstChild.nodeName !== 'TEXTAREA')) {
+        if (node.hasChildNodes() &&
+            node.firstChild.nodeName.toUpperCase() !== 'CODE' &&
+            node.firstChild.nodeName.toUpperCase() !== 'PRE' &&
+            node.firstChild.nodeName.toUpperCase() !== 'TEXTAREA') {
           node = node.firstChild
         } else {
           do {
@@ -1685,11 +1689,11 @@ $(function () {
               node = node.parentNode
             }
             node = node.nextSibling
-          } while (node && (node.nodeName === 'CODE' ||
-                            node.nodeName === 'PRE' ||
-                            node.nodeName === 'SCRIPT' ||
-                            node.nodeName === 'TEXTAREA' ||
-                            node.nodeName === 'STYLE'))
+          } while (node && (node.nodeName.toUpperCase() === 'CODE' ||
+                            node.nodeName.toUpperCase() === 'PRE' ||
+                            node.nodeName.toUpperCase() === 'SCRIPT' ||
+                            node.nodeName.toUpperCase() === 'TEXTAREA' ||
+                            node.nodeName.toUpperCase() === 'STYLE'))
         }
       }
     })

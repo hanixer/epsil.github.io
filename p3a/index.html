@@ -83,13 +83,13 @@
 
 <p>En detaljert kretsanalyse av forsterkeren trinn for trinn ga en forsterkning uten tilbakekobling på 20714 ganger; beregnet forsterkning med tilbakekobling var 23 <abbr title="desibel">dB</abbr>.</p>
 
-<p>Strømforsyningen var en 200 <abbr class="acronym" title="voltampere">VA</abbr> 24–0--24 V transformator; fortrinnsvis bør en på 300 <abbr class="acronym" title="voltampere">VA</abbr> brukes.</p>
+<p>Strømforsyningen var en 200 <abbr class="acronym" title="voltampere">VA</abbr> 24–0–24 V transformator; fortrinnsvis bør en på 300 <abbr class="acronym" title="voltampere">VA</abbr> brukes.</p>
 
 <p>Kabinettet og innsiden er dokumentert med fotografier. Forsterkeren har to forsterkerkretser, en for hver lydkanal, med felles kjøleribbe. Kretskortenes «silk screen» har enkelte feil.</p>
 
 <p>Grunnet støyproblemer er kretsen lettere modifisert ved å lodde fast ekstra kondensatorer. Kjølingen bruker termisk tilbakekobling. Hvilestrømmen bestemmes ved å skru på et potensiometer og bør ligge på <abbr title="cirka">ca.</abbr> 75 <abbr title="milliampere">mA</abbr>.</p>
 
-<p>Budsjettet lå på 1000,-- <abbr title="kroner">kr</abbr>, mens utgiftene ble 1085,70 <abbr title="kroner">kr</abbr>, <abbr title="blant annet">bl.a.</abbr> på grunn av dyre utgangstransistorer. Testing ble gjort med billige BD911- og BD912-transistorer; lydkvaliteten økte dramatisk da de ble byttet ut med MJL3281A- og MJL1302A-transistorer.</p>
+<p>Budsjettet lå på 1000,– <abbr title="kroner">kr</abbr>, mens utgiftene ble 1085,70 <abbr title="kroner">kr</abbr>, <abbr title="blant annet">bl.a.</abbr> på grunn av dyre utgangstransistorer. Testing ble gjort med billige BD911- og BD912-transistorer; lydkvaliteten økte dramatisk da de ble byttet ut med MJL3281A- og MJL1302A-transistorer.</p>
 
 <p>Forsterkeren kan anses som høyst vellykket lydmessig, men det er rom for forbedringer: automatisk utlading av glattefilteret, <abbr class="acronym" title="Direct Current">DC</abbr>-vern over utgangstrinnet for å beskytte høyttalerne ved kortslutning av utgangene, kraftigere strømforsyning, større kjøleribbe, mindre kretskort og <abbr title="eventuelt">ev.</abbr> delefilter.</p>
 </div>
@@ -411,13 +411,13 @@
 <div class="collapse in" id="arbeidspunkt-og-smasignal-section">
 <p>En forsterkerkrets inneholder <em>flere</em> spenningskilder, både konstantkilder (<abbr class="acronym" title="Direct Current">DC</abbr>-spenning) og en signalkilde (<abbr class="acronym" title="Alternating Current">AC</abbr>-spenning). Ifølge <em>superposisjonsprinsippet</em> kan en hvilken som helst spenning eller strøm i kretsen finnes ved å beregne <em>summen av strøm- og spenningskildenes enkeltbidrag</em>, der bidraget fra en strøm- eller spenningskilde finnes ved å erstatte de øvrige strøm- eller spenningskildene med hhv. brudd eller kortslutninger, og så beregne den resulterende spenningen eller strømmen. For eksempel: Hvis kretsen inneholder <abbr class="acronym" title="Direct Current">DC</abbr>-kildene \(V_+\) og \(V_-\) og <abbr class="acronym" title="Alternating Current">AC</abbr>-kilden \(v_{\sim}\) (og ingen strømkilder), kan spenningspotensialet i punktet \(P\), \(v_P\), uttrykkes som</p>
 
-<p>\[v_P = v_P'(V_+) + v_P''(V_-) + v_P'''(v_{\sim})\]</p>
+<p>\[v_P = v_P’(V_+) + v_P’’(V_-) + v_P’’’(v_{\sim})\]</p>
 
-<p>hvor \(v_P'(V_+)\) er spenningspotensialet i \(P\) når \(V_-\) og \(v_{\sim}\) erstattes med kortslutninger, \(v_P''(V_-)\) er spenningspotensialet i \(P\) når \(V_+\) og \(v_{\sim}\) erstattes med kortslutninger, <abbr title="og så videre">osv.</abbr><sup class="footnote-ref"><a href="#fn3" id="fnref3" title="Det er vanlig å bare skrive \(v_P'\), \(v_P''\), osv. Her anfører vi spenningskilden i parentes for å gjøre notasjonen tydeligere.">[3]</a></sup> La oss gruppere enkeltbidragene i <abbr class="acronym" title="Direct Current">DC</abbr>- og <abbr class="acronym" title="Alternating Current">AC</abbr>-bidrag:</p>
+<p>hvor \(v_P’(V_+)\) er spenningspotensialet i \(P\) når \(V_-\) og \(v_{\sim}\) erstattes med kortslutninger, \(v_P’’(V_-)\) er spenningspotensialet i \(P\) når \(V_+\) og \(v_{\sim}\) erstattes med kortslutninger, <abbr title="og så videre">osv.</abbr><sup class="footnote-ref"><a href="#fn3" id="fnref3" title="Det er vanlig å bare skrive \(v_P’\), \(v_P’’\), osv. Her anfører vi spenningskilden i parentes for å gjøre notasjonen tydeligere.">[3]</a></sup> La oss gruppere enkeltbidragene i <abbr class="acronym" title="Direct Current">DC</abbr>- og <abbr class="acronym" title="Alternating Current">AC</abbr>-bidrag:</p>
 
-<p>\[\begin{split} v_P &amp;= \underbrace{v_P'(V_+) + v_P''(V_-)}_{\mathrm{DC}} + \underbrace{v_P'''(v_{\sim})}_{\mathrm{AC}}\\ &amp;= V_{PQ} + v_p \end{split}\]</p>
+<p>\[\begin{split} v_P &amp;= \underbrace{v_P’(V_+) + v_P’’(V_-)}_{\mathrm{DC}} + \underbrace{v_P’’’(v_{\sim})}_{\mathrm{AC}}\\ &amp;= V_{PQ} + v_p \end{split}\]</p>
 
-<p>hvor \(V_{PQ} = v_P'(V_+) + v_P''(V_-)\) og \(v_p = v_P'''(v_{\sim})\). Vi kan nå innføre følgende terminologi: \(V_{PQ}\) er <em>arbeidspunktet til \(v_P\)</em>, og \(v_p\) er <em>småsignalet til \(v_P\)</em>. Arbeidspunktet er <abbr class="acronym" title="Direct Current">DC</abbr>-delen av \(v_P\), som <abbr class="acronym" title="Alternating Current">AC</abbr>-delen – småsignalet – varierer rundt.</p>
+<p>hvor \(V_{PQ} = v_P’(V_+) + v_P’’(V_-)\) og \(v_p = v_P’’’(v_{\sim})\). Vi kan nå innføre følgende terminologi: \(V_{PQ}\) er <em>arbeidspunktet til \(v_P\)</em>, og \(v_p\) er <em>småsignalet til \(v_P\)</em>. Arbeidspunktet er <abbr class="acronym" title="Direct Current">DC</abbr>-delen av \(v_P\), som <abbr class="acronym" title="Alternating Current">AC</abbr>-delen – småsignalet – varierer rundt.</p>
 
 <p>Siden superposisjonsprinsippet gjelder for strømmer så vel som spenninger, kan alle strømmer og spenninger i kretsen deles opp i en arbeidspunktsdel og en småsignalsdel.</p>
 </div>
@@ -447,7 +447,7 @@
 
 <p>\[g_m = \frac{i_c}{v_{be}} = \frac{I_{CQ}}{nV_T} = \frac{I_{CQ}}{V_T}\quad\text{dersom $n = 1$}\]</p>
 
-<p>der \(n = \text{1--2}\) (ofte settes \(n = 1\) slik at den kan sløyfes) og \(V_T = 25\text{ mV}\) ved en omgivelsestemperatur på 25 <abbr class="acronym" title="grader celsius">°C</abbr>. Dersom transistoren er i det aktive området, er forholdet nesten konstant, og transkonduktansen kan forstås som <em>stigningsgraden</em> til \(i_C\)–\(v_{BE}\)-kurven <em>i arbeidspunktet</em>:</p>
+<p>der \(n = \text{1–2}\) (ofte settes \(n = 1\) slik at den kan sløyfes) og \(V_T = 25\text{ mV}\) ved en omgivelsestemperatur på 25 <abbr class="acronym" title="grader celsius">°C</abbr>. Dersom transistoren er i det aktive området, er forholdet nesten konstant, og transkonduktansen kan forstås som <em>stigningsgraden</em> til \(i_C\)–\(v_{BE}\)-kurven <em>i arbeidspunktet</em>:</p>
 
 <p>\[g_m \approx \left.\frac{\partial i_C}{\partial v_{BE}}\right|_{i_C = I_{CQ}}\]</p>
 
@@ -572,17 +572,17 @@
 
 <p>\[i_9 = \frac{v_{b5} - A_uv_{b5}}{R_9} = \frac{1 - A_u}{R_9}v_{b5}\]</p>
 
-<p><em>Bootstrap-resistansen</em> til \(R_9\), <abbr title="det vil si">dvs.</abbr> inngangsimpedansen til bootstrap-koblingen, er gitt ved spenningspotensialet ved inngangen (den øvre terminalen til \(R_9\)) delt på strømmen gjennom dette punktet. Vi kaller denne størrelsen for \(R_9'\) og får</p>
+<p><em>Bootstrap-resistansen</em> til \(R_9\), <abbr title="det vil si">dvs.</abbr> inngangsimpedansen til bootstrap-koblingen, er gitt ved spenningspotensialet ved inngangen (den øvre terminalen til \(R_9\)) delt på strømmen gjennom dette punktet. Vi kaller denne størrelsen for \(R_9’\) og får</p>
 
-<p>\[R_9' = \frac{v_{b5}}{i_9} = \frac{v_{b5}}{v_{b5}(1 - A_u)/R_9} = \frac{R_9}{1 - A_u}\]</p>
+<p>\[R_9’ = \frac{v_{b5}}{i_9} = \frac{v_{b5}}{v_{b5}(1 - A_u)/R_9} = \frac{R_9}{1 - A_u}\]</p>
 
-<p>Vi vet at \(A_u &lt; 1\), og det betyr at \(R_9' &gt; R_9\) (med en faktor på \(\frac{1}{1 - A_u}\)). Så er også dette selve formålet med bootstrap-koblingen – å oppnå en «større» resistans <abbr class="acronym" title="Alternating Current">AC</abbr>-messig enn den rene motstandsverdien til \(R_9\). Dermed blir forsterkningen større.</p>
+<p>Vi vet at \(A_u &lt; 1\), og det betyr at \(R_9’ &gt; R_9\) (med en faktor på \(\frac{1}{1 - A_u}\)). Så er også dette selve formålet med bootstrap-koblingen – å oppnå en «større» resistans <abbr class="acronym" title="Alternating Current">AC</abbr>-messig enn den rene motstandsverdien til \(R_9\). Dermed blir forsterkningen større.</p>
 
-<p>Nå kan vi finne utgangslasten til klasse A-driveren, \(R_{La}\). Dersom forsterkeren fungerer som en klasse B-forsterker, får vi inngangsimpedansen til \(Q_5\) (eller \(Q_6\)), \(R_{iu}\), i parallell med inngangsimpedansen til bootstrap-koblingen, \(R_9'\):</p>
+<p>Nå kan vi finne utgangslasten til klasse A-driveren, \(R_{La}\). Dersom forsterkeren fungerer som en klasse B-forsterker, får vi inngangsimpedansen til \(Q_5\) (eller \(Q_6\)), \(R_{iu}\), i parallell med inngangsimpedansen til bootstrap-koblingen, \(R_9’\):</p>
 
-<p>\[R_{La} = R_{iu} \parallel R_9' = \frac{R_{iu}R_9'}{R_{iu} + R_9'}\]</p>
+<p>\[R_{La} = R_{iu} \parallel R_9’ = \frac{R_{iu}R_9’}{R_{iu} + R_9’}\]</p>
 
-<p>(Dersom forsterkeren fungerer som en klasse A-forsterker, er både \(Q_5\) og \(Q_6\) aktive, og vi får \(R_{La} = R_{iu} \parallel R_{iu} \parallel R_9' = \frac{1}{2}R_{iu} \parallel R_9'\).) Utgangsstrømmen, kollektorstrømmen til \(Q_4\), er tilnærmet lik \(i_9\) ettersom basestrømmen til \(Q_5\) er neglisjerbar. Utgangsspenningen, kollektorspenningen til \(Q_4\), er dermed gitt ved \(v_{c4} = i_{c4}R_{La} \approx i_9R_{La}\).</p>
+<p>(Dersom forsterkeren fungerer som en klasse A-forsterker, er både \(Q_5\) og \(Q_6\) aktive, og vi får \(R_{La} = R_{iu} \parallel R_{iu} \parallel R_9’ = \frac{1}{2}R_{iu} \parallel R_9’\).) Utgangsstrømmen, kollektorstrømmen til \(Q_4\), er tilnærmet lik \(i_9\) ettersom basestrømmen til \(Q_5\) er neglisjerbar. Utgangsspenningen, kollektorspenningen til \(Q_4\), er dermed gitt ved \(v_{c4} = i_{c4}R_{La} \approx i_9R_{La}\).</p>
 
 <p>Ettersom det eneste som står mellom basen til \(Q_4\) og jord er basemotstanden \(r_{\pi4}\) (som dermed er inngangsimpedansen), er inngangsspenningen, \(v_{b4}\), gitt ved</p>
 
@@ -625,13 +625,13 @@
 
 <p class="center"><img alt="" src="fig/p3a-f5.png"> <img alt="" src="fig/q4.png"></p>
 
-<p>Skjemaet viser at vi også får kondensatoren \(C_4\) i parallell med \(r_{\pi4}\). Men vi ser bort fra \(C_4\) og betrakter parallellkoblingen av \(R_6\) og \(r_{\pi4}\), som vi kaller \(R_6'\) (<abbr title="det vil si">dvs.</abbr> \(R_6' = R_6 \parallel r_{\pi4}\)). Denne går til jord, og kollektorspenningen er dermed gitt ved</p>
+<p>Skjemaet viser at vi også får kondensatoren \(C_4\) i parallell med \(r_{\pi4}\). Men vi ser bort fra \(C_4\) og betrakter parallellkoblingen av \(R_6\) og \(r_{\pi4}\), som vi kaller \(R_6’\) (<abbr title="det vil si">dvs.</abbr> \(R_6’ = R_6 \parallel r_{\pi4}\)). Denne går til jord, og kollektorspenningen er dermed gitt ved</p>
 
-<p>\[v_{c1} = i_{c1}R_6' \approx i_{e1}R_6' = v_{b1}\frac{R_6'}{2r_{e1}}\]</p>
+<p>\[v_{c1} = i_{c1}R_6’ \approx i_{e1}R_6’ = v_{b1}\frac{R_6’}{2r_{e1}}\]</p>
 
 <p>Nå er \(v_{b1}\) inngangsspenningen til differensialforsterkeren, og \(v_{c1}\) er utgangsspenningen. <em>Forsterkningen</em> til differensialforsterkeren, som vi kan kalle \(A_d\), blir da</p>
 
-<p>\[\begin{equation}\label{eq:ad} A_d = \frac{v_{c1}}{v_{b1}} = \frac{R_6'}{2r_{e1}} \end{equation}\]</p>
+<p>\[\begin{equation}\label{eq:ad} A_d = \frac{v_{c1}}{v_{b1}} = \frac{R_6’}{2r_{e1}} \end{equation}\]</p>
 </div>
 </section>
 
@@ -705,17 +705,17 @@
 
 <p>som er tilnærmet lik \(R_L/(R_{13} + R_L) = 8\text{ }\Omega/(0,33\text{ }\Omega + 8\text{ }\Omega) = 0,96\).</p>
 
-<p>For å beregne forsterkningen til klasse A-driveren, \(A_a\), må vi først finne kollektorlasten til \(Q_4\), \(R_{La}\). Den er gitt ved parallellkoblingen av \(R_{iu}\) og \(R_9'\), der</p>
+<p>For å beregne forsterkningen til klasse A-driveren, \(A_a\), må vi først finne kollektorlasten til \(Q_4\), \(R_{La}\). Den er gitt ved parallellkoblingen av \(R_{iu}\) og \(R_9’\), der</p>
 
 <p>\[\begin{aligned} R_{iu} &amp;= r_{\pi5} + \beta_{57}(R_{13} + R_L)\\ &amp;= 866\text{ $\Omega$} + 25 \cdot 100 \cdot (0,33\text{ $\Omega$} + 8\text{ $\Omega$})\quad\text{der $\beta_{57} \approx \beta_5\beta_7$}\\ &amp;= 21,7\text{ k$\Omega$} \end{aligned}\]</p>
 
 <p>og</p>
 
-<p>\[R_9' = \frac{R_9}{1 - A_u} = \frac{3,3\text{ k$\Omega$}}{1 - 0,92} = 41,3\text{ k$\Omega$}\]</p>
+<p>\[R_9’ = \frac{R_9}{1 - A_u} = \frac{3,3\text{ k$\Omega$}}{1 - 0,92} = 41,3\text{ k$\Omega$}\]</p>
 
 <p>\(R_{La}\) blir dermed</p>
 
-<p>\[R_{La} = R_{iu} \parallel R_9' = \frac{R_{iu}R_9'}{R_{iu} + R_9'} = \frac{21,7\text{ k$\Omega$} \cdot 41,3\text{ k$\Omega$}}{21,7\text{ k$\Omega$} + 41,3\text{ k$\Omega$}} = 14,2\text{ k$\Omega$}\]</p>
+<p>\[R_{La} = R_{iu} \parallel R_9’ = \frac{R_{iu}R_9’}{R_{iu} + R_9’} = \frac{21,7\text{ k$\Omega$} \cdot 41,3\text{ k$\Omega$}}{21,7\text{ k$\Omega$} + 41,3\text{ k$\Omega$}} = 14,2\text{ k$\Omega$}\]</p>
 
 <p>Videre må vi finne kollektorstrømmen til \(Q_4\), som er omtrent den samme strømmen som går gjennom \(R_9\) og \(R_{10}\). Spenningspotensialet i den nedre terminalen til \(R_{10}\) er \(-35\) V, mens potensialet i den øvre terminalen til \(R_9\) er \(-I_QR_{14} - V_{BE6} = -25\text{ mV} - 0,7\text{ V} = -0,73\text{V}\). Strømmen blir dermed</p>
 
@@ -737,13 +737,13 @@
 
 <p>\[r_{e1} = \frac{V_T}{I_{C1Q}} = \frac{25\text{ mV}}{1,25\text{ mA}} = 20\text{ $\Omega$}\]</p>
 
-<p>Videre trenger vi \(R_6'\), som er parallellkoblingen av \(R_6\) og \(r_{\pi4}\):</p>
+<p>Videre trenger vi \(R_6’\), som er parallellkoblingen av \(R_6\) og \(r_{\pi4}\):</p>
 
-<p>\[R_6' = R_6 \parallel r_{\pi4} = \frac{R_6r_{\pi4}}{R_6 + r_{\pi4}} = \frac{560\text{ $\Omega$} \cdot 680\text{ $\Omega$}}{560\text{ $\Omega$} + 680\text{ $\Omega$}} = 307\text{ $\Omega$}\]</p>
+<p>\[R_6’ = R_6 \parallel r_{\pi4} = \frac{R_6r_{\pi4}}{R_6 + r_{\pi4}} = \frac{560\text{ $\Omega$} \cdot 680\text{ $\Omega$}}{560\text{ $\Omega$} + 680\text{ $\Omega$}} = 307\text{ $\Omega$}\]</p>
 
 <p>Av \(\eqref{eq:ad}\) blir differensialforsterkerens forsterkning dermed:</p>
 
-<p>\[A_d = \frac{R_6'}{2r_{e1}} = \frac{307\text{ $\Omega$}}{2 \cdot 20\text{ $\Omega$}} = 7,7\]</p>
+<p>\[A_d = \frac{R_6’}{2r_{e1}} = \frac{307\text{ $\Omega$}}{2 \cdot 20\text{ $\Omega$}} = 7,7\]</p>
 
 <p>For å beregne forsterkningen til inngangen, \(A_i\), må vi finne utgangslasten til trinnet, \(R_{Li}\). Den er gitt ved</p>
 
@@ -825,14 +825,14 @@
 <blockquote>
 <p class="center"><img alt="" src="fig/skopbilde1.png"> <img alt="" src="fig/skopbilde2.png"></p>
 
-<p>Skopbilder fra glattekondensatorene (venstre) og utgangen (høyre) med forsterkeren på tomgang og 29–0--24 V trafo.</p>
+<p>Skopbilder fra glattekondensatorene (venstre) og utgangen (høyre) med forsterkeren på tomgang og 29–0–24 V trafo.</p>
 
 <p class="center"><img alt="" src="fig/skopbilde3.png"> <img alt="" src="fig/skopbilde4.png"></p>
 
-<p>Skopbilder fra glattekondensatorene (venstre) og utgangen (høyre) med forsterkeren på tomgang og 24–0--24 V trafo.</p>
+<p>Skopbilder fra glattekondensatorene (venstre) og utgangen (høyre) med forsterkeren på tomgang og 24–0–24 V trafo.</p>
 </blockquote>
 
-<p>Vår trafo ytte over 600 <abbr class="acronym" title="voltampere">VA</abbr>, men siden den ikke hadde de rette spenningene (29–0--24 V), oppsto det en del problemer. Forsterkeren ville kanskje ha virket, men som man ser av figurene over, ble det simulert at dette ville føre til dobbelt så stor rippel. Etter mye om og men ble vi til slutt tilbudt en 200 <abbr class="acronym" title="voltampere">VA</abbr> 24–0--24 V trafo. Denne vil ikke ødelegge forsterkerens lydegenskaper annet enn ved maks belastning, som vil medføre spenningsfall og klipping.</p>
+<p>Vår trafo ytte over 600 <abbr class="acronym" title="voltampere">VA</abbr>, men siden den ikke hadde de rette spenningene (29–0–24 V), oppsto det en del problemer. Forsterkeren ville kanskje ha virket, men som man ser av figurene over, ble det simulert at dette ville føre til dobbelt så stor rippel. Etter mye om og men ble vi til slutt tilbudt en 200 <abbr class="acronym" title="voltampere">VA</abbr> 24–0–24 V trafo. Denne vil ikke ødelegge forsterkerens lydegenskaper annet enn ved maks belastning, som vil medføre spenningsfall og klipping.</p>
 
 <p>\[\begin{aligned} I &amp;= \frac{200\text{ VA}}{35\text{ V}} = 5,714\text{ A} = 2 \cdot 2,857\text{ A}\\ P &amp;= 2 \cdot ((8\text{ $\Omega$} \cdot 2,857\text{ A}) - 2 \cdot 1\text{ V$_{\mathrm{sat}}$}) \cdot 2,857\text{ A}\\ &amp;= 119,2\text{ W} = 2 \cdot 59,6\text{ W}\quad(8\text{ $\Omega$})\end{aligned}\]</p>
 </div>
@@ -1314,7 +1314,7 @@
 
 <li>Av/på-knapp</li>
 
-<li>24–0--24 V ringkjernetransformator (minst 200 <abbr class="acronym" title="voltampere">VA</abbr>, fortrinnsvis 300 <abbr class="acronym" title="voltampere">VA</abbr>)</li>
+<li>24–0–24 V ringkjernetransformator (minst 200 <abbr class="acronym" title="voltampere">VA</abbr>, fortrinnsvis 300 <abbr class="acronym" title="voltampere">VA</abbr>)</li>
 
 <li>Brolikeretter</li>
 
@@ -1583,7 +1583,7 @@
 
 <tr>
 <td>1</td>
-<td>Ringkjerne 24–0--24 V 200 <abbr class="acronym" title="voltampere">VA</abbr></td>
+<td>Ringkjerne 24–0–24 V 200 <abbr class="acronym" title="voltampere">VA</abbr></td>
 <td>0</td>
 <td>400</td>
 <td>Min. 290 <abbr class="acronym" title="voltampere">VA</abbr></td>
@@ -1773,7 +1773,7 @@
 <p>Kvalitet koster: BD911 (venstre) kontra MJL3281A (høyre).</p>
 </blockquote>
 
-<p>Budsjettet skulle ligge på 1000,-- <abbr title="kroner">kr</abbr>, noe vi <em>nesten</em> overholdt med våre totale utgifter på 1085,70 <abbr title="kroner">kr</abbr>. Forsterkeren ville ha blitt dyrere å produsere på egen hånd ettersom vi anskaffet en del materiale gratis under prosjektet (kjøleribbe, transformator).</p>
+<p>Budsjettet skulle ligge på 1000,– <abbr title="kroner">kr</abbr>, noe vi <em>nesten</em> overholdt med våre totale utgifter på 1085,70 <abbr title="kroner">kr</abbr>. Forsterkeren ville ha blitt dyrere å produsere på egen hånd ettersom vi anskaffet en del materiale gratis under prosjektet (kjøleribbe, transformator).</p>
 
 <p>Forsterkerens største svakhet er helt klart transformatoren på 200 <abbr class="acronym" title="voltampere">VA</abbr> – det er egentlig meningen at en transformator på 300 <abbr class="acronym" title="voltampere">VA</abbr> skal benyttes. Påtrykksspenningen kan også økes til \(\pm 42\) V, noe som vil gi kraftigere effekt for en 8 <abbr class="acronym" title="ohm">Ω</abbr> høyttaler (men som på den annen side umuliggjør bruk av 4 <abbr class="acronym" title="ohm">Ω</abbr> høyttalere). Det er godt med plass i kabinettet til en større transformator. Kjøleribben ble plukket fra en annen forsterker og er noe underdimensjonert for full effekt ved 4 <abbr class="acronym" title="ohm">Ω</abbr> last.</p>
 
@@ -1794,7 +1794,7 @@
 </li>
 
 <li class="footnote-item" id="fn3">
-<p>Det er vanlig å bare skrive \(v_P'\), \(v_P''\), <abbr title="og så videre">osv.</abbr> Her anfører vi spenningskilden i parentes for å gjøre notasjonen tydeligere. <a class="footnote-backref" href="#fnref3" title="hvor \(v_P'(V_+)\) er spenningspotensialet i \(P\) når \(V_-\) og \(v_{\sim}\) erstattes med kortslutninger, \(v_P''(V_-)\) er spenningspotensialet i \(P\) når \(V_+\) og \(v_{\sim}\) erstattes med kortslutninger, osv.[3] La oss gruppere enkeltbidragene i DC- og AC-bidrag:">↩︎</a></p>
+<p>Det er vanlig å bare skrive \(v_P’\), \(v_P’’\), <abbr title="og så videre">osv.</abbr> Her anfører vi spenningskilden i parentes for å gjøre notasjonen tydeligere. <a class="footnote-backref" href="#fnref3" title="hvor \(v_P’(V_+)\) er spenningspotensialet i \(P\) når \(V_-\) og \(v_{\sim}\) erstattes med kortslutninger, \(v_P’’(V_-)\) er spenningspotensialet i \(P\) når \(V_+\) og \(v_{\sim}\) erstattes med kortslutninger, osv.[3] La oss gruppere enkeltbidragene i DC- og AC-bidrag:">↩︎</a></p>
 </li>
 
 <li class="footnote-item" id="fn4">

@@ -63,7 +63,7 @@
 
 <p>The repository also includes the full text of the article in <a href="https://raw.githubusercontent.com/epsil/gll/master/README.md">Markdown</a> (<a href="https://help.github.com/categories/writing-on-github/"><abbr class="acronym" title="GitHub Flavored Markdown">GFM</abbr> flavor</a>). I welcome suggestions and improvements! Feel free to open an issue on the <a href="https://github.com/epsil/gll/issues">bug tracker</a>, or to <a href="https://github.com/epsil/gll">fork the repository</a>. You can also contact me, Vegard Øye, at <code>vegard (underline) oye (at) hotmail (dot) com</code>.</p>
 
-<p>The article aims to be an accessible introduction to the ideas found in the papers <a href="http://citeseerx.ist.psu.edu/viewdoc/summary?doi=10.1.1.14.3000">"Memoization in Top-Down Parsing"</a> by Mark Johnson and <a href="http://www.cs.uwm.edu/~dspiewak/papers/generalized-parser-combinators.pdf">"Generalized Parser Combinators"</a> by Daniel Spiewak. If you are interested in the topic, I especially recommend you to read Spiewak’s paper. It is very good. Other reading suggestions are provided <a href="#further-reading" title="Further reading">at the end</a>.</p>
+<p>The article aims to be an accessible introduction to the ideas found in the papers <a href="http://citeseerx.ist.psu.edu/viewdoc/summary?doi=10.1.1.14.3000">“Memoization in Top-Down Parsing”</a> by Mark Johnson and <a href="http://www.cs.uwm.edu/~dspiewak/papers/generalized-parser-combinators.pdf">“Generalized Parser Combinators”</a> by Daniel Spiewak. If you are interested in the topic, I especially recommend you to read Spiewak’s paper. It is very good. Other reading suggestions are provided <a href="#further-reading" title="Further reading">at the end</a>.</p>
 
 <p>The framework is implemented in <a href="http://www.racket-lang.org/">Racket</a>, a variant of Scheme, which is a dialect of Lisp. However, the principles are not specific to Racket and could be expressed in any language; porting is outlined at the end of the article.</p>
 
@@ -176,7 +176,7 @@
 (failure "bar")</code>
 </pre>
 
-<p>The functions <code>succeed</code> and <code>string</code> could be regarded as very basic "parser generators": both create parsers on the basis of a given specification. The parsers they create are often called <em>terminal parsers</em>, because they match against a terminal expression in the grammar. All the terminal parsers in this article work on strings, but one could easily modify them to accept a stream of symbols or tokens.</p>
+<p>The functions <code>succeed</code> and <code>string</code> could be regarded as very basic “parser generators”: both create parsers on the basis of a given specification. The parsers they create are often called <em>terminal parsers</em>, because they match against a terminal expression in the grammar. All the terminal parsers in this article work on strings, but one could easily modify them to accept a stream of symbols or tokens.</p>
 
 <p>Now that we have some basic parsers, it is time to combine them. The first combinator is the <em>alternatives combinator</em>, which chooses between alternative parsers. It returns a combined parser that tries each alternative in turn until one of them matches.</p>
 
@@ -499,7 +499,7 @@
 
 <p>There are two cases to consider: when the memoized function is called for the first time, and when it has been called before. When the function is called for the first time, we insert the original continuation, <code>cont</code>, into the table. Then we invoke the function with a custom continuation <code>(lambda (result) ...)</code> which in turn will invoke <code>cont</code>, as well as any other continuations which may have been inserted into the table in the meantime. We can think of the continuation <code>(lambda (result) ...)</code> as our “man on the inside”: it alone will do the work of being passed into the function and receive its results. Then it broadcasts those results to the continuations on the outside.</p>
 
-<p>Thus, in the second case when the function has been called before, we just insert the continuation into the list of continuations. Our "inside man" will then notify the continuation of new results as they are produced. Meanwhile, the continuation goes through the results that have already been memoized, and then it “goes to sleep”.</p>
+<p>Thus, in the second case when the function has been called before, we just insert the continuation into the list of continuations. Our “inside man” will then notify the continuation of new results as they are produced. Meanwhile, the continuation goes through the results that have already been memoized, and then it “goes to sleep”.</p>
 
 <p>Now we are ready to memoize the definitions. We use <code>memo-cps</code> for the returned parsers and <code>memo</code> for the parser combinators, which are regular functions. As before, the use of <code>memo</code> is necessary because <code>delay-parser</code> delays the combinators to being called at runtime.</p>
 
