@@ -1564,62 +1564,10 @@ module.exports = convert
 /* global MathJax */
 var $ = require('jquery')
 window.$ = window.jQuery = $
-var markdownit = require('markdown-it')
-var attr = require('markdown-it-attrs')
-var anchor = require('markdown-it-anchor')
-var sub = require('markdown-it-sub')
-var sup = require('markdown-it-sup')
-var footnote = require('markdown-it-footnote')
-var mathjax = require('markdown-it-mathjax')
-var tasklists = require('markdown-it-task-lists')
-var abbr = require('markdown-it-abbr')
-var hljs = require('highlight.js')
-var jsyaml = require('js-yaml')
-var moment = require('moment')
-var Handlebars = require('handlebars')
 var URI = require('urijs')
-var abbrev = require('./abbrev')
 var compile = require('./compiler')
-require('bootstrap')
-require('./collapse')
-require('./section')
-require('./social')
-require('./figure')
-require('./hanging')
-require('./punctuation')
-require('./toc')
-require('./util')
 
-var defaults = {lang: 'no', toc: true, tocTitle: 'Innhold'}
-
-Handlebars.registerHelper('dateFormat', function (context, block) {
-  if (moment) {
-    return moment(context).format('YYYY-MM-DD')
-  } else {
-    return context
-  }
-})
-
-var md = markdownit({
-  html: true,
-  typographer: true,
-  highlight: function (str, lang) {
-    if (lang && hljs.getLanguage(lang)) {
-      try {
-        return hljs.highlight(lang, str).value
-      } catch (__) { }
-    }
-    return ''
-  }
-}).use(attr)
-  .use(anchor, {permalink: true, permalinkBefore: true})
-  .use(sub)
-  .use(sup)
-  .use(footnote)
-  .use(mathjax)
-  .use(tasklists)
-  .use(abbr)
-
+// address of current page
 function url () {
   var url = window.location.href
   if (URI(url).protocol() === 'file') {
@@ -1628,6 +1576,38 @@ function url () {
   return URI(url).resource()
 }
 
+// enable MathJax rendering
+function typeset (document) {
+  MathJax.Hub.Queue(['Typeset', MathJax.Hub])
+  return document
+}
+
+// replace <body> with HTML converted from Markdown
+function convert (data) {
+  var html = compile(data, url())
+  // browser strips <html>, <head> and <body> tags
+  html = html.replace('<body>', '<div class="body">')
+             .replace('</body>', '</div>')
+  var doc = $('<div>').html(html)
+  var body = doc.find('div.body')
+  $('body').html(body.html())
+  return $('html')
+}
+
+// like convert(), but reads contents of element and replaces it
+function convertIt (container) {
+  var data = container.text().trim()
+  var html = compile(data, url())
+  // browser strips <html>, <head> and <body> tags
+  html = html.replace('<body>', '<div class="body">')
+             .replace('</body>', '</div>')
+  var doc = $('<div>').html(html)
+  var body = doc.find('div.body')
+  container.html(body.html())
+  return $('html')
+}
+
+// read contents of <iframe>
 function loadIframe (iframe) {
   var deferred = $.Deferred()
   iframe.hide()
@@ -1642,6 +1622,7 @@ function loadIframe (iframe) {
   return deferred.promise()
 }
 
+// read contents of file
 function loadFile (file) {
   var deferred = $.Deferred()
   $.get(file, function (data) {
@@ -1665,101 +1646,8 @@ function loadAjax (iframe) {
   return deferred.promise()
 }
 
-function markdown (str, inline) {
-  str += '\n\n'
-  str += abbrev
-
-  str = md.render(str).trim()
-
-  if (inline && str.match(/^<p>/) && str.match(/<\/p>$/)) {
-    str = str.substring(3, str.length - 4)
-  }
-
-  return str
-}
-
-function yaml (data) {
-  // Allow initial '---' to be omitted since GitHub removes
-  // YAML blocks. Note: this regexp does not allow the block
-  // to contain blank lines!
-  var matches = data.match(/^((?:(?:---[\r\n]+)?[\s\S]*[\r\n]+---[\r\n]+)?)([\s\S]*)$/, data)
-  var props = frontmatter(matches[1])
-  props.content = markdown(matches[2], false)
-  return props
-}
-
-function frontmatter (data) {
-  var props = {}
-  var matches = data.match(/^(?:---[\r\n]+)?([\s\S]*)[\r\n]+---/, data)
-  if (matches) {
-    props = jsyaml.safeLoad(matches[1])
-    for (var key in props) {
-      var val = props[key]
-      if (typeof (val) === 'string') {
-        props[key] = markdown(val, true)
-      }
-    }
-  }
-  return props
-}
-
-function meta () {
-  var props = {}
-  $('meta[name]').each(function () {
-    var name = $(this).attr('name')
-    if (name) {
-      var content = $(this).attr('content')
-      props[name] = content
-    }
-  })
-  return props
-}
-
-// add dynamic elements to view
-function dynamic (view) {
-  if (view.lang === 'en') {
-    view.tocTitle = 'Contents'
-  }
-  view.facebook = $.fn.facebook()
-  view.github = $.fn.github()
-  view.linkedin = $.fn.linkedin()
-  view.twitter = $.fn.twitter()
-  view.mail = $.fn.mail()
-  return view
-}
-
-// like convertIt(), but reads from string and replaces <body>
-function convert (data) {
-  var html = compile(data, url())
-  // browser strips <html>, <head> and <body> tags
-  html = html.replace('<body>', '<div class="body">')
-             .replace('</body>', '</div>')
-  var doc = $('<div>').html(html)
-  var body = doc.find('div.body')
-  $('body').html(body.html())
-  return $('html')
-}
-
-// replace container element with its contents converted to markdown
-function convertIt (container) {
-  var data = container.text().trim()
-  var view = $.extend({}, defaults, meta(), yaml(data))
-  view = dynamic(view)
-  var html = compile(data, url())
-  // browser strips <html>, <head> and <body> tags
-  html = html.replace('<body>', '<div class="body">')
-             .replace('</body>', '</div>')
-  var doc = $('<div>').html(html)
-  var body = doc.find('div.body')
-  container.html(body.html())
-  return $('html')
-}
-
-function typeset (document) {
-  MathJax.Hub.Queue(['Typeset', MathJax.Hub])
-  return document
-}
-
+// read Markdown from <iframe> or file and
+// insert the converted HTML into the document
 function loadData () {
   var file = 'index.txt'
   var iframe = $('iframe').first()
@@ -1771,7 +1659,7 @@ function loadData () {
     // <body> contains no <iframe>: get file from <link> element
     // (or default to index.txt)
     var link = $('link[type="text/markdown"]')
-    if (markdown.length > 0) {
+    if (link.length > 0) {
       file = link.attr('href')
     }
     // replace <body> with converted data from file
@@ -1784,7 +1672,7 @@ $(function () {
   loadData()
 })
 
-},{"./abbrev":5,"./collapse":6,"./compiler":7,"./figure":8,"./hanging":9,"./punctuation":11,"./section":12,"./social":13,"./toc":15,"./util":16,"bootstrap":17,"handlebars":59,"highlight.js":73,"jquery":236,"js-yaml":237,"markdown-it":280,"markdown-it-abbr":267,"markdown-it-anchor":268,"markdown-it-attrs":273,"markdown-it-footnote":275,"markdown-it-mathjax":276,"markdown-it-sub":277,"markdown-it-sup":278,"markdown-it-task-lists":279,"moment":346,"urijs":353}],11:[function(require,module,exports){
+},{"./compiler":7,"jquery":236,"urijs":353}],11:[function(require,module,exports){
 /* global define, jQuery */
 (function (factory) {
   if (typeof define === 'function' && define.amd) {

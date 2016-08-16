@@ -7,9 +7,9 @@
   },
   "scripts": {
     "clean": "rm -f standalone.html",
-    "build": "npm run browser && npm run lint && ./build.sh",
+    "build": "npm run browser && ./build.sh",
     "compile": "node lib/build.js index.txt test.html",
-    "browser": "browserify lib/index.js -o js/markdown-template.js && browserify test/index.js -o test/test.js",
+    "browser": "browserify lib/index.js -o js/markdown-template.js && browserify test/index.js -o test/test.js && npm run lint",
     "minify": "uglifyjs js/markdown-template.js -o js/markdown-template.js",
     "http": "http-server",
     "start": "http-server -p 8000",
