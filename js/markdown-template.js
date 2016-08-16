@@ -1309,7 +1309,7 @@ var jsyaml = require('js-yaml')
 var moment = require('moment')
 var Handlebars = require('handlebars')
 var URI = require('urijs')
-var template = require('./template2')
+var template = require('./template')
 var abbrev = require('./abbrev')
 require('bootstrap')
 require('./collapse')
@@ -1467,7 +1467,7 @@ function convert (data, path) {
 
 module.exports = convert
 
-},{"./abbrev":5,"./collapse":6,"./figure":8,"./hanging":9,"./punctuation":11,"./section":12,"./social":13,"./template2":14,"./toc":15,"./util":16,"bootstrap":17,"handlebars":59,"highlight.js":73,"jquery":236,"js-yaml":237,"markdown-it":280,"markdown-it-abbr":267,"markdown-it-anchor":268,"markdown-it-attrs":273,"markdown-it-footnote":275,"markdown-it-mathjax":276,"markdown-it-sub":277,"markdown-it-sup":278,"markdown-it-task-lists":279,"moment":346,"urijs":353}],8:[function(require,module,exports){
+},{"./abbrev":5,"./collapse":6,"./figure":8,"./hanging":9,"./punctuation":11,"./section":12,"./social":13,"./template":14,"./toc":15,"./util":16,"bootstrap":17,"handlebars":59,"highlight.js":73,"jquery":236,"js-yaml":237,"markdown-it":280,"markdown-it-abbr":267,"markdown-it-anchor":268,"markdown-it-attrs":273,"markdown-it-footnote":275,"markdown-it-mathjax":276,"markdown-it-sub":277,"markdown-it-sup":278,"markdown-it-task-lists":279,"moment":346,"urijs":353}],8:[function(require,module,exports){
 /* global define, jQuery */
 (function (factory) {
   if (typeof define === 'function' && define.amd) {
