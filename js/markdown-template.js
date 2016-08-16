@@ -1374,9 +1374,9 @@ function markdown (str, inline) {
 }
 
 function yaml (data) {
-  // Allow initial '---' to be omitted since GitHub removes
-  // YAML blocks. Note: this regexp does not allow the block
-  // to contain blank lines!
+  // GitHub strips YAML blocks, so allow the initial '---' to be
+  // omitted. Note: this hack does not allow the block to contain
+  // blank lines, although YAML does support such expressions!
   var matches = data.match(/^((?:(?:---[\r\n]+)?[\s\S]*[\r\n]+---[\r\n]+)?)([\s\S]*)$/, data)
   var props = frontmatter(matches[1])
   props.content = markdown(matches[2], false)
@@ -1435,7 +1435,6 @@ function process (document) {
   body.addHangingPunctuation()
   body.fixAnchors()
   body.fixBlockquotes()
-  // document.addTitle()
   body.addCollapsibleSections()
   body.fixFootnotes()
   body.fixTables()
@@ -1445,7 +1444,7 @@ function process (document) {
   return body.html()
 }
 
-function convert (data, path) {
+function compile (data, path) {
   var view = $.extend({}, defaults, yaml(data))
   view = dynamic(view)
   view.url = path
@@ -1455,7 +1454,7 @@ function convert (data, path) {
   return html
 }
 
-module.exports = convert
+module.exports = compile
 
 },{"./abbrev":5,"./collapse":6,"./figure":8,"./hanging":9,"./punctuation":11,"./section":12,"./social":13,"./template":14,"./toc":15,"./util":16,"handlebars":59,"highlight.js":73,"jquery":236,"js-yaml":237,"markdown-it":280,"markdown-it-abbr":267,"markdown-it-anchor":268,"markdown-it-attrs":273,"markdown-it-footnote":275,"markdown-it-mathjax":276,"markdown-it-sub":277,"markdown-it-sup":278,"markdown-it-task-lists":279,"moment":346,"urijs":353}],8:[function(require,module,exports){
 var $ = require('jquery')
@@ -1532,7 +1531,7 @@ $.fn.addHangingPunctuation = function () {
 /* global MathJax */
 var $ = require('jquery')
 var URI = require('urijs')
-var compile = require('./compiler')
+var compile = require('./compile')
 
 // address of current page
 function url () {
@@ -1639,7 +1638,7 @@ $(function () {
   loadData()
 })
 
-},{"./compiler":7,"jquery":236,"urijs":353}],11:[function(require,module,exports){
+},{"./compile":7,"jquery":236,"urijs":353}],11:[function(require,module,exports){
 var $ = require('jquery')
 
 $.fn.addPunctuation = function () {
