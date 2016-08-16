@@ -64,7 +64,7 @@
 <div class="collapse in" id="css-og-rullefelt-section">
 <p>Først litt terminologi: <abbr class="acronym" title="Cascading Style Sheets">CSS</abbr> definerer typografi og utforming innenfor et bestemt visningsområde (<abbr title="figur">fig.</abbr> 1), referert til som «the viewport» i spesifikasjonene. Dette området tar vanligvis opp størsteparten av nettleservinduet, og størrelsen avhenger av hvor mye ledig skjermareal brukeren har til disposisjon (og velger å bruke).</p>
 
-<div class="figure"><img alt="Figur 1. Visningsområdet (markert med rødt)." src="fig1.png">
+<div class="figure"><img alt="Figur 1. Visningsområdet (markert med rødt)." id="fig1" src="fig1.png">
 <p class="caption">Figur 1. Visningsområdet (markert med rødt).</p>
 </div>
 
@@ -115,11 +115,11 @@
 
 <p>Å bruke disse egenskapene resulterer ikke bare i et brudd på standardene, men gir deg ironisk nok også <em>mindre</em> kontroll over nettsidens framtreden. Utvidelsene er nemlig bare støttet i et fåtall nettlesere, og er i tillegg praktisk talt umulig å implementere på mange plattformer. Utformer man sidene sine rundt det premisset at rullefeltenes utseende må følge stilen på siden, er man altså <em>garantert</em> at designet vil slå sprekker på flesteparten av plattformene, der utvidelsene ikke støttes!</p>
 
-<div class="figure"><img alt="Figur 2. Egendefinerte rullefelt. Lengst til høyre er standardrullefeltet i Windows XP, som forsvinner når rullefeltet påvirkes." src="fig2.png">
+<div class="figure"><img alt="Figur 2. Egendefinerte rullefelt. Lengst til høyre er standardrullefeltet i Windows XP, som forsvinner når rullefeltet påvirkes." id="fig2" src="fig2.png">
 <p class="caption">Figur 2. Egendefinerte rullefelt. Lengst til høyre er standardrullefeltet i Windows XP, som forsvinner når rullefeltet påvirkes.</p>
 </div>
 
-<p>Årsaken til at utvidelsene er vanskelig å implementere, er at de påvirker noe så <abbr class="acronym" title="operativsystem">OS</abbr>-spesifikt som måten rullefeltene tegnes opp på. Før Microsoft lanserte et mer grafisk grensesnitt med Windows <abbr class="acronym" title="Experience">XP</abbr>, var det forholdsvis enkle og lett påvirkelige former og figurer som utgjorde bestanddelene (<abbr title="jamfør">jf.</abbr> <a href="#fig2"><abbr title="figur">fig.</abbr> 2</a>). Både på nyere Linux- og Macintosh-systemer og i Windows <abbr class="acronym" title="Experience">XP</abbr> er imidlertid brukergrensesnittet bygd opp av små, forseggjorte grafikkfiler som ikke like lett lar seg forandre på. Prøver man ut <abbr class="acronym" title="Cascading Style Sheets">CSS</abbr>-utvidelsene i Windows <abbr class="acronym" title="Experience">XP</abbr> med standardtemaet valgt, blir faktisk rullefeltet byttet ut med den eldre utgaven fra de tidligere Windows-versjonene, som etter undertegnedes smak ikke er langt på nær like behagelig å se på. Et annet problem er at det ikke nødvendigvis er rullefelt som brukes for å rulle på en gitt plattform, noe <abbr class="acronym" title="Cascading Style Sheets">CSS</abbr>-spesifikasjonen som nevnt lar være å si noe om.</p>
+<p>Årsaken til at utvidelsene er vanskelig å implementere, er at de påvirker noe så <abbr class="acronym" title="operativsystem">OS</abbr>-spesifikt som måten rullefeltene tegnes opp på. Før Microsoft lanserte et mer grafisk grensesnitt med Windows <abbr class="acronym" title="Experience">XP</abbr>, var det forholdsvis enkle og lett påvirkelige former og figurer som utgjorde bestanddelene (<abbr title="jamfør">jf.</abbr> <a href="#fig2" title=""><abbr title="figur">fig.</abbr> 2</a>). Både på nyere Linux- og Macintosh-systemer og i Windows <abbr class="acronym" title="Experience">XP</abbr> er imidlertid brukergrensesnittet bygd opp av små, forseggjorte grafikkfiler som ikke like lett lar seg forandre på. Prøver man ut <abbr class="acronym" title="Cascading Style Sheets">CSS</abbr>-utvidelsene i Windows <abbr class="acronym" title="Experience">XP</abbr> med standardtemaet valgt, blir faktisk rullefeltet byttet ut med den eldre utgaven fra de tidligere Windows-versjonene, som etter undertegnedes smak ikke er langt på nær like behagelig å se på. Et annet problem er at det ikke nødvendigvis er rullefelt som brukes for å rulle på en gitt plattform, noe <abbr class="acronym" title="Cascading Style Sheets">CSS</abbr>-spesifikasjonen som nevnt lar være å si noe om.</p>
 
 <p>Nå <em>er</em> det mulig å unngå ikke-validerende nettsider ved å benytte seg av såkalte <a href="http://www.virtuelvis.com/archives/158.html">kondisjonelle kommentarer</a> for Internet Explorer, eller bruke en annen metode basert på JavaScript eller Flash. I de aller fleste tilfeller vil imidlertid egendefinerte rullefelt gjøre nettsiden mer utiltalende eller vanskelig å bruke, fordi både brukervennligheten og <em>brukerhøfligheten</em> står på spill.</p>
 </div>
@@ -129,7 +129,7 @@
 <h2><a aria-hidden="true" class="header-anchor" href="#rullefelt-hos-forskjellige-brukere" title="Rullefelt hos forskjellige brukere"></a> Rullefelt hos forskjellige brukere<a aria-controls="rullefelt-hos-forskjellige-brukere-section" aria-expanded="true" aria-hidden="true" class="collapse-button" data-toggle="collapse" href="#rullefelt-hos-forskjellige-brukere-section" role="button"></a></h2>
 
 <div class="collapse in" id="rullefelt-hos-forskjellige-brukere-section">
-<div class="figure"><img alt="Figur 3. Rullefelt i Windows XP, Linux med GNOME, Linux med KDE og Mac OS X." src="fig3.png">
+<div class="figure"><img alt="Figur 3. Rullefelt i Windows XP, Linux med GNOME, Linux med KDE og Mac OS X." id="fig3" src="fig3.png">
 <p class="caption">Figur 3. Rullefelt i Windows XP, Linux med GNOME, Linux med KDE og Mac OS X.</p>
 </div>
 
@@ -155,7 +155,7 @@
 <h2><a aria-hidden="true" class="header-anchor" href="#rulling-innenfor-visningsomradet" title="Rulling innenfor visningsområdet"></a> Rulling innenfor visningsområdet<a aria-controls="rulling-innenfor-visningsomradet-section" aria-expanded="true" aria-hidden="true" class="collapse-button" data-toggle="collapse" href="#rulling-innenfor-visningsomradet-section" role="button"></a></h2>
 
 <div class="collapse in" id="rulling-innenfor-visningsomradet-section">
-<div class="figure"><img alt="Figur 4. Rulling innenfor visningsområdet. Fra 2Advanced Studios." src="fig4.png">
+<div class="figure"><img alt="Figur 4. Rulling innenfor visningsområdet. Fra 2Advanced Studios." id="fig4" src="fig4.png">
 <p class="caption">Figur 4. Rulling innenfor visningsområdet. Fra 2Advanced Studios.</p>
 </div>
 

@@ -206,7 +206,7 @@ Siffer 7--8: FAC (Final Assembly Code)\
 Siffer 9--14: SNR (Serial Number)\
 Siffer 15: SP (Spare)
 
-`*#0000#` -- viser telefonens fastvare-revisjon. Fastvaren (engelsk *firmware*) kan sies å være telefonens «operativsystem», dvs. den programvaren som oppretter et brukergrensesnitt og styrer alle telefonens funksjoner. Likevel er det ikke snakk om «mykvare» i tradisjonell forstand -- operativsystemet i telefonen er lagret på en ROM-brikke i telefonen, derav navnet «fastvare». Nyere telefoner kommer helst også med nyere fastvare-revisjoner, hvor feil fra tidligere revisjoner er rettet og, hvis ønskelig, nye funksjoner implementert. Jo høyere revisjonsnummer, jo nyere revisjon.
+`*#0000#` -- viser telefonens fastvare-revisjon. Fastvaren (engelsk *firmware*) kan sies å være telefonens «operativsystem», dvs. den programvaren som oppretter et brukergrensesnitt og styrer alle telefonens funksjoner. Likevel er det ikke snakk om «mykvare» i tradisjonell forstand -- operativsystemet i telefonen er lagret på en ROM-brikke i telefonen, derav navnet «fastvare». Nyere telefoner kommer helst også med nyere fastvare-revisjoner, hvor feil fra tidligere revisjoner er rettet og, hvis ønskelig, nye funksjoner implementert. Jo høyere revisjonsnummer, jo nyere revisjon. {#fastvare}
 
 `*#746025625#` -- [`*#sim0clock#`] -- sjekker om SIM-klokken kan stoppes. Stoppes SIM-klokken forlenges batteritiden.
 
