@@ -9,7 +9,7 @@ CSS og rullefelt
 
 Først litt terminologi: CSS definerer typografi og utforming innenfor et bestemt visningsområde (fig. 1), referert til som «the viewport» i spesifikasjonene. Dette området tar vanligvis opp størsteparten av nettleservinduet, og størrelsen avhenger av hvor mye ledig skjermareal brukeren har til disposisjon (og velger å bruke).
 
-![Figur 1. Visningsområdet (markert med rødt).](fig1.png) {#fig1}
+![Figur 1. Visningsområdet (markert med rødt).](fig1.png){#fig1}
 
 > **En utbredt misforståelse blant webdesignere er at størrelsen på visningsområdet tilsvarer skjermoppløsningen til brukeren, noe som slett ikke trenger å være tilfellet. Brukeren kan ha flere vinduer oppe samtidig, eller ha konfigurert nettleseren på en måte som begrenser visningsområdets omfang i nettleservinduet. Det er altså meningsløst å snakke om å utforme nettsider for bestemte skjermoppløsninger.**
 
@@ -34,7 +34,7 @@ Egenskapene det er snakk om, er disse:
 
 Å bruke disse egenskapene resulterer ikke bare i et brudd på standardene, men gir deg ironisk nok også *mindre* kontroll over nettsidens framtreden. Utvidelsene er nemlig bare støttet i et fåtall nettlesere, og er i tillegg praktisk talt umulig å implementere på mange plattformer. Utformer man sidene sine rundt det premisset at rullefeltenes utseende må følge stilen på siden, er man altså *garantert* at designet vil slå sprekker på flesteparten av plattformene, der utvidelsene ikke støttes!
 
-![Figur 2. Egendefinerte rullefelt. Lengst til høyre er standardrullefeltet i Windows XP, som forsvinner når rullefeltet påvirkes.](fig2.png) {#fig2}
+![Figur 2. Egendefinerte rullefelt. Lengst til høyre er standardrullefeltet i Windows XP, som forsvinner når rullefeltet påvirkes.](fig2.png){#fig2}
 
 Årsaken til at utvidelsene er vanskelig å implementere, er at de påvirker noe så OS-spesifikt som måten rullefeltene tegnes opp på. Før Microsoft lanserte et mer grafisk grensesnitt med Windows XP, var det forholdsvis enkle og lett påvirkelige former og figurer som utgjorde bestanddelene (jf. [fig. 2](#fig2)). Både på nyere Linux- og Macintosh-systemer og i Windows XP er imidlertid brukergrensesnittet bygd opp av små, forseggjorte grafikkfiler som ikke like lett lar seg forandre på. Prøver man ut CSS-utvidelsene i Windows XP med standardtemaet valgt, blir faktisk rullefeltet byttet ut med den eldre utgaven fra de tidligere Windows-versjonene, som etter undertegnedes smak ikke er langt på nær like behagelig å se på. Et annet problem er at det ikke nødvendigvis er rullefelt som brukes for å rulle på en gitt plattform, noe CSS-spesifikasjonen som nevnt lar være å si noe om.
 
@@ -43,7 +43,7 @@ Nå *er* det mulig å unngå ikke-validerende nettsider ved å benytte seg av s�
 Rullefelt hos forskjellige brukere
 ----------------------------------
 
-![Figur 3. Rullefelt i Windows XP, Linux med GNOME, Linux med KDE og Mac OS X.](fig3.png) {#fig3}
+![Figur 3. Rullefelt i Windows XP, Linux med GNOME, Linux med KDE og Mac OS X.](fig3.png){#fig3}
 
 Er det noe som varierer fra plattform til plattform, så er det brukergrensesnittets utforming og utseende. Med funksjonalitet som egne fargevalg, temaer og skrivebordsmiljøer, er dette ofte ikke bare forskjellig fra plattform til plattform, men også fra bruker til bruker. Selv hvis vi generaliserer og går ut fra at alle som bruker et gitt operativsystem har samme type brukergrensesnitt, medfører egendefinerte rullefelt komplikasjoner. Macintosh-brukere ser etter «Macintosh-rullefelt», Windows-brukere ser etter «Windows-rullefelt», men ingen finner nøyaktig det de leter etter. En av de virkelig *flotte* sidene ved dagens operativsystemer er at folk kjenner seg igjen fra program til program.
 
@@ -59,7 +59,7 @@ I tillegg vil man aldri kunne vite hvilken farge det er på nettleseren som rull
 Rulling innenfor visningsområdet
 --------------------------------
 
-![Figur 4. Rulling innenfor visningsområdet. Fra 2Advanced Studios.](fig4.png) {#fig4}
+![Figur 4. Rulling innenfor visningsområdet. Fra 2Advanced Studios.](fig4.png){#fig4}
 
 Til slutt kommer noen ord om rulling innenfor visningsområdet, eller «inline scrolling» som det gjerne heter i sjargongen. Det er altså snakk om at deler av nettsiden er utstyrt med egne mekanismer for rulling, enten det skyldes bruk av [rammer](http://www.unrealized.org/les_guide/html/unnga_frames/) («frames»), CSS-egenskapen `overflow` eller Flash. Også dette gjør sidene vanskeligere å bruke, av navigeringsmessige årsaker. Slike sideelementer krever stort sett at man velger dem med pekeren, og dermed økes klikkingen betraktelig. Samtidig økes også risikoen for *feilklikking*, fordi rullefeltene ofte befinner seg side om side med lenker og andre interaktive elementer. Særlig for folk som bruker styreplate, er det praktisk at klikkingen reduseres til et minimum.
 
