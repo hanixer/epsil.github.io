@@ -3,7 +3,7 @@ date: 2016-04-20
 lang: en
 ---
 
-The following setup allows you to [run Bash scripts from Windows' command line](#usage). It also augments the command line with common Unix commands like `ls`, `mv` and `rm`, which is useful if these are ingrained into your muscle memory.
+The following setup allows you to [run Bash scripts from Windows' command prompt](#usage). It also augments the command prompt with common Unix commands like `ls`, `mv` and `rm`, which is useful if these are ingrained into your muscle memory.
 
 (For a list of standalone Bash shells for Windows, see [alternatives](#alternatives).)
 
@@ -46,10 +46,6 @@ Windows does not have the `open` command. To alias it to `start`, create a `C:\W
 Alternatives
 ------------
 
-MSYS and MinGW both provide standalone Bash shells which can be used without modifying the `PATH` variable.
+Windows 10 includes its own [Linux Bash Shell](http://www.howtogeek.com/249966/how-to-install-and-use-the-linux-bash-shell-on-windows-10/), based on Ubuntu. Note that this is is a *standalone* shell, and does not interfere with Windows' command prompt.
 
-Windows 10 includes its own [Linux Bash Shell](http://www.howtogeek.com/249966/how-to-install-and-use-the-linux-bash-shell-on-windows-10/).
-
-For older Windows versions, the [Cygwin](http://www.cygwin.com/) project provides what is probably the most complete standalone Bash shell for Windows.
-
-Alternatively, [Git for Windows](https://git-scm.com/download/win) also includes a standalone Bash shell.
+Another comprehensive standalone shell is provided by the [Cygwin](http://www.cygwin.com/) project, which can be used on older Windows versions. MSYS and MinGW also include standalone shells, and [Git for Windows](https://git-scm.com/download/win) includes a "Git Bash" shell.
