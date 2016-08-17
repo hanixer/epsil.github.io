@@ -534,6 +534,19 @@ $.fn.listOfContents = function () {
     }
   }
 
+  // generate ID if missing
+  var fixHeader = function (header) {
+    var id = header.attr('id')
+    if (id === undefined || id === '') {
+      var clone = header.clone()
+      clone.find('[aria-hidden="true"]').remove()
+      var title = clone.text().trim()
+      id = S(title).slugify()
+      header.attr('id', id)
+    }
+    return header
+  }
+
   var headers = body.find('h1, h2, h3, h4, h5, h6')
 
   if (headers.length === 0) {
@@ -545,7 +558,7 @@ $.fn.listOfContents = function () {
     return !$(this).is(exclude)
   })
   headers.each(function (i, el) {
-    var header = $(this).fixHeader()
+    var header = fixHeader($(this))
     var html = header.html()
     var id = header.attr('id')
     var level = parseInt(header.prop('tagName').match(/\d+/)[0])
@@ -568,7 +581,15 @@ $.fn.listOfContents = function () {
 
 },{"jquery":21,"string":25}],7:[function(require,module,exports){
 var $ = require('jquery')
-var S = require('string')
+
+$.fn.addAcronyms = function () {
+  return this.map(function () {
+    $(this).find('abbr').filter(function () {
+      var text = $(this).text().trim()
+      return text.toUpperCase() === text
+    }).addClass('acronym')
+  })
+}
 
 $.fn.addHotkeys = function () {
   return this.map(function () {
@@ -592,6 +613,30 @@ $.fn.addHotkeys = function () {
   })
 }
 
+$.fn.addPullQuotes = function () {
+  return this.map(function () {
+    $(this).find('p.pull-quote').each(function () {
+      var p = $(this)
+      var blockquote = p.parent()
+      if (blockquote.prop('tagName') !== 'BLOCKQUOTE') {
+        blockquote = p.wrap('<blockquote>').parent()
+      }
+      blockquote.addClass(p.attr('class'))
+      p.removeAttr('class')
+    })
+  })
+}
+
+$.fn.addSmallCaps = function () {
+  return this.map(function () {
+    $(this).find('sc').replaceWith(function () {
+      var span = $('<span class="small-caps"></span>')
+      span.html($(this).html())
+      return span
+    })
+  })
+}
+
 $.fn.addTeXLogos = function () {
   return this.map(function () {
     var body = $(this)
@@ -609,95 +654,6 @@ $.fn.addTeXLogos = function () {
     body.find('abbr[title=PCTeX]').html('PC' + tex)
     body.find('abbr[title=MacTeX]').html('Mac' + tex)
     body.find('abbr[title=TeX]').html(tex)
-  })
-}
-
-$.fn.addAcronyms = function () {
-  return this.map(function () {
-    $(this).find('abbr').filter(function () {
-      var text = $(this).text().trim()
-      return text.toUpperCase() === text
-    }).addClass('acronym')
-  })
-}
-
-$.fn.addSmallCaps = function () {
-  return this.map(function () {
-    $(this).find('sc').replaceWith(function () {
-      var span = $('<span class="small-caps"></span>')
-      span.html($(this).html())
-      return span
-    })
-  })
-}
-
-$.fn.addPullQuotes = function () {
-  return this.map(function () {
-    $(this).find('p.pull-quote').each(function () {
-      var p = $(this)
-      var blockquote = p.parent()
-      if (blockquote.prop('tagName') !== 'BLOCKQUOTE') {
-        blockquote = p.wrap('<blockquote>').parent()
-      }
-      blockquote.addClass(p.attr('class'))
-      p.removeAttr('class')
-    })
-  })
-}
-
-$.fn.removeAriaHidden = function () {
-  return this.each(function () {
-    $(this).find('[aria-hidden="true"]').remove()
-  })
-}
-
-$.fn.removeAria = function () {
-  return this.map(function () {
-    return $(this).clone().removeAriaHidden()
-  })
-}
-
-$.fn.fixHeader = function () {
-  return this.each(function () {
-    var header = $(this)
-    var text = header.text().trim()
-    var id = header.attr('id')
-
-    if (id === undefined || id === '') {
-      id = S(text).slugify()
-      header.attr('id', id)
-    }
-  })
-}
-
-$.fn.fixHeaders = function () {
-  return this.each(function () {
-    var headers = $(this).find('h1, h2, h3, h4, h5, h6')
-    headers.fixHeader()
-  })
-}
-
-$.fn.fixAnchors = function () {
-  return this.each(function () {
-    $(this).find('h1 a[aria-hidden="true"], h2 a[aria-hidden="true"], h3 a[aria-hidden="true"], h4 a[aria-hidden="true"], h5 a[aria-hidden="true"], h6 a[aria-hidden="true"]').each(function () {
-      var anchor = $(this)
-      var header = anchor.parent()
-      var id = header.attr('id')
-
-      // ensure href is correct
-      if (id) {
-        anchor.attr('href', '#' + id)
-      }
-
-      // set title attribute
-      if (!anchor.is('[title]')) {
-        var title = header.removeAria().text().trim()
-        anchor.attr('title', title)
-      }
-
-      // remove glyph (provided by CSS)
-      anchor.text('')
-    })
   })
 }
 
@@ -775,50 +731,19 @@ $.fn.fixTables = function () {
   })
 }
 
-// http://stackoverflow.com/questions/10206298/jquery-multiple-selectors-order#answer-10206378
-$.fn.coalesce = function (selectors) {
+$.fn.removeAria = function () {
   return this.map(function () {
-    var body = $(this)
-    var match = body.find([])
-    $.each(selectors, function (i, selector) {
-      var res = body.find(selector)
-      if (res.length > 0) {
-        match = res.first()
-        return false
-      }
-    })
-    return match
+    return $(this).clone().removeAriaHidden()
   })
 }
 
-$.fn.addTitle = function () {
+$.fn.removeAriaHidden = function () {
   return this.each(function () {
-    var title = $(this).find('title')
-    if (title.length === 0) {
-      title = $('title')
-    }
-
-    var meta = $(this).find('meta[name=title]')
-    if (meta.length === 0) {
-      meta = $('meta[name=title]')
-    }
-
-    if (meta.length !== 0) {
-      title.text(meta.attr('content'))
-    } else {
-      // var heading = $(this).coalesce(['h1', 'h2', 'h3', 'h4', 'h5', 'h6', 'strong', 'b', 'em', 'i', 'p']).first()
-      var heading = $(this).find('h1').first()
-      if (heading.length > 0) {
-        var txt = heading.removeAria().text().trim()
-        title.html(txt)
-        var header = $(this).find('header')
-        header.prepend(heading)
-      }
-    }
+    $(this).find('[aria-hidden="true"]').remove()
   })
 }
 
-},{"jquery":21,"string":25}],8:[function(require,module,exports){
+},{"jquery":21}],8:[function(require,module,exports){
 // This file is autogenerated via the `commonjs` Grunt task. You can require() this file in a CommonJS environment.
 require('../../js/transition.js')
 require('../../js/alert.js')
@@ -17852,20 +17777,6 @@ describe('util.js', function () {
     })
   })
 
-  describe('fixAnchors()', function () {
-    it('should add title attribute to header anchor', function () {
-      var div = $('<div><h1><a aria-hidden="true" href="#"></a>Header</h1></div>')
-      div.fixAnchors().prop('outerHTML').should.equal(
-        '<div><h1><a title="Header" aria-hidden="true" href="#"></a>Header</h1></div>')
-    })
-
-    it('should remove anchor glyph', function () {
-      var div = $('<div><h1><a aria-hidden="true" href="#">\u00b6</a>Header</h1></div>')
-      div.fixAnchors().prop('outerHTML').should.equal(
-        '<div><h1><a title="Header" aria-hidden="true" href="#"></a>Header</h1></div>')
-    })
-  })
-
   describe('fixFootnotes()', function () {
     it('should add title attribute to footnote link', function () {
       var div = $('<div>' +
@@ -17895,26 +17806,6 @@ describe('util.js', function () {
                   '</div>')
       div.fixFootnotes().prop('outerHTML').should.equal(
         '<div><p>This is a test.<sup class="footnote-ref"><a title="This is a footnote." id="fnref1" href="#fn1">[1]</a></sup> Same footnote again.<sup class="footnote-ref"><a title="This is a footnote." id="fnref2" href="#fn1">[1]</a></sup></p><hr class="footnotes-sep"><section class="footnotes"><ol class="footnotes-list"><li class="footnote-item" id="fn1"><p>This is a footnote. <a title="This is a test.[1] Same footnote again.[1]" class="footnote-backref" href="#fnref1">\u21a9</a> <a title="This is a test.[1] Same footnote again.[1]" class="footnote-backref" href="#fnref2">\u21a9</a></p></li></ol></section></div>')
-    })
-  })
-
-  describe('addTitle()', function () {
-    it('should set title to first header', function () {
-      var div = $('<div>' +
-                  '<head>' +
-                  '<title></title>' +
-                  '</head>' +
-                  '<body>' +
-                  '<h1>Header</h1>' +
-                  '<p>Paragraph</p>' +
-                  '</body>' +
-                  '</div>')
-      div.addTitle().prop('outerHTML').should.equal(
-        '<div>' +
-        '<title>Header</title>' +
-        '<h1>Header</h1>' +
-        '<p>Paragraph</p>' +
-        '</div>')
     })
   })
 })

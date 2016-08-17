@@ -210,20 +210,6 @@ describe('util.js', function () {
     })
   })
 
-  describe('fixAnchors()', function () {
-    it('should add title attribute to header anchor', function () {
-      var div = $('<div><h1><a aria-hidden="true" href="#"></a>Header</h1></div>')
-      div.fixAnchors().prop('outerHTML').should.equal(
-        '<div><h1><a title="Header" aria-hidden="true" href="#"></a>Header</h1></div>')
-    })
-
-    it('should remove anchor glyph', function () {
-      var div = $('<div><h1><a aria-hidden="true" href="#">\u00b6</a>Header</h1></div>')
-      div.fixAnchors().prop('outerHTML').should.equal(
-        '<div><h1><a title="Header" aria-hidden="true" href="#"></a>Header</h1></div>')
-    })
-  })
-
   describe('fixFootnotes()', function () {
     it('should add title attribute to footnote link', function () {
       var div = $('<div>' +
@@ -253,26 +239,6 @@ describe('util.js', function () {
                   '</div>')
       div.fixFootnotes().prop('outerHTML').should.equal(
         '<div><p>This is a test.<sup class="footnote-ref"><a title="This is a footnote." id="fnref1" href="#fn1">[1]</a></sup> Same footnote again.<sup class="footnote-ref"><a title="This is a footnote." id="fnref2" href="#fn1">[1]</a></sup></p><hr class="footnotes-sep"><section class="footnotes"><ol class="footnotes-list"><li class="footnote-item" id="fn1"><p>This is a footnote. <a title="This is a test.[1] Same footnote again.[1]" class="footnote-backref" href="#fnref1">\u21a9</a> <a title="This is a test.[1] Same footnote again.[1]" class="footnote-backref" href="#fnref2">\u21a9</a></p></li></ol></section></div>')
-    })
-  })
-
-  describe('addTitle()', function () {
-    it('should set title to first header', function () {
-      var div = $('<div>' +
-                  '<head>' +
-                  '<title></title>' +
-                  '</head>' +
-                  '<body>' +
-                  '<h1>Header</h1>' +
-                  '<p>Paragraph</p>' +
-                  '</body>' +
-                  '</div>')
-      div.addTitle().prop('outerHTML').should.equal(
-        '<div>' +
-        '<title>Header</title>' +
-        '<h1>Header</h1>' +
-        '<p>Paragraph</p>' +
-        '</div>')
     })
   })
 })

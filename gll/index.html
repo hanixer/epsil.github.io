@@ -72,7 +72,7 @@
 <article>
 <header>
 <section id="general-parser-combinators-in-racket">
-<h1 class="title">General Parser Combinators in Racket</h1>
+<h1 class="title"><a aria-hidden="true" class="header-anchor" href="#general-parser-combinators-in-racket" title="General Parser Combinators in Racket"></a>General Parser Combinators in Racket</h1>
 </section>
 </header>
 
@@ -92,7 +92,7 @@
 <p>The framework is implemented in <a href="http://www.racket-lang.org/">Racket</a>, a variant of Scheme, which is a dialect of Lisp. However, the principles are not specific to Racket and could be expressed in any language; porting is outlined at the end of the article.</p>
 
 <section id="introduction">
-<h2><a aria-hidden="true" class="header-anchor" href="#introduction" title="Introduction"></a> Introduction<a aria-controls="introduction-section" aria-expanded="true" aria-hidden="true" class="collapse-button" data-toggle="collapse" href="#introduction-section" role="button"></a></h2>
+<h2><a aria-hidden="true" class="header-anchor" href="#introduction" title="Introduction"></a>Introduction<a aria-controls="introduction-section" aria-expanded="true" aria-hidden="true" class="collapse-button" data-toggle="collapse" href="#introduction-section" role="button"></a></h2>
 
 <div class="collapse in" id="introduction-section">
 <p>Traditional top-down parsers cannot handle all recursive grammars, even if recursion may be the most natural way to express the language. An example is the following grammar for left-associative arithmetic on 0’s and 1’s:</p>
@@ -145,7 +145,7 @@
 </section>
 
 <section id="simple-parser-combinators">
-<h2><a aria-hidden="true" class="header-anchor" href="#simple-parser-combinators" title="Simple parser combinators"></a> Simple parser combinators<a aria-controls="simple-parser-combinators-section" aria-expanded="true" aria-hidden="true" class="collapse-button" data-toggle="collapse" href="#simple-parser-combinators-section" role="button"></a></h2>
+<h2><a aria-hidden="true" class="header-anchor" href="#simple-parser-combinators" title="Simple parser combinators"></a>Simple parser combinators<a aria-controls="simple-parser-combinators-section" aria-expanded="true" aria-hidden="true" class="collapse-button" data-toggle="collapse" href="#simple-parser-combinators-section" role="button"></a></h2>
 
 <div class="collapse in" id="simple-parser-combinators-section">
 <p>Let us start by defining some terms. A <em>parser</em> is a function that takes a string as input and returns a <em>parse result</em>. A parse result is either a <em>success</em> or a <em>failure</em>. (All our parsers will work on strings, but one could easily define parsers working on a stream of symbols or tokens.)</p>
@@ -295,7 +295,7 @@
 </section>
 
 <section id="memoization">
-<h2><a aria-hidden="true" class="header-anchor" href="#memoization" title="Memoization"></a> Memoization<a aria-controls="memoization-section" aria-expanded="true" aria-hidden="true" class="collapse-button" data-toggle="collapse" href="#memoization-section" role="button"></a></h2>
+<h2><a aria-hidden="true" class="header-anchor" href="#memoization" title="Memoization"></a>Memoization<a aria-controls="memoization-section" aria-expanded="true" aria-hidden="true" class="collapse-button" data-toggle="collapse" href="#memoization-section" role="button"></a></h2>
 
 <div class="collapse in" id="memoization-section">
 <p>We now turn to the issue of efficiency. Currently, none of the functions cache their results. That is wasteful because parsing is a such a repetitious task. If each function maintains a table over its input and output values, it can avoid calculating things twice by returning the cached value instead. This is called <em>memoization</em>.</p>
@@ -402,7 +402,7 @@
 </section>
 
 <section id="continuation-passing-style">
-<h2><a aria-hidden="true" class="header-anchor" href="#continuation-passing-style" title="Continuation-passing style"></a> Continuation-passing style<a aria-controls="continuation-passing-style-section" aria-expanded="true" aria-hidden="true" class="collapse-button" data-toggle="collapse" href="#continuation-passing-style-section" role="button"></a></h2>
+<h2><a aria-hidden="true" class="header-anchor" href="#continuation-passing-style" title="Continuation-passing style"></a>Continuation-passing style<a aria-controls="continuation-passing-style-section" aria-expanded="true" aria-hidden="true" class="collapse-button" data-toggle="collapse" href="#continuation-passing-style-section" role="button"></a></h2>
 
 <div class="collapse in" id="continuation-passing-style-section">
 <p>So far, we have taken advantage of the fact that many grammars can be translated directly into a program. Such a program will have a straightforward, hierarchical structure, with functions calling functions all the way down to the level of string matching. It will either return a single result or no result at all.</p>
@@ -617,7 +617,7 @@
 </section>
 
 <section id="trampoline">
-<h2><a aria-hidden="true" class="header-anchor" href="#trampoline" title="Trampoline"></a> Trampoline<a aria-controls="trampoline-section" aria-expanded="true" aria-hidden="true" class="collapse-button" data-toggle="collapse" href="#trampoline-section" role="button"></a></h2>
+<h2><a aria-hidden="true" class="header-anchor" href="#trampoline" title="Trampoline"></a>Trampoline<a aria-controls="trampoline-section" aria-expanded="true" aria-hidden="true" class="collapse-button" data-toggle="collapse" href="#trampoline-section" role="button"></a></h2>
 
 <div class="collapse in" id="trampoline-section">
 <p>A weakness of the current implementation is that the memoized parser results are scattered all over the place. Each parser has its own memoization table, storing the accumulated results from both the current parsing and from previous parsings. This is difficult to maintain and optimize.</p>
@@ -865,7 +865,7 @@
 </section>
 
 <section id="final-improvements">
-<h2><a aria-hidden="true" class="header-anchor" href="#final-improvements" title="Final improvements"></a> Final improvements<a aria-controls="final-improvements-section" aria-expanded="true" aria-hidden="true" class="collapse-button" data-toggle="collapse" href="#final-improvements-section" role="button"></a></h2>
+<h2><a aria-hidden="true" class="header-anchor" href="#final-improvements" title="Final improvements"></a>Final improvements<a aria-controls="final-improvements-section" aria-expanded="true" aria-hidden="true" class="collapse-button" data-toggle="collapse" href="#final-improvements-section" role="button"></a></h2>
 
 <div class="collapse in" id="final-improvements-section">
 <p>As defined, the <code>alt</code> and <code>seq</code> combinators only take two arguments: we can write <code>(alt a b)</code>, but not <code>(alt a b c)</code>. We can generalize <code>alt</code> by iterating over a rest argument <code>parsers</code>:</p>
@@ -979,7 +979,7 @@ factor -&gt; "(" expr ")"
 </section>
 
 <section id="further-reading">
-<h2><a aria-hidden="true" class="header-anchor" href="#further-reading" title="Further reading"></a> Further reading<a aria-controls="further-reading-section" aria-expanded="true" aria-hidden="true" class="collapse-button" data-toggle="collapse" href="#further-reading-section" role="button"></a></h2>
+<h2><a aria-hidden="true" class="header-anchor" href="#further-reading" title="Further reading"></a>Further reading<a aria-controls="further-reading-section" aria-expanded="true" aria-hidden="true" class="collapse-button" data-toggle="collapse" href="#further-reading-section" role="button"></a></h2>
 
 <div class="collapse in" id="further-reading-section">
 <p>This concludes the article. Several improvements are possible from here. For example, one could specify a monadic interface for composing parsers. Racket’s macro system could be used to define an even simpler <abbr class="acronym" title="Domain-Specific Language">DSL</abbr>. Branches in the grammar could be parallelized by using a monitor for the trampoline. Finally, one can optimize the combinators by adorning the parsers with metadata for calculating the FIRST and FOLLOW sets (Spiewak).</p>

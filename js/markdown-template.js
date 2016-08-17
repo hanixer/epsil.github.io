@@ -1,4 +1,892 @@
 (function e(t,n,r){function s(o,u){if(!n[o]){if(!t[o]){var a=typeof require=="function"&&require;if(!u&&a)return a(o,!0);if(i)return i(o,!0);var f=new Error("Cannot find module '"+o+"'");throw f.code="MODULE_NOT_FOUND",f}var l=n[o]={exports:{}};t[o][0].call(l.exports,function(e){var n=t[o][1][e];return s(n?n:e)},l,l.exports,e,t,n,r)}return n[o].exports}var i=typeof require=="function"&&require;for(var o=0;o<r.length;o++)s(r[o]);return s})({1:[function(require,module,exports){
+
+},{}],2:[function(require,module,exports){
+(function (process){
+// Copyright Joyent, Inc. and other Node contributors.
+//
+// Permission is hereby granted, free of charge, to any person obtaining a
+// copy of this software and associated documentation files (the
+// "Software"), to deal in the Software without restriction, including
+// without limitation the rights to use, copy, modify, merge, publish,
+// distribute, sublicense, and/or sell copies of the Software, and to permit
+// persons to whom the Software is furnished to do so, subject to the
+// following conditions:
+//
+// The above copyright notice and this permission notice shall be included
+// in all copies or substantial portions of the Software.
+//
+// THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS
+// OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF
+// MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN
+// NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM,
+// DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR
+// OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE
+// USE OR OTHER DEALINGS IN THE SOFTWARE.
+
+// resolves . and .. elements in a path array with directory names there
+// must be no slashes, empty elements, or device names (c:\) in the array
+// (so also no leading and trailing slashes - it does not distinguish
+// relative and absolute paths)
+function normalizeArray(parts, allowAboveRoot) {
+  // if the path tries to go above the root, `up` ends up > 0
+  var up = 0;
+  for (var i = parts.length - 1; i >= 0; i--) {
+    var last = parts[i];
+    if (last === '.') {
+      parts.splice(i, 1);
+    } else if (last === '..') {
+      parts.splice(i, 1);
+      up++;
+    } else if (up) {
+      parts.splice(i, 1);
+      up--;
+    }
+  }
+
+  // if the path is allowed to go above the root, restore leading ..s
+  if (allowAboveRoot) {
+    for (; up--; up) {
+      parts.unshift('..');
+    }
+  }
+
+  return parts;
+}
+
+// Split a filename into [root, dir, basename, ext], unix version
+// 'root' is just a slash, or nothing.
+var splitPathRe =
+    /^(\/?|)([\s\S]*?)((?:\.{1,2}|[^\/]+?|)(\.[^.\/]*|))(?:[\/]*)$/;
+var splitPath = function(filename) {
+  return splitPathRe.exec(filename).slice(1);
+};
+
+// path.resolve([from ...], to)
+// posix version
+exports.resolve = function() {
+  var resolvedPath = '',
+      resolvedAbsolute = false;
+
+  for (var i = arguments.length - 1; i >= -1 && !resolvedAbsolute; i--) {
+    var path = (i >= 0) ? arguments[i] : process.cwd();
+
+    // Skip empty and invalid entries
+    if (typeof path !== 'string') {
+      throw new TypeError('Arguments to path.resolve must be strings');
+    } else if (!path) {
+      continue;
+    }
+
+    resolvedPath = path + '/' + resolvedPath;
+    resolvedAbsolute = path.charAt(0) === '/';
+  }
+
+  // At this point the path should be resolved to a full absolute path, but
+  // handle relative paths to be safe (might happen when process.cwd() fails)
+
+  // Normalize the path
+  resolvedPath = normalizeArray(filter(resolvedPath.split('/'), function(p) {
+    return !!p;
+  }), !resolvedAbsolute).join('/');
+
+  return ((resolvedAbsolute ? '/' : '') + resolvedPath) || '.';
+};
+
+// path.normalize(path)
+// posix version
+exports.normalize = function(path) {
+  var isAbsolute = exports.isAbsolute(path),
+      trailingSlash = substr(path, -1) === '/';
+
+  // Normalize the path
+  path = normalizeArray(filter(path.split('/'), function(p) {
+    return !!p;
+  }), !isAbsolute).join('/');
+
+  if (!path && !isAbsolute) {
+    path = '.';
+  }
+  if (path && trailingSlash) {
+    path += '/';
+  }
+
+  return (isAbsolute ? '/' : '') + path;
+};
+
+// posix version
+exports.isAbsolute = function(path) {
+  return path.charAt(0) === '/';
+};
+
+// posix version
+exports.join = function() {
+  var paths = Array.prototype.slice.call(arguments, 0);
+  return exports.normalize(filter(paths, function(p, index) {
+    if (typeof p !== 'string') {
+      throw new TypeError('Arguments to path.join must be strings');
+    }
+    return p;
+  }).join('/'));
+};
+
+
+// path.relative(from, to)
+// posix version
+exports.relative = function(from, to) {
+  from = exports.resolve(from).substr(1);
+  to = exports.resolve(to).substr(1);
+
+  function trim(arr) {
+    var start = 0;
+    for (; start < arr.length; start++) {
+      if (arr[start] !== '') break;
+    }
+
+    var end = arr.length - 1;
+    for (; end >= 0; end--) {
+      if (arr[end] !== '') break;
+    }
+
+    if (start > end) return [];
+    return arr.slice(start, end - start + 1);
+  }
+
+  var fromParts = trim(from.split('/'));
+  var toParts = trim(to.split('/'));
+
+  var length = Math.min(fromParts.length, toParts.length);
+  var samePartsLength = length;
+  for (var i = 0; i < length; i++) {
+    if (fromParts[i] !== toParts[i]) {
+      samePartsLength = i;
+      break;
+    }
+  }
+
+  var outputParts = [];
+  for (var i = samePartsLength; i < fromParts.length; i++) {
+    outputParts.push('..');
+  }
+
+  outputParts = outputParts.concat(toParts.slice(samePartsLength));
+
+  return outputParts.join('/');
+};
+
+exports.sep = '/';
+exports.delimiter = ':';
+
+exports.dirname = function(path) {
+  var result = splitPath(path),
+      root = result[0],
+      dir = result[1];
+
+  if (!root && !dir) {
+    // No dirname whatsoever
+    return '.';
+  }
+
+  if (dir) {
+    // It has a dirname, strip trailing slash
+    dir = dir.substr(0, dir.length - 1);
+  }
+
+  return root + dir;
+};
+
+
+exports.basename = function(path, ext) {
+  var f = splitPath(path)[2];
+  // TODO: make this comparison case-insensitive on windows?
+  if (ext && f.substr(-1 * ext.length) === ext) {
+    f = f.substr(0, f.length - ext.length);
+  }
+  return f;
+};
+
+
+exports.extname = function(path) {
+  return splitPath(path)[3];
+};
+
+function filter (xs, f) {
+    if (xs.filter) return xs.filter(f);
+    var res = [];
+    for (var i = 0; i < xs.length; i++) {
+        if (f(xs[i], i, xs)) res.push(xs[i]);
+    }
+    return res;
+}
+
+// String.prototype.substr - negative index don't work in IE8
+var substr = 'ab'.substr(-1) === 'b'
+    ? function (str, start, len) { return str.substr(start, len) }
+    : function (str, start, len) {
+        if (start < 0) start = str.length + start;
+        return str.substr(start, len);
+    }
+;
+
+}).call(this,require('_process'))
+},{"_process":3}],3:[function(require,module,exports){
+// shim for using process in browser
+
+var process = module.exports = {};
+
+// cached from whatever global is present so that test runners that stub it
+// don't break things.  But we need to wrap it in a try catch in case it is
+// wrapped in strict mode code which doesn't define any globals.  It's inside a
+// function because try/catches deoptimize in certain engines.
+
+var cachedSetTimeout;
+var cachedClearTimeout;
+
+(function () {
+  try {
+    cachedSetTimeout = setTimeout;
+  } catch (e) {
+    cachedSetTimeout = function () {
+      throw new Error('setTimeout is not defined');
+    }
+  }
+  try {
+    cachedClearTimeout = clearTimeout;
+  } catch (e) {
+    cachedClearTimeout = function () {
+      throw new Error('clearTimeout is not defined');
+    }
+  }
+} ())
+var queue = [];
+var draining = false;
+var currentQueue;
+var queueIndex = -1;
+
+function cleanUpNextTick() {
+    if (!draining || !currentQueue) {
+        return;
+    }
+    draining = false;
+    if (currentQueue.length) {
+        queue = currentQueue.concat(queue);
+    } else {
+        queueIndex = -1;
+    }
+    if (queue.length) {
+        drainQueue();
+    }
+}
+
+function drainQueue() {
+    if (draining) {
+        return;
+    }
+    var timeout = cachedSetTimeout(cleanUpNextTick);
+    draining = true;
+
+    var len = queue.length;
+    while(len) {
+        currentQueue = queue;
+        queue = [];
+        while (++queueIndex < len) {
+            if (currentQueue) {
+                currentQueue[queueIndex].run();
+            }
+        }
+        queueIndex = -1;
+        len = queue.length;
+    }
+    currentQueue = null;
+    draining = false;
+    cachedClearTimeout(timeout);
+}
+
+process.nextTick = function (fun) {
+    var args = new Array(arguments.length - 1);
+    if (arguments.length > 1) {
+        for (var i = 1; i < arguments.length; i++) {
+            args[i - 1] = arguments[i];
+        }
+    }
+    queue.push(new Item(fun, args));
+    if (queue.length === 1 && !draining) {
+        cachedSetTimeout(drainQueue, 0);
+    }
+};
+
+// v8 likes predictible objects
+function Item(fun, array) {
+    this.fun = fun;
+    this.array = array;
+}
+Item.prototype.run = function () {
+    this.fun.apply(null, this.array);
+};
+process.title = 'browser';
+process.browser = true;
+process.env = {};
+process.argv = [];
+process.version = ''; // empty string to avoid regexp issues
+process.versions = {};
+
+function noop() {}
+
+process.on = noop;
+process.addListener = noop;
+process.once = noop;
+process.off = noop;
+process.removeListener = noop;
+process.removeAllListeners = noop;
+process.emit = noop;
+
+process.binding = function (name) {
+    throw new Error('process.binding is not supported');
+};
+
+process.cwd = function () { return '/' };
+process.chdir = function (dir) {
+    throw new Error('process.chdir is not supported');
+};
+process.umask = function() { return 0; };
+
+},{}],4:[function(require,module,exports){
+(function (global){
+/*! https://mths.be/punycode v1.4.1 by @mathias */
+;(function(root) {
+
+	/** Detect free variables */
+	var freeExports = typeof exports == 'object' && exports &&
+		!exports.nodeType && exports;
+	var freeModule = typeof module == 'object' && module &&
+		!module.nodeType && module;
+	var freeGlobal = typeof global == 'object' && global;
+	if (
+		freeGlobal.global === freeGlobal ||
+		freeGlobal.window === freeGlobal ||
+		freeGlobal.self === freeGlobal
+	) {
+		root = freeGlobal;
+	}
+
+	/**
+	 * The `punycode` object.
+	 * @name punycode
+	 * @type Object
+	 */
+	var punycode,
+
+	/** Highest positive signed 32-bit float value */
+	maxInt = 2147483647, // aka. 0x7FFFFFFF or 2^31-1
+
+	/** Bootstring parameters */
+	base = 36,
+	tMin = 1,
+	tMax = 26,
+	skew = 38,
+	damp = 700,
+	initialBias = 72,
+	initialN = 128, // 0x80
+	delimiter = '-', // '\x2D'
+
+	/** Regular expressions */
+	regexPunycode = /^xn--/,
+	regexNonASCII = /[^\x20-\x7E]/, // unprintable ASCII chars + non-ASCII chars
+	regexSeparators = /[\x2E\u3002\uFF0E\uFF61]/g, // RFC 3490 separators
+
+	/** Error messages */
+	errors = {
+		'overflow': 'Overflow: input needs wider integers to process',
+		'not-basic': 'Illegal input >= 0x80 (not a basic code point)',
+		'invalid-input': 'Invalid input'
+	},
+
+	/** Convenience shortcuts */
+	baseMinusTMin = base - tMin,
+	floor = Math.floor,
+	stringFromCharCode = String.fromCharCode,
+
+	/** Temporary variable */
+	key;
+
+	/*--------------------------------------------------------------------------*/
+
+	/**
+	 * A generic error utility function.
+	 * @private
+	 * @param {String} type The error type.
+	 * @returns {Error} Throws a `RangeError` with the applicable error message.
+	 */
+	function error(type) {
+		throw new RangeError(errors[type]);
+	}
+
+	/**
+	 * A generic `Array#map` utility function.
+	 * @private
+	 * @param {Array} array The array to iterate over.
+	 * @param {Function} callback The function that gets called for every array
+	 * item.
+	 * @returns {Array} A new array of values returned by the callback function.
+	 */
+	function map(array, fn) {
+		var length = array.length;
+		var result = [];
+		while (length--) {
+			result[length] = fn(array[length]);
+		}
+		return result;
+	}
+
+	/**
+	 * A simple `Array#map`-like wrapper to work with domain name strings or email
+	 * addresses.
+	 * @private
+	 * @param {String} domain The domain name or email address.
+	 * @param {Function} callback The function that gets called for every
+	 * character.
+	 * @returns {Array} A new string of characters returned by the callback
+	 * function.
+	 */
+	function mapDomain(string, fn) {
+		var parts = string.split('@');
+		var result = '';
+		if (parts.length > 1) {
+			// In email addresses, only the domain name should be punycoded. Leave
+			// the local part (i.e. everything up to `@`) intact.
+			result = parts[0] + '@';
+			string = parts[1];
+		}
+		// Avoid `split(regex)` for IE8 compatibility. See #17.
+		string = string.replace(regexSeparators, '\x2E');
+		var labels = string.split('.');
+		var encoded = map(labels, fn).join('.');
+		return result + encoded;
+	}
+
+	/**
+	 * Creates an array containing the numeric code points of each Unicode
+	 * character in the string. While JavaScript uses UCS-2 internally,
+	 * this function will convert a pair of surrogate halves (each of which
+	 * UCS-2 exposes as separate characters) into a single code point,
+	 * matching UTF-16.
+	 * @see `punycode.ucs2.encode`
+	 * @see <https://mathiasbynens.be/notes/javascript-encoding>
+	 * @memberOf punycode.ucs2
+	 * @name decode
+	 * @param {String} string The Unicode input string (UCS-2).
+	 * @returns {Array} The new array of code points.
+	 */
+	function ucs2decode(string) {
+		var output = [],
+		    counter = 0,
+		    length = string.length,
+		    value,
+		    extra;
+		while (counter < length) {
+			value = string.charCodeAt(counter++);
+			if (value >= 0xD800 && value <= 0xDBFF && counter < length) {
+				// high surrogate, and there is a next character
+				extra = string.charCodeAt(counter++);
+				if ((extra & 0xFC00) == 0xDC00) { // low surrogate
+					output.push(((value & 0x3FF) << 10) + (extra & 0x3FF) + 0x10000);
+				} else {
+					// unmatched surrogate; only append this code unit, in case the next
+					// code unit is the high surrogate of a surrogate pair
+					output.push(value);
+					counter--;
+				}
+			} else {
+				output.push(value);
+			}
+		}
+		return output;
+	}
+
+	/**
+	 * Creates a string based on an array of numeric code points.
+	 * @see `punycode.ucs2.decode`
+	 * @memberOf punycode.ucs2
+	 * @name encode
+	 * @param {Array} codePoints The array of numeric code points.
+	 * @returns {String} The new Unicode string (UCS-2).
+	 */
+	function ucs2encode(array) {
+		return map(array, function(value) {
+			var output = '';
+			if (value > 0xFFFF) {
+				value -= 0x10000;
+				output += stringFromCharCode(value >>> 10 & 0x3FF | 0xD800);
+				value = 0xDC00 | value & 0x3FF;
+			}
+			output += stringFromCharCode(value);
+			return output;
+		}).join('');
+	}
+
+	/**
+	 * Converts a basic code point into a digit/integer.
+	 * @see `digitToBasic()`
+	 * @private
+	 * @param {Number} codePoint The basic numeric code point value.
+	 * @returns {Number} The numeric value of a basic code point (for use in
+	 * representing integers) in the range `0` to `base - 1`, or `base` if
+	 * the code point does not represent a value.
+	 */
+	function basicToDigit(codePoint) {
+		if (codePoint - 48 < 10) {
+			return codePoint - 22;
+		}
+		if (codePoint - 65 < 26) {
+			return codePoint - 65;
+		}
+		if (codePoint - 97 < 26) {
+			return codePoint - 97;
+		}
+		return base;
+	}
+
+	/**
+	 * Converts a digit/integer into a basic code point.
+	 * @see `basicToDigit()`
+	 * @private
+	 * @param {Number} digit The numeric value of a basic code point.
+	 * @returns {Number} The basic code point whose value (when used for
+	 * representing integers) is `digit`, which needs to be in the range
+	 * `0` to `base - 1`. If `flag` is non-zero, the uppercase form is
+	 * used; else, the lowercase form is used. The behavior is undefined
+	 * if `flag` is non-zero and `digit` has no uppercase form.
+	 */
+	function digitToBasic(digit, flag) {
+		//  0..25 map to ASCII a..z or A..Z
+		// 26..35 map to ASCII 0..9
+		return digit + 22 + 75 * (digit < 26) - ((flag != 0) << 5);
+	}
+
+	/**
+	 * Bias adaptation function as per section 3.4 of RFC 3492.
+	 * https://tools.ietf.org/html/rfc3492#section-3.4
+	 * @private
+	 */
+	function adapt(delta, numPoints, firstTime) {
+		var k = 0;
+		delta = firstTime ? floor(delta / damp) : delta >> 1;
+		delta += floor(delta / numPoints);
+		for (/* no initialization */; delta > baseMinusTMin * tMax >> 1; k += base) {
+			delta = floor(delta / baseMinusTMin);
+		}
+		return floor(k + (baseMinusTMin + 1) * delta / (delta + skew));
+	}
+
+	/**
+	 * Converts a Punycode string of ASCII-only symbols to a string of Unicode
+	 * symbols.
+	 * @memberOf punycode
+	 * @param {String} input The Punycode string of ASCII-only symbols.
+	 * @returns {String} The resulting string of Unicode symbols.
+	 */
+	function decode(input) {
+		// Don't use UCS-2
+		var output = [],
+		    inputLength = input.length,
+		    out,
+		    i = 0,
+		    n = initialN,
+		    bias = initialBias,
+		    basic,
+		    j,
+		    index,
+		    oldi,
+		    w,
+		    k,
+		    digit,
+		    t,
+		    /** Cached calculation results */
+		    baseMinusT;
+
+		// Handle the basic code points: let `basic` be the number of input code
+		// points before the last delimiter, or `0` if there is none, then copy
+		// the first basic code points to the output.
+
+		basic = input.lastIndexOf(delimiter);
+		if (basic < 0) {
+			basic = 0;
+		}
+
+		for (j = 0; j < basic; ++j) {
+			// if it's not a basic code point
+			if (input.charCodeAt(j) >= 0x80) {
+				error('not-basic');
+			}
+			output.push(input.charCodeAt(j));
+		}
+
+		// Main decoding loop: start just after the last delimiter if any basic code
+		// points were copied; start at the beginning otherwise.
+
+		for (index = basic > 0 ? basic + 1 : 0; index < inputLength; /* no final expression */) {
+
+			// `index` is the index of the next character to be consumed.
+			// Decode a generalized variable-length integer into `delta`,
+			// which gets added to `i`. The overflow checking is easier
+			// if we increase `i` as we go, then subtract off its starting
+			// value at the end to obtain `delta`.
+			for (oldi = i, w = 1, k = base; /* no condition */; k += base) {
+
+				if (index >= inputLength) {
+					error('invalid-input');
+				}
+
+				digit = basicToDigit(input.charCodeAt(index++));
+
+				if (digit >= base || digit > floor((maxInt - i) / w)) {
+					error('overflow');
+				}
+
+				i += digit * w;
+				t = k <= bias ? tMin : (k >= bias + tMax ? tMax : k - bias);
+
+				if (digit < t) {
+					break;
+				}
+
+				baseMinusT = base - t;
+				if (w > floor(maxInt / baseMinusT)) {
+					error('overflow');
+				}
+
+				w *= baseMinusT;
+
+			}
+
+			out = output.length + 1;
+			bias = adapt(i - oldi, out, oldi == 0);
+
+			// `i` was supposed to wrap around from `out` to `0`,
+			// incrementing `n` each time, so we'll fix that now:
+			if (floor(i / out) > maxInt - n) {
+				error('overflow');
+			}
+
+			n += floor(i / out);
+			i %= out;
+
+			// Insert `n` at position `i` of the output
+			output.splice(i++, 0, n);
+
+		}
+
+		return ucs2encode(output);
+	}
+
+	/**
+	 * Converts a string of Unicode symbols (e.g. a domain name label) to a
+	 * Punycode string of ASCII-only symbols.
+	 * @memberOf punycode
+	 * @param {String} input The string of Unicode symbols.
+	 * @returns {String} The resulting Punycode string of ASCII-only symbols.
+	 */
+	function encode(input) {
+		var n,
+		    delta,
+		    handledCPCount,
+		    basicLength,
+		    bias,
+		    j,
+		    m,
+		    q,
+		    k,
+		    t,
+		    currentValue,
+		    output = [],
+		    /** `inputLength` will hold the number of code points in `input`. */
+		    inputLength,
+		    /** Cached calculation results */
+		    handledCPCountPlusOne,
+		    baseMinusT,
+		    qMinusT;
+
+		// Convert the input in UCS-2 to Unicode
+		input = ucs2decode(input);
+
+		// Cache the length
+		inputLength = input.length;
+
+		// Initialize the state
+		n = initialN;
+		delta = 0;
+		bias = initialBias;
+
+		// Handle the basic code points
+		for (j = 0; j < inputLength; ++j) {
+			currentValue = input[j];
+			if (currentValue < 0x80) {
+				output.push(stringFromCharCode(currentValue));
+			}
+		}
+
+		handledCPCount = basicLength = output.length;
+
+		// `handledCPCount` is the number of code points that have been handled;
+		// `basicLength` is the number of basic code points.
+
+		// Finish the basic string - if it is not empty - with a delimiter
+		if (basicLength) {
+			output.push(delimiter);
+		}
+
+		// Main encoding loop:
+		while (handledCPCount < inputLength) {
+
+			// All non-basic code points < n have been handled already. Find the next
+			// larger one:
+			for (m = maxInt, j = 0; j < inputLength; ++j) {
+				currentValue = input[j];
+				if (currentValue >= n && currentValue < m) {
+					m = currentValue;
+				}
+			}
+
+			// Increase `delta` enough to advance the decoder's <n,i> state to <m,0>,
+			// but guard against overflow
+			handledCPCountPlusOne = handledCPCount + 1;
+			if (m - n > floor((maxInt - delta) / handledCPCountPlusOne)) {
+				error('overflow');
+			}
+
+			delta += (m - n) * handledCPCountPlusOne;
+			n = m;
+
+			for (j = 0; j < inputLength; ++j) {
+				currentValue = input[j];
+
+				if (currentValue < n && ++delta > maxInt) {
+					error('overflow');
+				}
+
+				if (currentValue == n) {
+					// Represent delta as a generalized variable-length integer
+					for (q = delta, k = base; /* no condition */; k += base) {
+						t = k <= bias ? tMin : (k >= bias + tMax ? tMax : k - bias);
+						if (q < t) {
+							break;
+						}
+						qMinusT = q - t;
+						baseMinusT = base - t;
+						output.push(
+							stringFromCharCode(digitToBasic(t + qMinusT % baseMinusT, 0))
+						);
+						q = floor(qMinusT / baseMinusT);
+					}
+
+					output.push(stringFromCharCode(digitToBasic(q, 0)));
+					bias = adapt(delta, handledCPCountPlusOne, handledCPCount == basicLength);
+					delta = 0;
+					++handledCPCount;
+				}
+			}
+
+			++delta;
+			++n;
+
+		}
+		return output.join('');
+	}
+
+	/**
+	 * Converts a Punycode string representing a domain name or an email address
+	 * to Unicode. Only the Punycoded parts of the input will be converted, i.e.
+	 * it doesn't matter if you call it on a string that has already been
+	 * converted to Unicode.
+	 * @memberOf punycode
+	 * @param {String} input The Punycoded domain name or email address to
+	 * convert to Unicode.
+	 * @returns {String} The Unicode representation of the given Punycode
+	 * string.
+	 */
+	function toUnicode(input) {
+		return mapDomain(input, function(string) {
+			return regexPunycode.test(string)
+				? decode(string.slice(4).toLowerCase())
+				: string;
+		});
+	}
+
+	/**
+	 * Converts a Unicode string representing a domain name or an email address to
+	 * Punycode. Only the non-ASCII parts of the domain name will be converted,
+	 * i.e. it doesn't matter if you call it with a domain that's already in
+	 * ASCII.
+	 * @memberOf punycode
+	 * @param {String} input The domain name or email address to convert, as a
+	 * Unicode string.
+	 * @returns {String} The Punycode representation of the given domain name or
+	 * email address.
+	 */
+	function toASCII(input) {
+		return mapDomain(input, function(string) {
+			return regexNonASCII.test(string)
+				? 'xn--' + encode(string)
+				: string;
+		});
+	}
+
+	/*--------------------------------------------------------------------------*/
+
+	/** Define the public API */
+	punycode = {
+		/**
+		 * A string representing the current Punycode.js version number.
+		 * @memberOf punycode
+		 * @type String
+		 */
+		'version': '1.4.1',
+		/**
+		 * An object of methods to convert from JavaScript's internal character
+		 * representation (UCS-2) to Unicode code points, and back.
+		 * @see <https://mathiasbynens.be/notes/javascript-encoding>
+		 * @memberOf punycode
+		 * @type Object
+		 */
+		'ucs2': {
+			'decode': ucs2decode,
+			'encode': ucs2encode
+		},
+		'decode': decode,
+		'encode': encode,
+		'toASCII': toASCII,
+		'toUnicode': toUnicode
+	};
+
+	/** Expose `punycode` */
+	// Some AMD build optimizers, like r.js, check for specific condition patterns
+	// like the following:
+	if (
+		typeof define == 'function' &&
+		typeof define.amd == 'object' &&
+		define.amd
+	) {
+		define('punycode', function() {
+			return punycode;
+		});
+	} else if (freeExports && freeModule) {
+		if (module.exports == freeExports) {
+			// in Node.js, io.js, or RingoJS v0.8.0+
+			freeModule.exports = punycode;
+		} else {
+			// in Narwhal or RingoJS v0.7.0-
+			for (key in punycode) {
+				punycode.hasOwnProperty(key) && (freeExports[key] = punycode[key]);
+			}
+		}
+	} else {
+		// in Rhino or a web browser
+		root.punycode = punycode;
+	}
+
+}(this));
+
+}).call(this,typeof global !== "undefined" ? global : typeof self !== "undefined" ? self : typeof window !== "undefined" ? window : {})
+},{}],5:[function(require,module,exports){
 module.exports =
   '*[WWW]: World Wide Web\n' +
   '*[DOM]: Document Object Model\n' +
@@ -245,7 +1133,35 @@ module.exports =
   '*[MacTeX]: MacTeX\n' +
   '*[TeX]: TeX\n'
 
-},{}],2:[function(require,module,exports){
+},{}],6:[function(require,module,exports){
+var $ = require('jquery')
+var S = require('string')
+
+$.fn.addAnchors = function () {
+  return this.each(function () {
+    $(this).find('h1, h2, h3, h4, h5, h6').each(function () {
+      var header = $(this)
+      var clone = header.clone()
+      clone.find('[aria-hidden="true"]').remove()
+      var title = clone.text().trim()
+
+      // generate ID if missing
+      var id = header.attr('id')
+      if (id === undefined || id === '') {
+        id = S(title).slugify()
+        header.attr('id', id)
+      }
+
+      // create anchor
+      var anchor = $('<a aria-hidden="true" class="header-anchor" href="#' + id + '" title="' + title + '"></a>')
+
+      // add anchor
+      header.prepend(anchor)
+    })
+  })
+}
+
+},{"jquery":237,"string":346}],7:[function(require,module,exports){
 /* global jQuery:true */
 /* exported jQuery */
 
@@ -396,11 +1312,10 @@ $.fn.addCollapsibleSections.defaults = {
   // expand: 'Expand', // expand title
 }
 
-},{"bootstrap":13,"jquery":232,"string":346}],3:[function(require,module,exports){
+},{"bootstrap":18,"jquery":237,"string":346}],8:[function(require,module,exports){
 var $ = require('jquery')
 var markdownit = require('markdown-it')
 var attr = require('markdown-it-attrs')
-var anchor = require('markdown-it-anchor')
 var sub = require('markdown-it-sub')
 var sup = require('markdown-it-sup')
 var footnote = require('markdown-it-footnote')
@@ -414,6 +1329,7 @@ var Handlebars = require('handlebars')
 var URI = require('urijs')
 var templates = require('./templates')
 var abbrev = require('./abbrev')
+require('./anchor')
 require('./collapse')
 require('./section')
 require('./social')
@@ -466,7 +1382,6 @@ var md = markdownit({
     return ''
   }
 }).use(attr)
-  .use(anchor, {permalink: true, permalinkBefore: true})
   .use(sub)
   .use(sup)
   .use(footnote)
@@ -547,7 +1462,7 @@ function process (document) {
   body.addHotkeys()
   body.addTeXLogos()
   body.addHangingPunctuation()
-  body.fixAnchors()
+  body.addAnchors()
   body.fixBlockquotes()
   body.addCollapsibleSections()
   body.fixFootnotes()
@@ -571,7 +1486,7 @@ function compile (data, path) {
 
 module.exports = compile
 
-},{"./abbrev":1,"./collapse":2,"./figure":4,"./hanging":5,"./punctuation":7,"./section":8,"./social":9,"./templates":10,"./toc":11,"./util":12,"handlebars":55,"highlight.js":69,"jquery":232,"js-yaml":233,"markdown-it":276,"markdown-it-abbr":263,"markdown-it-anchor":264,"markdown-it-attrs":269,"markdown-it-footnote":271,"markdown-it-mathjax":272,"markdown-it-sub":273,"markdown-it-sup":274,"markdown-it-task-lists":275,"moment":342,"urijs":349}],4:[function(require,module,exports){
+},{"./abbrev":5,"./anchor":6,"./collapse":7,"./figure":9,"./hanging":10,"./punctuation":12,"./section":13,"./social":14,"./templates":15,"./toc":16,"./util":17,"handlebars":60,"highlight.js":74,"jquery":237,"js-yaml":238,"markdown-it":276,"markdown-it-abbr":268,"markdown-it-attrs":269,"markdown-it-footnote":271,"markdown-it-mathjax":272,"markdown-it-sub":273,"markdown-it-sup":274,"markdown-it-task-lists":275,"moment":342,"urijs":349}],9:[function(require,module,exports){
 var $ = require('jquery')
 
 $.fn.addFigures = function () {
@@ -626,7 +1541,7 @@ $.fn.addFigures = function () {
   })
 }
 
-},{"jquery":232}],5:[function(require,module,exports){
+},{"jquery":237}],10:[function(require,module,exports){
 var $ = require('jquery')
 
 $.fn.addHangingPunctuation = function () {
@@ -642,7 +1557,7 @@ $.fn.addHangingPunctuation = function () {
   })
 }
 
-},{"jquery":232}],6:[function(require,module,exports){
+},{"jquery":237}],11:[function(require,module,exports){
 /* global MathJax */
 var $ = require('jquery')
 var URI = require('urijs')
@@ -753,7 +1668,7 @@ $(function () {
   loadData()
 })
 
-},{"./compile":3,"jquery":232,"urijs":349}],7:[function(require,module,exports){
+},{"./compile":8,"jquery":237,"urijs":349}],12:[function(require,module,exports){
 var $ = require('jquery')
 
 $.fn.addPunctuation = function () {
@@ -827,7 +1742,7 @@ $.fn.addPunctuation = function () {
   })
 }
 
-},{"jquery":232}],8:[function(require,module,exports){
+},{"jquery":237}],13:[function(require,module,exports){
 // Hierarchical sections, based on Pandoc's --section-divs
 
 var $ = require('jquery')
@@ -863,7 +1778,7 @@ $.fn.addSections = function () {
   })
 }
 
-},{"jquery":232,"string":346}],9:[function(require,module,exports){
+},{"jquery":237,"string":346}],14:[function(require,module,exports){
 var $ = require('jquery')
 var URI = require('urijs')
 
@@ -997,7 +1912,7 @@ $.fn.facebook = social.facebook
 $.fn.linkedin = social.linkedin
 $.fn.twitter = social.twitter
 
-},{"jquery":232,"urijs":349}],10:[function(require,module,exports){
+},{"jquery":237,"urijs":349}],15:[function(require,module,exports){
 var Handlebars = require('handlebars')
 
 var templates = {}
@@ -1077,7 +1992,7 @@ templates.body = Handlebars.compile(
 
 module.exports = templates
 
-},{"handlebars":55}],11:[function(require,module,exports){
+},{"handlebars":60}],16:[function(require,module,exports){
 var $ = require('jquery')
 var S = require('string')
 
@@ -1183,6 +2098,19 @@ $.fn.listOfContents = function () {
     }
   }
 
+  // generate ID if missing
+  var fixHeader = function (header) {
+    var id = header.attr('id')
+    if (id === undefined || id === '') {
+      var clone = header.clone()
+      clone.find('[aria-hidden="true"]').remove()
+      var title = clone.text().trim()
+      id = S(title).slugify()
+      header.attr('id', id)
+    }
+    return header
+  }
+
   var headers = body.find('h1, h2, h3, h4, h5, h6')
 
   if (headers.length === 0) {
@@ -1194,7 +2122,7 @@ $.fn.listOfContents = function () {
     return !$(this).is(exclude)
   })
   headers.each(function (i, el) {
-    var header = $(this).fixHeader()
+    var header = fixHeader($(this))
     var html = header.html()
     var id = header.attr('id')
     var level = parseInt(header.prop('tagName').match(/\d+/)[0])
@@ -1215,9 +2143,17 @@ $.fn.listOfContents = function () {
   return str
 }
 
-},{"jquery":232,"string":346}],12:[function(require,module,exports){
+},{"jquery":237,"string":346}],17:[function(require,module,exports){
 var $ = require('jquery')
-var S = require('string')
+
+$.fn.addAcronyms = function () {
+  return this.map(function () {
+    $(this).find('abbr').filter(function () {
+      var text = $(this).text().trim()
+      return text.toUpperCase() === text
+    }).addClass('acronym')
+  })
+}
 
 $.fn.addHotkeys = function () {
   return this.map(function () {
@@ -1241,6 +2177,30 @@ $.fn.addHotkeys = function () {
   })
 }
 
+$.fn.addPullQuotes = function () {
+  return this.map(function () {
+    $(this).find('p.pull-quote').each(function () {
+      var p = $(this)
+      var blockquote = p.parent()
+      if (blockquote.prop('tagName') !== 'BLOCKQUOTE') {
+        blockquote = p.wrap('<blockquote>').parent()
+      }
+      blockquote.addClass(p.attr('class'))
+      p.removeAttr('class')
+    })
+  })
+}
+
+$.fn.addSmallCaps = function () {
+  return this.map(function () {
+    $(this).find('sc').replaceWith(function () {
+      var span = $('<span class="small-caps"></span>')
+      span.html($(this).html())
+      return span
+    })
+  })
+}
+
 $.fn.addTeXLogos = function () {
   return this.map(function () {
     var body = $(this)
@@ -1258,95 +2218,6 @@ $.fn.addTeXLogos = function () {
     body.find('abbr[title=PCTeX]').html('PC' + tex)
     body.find('abbr[title=MacTeX]').html('Mac' + tex)
     body.find('abbr[title=TeX]').html(tex)
-  })
-}
-
-$.fn.addAcronyms = function () {
-  return this.map(function () {
-    $(this).find('abbr').filter(function () {
-      var text = $(this).text().trim()
-      return text.toUpperCase() === text
-    }).addClass('acronym')
-  })
-}
-
-$.fn.addSmallCaps = function () {
-  return this.map(function () {
-    $(this).find('sc').replaceWith(function () {
-      var span = $('<span class="small-caps"></span>')
-      span.html($(this).html())
-      return span
-    })
-  })
-}
-
-$.fn.addPullQuotes = function () {
-  return this.map(function () {
-    $(this).find('p.pull-quote').each(function () {
-      var p = $(this)
-      var blockquote = p.parent()
-      if (blockquote.prop('tagName') !== 'BLOCKQUOTE') {
-        blockquote = p.wrap('<blockquote>').parent()
-      }
-      blockquote.addClass(p.attr('class'))
-      p.removeAttr('class')
-    })
-  })
-}
-
-$.fn.removeAriaHidden = function () {
-  return this.each(function () {
-    $(this).find('[aria-hidden="true"]').remove()
-  })
-}
-
-$.fn.removeAria = function () {
-  return this.map(function () {
-    return $(this).clone().removeAriaHidden()
-  })
-}
-
-$.fn.fixHeader = function () {
-  return this.each(function () {
-    var header = $(this)
-    var text = header.text().trim()
-    var id = header.attr('id')
-
-    if (id === undefined || id === '') {
-      id = S(text).slugify()
-      header.attr('id', id)
-    }
-  })
-}
-
-$.fn.fixHeaders = function () {
-  return this.each(function () {
-    var headers = $(this).find('h1, h2, h3, h4, h5, h6')
-    headers.fixHeader()
-  })
-}
-
-$.fn.fixAnchors = function () {
-  return this.each(function () {
-    $(this).find('h1 a[aria-hidden="true"], h2 a[aria-hidden="true"], h3 a[aria-hidden="true"], h4 a[aria-hidden="true"], h5 a[aria-hidden="true"], h6 a[aria-hidden="true"]').each(function () {
-      var anchor = $(this)
-      var header = anchor.parent()
-      var id = header.attr('id')
-
-      // ensure href is correct
-      if (id) {
-        anchor.attr('href', '#' + id)
-      }
-
-      // set title attribute
-      if (!anchor.is('[title]')) {
-        var title = header.removeAria().text().trim()
-        anchor.attr('title', title)
-      }
-
-      // remove glyph (provided by CSS)
-      anchor.text('')
-    })
   })
 }
 
@@ -1424,50 +2295,19 @@ $.fn.fixTables = function () {
   })
 }
 
-// http://stackoverflow.com/questions/10206298/jquery-multiple-selectors-order#answer-10206378
-$.fn.coalesce = function (selectors) {
+$.fn.removeAria = function () {
   return this.map(function () {
-    var body = $(this)
-    var match = body.find([])
-    $.each(selectors, function (i, selector) {
-      var res = body.find(selector)
-      if (res.length > 0) {
-        match = res.first()
-        return false
-      }
-    })
-    return match
+    return $(this).clone().removeAriaHidden()
   })
 }
 
-$.fn.addTitle = function () {
+$.fn.removeAriaHidden = function () {
   return this.each(function () {
-    var title = $(this).find('title')
-    if (title.length === 0) {
-      title = $('title')
-    }
-
-    var meta = $(this).find('meta[name=title]')
-    if (meta.length === 0) {
-      meta = $('meta[name=title]')
-    }
-
-    if (meta.length !== 0) {
-      title.text(meta.attr('content'))
-    } else {
-      // var heading = $(this).coalesce(['h1', 'h2', 'h3', 'h4', 'h5', 'h6', 'strong', 'b', 'em', 'i', 'p']).first()
-      var heading = $(this).find('h1').first()
-      if (heading.length > 0) {
-        var txt = heading.removeAria().text().trim()
-        title.html(txt)
-        var header = $(this).find('header')
-        header.prepend(heading)
-      }
-    }
+    $(this).find('[aria-hidden="true"]').remove()
   })
 }
 
-},{"jquery":232,"string":346}],13:[function(require,module,exports){
+},{"jquery":237}],18:[function(require,module,exports){
 // This file is autogenerated via the `commonjs` Grunt task. You can require() this file in a CommonJS environment.
 require('../../js/transition.js')
 require('../../js/alert.js')
@@ -1481,7 +2321,7 @@ require('../../js/popover.js')
 require('../../js/scrollspy.js')
 require('../../js/tab.js')
 require('../../js/affix.js')
-},{"../../js/affix.js":14,"../../js/alert.js":15,"../../js/button.js":16,"../../js/carousel.js":17,"../../js/collapse.js":18,"../../js/dropdown.js":19,"../../js/modal.js":20,"../../js/popover.js":21,"../../js/scrollspy.js":22,"../../js/tab.js":23,"../../js/tooltip.js":24,"../../js/transition.js":25}],14:[function(require,module,exports){
+},{"../../js/affix.js":19,"../../js/alert.js":20,"../../js/button.js":21,"../../js/carousel.js":22,"../../js/collapse.js":23,"../../js/dropdown.js":24,"../../js/modal.js":25,"../../js/popover.js":26,"../../js/scrollspy.js":27,"../../js/tab.js":28,"../../js/tooltip.js":29,"../../js/transition.js":30}],19:[function(require,module,exports){
 /* ========================================================================
  * Bootstrap: affix.js v3.3.7
  * http://getbootstrap.com/javascript/#affix
@@ -1645,7 +2485,7 @@ require('../../js/affix.js')
 
 }(jQuery);
 
-},{}],15:[function(require,module,exports){
+},{}],20:[function(require,module,exports){
 /* ========================================================================
  * Bootstrap: alert.js v3.3.7
  * http://getbootstrap.com/javascript/#alerts
@@ -1741,7 +2581,7 @@ require('../../js/affix.js')
 
 }(jQuery);
 
-},{}],16:[function(require,module,exports){
+},{}],21:[function(require,module,exports){
 /* ========================================================================
  * Bootstrap: button.js v3.3.7
  * http://getbootstrap.com/javascript/#buttons
@@ -1868,7 +2708,7 @@ require('../../js/affix.js')
 
 }(jQuery);
 
-},{}],17:[function(require,module,exports){
+},{}],22:[function(require,module,exports){
 /* ========================================================================
  * Bootstrap: carousel.js v3.3.7
  * http://getbootstrap.com/javascript/#carousel
@@ -2107,7 +2947,7 @@ require('../../js/affix.js')
 
 }(jQuery);
 
-},{}],18:[function(require,module,exports){
+},{}],23:[function(require,module,exports){
 /* ========================================================================
  * Bootstrap: collapse.js v3.3.7
  * http://getbootstrap.com/javascript/#collapse
@@ -2321,7 +3161,7 @@ require('../../js/affix.js')
 
 }(jQuery);
 
-},{}],19:[function(require,module,exports){
+},{}],24:[function(require,module,exports){
 /* ========================================================================
  * Bootstrap: dropdown.js v3.3.7
  * http://getbootstrap.com/javascript/#dropdowns
@@ -2488,7 +3328,7 @@ require('../../js/affix.js')
 
 }(jQuery);
 
-},{}],20:[function(require,module,exports){
+},{}],25:[function(require,module,exports){
 /* ========================================================================
  * Bootstrap: modal.js v3.3.7
  * http://getbootstrap.com/javascript/#modals
@@ -2829,7 +3669,7 @@ require('../../js/affix.js')
 
 }(jQuery);
 
-},{}],21:[function(require,module,exports){
+},{}],26:[function(require,module,exports){
 /* ========================================================================
  * Bootstrap: popover.js v3.3.7
  * http://getbootstrap.com/javascript/#popovers
@@ -2939,7 +3779,7 @@ require('../../js/affix.js')
 
 }(jQuery);
 
-},{}],22:[function(require,module,exports){
+},{}],27:[function(require,module,exports){
 /* ========================================================================
  * Bootstrap: scrollspy.js v3.3.7
  * http://getbootstrap.com/javascript/#scrollspy
@@ -3113,7 +3953,7 @@ require('../../js/affix.js')
 
 }(jQuery);
 
-},{}],23:[function(require,module,exports){
+},{}],28:[function(require,module,exports){
 /* ========================================================================
  * Bootstrap: tab.js v3.3.7
  * http://getbootstrap.com/javascript/#tabs
@@ -3270,7 +4110,7 @@ require('../../js/affix.js')
 
 }(jQuery);
 
-},{}],24:[function(require,module,exports){
+},{}],29:[function(require,module,exports){
 /* ========================================================================
  * Bootstrap: tooltip.js v3.3.7
  * http://getbootstrap.com/javascript/#tooltip
@@ -3792,7 +4632,7 @@ require('../../js/affix.js')
 
 }(jQuery);
 
-},{}],25:[function(require,module,exports){
+},{}],30:[function(require,module,exports){
 /* ========================================================================
  * Bootstrap: transition.js v3.3.7
  * http://getbootstrap.com/javascript/#transitions
@@ -3853,7 +4693,7 @@ require('../../js/affix.js')
 
 }(jQuery);
 
-},{}],26:[function(require,module,exports){
+},{}],31:[function(require,module,exports){
 'use strict';
 
 exports.__esModule = true;
@@ -3920,7 +4760,7 @@ exports['default'] = inst;
 module.exports = exports['default'];
 
 
-},{"./handlebars.runtime":27,"./handlebars/compiler/ast":29,"./handlebars/compiler/base":30,"./handlebars/compiler/compiler":32,"./handlebars/compiler/javascript-compiler":34,"./handlebars/compiler/visitor":37,"./handlebars/no-conflict":51}],27:[function(require,module,exports){
+},{"./handlebars.runtime":32,"./handlebars/compiler/ast":34,"./handlebars/compiler/base":35,"./handlebars/compiler/compiler":37,"./handlebars/compiler/javascript-compiler":39,"./handlebars/compiler/visitor":42,"./handlebars/no-conflict":56}],32:[function(require,module,exports){
 'use strict';
 
 exports.__esModule = true;
@@ -3988,7 +4828,7 @@ exports['default'] = inst;
 module.exports = exports['default'];
 
 
-},{"./handlebars/base":28,"./handlebars/exception":41,"./handlebars/no-conflict":51,"./handlebars/runtime":52,"./handlebars/safe-string":53,"./handlebars/utils":54}],28:[function(require,module,exports){
+},{"./handlebars/base":33,"./handlebars/exception":46,"./handlebars/no-conflict":56,"./handlebars/runtime":57,"./handlebars/safe-string":58,"./handlebars/utils":59}],33:[function(require,module,exports){
 'use strict';
 
 exports.__esModule = true;
@@ -4094,7 +4934,7 @@ exports.createFrame = _utils.createFrame;
 exports.logger = _logger2['default'];
 
 
-},{"./decorators":39,"./exception":41,"./helpers":42,"./logger":50,"./utils":54}],29:[function(require,module,exports){
+},{"./decorators":44,"./exception":46,"./helpers":47,"./logger":55,"./utils":59}],34:[function(require,module,exports){
 'use strict';
 
 exports.__esModule = true;
@@ -4127,7 +4967,7 @@ exports['default'] = AST;
 module.exports = exports['default'];
 
 
-},{}],30:[function(require,module,exports){
+},{}],35:[function(require,module,exports){
 'use strict';
 
 exports.__esModule = true;
@@ -4177,7 +5017,7 @@ function parse(input, options) {
 }
 
 
-},{"../utils":54,"./helpers":33,"./parser":35,"./whitespace-control":38}],31:[function(require,module,exports){
+},{"../utils":59,"./helpers":38,"./parser":40,"./whitespace-control":43}],36:[function(require,module,exports){
 /* global define */
 'use strict';
 
@@ -4345,7 +5185,7 @@ exports['default'] = CodeGen;
 module.exports = exports['default'];
 
 
-},{"../utils":54,"source-map":56}],32:[function(require,module,exports){
+},{"../utils":59,"source-map":61}],37:[function(require,module,exports){
 /* eslint-disable new-cap */
 
 'use strict';
@@ -4919,7 +5759,7 @@ function transformLiteralToPath(sexpr) {
 }
 
 
-},{"../exception":41,"../utils":54,"./ast":29}],33:[function(require,module,exports){
+},{"../exception":46,"../utils":59,"./ast":34}],38:[function(require,module,exports){
 'use strict';
 
 exports.__esModule = true;
@@ -5151,7 +5991,7 @@ function preparePartialBlock(open, program, close, locInfo) {
 }
 
 
-},{"../exception":41}],34:[function(require,module,exports){
+},{"../exception":46}],39:[function(require,module,exports){
 'use strict';
 
 exports.__esModule = true;
@@ -6279,7 +7119,7 @@ exports['default'] = JavaScriptCompiler;
 module.exports = exports['default'];
 
 
-},{"../base":28,"../exception":41,"../utils":54,"./code-gen":31}],35:[function(require,module,exports){
+},{"../base":33,"../exception":46,"../utils":59,"./code-gen":36}],40:[function(require,module,exports){
 /* istanbul ignore next */
 /* Jison generated parser */
 "use strict";
@@ -7019,7 +7859,7 @@ var handlebars = (function () {
 exports['default'] = handlebars;
 
 
-},{}],36:[function(require,module,exports){
+},{}],41:[function(require,module,exports){
 /* eslint-disable new-cap */
 'use strict';
 
@@ -7207,7 +8047,7 @@ PrintVisitor.prototype.HashPair = function (pair) {
 /* eslint-enable new-cap */
 
 
-},{"./visitor":37}],37:[function(require,module,exports){
+},{"./visitor":42}],42:[function(require,module,exports){
 'use strict';
 
 exports.__esModule = true;
@@ -7349,7 +8189,7 @@ exports['default'] = Visitor;
 module.exports = exports['default'];
 
 
-},{"../exception":41}],38:[function(require,module,exports){
+},{"../exception":46}],43:[function(require,module,exports){
 'use strict';
 
 exports.__esModule = true;
@@ -7572,7 +8412,7 @@ exports['default'] = WhitespaceControl;
 module.exports = exports['default'];
 
 
-},{"./visitor":37}],39:[function(require,module,exports){
+},{"./visitor":42}],44:[function(require,module,exports){
 'use strict';
 
 exports.__esModule = true;
@@ -7590,7 +8430,7 @@ function registerDefaultDecorators(instance) {
 }
 
 
-},{"./decorators/inline":40}],40:[function(require,module,exports){
+},{"./decorators/inline":45}],45:[function(require,module,exports){
 'use strict';
 
 exports.__esModule = true;
@@ -7621,7 +8461,7 @@ exports['default'] = function (instance) {
 module.exports = exports['default'];
 
 
-},{"../utils":54}],41:[function(require,module,exports){
+},{"../utils":59}],46:[function(require,module,exports){
 'use strict';
 
 exports.__esModule = true;
@@ -7663,7 +8503,7 @@ exports['default'] = Exception;
 module.exports = exports['default'];
 
 
-},{}],42:[function(require,module,exports){
+},{}],47:[function(require,module,exports){
 'use strict';
 
 exports.__esModule = true;
@@ -7711,7 +8551,7 @@ function registerDefaultHelpers(instance) {
 }
 
 
-},{"./helpers/block-helper-missing":43,"./helpers/each":44,"./helpers/helper-missing":45,"./helpers/if":46,"./helpers/log":47,"./helpers/lookup":48,"./helpers/with":49}],43:[function(require,module,exports){
+},{"./helpers/block-helper-missing":48,"./helpers/each":49,"./helpers/helper-missing":50,"./helpers/if":51,"./helpers/log":52,"./helpers/lookup":53,"./helpers/with":54}],48:[function(require,module,exports){
 'use strict';
 
 exports.__esModule = true;
@@ -7752,7 +8592,7 @@ exports['default'] = function (instance) {
 module.exports = exports['default'];
 
 
-},{"../utils":54}],44:[function(require,module,exports){
+},{"../utils":59}],49:[function(require,module,exports){
 'use strict';
 
 exports.__esModule = true;
@@ -7848,7 +8688,7 @@ exports['default'] = function (instance) {
 module.exports = exports['default'];
 
 
-},{"../exception":41,"../utils":54}],45:[function(require,module,exports){
+},{"../exception":46,"../utils":59}],50:[function(require,module,exports){
 'use strict';
 
 exports.__esModule = true;
@@ -7875,7 +8715,7 @@ exports['default'] = function (instance) {
 module.exports = exports['default'];
 
 
-},{"../exception":41}],46:[function(require,module,exports){
+},{"../exception":46}],51:[function(require,module,exports){
 'use strict';
 
 exports.__esModule = true;
@@ -7906,7 +8746,7 @@ exports['default'] = function (instance) {
 module.exports = exports['default'];
 
 
-},{"../utils":54}],47:[function(require,module,exports){
+},{"../utils":59}],52:[function(require,module,exports){
 'use strict';
 
 exports.__esModule = true;
@@ -7934,7 +8774,7 @@ exports['default'] = function (instance) {
 module.exports = exports['default'];
 
 
-},{}],48:[function(require,module,exports){
+},{}],53:[function(require,module,exports){
 'use strict';
 
 exports.__esModule = true;
@@ -7948,7 +8788,7 @@ exports['default'] = function (instance) {
 module.exports = exports['default'];
 
 
-},{}],49:[function(require,module,exports){
+},{}],54:[function(require,module,exports){
 'use strict';
 
 exports.__esModule = true;
@@ -7983,7 +8823,7 @@ exports['default'] = function (instance) {
 module.exports = exports['default'];
 
 
-},{"../utils":54}],50:[function(require,module,exports){
+},{"../utils":59}],55:[function(require,module,exports){
 'use strict';
 
 exports.__esModule = true;
@@ -8032,7 +8872,7 @@ exports['default'] = logger;
 module.exports = exports['default'];
 
 
-},{"./utils":54}],51:[function(require,module,exports){
+},{"./utils":59}],56:[function(require,module,exports){
 (function (global){
 /* global window */
 'use strict';
@@ -8056,7 +8896,7 @@ module.exports = exports['default'];
 
 
 }).call(this,typeof global !== "undefined" ? global : typeof self !== "undefined" ? self : typeof window !== "undefined" ? window : {})
-},{}],52:[function(require,module,exports){
+},{}],57:[function(require,module,exports){
 'use strict';
 
 exports.__esModule = true;
@@ -8350,7 +9190,7 @@ function executeDecorators(fn, prog, container, depths, data, blockParams) {
 }
 
 
-},{"./base":28,"./exception":41,"./utils":54}],53:[function(require,module,exports){
+},{"./base":33,"./exception":46,"./utils":59}],58:[function(require,module,exports){
 // Build out our basic SafeString type
 'use strict';
 
@@ -8367,7 +9207,7 @@ exports['default'] = SafeString;
 module.exports = exports['default'];
 
 
-},{}],54:[function(require,module,exports){
+},{}],59:[function(require,module,exports){
 'use strict';
 
 exports.__esModule = true;
@@ -8493,7 +9333,7 @@ function appendContextPath(contextPath, id) {
 }
 
 
-},{}],55:[function(require,module,exports){
+},{}],60:[function(require,module,exports){
 // USAGE:
 // var handlebars = require('handlebars');
 /* eslint-disable no-var */
@@ -8520,7 +9360,7 @@ if (typeof require !== 'undefined' && require.extensions) {
   require.extensions['.hbs'] = extension;
 }
 
-},{"../dist/cjs/handlebars":26,"../dist/cjs/handlebars/compiler/printer":36,"fs":351}],56:[function(require,module,exports){
+},{"../dist/cjs/handlebars":31,"../dist/cjs/handlebars/compiler/printer":41,"fs":1}],61:[function(require,module,exports){
 /*
  * Copyright 2009-2011 Mozilla Foundation and contributors
  * Licensed under the New BSD license. See LICENSE.txt or:
@@ -8530,7 +9370,7 @@ exports.SourceMapGenerator = require('./source-map/source-map-generator').Source
 exports.SourceMapConsumer = require('./source-map/source-map-consumer').SourceMapConsumer;
 exports.SourceNode = require('./source-map/source-node').SourceNode;
 
-},{"./source-map/source-map-consumer":63,"./source-map/source-map-generator":64,"./source-map/source-node":65}],57:[function(require,module,exports){
+},{"./source-map/source-map-consumer":68,"./source-map/source-map-generator":69,"./source-map/source-node":70}],62:[function(require,module,exports){
 /* -*- Mode: js; js-indent-level: 2; -*- */
 /*
  * Copyright 2011 Mozilla Foundation and contributors
@@ -8639,7 +9479,7 @@ define(function (require, exports, module) {
 
 });
 
-},{"./util":66,"amdefine":67}],58:[function(require,module,exports){
+},{"./util":71,"amdefine":72}],63:[function(require,module,exports){
 /* -*- Mode: js; js-indent-level: 2; -*- */
 /*
  * Copyright 2011 Mozilla Foundation and contributors
@@ -8787,7 +9627,7 @@ define(function (require, exports, module) {
 
 });
 
-},{"./base64":59,"amdefine":67}],59:[function(require,module,exports){
+},{"./base64":64,"amdefine":72}],64:[function(require,module,exports){
 /* -*- Mode: js; js-indent-level: 2; -*- */
 /*
  * Copyright 2011 Mozilla Foundation and contributors
@@ -8862,7 +9702,7 @@ define(function (require, exports, module) {
 
 });
 
-},{"amdefine":67}],60:[function(require,module,exports){
+},{"amdefine":72}],65:[function(require,module,exports){
 /* -*- Mode: js; js-indent-level: 2; -*- */
 /*
  * Copyright 2011 Mozilla Foundation and contributors
@@ -8981,7 +9821,7 @@ define(function (require, exports, module) {
 
 });
 
-},{"amdefine":67}],61:[function(require,module,exports){
+},{"amdefine":72}],66:[function(require,module,exports){
 /* -*- Mode: js; js-indent-level: 2; -*- */
 /*
  * Copyright 2014 Mozilla Foundation and contributors
@@ -9069,7 +9909,7 @@ define(function (require, exports, module) {
 
 });
 
-},{"./util":66,"amdefine":67}],62:[function(require,module,exports){
+},{"./util":71,"amdefine":72}],67:[function(require,module,exports){
 /* -*- Mode: js; js-indent-level: 2; -*- */
 /*
  * Copyright 2011 Mozilla Foundation and contributors
@@ -9191,7 +10031,7 @@ define(function (require, exports, module) {
 
 });
 
-},{"amdefine":67}],63:[function(require,module,exports){
+},{"amdefine":72}],68:[function(require,module,exports){
 /* -*- Mode: js; js-indent-level: 2; -*- */
 /*
  * Copyright 2011 Mozilla Foundation and contributors
@@ -10270,7 +11110,7 @@ define(function (require, exports, module) {
 
 });
 
-},{"./array-set":57,"./base64-vlq":58,"./binary-search":60,"./quick-sort":62,"./util":66,"amdefine":67}],64:[function(require,module,exports){
+},{"./array-set":62,"./base64-vlq":63,"./binary-search":65,"./quick-sort":67,"./util":71,"amdefine":72}],69:[function(require,module,exports){
 /* -*- Mode: js; js-indent-level: 2; -*- */
 /*
  * Copyright 2011 Mozilla Foundation and contributors
@@ -10671,7 +11511,7 @@ define(function (require, exports, module) {
 
 });
 
-},{"./array-set":57,"./base64-vlq":58,"./mapping-list":61,"./util":66,"amdefine":67}],65:[function(require,module,exports){
+},{"./array-set":62,"./base64-vlq":63,"./mapping-list":66,"./util":71,"amdefine":72}],70:[function(require,module,exports){
 /* -*- Mode: js; js-indent-level: 2; -*- */
 /*
  * Copyright 2011 Mozilla Foundation and contributors
@@ -11087,7 +11927,7 @@ define(function (require, exports, module) {
 
 });
 
-},{"./source-map-generator":64,"./util":66,"amdefine":67}],66:[function(require,module,exports){
+},{"./source-map-generator":69,"./util":71,"amdefine":72}],71:[function(require,module,exports){
 /* -*- Mode: js; js-indent-level: 2; -*- */
 /*
  * Copyright 2011 Mozilla Foundation and contributors
@@ -11459,7 +12299,7 @@ define(function (require, exports, module) {
 
 });
 
-},{"amdefine":67}],67:[function(require,module,exports){
+},{"amdefine":72}],72:[function(require,module,exports){
 (function (process,__filename){
 /** vim: et:ts=4:sw=4:sts=4
  * @license amdefine 1.0.0 Copyright (c) 2011-2015, The Dojo Foundation All Rights Reserved.
@@ -11763,8 +12603,8 @@ function amdefine(module, requireFn) {
 
 module.exports = amdefine;
 
-}).call(this,require('_process'),"/node_modules/handlebars/node_modules/source-map/node_modules/amdefine/amdefine.js")
-},{"_process":353,"path":352}],68:[function(require,module,exports){
+}).call(this,require('_process'),"/node_modules\\handlebars\\node_modules\\source-map\\node_modules\\amdefine\\amdefine.js")
+},{"_process":3,"path":2}],73:[function(require,module,exports){
 /*
 Syntax highlighting with language autodetection.
 https://highlightjs.org/
@@ -12582,7 +13422,7 @@ https://highlightjs.org/
   return hljs;
 }));
 
-},{}],69:[function(require,module,exports){
+},{}],74:[function(require,module,exports){
 var hljs = require('./highlight');
 
 hljs.registerLanguage('1c', require('./languages/1c'));
@@ -12749,7 +13589,7 @@ hljs.registerLanguage('xquery', require('./languages/xquery'));
 hljs.registerLanguage('zephir', require('./languages/zephir'));
 
 module.exports = hljs;
-},{"./highlight":68,"./languages/1c":70,"./languages/accesslog":71,"./languages/actionscript":72,"./languages/ada":73,"./languages/apache":74,"./languages/applescript":75,"./languages/arduino":76,"./languages/armasm":77,"./languages/asciidoc":78,"./languages/aspectj":79,"./languages/autohotkey":80,"./languages/autoit":81,"./languages/avrasm":82,"./languages/axapta":83,"./languages/bash":84,"./languages/basic":85,"./languages/bnf":86,"./languages/brainfuck":87,"./languages/cal":88,"./languages/capnproto":89,"./languages/ceylon":90,"./languages/clojure":92,"./languages/clojure-repl":91,"./languages/cmake":93,"./languages/coffeescript":94,"./languages/coq":95,"./languages/cos":96,"./languages/cpp":97,"./languages/crmsh":98,"./languages/crystal":99,"./languages/cs":100,"./languages/csp":101,"./languages/css":102,"./languages/d":103,"./languages/dart":104,"./languages/delphi":105,"./languages/diff":106,"./languages/django":107,"./languages/dns":108,"./languages/dockerfile":109,"./languages/dos":110,"./languages/dsconfig":111,"./languages/dts":112,"./languages/dust":113,"./languages/elixir":114,"./languages/elm":115,"./languages/erb":116,"./languages/erlang":118,"./languages/erlang-repl":117,"./languages/excel":119,"./languages/fix":120,"./languages/fortran":121,"./languages/fsharp":122,"./languages/gams":123,"./languages/gauss":124,"./languages/gcode":125,"./languages/gherkin":126,"./languages/glsl":127,"./languages/go":128,"./languages/golo":129,"./languages/gradle":130,"./languages/groovy":131,"./languages/haml":132,"./languages/handlebars":133,"./languages/haskell":134,"./languages/haxe":135,"./languages/hsp":136,"./languages/htmlbars":137,"./languages/http":138,"./languages/inform7":139,"./languages/ini":140,"./languages/irpf90":141,"./languages/java":142,"./languages/javascript":143,"./languages/json":144,"./languages/julia":145,"./languages/kotlin":146,"./languages/lasso":147,"./languages/ldif":148,"./languages/less":149,"./languages/lisp":150,"./languages/livecodeserver":151,"./languages/livescript":152,"./languages/lsl":153,"./languages/lua":154,"./languages/makefile":155,"./languages/markdown":156,"./languages/mathematica":157,"./languages/matlab":158,"./languages/maxima":159,"./languages/mel":160,"./languages/mercury":161,"./languages/mipsasm":162,"./languages/mizar":163,"./languages/mojolicious":164,"./languages/monkey":165,"./languages/moonscript":166,"./languages/nginx":167,"./languages/nimrod":168,"./languages/nix":169,"./languages/nsis":170,"./languages/objectivec":171,"./languages/ocaml":172,"./languages/openscad":173,"./languages/oxygene":174,"./languages/parser3":175,"./languages/perl":176,"./languages/pf":177,"./languages/php":178,"./languages/pony":179,"./languages/powershell":180,"./languages/processing":181,"./languages/profile":182,"./languages/prolog":183,"./languages/protobuf":184,"./languages/puppet":185,"./languages/purebasic":186,"./languages/python":187,"./languages/q":188,"./languages/qml":189,"./languages/r":190,"./languages/rib":191,"./languages/roboconf":192,"./languages/rsl":193,"./languages/ruby":194,"./languages/ruleslanguage":195,"./languages/rust":196,"./languages/scala":197,"./languages/scheme":198,"./languages/scilab":199,"./languages/scss":200,"./languages/smali":201,"./languages/smalltalk":202,"./languages/sml":203,"./languages/sqf":204,"./languages/sql":205,"./languages/stan":206,"./languages/stata":207,"./languages/step21":208,"./languages/stylus":209,"./languages/swift":210,"./languages/taggerscript":211,"./languages/tap":212,"./languages/tcl":213,"./languages/tex":214,"./languages/thrift":215,"./languages/tp":216,"./languages/twig":217,"./languages/typescript":218,"./languages/vala":219,"./languages/vbnet":220,"./languages/vbscript":222,"./languages/vbscript-html":221,"./languages/verilog":223,"./languages/vhdl":224,"./languages/vim":225,"./languages/x86asm":226,"./languages/xl":227,"./languages/xml":228,"./languages/xquery":229,"./languages/yaml":230,"./languages/zephir":231}],70:[function(require,module,exports){
+},{"./highlight":73,"./languages/1c":75,"./languages/accesslog":76,"./languages/actionscript":77,"./languages/ada":78,"./languages/apache":79,"./languages/applescript":80,"./languages/arduino":81,"./languages/armasm":82,"./languages/asciidoc":83,"./languages/aspectj":84,"./languages/autohotkey":85,"./languages/autoit":86,"./languages/avrasm":87,"./languages/axapta":88,"./languages/bash":89,"./languages/basic":90,"./languages/bnf":91,"./languages/brainfuck":92,"./languages/cal":93,"./languages/capnproto":94,"./languages/ceylon":95,"./languages/clojure":97,"./languages/clojure-repl":96,"./languages/cmake":98,"./languages/coffeescript":99,"./languages/coq":100,"./languages/cos":101,"./languages/cpp":102,"./languages/crmsh":103,"./languages/crystal":104,"./languages/cs":105,"./languages/csp":106,"./languages/css":107,"./languages/d":108,"./languages/dart":109,"./languages/delphi":110,"./languages/diff":111,"./languages/django":112,"./languages/dns":113,"./languages/dockerfile":114,"./languages/dos":115,"./languages/dsconfig":116,"./languages/dts":117,"./languages/dust":118,"./languages/elixir":119,"./languages/elm":120,"./languages/erb":121,"./languages/erlang":123,"./languages/erlang-repl":122,"./languages/excel":124,"./languages/fix":125,"./languages/fortran":126,"./languages/fsharp":127,"./languages/gams":128,"./languages/gauss":129,"./languages/gcode":130,"./languages/gherkin":131,"./languages/glsl":132,"./languages/go":133,"./languages/golo":134,"./languages/gradle":135,"./languages/groovy":136,"./languages/haml":137,"./languages/handlebars":138,"./languages/haskell":139,"./languages/haxe":140,"./languages/hsp":141,"./languages/htmlbars":142,"./languages/http":143,"./languages/inform7":144,"./languages/ini":145,"./languages/irpf90":146,"./languages/java":147,"./languages/javascript":148,"./languages/json":149,"./languages/julia":150,"./languages/kotlin":151,"./languages/lasso":152,"./languages/ldif":153,"./languages/less":154,"./languages/lisp":155,"./languages/livecodeserver":156,"./languages/livescript":157,"./languages/lsl":158,"./languages/lua":159,"./languages/makefile":160,"./languages/markdown":161,"./languages/mathematica":162,"./languages/matlab":163,"./languages/maxima":164,"./languages/mel":165,"./languages/mercury":166,"./languages/mipsasm":167,"./languages/mizar":168,"./languages/mojolicious":169,"./languages/monkey":170,"./languages/moonscript":171,"./languages/nginx":172,"./languages/nimrod":173,"./languages/nix":174,"./languages/nsis":175,"./languages/objectivec":176,"./languages/ocaml":177,"./languages/openscad":178,"./languages/oxygene":179,"./languages/parser3":180,"./languages/perl":181,"./languages/pf":182,"./languages/php":183,"./languages/pony":184,"./languages/powershell":185,"./languages/processing":186,"./languages/profile":187,"./languages/prolog":188,"./languages/protobuf":189,"./languages/puppet":190,"./languages/purebasic":191,"./languages/python":192,"./languages/q":193,"./languages/qml":194,"./languages/r":195,"./languages/rib":196,"./languages/roboconf":197,"./languages/rsl":198,"./languages/ruby":199,"./languages/ruleslanguage":200,"./languages/rust":201,"./languages/scala":202,"./languages/scheme":203,"./languages/scilab":204,"./languages/scss":205,"./languages/smali":206,"./languages/smalltalk":207,"./languages/sml":208,"./languages/sqf":209,"./languages/sql":210,"./languages/stan":211,"./languages/stata":212,"./languages/step21":213,"./languages/stylus":214,"./languages/swift":215,"./languages/taggerscript":216,"./languages/tap":217,"./languages/tcl":218,"./languages/tex":219,"./languages/thrift":220,"./languages/tp":221,"./languages/twig":222,"./languages/typescript":223,"./languages/vala":224,"./languages/vbnet":225,"./languages/vbscript":227,"./languages/vbscript-html":226,"./languages/verilog":228,"./languages/vhdl":229,"./languages/vim":230,"./languages/x86asm":231,"./languages/xl":232,"./languages/xml":233,"./languages/xquery":234,"./languages/yaml":235,"./languages/zephir":236}],75:[function(require,module,exports){
 module.exports = function(hljs){
   var IDENT_RE_RU = '[a-zA-Zа-яА-Я][a-zA-Z0-9_а-яА-Я]*';
   var OneS_KEYWORDS = 'возврат дата для если и или иначе иначеесли исключение конецесли ' +
@@ -12828,7 +13668,7 @@ module.exports = function(hljs){
     ]
   };
 };
-},{}],71:[function(require,module,exports){
+},{}],76:[function(require,module,exports){
 module.exports = function(hljs) {
   return {
     contains: [
@@ -12866,7 +13706,7 @@ module.exports = function(hljs) {
     ]
   };
 };
-},{}],72:[function(require,module,exports){
+},{}],77:[function(require,module,exports){
 module.exports = function(hljs) {
   var IDENT_RE = '[a-zA-Z_$][a-zA-Z0-9_$]*';
   var IDENT_FUNC_RETURN_TYPE_RE = '([*]|[a-zA-Z_$][a-zA-Z0-9_$]*)';
@@ -12940,7 +13780,7 @@ module.exports = function(hljs) {
     illegal: /#/
   };
 };
-},{}],73:[function(require,module,exports){
+},{}],78:[function(require,module,exports){
 module.exports = // We try to support full Ada2012
 //
 // We highlight all appearances of types, keywords, literals (string, char, number, bool)
@@ -13113,7 +13953,7 @@ function(hljs) {
         ]
     };
 };
-},{}],74:[function(require,module,exports){
+},{}],79:[function(require,module,exports){
 module.exports = function(hljs) {
   var NUMBER = {className: 'number', begin: '[\\$%]\\d+'};
   return {
@@ -13159,7 +13999,7 @@ module.exports = function(hljs) {
     illegal: /\S/
   };
 };
-},{}],75:[function(require,module,exports){
+},{}],80:[function(require,module,exports){
 module.exports = function(hljs) {
   var STRING = hljs.inherit(hljs.QUOTE_STRING_MODE, {illegal: ''});
   var PARAMS = {
@@ -13245,7 +14085,7 @@ module.exports = function(hljs) {
     illegal: '//|->|=>|\\[\\['
   };
 };
-},{}],76:[function(require,module,exports){
+},{}],81:[function(require,module,exports){
 module.exports = function(hljs) {
   var CPP = hljs.getLanguage('cpp').exports;
 	return {
@@ -13345,7 +14185,7 @@ module.exports = function(hljs) {
     ]
   };
 };
-},{}],77:[function(require,module,exports){
+},{}],82:[function(require,module,exports){
 module.exports = function(hljs) {
     //local labels: %?[FB]?[AT]?\d{1,2}\w+
   return {
@@ -13437,7 +14277,7 @@ module.exports = function(hljs) {
     ]
   };
 };
-},{}],78:[function(require,module,exports){
+},{}],83:[function(require,module,exports){
 module.exports = function(hljs) {
   return {
     aliases: ['adoc'],
@@ -13625,7 +14465,7 @@ module.exports = function(hljs) {
     ]
   };
 };
-},{}],79:[function(require,module,exports){
+},{}],84:[function(require,module,exports){
 module.exports = function (hljs) {
   var KEYWORDS =
     'false synchronized int abstract float private char boolean static null if const ' +
@@ -13769,7 +14609,7 @@ module.exports = function (hljs) {
     ]
   };
 };
-},{}],80:[function(require,module,exports){
+},{}],85:[function(require,module,exports){
 module.exports = function(hljs) {
   var BACKTICK_ESCAPE = {
     begin: /`[\s\S]/
@@ -13817,7 +14657,7 @@ module.exports = function(hljs) {
     ]
   }
 };
-},{}],81:[function(require,module,exports){
+},{}],86:[function(require,module,exports){
 module.exports = function(hljs) {
     var KEYWORDS = 'ByRef Case Const ContinueCase ContinueLoop ' +
         'Default Dim Do Else ElseIf EndFunc EndIf EndSelect ' +
@@ -13953,7 +14793,7 @@ module.exports = function(hljs) {
         ]
     }
 };
-},{}],82:[function(require,module,exports){
+},{}],87:[function(require,module,exports){
 module.exports = function(hljs) {
   return {
     case_insensitive: true,
@@ -14015,7 +14855,7 @@ module.exports = function(hljs) {
     ]
   };
 };
-},{}],83:[function(require,module,exports){
+},{}],88:[function(require,module,exports){
 module.exports = function(hljs) {
   return {
     keywords: 'false int abstract private char boolean static null if for true ' +
@@ -14046,7 +14886,7 @@ module.exports = function(hljs) {
     ]
   };
 };
-},{}],84:[function(require,module,exports){
+},{}],89:[function(require,module,exports){
 module.exports = function(hljs) {
   var VAR = {
     className: 'variable',
@@ -14121,7 +14961,7 @@ module.exports = function(hljs) {
     ]
   };
 };
-},{}],85:[function(require,module,exports){
+},{}],90:[function(require,module,exports){
 module.exports = function(hljs) {
   return {
     case_insensitive: true,
@@ -14172,7 +15012,7 @@ module.exports = function(hljs) {
     ]
   };
 };
-},{}],86:[function(require,module,exports){
+},{}],91:[function(require,module,exports){
 module.exports = function(hljs){
   return {
     contains: [
@@ -14201,7 +15041,7 @@ module.exports = function(hljs){
     ]
   };
 };
-},{}],87:[function(require,module,exports){
+},{}],92:[function(require,module,exports){
 module.exports = function(hljs){
   var LITERAL = {
     className: 'literal',
@@ -14238,7 +15078,7 @@ module.exports = function(hljs){
     ]
   };
 };
-},{}],88:[function(require,module,exports){
+},{}],93:[function(require,module,exports){
 module.exports = function(hljs) {
   var KEYWORDS =
     'div mod in and or not xor asserterror begin case do downto else end exit for if of repeat then to ' +
@@ -14318,7 +15158,7 @@ module.exports = function(hljs) {
     ]
   };
 };
-},{}],89:[function(require,module,exports){
+},{}],94:[function(require,module,exports){
 module.exports = function(hljs) {
   return {
     aliases: ['capnp'],
@@ -14367,7 +15207,7 @@ module.exports = function(hljs) {
     ]
   };
 };
-},{}],90:[function(require,module,exports){
+},{}],95:[function(require,module,exports){
 module.exports = function(hljs) {
   // 2.3. Identifiers and keywords
   var KEYWORDS =
@@ -14434,7 +15274,7 @@ module.exports = function(hljs) {
     ].concat(EXPRESSIONS)
   };
 };
-},{}],91:[function(require,module,exports){
+},{}],96:[function(require,module,exports){
 module.exports = function(hljs) {
   return {
     contains: [
@@ -14449,7 +15289,7 @@ module.exports = function(hljs) {
     ]
   }
 };
-},{}],92:[function(require,module,exports){
+},{}],97:[function(require,module,exports){
 module.exports = function(hljs) {
   var keywords = {
     'builtin-name':
@@ -14544,7 +15384,7 @@ module.exports = function(hljs) {
     contains: [LIST, STRING, HINT, HINT_COL, COMMENT, KEY, COLLECTION, NUMBER, LITERAL]
   }
 };
-},{}],93:[function(require,module,exports){
+},{}],98:[function(require,module,exports){
 module.exports = function(hljs) {
   return {
     aliases: ['cmake.in'],
@@ -14582,7 +15422,7 @@ module.exports = function(hljs) {
     ]
   };
 };
-},{}],94:[function(require,module,exports){
+},{}],99:[function(require,module,exports){
 module.exports = function(hljs) {
   var KEYWORDS = {
     keyword:
@@ -14721,7 +15561,7 @@ module.exports = function(hljs) {
     ])
   };
 };
-},{}],95:[function(require,module,exports){
+},{}],100:[function(require,module,exports){
 module.exports = function(hljs) {
   return {
     keywords: {
@@ -14788,7 +15628,7 @@ module.exports = function(hljs) {
     ]
   };
 };
-},{}],96:[function(require,module,exports){
+},{}],101:[function(require,module,exports){
 module.exports = function cos (hljs) {
 
   var STRINGS = {
@@ -14912,7 +15752,7 @@ module.exports = function cos (hljs) {
     ]
   };
 };
-},{}],97:[function(require,module,exports){
+},{}],102:[function(require,module,exports){
 module.exports = function(hljs) {
   var CPP_PRIMITIVE_TYPES = {
     className: 'keyword',
@@ -15078,7 +15918,7 @@ module.exports = function(hljs) {
     }
   };
 };
-},{}],98:[function(require,module,exports){
+},{}],103:[function(require,module,exports){
 module.exports = function(hljs) {
   var RESOURCES = 'primitive rsc_template';
 
@@ -15172,7 +16012,7 @@ module.exports = function(hljs) {
     ]
   };
 };
-},{}],99:[function(require,module,exports){
+},{}],104:[function(require,module,exports){
 module.exports = function(hljs) {
   var NUM_SUFFIX = '(_[uif](8|16|32|64))?';
   var CRYSTAL_IDENT_RE = '[a-zA-Z_]\\w*[!?=]?';
@@ -15349,7 +16189,7 @@ module.exports = function(hljs) {
     contains: CRYSTAL_DEFAULT_CONTAINS
   };
 };
-},{}],100:[function(require,module,exports){
+},{}],105:[function(require,module,exports){
 module.exports = function(hljs) {
   var KEYWORDS = {
     keyword:
@@ -15516,7 +16356,7 @@ module.exports = function(hljs) {
     ]
   };
 };
-},{}],101:[function(require,module,exports){
+},{}],106:[function(require,module,exports){
 module.exports = function(hljs) {
   return {
     case_insensitive: false,
@@ -15538,7 +16378,7 @@ module.exports = function(hljs) {
     ]
   };
 };
-},{}],102:[function(require,module,exports){
+},{}],107:[function(require,module,exports){
 module.exports = function(hljs) {
   var IDENT_RE = '[a-zA-Z-][a-zA-Z0-9_-]*';
   var RULE = {
@@ -15643,7 +16483,7 @@ module.exports = function(hljs) {
     ]
   };
 };
-},{}],103:[function(require,module,exports){
+},{}],108:[function(require,module,exports){
 module.exports = /**
  * Known issues:
  *
@@ -15901,7 +16741,7 @@ function(hljs) {
     ]
   };
 };
-},{}],104:[function(require,module,exports){
+},{}],109:[function(require,module,exports){
 module.exports = function (hljs) {
   var SUBST = {
     className: 'subst',
@@ -16002,7 +16842,7 @@ module.exports = function (hljs) {
     ]
   }
 };
-},{}],105:[function(require,module,exports){
+},{}],110:[function(require,module,exports){
 module.exports = function(hljs) {
   var KEYWORDS =
     'exports register file shl array record property for mod while set ally label uses raise not ' +
@@ -16070,7 +16910,7 @@ module.exports = function(hljs) {
     ].concat(COMMENT_MODES)
   };
 };
-},{}],106:[function(require,module,exports){
+},{}],111:[function(require,module,exports){
 module.exports = function(hljs) {
   return {
     aliases: ['patch'],
@@ -16110,7 +16950,7 @@ module.exports = function(hljs) {
     ]
   };
 };
-},{}],107:[function(require,module,exports){
+},{}],112:[function(require,module,exports){
 module.exports = function(hljs) {
   var FILTER = {
     begin: /\|[A-Za-z]+:?/,
@@ -16174,7 +17014,7 @@ module.exports = function(hljs) {
     ]
   };
 };
-},{}],108:[function(require,module,exports){
+},{}],113:[function(require,module,exports){
 module.exports = function(hljs) {
   return {
     aliases: ['bind', 'zone'],
@@ -16203,7 +17043,7 @@ module.exports = function(hljs) {
     ]
   };
 };
-},{}],109:[function(require,module,exports){
+},{}],114:[function(require,module,exports){
 module.exports = function(hljs) {
   return {
     aliases: ['docker'],
@@ -16232,7 +17072,7 @@ module.exports = function(hljs) {
     ]
   }
 };
-},{}],110:[function(require,module,exports){
+},{}],115:[function(require,module,exports){
 module.exports = function(hljs) {
   var COMMENT = hljs.COMMENT(
     /^\s*@?rem\b/, /$/,
@@ -16284,7 +17124,7 @@ module.exports = function(hljs) {
     ]
   };
 };
-},{}],111:[function(require,module,exports){
+},{}],116:[function(require,module,exports){
 module.exports = function(hljs) {
   var QUOTED_PROPERTY = {
     className: 'string',
@@ -16331,7 +17171,7 @@ module.exports = function(hljs) {
     ]
   };
 };
-},{}],112:[function(require,module,exports){
+},{}],117:[function(require,module,exports){
 module.exports = function(hljs) {
   var STRINGS = {
     className: 'string',
@@ -16455,7 +17295,7 @@ module.exports = function(hljs) {
     ]
   };
 };
-},{}],113:[function(require,module,exports){
+},{}],118:[function(require,module,exports){
 module.exports = function(hljs) {
   var EXPRESSION_KEYWORDS = 'if eq ne lt lte gt gte select default math sep';
   return {
@@ -16487,7 +17327,7 @@ module.exports = function(hljs) {
     ]
   };
 };
-},{}],114:[function(require,module,exports){
+},{}],119:[function(require,module,exports){
 module.exports = function(hljs) {
   var ELIXIR_IDENT_RE = '[a-zA-Z_][a-zA-Z0-9_]*(\\!|\\?)?';
   var ELIXIR_METHOD_RE = '[a-zA-Z_]\\w*[!?=]?|[-+~]\\@|<<|>>|=~|===?|<=>|[<>]=?|\\*\\*|[-/+%^&*~`|]|\\[\\]=?';
@@ -16584,7 +17424,7 @@ module.exports = function(hljs) {
     contains: ELIXIR_DEFAULT_CONTAINS
   };
 };
-},{}],115:[function(require,module,exports){
+},{}],120:[function(require,module,exports){
 module.exports = function(hljs) {
   var COMMENT = {
     variants: [
@@ -16667,7 +17507,7 @@ module.exports = function(hljs) {
     ]
   };
 };
-},{}],116:[function(require,module,exports){
+},{}],121:[function(require,module,exports){
 module.exports = function(hljs) {
   return {
     subLanguage: 'xml',
@@ -16682,7 +17522,7 @@ module.exports = function(hljs) {
     ]
   };
 };
-},{}],117:[function(require,module,exports){
+},{}],122:[function(require,module,exports){
 module.exports = function(hljs) {
   return {
     keywords: {
@@ -16728,7 +17568,7 @@ module.exports = function(hljs) {
     ]
   };
 };
-},{}],118:[function(require,module,exports){
+},{}],123:[function(require,module,exports){
 module.exports = function(hljs) {
   var BASIC_ATOM_RE = '[a-z\'][a-zA-Z0-9_\']*';
   var FUNCTION_NAME_RE = '(' + BASIC_ATOM_RE + ':' + BASIC_ATOM_RE + '|' + BASIC_ATOM_RE + ')';
@@ -16874,7 +17714,7 @@ module.exports = function(hljs) {
     ]
   };
 };
-},{}],119:[function(require,module,exports){
+},{}],124:[function(require,module,exports){
 module.exports = function(hljs) {
   return {
     aliases: ['xlsx', 'xls'],
@@ -16922,7 +17762,7 @@ module.exports = function(hljs) {
     ]
   };
 };
-},{}],120:[function(require,module,exports){
+},{}],125:[function(require,module,exports){
 module.exports = function(hljs) {
   return {
     contains: [
@@ -16951,7 +17791,7 @@ module.exports = function(hljs) {
     case_insensitive: true
   };
 };
-},{}],121:[function(require,module,exports){
+},{}],126:[function(require,module,exports){
 module.exports = function(hljs) {
   var PARAMS = {
     className: 'params',
@@ -17022,7 +17862,7 @@ module.exports = function(hljs) {
     ]
   };
 };
-},{}],122:[function(require,module,exports){
+},{}],127:[function(require,module,exports){
 module.exports = function(hljs) {
   var TYPEPARAM = {
     begin: '<', end: '>',
@@ -17081,7 +17921,7 @@ module.exports = function(hljs) {
     ]
   };
 };
-},{}],123:[function(require,module,exports){
+},{}],128:[function(require,module,exports){
 module.exports = function (hljs) {
   var KEYWORDS = {
     'keyword':
@@ -17235,7 +18075,7 @@ module.exports = function (hljs) {
     ]
   };
 };
-},{}],124:[function(require,module,exports){
+},{}],129:[function(require,module,exports){
 module.exports = function(hljs) {
   var KEYWORDS = {
     keyword: 'and bool break call callexe checkinterrupt clear clearg closeall cls comlog compile ' +
@@ -17457,7 +18297,7 @@ module.exports = function(hljs) {
     ]
   };
 };
-},{}],125:[function(require,module,exports){
+},{}],130:[function(require,module,exports){
 module.exports = function(hljs) {
     var GCODE_IDENT_RE = '[A-Z_][A-Z0-9_.]*';
     var GCODE_CLOSE_RE = '\\%';
@@ -17524,7 +18364,7 @@ module.exports = function(hljs) {
         ].concat(GCODE_CODE)
     };
 };
-},{}],126:[function(require,module,exports){
+},{}],131:[function(require,module,exports){
 module.exports = function (hljs) {
   return {
     aliases: ['feature'],
@@ -17561,7 +18401,7 @@ module.exports = function (hljs) {
     ]
   };
 };
-},{}],127:[function(require,module,exports){
+},{}],132:[function(require,module,exports){
 module.exports = function(hljs) {
   return {
     keywords: {
@@ -17678,7 +18518,7 @@ module.exports = function(hljs) {
     ]
   };
 };
-},{}],128:[function(require,module,exports){
+},{}],133:[function(require,module,exports){
 module.exports = function(hljs) {
   var GO_KEYWORDS = {
     keyword:
@@ -17732,7 +18572,7 @@ module.exports = function(hljs) {
     ]
   };
 };
-},{}],129:[function(require,module,exports){
+},{}],134:[function(require,module,exports){
 module.exports = function(hljs) {
     return {
       keywords: {
@@ -17755,7 +18595,7 @@ module.exports = function(hljs) {
       ]
     }
 };
-},{}],130:[function(require,module,exports){
+},{}],135:[function(require,module,exports){
 module.exports = function(hljs) {
   return {
     case_insensitive: true,
@@ -17790,7 +18630,7 @@ module.exports = function(hljs) {
     ]
   }
 };
-},{}],131:[function(require,module,exports){
+},{}],136:[function(require,module,exports){
 module.exports = function(hljs) {
     return {
         keywords: {
@@ -17884,7 +18724,7 @@ module.exports = function(hljs) {
         illegal: /#|<\//
     }
 };
-},{}],132:[function(require,module,exports){
+},{}],137:[function(require,module,exports){
 module.exports = // TODO support filter tags like :javascript, support inline HTML
 function(hljs) {
   return {
@@ -17991,7 +18831,7 @@ function(hljs) {
     ]
   };
 };
-},{}],133:[function(require,module,exports){
+},{}],138:[function(require,module,exports){
 module.exports = function(hljs) {
   var BUILT_INS = {'builtin-name': 'each in with if else unless bindattr action collection debugger log outlet template unbound view yield'};
   return {
@@ -18025,7 +18865,7 @@ module.exports = function(hljs) {
     ]
   };
 };
-},{}],134:[function(require,module,exports){
+},{}],139:[function(require,module,exports){
 module.exports = function(hljs) {
   var COMMENT = {
     variants: [
@@ -18147,7 +18987,7 @@ module.exports = function(hljs) {
     ]
   };
 };
-},{}],135:[function(require,module,exports){
+},{}],140:[function(require,module,exports){
 module.exports = function(hljs) {
   var IDENT_RE = '[a-zA-Z_$][a-zA-Z0-9_$]*';
   var IDENT_FUNC_RETURN_TYPE_RE = '([*]|[a-zA-Z_$][a-zA-Z0-9_$]*)';
@@ -18205,7 +19045,7 @@ module.exports = function(hljs) {
     ]
   };
 };
-},{}],136:[function(require,module,exports){
+},{}],141:[function(require,module,exports){
 module.exports = function(hljs) {
   return {
     case_insensitive: true,
@@ -18251,7 +19091,7 @@ module.exports = function(hljs) {
     ]
   };
 };
-},{}],137:[function(require,module,exports){
+},{}],142:[function(require,module,exports){
 module.exports = function(hljs) {
   var BUILT_INS = 'action collection component concat debugger each each-in else get hash if input link-to loc log mut outlet partial query-params render textarea unbound unless with yield view';
 
@@ -18322,7 +19162,7 @@ module.exports = function(hljs) {
     ]
   };
 };
-},{}],138:[function(require,module,exports){
+},{}],143:[function(require,module,exports){
 module.exports = function(hljs) {
   var VERSION = 'HTTP/[0-9\\.]+';
   return {
@@ -18363,7 +19203,7 @@ module.exports = function(hljs) {
     ]
   };
 };
-},{}],139:[function(require,module,exports){
+},{}],144:[function(require,module,exports){
 module.exports = function(hljs) {
   var START_BRACKET = '\\[';
   var END_BRACKET = '\\]';
@@ -18420,7 +19260,7 @@ module.exports = function(hljs) {
     ]
   };
 };
-},{}],140:[function(require,module,exports){
+},{}],145:[function(require,module,exports){
 module.exports = function(hljs) {
   var STRING = {
     className: "string",
@@ -18486,7 +19326,7 @@ module.exports = function(hljs) {
     ]
   };
 };
-},{}],141:[function(require,module,exports){
+},{}],146:[function(require,module,exports){
 module.exports = function(hljs) {
   var PARAMS = {
     className: 'params',
@@ -18562,7 +19402,7 @@ module.exports = function(hljs) {
     ]
   };
 };
-},{}],142:[function(require,module,exports){
+},{}],147:[function(require,module,exports){
 module.exports = function(hljs) {
   var GENERIC_IDENT_RE = hljs.UNDERSCORE_IDENT_RE + '(<' + hljs.UNDERSCORE_IDENT_RE + '(\\s*,\\s*' + hljs.UNDERSCORE_IDENT_RE + ')*>)?';
   var KEYWORDS =
@@ -18669,7 +19509,7 @@ module.exports = function(hljs) {
     ]
   };
 };
-},{}],143:[function(require,module,exports){
+},{}],148:[function(require,module,exports){
 module.exports = function(hljs) {
   return {
     aliases: ['js', 'jsx'],
@@ -18783,7 +19623,7 @@ module.exports = function(hljs) {
     illegal: /#(?!!)/
   };
 };
-},{}],144:[function(require,module,exports){
+},{}],149:[function(require,module,exports){
 module.exports = function(hljs) {
   var LITERALS = {literal: 'true false null'};
   var TYPES = [
@@ -18820,7 +19660,7 @@ module.exports = function(hljs) {
     illegal: '\\S'
   };
 };
-},{}],145:[function(require,module,exports){
+},{}],150:[function(require,module,exports){
 module.exports = function(hljs) {
   // Since there are numerous special names in Julia, it is too much trouble
   // to maintain them by hand. Hence these names (i.e. keywords, literals and
@@ -18998,7 +19838,7 @@ module.exports = function(hljs) {
 
   return DEFAULT;
 };
-},{}],146:[function(require,module,exports){
+},{}],151:[function(require,module,exports){
 module.exports = function (hljs) {
   var KEYWORDS = {
     keyword:
@@ -19172,7 +20012,7 @@ module.exports = function (hljs) {
     ]
   };
 };
-},{}],147:[function(require,module,exports){
+},{}],152:[function(require,module,exports){
 module.exports = function(hljs) {
   var LASSO_IDENT_RE = '[a-zA-Z_][a-zA-Z0-9_.]*';
   var LASSO_ANGLE_RE = '<\\?(lasso(script)?|=)';
@@ -19340,7 +20180,7 @@ module.exports = function(hljs) {
     ].concat(LASSO_CODE)
   };
 };
-},{}],148:[function(require,module,exports){
+},{}],153:[function(require,module,exports){
 module.exports = function(hljs) {
   return {
     contains: [
@@ -19363,7 +20203,7 @@ module.exports = function(hljs) {
     ]
   };
 };
-},{}],149:[function(require,module,exports){
+},{}],154:[function(require,module,exports){
 module.exports = function(hljs) {
   var IDENT_RE        = '[\\w-]+'; // yes, Less identifiers may begin with a digit
   var INTERP_IDENT_RE = '(' + IDENT_RE + '|@{' + IDENT_RE + '})';
@@ -19503,7 +20343,7 @@ module.exports = function(hljs) {
     contains: RULES
   };
 };
-},{}],150:[function(require,module,exports){
+},{}],155:[function(require,module,exports){
 module.exports = function(hljs) {
   var LISP_IDENT_RE = '[a-zA-Z_\\-\\+\\*\\/\\<\\=\\>\\&\\#][a-zA-Z0-9_\\-\\+\\*\\/\\<\\=\\>\\&\\#!]*';
   var MEC_RE = '\\|[^]*?\\|';
@@ -19606,7 +20446,7 @@ module.exports = function(hljs) {
     ]
   };
 };
-},{}],151:[function(require,module,exports){
+},{}],156:[function(require,module,exports){
 module.exports = function(hljs) {
   var VARIABLE = {
     begin: '\\b[gtps][A-Z]+[A-Za-z0-9_\\-]*\\b|\\$_[A-Z]+',
@@ -19763,7 +20603,7 @@ module.exports = function(hljs) {
     illegal: ';$|^\\[|^=|&|{'
   };
 };
-},{}],152:[function(require,module,exports){
+},{}],157:[function(require,module,exports){
 module.exports = function(hljs) {
   var KEYWORDS = {
     keyword:
@@ -19912,7 +20752,7 @@ module.exports = function(hljs) {
     ])
   };
 };
-},{}],153:[function(require,module,exports){
+},{}],158:[function(require,module,exports){
 module.exports = function(hljs) {
 
     var LSL_STRING_ESCAPE_CHARS = {
@@ -19995,7 +20835,7 @@ module.exports = function(hljs) {
         ]
     };
 };
-},{}],154:[function(require,module,exports){
+},{}],159:[function(require,module,exports){
 module.exports = function(hljs) {
   var OPENING_LONG_BRACKET = '\\[=*\\[';
   var CLOSING_LONG_BRACKET = '\\]=*\\]';
@@ -20051,7 +20891,7 @@ module.exports = function(hljs) {
     ])
   };
 };
-},{}],155:[function(require,module,exports){
+},{}],160:[function(require,module,exports){
 module.exports = function(hljs) {
   var VARIABLE = {
     className: 'variable',
@@ -20096,7 +20936,7 @@ module.exports = function(hljs) {
     ]
   };
 };
-},{}],156:[function(require,module,exports){
+},{}],161:[function(require,module,exports){
 module.exports = function(hljs) {
   return {
     aliases: ['md', 'mkdown', 'mkd'],
@@ -20204,7 +21044,7 @@ module.exports = function(hljs) {
     ]
   };
 };
-},{}],157:[function(require,module,exports){
+},{}],162:[function(require,module,exports){
 module.exports = function(hljs) {
   return {
     aliases: ['mma'],
@@ -20262,7 +21102,7 @@ module.exports = function(hljs) {
     ]
   };
 };
-},{}],158:[function(require,module,exports){
+},{}],163:[function(require,module,exports){
 module.exports = function(hljs) {
   var COMMON_CONTAINS = [
     hljs.C_NUMBER_MODE,
@@ -20350,7 +21190,7 @@ module.exports = function(hljs) {
     ].concat(COMMON_CONTAINS)
   };
 };
-},{}],159:[function(require,module,exports){
+},{}],164:[function(require,module,exports){
 module.exports = function(hljs) {
   var KEYWORDS = 'if then else elseif for thru do while unless step in and or not';
   var LITERALS = 'true false unknown inf minf ind und %e %i %pi %phi %gamma';
@@ -20756,7 +21596,7 @@ module.exports = function(hljs) {
     illegal: /@/
   }
 };
-},{}],160:[function(require,module,exports){
+},{}],165:[function(require,module,exports){
 module.exports = function(hljs) {
   return {
     keywords:
@@ -20981,7 +21821,7 @@ module.exports = function(hljs) {
     ]
   };
 };
-},{}],161:[function(require,module,exports){
+},{}],166:[function(require,module,exports){
 module.exports = function(hljs) {
   var KEYWORDS = {
     keyword:
@@ -21063,7 +21903,7 @@ module.exports = function(hljs) {
     ]
   };
 };
-},{}],162:[function(require,module,exports){
+},{}],167:[function(require,module,exports){
 module.exports = function(hljs) {
     //local labels: %?[FB]?[AT]?\d{1,2}\w+
   return {
@@ -21149,7 +21989,7 @@ module.exports = function(hljs) {
     illegal: '\/'
   };
 };
-},{}],163:[function(require,module,exports){
+},{}],168:[function(require,module,exports){
 module.exports = function(hljs) {
   return {
     keywords:
@@ -21168,7 +22008,7 @@ module.exports = function(hljs) {
     ]
   };
 };
-},{}],164:[function(require,module,exports){
+},{}],169:[function(require,module,exports){
 module.exports = function(hljs) {
   return {
     subLanguage: 'xml',
@@ -21193,7 +22033,7 @@ module.exports = function(hljs) {
     ]
   };
 };
-},{}],165:[function(require,module,exports){
+},{}],170:[function(require,module,exports){
 module.exports = function(hljs) {
   var NUMBER = {
     className: 'number', relevance: 0,
@@ -21268,7 +22108,7 @@ module.exports = function(hljs) {
     ]
   }
 };
-},{}],166:[function(require,module,exports){
+},{}],171:[function(require,module,exports){
 module.exports = function(hljs) {
   var KEYWORDS = {
     keyword:
@@ -21380,7 +22220,7 @@ module.exports = function(hljs) {
     ])
   };
 };
-},{}],167:[function(require,module,exports){
+},{}],172:[function(require,module,exports){
 module.exports = function(hljs) {
   var VAR = {
     className: 'variable',
@@ -21473,7 +22313,7 @@ module.exports = function(hljs) {
     illegal: '[^\\s\\}]'
   };
 };
-},{}],168:[function(require,module,exports){
+},{}],173:[function(require,module,exports){
 module.exports = function(hljs) {
   return {
     aliases: ['nim'],
@@ -21528,7 +22368,7 @@ module.exports = function(hljs) {
     ]
   }
 };
-},{}],169:[function(require,module,exports){
+},{}],174:[function(require,module,exports){
 module.exports = function(hljs) {
   var NIX_KEYWORDS = {
     keyword:
@@ -21577,7 +22417,7 @@ module.exports = function(hljs) {
     contains: EXPRESSIONS
   };
 };
-},{}],170:[function(require,module,exports){
+},{}],175:[function(require,module,exports){
 module.exports = function(hljs) {
   var CONSTANTS = {
     className: 'variable',
@@ -21663,7 +22503,7 @@ module.exports = function(hljs) {
     ]
   };
 };
-},{}],171:[function(require,module,exports){
+},{}],176:[function(require,module,exports){
 module.exports = function(hljs) {
   var API_CLASS = {
     className: 'built_in',
@@ -21754,7 +22594,7 @@ module.exports = function(hljs) {
     ]
   };
 };
-},{}],172:[function(require,module,exports){
+},{}],177:[function(require,module,exports){
 module.exports = function(hljs) {
   /* missing support for heredoc-like string (OCaml 4.0.2+) */
   return {
@@ -21825,7 +22665,7 @@ module.exports = function(hljs) {
     ]
   }
 };
-},{}],173:[function(require,module,exports){
+},{}],178:[function(require,module,exports){
 module.exports = function(hljs) {
 	var SPECIAL_VARS = {
 		className: 'keyword',
@@ -21882,7 +22722,7 @@ module.exports = function(hljs) {
 		]
 	}
 };
-},{}],174:[function(require,module,exports){
+},{}],179:[function(require,module,exports){
 module.exports = function(hljs) {
   var OXYGENE_KEYWORDS = 'abstract add and array as asc aspect assembly async begin break block by case class concat const copy constructor continue '+
     'create default delegate desc distinct div do downto dynamic each else empty end ensure enum equals event except exit extension external false '+
@@ -21952,7 +22792,7 @@ module.exports = function(hljs) {
     ]
   };
 };
-},{}],175:[function(require,module,exports){
+},{}],180:[function(require,module,exports){
 module.exports = function(hljs) {
   var CURLY_SUBCOMMENT = hljs.COMMENT(
     '{',
@@ -22000,7 +22840,7 @@ module.exports = function(hljs) {
     ]
   };
 };
-},{}],176:[function(require,module,exports){
+},{}],181:[function(require,module,exports){
 module.exports = function(hljs) {
   var PERL_KEYWORDS = 'getpwent getservent quotemeta msgrcv scalar kill dbmclose undef lc ' +
     'ma syswrite tr send umask sysopen shmwrite vec qx utime local oct semctl localtime ' +
@@ -22157,7 +22997,7 @@ module.exports = function(hljs) {
     contains: PERL_DEFAULT_CONTAINS
   };
 };
-},{}],177:[function(require,module,exports){
+},{}],182:[function(require,module,exports){
 module.exports = function(hljs) {
   var MACRO = {
     className: 'variable',
@@ -22209,7 +23049,7 @@ module.exports = function(hljs) {
     ]
   };
 };
-},{}],178:[function(require,module,exports){
+},{}],183:[function(require,module,exports){
 module.exports = function(hljs) {
   var VARIABLE = {
     begin: '\\$+[a-zA-Z_\x7f-\xff][a-zA-Z0-9_\x7f-\xff]*'
@@ -22336,7 +23176,7 @@ module.exports = function(hljs) {
     ]
   };
 };
-},{}],179:[function(require,module,exports){
+},{}],184:[function(require,module,exports){
 module.exports = function(hljs) {
   var KEYWORDS = {
     keyword:
@@ -22427,7 +23267,7 @@ module.exports = function(hljs) {
     ]
   };
 };
-},{}],180:[function(require,module,exports){
+},{}],185:[function(require,module,exports){
 module.exports = function(hljs) {
   var BACKTICK_ESCAPE = {
     begin: '`[\\s\\S]',
@@ -22508,7 +23348,7 @@ module.exports = function(hljs) {
     ]
   };
 };
-},{}],181:[function(require,module,exports){
+},{}],186:[function(require,module,exports){
 module.exports = function(hljs) {
   return {
     keywords: {
@@ -22556,7 +23396,7 @@ module.exports = function(hljs) {
     ]
   };
 };
-},{}],182:[function(require,module,exports){
+},{}],187:[function(require,module,exports){
 module.exports = function(hljs) {
   return {
     contains: [
@@ -22586,7 +23426,7 @@ module.exports = function(hljs) {
     ]
   };
 };
-},{}],183:[function(require,module,exports){
+},{}],188:[function(require,module,exports){
 module.exports = function(hljs) {
 
   var ATOM = {
@@ -22674,7 +23514,7 @@ module.exports = function(hljs) {
     ])
   };
 };
-},{}],184:[function(require,module,exports){
+},{}],189:[function(require,module,exports){
 module.exports = function(hljs) {
   return {
     keywords: {
@@ -22710,7 +23550,7 @@ module.exports = function(hljs) {
     ]
   };
 };
-},{}],185:[function(require,module,exports){
+},{}],190:[function(require,module,exports){
 module.exports = function(hljs) {
 
   var PUPPET_KEYWORDS = {
@@ -22825,7 +23665,7 @@ module.exports = function(hljs) {
     ]
   }
 };
-},{}],186:[function(require,module,exports){
+},{}],191:[function(require,module,exports){
 module.exports = // Base deafult colors in PB IDE: background: #FFFFDF; foreground: #000000;
 
 function(hljs) {
@@ -22883,7 +23723,7 @@ function(hljs) {
     ]
   };
 };
-},{}],187:[function(require,module,exports){
+},{}],192:[function(require,module,exports){
 module.exports = function(hljs) {
   var PROMPT = {
     className: 'meta',  begin: /^(>>>|\.\.\.) /
@@ -22975,7 +23815,7 @@ module.exports = function(hljs) {
     ]
   };
 };
-},{}],188:[function(require,module,exports){
+},{}],193:[function(require,module,exports){
 module.exports = function(hljs) {
   var Q_KEYWORDS = {
   keyword:
@@ -22998,7 +23838,7 @@ module.exports = function(hljs) {
      ]
   };
 };
-},{}],189:[function(require,module,exports){
+},{}],194:[function(require,module,exports){
 module.exports = function(hljs) {
   var KEYWORDS = {
       keyword:
@@ -23167,7 +24007,7 @@ module.exports = function(hljs) {
     illegal: /#/
   };
 };
-},{}],190:[function(require,module,exports){
+},{}],195:[function(require,module,exports){
 module.exports = function(hljs) {
   var IDENT_RE = '([a-zA-Z]|\\.[a-zA-Z.])[a-zA-Z0-9._]*';
 
@@ -23237,7 +24077,7 @@ module.exports = function(hljs) {
     ]
   };
 };
-},{}],191:[function(require,module,exports){
+},{}],196:[function(require,module,exports){
 module.exports = function(hljs) {
   return {
     keywords:
@@ -23264,7 +24104,7 @@ module.exports = function(hljs) {
     ]
   };
 };
-},{}],192:[function(require,module,exports){
+},{}],197:[function(require,module,exports){
 module.exports = function(hljs) {
   var IDENTIFIER = '[a-zA-Z-_][^\\n{]+\\{';
 
@@ -23331,7 +24171,7 @@ module.exports = function(hljs) {
     ]
   };
 };
-},{}],193:[function(require,module,exports){
+},{}],198:[function(require,module,exports){
 module.exports = function(hljs) {
   return {
     keywords: {
@@ -23367,7 +24207,7 @@ module.exports = function(hljs) {
     ]
   };
 };
-},{}],194:[function(require,module,exports){
+},{}],199:[function(require,module,exports){
 module.exports = function(hljs) {
   var RUBY_METHOD_RE = '[a-zA-Z_]\\w*[!?=]?|[-+~]\\@|<<|>>|=~|===?|<=>|[<>]=?|\\*\\*|[-/+%^&*~`|]|\\[\\]=?';
   var RUBY_KEYWORDS = {
@@ -23540,7 +24380,7 @@ module.exports = function(hljs) {
     contains: COMMENT_MODES.concat(IRB_DEFAULT).concat(RUBY_DEFAULT_CONTAINS)
   };
 };
-},{}],195:[function(require,module,exports){
+},{}],200:[function(require,module,exports){
 module.exports = function(hljs) {
   return {
     keywords: {
@@ -23601,7 +24441,7 @@ module.exports = function(hljs) {
     ]
   };
 };
-},{}],196:[function(require,module,exports){
+},{}],201:[function(require,module,exports){
 module.exports = function(hljs) {
   var NUM_SUFFIX = '([uif](8|16|32|64|size))\?';
   var BLOCK_COMMENT = hljs.inherit(hljs.C_BLOCK_COMMENT_MODE);
@@ -23707,7 +24547,7 @@ module.exports = function(hljs) {
     ]
   };
 };
-},{}],197:[function(require,module,exports){
+},{}],202:[function(require,module,exports){
 module.exports = function(hljs) {
 
   var ANNOTATION = { className: 'meta', begin: '@[A-Za-z]+' };
@@ -23822,7 +24662,7 @@ module.exports = function(hljs) {
     ]
   };
 };
-},{}],198:[function(require,module,exports){
+},{}],203:[function(require,module,exports){
 module.exports = function(hljs) {
   var SCHEME_IDENT_RE = '[^\\(\\)\\[\\]\\{\\}",\'`;#|\\\\\\s]+';
   var SCHEME_SIMPLE_NUMBER_RE = '(\\-|\\+)?\\d+([./]\\d+)?';
@@ -23963,7 +24803,7 @@ module.exports = function(hljs) {
     contains: [SHEBANG, NUMBER, STRING, QUOTED_IDENT, QUOTED_LIST, LIST].concat(COMMENT_MODES)
   };
 };
-},{}],199:[function(require,module,exports){
+},{}],204:[function(require,module,exports){
 module.exports = function(hljs) {
 
   var COMMON_CONTAINS = [
@@ -24017,7 +24857,7 @@ module.exports = function(hljs) {
     ].concat(COMMON_CONTAINS)
   };
 };
-},{}],200:[function(require,module,exports){
+},{}],205:[function(require,module,exports){
 module.exports = function(hljs) {
   var IDENT_RE = '[a-zA-Z-][a-zA-Z0-9_-]*';
   var VARIABLE = {
@@ -24115,7 +24955,7 @@ module.exports = function(hljs) {
     ]
   };
 };
-},{}],201:[function(require,module,exports){
+},{}],206:[function(require,module,exports){
 module.exports = function(hljs) {
   var smali_instr_low_prio = ['add', 'and', 'cmp', 'cmpg', 'cmpl', 'const', 'div', 'double', 'float', 'goto', 'if', 'int', 'long', 'move', 'mul', 'neg', 'new', 'nop', 'not', 'or', 'rem', 'return', 'shl', 'shr', 'sput', 'sub', 'throw', 'ushr', 'xor'];
   var smali_instr_high_prio = ['aget', 'aput', 'array', 'check', 'execute', 'fill', 'filled', 'goto/16', 'goto/32', 'iget', 'instance', 'invoke', 'iput', 'monitor', 'packed', 'sget', 'sparse'];
@@ -24171,7 +25011,7 @@ module.exports = function(hljs) {
     ]
   };
 };
-},{}],202:[function(require,module,exports){
+},{}],207:[function(require,module,exports){
 module.exports = function(hljs) {
   var VAR_IDENT_RE = '[a-z][a-zA-Z0-9_]*';
   var CHAR = {
@@ -24221,7 +25061,7 @@ module.exports = function(hljs) {
     ]
   };
 };
-},{}],203:[function(require,module,exports){
+},{}],208:[function(require,module,exports){
 module.exports = function(hljs) {
   return {
     aliases: ['ml'],
@@ -24287,7 +25127,7 @@ module.exports = function(hljs) {
     ]
   };
 };
-},{}],204:[function(require,module,exports){
+},{}],209:[function(require,module,exports){
 module.exports = function(hljs) {
   var CPP = hljs.getLanguage('cpp').exports;
 
@@ -24748,7 +25588,7 @@ module.exports = function(hljs) {
     illegal: /#/
   };
 };
-},{}],205:[function(require,module,exports){
+},{}],210:[function(require,module,exports){
 module.exports = function(hljs) {
   var COMMENT_MODE = hljs.COMMENT('--', '$');
   return {
@@ -24908,7 +25748,7 @@ module.exports = function(hljs) {
     ]
   };
 };
-},{}],206:[function(require,module,exports){
+},{}],211:[function(require,module,exports){
 module.exports = function(hljs) {
   return {
     contains: [
@@ -24991,7 +25831,7 @@ module.exports = function(hljs) {
     ]
   };
 };
-},{}],207:[function(require,module,exports){
+},{}],212:[function(require,module,exports){
 module.exports = function(hljs) {
   return {
     aliases: ['do', 'ado'],
@@ -25029,7 +25869,7 @@ module.exports = function(hljs) {
     ]
   };
 };
-},{}],208:[function(require,module,exports){
+},{}],213:[function(require,module,exports){
 module.exports = function(hljs) {
   var STEP21_IDENT_RE = '[A-Z_][A-Z0-9_.]*';
   var STEP21_KEYWORDS = {
@@ -25076,7 +25916,7 @@ module.exports = function(hljs) {
     ]
   };
 };
-},{}],209:[function(require,module,exports){
+},{}],214:[function(require,module,exports){
 module.exports = function(hljs) {
 
   var VARIABLE = {
@@ -25530,7 +26370,7 @@ module.exports = function(hljs) {
     ]
   };
 };
-},{}],210:[function(require,module,exports){
+},{}],215:[function(require,module,exports){
 module.exports = function(hljs) {
   var SWIFT_KEYWORDS = {
       keyword: '__COLUMN__ __FILE__ __FUNCTION__ __LINE__ as as! as? associativity ' +
@@ -25647,7 +26487,7 @@ module.exports = function(hljs) {
     ]
   };
 };
-},{}],211:[function(require,module,exports){
+},{}],216:[function(require,module,exports){
 module.exports = function(hljs) {
 
   var COMMENT = {
@@ -25691,7 +26531,7 @@ module.exports = function(hljs) {
     ]
   };
 };
-},{}],212:[function(require,module,exports){
+},{}],217:[function(require,module,exports){
 module.exports = function(hljs) {
   return {
     case_insensitive: true,
@@ -25727,7 +26567,7 @@ module.exports = function(hljs) {
     ]
   };
 };
-},{}],213:[function(require,module,exports){
+},{}],218:[function(require,module,exports){
 module.exports = function(hljs) {
   return {
     aliases: ['tk'],
@@ -25788,7 +26628,7 @@ module.exports = function(hljs) {
     ]
   }
 };
-},{}],214:[function(require,module,exports){
+},{}],219:[function(require,module,exports){
 module.exports = function(hljs) {
   var COMMAND = {
     className: 'tag',
@@ -25850,7 +26690,7 @@ module.exports = function(hljs) {
     ]
   };
 };
-},{}],215:[function(require,module,exports){
+},{}],220:[function(require,module,exports){
 module.exports = function(hljs) {
   var BUILT_IN_TYPES = 'bool byte i16 i32 i64 double string binary';
   return {
@@ -25885,7 +26725,7 @@ module.exports = function(hljs) {
     ]
   };
 };
-},{}],216:[function(require,module,exports){
+},{}],221:[function(require,module,exports){
 module.exports = function(hljs) {
   var TPID = {
     className: 'number',
@@ -25969,7 +26809,7 @@ module.exports = function(hljs) {
     ]
   };
 };
-},{}],217:[function(require,module,exports){
+},{}],222:[function(require,module,exports){
 module.exports = function(hljs) {
   var PARAMS = {
     className: 'params',
@@ -26035,7 +26875,7 @@ module.exports = function(hljs) {
     ]
   };
 };
-},{}],218:[function(require,module,exports){
+},{}],223:[function(require,module,exports){
 module.exports = function(hljs) {
   var KEYWORDS = {
     keyword:
@@ -26144,7 +26984,7 @@ module.exports = function(hljs) {
     ]
   };
 };
-},{}],219:[function(require,module,exports){
+},{}],224:[function(require,module,exports){
 module.exports = function(hljs) {
   return {
     keywords: {
@@ -26194,7 +27034,7 @@ module.exports = function(hljs) {
     ]
   };
 };
-},{}],220:[function(require,module,exports){
+},{}],225:[function(require,module,exports){
 module.exports = function(hljs) {
   return {
     aliases: ['vb'],
@@ -26250,7 +27090,7 @@ module.exports = function(hljs) {
     ]
   };
 };
-},{}],221:[function(require,module,exports){
+},{}],226:[function(require,module,exports){
 module.exports = function(hljs) {
   return {
     subLanguage: 'xml',
@@ -26262,7 +27102,7 @@ module.exports = function(hljs) {
     ]
   };
 };
-},{}],222:[function(require,module,exports){
+},{}],227:[function(require,module,exports){
 module.exports = function(hljs) {
   return {
     aliases: ['vbs'],
@@ -26301,7 +27141,7 @@ module.exports = function(hljs) {
     ]
   };
 };
-},{}],223:[function(require,module,exports){
+},{}],228:[function(require,module,exports){
 module.exports = function(hljs) {
   var SV_KEYWORDS = {
     keyword:
@@ -26400,7 +27240,7 @@ module.exports = function(hljs) {
     ]
   }; // return
 };
-},{}],224:[function(require,module,exports){
+},{}],229:[function(require,module,exports){
 module.exports = function(hljs) {
   // Regular expression for VHDL numeric literals.
 
@@ -26456,7 +27296,7 @@ module.exports = function(hljs) {
     ]
   };
 };
-},{}],225:[function(require,module,exports){
+},{}],230:[function(require,module,exports){
 module.exports = function(hljs) {
   return {
     lexemes: /[!#@\w]+/,
@@ -26562,7 +27402,7 @@ module.exports = function(hljs) {
     ]
   };
 };
-},{}],226:[function(require,module,exports){
+},{}],231:[function(require,module,exports){
 module.exports = function(hljs) {
   return {
     case_insensitive: true,
@@ -26698,7 +27538,7 @@ module.exports = function(hljs) {
     ]
   };
 };
-},{}],227:[function(require,module,exports){
+},{}],232:[function(require,module,exports){
 module.exports = function(hljs) {
   var BUILTIN_MODULES =
     'ObjectLoader Animate MovieCredits Slides Filters Shading Materials LensFlare Mapping VLCAudioVideo ' +
@@ -26771,7 +27611,7 @@ module.exports = function(hljs) {
     ]
   };
 };
-},{}],228:[function(require,module,exports){
+},{}],233:[function(require,module,exports){
 module.exports = function(hljs) {
   var XML_IDENT_RE = '[A-Za-z0-9\\._:-]+';
   var TAG_INTERNALS = {
@@ -26874,7 +27714,7 @@ module.exports = function(hljs) {
     ]
   };
 };
-},{}],229:[function(require,module,exports){
+},{}],234:[function(require,module,exports){
 module.exports = function(hljs) {
   var KEYWORDS = 'for let if while then else return where group by xquery encoding version' +
     'module namespace boundary-space preserve strip default collation base-uri ordering' +
@@ -26945,7 +27785,7 @@ module.exports = function(hljs) {
     contains: CONTAINS
   };
 };
-},{}],230:[function(require,module,exports){
+},{}],235:[function(require,module,exports){
 module.exports = function(hljs) {
   var LITERALS = {literal: '{ } true false yes no Yes No True False null'};
 
@@ -27029,7 +27869,7 @@ module.exports = function(hljs) {
     keywords: LITERALS
   };
 };
-},{}],231:[function(require,module,exports){
+},{}],236:[function(require,module,exports){
 module.exports = function(hljs) {
   var STRING = {
     className: 'string',
@@ -27136,7 +27976,7 @@ module.exports = function(hljs) {
     ]
   };
 };
-},{}],232:[function(require,module,exports){
+},{}],237:[function(require,module,exports){
 /*eslint-disable no-unused-vars*/
 /*!
  * jQuery JavaScript Library v3.1.0
@@ -37212,7 +38052,7 @@ if ( !noGlobal ) {
 return jQuery;
 } );
 
-},{}],233:[function(require,module,exports){
+},{}],238:[function(require,module,exports){
 'use strict';
 
 
@@ -37221,7 +38061,7 @@ var yaml = require('./lib/js-yaml.js');
 
 module.exports = yaml;
 
-},{"./lib/js-yaml.js":234}],234:[function(require,module,exports){
+},{"./lib/js-yaml.js":239}],239:[function(require,module,exports){
 'use strict';
 
 
@@ -37262,7 +38102,7 @@ module.exports.parse          = deprecated('parse');
 module.exports.compose        = deprecated('compose');
 module.exports.addConstructor = deprecated('addConstructor');
 
-},{"./js-yaml/dumper":236,"./js-yaml/exception":237,"./js-yaml/loader":238,"./js-yaml/schema":240,"./js-yaml/schema/core":241,"./js-yaml/schema/default_full":242,"./js-yaml/schema/default_safe":243,"./js-yaml/schema/failsafe":244,"./js-yaml/schema/json":245,"./js-yaml/type":246}],235:[function(require,module,exports){
+},{"./js-yaml/dumper":241,"./js-yaml/exception":242,"./js-yaml/loader":243,"./js-yaml/schema":245,"./js-yaml/schema/core":246,"./js-yaml/schema/default_full":247,"./js-yaml/schema/default_safe":248,"./js-yaml/schema/failsafe":249,"./js-yaml/schema/json":250,"./js-yaml/type":251}],240:[function(require,module,exports){
 'use strict';
 
 
@@ -37323,7 +38163,7 @@ module.exports.repeat         = repeat;
 module.exports.isNegativeZero = isNegativeZero;
 module.exports.extend         = extend;
 
-},{}],236:[function(require,module,exports){
+},{}],241:[function(require,module,exports){
 'use strict';
 
 /*eslint-disable no-use-before-define*/
@@ -38127,7 +38967,7 @@ function safeDump(input, options) {
 module.exports.dump     = dump;
 module.exports.safeDump = safeDump;
 
-},{"./common":235,"./exception":237,"./schema/default_full":242,"./schema/default_safe":243}],237:[function(require,module,exports){
+},{"./common":240,"./exception":242,"./schema/default_full":247,"./schema/default_safe":248}],242:[function(require,module,exports){
 // YAML error class. http://stackoverflow.com/questions/8458984
 //
 'use strict';
@@ -38172,7 +39012,7 @@ YAMLException.prototype.toString = function toString(compact) {
 
 module.exports = YAMLException;
 
-},{}],238:[function(require,module,exports){
+},{}],243:[function(require,module,exports){
 'use strict';
 
 /*eslint-disable max-len,no-use-before-define*/
@@ -39760,7 +40600,7 @@ module.exports.load        = load;
 module.exports.safeLoadAll = safeLoadAll;
 module.exports.safeLoad    = safeLoad;
 
-},{"./common":235,"./exception":237,"./mark":239,"./schema/default_full":242,"./schema/default_safe":243}],239:[function(require,module,exports){
+},{"./common":240,"./exception":242,"./mark":244,"./schema/default_full":247,"./schema/default_safe":248}],244:[function(require,module,exports){
 'use strict';
 
 
@@ -39838,7 +40678,7 @@ Mark.prototype.toString = function toString(compact) {
 
 module.exports = Mark;
 
-},{"./common":235}],240:[function(require,module,exports){
+},{"./common":240}],245:[function(require,module,exports){
 'use strict';
 
 /*eslint-disable max-len*/
@@ -39944,7 +40784,7 @@ Schema.create = function createSchema() {
 
 module.exports = Schema;
 
-},{"./common":235,"./exception":237,"./type":246}],241:[function(require,module,exports){
+},{"./common":240,"./exception":242,"./type":251}],246:[function(require,module,exports){
 // Standard YAML's Core schema.
 // http://www.yaml.org/spec/1.2/spec.html#id2804923
 //
@@ -39964,7 +40804,7 @@ module.exports = new Schema({
   ]
 });
 
-},{"../schema":240,"./json":245}],242:[function(require,module,exports){
+},{"../schema":245,"./json":250}],247:[function(require,module,exports){
 // JS-YAML's default schema for `load` function.
 // It is not described in the YAML specification.
 //
@@ -39991,7 +40831,7 @@ module.exports = Schema.DEFAULT = new Schema({
   ]
 });
 
-},{"../schema":240,"../type/js/function":251,"../type/js/regexp":252,"../type/js/undefined":253,"./default_safe":243}],243:[function(require,module,exports){
+},{"../schema":245,"../type/js/function":256,"../type/js/regexp":257,"../type/js/undefined":258,"./default_safe":248}],248:[function(require,module,exports){
 // JS-YAML's default schema for `safeLoad` function.
 // It is not described in the YAML specification.
 //
@@ -40021,7 +40861,7 @@ module.exports = new Schema({
   ]
 });
 
-},{"../schema":240,"../type/binary":247,"../type/merge":255,"../type/omap":257,"../type/pairs":258,"../type/set":260,"../type/timestamp":262,"./core":241}],244:[function(require,module,exports){
+},{"../schema":245,"../type/binary":252,"../type/merge":260,"../type/omap":262,"../type/pairs":263,"../type/set":265,"../type/timestamp":267,"./core":246}],249:[function(require,module,exports){
 // Standard YAML's Failsafe schema.
 // http://www.yaml.org/spec/1.2/spec.html#id2802346
 
@@ -40040,7 +40880,7 @@ module.exports = new Schema({
   ]
 });
 
-},{"../schema":240,"../type/map":254,"../type/seq":259,"../type/str":261}],245:[function(require,module,exports){
+},{"../schema":245,"../type/map":259,"../type/seq":264,"../type/str":266}],250:[function(require,module,exports){
 // Standard YAML's JSON schema.
 // http://www.yaml.org/spec/1.2/spec.html#id2803231
 //
@@ -40067,7 +40907,7 @@ module.exports = new Schema({
   ]
 });
 
-},{"../schema":240,"../type/bool":248,"../type/float":249,"../type/int":250,"../type/null":256,"./failsafe":244}],246:[function(require,module,exports){
+},{"../schema":245,"../type/bool":253,"../type/float":254,"../type/int":255,"../type/null":261,"./failsafe":249}],251:[function(require,module,exports){
 'use strict';
 
 var YAMLException = require('./exception');
@@ -40130,7 +40970,7 @@ function Type(tag, options) {
 
 module.exports = Type;
 
-},{"./exception":237}],247:[function(require,module,exports){
+},{"./exception":242}],252:[function(require,module,exports){
 'use strict';
 
 /*eslint-disable no-bitwise*/
@@ -40267,7 +41107,7 @@ module.exports = new Type('tag:yaml.org,2002:binary', {
   represent: representYamlBinary
 });
 
-},{"../type":246}],248:[function(require,module,exports){
+},{"../type":251}],253:[function(require,module,exports){
 'use strict';
 
 var Type = require('../type');
@@ -40304,7 +41144,7 @@ module.exports = new Type('tag:yaml.org,2002:bool', {
   defaultStyle: 'lowercase'
 });
 
-},{"../type":246}],249:[function(require,module,exports){
+},{"../type":251}],254:[function(require,module,exports){
 'use strict';
 
 var common = require('../common');
@@ -40411,7 +41251,7 @@ module.exports = new Type('tag:yaml.org,2002:float', {
   defaultStyle: 'lowercase'
 });
 
-},{"../common":235,"../type":246}],250:[function(require,module,exports){
+},{"../common":240,"../type":251}],255:[function(require,module,exports){
 'use strict';
 
 var common = require('../common');
@@ -40581,7 +41421,7 @@ module.exports = new Type('tag:yaml.org,2002:int', {
   }
 });
 
-},{"../common":235,"../type":246}],251:[function(require,module,exports){
+},{"../common":240,"../type":251}],256:[function(require,module,exports){
 'use strict';
 
 var esprima;
@@ -40667,7 +41507,7 @@ module.exports = new Type('tag:yaml.org,2002:js/function', {
   represent: representJavascriptFunction
 });
 
-},{"../../type":246}],252:[function(require,module,exports){
+},{"../../type":251}],257:[function(require,module,exports){
 'use strict';
 
 var Type = require('../../type');
@@ -40729,7 +41569,7 @@ module.exports = new Type('tag:yaml.org,2002:js/regexp', {
   represent: representJavascriptRegExp
 });
 
-},{"../../type":246}],253:[function(require,module,exports){
+},{"../../type":251}],258:[function(require,module,exports){
 'use strict';
 
 var Type = require('../../type');
@@ -40759,7 +41599,7 @@ module.exports = new Type('tag:yaml.org,2002:js/undefined', {
   represent: representJavascriptUndefined
 });
 
-},{"../../type":246}],254:[function(require,module,exports){
+},{"../../type":251}],259:[function(require,module,exports){
 'use strict';
 
 var Type = require('../type');
@@ -40769,7 +41609,7 @@ module.exports = new Type('tag:yaml.org,2002:map', {
   construct: function (data) { return data !== null ? data : {}; }
 });
 
-},{"../type":246}],255:[function(require,module,exports){
+},{"../type":251}],260:[function(require,module,exports){
 'use strict';
 
 var Type = require('../type');
@@ -40783,7 +41623,7 @@ module.exports = new Type('tag:yaml.org,2002:merge', {
   resolve: resolveYamlMerge
 });
 
-},{"../type":246}],256:[function(require,module,exports){
+},{"../type":251}],261:[function(require,module,exports){
 'use strict';
 
 var Type = require('../type');
@@ -40819,7 +41659,7 @@ module.exports = new Type('tag:yaml.org,2002:null', {
   defaultStyle: 'lowercase'
 });
 
-},{"../type":246}],257:[function(require,module,exports){
+},{"../type":251}],262:[function(require,module,exports){
 'use strict';
 
 var Type = require('../type');
@@ -40865,7 +41705,7 @@ module.exports = new Type('tag:yaml.org,2002:omap', {
   construct: constructYamlOmap
 });
 
-},{"../type":246}],258:[function(require,module,exports){
+},{"../type":251}],263:[function(require,module,exports){
 'use strict';
 
 var Type = require('../type');
@@ -40920,7 +41760,7 @@ module.exports = new Type('tag:yaml.org,2002:pairs', {
   construct: constructYamlPairs
 });
 
-},{"../type":246}],259:[function(require,module,exports){
+},{"../type":251}],264:[function(require,module,exports){
 'use strict';
 
 var Type = require('../type');
@@ -40930,7 +41770,7 @@ module.exports = new Type('tag:yaml.org,2002:seq', {
   construct: function (data) { return data !== null ? data : []; }
 });
 
-},{"../type":246}],260:[function(require,module,exports){
+},{"../type":251}],265:[function(require,module,exports){
 'use strict';
 
 var Type = require('../type');
@@ -40961,7 +41801,7 @@ module.exports = new Type('tag:yaml.org,2002:set', {
   construct: constructYamlSet
 });
 
-},{"../type":246}],261:[function(require,module,exports){
+},{"../type":251}],266:[function(require,module,exports){
 'use strict';
 
 var Type = require('../type');
@@ -40971,7 +41811,7 @@ module.exports = new Type('tag:yaml.org,2002:str', {
   construct: function (data) { return data !== null ? data : ''; }
 });
 
-},{"../type":246}],262:[function(require,module,exports){
+},{"../type":251}],267:[function(require,module,exports){
 'use strict';
 
 var Type = require('../type');
@@ -41061,7 +41901,7 @@ module.exports = new Type('tag:yaml.org,2002:timestamp', {
   represent: representYamlTimestamp
 });
 
-},{"../type":246}],263:[function(require,module,exports){
+},{"../type":251}],268:[function(require,module,exports){
 // Enclose abbreviations in <abbr> tags
 //
 'use strict';
@@ -41210,1289 +42050,7 @@ module.exports = function sub_plugin(md) {
   md.core.ruler.after('linkify', 'abbr_replace', abbr_replace);
 };
 
-},{}],264:[function(require,module,exports){
-'use strict';
-
-var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
-
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-
-var _string = require('string');
-
-var _string2 = _interopRequireDefault(_string);
-
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
-var slugify = function slugify(s) {
-  return (0, _string2.default)(s).slugify().toString();
-};
-
-var position = {
-  false: 'push',
-  true: 'unshift'
-};
-
-var renderPermalink = function renderPermalink(slug, opts, state, idx) {
-  var _state$tokens$childre;
-
-  var space = function space() {
-    return _extends(new state.Token('text', '', 0), { content: ' ' });
-  };
-
-  var linkTokens = [_extends(new state.Token('link_open', 'a', 1), {
-    attrs: [['class', opts.permalinkClass], ['href', '#' + slug], ['aria-hidden', 'true']]
-  }), _extends(new state.Token('html_block', '', 0), { content: opts.permalinkSymbol }), new state.Token('link_close', 'a', -1)];
-
-  // `push` or `unshift` according to position option.
-  // Space is at the opposite side.
-  linkTokens[position[!opts.permalinkBefore]](space());
-  (_state$tokens$childre = state.tokens[idx + 1].children)[position[opts.permalinkBefore]].apply(_state$tokens$childre, linkTokens);
-};
-
-var uniqueSlug = function uniqueSlug(slug, slugs) {
-  // Mark this slug as used in the environment.
-  slugs[slug] = (slugs[slug] || 0) + 1;
-
-  // First slug, return as is.
-  if (slugs[slug] === 1) {
-    return slug;
-  }
-
-  // Duplicate slug, add a `-2`, `-3`, etc. to keep ID unique.
-  return slug + '-' + slugs[slug];
-};
-
-var anchor = function anchor(md, opts) {
-  opts = _extends({}, anchor.defaults, opts);
-
-  md.core.ruler.push('anchor', function (state) {
-    var slugs = {};
-    var tokens = state.tokens;
-
-    tokens.filter(function (token) {
-      return token.type === 'heading_open';
-    }).filter(function (token) {
-      return token.tag.substr(1) >= opts.level;
-    }).forEach(function (token) {
-      // Aggregate the next token children text.
-      var title = tokens[tokens.indexOf(token) + 1].children.filter(function (token) {
-        return token.type === 'text';
-      }).reduce(function (acc, t) {
-        return acc + t.content;
-      }, '');
-
-      var slug = uniqueSlug(opts.slugify(title), slugs);
-
-      token.attrPush(['id', slug]);
-
-      if (opts.permalink) {
-        opts.renderPermalink(slug, opts, state, tokens.indexOf(token));
-      }
-
-      if (opts.callback) {
-        opts.callback(token, { slug: slug, title: title });
-      }
-    });
-  });
-};
-
-anchor.defaults = {
-  level: 1,
-  slugify: slugify,
-  permalink: false,
-  renderPermalink: renderPermalink,
-  permalinkClass: 'header-anchor',
-  permalinkSymbol: '¶',
-  permalinkBefore: false
-};
-
-exports.default = anchor;
-module.exports = exports['default'];
-
-},{"string":268}],265:[function(require,module,exports){
-function count(self, substr) {
-  var count = 0
-  var pos = self.indexOf(substr)
-
-  while (pos >= 0) {
-    count += 1
-    pos = self.indexOf(substr, pos + 1)
-  }
-
-  return count
-}
-
-module.exports = count
-},{}],266:[function(require,module,exports){
-function splitLeft(self, sep, maxSplit, limit) {
-
-  if (typeof maxSplit === 'undefined') {
-    var maxSplit = -1;
-  }
-
-  var splitResult = self.split(sep);
-  var splitPart1 = splitResult.slice(0, maxSplit);
-  var splitPart2 = splitResult.slice(maxSplit);
-
-  if (splitPart2.length === 0) {
-    splitResult = splitPart1;
-  } else {
-    splitResult = splitPart1.concat(splitPart2.join(sep));
-  }
-
-  if (typeof limit === 'undefined') {
-    return splitResult;
-  } else if (limit < 0) {
-    return splitResult.slice(limit);
-  } else {
-    return splitResult.slice(0, limit);
-  }
-
-}
-
-module.exports = splitLeft;
-
-},{}],267:[function(require,module,exports){
-function splitRight(self, sep, maxSplit, limit) {
-
-  if (typeof maxSplit === 'undefined') {
-    var maxSplit = -1;
-  }
-  if (typeof limit === 'undefined') {
-    var limit = 0;
-  }
-
-  var splitResult = [self];
-
-  for (var i = self.length-1; i >= 0; i--) {
-
-    if (
-      splitResult[0].slice(i).indexOf(sep) === 0 &&
-      (splitResult.length <= maxSplit || maxSplit === -1)
-    ) {
-      splitResult.splice(1, 0, splitResult[0].slice(i+sep.length)); // insert
-      splitResult[0] = splitResult[0].slice(0, i)
-    }
-  }
-
-  if (limit >= 0) {
-    return splitResult.slice(-limit);
-  } else {
-    return splitResult.slice(0, -limit);
-  }
-
-}
-
-module.exports = splitRight;
-
-},{}],268:[function(require,module,exports){
-/*
-string.js - Copyright (C) 2012-2014, JP Richardson <jprichardson@gmail.com>
-*/
-
-!(function() {
-  "use strict";
-
-  var VERSION = '3.3.1';
-
-  var ENTITIES = {};
-
-  // from http://semplicewebsites.com/removing-accents-javascript
-  var latin_map={"Á":"A","Ă":"A","Ắ":"A","Ặ":"A","Ằ":"A","Ẳ":"A","Ẵ":"A","Ǎ":"A","Â":"A","Ấ":"A","Ậ":"A","Ầ":"A","Ẩ":"A","Ẫ":"A","Ä":"A","Ǟ":"A","Ȧ":"A","Ǡ":"A","Ạ":"A","Ȁ":"A","À":"A","Ả":"A","Ȃ":"A","Ā":"A","Ą":"A","Å":"A","Ǻ":"A","Ḁ":"A","Ⱥ":"A","Ã":"A","Ꜳ":"AA","Æ":"AE","Ǽ":"AE","Ǣ":"AE","Ꜵ":"AO","Ꜷ":"AU","Ꜹ":"AV","Ꜻ":"AV","Ꜽ":"AY","Ḃ":"B","Ḅ":"B","Ɓ":"B","Ḇ":"B","Ƀ":"B","Ƃ":"B","Ć":"C","Č":"C","Ç":"C","Ḉ":"C","Ĉ":"C","Ċ":"C","Ƈ":"C","Ȼ":"C","Ď":"D","Ḑ":"D","Ḓ":"D","Ḋ":"D","Ḍ":"D","Ɗ":"D","Ḏ":"D","ǲ":"D","ǅ":"D","Đ":"D","Ƌ":"D","Ǳ":"DZ","Ǆ":"DZ","É":"E","Ĕ":"E","Ě":"E","Ȩ":"E","Ḝ":"E","Ê":"E","Ế":"E","Ệ":"E","Ề":"E","Ể":"E","Ễ":"E","Ḙ":"E","Ë":"E","Ė":"E","Ẹ":"E","Ȅ":"E","È":"E","Ẻ":"E","Ȇ":"E","Ē":"E","Ḗ":"E","Ḕ":"E","Ę":"E","Ɇ":"E","Ẽ":"E","Ḛ":"E","Ꝫ":"ET","Ḟ":"F","Ƒ":"F","Ǵ":"G","Ğ":"G","Ǧ":"G","Ģ":"G","Ĝ":"G","Ġ":"G","Ɠ":"G","Ḡ":"G","Ǥ":"G","Ḫ":"H","Ȟ":"H","Ḩ":"H","Ĥ":"H","Ⱨ":"H","Ḧ":"H","Ḣ":"H","Ḥ":"H","Ħ":"H","Í":"I","Ĭ":"I","Ǐ":"I","Î":"I","Ï":"I","Ḯ":"I","İ":"I","Ị":"I","Ȉ":"I","Ì":"I","Ỉ":"I","Ȋ":"I","Ī":"I","Į":"I","Ɨ":"I","Ĩ":"I","Ḭ":"I","Ꝺ":"D","Ꝼ":"F","Ᵹ":"G","Ꞃ":"R","Ꞅ":"S","Ꞇ":"T","Ꝭ":"IS","Ĵ":"J","Ɉ":"J","Ḱ":"K","Ǩ":"K","Ķ":"K","Ⱪ":"K","Ꝃ":"K","Ḳ":"K","Ƙ":"K","Ḵ":"K","Ꝁ":"K","Ꝅ":"K","Ĺ":"L","Ƚ":"L","Ľ":"L","Ļ":"L","Ḽ":"L","Ḷ":"L","Ḹ":"L","Ⱡ":"L","Ꝉ":"L","Ḻ":"L","Ŀ":"L","Ɫ":"L","ǈ":"L","Ł":"L","Ǉ":"LJ","Ḿ":"M","Ṁ":"M","Ṃ":"M","Ɱ":"M","Ń":"N","Ň":"N","Ņ":"N","Ṋ":"N","Ṅ":"N","Ṇ":"N","Ǹ":"N","Ɲ":"N","Ṉ":"N","Ƞ":"N","ǋ":"N","Ñ":"N","Ǌ":"NJ","Ó":"O","Ŏ":"O","Ǒ":"O","Ô":"O","Ố":"O","Ộ":"O","Ồ":"O","Ổ":"O","Ỗ":"O","Ö":"O","Ȫ":"O","Ȯ":"O","Ȱ":"O","Ọ":"O","Ő":"O","Ȍ":"O","Ò":"O","Ỏ":"O","Ơ":"O","Ớ":"O","Ợ":"O","Ờ":"O","Ở":"O","Ỡ":"O","Ȏ":"O","Ꝋ":"O","Ꝍ":"O","Ō":"O","Ṓ":"O","Ṑ":"O","Ɵ":"O","Ǫ":"O","Ǭ":"O","Ø":"O","Ǿ":"O","Õ":"O","Ṍ":"O","Ṏ":"O","Ȭ":"O","Ƣ":"OI","Ꝏ":"OO","Ɛ":"E","Ɔ":"O","Ȣ":"OU","Ṕ":"P","Ṗ":"P","Ꝓ":"P","Ƥ":"P","Ꝕ":"P","Ᵽ":"P","Ꝑ":"P","Ꝙ":"Q","Ꝗ":"Q","Ŕ":"R","Ř":"R","Ŗ":"R","Ṙ":"R","Ṛ":"R","Ṝ":"R","Ȑ":"R","Ȓ":"R","Ṟ":"R","Ɍ":"R","Ɽ":"R","Ꜿ":"C","Ǝ":"E","Ś":"S","Ṥ":"S","Š":"S","Ṧ":"S","Ş":"S","Ŝ":"S","Ș":"S","Ṡ":"S","Ṣ":"S","Ṩ":"S","ẞ":"SS","Ť":"T","Ţ":"T","Ṱ":"T","Ț":"T","Ⱦ":"T","Ṫ":"T","Ṭ":"T","Ƭ":"T","Ṯ":"T","Ʈ":"T","Ŧ":"T","Ɐ":"A","Ꞁ":"L","Ɯ":"M","Ʌ":"V","Ꜩ":"TZ","Ú":"U","Ŭ":"U","Ǔ":"U","Û":"U","Ṷ":"U","Ü":"U","Ǘ":"U","Ǚ":"U","Ǜ":"U","Ǖ":"U","Ṳ":"U","Ụ":"U","Ű":"U","Ȕ":"U","Ù":"U","Ủ":"U","Ư":"U","Ứ":"U","Ự":"U","Ừ":"U","Ử":"U","Ữ":"U","Ȗ":"U","Ū":"U","Ṻ":"U","Ų":"U","Ů":"U","Ũ":"U","Ṹ":"U","Ṵ":"U","Ꝟ":"V","Ṿ":"V","Ʋ":"V","Ṽ":"V","Ꝡ":"VY","Ẃ":"W","Ŵ":"W","Ẅ":"W","Ẇ":"W","Ẉ":"W","Ẁ":"W","Ⱳ":"W","Ẍ":"X","Ẋ":"X","Ý":"Y","Ŷ":"Y","Ÿ":"Y","Ẏ":"Y","Ỵ":"Y","Ỳ":"Y","Ƴ":"Y","Ỷ":"Y","Ỿ":"Y","Ȳ":"Y","Ɏ":"Y","Ỹ":"Y","Ź":"Z","Ž":"Z","Ẑ":"Z","Ⱬ":"Z","Ż":"Z","Ẓ":"Z","Ȥ":"Z","Ẕ":"Z","Ƶ":"Z","Ĳ":"IJ","Œ":"OE","ᴀ":"A","ᴁ":"AE","ʙ":"B","ᴃ":"B","ᴄ":"C","ᴅ":"D","ᴇ":"E","ꜰ":"F","ɢ":"G","ʛ":"G","ʜ":"H","ɪ":"I","ʁ":"R","ᴊ":"J","ᴋ":"K","ʟ":"L","ᴌ":"L","ᴍ":"M","ɴ":"N","ᴏ":"O","ɶ":"OE","ᴐ":"O","ᴕ":"OU","ᴘ":"P","ʀ":"R","ᴎ":"N","ᴙ":"R","ꜱ":"S","ᴛ":"T","ⱻ":"E","ᴚ":"R","ᴜ":"U","ᴠ":"V","ᴡ":"W","ʏ":"Y","ᴢ":"Z","á":"a","ă":"a","ắ":"a","ặ":"a","ằ":"a","ẳ":"a","ẵ":"a","ǎ":"a","â":"a","ấ":"a","ậ":"a","ầ":"a","ẩ":"a","ẫ":"a","ä":"a","ǟ":"a","ȧ":"a","ǡ":"a","ạ":"a","ȁ":"a","à":"a","ả":"a","ȃ":"a","ā":"a","ą":"a","ᶏ":"a","ẚ":"a","å":"a","ǻ":"a","ḁ":"a","ⱥ":"a","ã":"a","ꜳ":"aa","æ":"ae","ǽ":"ae","ǣ":"ae","ꜵ":"ao","ꜷ":"au","ꜹ":"av","ꜻ":"av","ꜽ":"ay","ḃ":"b","ḅ":"b","ɓ":"b","ḇ":"b","ᵬ":"b","ᶀ":"b","ƀ":"b","ƃ":"b","ɵ":"o","ć":"c","č":"c","ç":"c","ḉ":"c","ĉ":"c","ɕ":"c","ċ":"c","ƈ":"c","ȼ":"c","ď":"d","ḑ":"d","ḓ":"d","ȡ":"d","ḋ":"d","ḍ":"d","ɗ":"d","ᶑ":"d","ḏ":"d","ᵭ":"d","ᶁ":"d","đ":"d","ɖ":"d","ƌ":"d","ı":"i","ȷ":"j","ɟ":"j","ʄ":"j","ǳ":"dz","ǆ":"dz","é":"e","ĕ":"e","ě":"e","ȩ":"e","ḝ":"e","ê":"e","ế":"e","ệ":"e","ề":"e","ể":"e","ễ":"e","ḙ":"e","ë":"e","ė":"e","ẹ":"e","ȅ":"e","è":"e","ẻ":"e","ȇ":"e","ē":"e","ḗ":"e","ḕ":"e","ⱸ":"e","ę":"e","ᶒ":"e","ɇ":"e","ẽ":"e","ḛ":"e","ꝫ":"et","ḟ":"f","ƒ":"f","ᵮ":"f","ᶂ":"f","ǵ":"g","ğ":"g","ǧ":"g","ģ":"g","ĝ":"g","ġ":"g","ɠ":"g","ḡ":"g","ᶃ":"g","ǥ":"g","ḫ":"h","ȟ":"h","ḩ":"h","ĥ":"h","ⱨ":"h","ḧ":"h","ḣ":"h","ḥ":"h","ɦ":"h","ẖ":"h","ħ":"h","ƕ":"hv","í":"i","ĭ":"i","ǐ":"i","î":"i","ï":"i","ḯ":"i","ị":"i","ȉ":"i","ì":"i","ỉ":"i","ȋ":"i","ī":"i","į":"i","ᶖ":"i","ɨ":"i","ĩ":"i","ḭ":"i","ꝺ":"d","ꝼ":"f","ᵹ":"g","ꞃ":"r","ꞅ":"s","ꞇ":"t","ꝭ":"is","ǰ":"j","ĵ":"j","ʝ":"j","ɉ":"j","ḱ":"k","ǩ":"k","ķ":"k","ⱪ":"k","ꝃ":"k","ḳ":"k","ƙ":"k","ḵ":"k","ᶄ":"k","ꝁ":"k","ꝅ":"k","ĺ":"l","ƚ":"l","ɬ":"l","ľ":"l","ļ":"l","ḽ":"l","ȴ":"l","ḷ":"l","ḹ":"l","ⱡ":"l","ꝉ":"l","ḻ":"l","ŀ":"l","ɫ":"l","ᶅ":"l","ɭ":"l","ł":"l","ǉ":"lj","ſ":"s","ẜ":"s","ẛ":"s","ẝ":"s","ḿ":"m","ṁ":"m","ṃ":"m","ɱ":"m","ᵯ":"m","ᶆ":"m","ń":"n","ň":"n","ņ":"n","ṋ":"n","ȵ":"n","ṅ":"n","ṇ":"n","ǹ":"n","ɲ":"n","ṉ":"n","ƞ":"n","ᵰ":"n","ᶇ":"n","ɳ":"n","ñ":"n","ǌ":"nj","ó":"o","ŏ":"o","ǒ":"o","ô":"o","ố":"o","ộ":"o","ồ":"o","ổ":"o","ỗ":"o","ö":"o","ȫ":"o","ȯ":"o","ȱ":"o","ọ":"o","ő":"o","ȍ":"o","ò":"o","ỏ":"o","ơ":"o","ớ":"o","ợ":"o","ờ":"o","ở":"o","ỡ":"o","ȏ":"o","ꝋ":"o","ꝍ":"o","ⱺ":"o","ō":"o","ṓ":"o","ṑ":"o","ǫ":"o","ǭ":"o","ø":"o","ǿ":"o","õ":"o","ṍ":"o","ṏ":"o","ȭ":"o","ƣ":"oi","ꝏ":"oo","ɛ":"e","ᶓ":"e","ɔ":"o","ᶗ":"o","ȣ":"ou","ṕ":"p","ṗ":"p","ꝓ":"p","ƥ":"p","ᵱ":"p","ᶈ":"p","ꝕ":"p","ᵽ":"p","ꝑ":"p","ꝙ":"q","ʠ":"q","ɋ":"q","ꝗ":"q","ŕ":"r","ř":"r","ŗ":"r","ṙ":"r","ṛ":"r","ṝ":"r","ȑ":"r","ɾ":"r","ᵳ":"r","ȓ":"r","ṟ":"r","ɼ":"r","ᵲ":"r","ᶉ":"r","ɍ":"r","ɽ":"r","ↄ":"c","ꜿ":"c","ɘ":"e","ɿ":"r","ś":"s","ṥ":"s","š":"s","ṧ":"s","ş":"s","ŝ":"s","ș":"s","ṡ":"s","ṣ":"s","ṩ":"s","ʂ":"s","ᵴ":"s","ᶊ":"s","ȿ":"s","ɡ":"g","ß":"ss","ᴑ":"o","ᴓ":"o","ᴝ":"u","ť":"t","ţ":"t","ṱ":"t","ț":"t","ȶ":"t","ẗ":"t","ⱦ":"t","ṫ":"t","ṭ":"t","ƭ":"t","ṯ":"t","ᵵ":"t","ƫ":"t","ʈ":"t","ŧ":"t","ᵺ":"th","ɐ":"a","ᴂ":"ae","ǝ":"e","ᵷ":"g","ɥ":"h","ʮ":"h","ʯ":"h","ᴉ":"i","ʞ":"k","ꞁ":"l","ɯ":"m","ɰ":"m","ᴔ":"oe","ɹ":"r","ɻ":"r","ɺ":"r","ⱹ":"r","ʇ":"t","ʌ":"v","ʍ":"w","ʎ":"y","ꜩ":"tz","ú":"u","ŭ":"u","ǔ":"u","û":"u","ṷ":"u","ü":"u","ǘ":"u","ǚ":"u","ǜ":"u","ǖ":"u","ṳ":"u","ụ":"u","ű":"u","ȕ":"u","ù":"u","ủ":"u","ư":"u","ứ":"u","ự":"u","ừ":"u","ử":"u","ữ":"u","ȗ":"u","ū":"u","ṻ":"u","ų":"u","ᶙ":"u","ů":"u","ũ":"u","ṹ":"u","ṵ":"u","ᵫ":"ue","ꝸ":"um","ⱴ":"v","ꝟ":"v","ṿ":"v","ʋ":"v","ᶌ":"v","ⱱ":"v","ṽ":"v","ꝡ":"vy","ẃ":"w","ŵ":"w","ẅ":"w","ẇ":"w","ẉ":"w","ẁ":"w","ⱳ":"w","ẘ":"w","ẍ":"x","ẋ":"x","ᶍ":"x","ý":"y","ŷ":"y","ÿ":"y","ẏ":"y","ỵ":"y","ỳ":"y","ƴ":"y","ỷ":"y","ỿ":"y","ȳ":"y","ẙ":"y","ɏ":"y","ỹ":"y","ź":"z","ž":"z","ẑ":"z","ʑ":"z","ⱬ":"z","ż":"z","ẓ":"z","ȥ":"z","ẕ":"z","ᵶ":"z","ᶎ":"z","ʐ":"z","ƶ":"z","ɀ":"z","ﬀ":"ff","ﬃ":"ffi","ﬄ":"ffl","ﬁ":"fi","ﬂ":"fl","ĳ":"ij","œ":"oe","ﬆ":"st","ₐ":"a","ₑ":"e","ᵢ":"i","ⱼ":"j","ₒ":"o","ᵣ":"r","ᵤ":"u","ᵥ":"v","ₓ":"x"};
-
-//******************************************************************************
-// Added an initialize function which is essentially the code from the S
-// constructor.  Now, the S constructor calls this and a new method named
-// setValue calls it as well.  The setValue function allows constructors for
-// modules that extend string.js to set the initial value of an object without
-// knowing the internal workings of string.js.
-//
-// Also, all methods which return a new S object now call:
-//
-//      return new this.constructor(s);
-//
-// instead of:
-//
-//      return new S(s);
-//
-// This allows extended objects to keep their proper instanceOf and constructor.
-//******************************************************************************
-
-  function initialize (object, s) {
-    if (s !== null && s !== undefined) {
-      if (typeof s === 'string')
-        object.s = s;
-      else
-        object.s = s.toString();
-    } else {
-      object.s = s; //null or undefined
-    }
-
-    object.orig = s; //original object, currently only used by toCSV() and toBoolean()
-
-    if (s !== null && s !== undefined) {
-      if (object.__defineGetter__) {
-        object.__defineGetter__('length', function() {
-          return object.s.length;
-        })
-      } else {
-        object.length = s.length;
-      }
-    } else {
-      object.length = -1;
-    }
-  }
-
-  function S(s) {
-  	initialize(this, s);
-  }
-
-  var __nsp = String.prototype;
-  var __sp = S.prototype = {
-
-    between: function(left, right) {
-      var s = this.s;
-      var startPos = s.indexOf(left);
-      var endPos = s.indexOf(right, startPos + left.length);
-      if (endPos == -1 && right != null)
-        return new this.constructor('')
-      else if (endPos == -1 && right == null)
-        return new this.constructor(s.substring(startPos + left.length))
-      else
-        return new this.constructor(s.slice(startPos + left.length, endPos));
-    },
-
-    //# modified slightly from https://github.com/epeli/underscore.string
-    camelize: function() {
-      var s = this.trim().s.replace(/(\-|_|\s)+(.)?/g, function(mathc, sep, c) {
-        return (c ? c.toUpperCase() : '');
-      });
-      return new this.constructor(s);
-    },
-
-    capitalize: function() {
-      return new this.constructor(this.s.substr(0, 1).toUpperCase() + this.s.substring(1).toLowerCase());
-    },
-
-    charAt: function(index) {
-      return this.s.charAt(index);
-    },
-
-    chompLeft: function(prefix) {
-      var s = this.s;
-      if (s.indexOf(prefix) === 0) {
-         s = s.slice(prefix.length);
-         return new this.constructor(s);
-      } else {
-        return this;
-      }
-    },
-
-    chompRight: function(suffix) {
-      if (this.endsWith(suffix)) {
-        var s = this.s;
-        s = s.slice(0, s.length - suffix.length);
-        return new this.constructor(s);
-      } else {
-        return this;
-      }
-    },
-
-    //#thanks Google
-    collapseWhitespace: function() {
-      var s = this.s.replace(/[\s\xa0]+/g, ' ').replace(/^\s+|\s+$/g, '');
-      return new this.constructor(s);
-    },
-
-    contains: function(ss) {
-      return this.s.indexOf(ss) >= 0;
-    },
-
-    count: function(ss) {
-      return require('./_count')(this.s, ss)
-    },
-
-    //#modified from https://github.com/epeli/underscore.string
-    dasherize: function() {
-      var s = this.trim().s.replace(/[_\s]+/g, '-').replace(/([A-Z])/g, '-$1').replace(/-+/g, '-').toLowerCase();
-      return new this.constructor(s);
-    },
-
-    latinise: function() {
-      var s = this.replace(/[^A-Za-z0-9\[\] ]/g, function(x) { return latin_map[x] || x; });
-      return new this.constructor(s);
-    },
-
-    decodeHtmlEntities: function() { //https://github.com/substack/node-ent/blob/master/index.js
-      var s = this.s;
-      s = s.replace(/&#(\d+);?/g, function (_, code) {
-        return String.fromCharCode(code);
-      })
-      .replace(/&#[xX]([A-Fa-f0-9]+);?/g, function (_, hex) {
-        return String.fromCharCode(parseInt(hex, 16));
-      })
-      .replace(/&([^;\W]+;?)/g, function (m, e) {
-        var ee = e.replace(/;$/, '');
-        var target = ENTITIES[e] || (e.match(/;$/) && ENTITIES[ee]);
-
-        if (typeof target === 'number') {
-          return String.fromCharCode(target);
-        }
-        else if (typeof target === 'string') {
-          return target;
-        }
-        else {
-          return m;
-        }
-      })
-
-      return new this.constructor(s);
-    },
-
-    endsWith: function() {
-      var suffixes = Array.prototype.slice.call(arguments, 0);
-      for (var i = 0; i < suffixes.length; ++i) {
-        var l  = this.s.length - suffixes[i].length;
-        if (l >= 0 && this.s.indexOf(suffixes[i], l) === l) return true;
-      }
-      return false;
-    },
-
-    escapeHTML: function() { //from underscore.string
-      return new this.constructor(this.s.replace(/[&<>"']/g, function(m){ return '&' + reversedEscapeChars[m] + ';'; }));
-    },
-
-    ensureLeft: function(prefix) {
-      var s = this.s;
-      if (s.indexOf(prefix) === 0) {
-        return this;
-      } else {
-        return new this.constructor(prefix + s);
-      }
-    },
-
-    ensureRight: function(suffix) {
-      var s = this.s;
-      if (this.endsWith(suffix))  {
-        return this;
-      } else {
-        return new this.constructor(s + suffix);
-      }
-    },
-
-    humanize: function() { //modified from underscore.string
-      if (this.s === null || this.s === undefined)
-        return new this.constructor('')
-      var s = this.underscore().replace(/_id$/,'').replace(/_/g, ' ').trim().capitalize()
-      return new this.constructor(s)
-    },
-
-    isAlpha: function() {
-      return !/[^a-z\xDF-\xFF]|^$/.test(this.s.toLowerCase());
-    },
-
-    isAlphaNumeric: function() {
-      return !/[^0-9a-z\xDF-\xFF]/.test(this.s.toLowerCase());
-    },
-
-    isEmpty: function() {
-      return this.s === null || this.s === undefined ? true : /^[\s\xa0]*$/.test(this.s);
-    },
-
-    isLower: function() {
-      return this.isAlpha() && this.s.toLowerCase() === this.s;
-    },
-
-    isNumeric: function() {
-      return !/[^0-9]/.test(this.s);
-    },
-
-    isUpper: function() {
-      return this.isAlpha() && this.s.toUpperCase() === this.s;
-    },
-
-    left: function(N) {
-      if (N >= 0) {
-        var s = this.s.substr(0, N);
-        return new this.constructor(s);
-      } else {
-        return this.right(-N);
-      }
-    },
-
-    lines: function() { //convert windows newlines to unix newlines then convert to an Array of lines
-      return this.replaceAll('\r\n', '\n').s.split('\n');
-    },
-
-    pad: function(len, ch) { //https://github.com/component/pad
-      if (ch == null) ch = ' ';
-      if (this.s.length >= len) return new this.constructor(this.s);
-      len = len - this.s.length;
-      var left = Array(Math.ceil(len / 2) + 1).join(ch);
-      var right = Array(Math.floor(len / 2) + 1).join(ch);
-      return new this.constructor(left + this.s + right);
-    },
-
-    padLeft: function(len, ch) { //https://github.com/component/pad
-      if (ch == null) ch = ' ';
-      if (this.s.length >= len) return new this.constructor(this.s);
-      return new this.constructor(Array(len - this.s.length + 1).join(ch) + this.s);
-    },
-
-    padRight: function(len, ch) { //https://github.com/component/pad
-      if (ch == null) ch = ' ';
-      if (this.s.length >= len) return new this.constructor(this.s);
-      return new this.constructor(this.s + Array(len - this.s.length + 1).join(ch));
-    },
-
-    parseCSV: function(delimiter, qualifier, escape, lineDelimiter) { //try to parse no matter what
-      delimiter = delimiter || ',';
-      escape = escape || '\\'
-      if (typeof qualifier == 'undefined')
-        qualifier = '"';
-
-      var i = 0, fieldBuffer = [], fields = [], len = this.s.length, inField = false, inUnqualifiedString = false, self = this;
-      var ca = function(i){return self.s.charAt(i)};
-      if (typeof lineDelimiter !== 'undefined') var rows = [];
-
-      if (!qualifier)
-        inField = true;
-
-      while (i < len) {
-        var current = ca(i);
-        switch (current) {
-          case escape:
-            //fix for issues #32 and #35
-            if (inField && ((escape !== qualifier) || ca(i+1) === qualifier)) {
-              i += 1;
-              fieldBuffer.push(ca(i));
-              break;
-            }
-            if (escape !== qualifier) break;
-          case qualifier:
-            inField = !inField;
-            break;
-          case delimiter:
-            if(inUnqualifiedString) {
-              inField=false;
-              inUnqualifiedString=false;
-            }
-            if (inField && qualifier)
-              fieldBuffer.push(current);
-            else {
-              fields.push(fieldBuffer.join(''))
-              fieldBuffer.length = 0;
-            }
-            break;
-          case lineDelimiter:
-            if(inUnqualifiedString) {
-              inField=false;
-              inUnqualifiedString=false;
-              fields.push(fieldBuffer.join(''))
-              rows.push(fields);
-              fields = [];
-              fieldBuffer.length = 0;
-            }
-            else if (inField) {
-              fieldBuffer.push(current);
-            } else {
-              if (rows) {
-                fields.push(fieldBuffer.join(''))
-                rows.push(fields);
-                fields = [];
-                fieldBuffer.length = 0;
-              }
-            }
-            break;
-          case ' ':
-            if (inField)
-              fieldBuffer.push(current);
-            break;
-          default:
-            if (inField)
-              fieldBuffer.push(current);
-            else if(current!==qualifier) {
-              fieldBuffer.push(current);
-              inField=true;
-              inUnqualifiedString=true;
-            }
-            break;
-        }
-        i += 1;
-      }
-
-      fields.push(fieldBuffer.join(''));
-      if (rows) {
-        rows.push(fields);
-        return rows;
-      }
-      return fields;
-    },
-
-    replaceAll: function(ss, r) {
-      //var s = this.s.replace(new RegExp(ss, 'g'), r);
-      var s = this.s.split(ss).join(r)
-      return new this.constructor(s);
-    },
-
-    splitLeft: function(sep, maxSplit, limit) {
-      return require('./_splitLeft')(this.s, sep, maxSplit, limit)
-    },
-
-    splitRight: function(sep, maxSplit, limit) {
-      return require('./_splitRight')(this.s, sep, maxSplit, limit)
-    },
-
-    strip: function() {
-      var ss = this.s;
-      for(var i= 0, n=arguments.length; i<n; i++) {
-        ss = ss.split(arguments[i]).join('');
-      }
-      return new this.constructor(ss);
-    },
-
-    stripLeft: function (chars) {
-      var regex;
-      var pattern;
-      var ss = ensureString(this.s);
-
-      if (chars === undefined) {
-        pattern = /^\s+/g;
-      }
-      else {
-        regex = escapeRegExp(chars);
-        pattern = new RegExp("^[" + regex + "]+", "g");
-      }
-
-      return new this.constructor(ss.replace(pattern, ""));
-    },
-
-    stripRight: function (chars) {
-      var regex;
-      var pattern;
-      var ss = ensureString(this.s);
-
-      if (chars === undefined) {
-        pattern = /\s+$/g;
-      }
-      else {
-        regex = escapeRegExp(chars);
-        pattern = new RegExp("[" + regex + "]+$", "g");
-      }
-
-      return new this.constructor(ss.replace(pattern, ""));
-    },
-
-    right: function(N) {
-      if (N >= 0) {
-        var s = this.s.substr(this.s.length - N, N);
-        return new this.constructor(s);
-      } else {
-        return this.left(-N);
-      }
-    },
-
-    setValue: function (s) {
-	  initialize(this, s);
-	  return this;
-    },
-
-    slugify: function() {
-      var sl = (new S(new S(this.s).latinise().s.replace(/[^\w\s-]/g, '').toLowerCase())).dasherize().s;
-      if (sl.charAt(0) === '-')
-        sl = sl.substr(1);
-      return new this.constructor(sl);
-    },
-
-    startsWith: function() {
-      var prefixes = Array.prototype.slice.call(arguments, 0);
-      for (var i = 0; i < prefixes.length; ++i) {
-        if (this.s.lastIndexOf(prefixes[i], 0) === 0) return true;
-      }
-      return false;
-    },
-
-    stripPunctuation: function() {
-      //return new this.constructor(this.s.replace(/[\.,-\/#!$%\^&\*;:{}=\-_`~()]/g,""));
-      return new this.constructor(this.s.replace(/[^\w\s]|_/g, "").replace(/\s+/g, " "));
-    },
-
-    stripTags: function() { //from sugar.js
-      var s = this.s, args = arguments.length > 0 ? arguments : [''];
-      multiArgs(args, function(tag) {
-        s = s.replace(RegExp('<\/?' + tag + '[^<>]*>', 'gi'), '');
-      });
-      return new this.constructor(s);
-    },
-
-    template: function(values, opening, closing) {
-      var s = this.s
-      var opening = opening || Export.TMPL_OPEN
-      var closing = closing || Export.TMPL_CLOSE
-
-      var open = opening.replace(/[-[\]()*\s]/g, "\\$&").replace(/\$/g, '\\$')
-      var close = closing.replace(/[-[\]()*\s]/g, "\\$&").replace(/\$/g, '\\$')
-      var r = new RegExp(open + '(.+?)' + close, 'g')
-        //, r = /\{\{(.+?)\}\}/g
-      var matches = s.match(r) || [];
-
-      matches.forEach(function(match) {
-        var key = match.substring(opening.length, match.length - closing.length).trim();//chop {{ and }}
-        var value = typeof values[key] == 'undefined' ? '' : values[key];
-        s = s.replace(match, value);
-      });
-      return new this.constructor(s);
-    },
-
-    times: function(n) {
-      return new this.constructor(new Array(n + 1).join(this.s));
-    },
-
-    titleCase: function() {
-      var s = this.s;
-      if (s) {
-        s = s.replace(/(^[a-z]| [a-z]|-[a-z]|_[a-z])/g,
-          function($1){
-            return $1.toUpperCase();
-          }
-        );
-      }
-      return new this.constructor(s);
-    },
-
-    toBoolean: function() {
-      if (typeof this.orig === 'string') {
-        var s = this.s.toLowerCase();
-        return s === 'true' || s === 'yes' || s === 'on' || s === '1';
-      } else
-        return this.orig === true || this.orig === 1;
-    },
-
-    toFloat: function(precision) {
-      var num = parseFloat(this.s)
-      if (precision)
-        return parseFloat(num.toFixed(precision))
-      else
-        return num
-    },
-
-    toInt: function() { //thanks Google
-      // If the string starts with '0x' or '-0x', parse as hex.
-      return /^\s*-?0x/i.test(this.s) ? parseInt(this.s, 16) : parseInt(this.s, 10)
-    },
-
-    trim: function() {
-      var s;
-      if (typeof __nsp.trim === 'undefined')
-        s = this.s.replace(/(^\s*|\s*$)/g, '')
-      else
-        s = this.s.trim()
-      return new this.constructor(s);
-    },
-
-    trimLeft: function() {
-      var s;
-      if (__nsp.trimLeft)
-        s = this.s.trimLeft();
-      else
-        s = this.s.replace(/(^\s*)/g, '');
-      return new this.constructor(s);
-    },
-
-    trimRight: function() {
-      var s;
-      if (__nsp.trimRight)
-        s = this.s.trimRight();
-      else
-        s = this.s.replace(/\s+$/, '');
-      return new this.constructor(s);
-    },
-
-    truncate: function(length, pruneStr) { //from underscore.string, author: github.com/rwz
-      var str = this.s;
-
-      length = ~~length;
-      pruneStr = pruneStr || '...';
-
-      if (str.length <= length) return new this.constructor(str);
-
-      var tmpl = function(c){ return c.toUpperCase() !== c.toLowerCase() ? 'A' : ' '; },
-        template = str.slice(0, length+1).replace(/.(?=\W*\w*$)/g, tmpl); // 'Hello, world' -> 'HellAA AAAAA'
-
-      if (template.slice(template.length-2).match(/\w\w/))
-        template = template.replace(/\s*\S+$/, '');
-      else
-        template = new S(template.slice(0, template.length-1)).trimRight().s;
-
-      return (template+pruneStr).length > str.length ? new S(str) : new S(str.slice(0, template.length)+pruneStr);
-    },
-
-    toCSV: function() {
-      var delim = ',', qualifier = '"', escape = '\\', encloseNumbers = true, keys = false;
-      var dataArray = [];
-
-      function hasVal(it) {
-        return it !== null && it !== '';
-      }
-
-      if (typeof arguments[0] === 'object') {
-        delim = arguments[0].delimiter || delim;
-        delim = arguments[0].separator || delim;
-        qualifier = arguments[0].qualifier || qualifier;
-        encloseNumbers = !!arguments[0].encloseNumbers;
-        escape = arguments[0].escape || escape;
-        keys = !!arguments[0].keys;
-      } else if (typeof arguments[0] === 'string') {
-        delim = arguments[0];
-      }
-
-      if (typeof arguments[1] === 'string')
-        qualifier = arguments[1];
-
-      if (arguments[1] === null)
-        qualifier = null;
-
-       if (this.orig instanceof Array)
-        dataArray  = this.orig;
-      else { //object
-        for (var key in this.orig)
-          if (this.orig.hasOwnProperty(key))
-            if (keys)
-              dataArray.push(key);
-            else
-              dataArray.push(this.orig[key]);
-      }
-
-      var rep = escape + qualifier;
-      var buildString = [];
-      for (var i = 0; i < dataArray.length; ++i) {
-        var shouldQualify = hasVal(qualifier)
-        if (typeof dataArray[i] == 'number')
-          shouldQualify &= encloseNumbers;
-
-        if (shouldQualify)
-          buildString.push(qualifier);
-
-        if (dataArray[i] !== null && dataArray[i] !== undefined) {
-          var d = new S(dataArray[i]).replaceAll(qualifier, rep).s;
-          buildString.push(d);
-        } else
-          buildString.push('')
-
-        if (shouldQualify)
-          buildString.push(qualifier);
-
-        if (delim)
-          buildString.push(delim);
-      }
-
-      //chop last delim
-      //console.log(buildString.length)
-      buildString.length = buildString.length - 1;
-      return new this.constructor(buildString.join(''));
-    },
-
-    toString: function() {
-      return this.s;
-    },
-
-    //#modified from https://github.com/epeli/underscore.string
-    underscore: function() {
-      var s = this.trim().s.replace(/([a-z\d])([A-Z]+)/g, '$1_$2').replace(/([A-Z\d]+)([A-Z][a-z])/g,'$1_$2').replace(/[-\s]+/g, '_').toLowerCase();
-      return new this.constructor(s);
-    },
-
-    unescapeHTML: function() { //from underscore.string
-      return new this.constructor(this.s.replace(/\&([^;]+);/g, function(entity, entityCode){
-        var match;
-
-        if (entityCode in escapeChars) {
-          return escapeChars[entityCode];
-        } else if (match = entityCode.match(/^#x([\da-fA-F]+)$/)) {
-          return String.fromCharCode(parseInt(match[1], 16));
-        } else if (match = entityCode.match(/^#(\d+)$/)) {
-          return String.fromCharCode(~~match[1]);
-        } else {
-          return entity;
-        }
-      }));
-    },
-
-    valueOf: function() {
-      return this.s.valueOf();
-    },
-
-    //#Added a New Function called wrapHTML.
-    wrapHTML: function (tagName, tagAttrs) {
-      var s = this.s, el = (tagName == null) ? 'span' : tagName, elAttr = '', wrapped = '';
-      if(typeof tagAttrs == 'object') for(var prop in tagAttrs) elAttr += ' ' + prop + '="' +(new this.constructor(tagAttrs[prop])).escapeHTML() + '"';
-      s = wrapped.concat('<', el, elAttr, '>', this, '</', el, '>');
-      return new this.constructor(s);
-    }
-  }
-
-  var methodsAdded = [];
-  function extendPrototype() {
-    for (var name in __sp) {
-      (function(name){
-        var func = __sp[name];
-        if (!__nsp.hasOwnProperty(name)) {
-          methodsAdded.push(name);
-          __nsp[name] = function() {
-            String.prototype.s = this;
-            return func.apply(this, arguments);
-          }
-        }
-      })(name);
-    }
-  }
-
-  function restorePrototype() {
-    for (var i = 0; i < methodsAdded.length; ++i)
-      delete String.prototype[methodsAdded[i]];
-    methodsAdded.length = 0;
-  }
-
-
-/*************************************
-/* Attach Native JavaScript String Properties
-/*************************************/
-
-  var nativeProperties = getNativeStringProperties();
-  for (var name in nativeProperties) {
-    (function(name) {
-      var stringProp = __nsp[name];
-      if (typeof stringProp == 'function') {
-        //console.log(stringProp)
-        if (!__sp[name]) {
-          if (nativeProperties[name] === 'string') {
-            __sp[name] = function() {
-              //console.log(name)
-              return new this.constructor(stringProp.apply(this, arguments));
-            }
-          } else {
-            __sp[name] = stringProp;
-          }
-        }
-      }
-    })(name);
-  }
-
-
-/*************************************
-/* Function Aliases
-/*************************************/
-
-  __sp.repeat = __sp.times;
-  __sp.include = __sp.contains;
-  __sp.toInteger = __sp.toInt;
-  __sp.toBool = __sp.toBoolean;
-  __sp.decodeHTMLEntities = __sp.decodeHtmlEntities //ensure consistent casing scheme of 'HTML'
-
-
-//******************************************************************************
-// Set the constructor.  Without this, string.js objects are instances of
-// Object instead of S.
-//******************************************************************************
-
-  __sp.constructor = S;
-
-
-/*************************************
-/* Private Functions
-/*************************************/
-
-  function getNativeStringProperties() {
-    var names = getNativeStringPropertyNames();
-    var retObj = {};
-
-    for (var i = 0; i < names.length; ++i) {
-      var name = names[i];
-      if (name === 'to' || name === 'toEnd') continue;       // get rid of the shelljs prototype messup
-      var func = __nsp[name];
-      try {
-        var type = typeof func.apply('teststring');
-        retObj[name] = type;
-      } catch (e) {}
-    }
-    return retObj;
-  }
-
-  function getNativeStringPropertyNames() {
-    var results = [];
-    if (Object.getOwnPropertyNames) {
-      results = Object.getOwnPropertyNames(__nsp);
-      results.splice(results.indexOf('valueOf'), 1);
-      results.splice(results.indexOf('toString'), 1);
-      return results;
-    } else { //meant for legacy cruft, this could probably be made more efficient
-      var stringNames = {};
-      var objectNames = [];
-      for (var name in String.prototype)
-        stringNames[name] = name;
-
-      for (var name in Object.prototype)
-        delete stringNames[name];
-
-      //stringNames['toString'] = 'toString'; //this was deleted with the rest of the object names
-      for (var name in stringNames) {
-        results.push(name);
-      }
-      return results;
-    }
-  }
-
-  function Export(str) {
-    return new S(str);
-  };
-
-  //attach exports to StringJSWrapper
-  Export.extendPrototype = extendPrototype;
-  Export.restorePrototype = restorePrototype;
-  Export.VERSION = VERSION;
-  Export.TMPL_OPEN = '{{';
-  Export.TMPL_CLOSE = '}}';
-  Export.ENTITIES = ENTITIES;
-
-
-
-/*************************************
-/* Exports
-/*************************************/
-
-  if (typeof module !== 'undefined'  && typeof module.exports !== 'undefined') {
-    module.exports = Export;
-
-  } else {
-
-    if(typeof define === "function" && define.amd) {
-      define([], function() {
-        return Export;
-      });
-    } else {
-      window.S = Export;
-    }
-  }
-
-
-/*************************************
-/* 3rd Party Private Functions
-/*************************************/
-
-  //from sugar.js
-  function multiArgs(args, fn) {
-    var result = [], i;
-    for(i = 0; i < args.length; i++) {
-      result.push(args[i]);
-      if(fn) fn.call(args, args[i], i);
-    }
-    return result;
-  }
-
-  //from underscore.string
-  var escapeChars = {
-    lt: '<',
-    gt: '>',
-    quot: '"',
-    apos: "'",
-    amp: '&'
-  };
-
-  function escapeRegExp (s) {
-    // most part from https://github.com/skulpt/skulpt/blob/ecaf75e69c2e539eff124b2ab45df0b01eaf2295/src/str.js#L242
-    var c;
-    var i;
-    var ret = [];
-    var re = /^[A-Za-z0-9]+$/;
-    s = ensureString(s);
-    for (i = 0; i < s.length; ++i) {
-      c = s.charAt(i);
-
-      if (re.test(c)) {
-        ret.push(c);
-      }
-      else {
-        if (c === "\\000") {
-          ret.push("\\000");
-        }
-        else {
-          ret.push("\\" + c);
-        }
-      }
-    }
-    return ret.join("");
-  }
-
-  function ensureString(string) {
-    return string == null ? '' : '' + string;
-  }
-
-  //from underscore.string
-  var reversedEscapeChars = {};
-  for(var key in escapeChars){ reversedEscapeChars[escapeChars[key]] = key; }
-
-  ENTITIES = {
-    "amp" : "&",
-    "gt" : ">",
-    "lt" : "<",
-    "quot" : "\"",
-    "apos" : "'",
-    "AElig" : 198,
-    "Aacute" : 193,
-    "Acirc" : 194,
-    "Agrave" : 192,
-    "Aring" : 197,
-    "Atilde" : 195,
-    "Auml" : 196,
-    "Ccedil" : 199,
-    "ETH" : 208,
-    "Eacute" : 201,
-    "Ecirc" : 202,
-    "Egrave" : 200,
-    "Euml" : 203,
-    "Iacute" : 205,
-    "Icirc" : 206,
-    "Igrave" : 204,
-    "Iuml" : 207,
-    "Ntilde" : 209,
-    "Oacute" : 211,
-    "Ocirc" : 212,
-    "Ograve" : 210,
-    "Oslash" : 216,
-    "Otilde" : 213,
-    "Ouml" : 214,
-    "THORN" : 222,
-    "Uacute" : 218,
-    "Ucirc" : 219,
-    "Ugrave" : 217,
-    "Uuml" : 220,
-    "Yacute" : 221,
-    "aacute" : 225,
-    "acirc" : 226,
-    "aelig" : 230,
-    "agrave" : 224,
-    "aring" : 229,
-    "atilde" : 227,
-    "auml" : 228,
-    "ccedil" : 231,
-    "eacute" : 233,
-    "ecirc" : 234,
-    "egrave" : 232,
-    "eth" : 240,
-    "euml" : 235,
-    "iacute" : 237,
-    "icirc" : 238,
-    "igrave" : 236,
-    "iuml" : 239,
-    "ntilde" : 241,
-    "oacute" : 243,
-    "ocirc" : 244,
-    "ograve" : 242,
-    "oslash" : 248,
-    "otilde" : 245,
-    "ouml" : 246,
-    "szlig" : 223,
-    "thorn" : 254,
-    "uacute" : 250,
-    "ucirc" : 251,
-    "ugrave" : 249,
-    "uuml" : 252,
-    "yacute" : 253,
-    "yuml" : 255,
-    "copy" : 169,
-    "reg" : 174,
-    "nbsp" : 160,
-    "iexcl" : 161,
-    "cent" : 162,
-    "pound" : 163,
-    "curren" : 164,
-    "yen" : 165,
-    "brvbar" : 166,
-    "sect" : 167,
-    "uml" : 168,
-    "ordf" : 170,
-    "laquo" : 171,
-    "not" : 172,
-    "shy" : 173,
-    "macr" : 175,
-    "deg" : 176,
-    "plusmn" : 177,
-    "sup1" : 185,
-    "sup2" : 178,
-    "sup3" : 179,
-    "acute" : 180,
-    "micro" : 181,
-    "para" : 182,
-    "middot" : 183,
-    "cedil" : 184,
-    "ordm" : 186,
-    "raquo" : 187,
-    "frac14" : 188,
-    "frac12" : 189,
-    "frac34" : 190,
-    "iquest" : 191,
-    "times" : 215,
-    "divide" : 247,
-    "OElig;" : 338,
-    "oelig;" : 339,
-    "Scaron;" : 352,
-    "scaron;" : 353,
-    "Yuml;" : 376,
-    "fnof;" : 402,
-    "circ;" : 710,
-    "tilde;" : 732,
-    "Alpha;" : 913,
-    "Beta;" : 914,
-    "Gamma;" : 915,
-    "Delta;" : 916,
-    "Epsilon;" : 917,
-    "Zeta;" : 918,
-    "Eta;" : 919,
-    "Theta;" : 920,
-    "Iota;" : 921,
-    "Kappa;" : 922,
-    "Lambda;" : 923,
-    "Mu;" : 924,
-    "Nu;" : 925,
-    "Xi;" : 926,
-    "Omicron;" : 927,
-    "Pi;" : 928,
-    "Rho;" : 929,
-    "Sigma;" : 931,
-    "Tau;" : 932,
-    "Upsilon;" : 933,
-    "Phi;" : 934,
-    "Chi;" : 935,
-    "Psi;" : 936,
-    "Omega;" : 937,
-    "alpha;" : 945,
-    "beta;" : 946,
-    "gamma;" : 947,
-    "delta;" : 948,
-    "epsilon;" : 949,
-    "zeta;" : 950,
-    "eta;" : 951,
-    "theta;" : 952,
-    "iota;" : 953,
-    "kappa;" : 954,
-    "lambda;" : 955,
-    "mu;" : 956,
-    "nu;" : 957,
-    "xi;" : 958,
-    "omicron;" : 959,
-    "pi;" : 960,
-    "rho;" : 961,
-    "sigmaf;" : 962,
-    "sigma;" : 963,
-    "tau;" : 964,
-    "upsilon;" : 965,
-    "phi;" : 966,
-    "chi;" : 967,
-    "psi;" : 968,
-    "omega;" : 969,
-    "thetasym;" : 977,
-    "upsih;" : 978,
-    "piv;" : 982,
-    "ensp;" : 8194,
-    "emsp;" : 8195,
-    "thinsp;" : 8201,
-    "zwnj;" : 8204,
-    "zwj;" : 8205,
-    "lrm;" : 8206,
-    "rlm;" : 8207,
-    "ndash;" : 8211,
-    "mdash;" : 8212,
-    "lsquo;" : 8216,
-    "rsquo;" : 8217,
-    "sbquo;" : 8218,
-    "ldquo;" : 8220,
-    "rdquo;" : 8221,
-    "bdquo;" : 8222,
-    "dagger;" : 8224,
-    "Dagger;" : 8225,
-    "bull;" : 8226,
-    "hellip;" : 8230,
-    "permil;" : 8240,
-    "prime;" : 8242,
-    "Prime;" : 8243,
-    "lsaquo;" : 8249,
-    "rsaquo;" : 8250,
-    "oline;" : 8254,
-    "frasl;" : 8260,
-    "euro;" : 8364,
-    "image;" : 8465,
-    "weierp;" : 8472,
-    "real;" : 8476,
-    "trade;" : 8482,
-    "alefsym;" : 8501,
-    "larr;" : 8592,
-    "uarr;" : 8593,
-    "rarr;" : 8594,
-    "darr;" : 8595,
-    "harr;" : 8596,
-    "crarr;" : 8629,
-    "lArr;" : 8656,
-    "uArr;" : 8657,
-    "rArr;" : 8658,
-    "dArr;" : 8659,
-    "hArr;" : 8660,
-    "forall;" : 8704,
-    "part;" : 8706,
-    "exist;" : 8707,
-    "empty;" : 8709,
-    "nabla;" : 8711,
-    "isin;" : 8712,
-    "notin;" : 8713,
-    "ni;" : 8715,
-    "prod;" : 8719,
-    "sum;" : 8721,
-    "minus;" : 8722,
-    "lowast;" : 8727,
-    "radic;" : 8730,
-    "prop;" : 8733,
-    "infin;" : 8734,
-    "ang;" : 8736,
-    "and;" : 8743,
-    "or;" : 8744,
-    "cap;" : 8745,
-    "cup;" : 8746,
-    "int;" : 8747,
-    "there4;" : 8756,
-    "sim;" : 8764,
-    "cong;" : 8773,
-    "asymp;" : 8776,
-    "ne;" : 8800,
-    "equiv;" : 8801,
-    "le;" : 8804,
-    "ge;" : 8805,
-    "sub;" : 8834,
-    "sup;" : 8835,
-    "nsub;" : 8836,
-    "sube;" : 8838,
-    "supe;" : 8839,
-    "oplus;" : 8853,
-    "otimes;" : 8855,
-    "perp;" : 8869,
-    "sdot;" : 8901,
-    "lceil;" : 8968,
-    "rceil;" : 8969,
-    "lfloor;" : 8970,
-    "rfloor;" : 8971,
-    "lang;" : 9001,
-    "rang;" : 9002,
-    "loz;" : 9674,
-    "spades;" : 9824,
-    "clubs;" : 9827,
-    "hearts;" : 9829,
-    "diams;" : 9830
-  }
-
-
-}).call(this);
-
-},{"./_count":265,"./_splitLeft":266,"./_splitRight":267}],269:[function(require,module,exports){
+},{}],269:[function(require,module,exports){
 'use strict';
 
 var utils = require('./utils.js');
@@ -44663,7 +44221,7 @@ MarkdownIt.prototype.renderInline = function (src, env) {
 
 module.exports = MarkdownIt;
 
-},{"./common/utils":280,"./helpers":281,"./parser_block":286,"./parser_core":287,"./parser_inline":288,"./presets/commonmark":289,"./presets/default":290,"./presets/zero":291,"./renderer":292,"linkify-it":329,"mdurl":334,"punycode":354}],286:[function(require,module,exports){
+},{"./common/utils":280,"./helpers":281,"./parser_block":286,"./parser_core":287,"./parser_inline":288,"./presets/commonmark":289,"./presets/default":290,"./presets/zero":291,"./renderer":292,"linkify-it":329,"mdurl":334,"punycode":4}],286:[function(require,module,exports){
 /** internal
  * class ParserBlock
  *
@@ -54874,14 +54432,1187 @@ module.exports=/[\0-\uD7FF\uE000-\uFFFF]|[\uD800-\uDBFF][\uDC00-\uDFFF]|[\uD800-
 
 }));
 },{}],343:[function(require,module,exports){
-arguments[4][265][0].apply(exports,arguments)
-},{"dup":265}],344:[function(require,module,exports){
-arguments[4][266][0].apply(exports,arguments)
-},{"dup":266}],345:[function(require,module,exports){
-arguments[4][267][0].apply(exports,arguments)
-},{"dup":267}],346:[function(require,module,exports){
-arguments[4][268][0].apply(exports,arguments)
-},{"./_count":343,"./_splitLeft":344,"./_splitRight":345,"dup":268}],347:[function(require,module,exports){
+function count(self, substr) {
+  var count = 0
+  var pos = self.indexOf(substr)
+
+  while (pos >= 0) {
+    count += 1
+    pos = self.indexOf(substr, pos + 1)
+  }
+
+  return count
+}
+
+module.exports = count
+},{}],344:[function(require,module,exports){
+function splitLeft(self, sep, maxSplit, limit) {
+
+  if (typeof maxSplit === 'undefined') {
+    var maxSplit = -1;
+  }
+
+  var splitResult = self.split(sep);
+  var splitPart1 = splitResult.slice(0, maxSplit);
+  var splitPart2 = splitResult.slice(maxSplit);
+
+  if (splitPart2.length === 0) {
+    splitResult = splitPart1;
+  } else {
+    splitResult = splitPart1.concat(splitPart2.join(sep));
+  }
+
+  if (typeof limit === 'undefined') {
+    return splitResult;
+  } else if (limit < 0) {
+    return splitResult.slice(limit);
+  } else {
+    return splitResult.slice(0, limit);
+  }
+
+}
+
+module.exports = splitLeft;
+
+},{}],345:[function(require,module,exports){
+function splitRight(self, sep, maxSplit, limit) {
+
+  if (typeof maxSplit === 'undefined') {
+    var maxSplit = -1;
+  }
+  if (typeof limit === 'undefined') {
+    var limit = 0;
+  }
+
+  var splitResult = [self];
+
+  for (var i = self.length-1; i >= 0; i--) {
+
+    if (
+      splitResult[0].slice(i).indexOf(sep) === 0 &&
+      (splitResult.length <= maxSplit || maxSplit === -1)
+    ) {
+      splitResult.splice(1, 0, splitResult[0].slice(i+sep.length)); // insert
+      splitResult[0] = splitResult[0].slice(0, i)
+    }
+  }
+
+  if (limit >= 0) {
+    return splitResult.slice(-limit);
+  } else {
+    return splitResult.slice(0, -limit);
+  }
+
+}
+
+module.exports = splitRight;
+
+},{}],346:[function(require,module,exports){
+/*
+string.js - Copyright (C) 2012-2014, JP Richardson <jprichardson@gmail.com>
+*/
+
+!(function() {
+  "use strict";
+
+  var VERSION = '3.3.1';
+
+  var ENTITIES = {};
+
+  // from http://semplicewebsites.com/removing-accents-javascript
+  var latin_map={"Á":"A","Ă":"A","Ắ":"A","Ặ":"A","Ằ":"A","Ẳ":"A","Ẵ":"A","Ǎ":"A","Â":"A","Ấ":"A","Ậ":"A","Ầ":"A","Ẩ":"A","Ẫ":"A","Ä":"A","Ǟ":"A","Ȧ":"A","Ǡ":"A","Ạ":"A","Ȁ":"A","À":"A","Ả":"A","Ȃ":"A","Ā":"A","Ą":"A","Å":"A","Ǻ":"A","Ḁ":"A","Ⱥ":"A","Ã":"A","Ꜳ":"AA","Æ":"AE","Ǽ":"AE","Ǣ":"AE","Ꜵ":"AO","Ꜷ":"AU","Ꜹ":"AV","Ꜻ":"AV","Ꜽ":"AY","Ḃ":"B","Ḅ":"B","Ɓ":"B","Ḇ":"B","Ƀ":"B","Ƃ":"B","Ć":"C","Č":"C","Ç":"C","Ḉ":"C","Ĉ":"C","Ċ":"C","Ƈ":"C","Ȼ":"C","Ď":"D","Ḑ":"D","Ḓ":"D","Ḋ":"D","Ḍ":"D","Ɗ":"D","Ḏ":"D","ǲ":"D","ǅ":"D","Đ":"D","Ƌ":"D","Ǳ":"DZ","Ǆ":"DZ","É":"E","Ĕ":"E","Ě":"E","Ȩ":"E","Ḝ":"E","Ê":"E","Ế":"E","Ệ":"E","Ề":"E","Ể":"E","Ễ":"E","Ḙ":"E","Ë":"E","Ė":"E","Ẹ":"E","Ȅ":"E","È":"E","Ẻ":"E","Ȇ":"E","Ē":"E","Ḗ":"E","Ḕ":"E","Ę":"E","Ɇ":"E","Ẽ":"E","Ḛ":"E","Ꝫ":"ET","Ḟ":"F","Ƒ":"F","Ǵ":"G","Ğ":"G","Ǧ":"G","Ģ":"G","Ĝ":"G","Ġ":"G","Ɠ":"G","Ḡ":"G","Ǥ":"G","Ḫ":"H","Ȟ":"H","Ḩ":"H","Ĥ":"H","Ⱨ":"H","Ḧ":"H","Ḣ":"H","Ḥ":"H","Ħ":"H","Í":"I","Ĭ":"I","Ǐ":"I","Î":"I","Ï":"I","Ḯ":"I","İ":"I","Ị":"I","Ȉ":"I","Ì":"I","Ỉ":"I","Ȋ":"I","Ī":"I","Į":"I","Ɨ":"I","Ĩ":"I","Ḭ":"I","Ꝺ":"D","Ꝼ":"F","Ᵹ":"G","Ꞃ":"R","Ꞅ":"S","Ꞇ":"T","Ꝭ":"IS","Ĵ":"J","Ɉ":"J","Ḱ":"K","Ǩ":"K","Ķ":"K","Ⱪ":"K","Ꝃ":"K","Ḳ":"K","Ƙ":"K","Ḵ":"K","Ꝁ":"K","Ꝅ":"K","Ĺ":"L","Ƚ":"L","Ľ":"L","Ļ":"L","Ḽ":"L","Ḷ":"L","Ḹ":"L","Ⱡ":"L","Ꝉ":"L","Ḻ":"L","Ŀ":"L","Ɫ":"L","ǈ":"L","Ł":"L","Ǉ":"LJ","Ḿ":"M","Ṁ":"M","Ṃ":"M","Ɱ":"M","Ń":"N","Ň":"N","Ņ":"N","Ṋ":"N","Ṅ":"N","Ṇ":"N","Ǹ":"N","Ɲ":"N","Ṉ":"N","Ƞ":"N","ǋ":"N","Ñ":"N","Ǌ":"NJ","Ó":"O","Ŏ":"O","Ǒ":"O","Ô":"O","Ố":"O","Ộ":"O","Ồ":"O","Ổ":"O","Ỗ":"O","Ö":"O","Ȫ":"O","Ȯ":"O","Ȱ":"O","Ọ":"O","Ő":"O","Ȍ":"O","Ò":"O","Ỏ":"O","Ơ":"O","Ớ":"O","Ợ":"O","Ờ":"O","Ở":"O","Ỡ":"O","Ȏ":"O","Ꝋ":"O","Ꝍ":"O","Ō":"O","Ṓ":"O","Ṑ":"O","Ɵ":"O","Ǫ":"O","Ǭ":"O","Ø":"O","Ǿ":"O","Õ":"O","Ṍ":"O","Ṏ":"O","Ȭ":"O","Ƣ":"OI","Ꝏ":"OO","Ɛ":"E","Ɔ":"O","Ȣ":"OU","Ṕ":"P","Ṗ":"P","Ꝓ":"P","Ƥ":"P","Ꝕ":"P","Ᵽ":"P","Ꝑ":"P","Ꝙ":"Q","Ꝗ":"Q","Ŕ":"R","Ř":"R","Ŗ":"R","Ṙ":"R","Ṛ":"R","Ṝ":"R","Ȑ":"R","Ȓ":"R","Ṟ":"R","Ɍ":"R","Ɽ":"R","Ꜿ":"C","Ǝ":"E","Ś":"S","Ṥ":"S","Š":"S","Ṧ":"S","Ş":"S","Ŝ":"S","Ș":"S","Ṡ":"S","Ṣ":"S","Ṩ":"S","ẞ":"SS","Ť":"T","Ţ":"T","Ṱ":"T","Ț":"T","Ⱦ":"T","Ṫ":"T","Ṭ":"T","Ƭ":"T","Ṯ":"T","Ʈ":"T","Ŧ":"T","Ɐ":"A","Ꞁ":"L","Ɯ":"M","Ʌ":"V","Ꜩ":"TZ","Ú":"U","Ŭ":"U","Ǔ":"U","Û":"U","Ṷ":"U","Ü":"U","Ǘ":"U","Ǚ":"U","Ǜ":"U","Ǖ":"U","Ṳ":"U","Ụ":"U","Ű":"U","Ȕ":"U","Ù":"U","Ủ":"U","Ư":"U","Ứ":"U","Ự":"U","Ừ":"U","Ử":"U","Ữ":"U","Ȗ":"U","Ū":"U","Ṻ":"U","Ų":"U","Ů":"U","Ũ":"U","Ṹ":"U","Ṵ":"U","Ꝟ":"V","Ṿ":"V","Ʋ":"V","Ṽ":"V","Ꝡ":"VY","Ẃ":"W","Ŵ":"W","Ẅ":"W","Ẇ":"W","Ẉ":"W","Ẁ":"W","Ⱳ":"W","Ẍ":"X","Ẋ":"X","Ý":"Y","Ŷ":"Y","Ÿ":"Y","Ẏ":"Y","Ỵ":"Y","Ỳ":"Y","Ƴ":"Y","Ỷ":"Y","Ỿ":"Y","Ȳ":"Y","Ɏ":"Y","Ỹ":"Y","Ź":"Z","Ž":"Z","Ẑ":"Z","Ⱬ":"Z","Ż":"Z","Ẓ":"Z","Ȥ":"Z","Ẕ":"Z","Ƶ":"Z","Ĳ":"IJ","Œ":"OE","ᴀ":"A","ᴁ":"AE","ʙ":"B","ᴃ":"B","ᴄ":"C","ᴅ":"D","ᴇ":"E","ꜰ":"F","ɢ":"G","ʛ":"G","ʜ":"H","ɪ":"I","ʁ":"R","ᴊ":"J","ᴋ":"K","ʟ":"L","ᴌ":"L","ᴍ":"M","ɴ":"N","ᴏ":"O","ɶ":"OE","ᴐ":"O","ᴕ":"OU","ᴘ":"P","ʀ":"R","ᴎ":"N","ᴙ":"R","ꜱ":"S","ᴛ":"T","ⱻ":"E","ᴚ":"R","ᴜ":"U","ᴠ":"V","ᴡ":"W","ʏ":"Y","ᴢ":"Z","á":"a","ă":"a","ắ":"a","ặ":"a","ằ":"a","ẳ":"a","ẵ":"a","ǎ":"a","â":"a","ấ":"a","ậ":"a","ầ":"a","ẩ":"a","ẫ":"a","ä":"a","ǟ":"a","ȧ":"a","ǡ":"a","ạ":"a","ȁ":"a","à":"a","ả":"a","ȃ":"a","ā":"a","ą":"a","ᶏ":"a","ẚ":"a","å":"a","ǻ":"a","ḁ":"a","ⱥ":"a","ã":"a","ꜳ":"aa","æ":"ae","ǽ":"ae","ǣ":"ae","ꜵ":"ao","ꜷ":"au","ꜹ":"av","ꜻ":"av","ꜽ":"ay","ḃ":"b","ḅ":"b","ɓ":"b","ḇ":"b","ᵬ":"b","ᶀ":"b","ƀ":"b","ƃ":"b","ɵ":"o","ć":"c","č":"c","ç":"c","ḉ":"c","ĉ":"c","ɕ":"c","ċ":"c","ƈ":"c","ȼ":"c","ď":"d","ḑ":"d","ḓ":"d","ȡ":"d","ḋ":"d","ḍ":"d","ɗ":"d","ᶑ":"d","ḏ":"d","ᵭ":"d","ᶁ":"d","đ":"d","ɖ":"d","ƌ":"d","ı":"i","ȷ":"j","ɟ":"j","ʄ":"j","ǳ":"dz","ǆ":"dz","é":"e","ĕ":"e","ě":"e","ȩ":"e","ḝ":"e","ê":"e","ế":"e","ệ":"e","ề":"e","ể":"e","ễ":"e","ḙ":"e","ë":"e","ė":"e","ẹ":"e","ȅ":"e","è":"e","ẻ":"e","ȇ":"e","ē":"e","ḗ":"e","ḕ":"e","ⱸ":"e","ę":"e","ᶒ":"e","ɇ":"e","ẽ":"e","ḛ":"e","ꝫ":"et","ḟ":"f","ƒ":"f","ᵮ":"f","ᶂ":"f","ǵ":"g","ğ":"g","ǧ":"g","ģ":"g","ĝ":"g","ġ":"g","ɠ":"g","ḡ":"g","ᶃ":"g","ǥ":"g","ḫ":"h","ȟ":"h","ḩ":"h","ĥ":"h","ⱨ":"h","ḧ":"h","ḣ":"h","ḥ":"h","ɦ":"h","ẖ":"h","ħ":"h","ƕ":"hv","í":"i","ĭ":"i","ǐ":"i","î":"i","ï":"i","ḯ":"i","ị":"i","ȉ":"i","ì":"i","ỉ":"i","ȋ":"i","ī":"i","į":"i","ᶖ":"i","ɨ":"i","ĩ":"i","ḭ":"i","ꝺ":"d","ꝼ":"f","ᵹ":"g","ꞃ":"r","ꞅ":"s","ꞇ":"t","ꝭ":"is","ǰ":"j","ĵ":"j","ʝ":"j","ɉ":"j","ḱ":"k","ǩ":"k","ķ":"k","ⱪ":"k","ꝃ":"k","ḳ":"k","ƙ":"k","ḵ":"k","ᶄ":"k","ꝁ":"k","ꝅ":"k","ĺ":"l","ƚ":"l","ɬ":"l","ľ":"l","ļ":"l","ḽ":"l","ȴ":"l","ḷ":"l","ḹ":"l","ⱡ":"l","ꝉ":"l","ḻ":"l","ŀ":"l","ɫ":"l","ᶅ":"l","ɭ":"l","ł":"l","ǉ":"lj","ſ":"s","ẜ":"s","ẛ":"s","ẝ":"s","ḿ":"m","ṁ":"m","ṃ":"m","ɱ":"m","ᵯ":"m","ᶆ":"m","ń":"n","ň":"n","ņ":"n","ṋ":"n","ȵ":"n","ṅ":"n","ṇ":"n","ǹ":"n","ɲ":"n","ṉ":"n","ƞ":"n","ᵰ":"n","ᶇ":"n","ɳ":"n","ñ":"n","ǌ":"nj","ó":"o","ŏ":"o","ǒ":"o","ô":"o","ố":"o","ộ":"o","ồ":"o","ổ":"o","ỗ":"o","ö":"o","ȫ":"o","ȯ":"o","ȱ":"o","ọ":"o","ő":"o","ȍ":"o","ò":"o","ỏ":"o","ơ":"o","ớ":"o","ợ":"o","ờ":"o","ở":"o","ỡ":"o","ȏ":"o","ꝋ":"o","ꝍ":"o","ⱺ":"o","ō":"o","ṓ":"o","ṑ":"o","ǫ":"o","ǭ":"o","ø":"o","ǿ":"o","õ":"o","ṍ":"o","ṏ":"o","ȭ":"o","ƣ":"oi","ꝏ":"oo","ɛ":"e","ᶓ":"e","ɔ":"o","ᶗ":"o","ȣ":"ou","ṕ":"p","ṗ":"p","ꝓ":"p","ƥ":"p","ᵱ":"p","ᶈ":"p","ꝕ":"p","ᵽ":"p","ꝑ":"p","ꝙ":"q","ʠ":"q","ɋ":"q","ꝗ":"q","ŕ":"r","ř":"r","ŗ":"r","ṙ":"r","ṛ":"r","ṝ":"r","ȑ":"r","ɾ":"r","ᵳ":"r","ȓ":"r","ṟ":"r","ɼ":"r","ᵲ":"r","ᶉ":"r","ɍ":"r","ɽ":"r","ↄ":"c","ꜿ":"c","ɘ":"e","ɿ":"r","ś":"s","ṥ":"s","š":"s","ṧ":"s","ş":"s","ŝ":"s","ș":"s","ṡ":"s","ṣ":"s","ṩ":"s","ʂ":"s","ᵴ":"s","ᶊ":"s","ȿ":"s","ɡ":"g","ß":"ss","ᴑ":"o","ᴓ":"o","ᴝ":"u","ť":"t","ţ":"t","ṱ":"t","ț":"t","ȶ":"t","ẗ":"t","ⱦ":"t","ṫ":"t","ṭ":"t","ƭ":"t","ṯ":"t","ᵵ":"t","ƫ":"t","ʈ":"t","ŧ":"t","ᵺ":"th","ɐ":"a","ᴂ":"ae","ǝ":"e","ᵷ":"g","ɥ":"h","ʮ":"h","ʯ":"h","ᴉ":"i","ʞ":"k","ꞁ":"l","ɯ":"m","ɰ":"m","ᴔ":"oe","ɹ":"r","ɻ":"r","ɺ":"r","ⱹ":"r","ʇ":"t","ʌ":"v","ʍ":"w","ʎ":"y","ꜩ":"tz","ú":"u","ŭ":"u","ǔ":"u","û":"u","ṷ":"u","ü":"u","ǘ":"u","ǚ":"u","ǜ":"u","ǖ":"u","ṳ":"u","ụ":"u","ű":"u","ȕ":"u","ù":"u","ủ":"u","ư":"u","ứ":"u","ự":"u","ừ":"u","ử":"u","ữ":"u","ȗ":"u","ū":"u","ṻ":"u","ų":"u","ᶙ":"u","ů":"u","ũ":"u","ṹ":"u","ṵ":"u","ᵫ":"ue","ꝸ":"um","ⱴ":"v","ꝟ":"v","ṿ":"v","ʋ":"v","ᶌ":"v","ⱱ":"v","ṽ":"v","ꝡ":"vy","ẃ":"w","ŵ":"w","ẅ":"w","ẇ":"w","ẉ":"w","ẁ":"w","ⱳ":"w","ẘ":"w","ẍ":"x","ẋ":"x","ᶍ":"x","ý":"y","ŷ":"y","ÿ":"y","ẏ":"y","ỵ":"y","ỳ":"y","ƴ":"y","ỷ":"y","ỿ":"y","ȳ":"y","ẙ":"y","ɏ":"y","ỹ":"y","ź":"z","ž":"z","ẑ":"z","ʑ":"z","ⱬ":"z","ż":"z","ẓ":"z","ȥ":"z","ẕ":"z","ᵶ":"z","ᶎ":"z","ʐ":"z","ƶ":"z","ɀ":"z","ﬀ":"ff","ﬃ":"ffi","ﬄ":"ffl","ﬁ":"fi","ﬂ":"fl","ĳ":"ij","œ":"oe","ﬆ":"st","ₐ":"a","ₑ":"e","ᵢ":"i","ⱼ":"j","ₒ":"o","ᵣ":"r","ᵤ":"u","ᵥ":"v","ₓ":"x"};
+
+//******************************************************************************
+// Added an initialize function which is essentially the code from the S
+// constructor.  Now, the S constructor calls this and a new method named
+// setValue calls it as well.  The setValue function allows constructors for
+// modules that extend string.js to set the initial value of an object without
+// knowing the internal workings of string.js.
+//
+// Also, all methods which return a new S object now call:
+//
+//      return new this.constructor(s);
+//
+// instead of:
+//
+//      return new S(s);
+//
+// This allows extended objects to keep their proper instanceOf and constructor.
+//******************************************************************************
+
+  function initialize (object, s) {
+    if (s !== null && s !== undefined) {
+      if (typeof s === 'string')
+        object.s = s;
+      else
+        object.s = s.toString();
+    } else {
+      object.s = s; //null or undefined
+    }
+
+    object.orig = s; //original object, currently only used by toCSV() and toBoolean()
+
+    if (s !== null && s !== undefined) {
+      if (object.__defineGetter__) {
+        object.__defineGetter__('length', function() {
+          return object.s.length;
+        })
+      } else {
+        object.length = s.length;
+      }
+    } else {
+      object.length = -1;
+    }
+  }
+
+  function S(s) {
+  	initialize(this, s);
+  }
+
+  var __nsp = String.prototype;
+  var __sp = S.prototype = {
+
+    between: function(left, right) {
+      var s = this.s;
+      var startPos = s.indexOf(left);
+      var endPos = s.indexOf(right, startPos + left.length);
+      if (endPos == -1 && right != null)
+        return new this.constructor('')
+      else if (endPos == -1 && right == null)
+        return new this.constructor(s.substring(startPos + left.length))
+      else
+        return new this.constructor(s.slice(startPos + left.length, endPos));
+    },
+
+    //# modified slightly from https://github.com/epeli/underscore.string
+    camelize: function() {
+      var s = this.trim().s.replace(/(\-|_|\s)+(.)?/g, function(mathc, sep, c) {
+        return (c ? c.toUpperCase() : '');
+      });
+      return new this.constructor(s);
+    },
+
+    capitalize: function() {
+      return new this.constructor(this.s.substr(0, 1).toUpperCase() + this.s.substring(1).toLowerCase());
+    },
+
+    charAt: function(index) {
+      return this.s.charAt(index);
+    },
+
+    chompLeft: function(prefix) {
+      var s = this.s;
+      if (s.indexOf(prefix) === 0) {
+         s = s.slice(prefix.length);
+         return new this.constructor(s);
+      } else {
+        return this;
+      }
+    },
+
+    chompRight: function(suffix) {
+      if (this.endsWith(suffix)) {
+        var s = this.s;
+        s = s.slice(0, s.length - suffix.length);
+        return new this.constructor(s);
+      } else {
+        return this;
+      }
+    },
+
+    //#thanks Google
+    collapseWhitespace: function() {
+      var s = this.s.replace(/[\s\xa0]+/g, ' ').replace(/^\s+|\s+$/g, '');
+      return new this.constructor(s);
+    },
+
+    contains: function(ss) {
+      return this.s.indexOf(ss) >= 0;
+    },
+
+    count: function(ss) {
+      return require('./_count')(this.s, ss)
+    },
+
+    //#modified from https://github.com/epeli/underscore.string
+    dasherize: function() {
+      var s = this.trim().s.replace(/[_\s]+/g, '-').replace(/([A-Z])/g, '-$1').replace(/-+/g, '-').toLowerCase();
+      return new this.constructor(s);
+    },
+
+    latinise: function() {
+      var s = this.replace(/[^A-Za-z0-9\[\] ]/g, function(x) { return latin_map[x] || x; });
+      return new this.constructor(s);
+    },
+
+    decodeHtmlEntities: function() { //https://github.com/substack/node-ent/blob/master/index.js
+      var s = this.s;
+      s = s.replace(/&#(\d+);?/g, function (_, code) {
+        return String.fromCharCode(code);
+      })
+      .replace(/&#[xX]([A-Fa-f0-9]+);?/g, function (_, hex) {
+        return String.fromCharCode(parseInt(hex, 16));
+      })
+      .replace(/&([^;\W]+;?)/g, function (m, e) {
+        var ee = e.replace(/;$/, '');
+        var target = ENTITIES[e] || (e.match(/;$/) && ENTITIES[ee]);
+
+        if (typeof target === 'number') {
+          return String.fromCharCode(target);
+        }
+        else if (typeof target === 'string') {
+          return target;
+        }
+        else {
+          return m;
+        }
+      })
+
+      return new this.constructor(s);
+    },
+
+    endsWith: function() {
+      var suffixes = Array.prototype.slice.call(arguments, 0);
+      for (var i = 0; i < suffixes.length; ++i) {
+        var l  = this.s.length - suffixes[i].length;
+        if (l >= 0 && this.s.indexOf(suffixes[i], l) === l) return true;
+      }
+      return false;
+    },
+
+    escapeHTML: function() { //from underscore.string
+      return new this.constructor(this.s.replace(/[&<>"']/g, function(m){ return '&' + reversedEscapeChars[m] + ';'; }));
+    },
+
+    ensureLeft: function(prefix) {
+      var s = this.s;
+      if (s.indexOf(prefix) === 0) {
+        return this;
+      } else {
+        return new this.constructor(prefix + s);
+      }
+    },
+
+    ensureRight: function(suffix) {
+      var s = this.s;
+      if (this.endsWith(suffix))  {
+        return this;
+      } else {
+        return new this.constructor(s + suffix);
+      }
+    },
+
+    humanize: function() { //modified from underscore.string
+      if (this.s === null || this.s === undefined)
+        return new this.constructor('')
+      var s = this.underscore().replace(/_id$/,'').replace(/_/g, ' ').trim().capitalize()
+      return new this.constructor(s)
+    },
+
+    isAlpha: function() {
+      return !/[^a-z\xDF-\xFF]|^$/.test(this.s.toLowerCase());
+    },
+
+    isAlphaNumeric: function() {
+      return !/[^0-9a-z\xDF-\xFF]/.test(this.s.toLowerCase());
+    },
+
+    isEmpty: function() {
+      return this.s === null || this.s === undefined ? true : /^[\s\xa0]*$/.test(this.s);
+    },
+
+    isLower: function() {
+      return this.isAlpha() && this.s.toLowerCase() === this.s;
+    },
+
+    isNumeric: function() {
+      return !/[^0-9]/.test(this.s);
+    },
+
+    isUpper: function() {
+      return this.isAlpha() && this.s.toUpperCase() === this.s;
+    },
+
+    left: function(N) {
+      if (N >= 0) {
+        var s = this.s.substr(0, N);
+        return new this.constructor(s);
+      } else {
+        return this.right(-N);
+      }
+    },
+
+    lines: function() { //convert windows newlines to unix newlines then convert to an Array of lines
+      return this.replaceAll('\r\n', '\n').s.split('\n');
+    },
+
+    pad: function(len, ch) { //https://github.com/component/pad
+      if (ch == null) ch = ' ';
+      if (this.s.length >= len) return new this.constructor(this.s);
+      len = len - this.s.length;
+      var left = Array(Math.ceil(len / 2) + 1).join(ch);
+      var right = Array(Math.floor(len / 2) + 1).join(ch);
+      return new this.constructor(left + this.s + right);
+    },
+
+    padLeft: function(len, ch) { //https://github.com/component/pad
+      if (ch == null) ch = ' ';
+      if (this.s.length >= len) return new this.constructor(this.s);
+      return new this.constructor(Array(len - this.s.length + 1).join(ch) + this.s);
+    },
+
+    padRight: function(len, ch) { //https://github.com/component/pad
+      if (ch == null) ch = ' ';
+      if (this.s.length >= len) return new this.constructor(this.s);
+      return new this.constructor(this.s + Array(len - this.s.length + 1).join(ch));
+    },
+
+    parseCSV: function(delimiter, qualifier, escape, lineDelimiter) { //try to parse no matter what
+      delimiter = delimiter || ',';
+      escape = escape || '\\'
+      if (typeof qualifier == 'undefined')
+        qualifier = '"';
+
+      var i = 0, fieldBuffer = [], fields = [], len = this.s.length, inField = false, inUnqualifiedString = false, self = this;
+      var ca = function(i){return self.s.charAt(i)};
+      if (typeof lineDelimiter !== 'undefined') var rows = [];
+
+      if (!qualifier)
+        inField = true;
+
+      while (i < len) {
+        var current = ca(i);
+        switch (current) {
+          case escape:
+            //fix for issues #32 and #35
+            if (inField && ((escape !== qualifier) || ca(i+1) === qualifier)) {
+              i += 1;
+              fieldBuffer.push(ca(i));
+              break;
+            }
+            if (escape !== qualifier) break;
+          case qualifier:
+            inField = !inField;
+            break;
+          case delimiter:
+            if(inUnqualifiedString) {
+              inField=false;
+              inUnqualifiedString=false;
+            }
+            if (inField && qualifier)
+              fieldBuffer.push(current);
+            else {
+              fields.push(fieldBuffer.join(''))
+              fieldBuffer.length = 0;
+            }
+            break;
+          case lineDelimiter:
+            if(inUnqualifiedString) {
+              inField=false;
+              inUnqualifiedString=false;
+              fields.push(fieldBuffer.join(''))
+              rows.push(fields);
+              fields = [];
+              fieldBuffer.length = 0;
+            }
+            else if (inField) {
+              fieldBuffer.push(current);
+            } else {
+              if (rows) {
+                fields.push(fieldBuffer.join(''))
+                rows.push(fields);
+                fields = [];
+                fieldBuffer.length = 0;
+              }
+            }
+            break;
+          case ' ':
+            if (inField)
+              fieldBuffer.push(current);
+            break;
+          default:
+            if (inField)
+              fieldBuffer.push(current);
+            else if(current!==qualifier) {
+              fieldBuffer.push(current);
+              inField=true;
+              inUnqualifiedString=true;
+            }
+            break;
+        }
+        i += 1;
+      }
+
+      fields.push(fieldBuffer.join(''));
+      if (rows) {
+        rows.push(fields);
+        return rows;
+      }
+      return fields;
+    },
+
+    replaceAll: function(ss, r) {
+      //var s = this.s.replace(new RegExp(ss, 'g'), r);
+      var s = this.s.split(ss).join(r)
+      return new this.constructor(s);
+    },
+
+    splitLeft: function(sep, maxSplit, limit) {
+      return require('./_splitLeft')(this.s, sep, maxSplit, limit)
+    },
+
+    splitRight: function(sep, maxSplit, limit) {
+      return require('./_splitRight')(this.s, sep, maxSplit, limit)
+    },
+
+    strip: function() {
+      var ss = this.s;
+      for(var i= 0, n=arguments.length; i<n; i++) {
+        ss = ss.split(arguments[i]).join('');
+      }
+      return new this.constructor(ss);
+    },
+
+    stripLeft: function (chars) {
+      var regex;
+      var pattern;
+      var ss = ensureString(this.s);
+
+      if (chars === undefined) {
+        pattern = /^\s+/g;
+      }
+      else {
+        regex = escapeRegExp(chars);
+        pattern = new RegExp("^[" + regex + "]+", "g");
+      }
+
+      return new this.constructor(ss.replace(pattern, ""));
+    },
+
+    stripRight: function (chars) {
+      var regex;
+      var pattern;
+      var ss = ensureString(this.s);
+
+      if (chars === undefined) {
+        pattern = /\s+$/g;
+      }
+      else {
+        regex = escapeRegExp(chars);
+        pattern = new RegExp("[" + regex + "]+$", "g");
+      }
+
+      return new this.constructor(ss.replace(pattern, ""));
+    },
+
+    right: function(N) {
+      if (N >= 0) {
+        var s = this.s.substr(this.s.length - N, N);
+        return new this.constructor(s);
+      } else {
+        return this.left(-N);
+      }
+    },
+
+    setValue: function (s) {
+	  initialize(this, s);
+	  return this;
+    },
+
+    slugify: function() {
+      var sl = (new S(new S(this.s).latinise().s.replace(/[^\w\s-]/g, '').toLowerCase())).dasherize().s;
+      if (sl.charAt(0) === '-')
+        sl = sl.substr(1);
+      return new this.constructor(sl);
+    },
+
+    startsWith: function() {
+      var prefixes = Array.prototype.slice.call(arguments, 0);
+      for (var i = 0; i < prefixes.length; ++i) {
+        if (this.s.lastIndexOf(prefixes[i], 0) === 0) return true;
+      }
+      return false;
+    },
+
+    stripPunctuation: function() {
+      //return new this.constructor(this.s.replace(/[\.,-\/#!$%\^&\*;:{}=\-_`~()]/g,""));
+      return new this.constructor(this.s.replace(/[^\w\s]|_/g, "").replace(/\s+/g, " "));
+    },
+
+    stripTags: function() { //from sugar.js
+      var s = this.s, args = arguments.length > 0 ? arguments : [''];
+      multiArgs(args, function(tag) {
+        s = s.replace(RegExp('<\/?' + tag + '[^<>]*>', 'gi'), '');
+      });
+      return new this.constructor(s);
+    },
+
+    template: function(values, opening, closing) {
+      var s = this.s
+      var opening = opening || Export.TMPL_OPEN
+      var closing = closing || Export.TMPL_CLOSE
+
+      var open = opening.replace(/[-[\]()*\s]/g, "\\$&").replace(/\$/g, '\\$')
+      var close = closing.replace(/[-[\]()*\s]/g, "\\$&").replace(/\$/g, '\\$')
+      var r = new RegExp(open + '(.+?)' + close, 'g')
+        //, r = /\{\{(.+?)\}\}/g
+      var matches = s.match(r) || [];
+
+      matches.forEach(function(match) {
+        var key = match.substring(opening.length, match.length - closing.length).trim();//chop {{ and }}
+        var value = typeof values[key] == 'undefined' ? '' : values[key];
+        s = s.replace(match, value);
+      });
+      return new this.constructor(s);
+    },
+
+    times: function(n) {
+      return new this.constructor(new Array(n + 1).join(this.s));
+    },
+
+    titleCase: function() {
+      var s = this.s;
+      if (s) {
+        s = s.replace(/(^[a-z]| [a-z]|-[a-z]|_[a-z])/g,
+          function($1){
+            return $1.toUpperCase();
+          }
+        );
+      }
+      return new this.constructor(s);
+    },
+
+    toBoolean: function() {
+      if (typeof this.orig === 'string') {
+        var s = this.s.toLowerCase();
+        return s === 'true' || s === 'yes' || s === 'on' || s === '1';
+      } else
+        return this.orig === true || this.orig === 1;
+    },
+
+    toFloat: function(precision) {
+      var num = parseFloat(this.s)
+      if (precision)
+        return parseFloat(num.toFixed(precision))
+      else
+        return num
+    },
+
+    toInt: function() { //thanks Google
+      // If the string starts with '0x' or '-0x', parse as hex.
+      return /^\s*-?0x/i.test(this.s) ? parseInt(this.s, 16) : parseInt(this.s, 10)
+    },
+
+    trim: function() {
+      var s;
+      if (typeof __nsp.trim === 'undefined')
+        s = this.s.replace(/(^\s*|\s*$)/g, '')
+      else
+        s = this.s.trim()
+      return new this.constructor(s);
+    },
+
+    trimLeft: function() {
+      var s;
+      if (__nsp.trimLeft)
+        s = this.s.trimLeft();
+      else
+        s = this.s.replace(/(^\s*)/g, '');
+      return new this.constructor(s);
+    },
+
+    trimRight: function() {
+      var s;
+      if (__nsp.trimRight)
+        s = this.s.trimRight();
+      else
+        s = this.s.replace(/\s+$/, '');
+      return new this.constructor(s);
+    },
+
+    truncate: function(length, pruneStr) { //from underscore.string, author: github.com/rwz
+      var str = this.s;
+
+      length = ~~length;
+      pruneStr = pruneStr || '...';
+
+      if (str.length <= length) return new this.constructor(str);
+
+      var tmpl = function(c){ return c.toUpperCase() !== c.toLowerCase() ? 'A' : ' '; },
+        template = str.slice(0, length+1).replace(/.(?=\W*\w*$)/g, tmpl); // 'Hello, world' -> 'HellAA AAAAA'
+
+      if (template.slice(template.length-2).match(/\w\w/))
+        template = template.replace(/\s*\S+$/, '');
+      else
+        template = new S(template.slice(0, template.length-1)).trimRight().s;
+
+      return (template+pruneStr).length > str.length ? new S(str) : new S(str.slice(0, template.length)+pruneStr);
+    },
+
+    toCSV: function() {
+      var delim = ',', qualifier = '"', escape = '\\', encloseNumbers = true, keys = false;
+      var dataArray = [];
+
+      function hasVal(it) {
+        return it !== null && it !== '';
+      }
+
+      if (typeof arguments[0] === 'object') {
+        delim = arguments[0].delimiter || delim;
+        delim = arguments[0].separator || delim;
+        qualifier = arguments[0].qualifier || qualifier;
+        encloseNumbers = !!arguments[0].encloseNumbers;
+        escape = arguments[0].escape || escape;
+        keys = !!arguments[0].keys;
+      } else if (typeof arguments[0] === 'string') {
+        delim = arguments[0];
+      }
+
+      if (typeof arguments[1] === 'string')
+        qualifier = arguments[1];
+
+      if (arguments[1] === null)
+        qualifier = null;
+
+       if (this.orig instanceof Array)
+        dataArray  = this.orig;
+      else { //object
+        for (var key in this.orig)
+          if (this.orig.hasOwnProperty(key))
+            if (keys)
+              dataArray.push(key);
+            else
+              dataArray.push(this.orig[key]);
+      }
+
+      var rep = escape + qualifier;
+      var buildString = [];
+      for (var i = 0; i < dataArray.length; ++i) {
+        var shouldQualify = hasVal(qualifier)
+        if (typeof dataArray[i] == 'number')
+          shouldQualify &= encloseNumbers;
+
+        if (shouldQualify)
+          buildString.push(qualifier);
+
+        if (dataArray[i] !== null && dataArray[i] !== undefined) {
+          var d = new S(dataArray[i]).replaceAll(qualifier, rep).s;
+          buildString.push(d);
+        } else
+          buildString.push('')
+
+        if (shouldQualify)
+          buildString.push(qualifier);
+
+        if (delim)
+          buildString.push(delim);
+      }
+
+      //chop last delim
+      //console.log(buildString.length)
+      buildString.length = buildString.length - 1;
+      return new this.constructor(buildString.join(''));
+    },
+
+    toString: function() {
+      return this.s;
+    },
+
+    //#modified from https://github.com/epeli/underscore.string
+    underscore: function() {
+      var s = this.trim().s.replace(/([a-z\d])([A-Z]+)/g, '$1_$2').replace(/([A-Z\d]+)([A-Z][a-z])/g,'$1_$2').replace(/[-\s]+/g, '_').toLowerCase();
+      return new this.constructor(s);
+    },
+
+    unescapeHTML: function() { //from underscore.string
+      return new this.constructor(this.s.replace(/\&([^;]+);/g, function(entity, entityCode){
+        var match;
+
+        if (entityCode in escapeChars) {
+          return escapeChars[entityCode];
+        } else if (match = entityCode.match(/^#x([\da-fA-F]+)$/)) {
+          return String.fromCharCode(parseInt(match[1], 16));
+        } else if (match = entityCode.match(/^#(\d+)$/)) {
+          return String.fromCharCode(~~match[1]);
+        } else {
+          return entity;
+        }
+      }));
+    },
+
+    valueOf: function() {
+      return this.s.valueOf();
+    },
+
+    //#Added a New Function called wrapHTML.
+    wrapHTML: function (tagName, tagAttrs) {
+      var s = this.s, el = (tagName == null) ? 'span' : tagName, elAttr = '', wrapped = '';
+      if(typeof tagAttrs == 'object') for(var prop in tagAttrs) elAttr += ' ' + prop + '="' +(new this.constructor(tagAttrs[prop])).escapeHTML() + '"';
+      s = wrapped.concat('<', el, elAttr, '>', this, '</', el, '>');
+      return new this.constructor(s);
+    }
+  }
+
+  var methodsAdded = [];
+  function extendPrototype() {
+    for (var name in __sp) {
+      (function(name){
+        var func = __sp[name];
+        if (!__nsp.hasOwnProperty(name)) {
+          methodsAdded.push(name);
+          __nsp[name] = function() {
+            String.prototype.s = this;
+            return func.apply(this, arguments);
+          }
+        }
+      })(name);
+    }
+  }
+
+  function restorePrototype() {
+    for (var i = 0; i < methodsAdded.length; ++i)
+      delete String.prototype[methodsAdded[i]];
+    methodsAdded.length = 0;
+  }
+
+
+/*************************************
+/* Attach Native JavaScript String Properties
+/*************************************/
+
+  var nativeProperties = getNativeStringProperties();
+  for (var name in nativeProperties) {
+    (function(name) {
+      var stringProp = __nsp[name];
+      if (typeof stringProp == 'function') {
+        //console.log(stringProp)
+        if (!__sp[name]) {
+          if (nativeProperties[name] === 'string') {
+            __sp[name] = function() {
+              //console.log(name)
+              return new this.constructor(stringProp.apply(this, arguments));
+            }
+          } else {
+            __sp[name] = stringProp;
+          }
+        }
+      }
+    })(name);
+  }
+
+
+/*************************************
+/* Function Aliases
+/*************************************/
+
+  __sp.repeat = __sp.times;
+  __sp.include = __sp.contains;
+  __sp.toInteger = __sp.toInt;
+  __sp.toBool = __sp.toBoolean;
+  __sp.decodeHTMLEntities = __sp.decodeHtmlEntities //ensure consistent casing scheme of 'HTML'
+
+
+//******************************************************************************
+// Set the constructor.  Without this, string.js objects are instances of
+// Object instead of S.
+//******************************************************************************
+
+  __sp.constructor = S;
+
+
+/*************************************
+/* Private Functions
+/*************************************/
+
+  function getNativeStringProperties() {
+    var names = getNativeStringPropertyNames();
+    var retObj = {};
+
+    for (var i = 0; i < names.length; ++i) {
+      var name = names[i];
+      if (name === 'to' || name === 'toEnd') continue;       // get rid of the shelljs prototype messup
+      var func = __nsp[name];
+      try {
+        var type = typeof func.apply('teststring');
+        retObj[name] = type;
+      } catch (e) {}
+    }
+    return retObj;
+  }
+
+  function getNativeStringPropertyNames() {
+    var results = [];
+    if (Object.getOwnPropertyNames) {
+      results = Object.getOwnPropertyNames(__nsp);
+      results.splice(results.indexOf('valueOf'), 1);
+      results.splice(results.indexOf('toString'), 1);
+      return results;
+    } else { //meant for legacy cruft, this could probably be made more efficient
+      var stringNames = {};
+      var objectNames = [];
+      for (var name in String.prototype)
+        stringNames[name] = name;
+
+      for (var name in Object.prototype)
+        delete stringNames[name];
+
+      //stringNames['toString'] = 'toString'; //this was deleted with the rest of the object names
+      for (var name in stringNames) {
+        results.push(name);
+      }
+      return results;
+    }
+  }
+
+  function Export(str) {
+    return new S(str);
+  };
+
+  //attach exports to StringJSWrapper
+  Export.extendPrototype = extendPrototype;
+  Export.restorePrototype = restorePrototype;
+  Export.VERSION = VERSION;
+  Export.TMPL_OPEN = '{{';
+  Export.TMPL_CLOSE = '}}';
+  Export.ENTITIES = ENTITIES;
+
+
+
+/*************************************
+/* Exports
+/*************************************/
+
+  if (typeof module !== 'undefined'  && typeof module.exports !== 'undefined') {
+    module.exports = Export;
+
+  } else {
+
+    if(typeof define === "function" && define.amd) {
+      define([], function() {
+        return Export;
+      });
+    } else {
+      window.S = Export;
+    }
+  }
+
+
+/*************************************
+/* 3rd Party Private Functions
+/*************************************/
+
+  //from sugar.js
+  function multiArgs(args, fn) {
+    var result = [], i;
+    for(i = 0; i < args.length; i++) {
+      result.push(args[i]);
+      if(fn) fn.call(args, args[i], i);
+    }
+    return result;
+  }
+
+  //from underscore.string
+  var escapeChars = {
+    lt: '<',
+    gt: '>',
+    quot: '"',
+    apos: "'",
+    amp: '&'
+  };
+
+  function escapeRegExp (s) {
+    // most part from https://github.com/skulpt/skulpt/blob/ecaf75e69c2e539eff124b2ab45df0b01eaf2295/src/str.js#L242
+    var c;
+    var i;
+    var ret = [];
+    var re = /^[A-Za-z0-9]+$/;
+    s = ensureString(s);
+    for (i = 0; i < s.length; ++i) {
+      c = s.charAt(i);
+
+      if (re.test(c)) {
+        ret.push(c);
+      }
+      else {
+        if (c === "\\000") {
+          ret.push("\\000");
+        }
+        else {
+          ret.push("\\" + c);
+        }
+      }
+    }
+    return ret.join("");
+  }
+
+  function ensureString(string) {
+    return string == null ? '' : '' + string;
+  }
+
+  //from underscore.string
+  var reversedEscapeChars = {};
+  for(var key in escapeChars){ reversedEscapeChars[escapeChars[key]] = key; }
+
+  ENTITIES = {
+    "amp" : "&",
+    "gt" : ">",
+    "lt" : "<",
+    "quot" : "\"",
+    "apos" : "'",
+    "AElig" : 198,
+    "Aacute" : 193,
+    "Acirc" : 194,
+    "Agrave" : 192,
+    "Aring" : 197,
+    "Atilde" : 195,
+    "Auml" : 196,
+    "Ccedil" : 199,
+    "ETH" : 208,
+    "Eacute" : 201,
+    "Ecirc" : 202,
+    "Egrave" : 200,
+    "Euml" : 203,
+    "Iacute" : 205,
+    "Icirc" : 206,
+    "Igrave" : 204,
+    "Iuml" : 207,
+    "Ntilde" : 209,
+    "Oacute" : 211,
+    "Ocirc" : 212,
+    "Ograve" : 210,
+    "Oslash" : 216,
+    "Otilde" : 213,
+    "Ouml" : 214,
+    "THORN" : 222,
+    "Uacute" : 218,
+    "Ucirc" : 219,
+    "Ugrave" : 217,
+    "Uuml" : 220,
+    "Yacute" : 221,
+    "aacute" : 225,
+    "acirc" : 226,
+    "aelig" : 230,
+    "agrave" : 224,
+    "aring" : 229,
+    "atilde" : 227,
+    "auml" : 228,
+    "ccedil" : 231,
+    "eacute" : 233,
+    "ecirc" : 234,
+    "egrave" : 232,
+    "eth" : 240,
+    "euml" : 235,
+    "iacute" : 237,
+    "icirc" : 238,
+    "igrave" : 236,
+    "iuml" : 239,
+    "ntilde" : 241,
+    "oacute" : 243,
+    "ocirc" : 244,
+    "ograve" : 242,
+    "oslash" : 248,
+    "otilde" : 245,
+    "ouml" : 246,
+    "szlig" : 223,
+    "thorn" : 254,
+    "uacute" : 250,
+    "ucirc" : 251,
+    "ugrave" : 249,
+    "uuml" : 252,
+    "yacute" : 253,
+    "yuml" : 255,
+    "copy" : 169,
+    "reg" : 174,
+    "nbsp" : 160,
+    "iexcl" : 161,
+    "cent" : 162,
+    "pound" : 163,
+    "curren" : 164,
+    "yen" : 165,
+    "brvbar" : 166,
+    "sect" : 167,
+    "uml" : 168,
+    "ordf" : 170,
+    "laquo" : 171,
+    "not" : 172,
+    "shy" : 173,
+    "macr" : 175,
+    "deg" : 176,
+    "plusmn" : 177,
+    "sup1" : 185,
+    "sup2" : 178,
+    "sup3" : 179,
+    "acute" : 180,
+    "micro" : 181,
+    "para" : 182,
+    "middot" : 183,
+    "cedil" : 184,
+    "ordm" : 186,
+    "raquo" : 187,
+    "frac14" : 188,
+    "frac12" : 189,
+    "frac34" : 190,
+    "iquest" : 191,
+    "times" : 215,
+    "divide" : 247,
+    "OElig;" : 338,
+    "oelig;" : 339,
+    "Scaron;" : 352,
+    "scaron;" : 353,
+    "Yuml;" : 376,
+    "fnof;" : 402,
+    "circ;" : 710,
+    "tilde;" : 732,
+    "Alpha;" : 913,
+    "Beta;" : 914,
+    "Gamma;" : 915,
+    "Delta;" : 916,
+    "Epsilon;" : 917,
+    "Zeta;" : 918,
+    "Eta;" : 919,
+    "Theta;" : 920,
+    "Iota;" : 921,
+    "Kappa;" : 922,
+    "Lambda;" : 923,
+    "Mu;" : 924,
+    "Nu;" : 925,
+    "Xi;" : 926,
+    "Omicron;" : 927,
+    "Pi;" : 928,
+    "Rho;" : 929,
+    "Sigma;" : 931,
+    "Tau;" : 932,
+    "Upsilon;" : 933,
+    "Phi;" : 934,
+    "Chi;" : 935,
+    "Psi;" : 936,
+    "Omega;" : 937,
+    "alpha;" : 945,
+    "beta;" : 946,
+    "gamma;" : 947,
+    "delta;" : 948,
+    "epsilon;" : 949,
+    "zeta;" : 950,
+    "eta;" : 951,
+    "theta;" : 952,
+    "iota;" : 953,
+    "kappa;" : 954,
+    "lambda;" : 955,
+    "mu;" : 956,
+    "nu;" : 957,
+    "xi;" : 958,
+    "omicron;" : 959,
+    "pi;" : 960,
+    "rho;" : 961,
+    "sigmaf;" : 962,
+    "sigma;" : 963,
+    "tau;" : 964,
+    "upsilon;" : 965,
+    "phi;" : 966,
+    "chi;" : 967,
+    "psi;" : 968,
+    "omega;" : 969,
+    "thetasym;" : 977,
+    "upsih;" : 978,
+    "piv;" : 982,
+    "ensp;" : 8194,
+    "emsp;" : 8195,
+    "thinsp;" : 8201,
+    "zwnj;" : 8204,
+    "zwj;" : 8205,
+    "lrm;" : 8206,
+    "rlm;" : 8207,
+    "ndash;" : 8211,
+    "mdash;" : 8212,
+    "lsquo;" : 8216,
+    "rsquo;" : 8217,
+    "sbquo;" : 8218,
+    "ldquo;" : 8220,
+    "rdquo;" : 8221,
+    "bdquo;" : 8222,
+    "dagger;" : 8224,
+    "Dagger;" : 8225,
+    "bull;" : 8226,
+    "hellip;" : 8230,
+    "permil;" : 8240,
+    "prime;" : 8242,
+    "Prime;" : 8243,
+    "lsaquo;" : 8249,
+    "rsaquo;" : 8250,
+    "oline;" : 8254,
+    "frasl;" : 8260,
+    "euro;" : 8364,
+    "image;" : 8465,
+    "weierp;" : 8472,
+    "real;" : 8476,
+    "trade;" : 8482,
+    "alefsym;" : 8501,
+    "larr;" : 8592,
+    "uarr;" : 8593,
+    "rarr;" : 8594,
+    "darr;" : 8595,
+    "harr;" : 8596,
+    "crarr;" : 8629,
+    "lArr;" : 8656,
+    "uArr;" : 8657,
+    "rArr;" : 8658,
+    "dArr;" : 8659,
+    "hArr;" : 8660,
+    "forall;" : 8704,
+    "part;" : 8706,
+    "exist;" : 8707,
+    "empty;" : 8709,
+    "nabla;" : 8711,
+    "isin;" : 8712,
+    "notin;" : 8713,
+    "ni;" : 8715,
+    "prod;" : 8719,
+    "sum;" : 8721,
+    "minus;" : 8722,
+    "lowast;" : 8727,
+    "radic;" : 8730,
+    "prop;" : 8733,
+    "infin;" : 8734,
+    "ang;" : 8736,
+    "and;" : 8743,
+    "or;" : 8744,
+    "cap;" : 8745,
+    "cup;" : 8746,
+    "int;" : 8747,
+    "there4;" : 8756,
+    "sim;" : 8764,
+    "cong;" : 8773,
+    "asymp;" : 8776,
+    "ne;" : 8800,
+    "equiv;" : 8801,
+    "le;" : 8804,
+    "ge;" : 8805,
+    "sub;" : 8834,
+    "sup;" : 8835,
+    "nsub;" : 8836,
+    "sube;" : 8838,
+    "supe;" : 8839,
+    "oplus;" : 8853,
+    "otimes;" : 8855,
+    "perp;" : 8869,
+    "sdot;" : 8901,
+    "lceil;" : 8968,
+    "rceil;" : 8969,
+    "lfloor;" : 8970,
+    "rfloor;" : 8971,
+    "lang;" : 9001,
+    "rang;" : 9002,
+    "loz;" : 9674,
+    "spades;" : 9824,
+    "clubs;" : 9827,
+    "hearts;" : 9829,
+    "diams;" : 9830
+  }
+
+
+}).call(this);
+
+},{"./_count":343,"./_splitLeft":344,"./_splitRight":345}],347:[function(require,module,exports){
 /*!
  * URI.js - Mutating URLs
  * IPv6 Support
@@ -58059,892 +58790,4 @@ arguments[4][268][0].apply(exports,arguments)
 }(this));
 
 }).call(this,typeof global !== "undefined" ? global : typeof self !== "undefined" ? self : typeof window !== "undefined" ? window : {})
-},{}],351:[function(require,module,exports){
-
-},{}],352:[function(require,module,exports){
-(function (process){
-// Copyright Joyent, Inc. and other Node contributors.
-//
-// Permission is hereby granted, free of charge, to any person obtaining a
-// copy of this software and associated documentation files (the
-// "Software"), to deal in the Software without restriction, including
-// without limitation the rights to use, copy, modify, merge, publish,
-// distribute, sublicense, and/or sell copies of the Software, and to permit
-// persons to whom the Software is furnished to do so, subject to the
-// following conditions:
-//
-// The above copyright notice and this permission notice shall be included
-// in all copies or substantial portions of the Software.
-//
-// THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS
-// OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF
-// MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN
-// NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM,
-// DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR
-// OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE
-// USE OR OTHER DEALINGS IN THE SOFTWARE.
-
-// resolves . and .. elements in a path array with directory names there
-// must be no slashes, empty elements, or device names (c:\) in the array
-// (so also no leading and trailing slashes - it does not distinguish
-// relative and absolute paths)
-function normalizeArray(parts, allowAboveRoot) {
-  // if the path tries to go above the root, `up` ends up > 0
-  var up = 0;
-  for (var i = parts.length - 1; i >= 0; i--) {
-    var last = parts[i];
-    if (last === '.') {
-      parts.splice(i, 1);
-    } else if (last === '..') {
-      parts.splice(i, 1);
-      up++;
-    } else if (up) {
-      parts.splice(i, 1);
-      up--;
-    }
-  }
-
-  // if the path is allowed to go above the root, restore leading ..s
-  if (allowAboveRoot) {
-    for (; up--; up) {
-      parts.unshift('..');
-    }
-  }
-
-  return parts;
-}
-
-// Split a filename into [root, dir, basename, ext], unix version
-// 'root' is just a slash, or nothing.
-var splitPathRe =
-    /^(\/?|)([\s\S]*?)((?:\.{1,2}|[^\/]+?|)(\.[^.\/]*|))(?:[\/]*)$/;
-var splitPath = function(filename) {
-  return splitPathRe.exec(filename).slice(1);
-};
-
-// path.resolve([from ...], to)
-// posix version
-exports.resolve = function() {
-  var resolvedPath = '',
-      resolvedAbsolute = false;
-
-  for (var i = arguments.length - 1; i >= -1 && !resolvedAbsolute; i--) {
-    var path = (i >= 0) ? arguments[i] : process.cwd();
-
-    // Skip empty and invalid entries
-    if (typeof path !== 'string') {
-      throw new TypeError('Arguments to path.resolve must be strings');
-    } else if (!path) {
-      continue;
-    }
-
-    resolvedPath = path + '/' + resolvedPath;
-    resolvedAbsolute = path.charAt(0) === '/';
-  }
-
-  // At this point the path should be resolved to a full absolute path, but
-  // handle relative paths to be safe (might happen when process.cwd() fails)
-
-  // Normalize the path
-  resolvedPath = normalizeArray(filter(resolvedPath.split('/'), function(p) {
-    return !!p;
-  }), !resolvedAbsolute).join('/');
-
-  return ((resolvedAbsolute ? '/' : '') + resolvedPath) || '.';
-};
-
-// path.normalize(path)
-// posix version
-exports.normalize = function(path) {
-  var isAbsolute = exports.isAbsolute(path),
-      trailingSlash = substr(path, -1) === '/';
-
-  // Normalize the path
-  path = normalizeArray(filter(path.split('/'), function(p) {
-    return !!p;
-  }), !isAbsolute).join('/');
-
-  if (!path && !isAbsolute) {
-    path = '.';
-  }
-  if (path && trailingSlash) {
-    path += '/';
-  }
-
-  return (isAbsolute ? '/' : '') + path;
-};
-
-// posix version
-exports.isAbsolute = function(path) {
-  return path.charAt(0) === '/';
-};
-
-// posix version
-exports.join = function() {
-  var paths = Array.prototype.slice.call(arguments, 0);
-  return exports.normalize(filter(paths, function(p, index) {
-    if (typeof p !== 'string') {
-      throw new TypeError('Arguments to path.join must be strings');
-    }
-    return p;
-  }).join('/'));
-};
-
-
-// path.relative(from, to)
-// posix version
-exports.relative = function(from, to) {
-  from = exports.resolve(from).substr(1);
-  to = exports.resolve(to).substr(1);
-
-  function trim(arr) {
-    var start = 0;
-    for (; start < arr.length; start++) {
-      if (arr[start] !== '') break;
-    }
-
-    var end = arr.length - 1;
-    for (; end >= 0; end--) {
-      if (arr[end] !== '') break;
-    }
-
-    if (start > end) return [];
-    return arr.slice(start, end - start + 1);
-  }
-
-  var fromParts = trim(from.split('/'));
-  var toParts = trim(to.split('/'));
-
-  var length = Math.min(fromParts.length, toParts.length);
-  var samePartsLength = length;
-  for (var i = 0; i < length; i++) {
-    if (fromParts[i] !== toParts[i]) {
-      samePartsLength = i;
-      break;
-    }
-  }
-
-  var outputParts = [];
-  for (var i = samePartsLength; i < fromParts.length; i++) {
-    outputParts.push('..');
-  }
-
-  outputParts = outputParts.concat(toParts.slice(samePartsLength));
-
-  return outputParts.join('/');
-};
-
-exports.sep = '/';
-exports.delimiter = ':';
-
-exports.dirname = function(path) {
-  var result = splitPath(path),
-      root = result[0],
-      dir = result[1];
-
-  if (!root && !dir) {
-    // No dirname whatsoever
-    return '.';
-  }
-
-  if (dir) {
-    // It has a dirname, strip trailing slash
-    dir = dir.substr(0, dir.length - 1);
-  }
-
-  return root + dir;
-};
-
-
-exports.basename = function(path, ext) {
-  var f = splitPath(path)[2];
-  // TODO: make this comparison case-insensitive on windows?
-  if (ext && f.substr(-1 * ext.length) === ext) {
-    f = f.substr(0, f.length - ext.length);
-  }
-  return f;
-};
-
-
-exports.extname = function(path) {
-  return splitPath(path)[3];
-};
-
-function filter (xs, f) {
-    if (xs.filter) return xs.filter(f);
-    var res = [];
-    for (var i = 0; i < xs.length; i++) {
-        if (f(xs[i], i, xs)) res.push(xs[i]);
-    }
-    return res;
-}
-
-// String.prototype.substr - negative index don't work in IE8
-var substr = 'ab'.substr(-1) === 'b'
-    ? function (str, start, len) { return str.substr(start, len) }
-    : function (str, start, len) {
-        if (start < 0) start = str.length + start;
-        return str.substr(start, len);
-    }
-;
-
-}).call(this,require('_process'))
-},{"_process":353}],353:[function(require,module,exports){
-// shim for using process in browser
-
-var process = module.exports = {};
-
-// cached from whatever global is present so that test runners that stub it
-// don't break things.  But we need to wrap it in a try catch in case it is
-// wrapped in strict mode code which doesn't define any globals.  It's inside a
-// function because try/catches deoptimize in certain engines.
-
-var cachedSetTimeout;
-var cachedClearTimeout;
-
-(function () {
-  try {
-    cachedSetTimeout = setTimeout;
-  } catch (e) {
-    cachedSetTimeout = function () {
-      throw new Error('setTimeout is not defined');
-    }
-  }
-  try {
-    cachedClearTimeout = clearTimeout;
-  } catch (e) {
-    cachedClearTimeout = function () {
-      throw new Error('clearTimeout is not defined');
-    }
-  }
-} ())
-var queue = [];
-var draining = false;
-var currentQueue;
-var queueIndex = -1;
-
-function cleanUpNextTick() {
-    if (!draining || !currentQueue) {
-        return;
-    }
-    draining = false;
-    if (currentQueue.length) {
-        queue = currentQueue.concat(queue);
-    } else {
-        queueIndex = -1;
-    }
-    if (queue.length) {
-        drainQueue();
-    }
-}
-
-function drainQueue() {
-    if (draining) {
-        return;
-    }
-    var timeout = cachedSetTimeout(cleanUpNextTick);
-    draining = true;
-
-    var len = queue.length;
-    while(len) {
-        currentQueue = queue;
-        queue = [];
-        while (++queueIndex < len) {
-            if (currentQueue) {
-                currentQueue[queueIndex].run();
-            }
-        }
-        queueIndex = -1;
-        len = queue.length;
-    }
-    currentQueue = null;
-    draining = false;
-    cachedClearTimeout(timeout);
-}
-
-process.nextTick = function (fun) {
-    var args = new Array(arguments.length - 1);
-    if (arguments.length > 1) {
-        for (var i = 1; i < arguments.length; i++) {
-            args[i - 1] = arguments[i];
-        }
-    }
-    queue.push(new Item(fun, args));
-    if (queue.length === 1 && !draining) {
-        cachedSetTimeout(drainQueue, 0);
-    }
-};
-
-// v8 likes predictible objects
-function Item(fun, array) {
-    this.fun = fun;
-    this.array = array;
-}
-Item.prototype.run = function () {
-    this.fun.apply(null, this.array);
-};
-process.title = 'browser';
-process.browser = true;
-process.env = {};
-process.argv = [];
-process.version = ''; // empty string to avoid regexp issues
-process.versions = {};
-
-function noop() {}
-
-process.on = noop;
-process.addListener = noop;
-process.once = noop;
-process.off = noop;
-process.removeListener = noop;
-process.removeAllListeners = noop;
-process.emit = noop;
-
-process.binding = function (name) {
-    throw new Error('process.binding is not supported');
-};
-
-process.cwd = function () { return '/' };
-process.chdir = function (dir) {
-    throw new Error('process.chdir is not supported');
-};
-process.umask = function() { return 0; };
-
-},{}],354:[function(require,module,exports){
-(function (global){
-/*! https://mths.be/punycode v1.4.1 by @mathias */
-;(function(root) {
-
-	/** Detect free variables */
-	var freeExports = typeof exports == 'object' && exports &&
-		!exports.nodeType && exports;
-	var freeModule = typeof module == 'object' && module &&
-		!module.nodeType && module;
-	var freeGlobal = typeof global == 'object' && global;
-	if (
-		freeGlobal.global === freeGlobal ||
-		freeGlobal.window === freeGlobal ||
-		freeGlobal.self === freeGlobal
-	) {
-		root = freeGlobal;
-	}
-
-	/**
-	 * The `punycode` object.
-	 * @name punycode
-	 * @type Object
-	 */
-	var punycode,
-
-	/** Highest positive signed 32-bit float value */
-	maxInt = 2147483647, // aka. 0x7FFFFFFF or 2^31-1
-
-	/** Bootstring parameters */
-	base = 36,
-	tMin = 1,
-	tMax = 26,
-	skew = 38,
-	damp = 700,
-	initialBias = 72,
-	initialN = 128, // 0x80
-	delimiter = '-', // '\x2D'
-
-	/** Regular expressions */
-	regexPunycode = /^xn--/,
-	regexNonASCII = /[^\x20-\x7E]/, // unprintable ASCII chars + non-ASCII chars
-	regexSeparators = /[\x2E\u3002\uFF0E\uFF61]/g, // RFC 3490 separators
-
-	/** Error messages */
-	errors = {
-		'overflow': 'Overflow: input needs wider integers to process',
-		'not-basic': 'Illegal input >= 0x80 (not a basic code point)',
-		'invalid-input': 'Invalid input'
-	},
-
-	/** Convenience shortcuts */
-	baseMinusTMin = base - tMin,
-	floor = Math.floor,
-	stringFromCharCode = String.fromCharCode,
-
-	/** Temporary variable */
-	key;
-
-	/*--------------------------------------------------------------------------*/
-
-	/**
-	 * A generic error utility function.
-	 * @private
-	 * @param {String} type The error type.
-	 * @returns {Error} Throws a `RangeError` with the applicable error message.
-	 */
-	function error(type) {
-		throw new RangeError(errors[type]);
-	}
-
-	/**
-	 * A generic `Array#map` utility function.
-	 * @private
-	 * @param {Array} array The array to iterate over.
-	 * @param {Function} callback The function that gets called for every array
-	 * item.
-	 * @returns {Array} A new array of values returned by the callback function.
-	 */
-	function map(array, fn) {
-		var length = array.length;
-		var result = [];
-		while (length--) {
-			result[length] = fn(array[length]);
-		}
-		return result;
-	}
-
-	/**
-	 * A simple `Array#map`-like wrapper to work with domain name strings or email
-	 * addresses.
-	 * @private
-	 * @param {String} domain The domain name or email address.
-	 * @param {Function} callback The function that gets called for every
-	 * character.
-	 * @returns {Array} A new string of characters returned by the callback
-	 * function.
-	 */
-	function mapDomain(string, fn) {
-		var parts = string.split('@');
-		var result = '';
-		if (parts.length > 1) {
-			// In email addresses, only the domain name should be punycoded. Leave
-			// the local part (i.e. everything up to `@`) intact.
-			result = parts[0] + '@';
-			string = parts[1];
-		}
-		// Avoid `split(regex)` for IE8 compatibility. See #17.
-		string = string.replace(regexSeparators, '\x2E');
-		var labels = string.split('.');
-		var encoded = map(labels, fn).join('.');
-		return result + encoded;
-	}
-
-	/**
-	 * Creates an array containing the numeric code points of each Unicode
-	 * character in the string. While JavaScript uses UCS-2 internally,
-	 * this function will convert a pair of surrogate halves (each of which
-	 * UCS-2 exposes as separate characters) into a single code point,
-	 * matching UTF-16.
-	 * @see `punycode.ucs2.encode`
-	 * @see <https://mathiasbynens.be/notes/javascript-encoding>
-	 * @memberOf punycode.ucs2
-	 * @name decode
-	 * @param {String} string The Unicode input string (UCS-2).
-	 * @returns {Array} The new array of code points.
-	 */
-	function ucs2decode(string) {
-		var output = [],
-		    counter = 0,
-		    length = string.length,
-		    value,
-		    extra;
-		while (counter < length) {
-			value = string.charCodeAt(counter++);
-			if (value >= 0xD800 && value <= 0xDBFF && counter < length) {
-				// high surrogate, and there is a next character
-				extra = string.charCodeAt(counter++);
-				if ((extra & 0xFC00) == 0xDC00) { // low surrogate
-					output.push(((value & 0x3FF) << 10) + (extra & 0x3FF) + 0x10000);
-				} else {
-					// unmatched surrogate; only append this code unit, in case the next
-					// code unit is the high surrogate of a surrogate pair
-					output.push(value);
-					counter--;
-				}
-			} else {
-				output.push(value);
-			}
-		}
-		return output;
-	}
-
-	/**
-	 * Creates a string based on an array of numeric code points.
-	 * @see `punycode.ucs2.decode`
-	 * @memberOf punycode.ucs2
-	 * @name encode
-	 * @param {Array} codePoints The array of numeric code points.
-	 * @returns {String} The new Unicode string (UCS-2).
-	 */
-	function ucs2encode(array) {
-		return map(array, function(value) {
-			var output = '';
-			if (value > 0xFFFF) {
-				value -= 0x10000;
-				output += stringFromCharCode(value >>> 10 & 0x3FF | 0xD800);
-				value = 0xDC00 | value & 0x3FF;
-			}
-			output += stringFromCharCode(value);
-			return output;
-		}).join('');
-	}
-
-	/**
-	 * Converts a basic code point into a digit/integer.
-	 * @see `digitToBasic()`
-	 * @private
-	 * @param {Number} codePoint The basic numeric code point value.
-	 * @returns {Number} The numeric value of a basic code point (for use in
-	 * representing integers) in the range `0` to `base - 1`, or `base` if
-	 * the code point does not represent a value.
-	 */
-	function basicToDigit(codePoint) {
-		if (codePoint - 48 < 10) {
-			return codePoint - 22;
-		}
-		if (codePoint - 65 < 26) {
-			return codePoint - 65;
-		}
-		if (codePoint - 97 < 26) {
-			return codePoint - 97;
-		}
-		return base;
-	}
-
-	/**
-	 * Converts a digit/integer into a basic code point.
-	 * @see `basicToDigit()`
-	 * @private
-	 * @param {Number} digit The numeric value of a basic code point.
-	 * @returns {Number} The basic code point whose value (when used for
-	 * representing integers) is `digit`, which needs to be in the range
-	 * `0` to `base - 1`. If `flag` is non-zero, the uppercase form is
-	 * used; else, the lowercase form is used. The behavior is undefined
-	 * if `flag` is non-zero and `digit` has no uppercase form.
-	 */
-	function digitToBasic(digit, flag) {
-		//  0..25 map to ASCII a..z or A..Z
-		// 26..35 map to ASCII 0..9
-		return digit + 22 + 75 * (digit < 26) - ((flag != 0) << 5);
-	}
-
-	/**
-	 * Bias adaptation function as per section 3.4 of RFC 3492.
-	 * https://tools.ietf.org/html/rfc3492#section-3.4
-	 * @private
-	 */
-	function adapt(delta, numPoints, firstTime) {
-		var k = 0;
-		delta = firstTime ? floor(delta / damp) : delta >> 1;
-		delta += floor(delta / numPoints);
-		for (/* no initialization */; delta > baseMinusTMin * tMax >> 1; k += base) {
-			delta = floor(delta / baseMinusTMin);
-		}
-		return floor(k + (baseMinusTMin + 1) * delta / (delta + skew));
-	}
-
-	/**
-	 * Converts a Punycode string of ASCII-only symbols to a string of Unicode
-	 * symbols.
-	 * @memberOf punycode
-	 * @param {String} input The Punycode string of ASCII-only symbols.
-	 * @returns {String} The resulting string of Unicode symbols.
-	 */
-	function decode(input) {
-		// Don't use UCS-2
-		var output = [],
-		    inputLength = input.length,
-		    out,
-		    i = 0,
-		    n = initialN,
-		    bias = initialBias,
-		    basic,
-		    j,
-		    index,
-		    oldi,
-		    w,
-		    k,
-		    digit,
-		    t,
-		    /** Cached calculation results */
-		    baseMinusT;
-
-		// Handle the basic code points: let `basic` be the number of input code
-		// points before the last delimiter, or `0` if there is none, then copy
-		// the first basic code points to the output.
-
-		basic = input.lastIndexOf(delimiter);
-		if (basic < 0) {
-			basic = 0;
-		}
-
-		for (j = 0; j < basic; ++j) {
-			// if it's not a basic code point
-			if (input.charCodeAt(j) >= 0x80) {
-				error('not-basic');
-			}
-			output.push(input.charCodeAt(j));
-		}
-
-		// Main decoding loop: start just after the last delimiter if any basic code
-		// points were copied; start at the beginning otherwise.
-
-		for (index = basic > 0 ? basic + 1 : 0; index < inputLength; /* no final expression */) {
-
-			// `index` is the index of the next character to be consumed.
-			// Decode a generalized variable-length integer into `delta`,
-			// which gets added to `i`. The overflow checking is easier
-			// if we increase `i` as we go, then subtract off its starting
-			// value at the end to obtain `delta`.
-			for (oldi = i, w = 1, k = base; /* no condition */; k += base) {
-
-				if (index >= inputLength) {
-					error('invalid-input');
-				}
-
-				digit = basicToDigit(input.charCodeAt(index++));
-
-				if (digit >= base || digit > floor((maxInt - i) / w)) {
-					error('overflow');
-				}
-
-				i += digit * w;
-				t = k <= bias ? tMin : (k >= bias + tMax ? tMax : k - bias);
-
-				if (digit < t) {
-					break;
-				}
-
-				baseMinusT = base - t;
-				if (w > floor(maxInt / baseMinusT)) {
-					error('overflow');
-				}
-
-				w *= baseMinusT;
-
-			}
-
-			out = output.length + 1;
-			bias = adapt(i - oldi, out, oldi == 0);
-
-			// `i` was supposed to wrap around from `out` to `0`,
-			// incrementing `n` each time, so we'll fix that now:
-			if (floor(i / out) > maxInt - n) {
-				error('overflow');
-			}
-
-			n += floor(i / out);
-			i %= out;
-
-			// Insert `n` at position `i` of the output
-			output.splice(i++, 0, n);
-
-		}
-
-		return ucs2encode(output);
-	}
-
-	/**
-	 * Converts a string of Unicode symbols (e.g. a domain name label) to a
-	 * Punycode string of ASCII-only symbols.
-	 * @memberOf punycode
-	 * @param {String} input The string of Unicode symbols.
-	 * @returns {String} The resulting Punycode string of ASCII-only symbols.
-	 */
-	function encode(input) {
-		var n,
-		    delta,
-		    handledCPCount,
-		    basicLength,
-		    bias,
-		    j,
-		    m,
-		    q,
-		    k,
-		    t,
-		    currentValue,
-		    output = [],
-		    /** `inputLength` will hold the number of code points in `input`. */
-		    inputLength,
-		    /** Cached calculation results */
-		    handledCPCountPlusOne,
-		    baseMinusT,
-		    qMinusT;
-
-		// Convert the input in UCS-2 to Unicode
-		input = ucs2decode(input);
-
-		// Cache the length
-		inputLength = input.length;
-
-		// Initialize the state
-		n = initialN;
-		delta = 0;
-		bias = initialBias;
-
-		// Handle the basic code points
-		for (j = 0; j < inputLength; ++j) {
-			currentValue = input[j];
-			if (currentValue < 0x80) {
-				output.push(stringFromCharCode(currentValue));
-			}
-		}
-
-		handledCPCount = basicLength = output.length;
-
-		// `handledCPCount` is the number of code points that have been handled;
-		// `basicLength` is the number of basic code points.
-
-		// Finish the basic string - if it is not empty - with a delimiter
-		if (basicLength) {
-			output.push(delimiter);
-		}
-
-		// Main encoding loop:
-		while (handledCPCount < inputLength) {
-
-			// All non-basic code points < n have been handled already. Find the next
-			// larger one:
-			for (m = maxInt, j = 0; j < inputLength; ++j) {
-				currentValue = input[j];
-				if (currentValue >= n && currentValue < m) {
-					m = currentValue;
-				}
-			}
-
-			// Increase `delta` enough to advance the decoder's <n,i> state to <m,0>,
-			// but guard against overflow
-			handledCPCountPlusOne = handledCPCount + 1;
-			if (m - n > floor((maxInt - delta) / handledCPCountPlusOne)) {
-				error('overflow');
-			}
-
-			delta += (m - n) * handledCPCountPlusOne;
-			n = m;
-
-			for (j = 0; j < inputLength; ++j) {
-				currentValue = input[j];
-
-				if (currentValue < n && ++delta > maxInt) {
-					error('overflow');
-				}
-
-				if (currentValue == n) {
-					// Represent delta as a generalized variable-length integer
-					for (q = delta, k = base; /* no condition */; k += base) {
-						t = k <= bias ? tMin : (k >= bias + tMax ? tMax : k - bias);
-						if (q < t) {
-							break;
-						}
-						qMinusT = q - t;
-						baseMinusT = base - t;
-						output.push(
-							stringFromCharCode(digitToBasic(t + qMinusT % baseMinusT, 0))
-						);
-						q = floor(qMinusT / baseMinusT);
-					}
-
-					output.push(stringFromCharCode(digitToBasic(q, 0)));
-					bias = adapt(delta, handledCPCountPlusOne, handledCPCount == basicLength);
-					delta = 0;
-					++handledCPCount;
-				}
-			}
-
-			++delta;
-			++n;
-
-		}
-		return output.join('');
-	}
-
-	/**
-	 * Converts a Punycode string representing a domain name or an email address
-	 * to Unicode. Only the Punycoded parts of the input will be converted, i.e.
-	 * it doesn't matter if you call it on a string that has already been
-	 * converted to Unicode.
-	 * @memberOf punycode
-	 * @param {String} input The Punycoded domain name or email address to
-	 * convert to Unicode.
-	 * @returns {String} The Unicode representation of the given Punycode
-	 * string.
-	 */
-	function toUnicode(input) {
-		return mapDomain(input, function(string) {
-			return regexPunycode.test(string)
-				? decode(string.slice(4).toLowerCase())
-				: string;
-		});
-	}
-
-	/**
-	 * Converts a Unicode string representing a domain name or an email address to
-	 * Punycode. Only the non-ASCII parts of the domain name will be converted,
-	 * i.e. it doesn't matter if you call it with a domain that's already in
-	 * ASCII.
-	 * @memberOf punycode
-	 * @param {String} input The domain name or email address to convert, as a
-	 * Unicode string.
-	 * @returns {String} The Punycode representation of the given domain name or
-	 * email address.
-	 */
-	function toASCII(input) {
-		return mapDomain(input, function(string) {
-			return regexNonASCII.test(string)
-				? 'xn--' + encode(string)
-				: string;
-		});
-	}
-
-	/*--------------------------------------------------------------------------*/
-
-	/** Define the public API */
-	punycode = {
-		/**
-		 * A string representing the current Punycode.js version number.
-		 * @memberOf punycode
-		 * @type String
-		 */
-		'version': '1.4.1',
-		/**
-		 * An object of methods to convert from JavaScript's internal character
-		 * representation (UCS-2) to Unicode code points, and back.
-		 * @see <https://mathiasbynens.be/notes/javascript-encoding>
-		 * @memberOf punycode
-		 * @type Object
-		 */
-		'ucs2': {
-			'decode': ucs2decode,
-			'encode': ucs2encode
-		},
-		'decode': decode,
-		'encode': encode,
-		'toASCII': toASCII,
-		'toUnicode': toUnicode
-	};
-
-	/** Expose `punycode` */
-	// Some AMD build optimizers, like r.js, check for specific condition patterns
-	// like the following:
-	if (
-		typeof define == 'function' &&
-		typeof define.amd == 'object' &&
-		define.amd
-	) {
-		define('punycode', function() {
-			return punycode;
-		});
-	} else if (freeExports && freeModule) {
-		if (module.exports == freeExports) {
-			// in Node.js, io.js, or RingoJS v0.8.0+
-			freeModule.exports = punycode;
-		} else {
-			// in Narwhal or RingoJS v0.7.0-
-			for (key in punycode) {
-				punycode.hasOwnProperty(key) && (freeExports[key] = punycode[key]);
-			}
-		}
-	} else {
-		// in Rhino or a web browser
-		root.punycode = punycode;
-	}
-
-}(this));
-
-}).call(this,typeof global !== "undefined" ? global : typeof self !== "undefined" ? self : typeof window !== "undefined" ? window : {})
-},{}]},{},[6]);
+},{}]},{},[11]);
