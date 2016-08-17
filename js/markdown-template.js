@@ -1148,6 +1148,8 @@ $.fn.addAnchors = function () {
       // generate ID if missing
       var id = header.attr('id')
       if (id === undefined || id === '') {
+        // TODO: keep track of previously generated IDs
+        // to avoid duplicates
         id = S(title).slugify()
         header.attr('id', id)
       }
@@ -2267,7 +2269,7 @@ $.fn.fixLinks = function () {
           (title !== undefined && title !== '')) {
         return
       }
-      var target = body.find(href)
+      var target = body.find(href).first()
       if (target.length <= 0) {
         return
       }
