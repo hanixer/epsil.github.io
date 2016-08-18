@@ -5,6 +5,7 @@ h1:hover .header-anchor, h2:hover .header-anchor, h3:hover .header-anchor, h4:ho
 }
 
 .container .header-anchor {
+    border: none;
     color: rgba(0, 0, 0, 0.0);
     display: inline-block;
     font-style: normal;

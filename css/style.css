@@ -9,8 +9,16 @@ abbr.acronym {
     letter-spacing: 0.1em;
 }
 
+a {
+    color: #337ab7;
+    text-decoration: none;
+}
+
 a:hover, a:focus {
+    /* border-bottom: 1px solid #23527c; */
+    border-bottom: 1px dotted #337ab7;
     color: #23527c;
+    text-decoration: none;
 }
 
 a code, a kbd, a samp, a tt,
