@@ -233,7 +233,8 @@ time {
     position: absolute;
 }
 
-.fa, .glyphicon, nav a {
+.fa, .glyphicon, nav a, nav a:hover {
+    border: none;
     color: rgba(0, 0, 0, 0.5) !important;
 }
 
