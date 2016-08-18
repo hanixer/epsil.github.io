@@ -1601,7 +1601,7 @@ function convertIt (container) {
              .replace('</body>', '</div>')
   var doc = $('<div>').html(html)
   var body = doc.find('div.body')
-  container.html(body.html())
+  $('body').html(body.html())
   return $('html')
 }
 
