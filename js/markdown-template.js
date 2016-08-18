@@ -1584,10 +1584,14 @@ function typeset (document) {
 function convert (data) {
   var html = compile(data, url())
   // browser strips <html>, <head> and <body> tags
-  html = html.replace('<body>', '<div class="body">')
+  html = html.replace('<head>', '<div class="head">')
+             .replace('</head>', '</div>')
+             .replace('<body>', '<div class="body">')
              .replace('</body>', '</div>')
   var doc = $('<div>').html(html)
+  var head = doc.find('div.head')
   var body = doc.find('div.body')
+  head.find('meta, link, script, style').appendTo($('head'))
   $('body').html(body.html())
   return $('html')
 }
@@ -1597,10 +1601,14 @@ function convertIt (container) {
   var data = container.text().trim()
   var html = compile(data, url())
   // browser strips <html>, <head> and <body> tags
-  html = html.replace('<body>', '<div class="body">')
+  html = html.replace('<head>', '<div class="head">')
+             .replace('</head>', '</div>')
+             .replace('<body>', '<div class="body">')
              .replace('</body>', '</div>')
   var doc = $('<div>').html(html)
+  var head = doc.find('div.head')
   var body = doc.find('div.body')
+  head.find('meta, link, script, style').appendTo($('head'))
   $('body').html(body.html())
   return $('html')
 }

@@ -14,7 +14,7 @@
     "http": "http-server",
     "start": "http-server -p 8000",
     "view": "open http://localhost:8000/",
-    "open": "open http://localhost:8080/",
+    "open": "open http://localhost:8000/",
     "edit": "emacs index.txt",
     "test": "npm run spec && npm run lint",
     "lint": "jshint lib/anchor.js lib/build.js lib/collapse.js lib/compile.js lib/figure.js lib/hanging.js lib/punctuation.js lib/abbrev.js lib/templates.js lib/section.js lib/social.js lib/toc.js lib/util.js lib/index.js test/index.js && standard lib/anchor.js lib/build.js lib/collapse.js lib/compile.js lib/figure.js lib/hanging.js lib/punctuation.js lib/section.js lib/social.js lib/abbrev.js lib/templates.js lib/toc.js lib/util.js lib/index.js test/index.js && markdownlint index.txt",

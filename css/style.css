@@ -51,7 +51,8 @@ body {
     font-size: 120% !important;
     line-height: 1.5;
     margin-bottom: 2em;
-    margin-top: 4em;
+    /* margin-top: 4em; */
+    margin-top: 0;
     text-rendering: optimizelegibility;
     -moz-osx-font-smoothing: grayscale;
     -webkit-font-smoothing: antialiased;
@@ -121,6 +122,11 @@ h6 {
     font-size: 1em;
     font-weight: normal;
     font-style: italic;
+}
+
+header {
+    padding-top: 3em;
+    padding-bottom: 0.3em;
 }
 
 hr {

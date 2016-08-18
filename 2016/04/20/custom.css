@@ -1,0 +1,21 @@
+code, kbd, samp, tt, pre {
+    background-color: rgba(0, 128, 255, 0.08);
+}
+
+h1, h2, h3, h4, h5, h6 {
+    color: #23527c;
+}
+
+header {
+    background-image: url("tron.jpg");
+    background-size: cover;
+    color: #ffffff;
+    margin-left: -50em;
+    margin-right: -50em;
+    padding-left: 50em;
+    padding-right: 50em;
+}
+
+header h1, header time, header .fa {
+    color: inherit !important;
+}

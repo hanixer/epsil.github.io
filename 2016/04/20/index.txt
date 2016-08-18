@@ -1,6 +1,7 @@
 title: Running Bash scripts on Windows
 date: 2016-04-20
 lang: en
+css: custom.css
 ---
 
 The following setup allows you to [run Bash scripts from Windows' command prompt](#usage). It also augments the command prompt with common Unix commands like `ls`, `mv` and `rm`, which is useful if these are ingrained into your muscle memory.
