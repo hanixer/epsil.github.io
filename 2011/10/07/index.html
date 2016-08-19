@@ -58,12 +58,12 @@
 
 <section id="content">
 <blockquote>
-<p>In the remotest regions, beyond the Functional Kingdoms, lies a fabled realm called Lambda the Ultimate. In this place it is said that there are no nouns at all, only verbs! There are “things” there, but all things are created from verbs, even the very integers for counting lambs, which are the most popular form of trading currency there, if the rumors speak truth. The number zero is simply <code>lambda()</code>, and 1 is <code>lambda(lambda())</code>, 2 is <code>lambda(lambda(lambda()))</code>, and so on. Every single Thing in this legendary region, be it noun, verb or otherwise, is constructed from the primal verb “lambda”.</p>
+<p>In the remotest regions, beyond the Functional Kingdoms, lies a fabled realm called Lambda the Ultimate. In this place it is said that there are no nouns at all, only verbs! There are “things” there, but all things are created from verbs, even the very integers for counting lambs, which are the most popular form of trading currency there, if the rumors speak truth. The number zero is simply <code>lambda()</code>, and 1 is <code>lambda(lambda())</code>, 2 is <code>lambda(lambda(lambda()))</code>, and so on. Every single Thing in this legendary region, be it noun, verb or otherwise, is constructed from the primal verb<span class="widont">&nbsp;</span>“lambda”.</p>
 
 <footer>Steve Yegge: <cite>Execution in the Kingdom of Nouns</cite><sup class="footnote-ref"><a href="#fn1" id="fnref1" title="http://steve-yegge.blogspot.com/2006/03/execution-in-kingdom-of-nouns.html">[1]</a></sup></footer>
 </blockquote>
 
-<p>Det er i prinsippet mulig å bruke lambdaer som et fundament for videre programmering. Det klassiske <a href="http://mitpress.mit.edu/sicp/full-text/book/book.html"><em><abbr class="acronym" title="Structure and Interpretation of Computer Programs">SICP</abbr></em></a>-eksemplet er å definere <code>cons</code>, <code>car</code> og <code>cdr</code> på denne måten,<sup class="footnote-ref"><a href="#fn2" id="fnref2" title="http://mitpress.mit.edu/sicp/full-text/book/book-Z-H-14.html#%_sec_2.1.3">[2]</a></sup> som vi kan tenke på som Lisp-sjargong for <code>pair</code>, <code>first</code> og <code>second</code>. La <code>pair</code> være en funksjon som returnerer et par med verdier, <code>first</code> returnere den første verdien til paret, og <code>second</code> returnere den andre:</p>
+<p>Det er i prinsippet mulig å bruke lambdaer som et fundament for videre programmering. Det klassiske <a href="http://mitpress.mit.edu/sicp/full-text/book/book.html"><em><abbr class="acronym" title="Structure and Interpretation of Computer Programs"><span class="caps">SICP</span></abbr></em></a>-eksemplet er å definere <code>cons</code>, <code>car</code> og <code>cdr</code> på denne måten,<sup class="footnote-ref"><a href="#fn2" id="fnref2" title="http://mitpress.mit.edu/sicp/full-text/book/book-Z-H-14.html#%_sec_2.1.3">[2]</a></sup> som vi kan tenke på som Lisp-sjargong for <code>pair</code>, <code>first</code> og <code>second</code>. La <code>pair</code> være en funksjon som returnerer et par med verdier, <code>first</code> returnere den første verdien til paret, og <code>second</code> returnere den<span class="widont">&nbsp;</span>andre:</p>
 
 <pre>
 <code class="language-scheme">&gt; (pair "foo" "bar")
@@ -76,7 +76,7 @@
 "bar"</code>
 </pre>
 
-<p>Den vanlige måten å implementere dette på ville være å konstruere en listestruktur – et stykke data – med <code>pair</code>, og så la <code>first</code> og <code>second</code> hente ut riktig element fra strukturen. <em><abbr class="acronym" title="Structure and Interpretation of Computer Programs">SICP</abbr></em> sin fremgangsmåte er derimot å implementere paret som en <em>prosedyre</em>:</p>
+<p>Den vanlige måten å implementere dette på ville være å konstruere en listestruktur – et stykke data – med <code>pair</code>, og så la <code>first</code> og <code>second</code> hente ut riktig element fra strukturen. <em><abbr class="acronym" title="Structure and Interpretation of Computer Programs"><span class="caps">SICP</span></abbr></em> sin fremgangsmåte er derimot å implementere paret som en <em>prosedyre</em>:</p>
 
 <pre>
 <code class="language-scheme">(<span class="hljs-name"><span class="hljs-builtin-name">define</span></span> (<span class="hljs-name">pair</span> x y)
@@ -99,14 +99,14 @@
 #&lt;prosedyre som inneholder "foo" og "bar"&gt;</code>
 </pre>
 
-<p>Det <code>first</code> og <code>second</code> så gjør, er å kalle prosedyren med et bestemt argument slik at den første eller andre verdien returneres. Dermed vil <code>(first (pair "foo" "bar"))</code> fortsatt gi <code>"foo"</code>, og <code>(second (pair "foo" "bar"))</code> gi <code>"bar"</code>. På papiret en helt adekvat implementasjon.</p>
+<p>Det <code>first</code> og <code>second</code> så gjør, er å kalle prosedyren med et bestemt argument slik at den første eller andre verdien returneres. Dermed vil <code>(first (pair "foo" "bar"))</code> fortsatt gi <code>"foo"</code>, og <code>(second (pair "foo" "bar"))</code> gi <code>"bar"</code>. På papiret en helt adekvat<span class="widont">&nbsp;</span>implementasjon.</p>
 <!--
 Se [GeirGrusoms innlegg](http://www.diskusjon.no/index.php?showtopic=800754&p=18412466&st=1420&#entry18412466) over.
 -->
 
-<p>Koden over forutsetter <em>closures</em>, <abbr title="det vil si">dvs.</abbr> at prosedyren som <code>pair</code> returnerer, er i stand til å «stikke av med» argumentene til <code>pair</code>.<sup class="footnote-ref"><a href="#fn3" id="fnref3" title="Hvis Lisp’en din mangler dette, kan du alltids «jukse» ved å konstruere lambdaen som en liste og splice inn verdiene av x og y. Dette forutsetter naturligvis at x og y er immutable.">[3]</a></sup> Dermed kan man for så vidt tenke på prosedyren som et «objekt», <abbr title="det vil si">dvs.</abbr> en bunt med data og instruksjoner. (I enkelte språk, som JavaScript og Scala, <em>er</em> funksjoner objekter.)</p>
+<p>Koden over forutsetter <em>closures</em>, <abbr title="det vil si">dvs.</abbr> at prosedyren som <code>pair</code> returnerer, er i stand til å «stikke av med» argumentene til <code>pair</code>.<sup class="footnote-ref"><a href="#fn3" id="fnref3" title="Hvis Lisp’en din mangler dette, kan du alltids «jukse» ved å konstruere lambdaen som en liste og splice inn verdiene av x og y. Dette forutsetter naturligvis at x og y er immutable.">[3]</a></sup> Dermed kan man for så vidt tenke på prosedyren som et «objekt», <abbr title="det vil si">dvs.</abbr> en bunt med data og instruksjoner. (I enkelte språk, som JavaScript og Scala, <em>er</em> funksjoner<span class="widont">&nbsp;</span>objekter.)</p>
 
-<p>Denne litt alternative måten å konstruere «objekter» på – å lage anomyme funksjoner som lukker om bindingene i et leksikalsk skop – er faktisk mye brukt i funksjonelle språk. Google «<a href="http://www.google.no/search?q=let+over+lambda">let over lambda</a>» når du har tid.</p>
+<p>Denne litt alternative måten å konstruere «objekter» på – å lage anomyme funksjoner som lukker om bindingene i et leksikalsk skop – er faktisk mye brukt i funksjonelle språk. Google «<a href="http://www.google.no/search?q=let+over+lambda">let over lambda</a>» når du har<span class="widont">&nbsp;</span>tid.</p>
 
 <hr class="footnotes-sep">
 
@@ -117,11 +117,11 @@ Se [GeirGrusoms innlegg](http://www.diskusjon.no/index.php?showtopic=800754&p=18
 </li>
 
 <li class="footnote-item" id="fn2">
-<p><a href="http://mitpress.mit.edu/sicp/full-text/book/book-Z-H-14.html#%25_sec_2.1.3">http://mitpress.mit.edu/sicp/full-text/book/book-Z-H-14.html#%_sec_2.1.3</a> <a class="footnote-backref" href="#fnref2" title="Det er i prinsippet mulig å bruke lambdaer som et fundament for videre programmering. Det klassiske SICP-eksemplet er å definere cons, car og cdr på denne måten,[2] som vi kan tenke på som Lisp-sjargong for pair, first og second. La pair være en funksjon som returnerer et par med verdier, first returnere den første verdien til paret, og second returnere den andre:">↩︎</a></p>
+<p><a href="http://mitpress.mit.edu/sicp/full-text/book/book-Z-H-14.html#%25_sec_2.1.3">http://mitpress.mit.edu/sicp/full-text/book/book-Z-H-14.html#%_sec_2.1.3</a> <a class="footnote-backref" href="#fnref2" title="Det er i prinsippet mulig å bruke lambdaer som et fundament for videre programmering. Det klassiske SICP-eksemplet er å definere cons, car og cdr på denne måten,[2] som vi kan tenke på som Lisp-sjargong for pair, first og second. La pair være en funksjon som returnerer et par med verdier, first returnere den første verdien til paret, og second returnere den&nbsp;andre:">↩︎</a></p>
 </li>
 
 <li class="footnote-item" id="fn3">
-<p>Hvis Lisp’en din mangler dette, kan du alltids «jukse» ved å konstruere lambdaen som en liste og splice inn verdiene av <code>x</code> og <code>y</code>. Dette forutsetter naturligvis at <code>x</code> og <code>y</code> er immutable. <a class="footnote-backref" href="#fnref3" title="Koden over forutsetter closures, dvs. at prosedyren som pair returnerer, er i stand til å «stikke av med» argumentene til pair.[3] Dermed kan man for så vidt tenke på prosedyren som et «objekt», dvs. en bunt med data og instruksjoner. (I enkelte språk, som JavaScript og Scala, er funksjoner objekter.)">↩︎</a></p>
+<p>Hvis Lisp’en din mangler dette, kan du alltids «jukse» ved å konstruere lambdaen som en liste og splice inn verdiene av <code>x</code> og <code>y</code>. Dette forutsetter naturligvis at <code>x</code> og <code>y</code> er immutable. <a class="footnote-backref" href="#fnref3" title="Koden over forutsetter closures, dvs. at prosedyren som pair returnerer, er i stand til å «stikke av med» argumentene til pair.[3] Dermed kan man for så vidt tenke på prosedyren som et «objekt», dvs. en bunt med data og instruksjoner. (I enkelte språk, som JavaScript og Scala, er funksjoner&nbsp;objekter.)">↩︎</a></p>
 </li>
 </ol>
 </section>

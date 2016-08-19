@@ -3,7 +3,7 @@ abbr, abbr[title], abbr[data-original-title] {
     text-decoration: none;
 }
 
-abbr.acronym {
+abbr.acronym, .caps {
     font-variant: small-caps;
     text-transform: lowercase;
     letter-spacing: 0.1em;

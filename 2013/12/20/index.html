@@ -57,11 +57,11 @@
 </header>
 
 <section id="content">
-<p>På <abbr class="acronym" title="Operating System 10">OS X</abbr> startes <a href="https://github.com/gollum/gollum">Gollum</a> automatisk med <a href="http://www.nomachetejuggling.com/2012/05/15/personal-wiki-using-github-and-gollum-on-os-x/"><code>launchd</code></a>. Opprett en fil <code>~/Library/LaunchAgents/com.personalwiki.gollum.plist</code> (med eksklusive <a href="http://stackoverflow.com/questions/16809861/launchd-doesnt-launch-my-daemon">rettigheter</a>, <abbr title="det vil si">dvs.</abbr> <code>$ chmod 600</code>) som inneholder dette:</p>
+<p>På <abbr class="acronym" title="Operating System 10"><span class="caps">OS</span> X</abbr> startes <a href="https://github.com/gollum/gollum">Gollum</a> automatisk med <a href="http://www.nomachetejuggling.com/2012/05/15/personal-wiki-using-github-and-gollum-on-os-x/"><code>launchd</code></a>. Opprett en fil <code>~/Library/LaunchAgents/com.personalwiki.gollum.plist</code> (med eksklusive <a href="http://stackoverflow.com/questions/16809861/launchd-doesnt-launch-my-daemon">rettigheter</a>, <abbr title="det vil si">dvs.</abbr> <code>$ chmod 600</code>) som inneholder<span class="widont">&nbsp;</span>dette:</p>
 
 <pre>
-<code class="language-xml"><span class="php"><span class="hljs-meta">&lt;?</span>xml version=<span class="hljs-string">"1.0"</span> encoding=<span class="hljs-string">"UTF-8"</span><span class="hljs-meta">?&gt;</span></span>
-<span class="hljs-meta">&lt;!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN"
+<code class="language-xml"><span class="php"><span class="hljs-meta">&lt;?</span>xml version=<span class="hljs-string">"1.0"</span> encoding=<span class="hljs-string">"<span class="caps">UTF</span>-8"</span><span class="hljs-meta">?&gt;</span></span>
+<span class="hljs-meta">&lt;!<span class="caps">DOCTYPE</span> plist <span class="caps">PUBLIC</span> "-//Apple//<span class="caps">DTD</span> <span class="caps">PLIST</span> 1.0//<span class="caps">EN</span>"
 "http://www.apple.com/DTDs/PropertyList-1.0.dtd"&gt;</span>
 <span class="hljs-tag">&lt;<span class="hljs-name">plist</span> <span class="hljs-attr">version</span>=<span class="hljs-string">"1.0"</span>&gt;</span>
 <span class="hljs-tag">&lt;<span class="hljs-name">dict</span>&gt;</span>
@@ -84,20 +84,20 @@
 
 <pre>
 <code class="language-bash"><span class="hljs-meta">#!/bin/bash</span>
-NODE=<span class="hljs-string">"/usr/local/bin/node"</span>
-PROGRAM=<span class="hljs-string">"/usr/local/bin/http-server"</span>
-HTTPSERVER=<span class="hljs-string">"<span class="hljs-variable">$NODE</span> <span class="hljs-variable">$PROGRAM</span>"</span>
-DIR=<span class="hljs-string">"<span class="hljs-variable">$( cd "$( dirname "${BASH_SOURCE[0]}" )</span>"</span> &amp;&amp; <span class="hljs-built_in">pwd</span> )<span class="hljs-string">"
-cd "</span><span class="hljs-variable">$DIR</span><span class="hljs-string">"
-<span class="hljs-variable">$HTTPSERVER</span> . -p 8000
+<span class="caps">NODE</span>=<span class="hljs-string">"/usr/local/bin/node"</span>
+<span class="caps">PROGRAM</span>=<span class="hljs-string">"/usr/local/bin/http-server"</span>
+<span class="caps">HTTPSERVER</span>=<span class="hljs-string">"<span class="hljs-variable">$<span class="caps">NODE</span></span> <span class="hljs-variable">$<span class="caps">PROGRAM</span></span>"</span>
+<span class="caps">DIR</span>=<span class="hljs-string">"<span class="hljs-variable">$( cd "$( dirname "${BASH_SOURCE[0]}" )</span>"</span> &amp;&amp; <span class="hljs-built_in">pwd</span> )<span class="hljs-string">"
+cd "</span><span class="hljs-variable">$<span class="caps">DIR</span></span><span class="hljs-string">"
+<span class="hljs-variable">$<span class="caps">HTTPSERVER</span></span> . -p 8000
 </span></code>
 </pre>
 
 <p>Skriptet refereres så av <code>~/Library/LaunchAgents/com.personalwiki.httpserver.plist</code>:</p>
 
 <pre>
-<code class="language-xml"><span class="php"><span class="hljs-meta">&lt;?</span>xml version=<span class="hljs-string">"1.0"</span> encoding=<span class="hljs-string">"UTF-8"</span><span class="hljs-meta">?&gt;</span></span>
-<span class="hljs-meta">&lt;!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN"
+<code class="language-xml"><span class="php"><span class="hljs-meta">&lt;?</span>xml version=<span class="hljs-string">"1.0"</span> encoding=<span class="hljs-string">"<span class="caps">UTF</span>-8"</span><span class="hljs-meta">?&gt;</span></span>
+<span class="hljs-meta">&lt;!<span class="caps">DOCTYPE</span> plist <span class="caps">PUBLIC</span> "-//Apple//<span class="caps">DTD</span> <span class="caps">PLIST</span> 1.0//<span class="caps">EN</span>"
 "http://www.apple.com/DTDs/PropertyList-1.0.dtd"&gt;</span>
 <span class="hljs-tag">&lt;<span class="hljs-name">plist</span> <span class="hljs-attr">version</span>=<span class="hljs-string">"1.0"</span>&gt;</span>
 <span class="hljs-tag">&lt;<span class="hljs-name">dict</span>&gt;</span>

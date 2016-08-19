@@ -58,32 +58,32 @@
 
 <section id="content">
 <ol>
-<li>Konverter <abbr class="acronym" title="Free Lossless Audio Codec">FLAC</abbr> til <abbr class="acronym" title="MPEG Audio Layer III">MP3</abbr> med <a href="http://www.foobar2000.org/">foobar2000</a>.
+<li>Konverter <abbr class="acronym" title="Free Lossless Audio Codec"><span class="caps">FLAC</span></abbr> til <abbr class="acronym" title="MPEG Audio Layer III"><span class="caps">MP3</span></abbr> med <a href="http://www.foobar2000.org/">foobar2000</a>.
 
 <ul>
-<li>Lagre disse innstillingene som et oppsett «<abbr class="acronym" title="MPEG Audio Layer III">MP3</abbr> 320»: <em>Format: <abbr class="acronym" title="MPEG Audio Layer III">MP3</abbr> (<abbr class="acronym" title="LAME Ain't an Mp3 Encoder">LAME</abbr>), 320 kbps <abbr class="acronym" title="Constant Bit Rate">CBR</abbr>. Output to source track folder. File name pattern: <code>%filename%</code>.</em></li>
+<li>Lagre disse innstillingene som et oppsett «<abbr class="acronym" title="MPEG Audio Layer III"><span class="caps">MP3</span></abbr> 320»: <em>Format: <abbr class="acronym" title="MPEG Audio Layer III"><span class="caps">MP3</span></abbr> (<abbr class="acronym" title="LAME Ain't an Mp3 Encoder"><span class="caps">LAME</span></abbr>), 320 kbps <abbr class="acronym" title="Constant Bit Rate"><span class="caps">CBR</span></abbr>. Output to source track folder. File name pattern: <code>%filename%</code>.</em></li>
 
-<li>Husk å slette <abbr class="acronym" title="Free Lossless Audio Codec">FLAC</abbr>-filene etterpå (kan i foobar2000 gjøres med <em>File Operations</em> → <em>Delete files</em>).</li>
+<li>Husk å slette <abbr class="acronym" title="Free Lossless Audio Codec"><span class="caps">FLAC</span></abbr>-filene etterpå (kan i foobar2000 gjøres med <em>File Operations</em> → <em>Delete files</em>).</li>
 </ul></li>
 
-<li>Last ned bilder med <a href="http://sourceforge.net/projects/album-art/">Album Art Downloader</a>. (Man kan også bruke iTunes’ <em>Get Album Artwork</em>-funksjon, men denne krever Apple-<abbr class="acronym" title="Identifikasjon">ID</abbr>.)
+<li>Last ned bilder med <a href="http://sourceforge.net/projects/album-art/">Album Art Downloader</a>. (Man kan også bruke iTunes’ <em>Get Album Artwork</em>-funksjon, men denne krever Apple-<abbr class="acronym" title="Identifikasjon"><span class="caps">ID</span></abbr>.)
 
 <ul>
 <li><code>folder%preset%.%extension%|cover%preset%.%extension%</code>
 </li>
 
-<li><em>Automatically download and save the first result that meets set criteria</em>
+<li><em>Automatically download and save the first result that meets set<span class="widont">&nbsp;</span>criteria</em>
 </li>
 
-<li><em>Last.fm Cover</em> først, deretter <em>All</em> for gjenværende album.</li>
+<li><em>Last.fm Cover</em> først, deretter <em>All</em> for gjenværende<span class="widont">&nbsp;</span>album.</li>
 
-<li><strong>Merk:</strong> Programmet krasjer for mer enn 150 album, så stykk opp arbeidet om nødvendig.</li>
+<li><strong>Merk:</strong> Programmet krasjer for mer enn 150 album, så stykk opp arbeidet om<span class="widont">&nbsp;</span>nødvendig.</li>
 </ul></li>
 
 <li>Tagg filene med <a href="http://www.mp3tag.de/en/">Mp3tag</a>.
 
 <ul>
-<li>For bildetagging, bruk en egendefinert regel som velger <code>folder.jpg</code>, <code>folder.png</code>, <code>cover.jpg</code> eller <code>cover.png</code>, i den rekkefølgen.</li>
+<li>For bildetagging, bruk en egendefinert regel som velger <code>folder.jpg</code>, <code>folder.png</code>, <code>cover.jpg</code> eller <code>cover.png</code>, i den<span class="widont">&nbsp;</span>rekkefølgen.</li>
 </ul></li>
 
 <li>Kopier filene over i nye mapper.
@@ -93,15 +93,15 @@
 
 <li>I foobar2000 med <em>File Operations</em> → <em>Copy to</em>: <code>$ascii(%album artist%\%album%\$if(%discnumber%, %discnumber%-)%tracknumber% %title%)</code></li>
 
-<li>Påse at <em>Copy entire source code content</em> er krysset av.</li>
+<li>Påse at <em>Copy entire source code content</em> er krysset<span class="widont">&nbsp;</span>av.</li>
 </ul></li>
 
 <li>Slett spillelister:
 
 <ul>
-<li><abbr class="acronym" title="MP3 Uniform Resource Locator">M3U</abbr>- og <abbr class="acronym" title="MP3 Uniform Resource Locator (Unicode)">M3U8</abbr>-filer: <code>find . -iname "*.m3u*" -exec rm {} \;</code></li>
+<li><abbr class="acronym" title="MP3 Uniform Resource Locator"><span class="caps">M3U</span></abbr>- og <abbr class="acronym" title="MP3 Uniform Resource Locator (Unicode)"><span class="caps">M3U8</span></abbr>-filer: <code>find . -iname "*.m3u*" -exec rm {} \;</code></li>
 
-<li><abbr class="acronym" title="MPEG Playlist">PLS</abbr>-filer: <code>find . -iname "*.pls" -exec rm {} \;</code></li>
+<li><abbr class="acronym" title="MPEG Playlist"><span class="caps">PLS</span></abbr>-filer: <code>find . -iname "*.pls" -exec rm {} \;</code></li>
 </ul></li>
 </ol>
 </section>

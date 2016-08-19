@@ -57,13 +57,13 @@
 </header>
 
 <section id="content">
-<p><a href="http://last.fm/">Last.fm</a> viser <em>ikke</em> totalt antall lytt under «Tracks» eller «Charts». Last.fm viser antall lytt <em>de siste seks månedene</em>. Dette favoriserer nye utgivelser.</p>
+<p><a href="http://last.fm/">Last.fm</a> viser <em>ikke</em> totalt antall lytt under «Tracks» eller «Charts». Last.fm viser antall lytt <em>de siste seks månedene</em>. Dette favoriserer nye<span class="widont">&nbsp;</span>utgivelser.</p>
 
-<p>Hvis jeg skal bruke Last.fm til å oppdage klassiske låter, trenger jeg de totale tallene, som finnes på siden til hver enkelt låt. Kan jeg skrive et Greasemonkey-skript som importerer denne informasjonen inn i «Charts»? Boken <em>Greasemonkey Hacks</em> av Mark Pilgrim, fra 2005, kan være et utgangspunkt.</p>
+<p>Hvis jeg skal bruke Last.fm til å oppdage klassiske låter, trenger jeg de totale tallene, som finnes på siden til hver enkelt låt. Kan jeg skrive et Greasemonkey-skript som importerer denne informasjonen inn i «Charts»? Boken <em>Greasemonkey Hacks</em> av Mark Pilgrim, fra 2005, kan være et<span class="widont">&nbsp;</span>utgangspunkt.</p>
 
 <hr>
 
-<p><strong>Oppdatering:</strong> Jeg har lykkes! Takket være jQuery var det ikke mye kode å skrive:</p>
+<p><strong>Oppdatering:</strong> Jeg har lykkes! Takket være jQuery var det ikke mye kode å<span class="widont">&nbsp;</span>skrive:</p>
 
 <pre>
 <code class="language-javascript">$(<span class="hljs-string">"#trackChart tbody tr"</span>).each(<span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params"></span>) </span>{
@@ -77,7 +77,7 @@
 Men, la meg se litt kvantitativt på dette. For å skrive de 6 linjene over, (skum)leste jeg 4 kapitler av *Greasemonkey Hacks*, 120 sider av *JavaScript & jQuery: The Missing Manual*, og ytterligere 20 sider av *jQuery in Action*. Hvis jeg runder ned dette til 12 timers arbeid, har jeg altså brukt gjennomsnittlig to timer per linje kode. Det tar tid å skaffe seg oversikt.
 -->
 
-<p>Jeg har også funnet to foobar2000-komponenter, <a href="http://chronial.de/foobar2000/#foo_scrobblecharts">foo_scrobblecharts</a> og <a href="http://www.foobar2000.org/components/view/foo_softplaylists">foo_softplaylists</a>, som sorterer musikken i henhold til Last.fm. (Det later til at man <em>kan</em> kjøre foobar2000 under Linux med Wine, bare man bruker <code>winetricks</code> og installerer nødvendige <abbr class="acronym" title="Dynamic-Link Library">DLL</abbr>-er (og skriften Tahoma for bedre utseende). Om dette er en <em>god</em> idé er en annen sak.)</p>
+<p>Jeg har også funnet to foobar2000-komponenter, <a href="http://chronial.de/foobar2000/#foo_scrobblecharts">foo_scrobblecharts</a> og <a href="http://www.foobar2000.org/components/view/foo_softplaylists">foo_softplaylists</a>, som sorterer musikken i henhold til Last.fm. (Det later til at man <em>kan</em> kjøre foobar2000 under Linux med Wine, bare man bruker <code>winetricks</code> og installerer nødvendige <abbr class="acronym" title="Dynamic-Link Library"><span class="caps">DLL</span></abbr>-er (og skriften Tahoma for bedre utseende). Om dette er en <em>god</em> idé er en annen<span class="widont">&nbsp;</span>sak.)</p>
 </section>
 </article>
 </div>
