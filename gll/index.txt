@@ -65,7 +65,7 @@ The parsers in this article, by contrast, can be freely composed
 without regard for left-recursion. Defining a parser for the above
 grammar is straightforward:
 
-```Scheme
+```scheme
 (define-parser expr
   (alt (seq expr (string "+") num)
        (seq expr (string "-") num)
@@ -77,7 +77,7 @@ grammar is straightforward:
 Furthermore, the parsers support ambiguity. Parse results are computed
 one at a time and returned as a lazy stream:
 
-```Scheme
+```scheme
 > (expr "1+0")
 #<stream>
 ```
@@ -141,7 +141,7 @@ is represented as the rest of the string. A failing result just
 contains the position where the parser failed, which can be used for
 error reporting.
 
-```Scheme
+```scheme
 (struct success (val rest) #:transparent)
 (struct failure (rest) #:transparent)
 ```
@@ -159,7 +159,7 @@ such parsers, we define the function `succeed`, which takes the
 predefined value as a parameter. (This very common function is also
 known as "empty", "epsilon", "result", "yield", or "return".)
 
-```Scheme
+```scheme
 (define (succeed val)
   (lambda (str)
     (success val str)))
@@ -169,7 +169,7 @@ Note that `succeed` returns another function `(lambda (str) ...)`,
 that is, a parser. For example, `(succeed '())` creates a parser which
 succeeds with the empty list:
 
-```Scheme
+```scheme
 > (succeed '())
 #<procedure>
 > ((succeed '()) "foo")
@@ -181,7 +181,7 @@ match string. Let us create a general function `string` for
 constructing such a parser. This function takes a matching string as
 input and returns a parser for matching against that string:
 
-```Scheme
+```scheme
 (define (string match)
   (lambda (str)
     (let* ((len (min (string-length str) (string-length match)))
@@ -198,7 +198,7 @@ successful result where the `"foo"` part is consumed; otherwise it
 returns a failure. For example, the input `"foobar"` gives a value of
 `"foo"` and a rest of `"bar"`:
 
-```Scheme
+```scheme
 > ((string "foo") "foobar")
 (success "foo" "bar")
 > ((string "foo") "bar")
@@ -217,7 +217,7 @@ first combinator is the *alternatives combinator*, which chooses
 between alternative parsers. It returns a combined parser that tries
 each alternative in turn until one of them matches.
 
-```Scheme
+```scheme
 (define (alt a b)
   (lambda (str)
     (let ((result (a str)))
@@ -236,7 +236,7 @@ together. The output of one parser is taken as the input to another.
 Here is our first attempt at defining this combinator, using pattern
 matching:
 
-```Scheme
+```scheme
 (define (seq a b)
   (lambda (str)
     (match (a str)
@@ -260,7 +260,7 @@ will be beneficial to express this combinator in a more abstract way.
 We therefore define a low-level "plumbing" function, `bind`, for
 chaining things together:
 
-```Scheme
+```scheme
 (define (bind p fn)
   (lambda (str)
     (match (p str)
@@ -279,7 +279,7 @@ parser. That parser is then invoked on the rest of the input.
 
 We can now define `seq` in terms of `bind`:
 
-```Scheme
+```scheme
 (define (seq a b)
   (bind a (lambda (x)
             (bind b (lambda (y)
@@ -298,7 +298,7 @@ Let us now look at a complete example. The following implements a
 simple linguistic grammar taken from
 [*Structure and Interpretation of Computer Programs*](http://mitpress.mit.edu/sicp/full-text/book/book-Z-H-28.html#%_sec_Temp_618):
 
-```Scheme
+```scheme
 (define article
   (alt (string "the ")
        (string "a ")))
@@ -323,7 +323,7 @@ simple linguistic grammar taken from
 
 We can parse a sentence with:
 
-```Scheme
+```scheme
 > (sentence "the professor lectures the student ")
 (success '(("the " "professor ")
            ("lectures " ("the " "student "))) "")
@@ -353,7 +353,7 @@ output. Future calls with the same arguments will return the memoized
 value. The following is loosely adapted from
 [*SICP*](http://mitpress.mit.edu/sicp/full-text/book/book-Z-H-22.html#%_thm_3.27):
 
-```Scheme
+```scheme
 (define (memo fn)
   (let ((alist (mlist)))
     (lambda args
@@ -376,7 +376,7 @@ into the table, and then return the result.
 Now we can easily memoize our definitions. For example, here is a
 memoized version of `alt`:
 
-```Scheme
+```scheme
 (define (alt a b)
   (memo
    (lambda (str)
@@ -393,7 +393,7 @@ There is one more wrinkle to sort out. Because Racket evaluates
 expressions eagerly, we run into a "tying the knot" problem when
 defining self-referential parsers:
 
-```Scheme
+```scheme
 (define r
   (alt (seq (string "a") r)
        (string "a")))
@@ -403,7 +403,7 @@ This will give an error because `r` is evaluated as an argument to
 `seq` before `r` is defined. We need to delay the evaluation somehow.
 One solution is to wrap the code in a function:
 
-```Scheme
+```scheme
 (define r
   (lambda (arg)
     ((alt (seq (string "a") r)
@@ -416,7 +416,7 @@ is invoked. To make things more convenient, we can create a
 `delay-parser` macro which automatically delays the code for us, as
 well as a `define-parser` macro for delayed parser definitions.
 
-```Scheme
+```scheme
 (define-syntax-rule (delay-parser parser)
   (lambda args
     (apply parser args)))
@@ -428,7 +428,7 @@ well as a `define-parser` macro for delayed parser definitions.
 
 Now we can write:
 
-```Scheme
+```scheme
 (define-parser r
   (alt (seq (string "a") r)
        (string "a")))
@@ -440,7 +440,7 @@ combinators too: each combinator will only create a given parser once.
 Recall that `(define (alt a b) ...)` is syntactic sugar for
 `(define alt (lambda (a b) ...))`:
 
-```Scheme
+```scheme
 (define alt
   (lambda (a b)
     (memo
@@ -451,7 +451,7 @@ This is the same combinator as before, just written in a slightly
 different way that emphasizes the function that is bound to `alt`. Now
 we can memoize the combinator itself:
 
-```Scheme
+```scheme
 (define alt
   (memo
    (lambda (a b)
@@ -470,7 +470,7 @@ part of the input string (an `"a"`) before recursing. In a
 left-recursive grammar, on the other hand, the self-reference comes
 first:
 
-```Scheme
+```scheme
 (define-parser s
   (alt (seq s (string "a"))
        (string "a")))
@@ -510,7 +510,7 @@ functions as continuations to make the implementation more portable.)
 Let us start by rewriting the `succeed` function. Recall the original
 definition:
 
-```Scheme
+```scheme
 (define (succeed val)
   (lambda (str)
     (success val str)))
@@ -520,7 +520,7 @@ To transform the returned parser to continuation-passing style, we add
 a second argument, `cont`. Instead of returning the parse result, we
 pass it to `cont`:
 
-```Scheme
+```scheme
 (define (succeed val)
   (lambda (str cont)
     (cont (success val str))))
@@ -530,7 +530,7 @@ To use the parser, we need to supply it with a continuation. Any
 function of one argument will do. For example, we can use `print`,
 which will cause the result to be printed to standard output:
 
-```Scheme
+```scheme
 > ((succeed '()) "foo" print)
 (success '() "foo")
 ```
@@ -539,7 +539,7 @@ Of course, this is a bit cumbersome, so in the final version we will
 provide a simpler interface for invoking parsers. For now, we proceed
 with `string`:
 
-```Scheme
+```scheme
 (define (string match)
   (lambda (str cont)
     (let* (...)
@@ -551,7 +551,7 @@ with `string`:
 The definitions so far are quite similar to the original. For the
 `seq` combinator, however, we need to change the definition of `bind`:
 
-```Scheme
+```scheme
 (define (bind p fn)
   (lambda (str cont)
     (p str (lambda (result)
@@ -577,7 +577,7 @@ the same as before. For the `alt` combinator, however, we will change
 the semantics. It will now try *all* alternatives, branching out in
 parallel:
 
-```Scheme
+```scheme
 (define (alt a b)
   (lambda (str cont)
     (a str cont)
@@ -627,7 +627,7 @@ already contains a given result, `make-entry` creates an empty entry,
 and `table-ref` looks up an memoization entry, creating an empty entry
 if one does not exist.
 
-```Scheme
+```scheme
 (define (memo-cps fn)
   (let ((table (mlist)))
     (define entry-continuations mcar)
@@ -687,7 +687,7 @@ returned parsers and `memo` for the parser combinators, which are
 regular functions. As before, the use of `memo` is necessary because
 `delay-parser` delays the combinators to being called at runtime.
 
-```Scheme
+```scheme
 (define succeed
   (memo
    (lambda (val)
@@ -715,7 +715,7 @@ regular functions. As before, the use of `memo` is necessary because
 
 Now we can define our left-recursive grammar:
 
-```Scheme
+```scheme
 (define-parser s
   (alt (seq s (string "a"))
        (string "a")))
@@ -723,7 +723,7 @@ Now we can define our left-recursive grammar:
 
 Let's parse the string `"aaa"`:
 
-```Scheme
+```scheme
 > (s "aaa" print)
 (success "a" "aa")
 (success '("a" "a") "a")
@@ -748,7 +748,7 @@ collects all successful results in a list, which is then returned.
 Only results that consume the whole string (with a remainder of `""`)
 are collected.
 
-```Scheme
+```scheme
 (define (run-parser parser str)
   (let ((results '()))
     (parser str (lambda (result)
@@ -765,7 +765,7 @@ make the continuation argument optional! If the parser is invoked
 without a continuation, then the default is to use the continuation of
 `run-parser`. A wrapper for this interface can be defined as follows:
 
-```Scheme
+```scheme
 (define (make-parser parser)
   (lambda (str (cont #f))
     (if cont
@@ -775,7 +775,7 @@ without a continuation, then the default is to use the continuation of
 
 Then we can incorporate this wrapper into `define-parser`:
 
-```Scheme
+```scheme
 (define-syntax-rule (define-parser parser body)
   (define parser
     (make-parser
@@ -786,7 +786,7 @@ Our parsers can now be invoked in two ways: as a CPS function passing
 the results to a continuation, or as a regular function returning the
 results to the caller. Here is an example of the latter:
 
-```Scheme
+```scheme
 > (s "aaa")
 (list (success '(("a" "a") "a") ""))
 ```
@@ -824,7 +824,7 @@ down from one parser to another.
 Here is an outline of our `trampoline%` class (by convention, class
 names end with `%`):
 
-```Scheme
+```scheme
 (define trampoline%
   (class object% (super-new)
     (define stack (mlist))
@@ -849,7 +849,7 @@ the stack until it is exhausted, checking with the `has-next?` method.
 This method returns true if the stack is nonempty and false if it is
 empty.
 
-```Scheme
+```scheme
 (define/public (has-next?)
   (not (empty? stack)))
 ```
@@ -858,7 +858,7 @@ The `push-stack` method pushes a function call onto the stack. The
 call is a cons cell `(fn . args)`, containing a function and its
 arguments.
 
-```Scheme
+```scheme
 (define/public (push-stack fn . args)
   (let ((call (mcons fn args)))
     (set! stack (mcons call stack))))
@@ -870,7 +870,7 @@ obtain the function and its arguments. We advance the stack pointer to
 the next element, and then apply the function to its arguments with
 `apply`.
 
-```Scheme
+```scheme
 (define/public (step)
   (when (has-next?)
     (match (mcar stack)
@@ -882,7 +882,7 @@ the next element, and then apply the function to its arguments with
 The `run` method repeatedly invokes `step` until the stack is
 exhausted.
 
-```Scheme
+```scheme
 (define/public (run)
   (do () ((not (has-next?)))
     (step)))
@@ -896,7 +896,7 @@ operates on a two-level table. Note that instead of invoking the
 function directly when called for the first time, the function is
 passed to `push-stack`.
 
-```Scheme
+```scheme
 (define/public (push fn str cont)
   (define entry-continuations ...)
   (define entry-results ...)
@@ -928,7 +928,7 @@ second level maps input to output. This is all handled by the local
 `table-ref` function, which automatically creates an empty entry when
 a function or its input is referenced for the first time.
 
-```Scheme
+```scheme
 (define (table-ref fn str)
   (let ((pair (massoc fn table)))
     (match pair
@@ -952,7 +952,7 @@ just a matter of adding an extra argument, `tramp`, for the
 trampoline. The `succeed` and `string` parsers don't use the
 trampoline at all:
 
-```Scheme
+```scheme
 (define succeed
   (memo
    (lambda (val)
@@ -973,7 +973,7 @@ Note the absence of `memo-cps`, since parser memoization is handled by
 the trampoline. The `seq` combinator just passes the `tramp` argument
 down from one parser to another:
 
-```Scheme
+```scheme
 (define (bind p fn)
   (lambda (str tramp cont)
     (p str tramp
@@ -997,7 +997,7 @@ is gone.
 Only the `alt` combinator will use the trampoline directly. Instead of
 invoking the alternative parsers itself, it pushes them on the stack:
 
-```Scheme
+```scheme
 (define alt
   (memo
    (lambda (a b)
@@ -1013,7 +1013,7 @@ object. To invoke the `push` method of the `tramp` object, we write
 Now we can create a trampoline, pass it to a parser along with a
 continuation, and invoke the `run` method:
 
-```Scheme
+```scheme
 > (define tramp (new trampoline%))
 > (s "aaa" tramp print)
 > (send tramp run)
@@ -1033,7 +1033,7 @@ producing the rest of the stream. Our `make-stream` macro just takes a
 single expression for producing the stream, which is easier in case
 multiple results are produced.
 
-```Scheme
+```scheme
 (define-syntax-rule (make-stream body ...)
   (stream-rest
    (stream-cons '() (begin body ...))))
@@ -1041,7 +1041,7 @@ multiple results are produced.
 
 Now we can define `run-parser` as a call to `make-stream`:
 
-```Scheme
+```scheme
 (define (run-parser parser str)
   (let ((tramp (new trampoline%))
         (results '()))
@@ -1086,7 +1086,7 @@ exhausted).
 Finally, we can create a cleaner interface where the `tramp` and
 `cont` arguments are optional:
 
-```Scheme
+```scheme
 (define-syntax-rule (define-parser parser body)
   (define parser
     (make-parser
@@ -1101,14 +1101,14 @@ Finally, we can create a cleaner interface where the `tramp` and
 
 When we now invoke our parsers in the regular way, we get a stream:
 
-```Scheme
+```scheme
 > (s "aaa")
 #<stream>
 ```
 
 We can force the stream by converting it to a list:
 
-```Scheme
+```scheme
 > (stream->list (s "aaa"))
 (list (success '(("a" "a") "a") ""))
 ```
@@ -1120,7 +1120,7 @@ As defined, the `alt` and `seq` combinators only take two arguments:
 we can write `(alt a b)`, but not `(alt a b c)`. We can generalize
 `alt` by iterating over a rest argument `parsers`:
 
-```Scheme
+```scheme
 (define alt
   (memo
    (lambda parsers
@@ -1136,7 +1136,7 @@ parsers to a single value. We also adjust the way the combined result
 is created so that we get a flat list `(val1 val2 val3)` instead of
 `((val1 val2) val3)`.
 
-```Scheme
+```scheme
 (define seq
   (memo
    (lambda parsers
@@ -1151,7 +1151,7 @@ Now we will add some new definitions. First we define the `regexp`
 parser, which is similar to `string` except that it matches against a
 regular expression:
 
-```Scheme
+```scheme
 (define regexp
   (memo
    (lambda (pattern)
@@ -1172,7 +1172,7 @@ Furthermore, we will provide semantic actions for our parsers by
 adding a new combinator, the *reduction combinator*. This combinator
 transforms the parse result using a given function.
 
-```Scheme
+```scheme
 (define red
   (memo
    (lambda (p fn)
@@ -1204,7 +1204,7 @@ factor -> "(" expr ")"
 Using anonymous functions for semantic actions, we can express the
 interpreter as follows:
 
-```Scheme
+```scheme
 (define-parser expr
   (alt (red (seq expr (string "+") term)
             (lambda (x _ y) (+ x y)))
@@ -1232,7 +1232,7 @@ interpreter as follows:
 When we invoke the interpreter, the returned result contains the
 calculated value:
 
-```Scheme
+```scheme
 > (stream->list (expr "1*2+3*4"))
 (list (success 14 ""))
 > (stream->list (expr "9-(5+2)"))

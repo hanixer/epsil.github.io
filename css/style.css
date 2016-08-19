@@ -96,6 +96,7 @@ h1, h2, h3, h4, h5, h6, b, strong, time, nav, kbd {
 }
 
 h1, h2, h3, h4, h5, h6 {
+    color: #23527c;
     font-weight: bold;
     margin: 1em 0 15px;
 }
@@ -308,4 +309,13 @@ time {
     .navbar-right {
         float: right;
     }
+}
+
+.language-scheme .hljs-name {
+    color: #183691;
+    font-weight: normal;
+}
+
+.language-scheme .hljs-name .hljs-builtin-name {
+    color: #a71d5d;
 }
