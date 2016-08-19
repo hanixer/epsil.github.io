@@ -218,6 +218,10 @@ pre code, pre kbd, pre samt, pre tt {
     font-size: 1em !important;
 }
 
+sub, sup {
+    font-variant-numeric: normal;
+}
+
 table, .table {
     margin: 1em auto;
     width: auto;
