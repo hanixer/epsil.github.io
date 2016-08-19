@@ -282,11 +282,6 @@ time {
     float: right;
 }
 
-.small-caps {
-    font-variant: small-caps;
-    letter-spacing: 0.1em;
-}
-
 .navbar {
     min-height: auto;
 }
