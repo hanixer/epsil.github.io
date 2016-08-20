@@ -9,6 +9,12 @@ abbr.acronym, .caps {
     letter-spacing: 0.1em;
 }
 
+pre .caps {
+    font-variant: normal;
+    text-transform: none;
+    letter-spacing: 0;
+}
+
 a {
     color: #337ab7;
     text-decoration: none;
@@ -39,6 +45,10 @@ h6 code, h6 kbd, h6 samp, h6 tt {
 
 b, strong {
     font-size: 0.85em;
+}
+
+b code, strong code {
+    font-size: 0.8em !important;
 }
 
 blockquote {
@@ -298,13 +308,14 @@ time {
     min-height: 0;
 }
 
-.language-scheme .hljs-name {
+.hljs-name {
     color: #183691;
     font-weight: normal;
 }
 
-.language-scheme .hljs-name .hljs-builtin-name {
+.hljs-name .hljs-builtin-name, .hljs-keyword {
     color: #a71d5d;
+    font-weight: normal;
 }
 
 @media (max-width: 767px) {

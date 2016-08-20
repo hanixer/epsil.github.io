@@ -245,6 +245,7 @@ module.exports =
   '*[MiKTeX]: MiKTeX\n' +
   '*[PCTeX]: PCTeX\n' +
   '*[MacTeX]: MacTeX\n' +
+  '*[lhs2TeX]: lhs2TeX\n' +
   '*[TeX]: TeX\n'
 
 },{}],2:[function(require,module,exports){
@@ -487,17 +488,39 @@ Handlebars.registerHelper('dateFormat', dateFormat)
 Handlebars.registerHelper('urlResolve', urlResolve)
 Handlebars.registerHelper('text', text)
 
+function highlightBlock (str, lang) {
+  if (lang && hljs.getLanguage(lang)) {
+    try {
+      return hljs.highlight(lang, str, true).value
+    } catch (__) { }
+  }
+  return ''
+}
+
+function highlightInline (body) {
+  body.find('code[class]').each(function () {
+    var code = $(this)
+    var pre = code.parent()
+    if (pre.prop('tagName') === 'PRE') {
+      return
+    }
+    var lang = code.attr('class')
+    if (lang && hljs.getLanguage(lang)) {
+      try {
+        code.removeClass(lang)
+        code.addClass('language-' + lang)
+        var str = code.text().trim()
+        var html = hljs.highlight(lang, str, false).value
+        code.html(html)
+      } catch (__) { }
+    }
+  })
+}
+
 var md = markdownit({
   html: true,
   typographer: true,
-  highlight: function (str, lang) {
-    if (lang && hljs.getLanguage(lang)) {
-      try {
-        return hljs.highlight(lang, str).value
-      } catch (__) { }
-    }
-    return ''
-  }
+  highlight: highlightBlock
 }).use(attr)
   .use(sub)
   .use(sup)
@@ -572,6 +595,7 @@ function title (view) {
 function process (html) {
   html = typogr.typogrify(html)
   var body = $('<div>').html(html)
+  highlightInline(body)
   body.fixWidont()
   body.addAcronyms()
   body.addSmallCaps()
@@ -1334,6 +1358,7 @@ $.fn.addTeXLogos = function () {
     body.find('abbr[title=MiKTeX]').html('MiK' + tex)
     body.find('abbr[title=PCTeX]').html('PC' + tex)
     body.find('abbr[title=MacTeX]').html('Mac' + tex)
+    body.find('abbr[title=lhs2TeX]').html('lhs2' + tex)
     body.find('abbr[title=TeX]').html(tex)
   })
 }
