@@ -100,6 +100,8 @@ module.exports =
   '*[2D]: 2-dimensional\n' +
   '*[3D]: 3-dimensional\n' +
   '*[IT]: Information Technology\n' +
+  '*[USA]: United States of America\n' +
+  '*[EU]: European Union\n' +
   '*[URW]: Unternehmensberatung Karow, Rubow, Weber\n' +
   '*[FLAC]: Free Lossless Audio Codec\n' +
   '*[MP3]: MPEG Audio Layer III\n' +
@@ -570,6 +572,7 @@ function title (view) {
 function process (html) {
   html = typogr.typogrify(html)
   var body = $('<div>').html(html)
+  body.fixWidont()
   body.addAcronyms()
   body.addSmallCaps()
   body.addPullQuotes()
@@ -1406,6 +1409,12 @@ $.fn.fixTables = function () {
         return $(this).text().trim() === ''
       }).remove()
     })
+  })
+}
+
+$.fn.fixWidont = function () {
+  return this.each(function () {
+    $(this).find('.widont').replaceWith('&nbsp;')
   })
 }
 

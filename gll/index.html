@@ -72,14 +72,14 @@
 <article>
 <header>
 <section id="general-parser-combinators-in-racket">
-<h1 class="title"><a aria-hidden="true" class="header-anchor" href="#general-parser-combinators-in-racket" title="General Parser Combinators in&nbsp;Racket"></a>General Parser Combinators in<span class="widont">&nbsp;</span>Racket</h1>
+<h1 class="title"><a aria-hidden="true" class="header-anchor" href="#general-parser-combinators-in-racket" title="General Parser Combinators in&nbsp;Racket"></a>General Parser Combinators in&nbsp;Racket</h1>
 </section>
 </header>
 
 <section id="content">
 <p>This article explains how to implement a general parser combinator framework which handles left-recursive and ambiguous grammars. A <a href="https://epsil.github.io/gll/"><abbr class="acronym" title="HyperText Markup Language"><span class="caps">HTML</span></abbr> version</a>, readable on both large and small screens, is available from <a href="https://epsil.github.io/gll/">https://epsil.github.io/gll/</a>.</p>
 
-<p>All the code is released freely on <a href="https://github.com/epsil/gll">GitHub</a> under the <a href="LICENSE"><abbr class="acronym" title="Massachusetts Institute of Technology"><span class="caps">MIT</span></abbr> License</a>. You can <a href="https://github.com/epsil/gll/archive/master.zip">download a Zip file</a>, or you can clone the repository with the following<span class="widont">&nbsp;</span>command:</p>
+<p>All the code is released freely on <a href="https://github.com/epsil/gll">GitHub</a> under the <a href="LICENSE"><abbr class="acronym" title="Massachusetts Institute of Technology"><span class="caps">MIT</span></abbr> License</a>. You can <a href="https://github.com/epsil/gll/archive/master.zip">download a Zip file</a>, or you can clone the repository with the following&nbsp;command:</p>
 
 <pre>
 <code>git clone https://github.com/epsil/gll.git</code>
@@ -87,15 +87,15 @@
 
 <p>The repository also includes the full text of the article in <a href="https://raw.githubusercontent.com/epsil/gll/master/README.md">Markdown</a> (<a href="https://help.github.com/categories/writing-on-github/"><abbr class="acronym" title="GitHub Flavored Markdown"><span class="caps">GFM</span></abbr> flavor</a>). I welcome suggestions and improvements! Feel free to open an issue on the <a href="https://github.com/epsil/gll/issues">bug tracker</a>, or to <a href="https://github.com/epsil/gll">fork the repository</a>. You can also contact me, Vegard Øye, at <code>vegard (underline) oye (at) hotmail (dot) com</code>.</p>
 
-<p>The article aims to be an accessible introduction to the ideas found in the papers <a href="http://citeseerx.ist.psu.edu/viewdoc/summary?doi=10.1.1.14.3000">“Memoization in Top-Down Parsing”</a> by Mark Johnson and <a href="http://www.cs.uwm.edu/~dspiewak/papers/generalized-parser-combinators.pdf">“Generalized Parser Combinators”</a> by Daniel Spiewak. If you are interested in the topic, I especially recommend you to read Spiewak’s paper. It is very good. Other reading suggestions are provided <a href="#further-reading" title="Further reading">at the<span class="widont">&nbsp;</span>end</a>.</p>
+<p>The article aims to be an accessible introduction to the ideas found in the papers <a href="http://citeseerx.ist.psu.edu/viewdoc/summary?doi=10.1.1.14.3000">“Memoization in Top-Down Parsing”</a> by Mark Johnson and <a href="http://www.cs.uwm.edu/~dspiewak/papers/generalized-parser-combinators.pdf">“Generalized Parser Combinators”</a> by Daniel Spiewak. If you are interested in the topic, I especially recommend you to read Spiewak’s paper. It is very good. Other reading suggestions are provided <a href="#further-reading" title="Further reading">at the&nbsp;end</a>.</p>
 
-<p>The framework is implemented in <a href="http://www.racket-lang.org/">Racket</a>, a variant of Scheme, which is a dialect of Lisp. However, the principles are not specific to Racket and could be expressed in any language; porting is outlined at the end of the<span class="widont">&nbsp;</span>article.</p>
+<p>The framework is implemented in <a href="http://www.racket-lang.org/">Racket</a>, a variant of Scheme, which is a dialect of Lisp. However, the principles are not specific to Racket and could be expressed in any language; porting is outlined at the end of the&nbsp;article.</p>
 
 <section id="introduction">
 <h2><a aria-hidden="true" class="header-anchor" href="#introduction" title="Introduction"></a>Introduction<a aria-controls="introduction-section" aria-expanded="true" aria-hidden="true" class="collapse-button" data-toggle="collapse" href="#introduction-section" role="button"></a></h2>
 
 <div class="collapse in" id="introduction-section">
-<p>Traditional top-down parsers cannot handle all recursive grammars, even if recursion may be the most natural way to express the language. An example is the following grammar for left-associative arithmetic on 0’s and<span class="widont">&nbsp;</span>1’s:</p>
+<p>Traditional top-down parsers cannot handle all recursive grammars, even if recursion may be the most natural way to express the language. An example is the following grammar for left-associative arithmetic on 0’s and&nbsp;1’s:</p>
 
 <pre>
 <code>expr -&gt; expr "+" num
@@ -104,9 +104,9 @@
  num -&gt; "0" | "1"</code>
 </pre>
 
-<p>If we attempt to translate the first rule directly into a self-calling function, the resulting parser will never terminate; instead it enters an infinite regress before consuming any input. The traditional approaches to parsing left-recursive grammars are to rewrite the grammar or use a bottom-up parser<span class="widont">&nbsp;</span>generator.</p>
+<p>If we attempt to translate the first rule directly into a self-calling function, the resulting parser will never terminate; instead it enters an infinite regress before consuming any input. The traditional approaches to parsing left-recursive grammars are to rewrite the grammar or use a bottom-up parser&nbsp;generator.</p>
 
-<p>The parsers in this article, by contrast, can be freely composed without regard for left-recursion. Defining a parser for the above grammar is<span class="widont">&nbsp;</span>straightforward:</p>
+<p>The parsers in this article, by contrast, can be freely composed without regard for left-recursion. Defining a parser for the above grammar is&nbsp;straightforward:</p>
 
 <pre>
 <code class="language-scheme">(<span class="hljs-name">define-parser</span> expr
@@ -117,30 +117,30 @@
   (<span class="hljs-name">alt</span> (<span class="hljs-name"><span class="hljs-builtin-name">string</span></span> <span class="hljs-string">"0"</span>) (<span class="hljs-name"><span class="hljs-builtin-name">string</span></span> <span class="hljs-string">"1"</span>)))</code>
 </pre>
 
-<p>Furthermore, the parsers support ambiguity. Parse results are computed one at a time and returned as a lazy<span class="widont">&nbsp;</span>stream:</p>
+<p>Furthermore, the parsers support ambiguity. Parse results are computed one at a time and returned as a lazy&nbsp;stream:</p>
 
 <pre>
 <code class="language-scheme">&gt; (expr "1+0")
 #&lt;stream&gt;</code>
 </pre>
 
-<p>The worst-case efficiency of the parser in this article is <em>O</em>(<em>n</em><sup>4</sup>), but with more efficient data structures, <em>O</em>(<em>n</em><sup>3</sup>) is achievable. Furthermore, by adorning the parsers with additional metadata, <span class="caps">LL</span>(1) grammars can be parsed in <em>O</em>(<em>n</em>) time. See the <a href="#further-reading" title="Further reading">references</a> for details on<span class="widont">&nbsp;</span>optimization.</p>
+<p>The worst-case efficiency of the parser in this article is <em>O</em>(<em>n</em><sup>4</sup>), but with more efficient data structures, <em>O</em>(<em>n</em><sup>3</sup>) is achievable. Furthermore, by adorning the parsers with additional metadata, <span class="caps">LL</span>(1) grammars can be parsed in <em>O</em>(<em>n</em>) time. See the <a href="#further-reading" title="Further reading">references</a> for details on&nbsp;optimization.</p>
 
-<p>The article is organized into several stages, leading up to a complete interpreter for arithmetic expressions. To get there, the parsers will be rewritten multiple<span class="widont">&nbsp;</span>times:</p>
+<p>The article is organized into several stages, leading up to a complete interpreter for arithmetic expressions. To get there, the parsers will be rewritten multiple&nbsp;times:</p>
 
 <ol>
-<li>First, we will write a simple, <a href="#simple-parser-combinators" title="Simple parser combinators">top-down combinator framework</a>, implementing things in the <em>conventional</em> way. This won’t handle left-recursive grammars in any form, but introduces a simple syntax for composing<span class="widont">&nbsp;</span>parsers.</li>
+<li>First, we will write a simple, <a href="#simple-parser-combinators" title="Simple parser combinators">top-down combinator framework</a>, implementing things in the <em>conventional</em> way. This won’t handle left-recursive grammars in any form, but introduces a simple syntax for composing&nbsp;parsers.</li>
 
-<li>Next, we will rewrite the parsers to <em><a href="#continuation-passing-style" title="Continuation-passing style">continuation-passing style</a></em>. Although functionally equivalent to the previous version, the continuations make the code more flexible and set the stage for implementing general<span class="widont">&nbsp;</span>parsers.</li>
+<li>Next, we will rewrite the parsers to <em><a href="#continuation-passing-style" title="Continuation-passing style">continuation-passing style</a></em>. Although functionally equivalent to the previous version, the continuations make the code more flexible and set the stage for implementing general&nbsp;parsers.</li>
 
-<li>We will now add support for left-recursive grammars. This is done by <em>memoizing</em> parse results and continuations, so that nothing is computed more than once. This is the most important step, and we will study it in some detail to develop our<span class="widont">&nbsp;</span>intuition.</li>
+<li>We will now add support for left-recursive grammars. This is done by <em>memoizing</em> parse results and continuations, so that nothing is computed more than once. This is the most important step, and we will study it in some detail to develop our&nbsp;intuition.</li>
 
-<li>To optimize the code, we will add a <em><a href="#trampoline" title="Trampoline">trampoline</a></em> to store parse results and dispatch function calls. The trampoline is a shared data structure passed down from one parser to<span class="widont">&nbsp;</span>another.</li>
+<li>To optimize the code, we will add a <em><a href="#trampoline" title="Trampoline">trampoline</a></em> to store parse results and dispatch function calls. The trampoline is a shared data structure passed down from one parser to&nbsp;another.</li>
 
-<li>Now we have the wherewithal to implement a lazy parse process. The parsers will return a <em>stream</em> of parse results, computing the results as they are<span class="widont">&nbsp;</span>requested.</li>
+<li>Now we have the wherewithal to implement a lazy parse process. The parsers will return a <em>stream</em> of parse results, computing the results as they are&nbsp;requested.</li>
 </ol>
 
-<p>The article aims to be easy to understand, but is necessarily of some length. If you are familiar with parser combinators, you can skim through the first sections. The key ideas are introduced in the section on <a href="#continuation-passing-style" title="Continuation-passing style">continuation-passing style</a>. The rest of the text deals with optimization of those<span class="widont">&nbsp;</span>ideas.</p>
+<p>The article aims to be easy to understand, but is necessarily of some length. If you are familiar with parser combinators, you can skim through the first sections. The key ideas are introduced in the section on <a href="#continuation-passing-style" title="Continuation-passing style">continuation-passing style</a>. The rest of the text deals with optimization of those&nbsp;ideas.</p>
 </div>
 </section>
 
@@ -148,20 +148,20 @@
 <h2><a aria-hidden="true" class="header-anchor" href="#simple-parser-combinators" title="Simple parser combinators"></a>Simple parser combinators<a aria-controls="simple-parser-combinators-section" aria-expanded="true" aria-hidden="true" class="collapse-button" data-toggle="collapse" href="#simple-parser-combinators-section" role="button"></a></h2>
 
 <div class="collapse in" id="simple-parser-combinators-section">
-<p>Let us start by defining some terms. A <em>parser</em> is a function that takes a string as input and returns a <em>parse result</em>. A parse result is either a <em>success</em> or a <em>failure</em>. (All our parsers will work on strings, but one could easily define parsers working on a stream of symbols or<span class="widont">&nbsp;</span>tokens.)</p>
+<p>Let us start by defining some terms. A <em>parser</em> is a function that takes a string as input and returns a <em>parse result</em>. A parse result is either a <em>success</em> or a <em>failure</em>. (All our parsers will work on strings, but one could easily define parsers working on a stream of symbols or&nbsp;tokens.)</p>
 
-<p>A <em>parser combinator</em> is a function that takes parsers as input and returns a new parser. In other words, it’s a higher-order function, taking functions as input and returning another function as output. Using parser combinators, we can build bigger parsers out of smaller<span class="widont">&nbsp;</span>parsers.</p>
+<p>A <em>parser combinator</em> is a function that takes parsers as input and returns a new parser. In other words, it’s a higher-order function, taking functions as input and returning another function as output. Using parser combinators, we can build bigger parsers out of smaller&nbsp;parsers.</p>
 
-<p>First we will define data types for parse results. A successful result contains two values: a value and the current string position. The value can for example be an abstract syntax tree, while the position is represented as the rest of the string. A failing result just contains the position where the parser failed, which can be used for error<span class="widont">&nbsp;</span>reporting.</p>
+<p>First we will define data types for parse results. A successful result contains two values: a value and the current string position. The value can for example be an abstract syntax tree, while the position is represented as the rest of the string. A failing result just contains the position where the parser failed, which can be used for error&nbsp;reporting.</p>
 
 <pre>
 <code class="language-scheme">(<span class="hljs-name">struct</span> success (<span class="hljs-name">val</span> rest) #:transparent)
 (<span class="hljs-name">struct</span> failure (<span class="hljs-name">rest</span>) #:transparent)</code>
 </pre>
 
-<p>This Racket code defines <code>success</code> and <code>failure</code> as constructor functions for parse results. For example, we can create a successful result with the expression <code>(success val rest)</code>, and a failure with <code>(failure rest)</code>. We can also <em>pattern match</em> against these expressions, which will be demonstrated later. The <code>#:transparent</code> option makes the values<span class="widont">&nbsp;</span>printable.</p>
+<p>This Racket code defines <code>success</code> and <code>failure</code> as constructor functions for parse results. For example, we can create a successful result with the expression <code>(success val rest)</code>, and a failure with <code>(failure rest)</code>. We can also <em>pattern match</em> against these expressions, which will be demonstrated later. The <code>#:transparent</code> option makes the values&nbsp;printable.</p>
 
-<p>First, we look at a trivial parser that accepts any input and returns a successful result containing some predefined value. For creating such parsers, we define the function <code>succeed</code>, which takes the predefined value as a parameter. (This very common function is also known as “empty”, “epsilon”, “result”, “yield”, or<span class="widont">&nbsp;</span>“return”.)</p>
+<p>First, we look at a trivial parser that accepts any input and returns a successful result containing some predefined value. For creating such parsers, we define the function <code>succeed</code>, which takes the predefined value as a parameter. (This very common function is also known as “empty”, “epsilon”, “result”, “yield”, or&nbsp;“return”.)</p>
 
 <pre>
 <code class="language-scheme">(<span class="hljs-name"><span class="hljs-builtin-name">define</span></span> (<span class="hljs-name">succeed</span> val)
@@ -169,7 +169,7 @@
     (<span class="hljs-name">success</span> val str)))</code>
 </pre>
 
-<p>Note that <code>succeed</code> returns another function <code>(lambda (str) ...)</code>, that is, a parser. For example, <code>(succeed '())</code> creates a parser which succeeds with the empty<span class="widont">&nbsp;</span>list:</p>
+<p>Note that <code>succeed</code> returns another function <code>(lambda (str) ...)</code>, that is, a parser. For example, <code>(succeed '())</code> creates a parser which succeeds with the empty&nbsp;list:</p>
 
 <pre>
 <code class="language-scheme">&gt; (succeed '())
@@ -178,7 +178,7 @@
 (success '() "foo")</code>
 </pre>
 
-<p>The next step is to compare the beginning of the input against some match string. Let us create a general function <code>string</code> for constructing such a parser. This function takes a matching string as input and returns a parser for matching against that<span class="widont">&nbsp;</span>string:</p>
+<p>The next step is to compare the beginning of the input against some match string. Let us create a general function <code>string</code> for constructing such a parser. This function takes a matching string as input and returns a parser for matching against that&nbsp;string:</p>
 
 <pre>
 <code class="language-scheme">(<span class="hljs-name"><span class="hljs-builtin-name">define</span></span> (<span class="hljs-name"><span class="hljs-builtin-name">string</span></span> match)
@@ -200,9 +200,9 @@
 (failure "bar")</code>
 </pre>
 
-<p>The functions <code>succeed</code> and <code>string</code> could be regarded as very basic “parser generators”: both create parsers on the basis of a given specification. The parsers they create are often called <em>terminal parsers</em>, because they match against a terminal expression in the grammar. All the terminal parsers in this article work on strings, but one could easily modify them to accept a stream of symbols or<span class="widont">&nbsp;</span>tokens.</p>
+<p>The functions <code>succeed</code> and <code>string</code> could be regarded as very basic “parser generators”: both create parsers on the basis of a given specification. The parsers they create are often called <em>terminal parsers</em>, because they match against a terminal expression in the grammar. All the terminal parsers in this article work on strings, but one could easily modify them to accept a stream of symbols or&nbsp;tokens.</p>
 
-<p>Now that we have some basic parsers, it is time to combine them. The first combinator is the <em>alternatives combinator</em>, which chooses between alternative parsers. It returns a combined parser that tries each alternative in turn until one of them<span class="widont">&nbsp;</span>matches.</p>
+<p>Now that we have some basic parsers, it is time to combine them. The first combinator is the <em>alternatives combinator</em>, which chooses between alternative parsers. It returns a combined parser that tries each alternative in turn until one of them&nbsp;matches.</p>
 
 <pre>
 <code class="language-scheme">(<span class="hljs-name"><span class="hljs-builtin-name">define</span></span> (<span class="hljs-name">alt</span> a b)
@@ -215,7 +215,7 @@
 
 <p>Here we see Racket’s pattern matching in action. We invoke the first parser with <code>(a str)</code> and match against its result. If we get a successful parse result <code>(success val rest)</code>, we return that. Otherwise, we invoke the second parser with <code>(b str)</code>.</p>
 
-<p>The next combinator is the <em>sequence combinator</em>, which chains parsers together. The output of one parser is taken as the input to another. Here is our first attempt at defining this combinator, using pattern<span class="widont">&nbsp;</span>matching:</p>
+<p>The next combinator is the <em>sequence combinator</em>, which chains parsers together. The output of one parser is taken as the input to another. Here is our first attempt at defining this combinator, using pattern&nbsp;matching:</p>
 
 <pre>
 <code class="language-scheme">(<span class="hljs-name"><span class="hljs-builtin-name">define</span></span> (<span class="hljs-name">seq</span> a b)
@@ -231,7 +231,7 @@
 
 <p>If we get a successful result <code>(success val1 rest1)</code> from the first parser, we pass its remainder to the next parser with <code>(b rest1)</code>. If it also succeeds, we return a combined parse result. In all other cases, we return failure. (For simplicity, the <code>alt</code> and <code>seq</code> combinators take exactly two arguments; later we will write general versions accepting <a href="#final-improvements" title="Final improvements">any number of arguments</a>.)</p>
 
-<p>However, because we are going to rewrite the parsers several times, it will be beneficial to express this combinator in a more abstract way. We therefore define a low-level “plumbing” function, <code>bind</code>, for chaining things<span class="widont">&nbsp;</span>together:</p>
+<p>However, because we are going to rewrite the parsers several times, it will be beneficial to express this combinator in a more abstract way. We therefore define a low-level “plumbing” function, <code>bind</code>, for chaining things&nbsp;together:</p>
 
 <pre>
 <code class="language-scheme">(<span class="hljs-name"><span class="hljs-builtin-name">define</span></span> (<span class="hljs-name">bind</span> p fn)
@@ -242,7 +242,7 @@
       [<span class="hljs-name">failure</span> failure])))</code>
 </pre>
 
-<p>The <code>bind</code> function takes two arguments, a parser <code>p</code> and a function <code>fn</code>, and returns another parser. The <code>fn</code> function must be of the same kind as the “parser generators” we saw earlier: it must return a parser on the basis of an input value. Together, <code>p</code> and <code>fn</code> become a parser which initially invokes <code>p</code> on the input. If the result is successful, then its value-part is passed to <code>fn</code> to create another parser. That parser is then invoked on the rest of the<span class="widont">&nbsp;</span>input.</p>
+<p>The <code>bind</code> function takes two arguments, a parser <code>p</code> and a function <code>fn</code>, and returns another parser. The <code>fn</code> function must be of the same kind as the “parser generators” we saw earlier: it must return a parser on the basis of an input value. Together, <code>p</code> and <code>fn</code> become a parser which initially invokes <code>p</code> on the input. If the result is successful, then its value-part is passed to <code>fn</code> to create another parser. That parser is then invoked on the rest of the&nbsp;input.</p>
 
 <p>We can now define <code>seq</code> in terms of <code>bind</code>:</p>
 
@@ -253,7 +253,7 @@
                       (<span class="hljs-name">succeed</span> (<span class="hljs-name"><span class="hljs-builtin-name">list</span></span> x y)))))))</code>
 </pre>
 
-<p>This terse definition can be read as: “Invoke the first parser <code>a</code> and bind the value-part of the result to <code>x</code>. Then invoke the second parser <code>b</code> and bind the value-part of the result to <code>y</code>. Finally, create a combined parse result from <code>x</code> and <code>y</code>.” If any of the parsers fail, then <code>bind</code> stops; only successful results are passed down the chain. Thus, <code>bind</code> frees us from the burden of repeatedly doing pattern matching and discarding failing<span class="widont">&nbsp;</span>results.</p>
+<p>This terse definition can be read as: “Invoke the first parser <code>a</code> and bind the value-part of the result to <code>x</code>. Then invoke the second parser <code>b</code> and bind the value-part of the result to <code>y</code>. Finally, create a combined parse result from <code>x</code> and <code>y</code>.” If any of the parsers fail, then <code>bind</code> stops; only successful results are passed down the chain. Thus, <code>bind</code> frees us from the burden of repeatedly doing pattern matching and discarding failing&nbsp;results.</p>
 
 <p>Let us now look at a complete example. The following implements a simple linguistic grammar taken from <a href="http://mitpress.mit.edu/sicp/full-text/book/book-Z-H-28.html#%25_sec_Temp_618"><em>Structure and Interpretation of Computer Programs</em></a>:</p>
 
@@ -280,7 +280,7 @@
   (<span class="hljs-name">seq</span> noun-phrase verb-phrase))</code>
 </pre>
 
-<p>We can parse a sentence<span class="widont">&nbsp;</span>with:</p>
+<p>We can parse a sentence&nbsp;with:</p>
 
 <pre>
 <code class="language-scheme">&gt; (sentence "the professor lectures the student ")
@@ -290,7 +290,7 @@
 (failure "not a sentence ")</code>
 </pre>
 
-<p>For the time being, the parse result isn’t too informative; later we will define a <a href="#final-improvements" title="Final improvements">combinator for modifying it</a>. In any case, we can definitely see that there is parsing going<span class="widont">&nbsp;</span>on!</p>
+<p>For the time being, the parse result isn’t too informative; later we will define a <a href="#final-improvements" title="Final improvements">combinator for modifying it</a>. In any case, we can definitely see that there is parsing going&nbsp;on!</p>
 </div>
 </section>
 
@@ -314,7 +314,7 @@
              result)]))))</code>
 </pre>
 
-<p>We implement the memoization table as a mutable <em>association list</em>, using the Racket function <code>massoc</code> to access it. It is actually a list of mutable cons cells <code>(args . result)</code>. If <code>massoc</code> returns a cons cell, we match against it and return the result. Otherwise (the wildcard pattern is denoted by <code>_</code>), we call the original function with <code>(apply fn args)</code>, store the result in a cons cell, insert it into the table, and then return the<span class="widont">&nbsp;</span>result.</p>
+<p>We implement the memoization table as a mutable <em>association list</em>, using the Racket function <code>massoc</code> to access it. It is actually a list of mutable cons cells <code>(args . result)</code>. If <code>massoc</code> returns a cons cell, we match against it and return the result. Otherwise (the wildcard pattern is denoted by <code>_</code>), we call the original function with <code>(apply fn args)</code>, store the result in a cons cell, insert it into the table, and then return the&nbsp;result.</p>
 
 <p>Now we can easily memoize our definitions. For example, here is a memoized version of <code>alt</code>:</p>
 
@@ -328,9 +328,9 @@
          [<span class="hljs-name">failure</span> (<span class="hljs-name">b</span> str)])))))</code>
 </pre>
 
-<p>This combinator returns a memoized parser. We can memoize all the functions in this<span class="widont">&nbsp;</span>way.</p>
+<p>This combinator returns a memoized parser. We can memoize all the functions in this&nbsp;way.</p>
 
-<p>There is one more wrinkle to sort out. Because Racket evaluates expressions eagerly, we run into a “tying the knot” problem when defining self-referential<span class="widont">&nbsp;</span>parsers:</p>
+<p>There is one more wrinkle to sort out. Because Racket evaluates expressions eagerly, we run into a “tying the knot” problem when defining self-referential&nbsp;parsers:</p>
 
 <pre>
 <code class="language-scheme">(<span class="hljs-name"><span class="hljs-builtin-name">define</span></span> r
@@ -338,7 +338,7 @@
        (<span class="hljs-name"><span class="hljs-builtin-name">string</span></span> <span class="hljs-string">"a"</span>)))</code>
 </pre>
 
-<p>This will give an error because <code>r</code> is evaluated as an argument to <code>seq</code> before <code>r</code> is defined. We need to delay the evaluation somehow. One solution is to wrap the code in a<span class="widont">&nbsp;</span>function:</p>
+<p>This will give an error because <code>r</code> is evaluated as an argument to <code>seq</code> before <code>r</code> is defined. We need to delay the evaluation somehow. One solution is to wrap the code in a&nbsp;function:</p>
 
 <pre>
 <code class="language-scheme">(<span class="hljs-name"><span class="hljs-builtin-name">define</span></span> r
@@ -348,7 +348,7 @@
      arg)))</code>
 </pre>
 
-<p>Now the code is evaluated not when the parser is defined, but when it is invoked. To make things more convenient, we can create a <code>delay-parser</code> macro which automatically delays the code for us, as well as a <code>define-parser</code> macro for delayed parser<span class="widont">&nbsp;</span>definitions.</p>
+<p>Now the code is evaluated not when the parser is defined, but when it is invoked. To make things more convenient, we can create a <code>delay-parser</code> macro which automatically delays the code for us, as well as a <code>define-parser</code> macro for delayed parser&nbsp;definitions.</p>
 
 <pre>
 <code class="language-scheme">(<span class="hljs-name">define-syntax-rule</span> (<span class="hljs-name">delay-parser</span> parser)
@@ -360,7 +360,7 @@
     (<span class="hljs-name">delay-parser</span> body)))</code>
 </pre>
 
-<p>Now we can<span class="widont">&nbsp;</span>write:</p>
+<p>Now we can&nbsp;write:</p>
 
 <pre>
 <code class="language-scheme">(<span class="hljs-name">define-parser</span> r
@@ -377,7 +377,7 @@
      (<span class="hljs-name"><span class="hljs-builtin-name">lambda</span></span> (str) ...))))</code>
 </pre>
 
-<p>This is the same combinator as before, just written in a slightly different way that emphasizes the function that is bound to <code>alt</code>. Now we can memoize the combinator<span class="widont">&nbsp;</span>itself:</p>
+<p>This is the same combinator as before, just written in a slightly different way that emphasizes the function that is bound to <code>alt</code>. Now we can memoize the combinator&nbsp;itself:</p>
 
 <pre>
 <code class="language-scheme">(<span class="hljs-name"><span class="hljs-builtin-name">define</span></span> alt
@@ -387,9 +387,9 @@
       (<span class="hljs-name"><span class="hljs-builtin-name">lambda</span></span> (str) ...)))))</code>
 </pre>
 
-<p>When we memoize both the parsers and the parser combinators, parsing is efficient and the delayed execution only creates a single parser<span class="widont">&nbsp;</span>instance.</p>
+<p>When we memoize both the parsers and the parser combinators, parsing is efficient and the delayed execution only creates a single parser&nbsp;instance.</p>
 
-<p>The current parser combinators support recursion to a limited degree. The <code>r</code> parser is right-recursive because the self-reference is “to the right” in the sequence. Therefore, <code>r</code> will always consume some part of the input string (an <code>"a"</code>) before recursing. In a left-recursive grammar, on the other hand, the self-reference comes<span class="widont">&nbsp;</span>first:</p>
+<p>The current parser combinators support recursion to a limited degree. The <code>r</code> parser is right-recursive because the self-reference is “to the right” in the sequence. Therefore, <code>r</code> will always consume some part of the input string (an <code>"a"</code>) before recursing. In a left-recursive grammar, on the other hand, the self-reference comes&nbsp;first:</p>
 
 <pre>
 <code class="language-scheme">(<span class="hljs-name">define-parser</span> s
@@ -397,7 +397,7 @@
        (<span class="hljs-name"><span class="hljs-builtin-name">string</span></span> <span class="hljs-string">"a"</span>)))</code>
 </pre>
 
-<p>This parser will enter an infinite regress because it repeatedly calls itself before consuming any input. To handle left-recursive grammars, we need to reimagine the parser<span class="widont">&nbsp;</span>combinators.</p>
+<p>This parser will enter an infinite regress because it repeatedly calls itself before consuming any input. To handle left-recursive grammars, we need to reimagine the parser&nbsp;combinators.</p>
 </div>
 </section>
 
@@ -405,13 +405,13 @@
 <h2><a aria-hidden="true" class="header-anchor" href="#continuation-passing-style" title="Continuation-passing style"></a>Continuation-passing style<a aria-controls="continuation-passing-style-section" aria-expanded="true" aria-hidden="true" class="collapse-button" data-toggle="collapse" href="#continuation-passing-style-section" role="button"></a></h2>
 
 <div class="collapse in" id="continuation-passing-style-section">
-<p>So far, we have taken advantage of the fact that many grammars can be translated directly into a program. Such a program will have a straightforward, hierarchical structure, with functions calling functions all the way down to the level of string matching. It will either return a single result or no result at<span class="widont">&nbsp;</span>all.</p>
+<p>So far, we have taken advantage of the fact that many grammars can be translated directly into a program. Such a program will have a straightforward, hierarchical structure, with functions calling functions all the way down to the level of string matching. It will either return a single result or no result at&nbsp;all.</p>
 
-<p>Not all grammars are this simple, however. Once we introduce recursion, there is no guarantee that the grammar will translate into a terminating program, even if the grammar is well-defined. Furthermore, grammars can be ambiguous: with several matching alternatives, a string can parsed in multiple, equally valid ways. For simplicity, our <code>alt</code> combinator only returned a single result (the first that matched). A more complete implementation would return the <em>set</em> of<span class="widont">&nbsp;</span>results.</p>
+<p>Not all grammars are this simple, however. Once we introduce recursion, there is no guarantee that the grammar will translate into a terminating program, even if the grammar is well-defined. Furthermore, grammars can be ambiguous: with several matching alternatives, a string can parsed in multiple, equally valid ways. For simplicity, our <code>alt</code> combinator only returned a single result (the first that matched). A more complete implementation would return the <em>set</em> of&nbsp;results.</p>
 
-<p>To address these issues, we will rewrite and express our parsers in a more flexible way: <em>continuation-passing style</em>. Instead of having our parsers return their results to the caller, they will pass them to a continuation. The continuation then carries on the parsing. All the parsers will have an additional argument for the continuation they are to pass their results to. The continuation itself is a function of one argument. (Racket actually has native continuations, but we will use functions as continuations to make the implementation more<span class="widont">&nbsp;</span>portable.)</p>
+<p>To address these issues, we will rewrite and express our parsers in a more flexible way: <em>continuation-passing style</em>. Instead of having our parsers return their results to the caller, they will pass them to a continuation. The continuation then carries on the parsing. All the parsers will have an additional argument for the continuation they are to pass their results to. The continuation itself is a function of one argument. (Racket actually has native continuations, but we will use functions as continuations to make the implementation more&nbsp;portable.)</p>
 
-<p>Let us start by rewriting the <code>succeed</code> function. Recall the original<span class="widont">&nbsp;</span>definition:</p>
+<p>Let us start by rewriting the <code>succeed</code> function. Recall the original&nbsp;definition:</p>
 
 <pre>
 <code class="language-scheme">(<span class="hljs-name"><span class="hljs-builtin-name">define</span></span> (<span class="hljs-name">succeed</span> val)
@@ -427,7 +427,7 @@
     (<span class="hljs-name">cont</span> (<span class="hljs-name">success</span> val str))))</code>
 </pre>
 
-<p>To use the parser, we need to supply it with a continuation. Any function of one argument will do. For example, we can use <code>print</code>, which will cause the result to be printed to standard<span class="widont">&nbsp;</span>output:</p>
+<p>To use the parser, we need to supply it with a continuation. Any function of one argument will do. For example, we can use <code>print</code>, which will cause the result to be printed to standard&nbsp;output:</p>
 
 <pre>
 <code class="language-scheme">&gt; ((succeed '()) "foo" print)
@@ -463,7 +463,7 @@
 
 <p>Here we use continuations to chain things together. The parser <code>p</code> is called with a continuation <code>(lambda (result) ...)</code> that receives the result and matches against it. If it is successful, then the continuation carries on and invokes <code>fn</code>. The final result is passed to <code>cont</code>, the continuation for the combined parser. Conveniently, we only need to modify <code>bind</code>; the definition of <code>seq</code> is unchanged.</p>
 
-<p>While expressed in a different style, all the code so far functions the same as before. For the <code>alt</code> combinator, however, we will change the semantics. It will now try <em>all</em> alternatives, branching out in<span class="widont">&nbsp;</span>parallel:</p>
+<p>While expressed in a different style, all the code so far functions the same as before. For the <code>alt</code> combinator, however, we will change the semantics. It will now try <em>all</em> alternatives, branching out in&nbsp;parallel:</p>
 
 <pre>
 <code class="language-scheme">(<span class="hljs-name"><span class="hljs-builtin-name">define</span></span> (<span class="hljs-name">alt</span> a b)
@@ -472,17 +472,17 @@
     (<span class="hljs-name">b</span> str cont)))</code>
 </pre>
 
-<p>The continuation will be invoked twice, once for the first parser and once for the second. If the first parser succeeds and the second fails, then the continuation will first receive a successful result, and then a failing<span class="widont">&nbsp;</span>result.</p>
+<p>The continuation will be invoked twice, once for the first parser and once for the second. If the first parser succeeds and the second fails, then the continuation will first receive a successful result, and then a failing&nbsp;result.</p>
 
-<p>We have now rewritten our parsers to continuation-passing style. In itself, this doesn’t solve the problems we had with recursive grammars, but it sets the stage for the solution. Observe that while the <code>alt</code> combinator produces two results, it doesn’t pass them at the same time. The execution is more fine-grained: the combinator creates a separate <em>branch</em> for the calculation of each<span class="widont">&nbsp;</span>result.</p>
+<p>We have now rewritten our parsers to continuation-passing style. In itself, this doesn’t solve the problems we had with recursive grammars, but it sets the stage for the solution. Observe that while the <code>alt</code> combinator produces two results, it doesn’t pass them at the same time. The execution is more fine-grained: the combinator creates a separate <em>branch</em> for the calculation of each&nbsp;result.</p>
 
-<p>In other words, there is a kind of concurrency here (even if the current implementation is sequential). The key insight is that in a recursive grammar, one branch may depend on another: the recursive branch cannot continue before the base branch has produced a result. Is there a way we can make the branches cooperate, regardless of their order of<span class="widont">&nbsp;</span>execution?</p>
+<p>In other words, there is a kind of concurrency here (even if the current implementation is sequential). The key insight is that in a recursive grammar, one branch may depend on another: the recursive branch cannot continue before the base branch has produced a result. Is there a way we can make the branches cooperate, regardless of their order of&nbsp;execution?</p>
 
-<p>As it turns out, the answer is memoization! That is because when we memoize a continuation-passing style function, not only do we keep track of input values and output values, but also the continuations that are interested in those values. Each table entry will contain a list of results (since the function may output more than one value), and a list of continuations (since the same function may be called in different<span class="widont">&nbsp;</span>places).</p>
+<p>As it turns out, the answer is memoization! That is because when we memoize a continuation-passing style function, not only do we keep track of input values and output values, but also the continuations that are interested in those values. Each table entry will contain a list of results (since the function may output more than one value), and a list of continuations (since the same function may be called in different&nbsp;places).</p>
 
-<p>Thus, we can broadcast results from one branch of the grammar to another, “reawakening” the interested branch. How do we awaken a branch? By calling its continuation! In fact, the same continuation may be called several times in a recursive grammar, which we will see below. Like in a video game, each continuation is a “save point” in our program, and we can reload any part of it as our knowledge<span class="widont">&nbsp;</span>progresses.</p>
+<p>Thus, we can broadcast results from one branch of the grammar to another, “reawakening” the interested branch. How do we awaken a branch? By calling its continuation! In fact, the same continuation may be called several times in a recursive grammar, which we will see below. Like in a video game, each continuation is a “save point” in our program, and we can reload any part of it as our knowledge&nbsp;progresses.</p>
 
-<p>To memoize functions written in continuation-passing style, we define a <code>memo-cps</code> wrapper. For clarity, we define a few local functions: <code>push-continuation!</code> adds a continuation to an entry, <code>push-result!</code> adds a result to the entry, <code>result-subsumed?</code> checks if the entry already contains a given result, <code>make-entry</code> creates an empty entry, and <code>table-ref</code> looks up an memoization entry, creating an empty entry if one does not<span class="widont">&nbsp;</span>exist.</p>
+<p>To memoize functions written in continuation-passing style, we define a <code>memo-cps</code> wrapper. For clarity, we define a few local functions: <code>push-continuation!</code> adds a continuation to an entry, <code>push-result!</code> adds a result to the entry, <code>result-subsumed?</code> checks if the entry already contains a given result, <code>make-entry</code> creates an empty entry, and <code>table-ref</code> looks up an memoization entry, creating an empty entry if one does not&nbsp;exist.</p>
 
 <pre>
 <code class="language-scheme">(<span class="hljs-name"><span class="hljs-builtin-name">define</span></span> (<span class="hljs-name">memo-cps</span> fn)
@@ -521,11 +521,11 @@
                 (<span class="hljs-name">cont</span> result))])))))</code>
 </pre>
 
-<p>There are two cases to consider: when the memoized function is called for the first time, and when it has been called before. When the function is called for the first time, we insert the original continuation, <code>cont</code>, into the table. Then we invoke the function with a custom continuation <code>(lambda (result) ...)</code> which in turn will invoke <code>cont</code>, as well as any other continuations which may have been inserted into the table in the meantime. We can think of the continuation <code>(lambda (result) ...)</code> as our “man on the inside”: it alone will do the work of being passed into the function and receive its results. Then it broadcasts those results to the continuations on the<span class="widont">&nbsp;</span>outside.</p>
+<p>There are two cases to consider: when the memoized function is called for the first time, and when it has been called before. When the function is called for the first time, we insert the original continuation, <code>cont</code>, into the table. Then we invoke the function with a custom continuation <code>(lambda (result) ...)</code> which in turn will invoke <code>cont</code>, as well as any other continuations which may have been inserted into the table in the meantime. We can think of the continuation <code>(lambda (result) ...)</code> as our “man on the inside”: it alone will do the work of being passed into the function and receive its results. Then it broadcasts those results to the continuations on the&nbsp;outside.</p>
 
-<p>Thus, in the second case when the function has been called before, we just insert the continuation into the list of continuations. Our “inside man” will then notify the continuation of new results as they are produced. Meanwhile, the continuation goes through the results that have already been memoized, and then it “goes to<span class="widont">&nbsp;</span>sleep”.</p>
+<p>Thus, in the second case when the function has been called before, we just insert the continuation into the list of continuations. Our “inside man” will then notify the continuation of new results as they are produced. Meanwhile, the continuation goes through the results that have already been memoized, and then it “goes to&nbsp;sleep”.</p>
 
-<p>Now we are ready to memoize the definitions. We use <code>memo-cps</code> for the returned parsers and <code>memo</code> for the parser combinators, which are regular functions. As before, the use of <code>memo</code> is necessary because <code>delay-parser</code> delays the combinators to being called at<span class="widont">&nbsp;</span>runtime.</p>
+<p>Now we are ready to memoize the definitions. We use <code>memo-cps</code> for the returned parsers and <code>memo</code> for the parser combinators, which are regular functions. As before, the use of <code>memo</code> is necessary because <code>delay-parser</code> delays the combinators to being called at&nbsp;runtime.</p>
 
 <pre>
 <code class="language-scheme">(<span class="hljs-name"><span class="hljs-builtin-name">define</span></span> succeed
@@ -553,7 +553,7 @@
       (<span class="hljs-name"><span class="hljs-builtin-name">lambda</span></span> (str cont) ...)))))</code>
 </pre>
 
-<p>Now we can define our left-recursive<span class="widont">&nbsp;</span>grammar:</p>
+<p>Now we can define our left-recursive&nbsp;grammar:</p>
 
 <pre>
 <code class="language-scheme">(<span class="hljs-name">define-parser</span> s
@@ -571,7 +571,7 @@
 (failure "")</code>
 </pre>
 
-<p>We get three results before the parser reaches the end of the string and terminates with a failure. This lets us see how the continuations are repeated: when the self-reference in <code>(seq s ...)</code> is encountered, the branch “goes to sleep” since <code>s</code> has been called before. Then the second branch matches a single <code>"a"</code>. Since this is one of the results of <code>s</code>, it is printed to standard output, but it is also broadcast to the first branch. That branch matches another <code>"a"</code>, and the combined sequence becomes another result for <code>s</code>. The result is again printed and broadcast to the first branch, and so on, until we reach the end of the<span class="widont">&nbsp;</span>string.</p>
+<p>We get three results before the parser reaches the end of the string and terminates with a failure. This lets us see how the continuations are repeated: when the self-reference in <code>(seq s ...)</code> is encountered, the branch “goes to sleep” since <code>s</code> has been called before. Then the second branch matches a single <code>"a"</code>. Since this is one of the results of <code>s</code>, it is printed to standard output, but it is also broadcast to the first branch. That branch matches another <code>"a"</code>, and the combined sequence becomes another result for <code>s</code>. The result is again printed and broadcast to the first branch, and so on, until we reach the end of the&nbsp;string.</p>
 
 <p>Let us now define a more convenient interface for invoking parsers. The <code>run-parser</code> function runs a parser with a continuation that collects all successful results in a list, which is then returned. Only results that consume the whole string (with a remainder of <code>""</code>) are collected.</p>
 
@@ -586,7 +586,7 @@
     results))</code>
 </pre>
 
-<p>We can implement an even simpler interface by exploiting the fact that Racket allows functions to have <em>optional arguments</em>. Thus, we can make the continuation argument optional! If the parser is invoked without a continuation, then the default is to use the continuation of <code>run-parser</code>. A wrapper for this interface can be defined as<span class="widont">&nbsp;</span>follows:</p>
+<p>We can implement an even simpler interface by exploiting the fact that Racket allows functions to have <em>optional arguments</em>. Thus, we can make the continuation argument optional! If the parser is invoked without a continuation, then the default is to use the continuation of <code>run-parser</code>. A wrapper for this interface can be defined as&nbsp;follows:</p>
 
 <pre>
 <code class="language-scheme">(define (make-parser parser)
@@ -605,14 +605,14 @@
      (<span class="hljs-name">delay-parser</span> body))))</code>
 </pre>
 
-<p>Our parsers can now be invoked in two ways: as a <abbr class="acronym" title="Continuation-Passing Style"><span class="caps">CPS</span></abbr> function passing the results to a continuation, or as a regular function returning the results to the caller. Here is an example of the<span class="widont">&nbsp;</span>latter:</p>
+<p>Our parsers can now be invoked in two ways: as a <abbr class="acronym" title="Continuation-Passing Style"><span class="caps">CPS</span></abbr> function passing the results to a continuation, or as a regular function returning the results to the caller. Here is an example of the&nbsp;latter:</p>
 
 <pre>
 <code class="language-scheme">&gt; (s "aaa")
 (list (success '(("a" "a") "a") ""))</code>
 </pre>
 
-<p>The parser returns a list containing a single result matching the whole<span class="widont">&nbsp;</span>input.</p>
+<p>The parser returns a list containing a single result matching the whole&nbsp;input.</p>
 </div>
 </section>
 
@@ -620,13 +620,13 @@
 <h2><a aria-hidden="true" class="header-anchor" href="#trampoline" title="Trampoline"></a>Trampoline<a aria-controls="trampoline-section" aria-expanded="true" aria-hidden="true" class="collapse-button" data-toggle="collapse" href="#trampoline-section" role="button"></a></h2>
 
 <div class="collapse in" id="trampoline-section">
-<p>A weakness of the current implementation is that the memoized parser results are scattered all over the place. Each parser has its own memoization table, storing the accumulated results from both the current parsing and from previous parsings. This is difficult to maintain and<span class="widont">&nbsp;</span>optimize.</p>
+<p>A weakness of the current implementation is that the memoized parser results are scattered all over the place. Each parser has its own memoization table, storing the accumulated results from both the current parsing and from previous parsings. This is difficult to maintain and&nbsp;optimize.</p>
 
-<p>Another issue is that when dealing with ambiguous grammars, all the results are produced at once. For such grammars, it would be more flexible to return a lazy stream of results, producing results one at a time. (An infinitely ambiguous grammar may produce infinitely many<span class="widont">&nbsp;</span>results!)</p>
+<p>Another issue is that when dealing with ambiguous grammars, all the results are produced at once. For such grammars, it would be more flexible to return a lazy stream of results, producing results one at a time. (An infinitely ambiguous grammar may produce infinitely many&nbsp;results!)</p>
 
-<p>To achieve this, we will encapsulate parser results and parser calls in a shared data structure called a <em>trampoline</em>. The trampoline contains a loop that iterates through parser calls and dispatches parsers. Each parser will have an extra <code>tramp</code> argument for the<span class="widont">&nbsp;</span>trampoline.</p>
+<p>To achieve this, we will encapsulate parser results and parser calls in a shared data structure called a <em>trampoline</em>. The trampoline contains a loop that iterates through parser calls and dispatches parsers. Each parser will have an extra <code>tramp</code> argument for the&nbsp;trampoline.</p>
 
-<p>We will define the trampoline as a Racket class, with fields and methods. This is just for convenience; we could also piece together a mutable list structure from scratch, like we did with the memoization tables. In the end, the trampoline is just a stateful object passed down from one parser to<span class="widont">&nbsp;</span>another.</p>
+<p>We will define the trampoline as a Racket class, with fields and methods. This is just for convenience; we could also piece together a mutable list structure from scratch, like we did with the memoization tables. In the end, the trampoline is just a stateful object passed down from one parser to&nbsp;another.</p>
 
 <p>Here is an outline of our <code>trampoline%</code> class (by convention, class names end with <code>%</code>):</p>
 
@@ -645,14 +645,14 @@
 
 <p>The trampoline contains two fields, the <em>stack</em> and the <em>table</em>. The stack contains function calls, while the table contains memoized values. Both are mutable lists, modified by the public methods <code>has-next?</code>, <code>step</code>, <code>push-stack</code>, <code>push</code> and <code>run</code>.</p>
 
-<p>The parsers will be modified to save their execution on the call stack. That is, instead of calling a parser directly, the parser call is pushed onto the stack. The trampoline loop then iterates through the stack until it is exhausted, checking with the <code>has-next?</code> method. This method returns true if the stack is nonempty and false if it is<span class="widont">&nbsp;</span>empty.</p>
+<p>The parsers will be modified to save their execution on the call stack. That is, instead of calling a parser directly, the parser call is pushed onto the stack. The trampoline loop then iterates through the stack until it is exhausted, checking with the <code>has-next?</code> method. This method returns true if the stack is nonempty and false if it is&nbsp;empty.</p>
 
 <pre>
 <code class="language-scheme">(<span class="hljs-name">define/public</span> (<span class="hljs-name">has-next?</span>)
   (<span class="hljs-name"><span class="hljs-builtin-name">not</span></span> (<span class="hljs-name">empty?</span> stack)))</code>
 </pre>
 
-<p>The <code>push-stack</code> method pushes a function call onto the stack. The call is a cons cell <code>(fn . args)</code>, containing a function and its<span class="widont">&nbsp;</span>arguments.</p>
+<p>The <code>push-stack</code> method pushes a function call onto the stack. The call is a cons cell <code>(fn . args)</code>, containing a function and its&nbsp;arguments.</p>
 
 <pre>
 <code class="language-scheme">(<span class="hljs-name">define/public</span> (<span class="hljs-name">push-stack</span> fn . args)
@@ -671,7 +671,7 @@
        (<span class="hljs-name"><span class="hljs-builtin-name">apply</span></span> fn args)])))</code>
 </pre>
 
-<p>The <code>run</code> method repeatedly invokes <code>step</code> until the stack is<span class="widont">&nbsp;</span>exhausted.</p>
+<p>The <code>run</code> method repeatedly invokes <code>step</code> until the stack is&nbsp;exhausted.</p>
 
 <pre>
 <code class="language-scheme">(<span class="hljs-name">define/public</span> (<span class="hljs-name">run</span>)
@@ -707,7 +707,7 @@
             (<span class="hljs-name">cont</span> result))])))</code>
 </pre>
 
-<p>As mentioned, the table has two levels (it is a nested association list). The first level maps parsers to memoization records, and the second level maps input to output. This is all handled by the local <code>table-ref</code> function, which automatically creates an empty entry when a function or its input is referenced for the first<span class="widont">&nbsp;</span>time.</p>
+<p>As mentioned, the table has two levels (it is a nested association list). The first level maps parsers to memoization records, and the second level maps input to output. This is all handled by the local <code>table-ref</code> function, which automatically creates an empty entry when a function or its input is referenced for the first&nbsp;time.</p>
 
 <pre>
 <code class="language-scheme">(<span class="hljs-name"><span class="hljs-builtin-name">define</span></span> (<span class="hljs-name">table-ref</span> fn str)
@@ -728,7 +728,7 @@
            entry)])))</code>
 </pre>
 
-<p>We are now ready to rewrite the parsers. For the most part, this is just a matter of adding an extra argument, <code>tramp</code>, for the trampoline. The <code>succeed</code> and <code>string</code> parsers don’t use the trampoline at<span class="widont">&nbsp;</span>all:</p>
+<p>We are now ready to rewrite the parsers. For the most part, this is just a matter of adding an extra argument, <code>tramp</code>, for the trampoline. The <code>succeed</code> and <code>string</code> parsers don’t use the trampoline at&nbsp;all:</p>
 
 <pre>
 <code class="language-scheme">(<span class="hljs-name"><span class="hljs-builtin-name">define</span></span> succeed
@@ -747,7 +747,7 @@
              (<span class="hljs-name">cont</span> (<span class="hljs-name">failure</span> tail))))))))</code>
 </pre>
 
-<p>Note the absence of <code>memo-cps</code>, since parser memoization is handled by the trampoline. The <code>seq</code> combinator just passes the <code>tramp</code> argument down from one parser to<span class="widont">&nbsp;</span>another:</p>
+<p>Note the absence of <code>memo-cps</code>, since parser memoization is handled by the trampoline. The <code>seq</code> combinator just passes the <code>tramp</code> argument down from one parser to&nbsp;another:</p>
 
 <pre>
 <code class="language-scheme">(<span class="hljs-name"><span class="hljs-builtin-name">define</span></span> (<span class="hljs-name">bind</span> p fn)
@@ -768,7 +768,7 @@
 
 <p>As before, the changes are in <code>bind</code>, which passes the trampoline around. The definition of <code>seq</code> stays the same, except that <code>memo-cps</code> is gone.</p>
 
-<p>Only the <code>alt</code> combinator will use the trampoline directly. Instead of invoking the alternative parsers itself, it pushes them on the<span class="widont">&nbsp;</span>stack:</p>
+<p>Only the <code>alt</code> combinator will use the trampoline directly. Instead of invoking the alternative parsers itself, it pushes them on the&nbsp;stack:</p>
 
 <pre>
 <code class="language-scheme">(<span class="hljs-name"><span class="hljs-builtin-name">define</span></span> alt
@@ -779,7 +779,7 @@
        (<span class="hljs-name">send</span> tramp push b str cont)))))</code>
 </pre>
 
-<p>The <code>send</code> function is Racket’s way of accessing the methods of a object. To invoke the <code>push</code> method of the <code>tramp</code> object, we write <code>(send tramp push ...)</code> and the method’s<span class="widont">&nbsp;</span>arguments.</p>
+<p>The <code>send</code> function is Racket’s way of accessing the methods of a object. To invoke the <code>push</code> method of the <code>tramp</code> object, we write <code>(send tramp push ...)</code> and the method’s&nbsp;arguments.</p>
 
 <p>Now we can create a trampoline, pass it to a parser along with a continuation, and invoke the <code>run</code> method:</p>
 
@@ -793,7 +793,7 @@
 (failure "")</code>
 </pre>
 
-<p>Of course, this is not a very convenient interface, so we will redefine the <code>run-parser</code> function to return the successful results as a lazy stream. To that end, we first define a <code>make-stream</code> convenience macro, which lets us use the stream constructor <code>stream-cons</code> in a simpler manner. The <code>stream-cons</code> function takes two expressions, one for producing the first element and one for producing the rest of the stream. Our <code>make-stream</code> macro just takes a single expression for producing the stream, which is easier in case multiple results are<span class="widont">&nbsp;</span>produced.</p>
+<p>Of course, this is not a very convenient interface, so we will redefine the <code>run-parser</code> function to return the successful results as a lazy stream. To that end, we first define a <code>make-stream</code> convenience macro, which lets us use the stream constructor <code>stream-cons</code> in a simpler manner. The <code>stream-cons</code> function takes two expressions, one for producing the first element and one for producing the rest of the stream. Our <code>make-stream</code> macro just takes a single expression for producing the stream, which is easier in case multiple results are&nbsp;produced.</p>
 
 <pre>
 <code class="language-scheme">(<span class="hljs-name">define-syntax-rule</span> (<span class="hljs-name">make-stream</span> body ...)
@@ -831,9 +831,9 @@
 
 <p>First, we create a new trampoline and an empty <code>results</code> list. After defining a few local functions, we make a stream that invokes the parser with a continuation that will add successful results to <code>results</code>. The local function <code>compute</code> is invoked to step through the trampoline’s stack until at least one result shows up in <code>results</code> or the stack is exhausted. The results are returned lazily by calling the local <code>stream</code> function, which creates a stream where the first results are taken from <code>results</code>, and the rest are produced by calling <code>compute</code> again.</p>
 
-<p>In other words, instead of stepping through the whole call stack at once with the <code>run</code> method, <code>run-parser</code> performs a more fine-grained execution with <code>step</code>. Whenever it obtains a result, it stops execution, unless forced to produce more (and the call stack is not<span class="widont">&nbsp;</span>exhausted).</p>
+<p>In other words, instead of stepping through the whole call stack at once with the <code>run</code> method, <code>run-parser</code> performs a more fine-grained execution with <code>step</code>. Whenever it obtains a result, it stops execution, unless forced to produce more (and the call stack is not&nbsp;exhausted).</p>
 
-<p>Finally, we can create a cleaner interface where the <code>tramp</code> and <code>cont</code> arguments are<span class="widont">&nbsp;</span>optional:</p>
+<p>Finally, we can create a cleaner interface where the <code>tramp</code> and <code>cont</code> arguments are&nbsp;optional:</p>
 
 <pre>
 <code class="language-scheme">(define-syntax-rule (define-parser parser body)
@@ -848,14 +848,14 @@
         (run-parser parser str))))</code>
 </pre>
 
-<p>When we now invoke our parsers in the regular way, we get a<span class="widont">&nbsp;</span>stream:</p>
+<p>When we now invoke our parsers in the regular way, we get a&nbsp;stream:</p>
 
 <pre>
 <code class="language-scheme">&gt; (s "aaa")
 #&lt;stream&gt;</code>
 </pre>
 
-<p>We can force the stream by converting it to a<span class="widont">&nbsp;</span>list:</p>
+<p>We can force the stream by converting it to a&nbsp;list:</p>
 
 <pre>
 <code class="language-scheme">&gt; (stream-&gt;list (s "aaa"))
@@ -892,7 +892,7 @@
      (foldl seq2 (succeed '()) parsers))))</code>
 </pre>
 
-<p>Now we will add some new definitions. First we define the <code>regexp</code> parser, which is similar to <code>string</code> except that it matches against a regular<span class="widont">&nbsp;</span>expression:</p>
+<p>Now we will add some new definitions. First we define the <code>regexp</code> parser, which is similar to <code>string</code> except that it matches against a regular&nbsp;expression:</p>
 
 <pre>
 <code class="language-scheme">(<span class="hljs-name"><span class="hljs-builtin-name">define</span></span> regexp
@@ -908,9 +908,9 @@
          [<span class="hljs-name">_</span> (<span class="hljs-name">cont</span> (<span class="hljs-name">failure</span> str))])))))</code>
 </pre>
 
-<p>This lets us define terminal parsers in a simpler way: for example, <code>(regexp "[0-9]+")</code> matches a whole<span class="widont">&nbsp;</span>number.</p>
+<p>This lets us define terminal parsers in a simpler way: for example, <code>(regexp "[0-9]+")</code> matches a whole&nbsp;number.</p>
 
-<p>Furthermore, we will provide semantic actions for our parsers by adding a new combinator, the <em>reduction combinator</em>. This combinator transforms the parse result using a given<span class="widont">&nbsp;</span>function.</p>
+<p>Furthermore, we will provide semantic actions for our parsers by adding a new combinator, the <em>reduction combinator</em>. This combinator transforms the parse result using a given&nbsp;function.</p>
 
 <pre>
 <code class="language-scheme">(<span class="hljs-name"><span class="hljs-builtin-name">define</span></span> red
@@ -922,9 +922,9 @@
                  [<span class="hljs-name">_</span> (<span class="hljs-name">succeed</span> (<span class="hljs-name">fn</span> val))]))))))</code>
 </pre>
 
-<p>For example, we can write <code>(red (regexp "[0-9]+") string-&gt;number)</code> to convert the match string to an actual number. The arity of the supplied function must match the value it is applied<span class="widont">&nbsp;</span>to.</p>
+<p>For example, we can write <code>(red (regexp "[0-9]+") string-&gt;number)</code> to convert the match string to an actual number. The arity of the supplied function must match the value it is applied&nbsp;to.</p>
 
-<p>We can now define an interpreter for the following grammar for arithmetic<span class="widont">&nbsp;</span>expressions:</p>
+<p>We can now define an interpreter for the following grammar for arithmetic&nbsp;expressions:</p>
 
 <pre>
 <code>  expr -&gt; expr "+" term
@@ -938,7 +938,7 @@ factor -&gt; "(" expr ")"
    num -&gt; "[0-9]+"</code>
 </pre>
 
-<p>Using anonymous functions for semantic actions, we can express the interpreter as<span class="widont">&nbsp;</span>follows:</p>
+<p>Using anonymous functions for semantic actions, we can express the interpreter as&nbsp;follows:</p>
 
 <pre>
 <code class="language-scheme">(<span class="hljs-name">define-parser</span> expr
@@ -965,7 +965,7 @@ factor -&gt; "(" expr ")"
        string-&gt;number))</code>
 </pre>
 
-<p>When we invoke the interpreter, the returned result contains the calculated<span class="widont">&nbsp;</span>value:</p>
+<p>When we invoke the interpreter, the returned result contains the calculated&nbsp;value:</p>
 
 <pre>
 <code class="language-scheme">&gt; (stream-&gt;list (expr "1*2+3*4"))
@@ -974,7 +974,7 @@ factor -&gt; "(" expr ")"
 (list (success 2 ""))</code>
 </pre>
 
-<p>Since the grammar is unambiguous, each expression only has one<span class="widont">&nbsp;</span>value.</p>
+<p>Since the grammar is unambiguous, each expression only has one&nbsp;value.</p>
 </div>
 </section>
 
@@ -982,24 +982,24 @@ factor -&gt; "(" expr ")"
 <h2><a aria-hidden="true" class="header-anchor" href="#further-reading" title="Further reading"></a>Further reading<a aria-controls="further-reading-section" aria-expanded="true" aria-hidden="true" class="collapse-button" data-toggle="collapse" href="#further-reading-section" role="button"></a></h2>
 
 <div class="collapse in" id="further-reading-section">
-<p>This concludes the article. Several improvements are possible from here. For example, one could specify a monadic interface for composing parsers. Racket’s macro system could be used to define an even simpler <abbr class="acronym" title="Domain-Specific Language"><span class="caps">DSL</span></abbr>. Branches in the grammar could be parallelized by using a monitor for the trampoline. Finally, one can optimize the combinators by adorning the parsers with metadata for calculating the <span class="caps">FIRST</span> and <span class="caps">FOLLOW</span> sets<span class="widont">&nbsp;</span>(Spiewak).</p>
+<p>This concludes the article. Several improvements are possible from here. For example, one could specify a monadic interface for composing parsers. Racket’s macro system could be used to define an even simpler <abbr class="acronym" title="Domain-Specific Language"><span class="caps">DSL</span></abbr>. Branches in the grammar could be parallelized by using a monitor for the trampoline. Finally, one can optimize the combinators by adorning the parsers with metadata for calculating the <span class="caps">FIRST</span> and <span class="caps">FOLLOW</span> sets&nbsp;(Spiewak).</p>
 
 <p>The code can be ported to an object-oriented language by creating a <code>Parser</code> interface and composing parser objects. Continuations can be implemented as functor objects if the language lacks first-order functions. The trampoline becomes another class. Some languages, like Ruby and Scala, offer facilities for creating a terse, <abbr class="acronym" title="Domain-Specific Language"><span class="caps">DSL</span></abbr>-like syntax.</p>
 
-<p>For more information, follow the<span class="widont">&nbsp;</span>references:</p>
+<p>For more information, follow the&nbsp;references:</p>
 
 <ul>
-<li><a href="https://mitpress.mit.edu/sicp/full-text/book/book.html"><em>Structure and Interpretation of Computer Programs</em></a>, second edition, Harold Abelson and Gerald Jay Sussman, The Massachusetts Institute of Technology, 1996. <a href="http://sarabander.github.io/sicp/">Unofficial <abbr class="acronym" title="HyperText Markup Language Version 5"><span class="caps">HTML5</span></abbr><span class="widont">&nbsp;</span>version</a>.</li>
+<li><a href="https://mitpress.mit.edu/sicp/full-text/book/book.html"><em>Structure and Interpretation of Computer Programs</em></a>, second edition, Harold Abelson and Gerald Jay Sussman, The Massachusetts Institute of Technology, 1996. <a href="http://sarabander.github.io/sicp/">Unofficial <abbr class="acronym" title="HyperText Markup Language Version 5"><span class="caps">HTML5</span></abbr>&nbsp;version</a>.</li>
 
-<li class="startsWithDoubleQuote"><a href="http://citeseerx.ist.psu.edu/viewdoc/summary?doi=10.1.1.14.3000">“Memoization in Top-Down Parsing”</a>, Mark Johnson, Brown University, 1995. Published in <em>Computational Linguistics</em>, Volume 21, Number 3. Covers regular memoization, continuation-passing style, and memoization of continuation-passing style<span class="widont">&nbsp;</span>functions.</li>
+<li class="startsWithDoubleQuote"><a href="http://citeseerx.ist.psu.edu/viewdoc/summary?doi=10.1.1.14.3000">“Memoization in Top-Down Parsing”</a>, Mark Johnson, Brown University, 1995. Published in <em>Computational Linguistics</em>, Volume 21, Number 3. Covers regular memoization, continuation-passing style, and memoization of continuation-passing style&nbsp;functions.</li>
 
-<li class="startsWithDoubleQuote"><a href="http://www.cs.uwm.edu/~dspiewak/papers/generalized-parser-combinators.pdf">“Generalized Parser Combinators”</a>, Daniel Spiewak, University of Wisconsin, 2010. Implemented as the <a href="https://github.com/djspiewak/gll-combinators">gll-combinators</a> Scala library, using continuation-passing style and trampolined dispatch. Offers a very accessible introduction to the <abbr class="acronym" title="Generalized LL"><span class="caps">GLL</span></abbr><span class="widont">&nbsp;</span>algorithm.</li>
+<li class="startsWithDoubleQuote"><a href="http://www.cs.uwm.edu/~dspiewak/papers/generalized-parser-combinators.pdf">“Generalized Parser Combinators”</a>, Daniel Spiewak, University of Wisconsin, 2010. Implemented as the <a href="https://github.com/djspiewak/gll-combinators">gll-combinators</a> Scala library, using continuation-passing style and trampolined dispatch. Offers a very accessible introduction to the <abbr class="acronym" title="Generalized LL"><span class="caps">GLL</span></abbr>&nbsp;algorithm.</li>
 
-<li><a href="http://dickgrune.com/Books/PTAPG_2nd_Edition/"><em>Parsing Techniques: A Practical Guide</em></a> (Second Edition), Dick Grune and Ceriel <span class="caps">J. H.</span> Jacobs, Springer, 2008. Chapter 11 contains a richly illustrated description of generalized <span class="caps">LL</span><span class="widont">&nbsp;</span>parsing.</li>
+<li><a href="http://dickgrune.com/Books/PTAPG_2nd_Edition/"><em>Parsing Techniques: A Practical Guide</em></a> (Second Edition), Dick Grune and Ceriel <span class="caps">J. H.</span> Jacobs, Springer, 2008. Chapter 11 contains a richly illustrated description of generalized <span class="caps">LL</span>&nbsp;parsing.</li>
 
-<li class="startsWithDoubleQuote"><a href="http://ldta.info/2009/ldta2009proceedings.pdf">“<abbr class="acronym" title="Generalized LL"><span class="caps">GLL</span></abbr> Parsing”</a>, Adrian Johnstone and Elizabeth Scott, University of London, 2009. Published in <em>Proceedings of <abbr class="acronym" title="Language Descriptions, Tools and Applications"><span class="caps">LDTA</span></abbr></em>. Explains the <abbr class="acronym" title="Generalized LL"><span class="caps">GLL</span></abbr> algorithm in abstract<span class="widont">&nbsp;</span>terms.</li>
+<li class="startsWithDoubleQuote"><a href="http://ldta.info/2009/ldta2009proceedings.pdf">“<abbr class="acronym" title="Generalized LL"><span class="caps">GLL</span></abbr> Parsing”</a>, Adrian Johnstone and Elizabeth Scott, University of London, 2009. Published in <em>Proceedings of <abbr class="acronym" title="Language Descriptions, Tools and Applications"><span class="caps">LDTA</span></abbr></em>. Explains the <abbr class="acronym" title="Generalized LL"><span class="caps">GLL</span></abbr> algorithm in abstract&nbsp;terms.</li>
 
-<li class="startsWithDoubleQuote"><a href="http://link.springer.com/chapter/10.1007%2F978-3-642-19440-5_4">“Modelling <abbr class="acronym" title="Generalized LL"><span class="caps">GLL</span></abbr> Parser Implementations”</a>, Adrian Johnstone and Elizabeth Scott, University of London, 2011. Lecture Notes in <em>Computer Science</em>, Volume 6563. Models an implementation of the <abbr class="acronym" title="Generalized LL"><span class="caps">GLL</span></abbr> algorithm in a theoretical<span class="widont">&nbsp;</span>language.</li>
+<li class="startsWithDoubleQuote"><a href="http://link.springer.com/chapter/10.1007%2F978-3-642-19440-5_4">“Modelling <abbr class="acronym" title="Generalized LL"><span class="caps">GLL</span></abbr> Parser Implementations”</a>, Adrian Johnstone and Elizabeth Scott, University of London, 2011. Lecture Notes in <em>Computer Science</em>, Volume 6563. Models an implementation of the <abbr class="acronym" title="Generalized LL"><span class="caps">GLL</span></abbr> algorithm in a theoretical&nbsp;language.</li>
 </ul>
 
 <p>Comments? Suggestions? Post them at the <a href="https://github.com/epsil/gll/issues">bug tracker</a>!</p>
@@ -1007,7 +1007,7 @@ factor -&gt; "(" expr ")"
 <p class="center"><a href="LICENSE"><img alt="" src="shield.svg"></a>
 </p>
 
-<p><i class="fa fa-github"></i> <a href="https://github.com/epsil">Vegard Øye</a> |<span class="widont">&nbsp;</span>2012</p>
+<p><i class="fa fa-github"></i> <a href="https://github.com/epsil">Vegard Øye</a> |&nbsp;2012</p>
 </div>
 </section>
 </section>

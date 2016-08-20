@@ -47,7 +47,7 @@
 <article>
 <header>
 <section id="dom-xpath-og-jquery">
-<h1 class="title"><a aria-hidden="true" class="header-anchor" href="#dom-xpath-og-jquery" title="DOM, XPath og&nbsp;jQuery"></a><abbr class="acronym" title="Document Object Model"><span class="caps">DOM</span></abbr>, <abbr title="XML Path Language">XPath</abbr> og<span class="widont">&nbsp;</span>jQuery</h1>
+<h1 class="title"><a aria-hidden="true" class="header-anchor" href="#dom-xpath-og-jquery" title="DOM, XPath og&nbsp;jQuery"></a><abbr class="acronym" title="Document Object Model"><span class="caps">DOM</span></abbr>, <abbr title="XML Path Language">XPath</abbr> og&nbsp;jQuery</h1>
 
 <div id="dom-xpath-og-jquery-section">
 <p><time><i class="fa fa-calendar-o"></i> 2012-05-05</time>
@@ -57,7 +57,7 @@
 </header>
 
 <section id="content">
-<p>JavaScript har forandret seg mye de siste årene. Først har man <a href="https://developer.mozilla.org/en/Gecko_DOM_Reference/Introduction#Core_Interfaces_in_the_DOM">Document Object Model</a> (<abbr class="acronym" title="Document Object Model"><span class="caps">DOM</span></abbr>), som implementeres litt forskjellig av hver nettleser og i grunn er ganske<span class="widont">&nbsp;</span>omstendelig:</p>
+<p>JavaScript har forandret seg mye de siste årene. Først har man <a href="https://developer.mozilla.org/en/Gecko_DOM_Reference/Introduction#Core_Interfaces_in_the_DOM">Document Object Model</a> (<abbr class="acronym" title="Document Object Model"><span class="caps">DOM</span></abbr>), som implementeres litt forskjellig av hver nettleser og i grunn er ganske&nbsp;omstendelig:</p>
 
 <pre>
 <code class="language-javascript"><span class="hljs-keyword">var</span> elmNewContent = <span class="hljs-built_in">document</span>.createElement(<span class="hljs-string">'a'</span>);
@@ -69,11 +69,11 @@ elmFoo.parentNode.insertBefore(elmNewContent, elmFoo);</code>
 
 <p>Douglas Crockford vil knapt <em>nevne</em> <abbr class="acronym" title="Document Object Model"><span class="caps">DOM</span></abbr> i <em>JavaScript: The Good Parts</em>: «I think writing a Good Parts book about the <abbr class="acronym" title="Document Object Model"><span class="caps">DOM</span></abbr> would be extremely challenging.»<sup class="footnote-ref"><a href="#fn1" id="fnref1" title="Douglas Crockford: JavaScript: The Good Parts, kapittel 1: «Good Parts», s. 2. O’Reilly, 2008.">[1]</a></sup></p>
 
-<p>Så har man <a href="http://en.wikipedia.org/wiki/XPath"><abbr title="XML Path Language">XPath</abbr></a>, som gjør det en del lettere å velge noder i et <abbr class="acronym" title="Extensible Markup Language"><span class="caps">XML</span></abbr>-tre. <em>Greasemonkey Hacks</em> gjør mye bruk av <abbr title="XML Path Language">XPath</abbr>. <abbr title="XML Path Language">XPath</abbr> hjelper imidlertid ikke med å manipulere nodene, bare å hente dem ut. Og det er jo det alt det andre som er mest krevende, med XmlHttpRequest og jeg vet ikke<span class="widont">&nbsp;</span>hva.</p>
+<p>Så har man <a href="http://en.wikipedia.org/wiki/XPath"><abbr title="XML Path Language">XPath</abbr></a>, som gjør det en del lettere å velge noder i et <abbr class="acronym" title="Extensible Markup Language"><span class="caps">XML</span></abbr>-tre. <em>Greasemonkey Hacks</em> gjør mye bruk av <abbr title="XML Path Language">XPath</abbr>. <abbr title="XML Path Language">XPath</abbr> hjelper imidlertid ikke med å manipulere nodene, bare å hente dem ut. Og det er jo det alt det andre som er mest krevende, med XmlHttpRequest og jeg vet ikke&nbsp;hva.</p>
 
-<p>Dermed kommer vi til <a href="http://api.jquery.com/">jQuery</a>. jQuery gjør det lettere både å hente ut noder (<abbr class="acronym" title="Cascading Style Sheets"><span class="caps">CSS</span></abbr>-syntaks), og å manipulere dem. Boken <em>JavaScript <span class="amp">&amp;</span> jQuery: The Missing Manual</em> virker å være en lettlest<span class="widont">&nbsp;</span>innføring.</p>
+<p>Dermed kommer vi til <a href="http://api.jquery.com/">jQuery</a>. jQuery gjør det lettere både å hente ut noder (<abbr class="acronym" title="Cascading Style Sheets"><span class="caps">CSS</span></abbr>-syntaks), og å manipulere dem. Boken <em>JavaScript <span class="amp">&amp;</span> jQuery: The Missing Manual</em> virker å være en lettlest&nbsp;innføring.</p>
 
-<p>Det må imidlertid påpekes at Greasemonkey ikke nødvendigvis er <a href="http://wiki.greasespot.net/Third-Party_Libraries#jQuery">kompatibel</a> med siste versjon av jQuery. Versjon 1.3.2 virker, men 1.4.1 gjør det ikke. Anbefalt bruk<span class="widont">&nbsp;</span>er:</p>
+<p>Det må imidlertid påpekes at Greasemonkey ikke nødvendigvis er <a href="http://wiki.greasespot.net/Third-Party_Libraries#jQuery">kompatibel</a> med siste versjon av jQuery. Versjon 1.3.2 virker, men 1.4.1 gjør det ikke. Anbefalt bruk&nbsp;er:</p>
 
 <pre>
 <code class="language-javascript"><span class="hljs-comment">// ==UserScript==</span>
@@ -82,7 +82,7 @@ elmFoo.parentNode.insertBefore(elmNewContent, elmFoo);</code>
 <span class="hljs-comment">// ==/UserScript==</span></code>
 </pre>
 
-<p>Greasemonkey-utgaven av <a href="http://userscripts.org/scripts/show/66698">Reddit Reveal</a> gjør <abbr title="for eksempel">f.eks.</abbr> utstrakt bruk av jQuery. Forresten har Ubuntu en pakke, <code>libjs-jsquery</code>, som installerer en utgave av jQuery under <code>/usr/share/javascript/jquery/jquery.js</code> (v1.7.1 i skrivende<span class="widont">&nbsp;</span>stund).</p>
+<p>Greasemonkey-utgaven av <a href="http://userscripts.org/scripts/show/66698">Reddit Reveal</a> gjør <abbr title="for eksempel">f.eks.</abbr> utstrakt bruk av jQuery. Forresten har Ubuntu en pakke, <code>libjs-jsquery</code>, som installerer en utgave av jQuery under <code>/usr/share/javascript/jquery/jquery.js</code> (v1.7.1 i skrivende&nbsp;stund).</p>
 
 <hr class="footnotes-sep">
 

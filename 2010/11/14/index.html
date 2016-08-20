@@ -47,7 +47,7 @@
 <article>
 <header>
 <section id="bruke-find-pa-filnavn-med-mellomrom">
-<h1 class="title"><a aria-hidden="true" class="header-anchor" href="#bruke-find-pa-filnavn-med-mellomrom" title="Bruke find på filnavn med&nbsp;mellomrom"></a>Bruke <code>find</code> på filnavn med<span class="widont">&nbsp;</span>mellomrom</h1>
+<h1 class="title"><a aria-hidden="true" class="header-anchor" href="#bruke-find-pa-filnavn-med-mellomrom" title="Bruke find på filnavn med&nbsp;mellomrom"></a>Bruke <code>find</code> på filnavn med&nbsp;mellomrom</h1>
 
 <div id="bruke-find-pa-filnavn-med-mellomrom-section">
 <p><time><i class="fa fa-calendar-o"></i> 2010-11-14</time>
@@ -57,22 +57,22 @@
 </header>
 
 <section id="content">
-<p>Hvis man skal bruke <code>find</code> sammen med, si, <code>rm</code> på filnavn som inneholder mellomrom, må man ta visse forhåndsregler. Den mest opplagte besvergelsen ville<span class="widont">&nbsp;</span>være:</p>
+<p>Hvis man skal bruke <code>find</code> sammen med, si, <code>rm</code> på filnavn som inneholder mellomrom, må man ta visse forhåndsregler. Den mest opplagte besvergelsen ville&nbsp;være:</p>
 
 <pre>
 <code>find -name &lt;PATTERN&gt; | xargs rm</code>
 </pre>
 
-<p>Men dette fungerer altså bare på filnavn uten mellomrom. For mer kronglete filer må man bruke en av<span class="widont">&nbsp;</span>disse:</p>
+<p>Men dette fungerer altså bare på filnavn uten mellomrom. For mer kronglete filer må man bruke en av&nbsp;disse:</p>
 
 <pre>
 <code>find -name &lt;PATTERN&gt; -exec rm {} \;
 find -name &lt;PATTERN&gt; -print0 | xargs -0 rm</code>
 </pre>
 
-<p>Den første eksekverer <code>rm</code> via <code>find</code>. Den siste bruker opsjonen <code>-print0</code> for å terminere filnavn med <code>\0</code> istedenfor linjeskift, og <code>rm</code> gjøres oppmerksom på dette med opsjonen <code>-0</code>. Begge programmer må altså tilpasses for å kunne samarbeide om spesielle<span class="widont">&nbsp;</span>filnavn.</p>
+<p>Den første eksekverer <code>rm</code> via <code>find</code>. Den siste bruker opsjonen <code>-print0</code> for å terminere filnavn med <code>\0</code> istedenfor linjeskift, og <code>rm</code> gjøres oppmerksom på dette med opsjonen <code>-0</code>. Begge programmer må altså tilpasses for å kunne samarbeide om spesielle&nbsp;filnavn.</p>
 
-<p>Fortrinnet med <code>\0</code>-metoden er at den håndterer de mest outrerte filnavn, selv navn som inneholder linjeskift! Jeg visste ikke at det var mulig før jeg leste <code>man find</code>, men <code>touch 'some\</code> + <kbd title="Enter">↵</kbd> + <code>file'</code> vil lage en slik fil. (Bytt ut «<code>touch</code>» med «<code>rm</code>» for å slette<span class="widont">&nbsp;</span>filen.)</p>
+<p>Fortrinnet med <code>\0</code>-metoden er at den håndterer de mest outrerte filnavn, selv navn som inneholder linjeskift! Jeg visste ikke at det var mulig før jeg leste <code>man find</code>, men <code>touch 'some\</code> + <kbd title="Enter">↵</kbd> + <code>file'</code> vil lage en slik fil. (Bytt ut «<code>touch</code>» med «<code>rm</code>» for å slette&nbsp;filen.)</p>
 </section>
 </article>
 </div>
