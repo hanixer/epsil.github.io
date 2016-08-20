@@ -309,8 +309,8 @@ time {
 
 @media (max-width: 767px) {
     body {
-        font-size: 125% !important;
-        /* line-height: 1.45; */
+        font-size: 127% !important;
+        line-height: 1.25;
     }
 
     .navbar-left {
