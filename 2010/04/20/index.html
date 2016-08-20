@@ -1,8 +1,8 @@
 <!DOCTYPE html>
 <html lang="no">
 <head>
-<title>Innføring i versjonskontroll</title>
-<meta content="text/html; charset=utf-8" http-equiv="Content-Type">
+<title>Innf&#248;ring i versjonskontroll</title>
+<meta content="text/html; charset=us-ascii" http-equiv="Content-Type">
 <meta content="text/css" http-equiv="Content-Style-Type">
 <meta content="width=device-width, initial-scale=1" name="viewport">
 <link href="../../../favicon.ico" rel="icon" type="image/x-icon">
@@ -47,7 +47,7 @@
 <article>
 <header>
 <section id="innforing-i-versjonskontroll">
-<h1 class="title"><a aria-hidden="true" class="header-anchor" href="#innforing-i-versjonskontroll" title="Innføring i versjonskontroll"></a>Innføring i versjonskontroll</h1>
+<h1 class="title"><a aria-hidden="true" class="header-anchor" href="#innforing-i-versjonskontroll" title="Innf&#248;ring i versjonskontroll"></a>Innf&#248;ring i versjonskontroll</h1>
 
 <div id="innforing-i-versjonskontroll-section">
 <p><time><i class="fa fa-calendar-o"></i> 2010-04-20</time>
@@ -57,44 +57,44 @@
 </header>
 
 <section id="content">
-<p>Før vi begynner, <strong>installer</strong> <a href="http://mercurial.selenic.com/">Mercurial</a> eller <a href="http://git-scm.com/">Git</a> (<a href="http://code.google.com/p/msysgit/">msysGit</a> på Windows), samt <a href="http://tortoisehg.bitbucket.org/">TortoiseHg</a> eller <a href="http://code.google.com/p/tortoisegit/">TortoiseGit</a>. De siste er ikke strengt nødvendige, men gir et felles brukergrensesnitt, slik at du kan følge denne veiledningen uansett hva du&nbsp;velger.</p>
+<p>F&#248;r vi begynner, <strong>installer</strong> <a href="http://mercurial.selenic.com/">Mercurial</a> eller <a href="http://git-scm.com/">Git</a> (<a href="http://code.google.com/p/msysgit/">msysGit</a> p&#229; Windows), samt <a href="http://tortoisehg.bitbucket.org/">TortoiseHg</a> eller <a href="http://code.google.com/p/tortoisegit/">TortoiseGit</a>. De siste er ikke strengt n&#248;dvendige, men gir et felles brukergrensesnitt, slik at du kan f&#248;lge denne veiledningen uansett hva du&#160;velger.</p>
 
-<p>Første steg er å <strong>initialisere et repository</strong>. Høyreklikk på prosjektmappen din og velg <em>Create repository here</em>:</p>
+<p>F&#248;rste steg er &#229; <strong>initialisere et repository</strong>. H&#248;yreklikk p&#229; prosjektmappen din og velg <em>Create repository here</em>:</p>
 
 <p class="center"><img alt="" src="init.png">
 </p>
 
-<p>I tillegg må vi inn i mappen, markere de aktuelle filene og <strong>legge dem til</strong>. (Du kan ha filer i repo’et ditt som ikke er under versjonskontroll: De vises med et blått spørsmålstegn, som under.) Her høyreklikker vi på <code>catch22.tex</code> og velger <em>TortoiseGit → Add</em>:</p>
+<p>I tillegg m&#229; vi inn i mappen, markere de aktuelle filene og <strong>legge dem til</strong>. (Du kan ha filer i repo&#8217;et ditt som ikke er under versjonskontroll: De vises med et bl&#229;tt sp&#248;rsm&#229;lstegn, som under.) Her h&#248;yreklikker vi p&#229; <code>catch22.tex</code> og velger <em>TortoiseGit &#8594; Add</em>:</p>
 
 <p class="center"><img alt="" src="add.png">
 </p>
 
-<p>Da er vi klare! Filen er nå <strong>grønn</strong>, ettersom de siste endringene er sjekket&nbsp;inn:</p>
+<p>Da er vi klare! Filen er n&#229; <strong>gr&#248;nn</strong>, ettersom de siste endringene er sjekket&#160;inn:</p>
 
 <p class="center"><img alt="" src="repo.png">
 </p>
 
-<p>La oss gjøre noen <strong>nye endringer</strong>. Vi åpner <code>catch22.tex</code> i en teksteditor, legger til litt tekst og&nbsp;lagrer:</p>
+<p>La oss gj&#248;re noen <strong>nye endringer</strong>. Vi &#229;pner <code>catch22.tex</code> i en teksteditor, legger til litt tekst og&#160;lagrer:</p>
 
 <p class="center"><img alt="" src="edit.png">
 </p>
 
-<p>Nå blir filen <strong>rød</strong>, fordi det er avvik mellom den og det som er sjekket inn siden sist. For å sjekke inn, høyreklikker vi på filen (eller den overordnede mappen) og velger <em>Commit</em>:</p>
+<p>N&#229; blir filen <strong>r&#248;d</strong>, fordi det er avvik mellom den og det som er sjekket inn siden sist. For &#229; sjekke inn, h&#248;yreklikker vi p&#229; filen (eller den overordnede mappen) og velger <em>Commit</em>:</p>
 
 <p class="center"><img alt="" src="commit.png">
 </p>
 
-<p>Vi får opp et tekstfelt hvor kan skrive et kort <strong>sammendrag</strong> av hva vi har&nbsp;gjort:</p>
+<p>Vi f&#229;r opp et tekstfelt hvor kan skrive et kort <strong>sammendrag</strong> av hva vi har&#160;gjort:</p>
 
 <p class="center"><img alt="" src="message.png">
 </p>
 
-<p>Suksess! Filen er nå <strong>oppdatert</strong> og grønn&nbsp;igjen.</p>
+<p>Suksess! Filen er n&#229; <strong>oppdatert</strong> og gr&#248;nn&#160;igjen.</p>
 
 <p class="center"><img alt="" src="repo.png">
 </p>
 
-<p>Stort mer er det ikke. Du kan opprette en konto på <a href="http://github.com/">GitHub</a> eller <a href="http://bitbucket.org/">BitBucket</a> og synkronisere arbeidet ditt mot en ekstern server, men i utgangspunktet gjøres alt lokalt (distribuert). Du sjekker inn arbeidet ditt så ofte du føler for det, kanskje ved arbeidsdagens slutt. For å se hvordan prosjektet skrider fremover, høyreklikk på filen/mappen og velg <em>TortoiseGit → Show&nbsp;log</em>.</p>
+<p>Stort mer er det ikke. Du kan opprette en konto p&#229; <a href="http://github.com/">GitHub</a> eller <a href="http://bitbucket.org/">BitBucket</a> og synkronisere arbeidet ditt mot en ekstern server, men i utgangspunktet gj&#248;res alt lokalt (distribuert). Du sjekker inn arbeidet ditt s&#229; ofte du f&#248;ler for det, kanskje ved arbeidsdagens slutt. For &#229; se hvordan prosjektet skrider fremover, h&#248;yreklikk p&#229; filen/mappen og velg <em>TortoiseGit &#8594; Show&#160;log</em>.</p>
 
 <p><strong>Lykke til!</strong> :)</p>
 

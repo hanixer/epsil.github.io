@@ -1,8 +1,8 @@
 <!DOCTYPE html>
 <html lang="no">
 <head>
-<title>Dia på OS X</title>
-<meta content="text/html; charset=utf-8" http-equiv="Content-Type">
+<title>Dia p&#229; OS X</title>
+<meta content="text/html; charset=us-ascii" http-equiv="Content-Type">
 <meta content="text/css" http-equiv="Content-Style-Type">
 <meta content="width=device-width, initial-scale=1" name="viewport">
 <link href="../../../favicon.ico" rel="icon" type="image/x-icon">
@@ -47,7 +47,7 @@
 <article>
 <header>
 <section id="dia-pa-os-x">
-<h1 class="title"><a aria-hidden="true" class="header-anchor" href="#dia-pa-os-x" title="Dia på OS&nbsp;X"></a>Dia på <abbr class="acronym" title="Operating System 10"><span class="caps">OS</span>&nbsp;X</abbr></h1>
+<h1 class="title"><a aria-hidden="true" class="header-anchor" href="#dia-pa-os-x" title="Dia p&#229; OS&#160;X"></a>Dia p&#229; <abbr class="acronym" title="Operating System 10"><span class="caps">OS</span>&#160;X</abbr></h1>
 
 <div id="dia-pa-os-x-section">
 <p><time><i class="fa fa-calendar-o"></i> 2015-06-25</time>
@@ -57,21 +57,21 @@
 </header>
 
 <section id="content">
-<p><a href="http://dia-installer.de/">Dia</a> krasjer på <abbr class="acronym" title="Operating System 10"><span class="caps">OS</span> X</abbr> Yosemite. Følgende <a href="http://navkirats.blogspot.no/2014/10/dia-diagram-mac-osx-yosemite-fix-i-use.html">løsning</a> retter opp en <abbr class="acronym" title="GIMP Toolkit"><span class="caps">GTK</span></abbr>-feil:</p>
+<p><a href="http://dia-installer.de/">Dia</a> krasjer p&#229; <abbr class="acronym" title="Operating System 10"><span class="caps">OS</span> X</abbr> Yosemite. F&#248;lgende <a href="http://navkirats.blogspot.no/2014/10/dia-diagram-mac-osx-yosemite-fix-i-use.html">l&#248;sning</a> retter opp en <abbr class="acronym" title="GIMP Toolkit"><span class="caps">GTK</span></abbr>-feil:</p>
 
 <ol>
-<li>Åpne filen <code>/Applications/Dia.app/Contents/Resources/bin/dia</code> i en&nbsp;editor.</li>
+<li>&#197;pne filen <code>/Applications/Dia.app/Contents/Resources/bin/dia</code> i en&#160;editor.</li>
 
-<li>Legg til linjen <code>export DISPLAY=:0</code> etter linje&nbsp;39.</li>
+<li>Legg til linjen <code>export DISPLAY=:0</code> etter linje&#160;39.</li>
 
-<li>Avslutt XQuartz hvis det kjører og start Dia på&nbsp;nytt.</li>
+<li>Avslutt XQuartz hvis det kj&#248;rer og start Dia p&#229;&#160;nytt.</li>
 </ol>
 
-<p>Hvis det ovenstående ikke fungerer, kan man prøve å legge til <code>export DISPLAY=:0</code> i <code>~/.bash_profile</code>.</p>
+<p>Hvis det ovenst&#229;ende ikke fungerer, kan man pr&#248;ve &#229; legge til <code>export DISPLAY=:0</code> i <code>~/.bash_profile</code>.</p>
 
 <hr>
 
-<p>For å lage <abbr class="acronym" title="Portable Document Format"><span class="caps">PDF</span></abbr>, er det best å eksportere til <abbr class="acronym" title="Encapsulated PostScript"><span class="caps">EPS</span></abbr> (med Pango-skrifter) og deretter <a href="http://www.dark.ca/2009/07/16/getting-dia-to-give-you-a-pdf/">konvertere til <abbr class="acronym" title="Portable Document Format"><span class="caps">PDF</span></abbr></a>:</p>
+<p>For &#229; lage <abbr class="acronym" title="Portable Document Format"><span class="caps">PDF</span></abbr>, er det best &#229; eksportere til <abbr class="acronym" title="Encapsulated PostScript"><span class="caps">EPS</span></abbr> (med Pango-skrifter) og deretter <a href="http://www.dark.ca/2009/07/16/getting-dia-to-give-you-a-pdf/">konvertere til <abbr class="acronym" title="Portable Document Format"><span class="caps">PDF</span></abbr></a>:</p>
 
 <pre>
 <code>$ epstopdf diagram.eps</code>

@@ -1,8 +1,8 @@
 <!DOCTYPE html>
 <html lang="no">
 <head>
-<title>Oppgradere Python på OS X</title>
-<meta content="text/html; charset=utf-8" http-equiv="Content-Type">
+<title>Oppgradere Python p&#229; OS X</title>
+<meta content="text/html; charset=us-ascii" http-equiv="Content-Type">
 <meta content="text/css" http-equiv="Content-Style-Type">
 <meta content="width=device-width, initial-scale=1" name="viewport">
 <link href="../../../favicon.ico" rel="icon" type="image/x-icon">
@@ -47,7 +47,7 @@
 <article>
 <header>
 <section id="oppgradere-python-pa-os-x">
-<h1 class="title"><a aria-hidden="true" class="header-anchor" href="#oppgradere-python-pa-os-x" title="Oppgradere Python på OS&nbsp;X"></a>Oppgradere Python på <abbr class="acronym" title="Operating System 10"><span class="caps">OS</span>&nbsp;X</abbr></h1>
+<h1 class="title"><a aria-hidden="true" class="header-anchor" href="#oppgradere-python-pa-os-x" title="Oppgradere Python p&#229; OS&#160;X"></a>Oppgradere Python p&#229; <abbr class="acronym" title="Operating System 10"><span class="caps">OS</span>&#160;X</abbr></h1>
 
 <div id="oppgradere-python-pa-os-x-section">
 <p><time><i class="fa fa-calendar-o"></i> 2014-01-07</time>
@@ -57,33 +57,33 @@
 </header>
 
 <section id="content">
-<p>Pakkehåndtering på <abbr class="acronym" title="Operating System 10"><span class="caps">OS</span> X</abbr> er et herk uten like. Her er det som skulle til for å installere Python-biblioteket <a href="http://eyed3.nicfit.net/installation.html">eyeD3</a> med <code>pip</code>. Først, <a href="http://www.pip-installer.org/en/latest/installing.html">installer pip</a> med <code>easy_install</code>:</p>
+<p>Pakkeh&#229;ndtering p&#229; <abbr class="acronym" title="Operating System 10"><span class="caps">OS</span> X</abbr> er et herk uten like. Her er det som skulle til for &#229; installere Python-biblioteket <a href="http://eyed3.nicfit.net/installation.html">eyeD3</a> med <code>pip</code>. F&#248;rst, <a href="http://www.pip-installer.org/en/latest/installing.html">installer pip</a> med <code>easy_install</code>:</p>
 
 <pre>
 <code>$ sudo easy_install pip</code>
 </pre>
 
-<p>Deretter kan det være nødvendig å oppgradere <code>setuptools</code>:</p>
+<p>Deretter kan det v&#230;re n&#248;dvendig &#229; oppgradere <code>setuptools</code>:</p>
 
 <pre>
 <code>$ pip install --upgrade setuptools</code>
 </pre>
 
-<p>Hvis dette ikke fungerer,&nbsp;prøv:</p>
+<p>Hvis dette ikke fungerer,&#160;pr&#248;v:</p>
 
 <pre>
 <code>$ sudo pip install --no-use-wheel --upgrade setuptools</code>
 </pre>
 
-<p>Alternativt, last ned og kjør det offisielle <a href="https://pypi.python.org/pypi/setuptools#unix-based-systems-including-mac-os-x">installasjonsskriptet</a>:</p>
+<p>Alternativt, last ned og kj&#248;r det offisielle <a href="https://pypi.python.org/pypi/setuptools#unix-based-systems-including-mac-os-x">installasjonsskriptet</a>:</p>
 
 <pre>
 <code>$ wget https://bitbucket.org/pypa/setuptools/raw/bootstrap/ez_setup.py -O - | sudo python</code>
 </pre>
 
-<p>(Hvis <code>wget</code> ikke er installert ennå, gjør <code>$ brew install wget</code>. Hvis <code>brew</code> krangler, kjør <code>$ brew doctor</code> og påse at filrettigheter er som de skal&nbsp;være.)</p>
+<p>(Hvis <code>wget</code> ikke er installert enn&#229;, gj&#248;r <code>$ brew install wget</code>. Hvis <code>brew</code> krangler, kj&#248;r <code>$ brew doctor</code> og p&#229;se at filrettigheter er som de skal&#160;v&#230;re.)</p>
 
-<p>Når <code>pip</code> <em>og</em> <code>setuptools</code> er installert, kan <code>pip</code>-pakken for <code>eye3D</code> finnes med <code>pip search</code>:</p>
+<p>N&#229;r <code>pip</code> <em>og</em> <code>setuptools</code> er installert, kan <code>pip</code>-pakken for <code>eye3D</code> finnes med <code>pip search</code>:</p>
 
 <pre>
 <code>$ pip search eyeD3

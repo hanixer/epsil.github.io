@@ -2,7 +2,7 @@
 <html lang="no">
 <head>
 <title>Klone harddisk</title>
-<meta content="text/html; charset=utf-8" http-equiv="Content-Type">
+<meta content="text/html; charset=us-ascii" http-equiv="Content-Type">
 <meta content="text/css" http-equiv="Content-Style-Type">
 <meta content="width=device-width, initial-scale=1" name="viewport">
 <link href="../../../favicon.ico" rel="icon" type="image/x-icon">
@@ -57,38 +57,38 @@
 </header>
 
 <section id="content">
-<p>Jeg fikk nylig en ny bærbar i hende og trengte en enkel måte å klone den gamle harddisken på, heller enn å installere alt på nytt. (Ubuntu-installasjoner er svært flyttbare takket være glimrende autodeteksjon av maskinvare.) Slik gikk jeg&nbsp;frem:</p>
+<p>Jeg fikk nylig en ny b&#230;rbar i hende og trengte en enkel m&#229;te &#229; klone den gamle harddisken p&#229;, heller enn &#229; installere alt p&#229; nytt. (Ubuntu-installasjoner er sv&#230;rt flyttbare takket v&#230;re glimrende autodeteksjon av maskinvare.) Slik gikk jeg&#160;frem:</p>
 
-<p><code>dd</code> er et kraftig kommandolinjeverktøy som leser fra og skriver til disker på lavnivå. <code>nc</code>, <abbr class="acronym" title="Also Known As"><span class="caps">AKA</span></abbr> NetCat, overfører data over nettverket. Alt som trengs er å kombinere disse: Den gamle maskinen leser data og sender dem til den nye, som i sin tur skriver dem til&nbsp;harddisken.</p>
+<p><code>dd</code> er et kraftig kommandolinjeverkt&#248;y som leser fra og skriver til disker p&#229; lavniv&#229;. <code>nc</code>, <abbr class="acronym" title="Also Known As"><span class="caps">AKA</span></abbr> NetCat, overf&#248;rer data over nettverket. Alt som trengs er &#229; kombinere disse: Den gamle maskinen leser data og sender dem til den nye, som i sin tur skriver dem til&#160;harddisken.</p>
 
-<p>For å få nettverk, la jeg i all enkelhet en krysset <abbr class="acronym" title="Twisted Pair"><span class="caps">TP</span></abbr>-kabel (<abbr class="acronym" title="Registered Jack 45"><span class="caps">RJ45</span></abbr>) mellom maskinene. Deretter startet jeg opp maskinene fra noen Ubuntu 10.04- og 10.10-<abbr class="acronym" title="Compact Disc"><span class="caps">CD</span></abbr>-er jeg hadde liggende for å kjøre Linux uten å aksessere harddisken. Jeg valgte nødmodusen («recovery mode») fordi den stilte alle de riktige spørsmålene – hvilken <abbr class="acronym" title="Internet Protocol"><span class="caps">IP</span></abbr>-adresse maskinen skulle ha (192.168.1.10 og .11), hvorvidt filsystemet skulle monteres (nei) – før den overlot styringen til meg gjennom et enkelt, men kraftig&nbsp;rootshell.</p>
+<p>For &#229; f&#229; nettverk, la jeg i all enkelhet en krysset <abbr class="acronym" title="Twisted Pair"><span class="caps">TP</span></abbr>-kabel (<abbr class="acronym" title="Registered Jack 45"><span class="caps">RJ45</span></abbr>) mellom maskinene. Deretter startet jeg opp maskinene fra noen Ubuntu 10.04- og 10.10-<abbr class="acronym" title="Compact Disc"><span class="caps">CD</span></abbr>-er jeg hadde liggende for &#229; kj&#248;re Linux uten &#229; aksessere harddisken. Jeg valgte n&#248;dmodusen (&#171;recovery mode&#187;) fordi den stilte alle de riktige sp&#248;rsm&#229;lene &#8211; hvilken <abbr class="acronym" title="Internet Protocol"><span class="caps">IP</span></abbr>-adresse maskinen skulle ha (192.168.1.10 og .11), hvorvidt filsystemet skulle monteres (nei) &#8211; f&#248;r den overlot styringen til meg gjennom et enkelt, men kraftig&#160;rootshell.</p>
 
-<p>På maskinen jeg skulle kopiere <em>til</em>, skrev jeg nå&nbsp;følgende:</p>
+<p>P&#229; maskinen jeg skulle kopiere <em>til</em>, skrev jeg n&#229;&#160;f&#248;lgende:</p>
 
 <pre>
 <code>nc -l -p 8888 | dd of=/dev/sda</code>
 </pre>
 
-<p>Dette satte maskinen til å lytte på port 8888 og skrive alt den mottok derfra <em>direkte</em> til den nye harddisken, <code>/dev/sda</code>. Sterk kost! På maskinen jeg skulle kopiere <em>fra</em>, skrev jeg:</p>
+<p>Dette satte maskinen til &#229; lytte p&#229; port 8888 og skrive alt den mottok derfra <em>direkte</em> til den nye harddisken, <code>/dev/sda</code>. Sterk kost! P&#229; maskinen jeg skulle kopiere <em>fra</em>, skrev jeg:</p>
 
 <pre>
 <code>dd if=/dev/sda | nc 192.168.1.10 8888</code>
 </pre>
 
-<p>Dermed begynte den gamle maskinen å lese fra harddisken, blokk for blokk, og sende alt sammen over til den&nbsp;nye.</p>
+<p>Dermed begynte den gamle maskinen &#229; lese fra harddisken, blokk for blokk, og sende alt sammen over til den&#160;nye.</p>
 
-<p>Så var det bare å vente (den nye maskinen sluttet å lytte straks den gamle var ferdig med å sende). For min del tok dette 6 timer for 250 <abbr class="acronym" title="gigabyte"><span class="caps">GB</span></abbr>, altså <abbr title="cirka">ca.</abbr> 12 <abbr class="acronym" title="megabyte"><span class="caps">MB</span></abbr>/s. Ved å bruke <code>bzip</code>-komprimering og en fornuftig blokkstørrelse kan tiden halveres, avhengig av dataene som overføres;<sup class="footnote-ref"><a href="#fn1" id="fnref1" title="http://www.ndchost.com/wiki/server-administration/netcat-over-ssh">[1]</a></sup> hvis man har en maskin med rom for to harddisker, er dét naturligvis enda raskere. Søk ellers på «<a href="http://www.google.no/search?q=dd+over+netcat">dd over netcat</a>» og «<a href="http://www.google.no/search?q=dd+over+ssh">dd over ssh</a>» for mer info. (Den som ønsker et mer polert verktøy med <abbr class="acronym" title="Graphical User Interface"><span class="caps">GUI</span></abbr> og fremdriftsindikatorer, kan kikke på <a href="http://clonezilla.org/">Clonezilla</a> eller <a href="http://ping.windowsdream.com/"><span class="caps">PING</span></a>, men også disse bruker <code>dd</code> i bunnen.)</p>
+<p>S&#229; var det bare &#229; vente (den nye maskinen sluttet &#229; lytte straks den gamle var ferdig med &#229; sende). For min del tok dette 6 timer for 250 <abbr class="acronym" title="gigabyte"><span class="caps">GB</span></abbr>, alts&#229; <abbr title="cirka">ca.</abbr> 12 <abbr class="acronym" title="megabyte"><span class="caps">MB</span></abbr>/s. Ved &#229; bruke <code>bzip</code>-komprimering og en fornuftig blokkst&#248;rrelse kan tiden halveres, avhengig av dataene som overf&#248;res;<sup class="footnote-ref"><a href="#fn1" id="fnref1" title="http://www.ndchost.com/wiki/server-administration/netcat-over-ssh">[1]</a></sup> hvis man har en maskin med rom for to harddisker, er d&#233;t naturligvis enda raskere. S&#248;k ellers p&#229; &#171;<a href="http://www.google.no/search?q=dd+over+netcat">dd over netcat</a>&#187; og &#171;<a href="http://www.google.no/search?q=dd+over+ssh">dd over ssh</a>&#187; for mer info. (Den som &#248;nsker et mer polert verkt&#248;y med <abbr class="acronym" title="Graphical User Interface"><span class="caps">GUI</span></abbr> og fremdriftsindikatorer, kan kikke p&#229; <a href="http://clonezilla.org/">Clonezilla</a> eller <a href="http://ping.windowsdream.com/"><span class="caps">PING</span></a>, men ogs&#229; disse bruker <code>dd</code> i bunnen.)</p>
 
-<p>Det slående med denne prosedyren er hvor enkel den er. <code>dd</code> leser fra og skriver til harddiskene, <code>nc</code> sender dataene over nettverket, og pipe-operatoren, <code>|</code>, kobler de to sammen. Dette er et elegant eksempel på «Unix power», hvor små og kraftige verktøy kombineres for å utføre større&nbsp;oppgaver.</p>
+<p>Det sl&#229;ende med denne prosedyren er hvor enkel den er. <code>dd</code> leser fra og skriver til harddiskene, <code>nc</code> sender dataene over nettverket, og pipe-operatoren, <code>|</code>, kobler de to sammen. Dette er et elegant eksempel p&#229; &#171;Unix power&#187;, hvor sm&#229; og kraftige verkt&#248;y kombineres for &#229; utf&#248;re st&#248;rre&#160;oppgaver.</p>
 
-<p>Til slutt et stalltips til alle dual-bootere: lag en diskavbildning av Windows-installasjonen i Linux! <code>dd</code>, <code>ntfsclone</code> eller <code>partimage</code> gjør jobben. Straks Windows-installasjonen får et virus eller noe, som iallfall min gjør med jevne mellomrom, er det bare å gå inn i det friske Linux-systemet og gjenopprette avbildningen. Ingen&nbsp;bekymringer!</p>
+<p>Til slutt et stalltips til alle dual-bootere: lag en diskavbildning av Windows-installasjonen i Linux! <code>dd</code>, <code>ntfsclone</code> eller <code>partimage</code> gj&#248;r jobben. Straks Windows-installasjonen f&#229;r et virus eller noe, som iallfall min gj&#248;r med jevne mellomrom, er det bare &#229; g&#229; inn i det friske Linux-systemet og gjenopprette avbildningen. Ingen&#160;bekymringer!</p>
 
 <hr class="footnotes-sep">
 
 <section class="footnotes">
 <ol class="footnotes-list">
 <li class="footnote-item" id="fn1">
-<p><a href="http://www.ndchost.com/wiki/server-administration/netcat-over-ssh">http://www.ndchost.com/wiki/server-administration/netcat-over-ssh</a> <a class="footnote-backref" href="#fnref1" title="Så var det bare å vente (den nye maskinen sluttet å lytte straks den gamle var ferdig med å sende). For min del tok dette 6 timer for 250 GB, altså ca. 12 MB/s. Ved å bruke bzip-komprimering og en fornuftig blokkstørrelse kan tiden halveres, avhengig av dataene som overføres;[1] hvis man har en maskin med rom for to harddisker, er dét naturligvis enda raskere. Søk ellers på «dd over netcat» og «dd over ssh» for mer info. (Den som ønsker et mer polert verktøy med GUI og fremdriftsindikatorer, kan kikke på Clonezilla eller PING, men også disse bruker dd i bunnen.)">↩︎</a></p>
+<p><a href="http://www.ndchost.com/wiki/server-administration/netcat-over-ssh">http://www.ndchost.com/wiki/server-administration/netcat-over-ssh</a> <a class="footnote-backref" href="#fnref1" title="S&#229; var det bare &#229; vente (den nye maskinen sluttet &#229; lytte straks den gamle var ferdig med &#229; sende). For min del tok dette 6 timer for 250 GB, alts&#229; ca. 12 MB/s. Ved &#229; bruke bzip-komprimering og en fornuftig blokkst&#248;rrelse kan tiden halveres, avhengig av dataene som overf&#248;res;[1] hvis man har en maskin med rom for to harddisker, er d&#233;t naturligvis enda raskere. S&#248;k ellers p&#229; &#171;dd over netcat&#187; og &#171;dd over ssh&#187; for mer info. (Den som &#248;nsker et mer polert verkt&#248;y med GUI og fremdriftsindikatorer, kan kikke p&#229; Clonezilla eller PING, men ogs&#229; disse bruker dd i bunnen.)">&#8617;&#65038;</a></p>
 </li>
 </ol>
 </section>
