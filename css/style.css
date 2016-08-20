@@ -86,7 +86,7 @@ code, kbd, samp, tt, pre {
     border: none;
     color: inherit;
     font-family: Consolas, "Consolas Web", Menlo, Monaco, "Liberation Mono", Courier, monospace !important;
-    font-size: 0.7em !important;
+    font-size: 0.65em !important;
     font-style: normal;
     -moz-osx-font-smoothing: auto;
 }
