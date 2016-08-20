@@ -879,7 +879,7 @@
             (<span class="hljs-name">send</span> tramp push fn str cont))))))</code>
 </pre>
 
-<p>Generalizing <code class="language-scheme">seq</code> is most easily done with a fold. In essence, we take the binary definition and rename it to a local function <code class="language-scheme">seq<span class="hljs-number">2</span></code>, swap the arguments around, and then use it to reduce the list of parsers to a single value. We also adjust the way the combined result is created so that we get a flat list <code class="language-scheme">(<span class="hljs-name">val1</span> val2 val3)</code> instead of <code class="language-scheme">((<span class="hljs-name">val1</span> val2) val3)</code>.</p>
+<p>Generalizing <code class="language-scheme">seq</code> is most easily done with a fold. In essence, we take the binary definition and rename it to a local function <code class="language-scheme">seq2</code>, swap the arguments around, and then use it to reduce the list of parsers to a single value. We also adjust the way the combined result is created so that we get a flat list <code class="language-scheme">(<span class="hljs-name">val1</span> val2 val3)</code> instead of <code class="language-scheme">((<span class="hljs-name">val1</span> val2) val3)</code>.</p>
 
 <pre>
 <code class="language-scheme">(<span class="hljs-name"><span class="hljs-builtin-name">define</span></span> seq

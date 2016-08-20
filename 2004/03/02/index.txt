@@ -15,7 +15,7 @@ Først litt terminologi: CSS definerer typografi og utforming innenfor et bestem
 
 Når en nettside er for høy eller bred til å få plass innenfor visningsområdet, skal nettleseren tilby en mekanisme som lar brukeren bestemme hvilket utsnitt av siden som skal vises -- vanligvis ved hjelp av såkalt rulling eller «scrolling».
 
-> **Merk at [CSS 2.1-spesifikasjonen](http://www.w3.org/TR/CSS21/) ikke sier noe om hva slags mekanisme som skal tas i bruk for å rulle på en gitt plattform. Ved å sette [`overflow`](http://www.w3.org/TR/CSS21/visufx.html#propdef-overflow)-egenskapen til verdien `scroll` angir man riktignok rulling, men man har ikke sagt noe konkret om hvordan denne rullingen skal muliggjøres rent praktisk. Rullefelt er her én mulig styringsmekanisme -- piltaster og musehjul er andre.**
+> **Merk at [CSS 2.1-spesifikasjonen](http://www.w3.org/TR/CSS21/) ikke sier noe om hva slags mekanisme som skal tas i bruk for å rulle på en gitt plattform. Ved å sette [`overflow`{.css}](http://www.w3.org/TR/CSS21/visufx.html#propdef-overflow)-egenskapen til verdien `scroll`{.css} angir man riktignok rulling, men man har ikke sagt noe konkret om hvordan denne rullingen skal muliggjøres rent praktisk. Rullefelt er her én mulig styringsmekanisme -- piltaster og musehjul er andre.**
 
 Microsofts CSS-utvidelser
 -------------------------
@@ -24,13 +24,13 @@ Noen webdesignere har problemer med rullefelt fordi de avgrenser hele eller dele
 
 Egenskapene det er snakk om, er disse:
 
--   `scrollbar-3dlight-color`
--   `scrollbar-arrow-color`
--   `scrollbar-base-color`
--   `scrollbar-darkshadow-color`
--   `scrollbar-face-color`
--   `scrollbar-highlight-color`
--   `scrollbar-shadow-color`
+-   `scrollbar-3dlight-color`{.css}
+-   `scrollbar-arrow-color`{.css}
+-   `scrollbar-base-color`{.css}
+-   `scrollbar-darkshadow-color`{.css}
+-   `scrollbar-face-color`{.css}
+-   `scrollbar-highlight-color`{.css}
+-   `scrollbar-shadow-color`{.css}
 
 Å bruke disse egenskapene resulterer ikke bare i et brudd på standardene, men gir deg ironisk nok også *mindre* kontroll over nettsidens framtreden. Utvidelsene er nemlig bare støttet i et fåtall nettlesere, og er i tillegg praktisk talt umulig å implementere på mange plattformer. Utformer man sidene sine rundt det premisset at rullefeltenes utseende må følge stilen på siden, er man altså *garantert* at designet vil slå sprekker på flesteparten av plattformene, der utvidelsene ikke støttes!
 
@@ -61,7 +61,7 @@ Rulling innenfor visningsområdet
 
 ![Figur 4. Rulling innenfor visningsområdet. Fra 2Advanced Studios.](fig4.png){#fig4}
 
-Til slutt kommer noen ord om rulling innenfor visningsområdet, eller «inline scrolling» som det gjerne heter i sjargongen. Det er altså snakk om at deler av nettsiden er utstyrt med egne mekanismer for rulling, enten det skyldes bruk av [rammer](http://www.unrealized.org/les_guide/html/unnga_frames/) («frames»), CSS-egenskapen `overflow` eller Flash. Også dette gjør sidene vanskeligere å bruke, av navigeringsmessige årsaker. Slike sideelementer krever stort sett at man velger dem med pekeren, og dermed økes klikkingen betraktelig. Samtidig økes også risikoen for *feilklikking*, fordi rullefeltene ofte befinner seg side om side med lenker og andre interaktive elementer. Særlig for folk som bruker styreplate, er det praktisk at klikkingen reduseres til et minimum.
+Til slutt kommer noen ord om rulling innenfor visningsområdet, eller «inline scrolling» som det gjerne heter i sjargongen. Det er altså snakk om at deler av nettsiden er utstyrt med egne mekanismer for rulling, enten det skyldes bruk av [rammer](http://www.unrealized.org/les_guide/html/unnga_frames/) («frames»), CSS-egenskapen `overflow`{.css} eller Flash. Også dette gjør sidene vanskeligere å bruke, av navigeringsmessige årsaker. Slike sideelementer krever stort sett at man velger dem med pekeren, og dermed økes klikkingen betraktelig. Samtidig økes også risikoen for *feilklikking*, fordi rullefeltene ofte befinner seg side om side med lenker og andre interaktive elementer. Særlig for folk som bruker styreplate, er det praktisk at klikkingen reduseres til et minimum.
 
 I tillegg er det bare mulig å rulle ett element om gangen, noe som betyr at det ikke er mulig å rulle hele siden (visningsområdet) med piltastene eller musehjulet når et sideelement er valgt. For å gå tilbake til å rulle hele nettsiden, må man altså bruke pekeren enda en gang for å velge rullefeltene til visningsområdet. Derfor bør rulling innenfor visningsområdet brukes sparsommelig, fordi det medfører et avbrudd i den tradisjonelle måten å navigere på.
 

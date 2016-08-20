@@ -100,7 +100,7 @@
 <p>Når en nettside er for høy eller bred til å få plass innenfor visningsområdet, skal nettleseren tilby en mekanisme som lar brukeren bestemme hvilket utsnitt av siden som skal vises – vanligvis ved hjelp av såkalt rulling eller&nbsp;«scrolling».</p>
 
 <blockquote>
-<p><strong>Merk at <a href="http://www.w3.org/TR/CSS21/"><abbr class="acronym" title="Cascading Style Sheets"><span class="caps">CSS</span></abbr> 2.1-spesifikasjonen</a> ikke sier noe om hva slags mekanisme som skal tas i bruk for å rulle på en gitt plattform. Ved å sette <a href="http://www.w3.org/TR/CSS21/visufx.html#propdef-overflow"><code>overflow</code></a>-egenskapen til verdien <code>scroll</code> angir man riktignok rulling, men man har ikke sagt noe konkret om hvordan denne rullingen skal muliggjøres rent praktisk. Rullefelt er her én mulig styringsmekanisme – piltaster og musehjul er&nbsp;andre.</strong>
+<p><strong>Merk at <a href="http://www.w3.org/TR/CSS21/"><abbr class="acronym" title="Cascading Style Sheets"><span class="caps">CSS</span></abbr> 2.1-spesifikasjonen</a> ikke sier noe om hva slags mekanisme som skal tas i bruk for å rulle på en gitt plattform. Ved å sette <a href="http://www.w3.org/TR/CSS21/visufx.html#propdef-overflow"><code class="language-css"><span class="hljs-selector-tag">overflow</span></code></a>-egenskapen til verdien <code class="language-css"><span class="hljs-selector-tag">scroll</span></code> angir man riktignok rulling, men man har ikke sagt noe konkret om hvordan denne rullingen skal muliggjøres rent praktisk. Rullefelt er her én mulig styringsmekanisme – piltaster og musehjul er&nbsp;andre.</strong>
 </p>
 </blockquote>
 </div>
@@ -115,25 +115,25 @@
 <p>Egenskapene det er snakk om, er&nbsp;disse:</p>
 
 <ul>
-<li><code>scrollbar-3dlight-color</code>
+<li><code class="language-css"><span class="hljs-selector-tag">scrollbar-3dlight-color</span></code>
 </li>
 
-<li><code>scrollbar-arrow-color</code>
+<li><code class="language-css"><span class="hljs-selector-tag">scrollbar-arrow-color</span></code>
 </li>
 
-<li><code>scrollbar-base-color</code>
+<li><code class="language-css"><span class="hljs-selector-tag">scrollbar-base-color</span></code>
 </li>
 
-<li><code>scrollbar-darkshadow-color</code>
+<li><code class="language-css"><span class="hljs-selector-tag">scrollbar-darkshadow-color</span></code>
 </li>
 
-<li><code>scrollbar-face-color</code>
+<li><code class="language-css"><span class="hljs-selector-tag">scrollbar-face-color</span></code>
 </li>
 
-<li><code>scrollbar-highlight-color</code>
+<li><code class="language-css"><span class="hljs-selector-tag">scrollbar-highlight-color</span></code>
 </li>
 
-<li><code>scrollbar-shadow-color</code>
+<li><code class="language-css"><span class="hljs-selector-tag">scrollbar-shadow-color</span></code>
 </li>
 </ul>
 
@@ -183,7 +183,7 @@
 <p class="caption">Figur 4. Rulling innenfor visningsområdet. Fra 2Advanced Studios.</p>
 </div>
 
-<p>Til slutt kommer noen ord om rulling innenfor visningsområdet, eller «inline scrolling» som det gjerne heter i sjargongen. Det er altså snakk om at deler av nettsiden er utstyrt med egne mekanismer for rulling, enten det skyldes bruk av <a href="http://www.unrealized.org/les_guide/html/unnga_frames/">rammer</a> («frames»), <abbr class="acronym" title="Cascading Style Sheets"><span class="caps">CSS</span></abbr>-egenskapen <code>overflow</code> eller Flash. Også dette gjør sidene vanskeligere å bruke, av navigeringsmessige årsaker. Slike sideelementer krever stort sett at man velger dem med pekeren, og dermed økes klikkingen betraktelig. Samtidig økes også risikoen for <em>feilklikking</em>, fordi rullefeltene ofte befinner seg side om side med lenker og andre interaktive elementer. Særlig for folk som bruker styreplate, er det praktisk at klikkingen reduseres til et&nbsp;minimum.</p>
+<p>Til slutt kommer noen ord om rulling innenfor visningsområdet, eller «inline scrolling» som det gjerne heter i sjargongen. Det er altså snakk om at deler av nettsiden er utstyrt med egne mekanismer for rulling, enten det skyldes bruk av <a href="http://www.unrealized.org/les_guide/html/unnga_frames/">rammer</a> («frames»), <abbr class="acronym" title="Cascading Style Sheets"><span class="caps">CSS</span></abbr>-egenskapen <code class="language-css"><span class="hljs-selector-tag">overflow</span></code> eller Flash. Også dette gjør sidene vanskeligere å bruke, av navigeringsmessige årsaker. Slike sideelementer krever stort sett at man velger dem med pekeren, og dermed økes klikkingen betraktelig. Samtidig økes også risikoen for <em>feilklikking</em>, fordi rullefeltene ofte befinner seg side om side med lenker og andre interaktive elementer. Særlig for folk som bruker styreplate, er det praktisk at klikkingen reduseres til et&nbsp;minimum.</p>
 
 <p>I tillegg er det bare mulig å rulle ett element om gangen, noe som betyr at det ikke er mulig å rulle hele siden (visningsområdet) med piltastene eller musehjulet når et sideelement er valgt. For å gå tilbake til å rulle hele nettsiden, må man altså bruke pekeren enda en gang for å velge rullefeltene til visningsområdet. Derfor bør rulling innenfor visningsområdet brukes sparsommelig, fordi det medfører et avbrudd i den tradisjonelle måten å navigere&nbsp;på.</p>
 

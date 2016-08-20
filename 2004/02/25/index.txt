@@ -18,9 +18,9 @@ ul li:before {
 }
 ```
 
-`margin`- og `padding`-deklarasjonene er bare min måte å oppnå passende avstander på; du kan selvsagt justere disse etter behov.
+`margin`{.css}- og `padding`{.css}-deklarasjonene er bare min måte å oppnå passende avstander på; du kan selvsagt justere disse etter behov.
 
-Men så var det IE, da -- som ikke støtter verken `content`-egenskapen eller pseudoelementet `:before`, og som følge av den øverste stilregelen ikke viser punktmerker i det hele tatt. Den eneste måten å (til en viss grad) få det som vi ønsker på er ved å bruke et et lite bilde i GIF- eller PNG-format (bruk PNG!), som vi setter inn foran hvert `li`-element med stilregelen
+Men så var det IE, da -- som ikke støtter verken `content`{.css}-egenskapen eller pseudoelementet `:before`{.css}, og som følge av den øverste stilregelen ikke viser punktmerker i det hele tatt. Den eneste måten å (til en viss grad) få det som vi ønsker på er ved å bruke et et lite bilde i GIF- eller PNG-format (bruk PNG!), som vi setter inn foran hvert `li`{.html}-element med stilregelen
 
 ```css
 ul {
@@ -28,7 +28,7 @@ ul {
 }
 ```
 
-Vi ønsker selvsagt ikke at denne stilregelen skal brukes av Mozilla og Opera, da dette vil føre til *to* streker foran hver `li` (urk). Derfor plasserer vi heller denne regelen i et eget stilark kun for Internet Explorer, som vi i HTML-dokumentene refererer til med følgende kode:
+Vi ønsker selvsagt ikke at denne stilregelen skal brukes av Mozilla og Opera, da dette vil føre til *to* streker foran hver `li`{.html} (urk). Derfor plasserer vi heller denne regelen i et eget stilark kun for Internet Explorer, som vi i HTML-dokumentene refererer til med følgende kode:
 
 ```html
 <!--[if IE]>

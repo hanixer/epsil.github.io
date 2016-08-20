@@ -57,7 +57,7 @@
 </header>
 
 <section id="content">
-<p>I <abbr class="acronym" title="HyperText Markup Language"><span class="caps">HTML</span></abbr> kan du med <code>link</code>-elementet angi tre typer eksterne stilsett&nbsp;(stilark):</p>
+<p>I <abbr class="acronym" title="HyperText Markup Language"><span class="caps">HTML</span></abbr> kan du med <code class="language-html">link</code>-elementet angi tre typer eksterne stilsett&nbsp;(stilark):</p>
 
 <ul>
 <li>Grunnleggende stilsett</li>
@@ -67,13 +67,13 @@
 <li>Alternative stilsett</li>
 </ul>
 
-<p>Jeg skriver bare «stilsett» fordi du med <code>style</code>-elementet – som bortsett fra <code>rel</code> tar de samme attributtene som elementet <code>link</code> – også kan angi grunnleggende og foretrukne stilsett. Et stilark er rett og slett en fil (vanligvis med endelsen <code>.css</code> når det som her er <abbr class="acronym" title="Cascading Style Sheets"><span class="caps">CSS</span></abbr> vi snakker om) som inneholder et stilsett. For ordens skyld bør stilsettene angis i rekkefølgen vist&nbsp;over.</p>
+<p>Jeg skriver bare «stilsett» fordi du med <code class="language-html">style</code>-elementet – som bortsett fra <code class="language-html">rel</code> tar de samme attributtene som elementet <code class="language-html">link</code> – også kan angi grunnleggende og foretrukne stilsett. Et stilark er rett og slett en fil (vanligvis med endelsen <code>.css</code> når det som her er <abbr class="acronym" title="Cascading Style Sheets"><span class="caps">CSS</span></abbr> vi snakker om) som inneholder et stilsett. For ordens skyld bør stilsettene angis i rekkefølgen vist&nbsp;over.</p>
 
 <p>Vi har dessuten også <em>mediespesifikke</em> stilsett; du kan for hvert stilsett, uavhengig av hvilke grupperinger du gjør, bestemme hvilke medier det enkelte stilsettet skal gjelde for. Jeg kommer tilbake til dette&nbsp;senere.</p>
 
-<p>Deklarasjonene i et <em>grunnleggende stilsett</em> blir brukt som standard (idet siden lastes), med mindre de overstyres i et påfølgende stilsett – <abbr title="jamfør">jf.</abbr> «cascade»-prinsippet i <abbr class="acronym" title="Cascading Style Sheets"><span class="caps">CSS</span></abbr>. (I denne artikkelen går jeg ut fra den forenklingen at et påfølgende stilsetts deklarasjoner <em>alltid</em> overstyrer tidligere deklarasjoner med tilsvarende selektor. Det er mulig å forhindre dette ved å markere deklarasjoner med <code>!important</code> eller benytte seg av mer spesifikke selektorer, men for enkelhetens skyld går jeg ikke nærmere inn på dette&nbsp;her.)</p>
+<p>Deklarasjonene i et <em>grunnleggende stilsett</em> blir brukt som standard (idet siden lastes), med mindre de overstyres i et påfølgende stilsett – <abbr title="jamfør">jf.</abbr> «cascade»-prinsippet i <abbr class="acronym" title="Cascading Style Sheets"><span class="caps">CSS</span></abbr>. (I denne artikkelen går jeg ut fra den forenklingen at et påfølgende stilsetts deklarasjoner <em>alltid</em> overstyrer tidligere deklarasjoner med tilsvarende selektor. Det er mulig å forhindre dette ved å markere deklarasjoner med <code class="language-css">!<span class="hljs-selector-tag">important</span></code> eller benytte seg av mer spesifikke selektorer, men for enkelhetens skyld går jeg ikke nærmere inn på dette&nbsp;her.)</p>
 
-<p>Med et grunnleggende stilsett slipper du å definere stildeklarasjoner som ellers ville gått igjen i påfølgende stilsett mer enn én gang. Dette kan for eksempel være nyttig i et tilfelle der du har laget to separate fargesammensetninger for siden din, men den visuelle utformingen (<abbr title="det vil si">dvs.</abbr> «layouten») fortsatt er den samme. Du angir et grunnleggende stilsett ved å sette <code>rel</code>-attributtet til <code>stylesheet</code> og utelate <code>title</code>-attributtet:</p>
+<p>Med et grunnleggende stilsett slipper du å definere stildeklarasjoner som ellers ville gått igjen i påfølgende stilsett mer enn én gang. Dette kan for eksempel være nyttig i et tilfelle der du har laget to separate fargesammensetninger for siden din, men den visuelle utformingen (<abbr title="det vil si">dvs.</abbr> «layouten») fortsatt er den samme. Du angir et grunnleggende stilsett ved å sette <code class="language-html">rel</code>-attributtet til <code class="language-html">stylesheet</code> og utelate <code class="language-html">title</code>-attributtet:</p>
 
 <pre>
 <code class="language-html"><span class="hljs-tag">&lt;<span class="hljs-name">link</span> <span class="hljs-attr">href</span>=<span class="hljs-string">"grunnleggende.css"</span> <span class="hljs-attr">rel</span>=<span class="hljs-string">"stylesheet"</span> <span class="hljs-attr">type</span>=<span class="hljs-string">"text/css"</span>&gt;</span></code>
@@ -87,7 +87,7 @@
 <span class="hljs-tag">&lt;<span class="hljs-name">link</span> <span class="hljs-attr">href</span>=<span class="hljs-string">"utskrift.css"</span> <span class="hljs-attr">media</span>=<span class="hljs-string">"print"</span> <span class="hljs-attr">rel</span>=<span class="hljs-string">"stylesheet"</span> <span class="hljs-attr">type</span>=<span class="hljs-string">"text/css"</span>&gt;</span></code>
 </pre>
 
-<p>Her har vi benyttet attributtet <code>media</code> til å spesifisere at stilarket <code>skjerm.css</code> bare skal brukes når siden vises på skjerm, og at <code>utskrift.css</code> bare gjelder når sidene skrives ut (eller utskriften forhåndsvises). Stilsettet i <code>utskrift.css</code> blir altså ikke brukt på skjerm, og stilsettet i <code>skjerm.css</code> blir ikke brukt ved utskrift. Standardverdien for <code>media</code>-attributtet – altså den verdien som blir brukt dersom attributtet ikke spesifiseres – er <code>all</code>, altså at stilsettet gjelder for alle medier. Stildeklarasjonene i <code>felles.css</code> kommer derfor med både på skjerm og ved utskrift, med mindre skjerm- og utskriftsstilsettene inneholder deklarasjoner som overstyrer&nbsp;disse.</p>
+<p>Her har vi benyttet attributtet <code class="language-html">media</code> til å spesifisere at stilarket <code>skjerm.css</code> bare skal brukes når siden vises på skjerm, og at <code>utskrift.css</code> bare gjelder når sidene skrives ut (eller utskriften forhåndsvises). Stilsettet i <code>utskrift.css</code> blir altså ikke brukt på skjerm, og stilsettet i <code>skjerm.css</code> blir ikke brukt ved utskrift. Standardverdien for <code class="language-html">media</code>-attributtet – altså den verdien som blir brukt dersom attributtet ikke spesifiseres – er <code class="language-html">all</code>, altså at stilsettet gjelder for alle medier. Stildeklarasjonene i <code>felles.css</code> kommer derfor med både på skjerm og ved utskrift, med mindre skjerm- og utskriftsstilsettene inneholder deklarasjoner som overstyrer&nbsp;disse.</p>
 
 <p>Det går også fint an å angi at stilsettet skal gjelde for <em>flere</em> medier, ved å skille mediebeskrivelsene med&nbsp;komma:</p>
 
@@ -97,9 +97,9 @@
 
 <p>Hva slags <a href="http://www.w3.org/TR/html4/types.html#type-media-descriptors">mediebeskrivelser</a> du kan bruke og hva de står for, er beskrevet i <a href="http://www.w3.org/TR/html4/"><abbr class="acronym" title="HyperText Markup Language"><span class="caps">HTML</span></abbr>&nbsp;4.01-spesifikasjonen</a>.</p>
 
-<p>Alt dette er vel og bra dersom du kun ønsker ett utseende for siden din, med noe utskriftstilpasning og muligens litt ekstra tilrettelegging for andre medier. Men hva om du kunne tenke deg å utstyre siden din med <em>flere stiler</em>, slik at den besøkende kan velge den vedkommende liker best? Da må vi gjøre oss kjent med <code>title</code>-attributtet, som vi – innlysende nok – bruker for å gi ett eller flere stilsett en <em>tittel</em>. Jeg sier «ett eller flere» fordi du på denne måten kan <em>gruppere</em> stilsett, og <abbr title="for eksempel">f.eks.</abbr> samle et generelt sideoppsett som inkluderer mindre tilpasninger til papir under <em>ett</em>&nbsp;navn.</p>
+<p>Alt dette er vel og bra dersom du kun ønsker ett utseende for siden din, med noe utskriftstilpasning og muligens litt ekstra tilrettelegging for andre medier. Men hva om du kunne tenke deg å utstyre siden din med <em>flere stiler</em>, slik at den besøkende kan velge den vedkommende liker best? Da må vi gjøre oss kjent med <code class="language-html">title</code>-attributtet, som vi – innlysende nok – bruker for å gi ett eller flere stilsett en <em>tittel</em>. Jeg sier «ett eller flere» fordi du på denne måten kan <em>gruppere</em> stilsett, og <abbr title="for eksempel">f.eks.</abbr> samle et generelt sideoppsett som inkluderer mindre tilpasninger til papir under <em>ett</em>&nbsp;navn.</p>
 
-<p>Vi fortsetter med det forrige kodeeksemplet, som vi tenker oss er fra en side med en marineblå fargesammensetning. Med <code>title</code>-attributtet kan vi nå gi denne fargesammensetningen et&nbsp;navn:</p>
+<p>Vi fortsetter med det forrige kodeeksemplet, som vi tenker oss er fra en side med en marineblå fargesammensetning. Med <code class="language-html">title</code>-attributtet kan vi nå gi denne fargesammensetningen et&nbsp;navn:</p>
 
 <pre>
 <code class="language-html"><span class="hljs-tag">&lt;<span class="hljs-name">link</span> <span class="hljs-attr">href</span>=<span class="hljs-string">"felles.css"</span> <span class="hljs-attr">rel</span>=<span class="hljs-string">"stylesheet"</span> <span class="hljs-attr">type</span>=<span class="hljs-string">"text/css"</span>&gt;</span>
@@ -108,9 +108,9 @@
 <span class="hljs-tag">&lt;<span class="hljs-name">link</span> <span class="hljs-attr">href</span>=<span class="hljs-string">"marineblaa.css"</span> <span class="hljs-attr">rel</span>=<span class="hljs-string">"stylesheet"</span> <span class="hljs-attr">title</span>=<span class="hljs-string">"Marineblå"</span> <span class="hljs-attr">type</span>=<span class="hljs-string">"text/css"</span>&gt;</span></code>
 </pre>
 
-<p>Stilarket <code>marineblaa.css</code> inneholder et såkalt <em>foretrukket</em> stilsett (som gjelder for både skjerm og utskrift, ettersom vi ikke har angitt <code>media</code>-attributtet). Dette inngår i sidens <em>foretrukne stil</em>. Det er altså stilen «Marineblå» som blir brukt første gang siden lastes, uavhengig av om vi har angitt en eller flere <em>alternative stiler</em> i tillegg. Kun én stil kan velges om gangen, og det er vanligvis også mulig å ikke velge noen stil i det hele tatt, slik at siden faller tilbake på de stildeklarasjonene som er angitt i grunnleggende&nbsp;stilsett.</p>
+<p>Stilarket <code>marineblaa.css</code> inneholder et såkalt <em>foretrukket</em> stilsett (som gjelder for både skjerm og utskrift, ettersom vi ikke har angitt <code class="language-html">media</code>-attributtet). Dette inngår i sidens <em>foretrukne stil</em>. Det er altså stilen «Marineblå» som blir brukt første gang siden lastes, uavhengig av om vi har angitt en eller flere <em>alternative stiler</em> i tillegg. Kun én stil kan velges om gangen, og det er vanligvis også mulig å ikke velge noen stil i det hele tatt, slik at siden faller tilbake på de stildeklarasjonene som er angitt i grunnleggende&nbsp;stilsett.</p>
 
-<p>Det er viktig å forstå at du med <code>title</code>-attributtet ikke angir navnet på ett bestemt stilsett, men derimot en unik stil – som kan inkludere flere stilsett, også for forskjellige medier. Vi kan dele opp «Marineblå»-stilen i et skjermstilsett og et utskriftsstilsett, som bare blir brukt dersom stilen «Marineblå» er&nbsp;valgt:</p>
+<p>Det er viktig å forstå at du med <code class="language-html">title</code>-attributtet ikke angir navnet på ett bestemt stilsett, men derimot en unik stil – som kan inkludere flere stilsett, også for forskjellige medier. Vi kan dele opp «Marineblå»-stilen i et skjermstilsett og et utskriftsstilsett, som bare blir brukt dersom stilen «Marineblå» er&nbsp;valgt:</p>
 
 <pre>
 <code class="language-html"><span class="hljs-tag">&lt;<span class="hljs-name">link</span> <span class="hljs-attr">href</span>=<span class="hljs-string">"felles.css"</span> <span class="hljs-attr">rel</span>=<span class="hljs-string">"stylesheet"</span> <span class="hljs-attr">type</span>=<span class="hljs-string">"text/css"</span>&gt;</span>
@@ -124,7 +124,7 @@
 
 <p>Det er neppe verdt å ta seg bryet med å angi en foretrukken stil dersom man ikke i tillegg har angitt en eller flere alternative stiler. Disse må velges manuelt av den besøkende, og blir ikke brukt idet siden lastes for første gang (ettersom bare én stil – i utgangspunktet den foretrukne stilen – kan vises om&nbsp;gangen).</p>
 
-<p>Du lager alternative stiler på samme måte som den foretrukne stilen, men <code>rel</code>-attributtet må nå settes til <code>alternate stylesheet</code>:</p>
+<p>Du lager alternative stiler på samme måte som den foretrukne stilen, men <code class="language-html">rel</code>-attributtet må nå settes til <code class="language-html">alternate stylesheet</code>:</p>
 
 <pre>
 <code class="language-html"><span class="hljs-tag">&lt;<span class="hljs-name">link</span> <span class="hljs-attr">href</span>=<span class="hljs-string">"sitrongul.css"</span> <span class="hljs-attr">rel</span>=<span class="hljs-string">"alternate stylesheet"</span> <span class="hljs-attr">title</span>=<span class="hljs-string">"Sitrongul"</span> <span class="hljs-attr">type</span>=<span class="hljs-string">"text/css"</span>&gt;</span></code>
