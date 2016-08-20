@@ -295,7 +295,7 @@ time {
 }
 
 .navbar {
-    min-height: auto;
+    min-height: 0;
 }
 
 .language-scheme .hljs-name {
