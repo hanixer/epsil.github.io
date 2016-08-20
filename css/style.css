@@ -179,6 +179,7 @@ kbd {
     color: #555;
     display: inline-block;
     font-size: 0.5em !important;
+    font-variant-numeric: normal;
     line-height: 1em;
     padding: 3px 5px;
     vertical-align: middle;
