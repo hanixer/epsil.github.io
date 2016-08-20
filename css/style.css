@@ -297,10 +297,19 @@ time {
     min-height: auto;
 }
 
+.language-scheme .hljs-name {
+    color: #183691;
+    font-weight: normal;
+}
+
+.language-scheme .hljs-name .hljs-builtin-name {
+    color: #a71d5d;
+}
+
 @media (max-width: 767px) {
     body {
-        font-size: 110% !important;
-        line-height: 1.45;
+        font-size: 125% !important;
+        /* line-height: 1.45; */
     }
 
     .navbar-left {
@@ -310,13 +319,4 @@ time {
     .navbar-right {
         float: right;
     }
-}
-
-.language-scheme .hljs-name {
-    color: #183691;
-    font-weight: normal;
-}
-
-.language-scheme .hljs-name .hljs-builtin-name {
-    color: #a71d5d;
 }
