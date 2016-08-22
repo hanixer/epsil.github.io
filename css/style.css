@@ -47,7 +47,18 @@ b, strong {
     font-size: 0.85em;
 }
 
-b code, strong code {
+h1 code, h1 kbd, h1 samp, h1 tt,
+h2 code, h2 kbd, h2 samp, h2 tt,
+h3 code, h3 kbd, h3 samp, h3 tt,
+h4 code, h4 kbd, h4 samp, h4 tt,
+h5 code, h5 kbd, h5 samp, h5 tt,
+h6 code, h6 kbd, h6 samp, h6 tt {
+    font-size: 1em !important;
+}
+
+
+b code, b kbd, b samp, b tt,
+strong code, strong kbd, strong samp, strong tt {
     font-size: 0.8em !important;
 }
 
