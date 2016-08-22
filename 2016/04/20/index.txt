@@ -45,7 +45,7 @@ You now have a host of utilities at your command. For example, `wget` downloads 
 Alias `open`
 ------------
 
-Windows does not have the `open` command. To alias it to `start`, create a `C:\Windows\open.bat` file containing the following:
+Windows does not have the `open` command, and none of the packages above provide it. To alias `open` to Windows' `start` command, create a `C:\Windows\open.bat` file containing the following:
 
     @echo off
     start %*
