@@ -40,7 +40,7 @@ You can now compile C programs (with `gcc`) and C++ programs (with `g++`).
 
 For even more Unix utilities, install [G*nu*W*in*32](http://gnuwin32.sourceforge.net/). Append its directory to `PATH` *after* MSYS and MinGW.
 
-You now have a host of utilities at your command. For example, `wget` downloads a file from the command prompt.
+You now have a host of utilities at your command. For example, `wget` downloads a file via the command prompt.
 
 Alias `open`
 ------------
