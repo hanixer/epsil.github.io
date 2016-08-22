@@ -57,52 +57,52 @@
 </header>
 
 <section id="content">
-<p>I min bardom dukket denne oppgaven opp mange ganger: tegn en figur uten &#229; l&#248;fte blyanten fra papiret og uten &#229; tegne samme kant to ganger. Den klassiske utfordringen var en konvolutt, som kan tegnes p&#229; mange m&#229;ter, en av dem vist&#160;under.</p>
+<p>I min bardom dukket denne oppgaven opp mange ganger: tegn en figur uten &#229; l&#248;fte blyanten fra papiret og uten &#229; tegne samme kant to ganger. Den klassiske utfordringen var en konvolutt, som kan tegnes p&#229; mange m&#229;ter, en av dem vist under.</p>
 
 <p class="center"><img alt="" src="konvolutt.png">
 </p>
 
-<p>Mine skolekamerater og jeg eksperimenterte med modifikasjoner av figuren. En av dem s&#229; slik&#160;ut:</p>
+<p>Mine skolekamerater og jeg eksperimenterte med modifikasjoner av figuren. En av dem s&#229; slik ut:</p>
 
 <p class="center"><img alt="" src="figur.png">
 </p>
 
-<p>Kunne denne tegnes p&#229; tilsvarende m&#229;te? Det var valgfritt om man ville regne krysset i midten som et forbindelsespunkt. Likevel kom ingen frem til en l&#248;sning de kunne vise&#160;andre.</p>
+<p>Kunne denne tegnes p&#229; tilsvarende m&#229;te? Det var valgfritt om man ville regne krysset i midten som et forbindelsespunkt. Likevel kom ingen frem til en l&#248;sning de kunne vise andre.</p>
 
 <p>I 1736 behandlet matematikeren Leonhard Euler et problem han kalte &#171;<a href="http://no.wikipedia.org/wiki/Broene_i_K%C3%B6nigsberg">Bruene i K&#246;nigsberg</a>&#187;. Byen var delt i fire deler: nord- og s&#248;rsiden av elven Pregel, samt to &#248;yer midt i elven. Syv bruer forbandt disse delene. Han ville finne en vei som passerte alle bruene akkurat &#233;n gang, noe som har f&#229;tt navnet <a href="http://en.wikipedia.org/wiki/Eulerian_path">Euler-sti</a>.</p>
 
-<p>Euler kom frem til noen elegante innsikter vi kan bruke for &#229; analysere problemstillingen over. De har &#229; gj&#248;re med <em>graden</em> til et forbindelsespunkt, <abbr title="det vil si">dvs.</abbr> hvor mange kanter punktet&#160;forbinder.</p>
+<p>Euler kom frem til noen elegante innsikter vi kan bruke for &#229; analysere problemstillingen over. De har &#229; gj&#248;re med <em>graden</em> til et forbindelsespunkt, <abbr title="det vil si">dvs.</abbr> hvor mange kanter punktet forbinder.</p>
 
 <p class="center"><img alt="" src="eksempel.png">
 </p>
 
-<p>Denne enkle figuren har fire forbindelsespunkter. Punktet lengst til venstre har grad \(1\). Punktet til h&#248;yre for det har grad \(3\). De &#248;vrige punktene har grad \(2\). Det er mulig &#229; tegne figuren uten &#229; l&#248;fte blyanten fra papiret, men det avhenger av hvor man&#160;begynner.</p>
+<p>Denne enkle figuren har fire forbindelsespunkter. Punktet lengst til venstre har grad \(1\). Punktet til h&#248;yre for det har grad \(3\). De &#248;vrige punktene har grad \(2\). Det er mulig &#229; tegne figuren uten &#229; l&#248;fte blyanten fra papiret, men det avhenger av hvor man begynner.</p>
 
 <p>Den store forskjellen g&#229;r mellom punkter hvor graden er et <em>partall</em>, og punkter hvor graden er et <em>oddetall</em>.</p>
 
-<p>Partallsgrader er greie &#229; h&#229;ndtere. Hvis du bes&#248;ker et punkt, vil du som oftest forlate det ogs&#229;, og dermed bruker du opp \(2\) kanter. Et punkt av partallsgrad \(N\) kan dermed bes&#248;kes og forlates \(N/2\)&#160;ganger.</p>
+<p>Partallsgrader er greie &#229; h&#229;ndtere. Hvis du bes&#248;ker et punkt, vil du som oftest forlate det ogs&#229;, og dermed bruker du opp \(2\) kanter. Et punkt av partallsgrad \(N\) kan dermed bes&#248;kes og forlates \(N/2\) ganger.</p>
 
-<p>Oddetallsgrader er det verre med, for det er &#233;n kant &#171;mer&#187;. Enten kan du forlate punktet en gang mer enn du bes&#248;ker det, eller s&#229; kan du bes&#248;ke punktet en gang mer enn du forlater&#160;det.</p>
+<p>Oddetallsgrader er det verre med, for det er &#233;n kant &#171;mer&#187;. Enten kan du forlate punktet en gang mer enn du bes&#248;ker det, eller s&#229; kan du bes&#248;ke punktet en gang mer enn du forlater det.</p>
 
-<p>Konsekvensen er at et punkt med oddetallsgrad er en &#171;felle&#187;. Enten er det &#229; bes&#248;ke punktet for \(N\)&#8217;te gang det siste du gj&#248;r, eller s&#229; er det &#229; forlate punktet det f&#248;rste du gj&#248;r. Dermed er det bare to plasser i en Euler-sti hvor vi kan ha punkter av oddetallsgrad: begynnelsen og&#160;slutten.</p>
+<p>Konsekvensen er at et punkt med oddetallsgrad er en &#171;felle&#187;. Enten er det &#229; bes&#248;ke punktet for \(N\)&#8217;te gang det siste du gj&#248;r, eller s&#229; er det &#229; forlate punktet det f&#248;rste du gj&#248;r. Dermed er det bare to plasser i en Euler-sti hvor vi kan ha punkter av oddetallsgrad: begynnelsen og slutten.</p>
 
-<p>Ta den enkle figuren over. Vi kan begynne i punktet av grad \(1\) og slutte i punktet av grad \(3\). Eller vi kan begynne i punktet av grad \(3\) og slutte i punktet av grad \(1\). Flere muligheter er det ikke. Tilsvarende m&#229; konvolutten begynne i et av de nedre hj&#248;rnene av grad \(3\) og slutte i det&#160;andre.</p>
+<p>Ta den enkle figuren over. Vi kan begynne i punktet av grad \(1\) og slutte i punktet av grad \(3\). Eller vi kan begynne i punktet av grad \(3\) og slutte i punktet av grad \(1\). Flere muligheter er det ikke. Tilsvarende m&#229; konvolutten begynne i et av de nedre hj&#248;rnene av grad \(3\) og slutte i det andre.</p>
 
-<p>Dette gir opphav til f&#248;lgende&#160;teorem:</p>
+<p>Dette gir opphav til f&#248;lgende teorem:</p>
 
 <blockquote>
-<p><strong>Dersom figuren har mer enn to forbindelsespunkter av oddetallsgrad, finnes det ingen&#160;l&#248;sning.</strong>
+<p><strong>Dersom figuren har mer enn to forbindelsespunkter av oddetallsgrad, finnes det ingen l&#248;sning.</strong>
 </p>
 </blockquote>
 
-<p>N&#229; kan vi g&#229; tilbake til den modifiserte figuren og telle&#160;grader:</p>
+<p>N&#229; kan vi g&#229; tilbake til den modifiserte figuren og telle grader:</p>
 
 <p class="center"><img alt="" src="figur.png">
 </p>
 
-<p>Uansett hvordan vi tegner den, har figuren fire punkter av grad \(5\). Dermed f&#248;lger det at den <em>ikke</em> kan tegnes uten &#229; l&#248;fte blyanten fra&#160;papiret.</p>
+<p>Uansett hvordan vi tegner den, har figuren fire punkter av grad \(5\). Dermed f&#248;lger det at den <em>ikke</em> kan tegnes uten &#229; l&#248;fte blyanten fra papiret.</p>
 
-<p>Og bruene i K&#246;nigsberg? De er skissert under. Det er n&#229; lett &#229; se hvorfor det ikke g&#229;r, det&#160;heller.</p>
+<p>Og bruene i K&#246;nigsberg? De er skissert under. Det er n&#229; lett &#229; se hvorfor det ikke g&#229;r, det heller.</p>
 
 <p class="center"><img alt="" src="konigsberg.png">
 </p>
