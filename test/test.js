@@ -343,7 +343,7 @@ social.github.url = function (url) {
     return url
   }
 
-  var github = 'https://github.com/epsil/epsil.github.io/tree/master'
+  var github = 'https://github.com/epsil/epsil.github.io/edit/master'
   var file = '/index.txt'
   var path = social.github.path(url)
 
