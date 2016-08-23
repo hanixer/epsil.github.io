@@ -1524,8 +1524,10 @@ function compile (data, path) {
   view = dynamic(view)
   view = title(view)
   view.url = path
-  view.content = body(view)
-  view = process(view)
+  if (!(view.content === '' || view.content.match(/<iframe/g))) {
+    view.content = body(view)
+    view = process(view)
+  }
   var html = document(view)
   return html
 }
@@ -1633,9 +1635,12 @@ function convert (data) {
              .replace('<body>', '<div class="body">')
              .replace('</body>', '</div>')
   var doc = $('<div>').html(html)
-  // var head = $('head')
-  // var headDiv = doc.find('div.head')
-  // headDiv.find('link').appendTo(head)
+  var head = $('head')
+  var headDiv = doc.find('div.head')
+  headDiv.find('link').appendTo(head)
+  headDiv.find('title').each(function () {
+    head.find('title').text($(this).text())
+  })
   var body = $('body')
   var bodyDiv = doc.find('div.body')
   body.html(bodyDiv.html())
@@ -1645,6 +1650,10 @@ function convert (data) {
 // read contents of <iframe>
 function loadIframe (iframe) {
   var deferred = $.Deferred()
+  var file = iframe.attr('src')
+  if (!file.match(/\.txt$/)) {
+    return loadAjax(iframe)
+  }
   iframe.hide()
   iframe.on('load', function () {
     var contents = iframe.contents().text().trim()
@@ -1672,12 +1681,12 @@ function loadAjax (iframe) {
   var deferred = $.Deferred()
   iframe.hide()
   var src = iframe.attr('src')
-  var div = $('<div>')
+  var div = $('<div style="display: none">')
   div.insertBefore(iframe)
   iframe.remove()
   loadFile(src).then(function (data) {
     div.text(data)
-    deferred.resolve(div)
+    deferred.resolve(data)
   })
   return deferred.promise()
 }
