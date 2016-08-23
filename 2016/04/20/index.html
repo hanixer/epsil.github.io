@@ -32,7 +32,7 @@
 <li role="presentation"><a href="mailto:?body=about%3Ablank" title="Share by mail"><i class="fa fa-envelope"></i></a>
 </li>
 
-<li role="presentation"><a href="https://github.com/epsil/epsil.github.io/tree/masterblank/index.txt" title="Edit on GitHub"><i class="fa fa-edit"></i></a>
+<li role="presentation"><a href="https://github.com/epsil/epsil.github.io/edit/masterblank/index.txt" title="Edit on GitHub"><i class="fa fa-edit"></i></a>
 </li>
 
 <li role="presentation"><a href="index.txt" title="Get Markdown source"><i class="fa fa-download"></i></a>
@@ -110,6 +110,8 @@
 
 <div class="collapse in" id="msys-section">
 <p>Install <a href="http://www.mingw.org/wiki/msys"><abbr class="acronym" title="Minimal System"><span class="caps">MSYS</span></abbr></a>. Ensure that <code>sh.exe</code> is globally available by appending <abbr class="acronym" title="Minimal System"><span class="caps">MSYS</span></abbr>&#8217; <code>bin/</code> directory to the <code>PATH</code> environment variable.</p>
+
+<p>You now run Bash scripts as <a href="#usage" title="Usage">shown above</a>, as well as use common Unix commands like <code>ls</code>, <code>mv</code> and <code>rm</code>.</p>
 </div>
 </section>
 
@@ -119,6 +121,8 @@
 
 <div class="collapse in" id="mingw-section">
 <p>For more Unix utilities, augment the above setup with a complete installation of <a href="http://www.mingw.org/"><abbr title="Minimalist GNU for Windows">MinGW</abbr></a>. Append its directory to <code>PATH</code> <em>after</em> <abbr class="acronym" title="Minimal System"><span class="caps">MSYS</span></abbr>.</p>
+
+<p>You can now compile C programs (with <code>gcc</code>) and C++ programs (with <code>g++</code>).</p>
 </div>
 </section>
 
@@ -128,6 +132,8 @@
 
 <div class="collapse in" id="gnuwin32-section">
 <p>For even more Unix utilities, install <a href="http://gnuwin32.sourceforge.net/">G<em>nu</em>W<em>in</em>32</a>. Append its directory to <code>PATH</code> <em>after</em> <abbr class="acronym" title="Minimal System"><span class="caps">MSYS</span></abbr> and <abbr title="Minimalist GNU for Windows">MinGW</abbr>.</p>
+
+<p>You now have a host of utilities at your command. For example, <code>wget</code> downloads a file via the command&#160;prompt.</p>
 </div>
 </section>
 
@@ -135,7 +141,7 @@
 <h2><a aria-hidden="true" class="header-anchor" href="#alias-open" title="Alias open"></a>Alias <code>open</code><a aria-controls="alias-open-section" aria-expanded="true" aria-hidden="true" class="collapse-button" data-toggle="collapse" href="#alias-open-section" role="button"></a></h2>
 
 <div class="collapse in" id="alias-open-section">
-<p>Windows does not have the <code>open</code> command. To alias it to <code>start</code>, create a <code>C:\Windows\open.bat</code> file containing the&#160;following:</p>
+<p>Windows does not have the <code>open</code> command, and none of the packages above provide it. To alias <code>open</code> to Windows&#8217; <code>start</code> command, create a <code>C:\Windows\open.bat</code> file containing the&#160;following:</p>
 
 <pre>
 <code>@echo off

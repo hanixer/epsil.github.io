@@ -1439,7 +1439,7 @@ function yaml (data) {
   // GitHub strips YAML blocks, so allow the initial '---' to be
   // omitted. Note: this hack does not allow the block to contain
   // blank lines, although YAML does support such expressions!
-  var matches = data.match(/^((?:(?:---[\r\n]+)?(?:.+[\r\n])+---[\r\n]+)?)([\s\S]*)$/, data) // /^((?:(?:---[\r\n]+)?[\s\S]*[\r\n]+---[\r\n]+)?)([\s\S]*)$/
+  var matches = data.match(/^((?:(?:---[\r\n]+)?[\s\S]*[\r\n]+---[\r\n]+)?)([\s\S]*)$/, data) // /^((?:(?:---[\r\n]+)?(?:.+[\r\n])+---[\r\n]+)?)([\s\S]*)$/
   var props = frontmatter(matches[1])
   props.content = markdown(matches[2], false)
   return props
