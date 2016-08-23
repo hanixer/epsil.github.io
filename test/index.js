@@ -134,11 +134,11 @@ describe('github.js', function () {
     })
 
     it('should point to the Markdown source', function () {
-      $.fn.github.url('http://epsil.github.io/2011/05/29/').should.equal('https://github.com/epsil/epsil.github.io/tree/master/2011/05/29/index.txt')
+      $.fn.github.url('http://epsil.github.io/2011/05/29/').should.equal('https://github.com/epsil/epsil.github.io/edit/master/2011/05/29/index.txt')
     })
 
     it('should ignore trailing slash', function () {
-      $.fn.github.url('http://epsil.github.io/2011/05/29').should.equal('https://github.com/epsil/epsil.github.io/tree/master/2011/05/29/index.txt')
+      $.fn.github.url('http://epsil.github.io/2011/05/29').should.equal('https://github.com/epsil/epsil.github.io/edit/master/2011/05/29/index.txt')
     })
 
     it('should ignore file:/// links', function () {
