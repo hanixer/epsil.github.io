@@ -8,7 +8,7 @@ Første steg er å **initialisere et repository**. Høyreklikk på prosjektmappe
 
 ![](init.png)
 
-I tillegg må vi inn i mappen, markere de aktuelle filene og **legge dem til**. (Du kan ha filer i repo'et ditt som ikke er under versjonskontroll: De vises med et blått spørsmålstegn, som under.) Her høyreklikker vi på `catch22.tex` og velger *TortoiseGit -> Add*:
+I tillegg må vi inn i mappen, markere de aktuelle filene og **legge dem til**. (Du kan ha filer i repo'et ditt som ikke er under versjonskontroll: De vises med et blått spørsmålstegn, som under.) Her høyreklikker vi på `catch22.tex` og velger *TortoiseGit* -> *Add*:
 
 ![](add.png)
 
@@ -32,7 +32,7 @@ Suksess! Filen er nå **oppdatert** og grønn igjen.
 
 ![](repo.png)
 
-Stort mer er det ikke. Du kan opprette en konto på [GitHub](http://github.com/) eller [BitBucket](http://bitbucket.org/) og synkronisere arbeidet ditt mot en ekstern server, men i utgangspunktet gjøres alt lokalt (distribuert). Du sjekker inn arbeidet ditt så ofte du føler for det, kanskje ved arbeidsdagens slutt. For å se hvordan prosjektet skrider fremover, høyreklikk på filen/mappen og velg *TortoiseGit -> Show log*.
+Stort mer er det ikke. Du kan opprette en konto på [GitHub](http://github.com/) eller [BitBucket](http://bitbucket.org/) og synkronisere arbeidet ditt mot en ekstern server, men i utgangspunktet gjøres alt lokalt (distribuert). Du sjekker inn arbeidet ditt så ofte du føler for det, kanskje ved arbeidsdagens slutt. For å se hvordan prosjektet skrider fremover, høyreklikk på filen/mappen og velg *TortoiseGit* -> *Show log*.
 
 **Lykke til!** :)
 
