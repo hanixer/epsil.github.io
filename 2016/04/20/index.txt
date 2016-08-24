@@ -24,14 +24,14 @@ Below follow installation instructions for [MSYS](#msys), [MinGW](#mingw) and [G
 [MSYS](http://www.mingw.org/wiki/msys)
 --------------------------------------
 
-Install [MSYS](http://www.mingw.org/wiki/msys). Ensure that `sh.exe` is globally available by appending MSYS' `bin/` directory to the `PATH` environment variable.
+Install [MSYS](http://www.mingw.org/wiki/msys). Ensure that `sh.exe` is globally available by *appending* the location of MSYS' `bin/` directory to the `PATH` environment variable. (The `PATH` variable is accessed through *Control Panel* -> *System* -> *Advanced* -> *Environment Variables*. It is a list of file paths separated by `;`.)
 
 You now run Bash scripts as [shown above](#usage), as well as use common Unix commands like `ls`, `mv` and `rm`.
 
 [MinGW](http://www.mingw.org/)
 ------------------------------
 
-For more Unix utilities, augment the above setup with a complete installation of [MinGW](http://www.mingw.org/). Append its directory to `PATH` *after* MSYS.
+For additional developer tools, augment the above setup with a complete installation of [MinGW](http://www.mingw.org/). Append its directory to `PATH` *after* MSYS.
 
 You can now compile C programs (with `gcc`) and C++ programs (with `g++`).
 
@@ -40,7 +40,7 @@ You can now compile C programs (with `gcc`) and C++ programs (with `g++`).
 
 For even more Unix utilities, install [G*nu*W*in*32](http://gnuwin32.sourceforge.net/). Append its directory to `PATH` *after* MSYS and MinGW.
 
-You now have a host of utilities at your command. For example, `wget` downloads a file via the command prompt.
+You now have a host of tools at your command. For example, `wget` downloads a file via the command prompt, while `md5sum` calculates its MD5 hash.
 
 Alias `open`
 ------------
