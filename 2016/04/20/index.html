@@ -60,6 +60,9 @@
 <li><a href="#alias-open" title="Alias open">Alias <code>open</code></a>
 </li>
 
+<li><a href="#alias-find" title="Alias find">Alias <code>find</code></a>
+</li>
+
 <li><a href="#alternatives" title="Alternatives">Alternatives</a>
 </li>
 </ul>
@@ -80,7 +83,7 @@
 </header>
 
 <section id="content">
-<p>The following setup allows you to <a href="#usage" title="Usage">run Bash scripts from Windows&#8217; command prompt</a>. It also augments the command prompt with common Unix commands like <code>ls</code>, <code>cp</code> and <code>rm</code>, which is useful if these are ingrained into your muscle&#160;memory.</p>
+<p>The following setup allows us to <a href="#usage" title="Usage">run Bash scripts from Windows&#8217; command prompt</a>. It also augments the command prompt with common Unix commands like <code>ls</code>, <code>cp</code> and <code>rm</code>, which is useful if these are ingrained into muscle&#160;memory.</p>
 
 <p>(For a list of standalone Bash shells for Windows, see <a href="#alternatives" title="Alternatives">alternatives</a>.)</p>
 
@@ -88,13 +91,13 @@
 <h2><a aria-hidden="true" class="header-anchor" href="#usage" title="Usage"></a>Usage<a aria-controls="usage-section" aria-expanded="true" aria-hidden="true" class="collapse-button" data-toggle="collapse" href="#usage-section" role="button"></a></h2>
 
 <div class="collapse in" id="usage-section">
-<p>The minimum requirement is to <a href="#msys" title="MSYS">install <abbr class="acronym" title="Minimal System"><span class="caps">MSYS</span></abbr></a>. You can then open a command prompt window and run a Bash script as&#160;follows:</p>
+<p>The minimum requirement is to <a href="#msys" title="MSYS">install <abbr class="acronym" title="Minimal System"><span class="caps">MSYS</span></abbr></a>. We can then open a command prompt window and run a Bash script as&#160;follows:</p>
 
 <pre>
 <code>sh script.sh</code>
 </pre>
 
-<p>If the script accepts parameters, just provide them at the&#160;end:</p>
+<p>If the script accepts parameters, we just provide them at the&#160;end:</p>
 
 <pre>
 <code>sh script.sh --param1 val1 --param2 val2</code>
@@ -123,7 +126,7 @@
 <code>%SystemRoot%\system32;%SystemRoot%;C:\Ruby22\bin;C:\msys\1.0\bin</code>
 </pre>
 
-<p>You now run Bash scripts as shown <a href="#usage" title="Usage">above</a>, as well as use common Unix commands like <code>ls</code>, <code>cp</code> and <code>rm</code>.</p>
+<p>We can now run Bash scripts as shown <a href="#usage" title="Usage">above</a>, as well as use common Unix commands like <code>ls</code>, <code>cp</code> and <code>rm</code>.</p>
 </div>
 </section>
 
@@ -134,7 +137,7 @@
 <div class="collapse in" id="mingw-section">
 <p>For additional developer tools, augment the above setup with a complete installation of <a href="http://www.mingw.org/"><abbr title="Minimalist GNU for Windows">MinGW</abbr></a>. Append its directory to <code>PATH</code> <em>after</em> <abbr class="acronym" title="Minimal System"><span class="caps">MSYS</span></abbr>.</p>
 
-<p>You can now compile C programs (with <code>gcc</code>) and C++ programs (with <code>g++</code>).</p>
+<p>We can now compile C programs (with <code>gcc</code>) and C++ programs (with <code>g++</code>).</p>
 </div>
 </section>
 
@@ -145,7 +148,7 @@
 <div class="collapse in" id="gnuwin32-section">
 <p>For even more Unix utilities, install <a href="http://gnuwin32.sourceforge.net/">G<em>nu</em>W<em>in</em>32</a>. Append its directory to <code>PATH</code> <em>after</em> <abbr class="acronym" title="Minimal System"><span class="caps">MSYS</span></abbr> and <abbr title="Minimalist GNU for Windows">MinGW</abbr>.</p>
 
-<p>You now have a host of tools at your command. For example, <code>wget</code> downloads a file via the command prompt, while <code>md5sum</code> calculates its <abbr class="acronym" title="Message-Digest algorithm 5"><span class="caps">MD5</span></abbr>&#160;hash.</p>
+<p>We now have a host of tools at our command. For example, <code>wget</code> downloads a file via the command prompt, while <code>md5sum</code> calculates its <abbr class="acronym" title="Message-Digest algorithm 5"><span class="caps">MD5</span></abbr>&#160;hash.</p>
 </div>
 </section>
 
@@ -162,11 +165,19 @@ start %*</code>
 </div>
 </section>
 
+<section id="alias-find">
+<h2><a aria-hidden="true" class="header-anchor" href="#alias-find" title="Alias find"></a>Alias <code>find</code><a aria-controls="alias-find-section" aria-expanded="true" aria-hidden="true" class="collapse-button" data-toggle="collapse" href="#alias-find-section" role="button"></a></h2>
+
+<div class="collapse in" id="alias-find-section">
+<p>Windows&#8217; own <code>find</code> utility shadows the Unix <code>find</code> command. To create an alias for the latter, navigate to G<em>nu</em>W<em>in</em>32&#8217;s <code>bin/</code> directory and make a copy of <code>find.exe</code> called <code>find2.exe</code>. The Unix command can now be accessed as <code>find2</code>.</p>
+</div>
+</section>
+
 <section id="alternatives">
 <h2><a aria-hidden="true" class="header-anchor" href="#alternatives" title="Alternatives"></a>Alternatives<a aria-controls="alternatives-section" aria-expanded="true" aria-hidden="true" class="collapse-button" data-toggle="collapse" href="#alternatives-section" role="button"></a></h2>
 
 <div class="collapse in" id="alternatives-section">
-<p>Windows 10 includes its own <a href="http://www.howtogeek.com/249966/how-to-install-and-use-the-linux-bash-shell-on-windows-10/">Linux Bash Shell</a>, based on Ubuntu. Note that this is a <em>standalone</em> shell, and does not interfere with Windows&#8217; command prompt. An advantage of a standalone shell is that it may provide functionality that is unavailable or shadowed by the command prompt, such as the <code>find</code> command.</p>
+<p>Windows 10 includes its own <a href="http://www.howtogeek.com/249966/how-to-install-and-use-the-linux-bash-shell-on-windows-10/">Linux Bash Shell</a>, based on Ubuntu. Note that this is a <em>standalone</em> shell, and does not interfere with Windows&#8217; command prompt. A standalone shell has the advantage that it may provide functionality that is unavailable or shadowed by the command&#160;prompt.</p>
 
 <p>Another comprehensive standalone shell is provided by the <a href="http://www.cygwin.com/">Cygwin</a> project, which can be used on older Windows versions. <abbr class="acronym" title="Minimal System"><span class="caps">MSYS</span></abbr> and <abbr title="Minimalist GNU for Windows">MinGW</abbr> also include standalone shells, and <a href="https://git-scm.com/download/win">Git for Windows</a> provides a &#8220;Git Bash&#8221;&#160;shell.</p>
 </div>

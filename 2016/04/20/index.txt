@@ -4,18 +4,18 @@ lang: en
 css: custom.css
 ---
 
-The following setup allows you to [run Bash scripts from Windows' command prompt](#usage). It also augments the command prompt with common Unix commands like `ls`, `cp` and `rm`, which is useful if these are ingrained into your muscle memory.
+The following setup allows us to [run Bash scripts from Windows' command prompt](#usage). It also augments the command prompt with common Unix commands like `ls`, `cp` and `rm`, which is useful if these are ingrained into muscle memory.
 
 (For a list of standalone Bash shells for Windows, see [alternatives](#alternatives).)
 
 Usage
 -----
 
-The minimum requirement is to [install MSYS](#msys). You can then open a command prompt window and run a Bash script as follows:
+The minimum requirement is to [install MSYS](#msys). We can then open a command prompt window and run a Bash script as follows:
 
     sh script.sh
 
-If the script accepts parameters, just provide them at the end:
+If the script accepts parameters, we just provide them at the end:
 
     sh script.sh --param1 val1 --param2 val2
 
@@ -34,21 +34,21 @@ Thus, if MSYS' executables are located at `C:\msys\1.0\bin`, simply add `;C:\msy
 
     %SystemRoot%\system32;%SystemRoot%;C:\Ruby22\bin;C:\msys\1.0\bin
 
-You now run Bash scripts as shown [above](#usage), as well as use common Unix commands like `ls`, `cp` and `rm`.
+We can now run Bash scripts as shown [above](#usage), as well as use common Unix commands like `ls`, `cp` and `rm`.
 
 [MinGW](http://www.mingw.org/)
 ------------------------------
 
 For additional developer tools, augment the above setup with a complete installation of [MinGW](http://www.mingw.org/). Append its directory to `PATH` *after* MSYS.
 
-You can now compile C programs (with `gcc`) and C++ programs (with `g++`).
+We can now compile C programs (with `gcc`) and C++ programs (with `g++`).
 
 [G*nu*W*in*32](http://gnuwin32.sourceforge.net/)
 ------------------------------------------------
 
 For even more Unix utilities, install [G*nu*W*in*32](http://gnuwin32.sourceforge.net/). Append its directory to `PATH` *after* MSYS and MinGW.
 
-You now have a host of tools at your command. For example, `wget` downloads a file via the command prompt, while `md5sum` calculates its MD5 hash.
+We now have a host of tools at our command. For example, `wget` downloads a file via the command prompt, while `md5sum` calculates its MD5 hash.
 
 Alias `open`
 ------------
@@ -58,9 +58,14 @@ Windows does not have the `open` command, and none of the packages above provide
     @echo off
     start %*
 
+Alias `find`
+------------
+
+Windows' own `find` utility shadows the Unix `find` command. To create an alias for the latter, navigate to G*nu*W*in*32's `bin/` directory and make a copy of `find.exe` called `find2.exe`. The Unix command can now be accessed as `find2`.
+
 Alternatives
 ------------
 
-Windows 10 includes its own [Linux Bash Shell](http://www.howtogeek.com/249966/how-to-install-and-use-the-linux-bash-shell-on-windows-10/), based on Ubuntu. Note that this is a *standalone* shell, and does not interfere with Windows' command prompt. An advantage of a standalone shell is that it may provide functionality that is unavailable or shadowed by the command prompt, such as the `find` command.
+Windows 10 includes its own [Linux Bash Shell](http://www.howtogeek.com/249966/how-to-install-and-use-the-linux-bash-shell-on-windows-10/), based on Ubuntu. Note that this is a *standalone* shell, and does not interfere with Windows' command prompt. A standalone shell has the advantage that it may provide functionality that is unavailable or shadowed by the command prompt.
 
 Another comprehensive standalone shell is provided by the [Cygwin](http://www.cygwin.com/) project, which can be used on older Windows versions. MSYS and MinGW also include standalone shells, and [Git for Windows](https://git-scm.com/download/win) provides a "Git Bash" shell.
