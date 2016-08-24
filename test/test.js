@@ -700,16 +700,17 @@ $.fn.fixLinks = function () {
     var body = $(this)
     body.find('a[href^="#"]').each(function () {
       var link = $(this)
-      var href = link.attr('href')
+      var href = link.attr('href').replace(':', '\\:')
       var title = link.attr('title')
       if (link.attr('aria-hidden') === 'true' || href === '#' ||
           (title !== undefined && title !== '')) {
         return
       }
-      var target = body.find(href).first()
+      var target = body.find(href)
       if (target.length <= 0) {
         return
       }
+      target = target.first()
       var text = target.removeAria().text().trim()
       link.attr('title', text)
     })
