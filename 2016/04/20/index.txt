@@ -28,7 +28,7 @@ Install [MSYS](http://www.mingw.org/wiki/msys). Ensure that `sh.exe` is globally
 
 To access the `PATH` variable, go to *Control Panel* -> *System* -> *Advanced* -> *Environment Variables*. The value is a list of file paths separated by `;`. Thus, if MSYS' executables are located at `C:\msys\1.0\bin`, simply add `;C:\msys\1.0\bin` to the end of the variable.
 
-You now run Bash scripts as [shown above](#usage), as well as use common Unix commands like `ls`, `mv` and `rm`.
+You now run Bash scripts as shown [above](#usage), as well as use common Unix commands like `ls`, `mv` and `rm`.
 
 [MinGW](http://www.mingw.org/)
 ------------------------------
