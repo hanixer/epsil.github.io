@@ -24,7 +24,9 @@ Below follow installation instructions for [MSYS](#msys), [MinGW](#mingw) and [G
 [MSYS](http://www.mingw.org/wiki/msys)
 --------------------------------------
 
-Install [MSYS](http://www.mingw.org/wiki/msys). Ensure that `sh.exe` is globally available by *appending* the location of MSYS' `bin/` directory to the `PATH` environment variable. (The `PATH` variable is accessed through *Control Panel* -> *System* -> *Advanced* -> *Environment Variables*. It is a list of file paths separated by `;`.)
+Install [MSYS](http://www.mingw.org/wiki/msys). Ensure that `sh.exe` is globally available by *appending* the location of MSYS' `bin/` directory to the `PATH` environment variable.
+
+To access the `PATH` variable, go to *Control Panel* -> *System* -> *Advanced* -> *Environment Variables*. Its value is a list of file paths separated by `;`. Thus, if MSYS is located at `C:\msys\1.0\bin`, simply add `;C:\msys\1.0\bin` to the end of the variable.
 
 You now run Bash scripts as [shown above](#usage), as well as use common Unix commands like `ls`, `mv` and `rm`.
 
