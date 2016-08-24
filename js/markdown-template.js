@@ -969,6 +969,8 @@ module.exports =
   '*[PS]: PostScript\n' +
   '*[EPS]: Encapsulated PostScript\n' +
   '*[ROT13]: Rotate By 13 Places\n' +
+  '*[MD5]: Message-Digest algorithm 5\n' +
+  '*[CRC]: Cyclic Redundancy Check\n' +
   '*[XP]: Experience\n' +
   '*[NT]: New Technology\n' +
   '*[SDK]: Software Development Kit\n' +
