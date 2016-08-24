@@ -61,6 +61,6 @@ Windows does not have the `open` command, and none of the packages above provide
 Alternatives
 ------------
 
-Windows 10 includes its own [Linux Bash Shell](http://www.howtogeek.com/249966/how-to-install-and-use-the-linux-bash-shell-on-windows-10/), based on Ubuntu. Note that this is a *standalone* shell, and does not interfere with Windows' command prompt.
+Windows 10 includes its own [Linux Bash Shell](http://www.howtogeek.com/249966/how-to-install-and-use-the-linux-bash-shell-on-windows-10/), based on Ubuntu. Note that this is a *standalone* shell, and does not interfere with Windows' command prompt. An advantage of a standalone shell is that it may provide functionality that is unavailable or shadowed by the command prompt, such as the `find` command.
 
 Another comprehensive standalone shell is provided by the [Cygwin](http://www.cygwin.com/) project, which can be used on older Windows versions. MSYS and MinGW also include standalone shells, and [Git for Windows](https://git-scm.com/download/win) provides a "Git Bash" shell.
