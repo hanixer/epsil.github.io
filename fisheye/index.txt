@@ -39,8 +39,8 @@ when I needed you.
 Vegard Øye\
 July 2015
 
-Introduction {#chap:introduction}
-============
+1 Introduction {#chap:introduction}
+==============
 
 In the 21st century, video cameras are everywhere. Whether the
 technology is used for communication or surveillance purposes, there is
@@ -78,7 +78,7 @@ camera, whose feed was displayed on a curved screen in front of the bus
 and also on rectangular screens spread throughout the bus. A more
 sophisticated example is Nvidia's Drive CX automotive system, which
 stitches together data from multiple wide-angle lenses in order to
-provide surround vision [@nvidia15:-drivepx].
+provide surround vision (Nvidia 2015).
 
 The main topic of the thesis is the efficient undistortion of
 photographs taken with fish-eye lenses, and we will look at various ways
@@ -87,7 +87,7 @@ general class of operations on an image: applying a geometric
 transformation to it, also known as "warping" the image. Such an
 operation transforms the spatial relationship between points in the
 image. In his seminal work on digital image warping,
-@wolberg90:-digital-image-warp offers the following analogy:
+Wolberg (1990) offers the following analogy:
 
 > Imagine printing an image onto a sheet of rubber. Depending on what
 > forces are applied to that sheet, the image may simply appear rotated
@@ -109,15 +109,15 @@ custom methods of interpolation can produce smoother results when
 dealing with complex transformations, and how graphics acceleration may
 help us in this regard.
 
-The multi-core imperative
--------------------------
+1.1 The multi-core imperative
+-----------------------------
 
 In recent times, the focus has shifted from raw performance to
 performance per watt expended. Although vendors will continue to fit
 more and more transistors onto a single die, they will compete on power
 efficiency instead. This entails a transition to multi-core chips.
 
-The multi-core imperative was first laid out by @chandrakasan95:-power.
+The multi-core imperative was first laid out by Chandrakasan et al. (1995).
 The gist of their argument is as follows. The energy expended in
 switching the gates in a processor is given by: $$P = CV^2f$$ Here, $C$
 is the capacitance, $V$ is the voltage and $f$ is the frequency.
@@ -134,8 +134,8 @@ will be towards multi-core and specialized processors. To reap the
 benefits of this heterogeneous future, we must choose a well-supported
 framework.
 
-OpenGL
-------
+1.2 OpenGL
+----------
 
 OpenGL is a cross-language, multi-platform API for rendering graphics.
 The API abstracts access to a graphical processing unit (GPU) in order
@@ -147,7 +147,7 @@ Current GPUs consist of a large number of programmable processors called
 *shader cores* which run mini-programs called *shaders*. While each core
 may be relatively primitive -- having low throughput and typically
 lacking advanced features like branch prediction -- the GPU may contain
-thousands of these cores [@sellers14:-opengl-super]. This enables for
+thousands of these cores (Sellers et al. 2014). This enables for
 very efficient parallelization of program code.
 
 Historically, OpenGL was structured around a fixed-function pipeline.
@@ -164,7 +164,7 @@ OpenGL ES is a new version of OpenGL, aimed at mobile devices. It is the
 primary graphics library for handheld and embedded devices with
 programmable 3D hardware including cell phones, personal digital
 assistants (PDAs), consoles, appliances, vehicles, and
-avionics [@aaftab14:-opengl-es]. It is a stripped-down and updated
+avionics (Munshi et al. 2014). It is a stripped-down and updated
 version that is simpler than desktop OpenGL in some respects, and more
 advanced and flexible in other respects. OpenGL ES can also be run on
 the desktop, and it provides the underpinnings of WebGL, a web standard
@@ -187,9 +187,9 @@ run multiple times per pixel. However, our implementation does not
 employ such techniques. Indeed, its pipeline is simple enough that for
 all practical purposes, fragments and output pixels can be considered to
 be the same thing. Shaders are written in a C-like language called GLSL
-(OpenGL Shading Language). Figure \[fig:pipeline\] shows the general
+(OpenGL Shading Language). Figure [1.1](#fig:pipeline) shows the general
 OpenGL ES pipeline; the data flow of our implementation is described in
-chapter \[chap:strategies\].
+chapter [4](#chap:strategies).
 
 ![OpenGL ES pipeline](pipeline.png){#fig:pipeline}
 
@@ -201,8 +201,8 @@ other or reuse previous computations, although some may be cached behind
 the scenes. A shader program only specifies a mapping from its inputs to
 its outputs; the rest is handled by OpenGL ES behind the scenes.
 
-Other frameworks
-----------------
+1.3 Other frameworks
+--------------------
 
 OpenGL ES is not the only API for enabling hardware acceleration. With
 the move from serial programming to parallel programming and the
@@ -218,7 +218,7 @@ control over parallelized code. Indeed, as we will see in
 chapter \[chap:conclusion\], there are some aspects of our
 implementation that may benefit from such control.
 
-### CUDA
+### 1.3.1 CUDA
 
 CUDA (short for Compute Unified Device Architecture) is a parallel
 computing API created and backed by Nvidia. It allows both the CPU (the
@@ -239,9 +239,9 @@ specific hardware and is not very portable.
 CUDA enjoys a huge community, and there are some independent efforts to
 make CUDA programming more heterogeneous. A compiler from PGI makes it
 possible to use the same CUDA code on x86 processors, Nvidia chips, or
-both [@pgi2010:-cuda]. It is also possible to combine CUDA with OpenGL.
+both (PGI 2010). It is also possible to combine CUDA with OpenGL.
 
-### OpenCL
+### 1.3.2 OpenCL
 
 OpenCL is an open and cross-platform standard maintained by the
 non-profit Khronos Group. Its parallelization framework is similar to
@@ -273,8 +273,8 @@ outlined in section \[sec:furtherwork\]. However, this is a complex
 affair. All in all, little compares to OpenGL ES in terms of mobile
 support and ease of use with regard to graphical problems.
 
-Challenges {#sec:challenges}
-----------
+1.4 Challenges {#sec:challenges}
+--------------
 
 In implementing and accelerating barrel undistortion using OpenGL ES, we
 are met with several challenges:
@@ -290,8 +290,8 @@ are met with several challenges:
 
 We will reassess these challenges in chapter \[chap:conclusion\].
 
-Overview
---------
+1.5 Overview
+------------
 
 The structure of the thesis is as follows.
 
@@ -339,8 +339,8 @@ is OpenGL. A recent version, OpenGL ES, is adapted towards mobile
 devices and enjoys widespread support. This is the framework chosen for
 our implementation.
 
-Image transformation {#chap:trans}
-====================
+2 Image transformation {#chap:trans}
+======================
 
 In this chapter we will provide a general discussion of how images can
 be transformed. We will first look at how transformations can be
@@ -364,8 +364,8 @@ We will outline a simple hierarchy of transformations that is roughly
 based on the terminology of @wolberg90:-digital-image-warp. Then we will
 discuss various interpolation techniques.
 
-Types of transformation
------------------------
+2.1 Types of transformation
+---------------------------
 
 ![Transformation types](transformations.png){#fig:transformations}
 
@@ -384,7 +384,7 @@ transformed coordinates of the output image. As we will see later on, it
 can also be useful to go in the reverse direction. Many transformations
 are invertible and can be expressed either way.
 
-### Scaling
+### 2.1.1 Scaling
 
 At the lower end of the spectrum, we have scaling, probably the most
 common way of transforming an image. It is very easy to implement and
@@ -414,7 +414,7 @@ $$\left[\begin{matrix}
 Of course, scaling is invertible, since scaling by $k$ can be undone
 by scaling by $1/k$.
 
-### Linear transformations
+### 2.1.2 Linear transformations
 
 One step up from scaling, we have linear transformations, such as
 rotation, reflection, and shearing. Intuitively, these transformations
@@ -440,7 +440,7 @@ as multiplication by a two-by-two matrix $[\begin{smallmatrix}
 invertible, excluding a few corner cases which are meaningless in the
 context of image transformation.
 
-### Affine transformations
+### 2.1.3 Affine transformations
 
 An affine transformation is a linear transformation followed by
 translation, i.e., shifting the coordinate system by offsets $\Delta
@@ -482,7 +482,7 @@ as: $$\left[\begin{matrix}
 coordinates, which extends the scope of transformations that can be
 expressed as matrix multiplication.
 
-### Projective transformations
+### 2.1.4 Projective transformations
 
 If the three-by-three matrix modifies the $z$ coordinate, then the
 transformation is projective:
@@ -557,7 +557,7 @@ figure \[fig:perspective\], for example, may introduce artifacts in the
 distance. We'll discuss how such effects can be mitigated in our
 treatment of interpolation in section \[sec:interpolation\].
 
-### Nonlinear transformations {#sec:nonlinear}
+### 2.1.5 Nonlinear transformations {#sec:nonlinear}
 
 At an even higher level are the transformations that cannot be expressed
 as matrix multiplication at all. We'll refer to this amorphous class of
@@ -597,8 +597,8 @@ transformation precisely, and how to deal with aliasing effects. Both
 are complex problems, and raise a trade-off between quality and
 efficiency.
 
-Interpolation {#sec:interpolation}
--------------
+2.2 Interpolation {#sec:interpolation}
+-----------------
 
 Thus far, we have only considered how coordinates in the input image map
 onto coordinates in the output image. When we work with images, we
@@ -678,7 +678,7 @@ outline an interpolation method that is general enough to work well with
 any complex transformations, yet flexible enough to be adapted to the
 parameters of the transformation.
 
-### Reconstruction {#sec:filter}
+### 2.2.1 Reconstruction {#sec:filter}
 
 Although interpolation has been expressed as convolution, it is usually
 implemented in terms of evaluating the interpolation polynomial directly
@@ -700,7 +700,7 @@ sharpness of edges gets lost; this method considers *sixteen*
 OpenGL ES contains built-in support for bilinear filtering; other
 methods can be implemented as shaders [@bjorke04:-filter].
 
-### Antialiasing {#sec:prefilter}
+### 2.2.2 Antialiasing {#sec:prefilter}
 
 As we consider more complex transformations, we encounter a new problem:
 aliasing. Scaling, linear transformations and affine transformations are
@@ -732,7 +732,7 @@ image is stored once and rendered many times. When processing a stream
 of images on-the-fly, this may not be viable. The following techniques
 merge interpolation and antialiasing together in one step.
 
-### Adaptive interpolation {#sec:adaptiveinterpolation}
+### 2.2.3 Adaptive interpolation {#sec:adaptiveinterpolation}
 
 One such antialiasing technique is *area sampling*. We may consider each
 pixel in the output image to be a square that is mapped to some shape in
@@ -817,8 +817,8 @@ we can improve on OpenGL ES' built-in interpolation with a supersampling
 solution. First, however, we will take a closer look at the problem of
 modeling barrel distortion.
 
-Models of fish-eye distortion {#chap:models}
-=============================
+3 Models of fish-eye distortion {#chap:models}
+===============================
 
 ![Distortion](distortion.png){#fig:distortion}
 
@@ -852,8 +852,8 @@ image requires little computing power, and can be modeled in many ways.
 precise models more costly; unfortunately, they are also less
 mathematically tractable than the simpler models.
 
-Polar coordinates
------------------
+3.1 Polar coordinates
+---------------------
 
 Barrel distortion is most easily expressed in polar coordinates, with
 the center of the lens at the center of the coordinate system.
@@ -899,8 +899,8 @@ substituting equation (\[eq:polardisplacement\]) into
 equation (\[eq:polartocartesian\]). In the rest of the chapter, we will
 consider distortion to be a function of the radius.
 
-Polynomial models
------------------
+3.2 Polynomial models
+---------------------
 
 The classical distortion model is Brown's model. In addition to radial
 distortion, it also models tangential distortion, which occurs when the
@@ -1004,10 +1004,10 @@ approximating the model's inverse. If precision is less of a concern,
 then an alternative is to use a less precise model which is easier to
 invert. There are several such models to choose from.
 
-Non-polynomial models
----------------------
+3.3 Non-polynomial models
+-------------------------
 
-### Exponential model {#sec:exponential}
+### 3.3.1 Exponential model {#sec:exponential}
 
 @schwarz80:-comput showed that the relationship between the distorted
 radius $r_d$ and the undistorted radius $r_u$ can be approximated by the
@@ -1018,7 +1018,7 @@ relationship is given by a logarithmic equation: $$\label{eq:logarithm}
   r_d = s\ln(1 + \lambda r_u)$$ @basu95:-alter compared this model with
 a polynomial model, and found it to produce good results.
 
-### Trigonometric model
+### 3.3.2 Trigonometric model
 
 @devernay01:-straig-lines proposed an alternate approximation:
 $$\begin{aligned}
@@ -1028,7 +1028,7 @@ $$\begin{aligned}
 where $\omega$ is the field-of-view of the corresponding ideal
 wide-angle lens.
 
-### Division model
+### 3.3.3 Division model
 
 @fitzgibbon01:-simul described a fast inverse model called the "division
 model": $$\label{eq:division}
@@ -1036,8 +1036,8 @@ model": $$\label{eq:division}
 approximation as the first-order Taylor expansion in
 equation <span>\[eq:taylorone\]</span>, but in the opposite direction.
 
-Parameter estimation
---------------------
+3.4 Parameter estimation
+------------------------
 
 The coefficients of the models can be fitted to a curve using the least
 squares method. In the case of polynomial models, @basu95:-alter showed
@@ -1081,8 +1081,8 @@ While there are no straightforward relationships between the parameters
 of one model and another, the coefficients can be estimated with
 nonlinear regression.
 
-Implementation strategies {#chap:strategies}
-=========================
+4 Implementation strategies {#chap:strategies}
+===========================
 
 So far, we have considered how image transformation can be expressed
 mathematically, the challenges it raises with regard to interpolation,
@@ -1090,8 +1090,8 @@ and what models we may use to express fish-eye distortion. In this
 chapter, we will consider various strategies for implementing such
 distortion using OpenGL ES.
 
-Implementation considerations
------------------------------
+4.1 Implementation considerations
+---------------------------------
 
 There are several factors to consider:
 
@@ -1107,7 +1107,7 @@ There are several factors to consider:
 
 Let us discuss each of these items in detail.
 
-### CPU or GPU
+### 4.1.1 CPU or GPU
 
 An OpenGL ES pipeline uses both the CPU and the GPU to some extent
 (figure \[fig:flow\]). However, the brunt of the workload can be
@@ -1128,7 +1128,7 @@ easy to code in terms of shaders. Furthermore, this approach is more
 flexible in that it can be combined with a custom interpolation
 technique.
 
-### Precomputed or dynamic
+### 4.1.2 Precomputed or dynamic
 
 There are several ways of caching the computations for later use.
 Transforming a vertex mesh entirely on the CPU is one strategy. Hybrid
@@ -1137,7 +1137,7 @@ is used by the shader. To obtain continuous values, the shader may
 interpolate between table entries, or use the closest table entry to
 seed an estimation method such as Newton--Raphson approximation.
 
-### Forward mapping or backward mapping
+### 4.1.3 Forward mapping or backward mapping
 
 If the image is transformed by applying a texture to a grid mesh, there
 is a mapping between vertex positions and texture coordinates. A forward
@@ -1150,7 +1150,7 @@ the fragment shader. In such an implementation, each pixel in the output
 image is computed by determining the corresponding position in the input
 image and sampling it.
 
-### Built-in or manual interpolation
+### 4.1.4 Built-in or manual interpolation
 
 OpenGL ES provides built-in bilinear interpolation. This option is very
 fast and yields reasonable results. It also simplifies the
@@ -1161,8 +1161,8 @@ Alternatively, more sophisticated means of interpolation can be
 implemented manually, at the cost of more code and more computations. We
 will explore how interpolation can be performed in the fragment shader.
 
-Implementation strategies {#implementation-strategies}
--------------------------
+4.2 Implementation strategies {#implementation-strategies}
+-----------------------------
 
 As we can see, we have several options when implementing image
 transformation. Table \[tab:strategies\] lists some possible
@@ -1184,7 +1184,7 @@ the possibilities.
 
   : Implementation strategies<span data-label="tab:strategies"></span>
 
-### Strategy 1: CPFB
+### 4.2.1 Strategy 1: CPFB
 
 ![Transformation grid](gridmapping.png){#fig:gridmapping}
 
@@ -1218,7 +1218,7 @@ supports multisampled anti-aliasing, although this is considerably more
 expensive. However, since the strategy is very efficient in the first
 place, the impact may be negligible.
 
-### Strategy 2: CPBB
+### 4.2.2 Strategy 2: CPBB
 
 The second strategy is like the first, but employs backward mapping
 instead (B). This is done by transforming the other end of the mapping
@@ -1321,7 +1321,7 @@ strategy may be a poor choice for a backward mapping strategy, or vice
 versa. If there is an "impedance mismatch" between model and strategy,
 we should change one or the other.
 
-### Strategy 3: GDFB
+### 4.2.3 Strategy 3: GDFB
 
 The previous strategies have left little work to be performed by the
 GPU. For anything to be rendered, OpenGL ES requires us to at least
@@ -1344,7 +1344,7 @@ once and whose results are saved for later use. OpenGL ES 3.0 allows the
 output of a shader to be captured in a buffer object. The rendering
 itself is performed by a simple pass-through shader, as in the CPU case.
 
-### Strategy 4: GDBB {#sec:implementationgdbb}
+### 4.2.4 Strategy 4: GDBB {#sec:implementationgdbb}
 
 Backward mapping can also be done on the GPU. Whereas forward mapping
 was performed by the vertex shader, backward mapping is more
@@ -1361,7 +1361,7 @@ returns a position that is out of range: if so, we return a blank color
 (e.g., white). Section \[sec:implementationgdbb\] describes the
 implementation of such a coordinate check.
 
-### Strategy 5: GDBM {#sec:gdbm}
+### 4.2.5 Strategy 5: GDBM {#sec:gdbm}
 
 All the previous strategies have relied on built-in interpolation.
 However, the last strategy, which performs backward mapping on the GPU,
@@ -1497,8 +1497,8 @@ filters, but that falls outside of the scope of this thesis.
 In the next chapter, we will take a detailed look at the implementation
 of these strategies.
 
-Implementation with OpenGL ES {#chap:opengl}
-=============================
+5 Implementation with OpenGL ES {#chap:opengl}
+===============================
 
 In this chapter, we describe our implementation of the strategies
 outlined in chapter \[chap:strategies\]. We have written a test program
@@ -1511,8 +1511,8 @@ by snippets of shader code.
 For instructions on how to obtain and compile the code, refer to
 appendix \[chap:code\].
 
-Qt
---
+5.1 Qt
+------
 
 The OpenGL ES API does not specify how a rendering context is created or
 attached to the native windowing system. There are various frameworks
@@ -1538,8 +1538,6 @@ with desktop OpenGL.
 
 ![UML diagram](uml.png){#fig:uml}
 
-
-
 The basic structure of the application is shown in figure \[fig:uml\]. A
 `QApplication` is instantiated with a `Window` (`main.cpp`). `Window`
 instantiates a `GLWidget` (`window.cpp`). `GLWidget` is a subclass of
@@ -1549,11 +1547,10 @@ OpenGL ES code is structured in a number of "strategies" inheriting from
 a base class (`strategy.cpp`), using the Template Method
 pattern [@erich95:-patterns].
 
-
 ![OpenGL Shaders](shaders.png){#fig:shaders}
 
-Shaders
--------
+5.2 Shaders
+-----------
 
 Each strategy invokes a vertex shader and a fragment shader. Since
 OpenGL ES lacks a fixed-function pipeline, we must at the very least
@@ -1585,8 +1582,8 @@ transformed before it is output to `gl_Position`. In the case of the
 fragment shader, the texture coordinate is transformed before sampling
 the texture.
 
-Compilation
------------
+5.3 Compilation
+---------------
 
 ![Shader compilation](compilation.png){#fig:compilation}
 
@@ -1608,8 +1605,8 @@ Our implementation does not cache the compilation step. Instead, time
 measurements are postponed until *after* OpenGL ES has been successfully
 initialized.
 
-Strategy 1: CPFB
-----------------
+5.4 Strategy 1: CPFB
+--------------------
 
 ![Grid class](grid.png){#fig:grid}
 
@@ -1673,8 +1670,8 @@ precision level.
         gl_FragColor = texture2D(s_texture, v_texcoord);
     }
 
-Strategy 2: CPBB {#sec:implementationcpbb}
-----------------
+5.5 Strategy 2: CPBB {#sec:implementationcpbb}
+--------------------
 
 In the second CPU-computed strategy, we perform backward mapping instead
 of forward mapping. That is, we hold the vertex positions constant, and
@@ -1704,8 +1701,8 @@ As before, once the grid has been transformed, it stays transformed. The
 shaders are the same as for the previous strategy
 (listings \[lst:vertexshader\]--\[lst:fragmentshader\]).
 
-Strategy 3: GDFB
-----------------
+5.6 Strategy 3: GDFB
+--------------------
 
 The third strategy is a modification of the first strategy, but the
 transformation is performed on the GPU instead. As before, we
@@ -1732,8 +1729,8 @@ unchanged.
         v_texcoord = a_texcoord;
     }
 
-Strategy 4: GDBB {#strategy-4-gdbb}
-----------------
+5.7 Strategy 4: GDBB {#strategy-4-gdbb}
+--------------------
 
 In the backward mapping case, we transform the texture coordinates
 instead. This step can be performed in the fragment shader prior to
@@ -1796,8 +1793,8 @@ function for the direct invocation of `texture2D()`
         gl_FragColor = color(s_texture, transform(v_texcoord));
     }
 
-Strategy 5: GDBM {#sec:implementationgdbm}
-----------------
+5.8 Strategy 5: GDBM {#sec:implementationgdbm}
+--------------------
 
 The final strategy builds upon the previous to include custom
 interpolation in the form of supersampling. This is done by sampling the
@@ -1909,14 +1906,14 @@ regions which are interpolated differently.
 In the next chapter, we will measure the efficiency of these strategies
 and compare their visual output.
 
-Results {#chap:results}
-=======
+6 Results {#chap:results}
+=========
 
 In this chapter, we compare the efficiency of the implementations. We
 also compare built-in interpolation against manual interpolation.
 
-Setup
------
+6.1 Setup
+---------
 
 The code was executed on a MacBook Air 13$''$ 2011 model with a 1,7 GHz
 Intel Core i5 processor, 4 GB 1333 MHz DDR3 RAM, and a Intel HD Graphics
@@ -1937,8 +1934,8 @@ pincushion effect when applied to a regular image
 (figure \[fig:transformedimage\]). In other words, our setup would
 *undistort* a photograph exhibiting a large degree of barrel distortion.
 
-Measuring
----------
+6.2 Measuring
+-------------
 
 Execution time was measured with the Qt class `QElapsedTimer`, which
 attempts to use monotonic clocks if possible. Its `nsecsElapsed()`
@@ -1981,8 +1978,8 @@ points is substituted for the grid.
 
 ![Transformed image](transformedimage.png){#fig:transformedimage}
 
-Results {#results}
--------
+6.3 Results {#results}
+-----------
 
   --- -------- --------------------- ---------- ---------
   1   (CPFB)   grid transformation      69.3 ms    7.8 ms
@@ -2036,8 +2033,8 @@ the initial pass. Even more interestingly, this range is an order of
 magnitude cheaper than the other strategies, including strategy 3, which
 is also done on the GPU.
 
-Vertex count {#sec:vertexcount}
-------------
+6.4 Vertex count {#sec:vertexcount}
+----------------
 
 ![Strategy 3 (GDFB) rendering time versus grid size](strategy3graph.png){#fig:strategy3graph}
 
@@ -2056,8 +2053,8 @@ However, it is not necessary to employ a high-resolution grid in order
 to see good results. Even a grid of as $50 \times 50$ vertices produces
 adequate, if less precise results.
 
-Aliasing
---------
+6.5 Aliasing
+------------
 
 ![Interpolation](interpolation.png){#fig:interpolation}
 
@@ -2084,8 +2081,8 @@ kernel retains the crispness of the lines, but pronounces the aliasing
 effects, particularly in the center of the image
 (figure \[fig:sharpeningstripes\]).
 
-Adaptive interpolation {#sec:adaptive}
-----------------------
+6.6 Adaptive interpolation {#sec:adaptive}
+--------------------------
 
 ![Supersampling results](supersamplingresults.png){#fig:supersamplingresults}
 
@@ -2131,8 +2128,8 @@ characteristics of a transformation such as barrel undistortion.
 In the last chapter, we will sum up our findings and look into further
 areas of investigation.
 
-Conclusion {#chap:conclusion}
-==========
+7 Conclusion {#chap:conclusion}
+============
 
 In this thesis, we have studied and compared various approaches for
 accelerating image transformation using OpenGL ES. Our case has been the
@@ -2165,8 +2162,8 @@ forward direction than in the backward direction in order to warrant a
 forward-mapping strategy over the backward-mapping strategies mentioned
 above.
 
-Discussion
-----------
+7.1 Discussion
+--------------
 
 In chapter \[chap:introduction\] we identified a number of challenges:
 choosing a good model, selecting a fitting implementation strategy,
@@ -2200,8 +2197,8 @@ barrel undistortion, that the implementation adapts well to the
 challenges raised, and that it is well supported by the hardware of
 today.
 
-Further work {#sec:furtherwork}
-------------
+7.2 Further work {#sec:furtherwork}
+----------------
 
 ![Overlapping samples](overlap.png){#fig:overlap}
 
@@ -2261,8 +2258,8 @@ supersampling strategy that could be reduced by sharing memory between
 worker threads. One way of exploring this possibility would be to
 rewrite our OpenGL ES shaders into OpenCL (or CUDA) kernels.
 
-Source code {#chap:code}
-===========
+A Source code {#chap:code}
+=============
 
 The source code is freely available from a Git repository. To obtain the
 code, run the following command:
@@ -2278,10 +2275,80 @@ then execute the resulting application.
 
 The code is freely available under the MIT License.[^10]
 
-Matlab program {#chap:matlab}
-==============
+B Matlab program {#chap:matlab}
+================
 
 Matlab program for estimating model parameters:
+
+Bibliography
+============
+
+Anup Basu and Sergio Licardie. Alternative models for fish-eye lenses.
+*Pattern Recognition Letters*, 1995.
+
+Kevin Bjorke. High-quality filtering. In Randima Fernando, editor, *GPU
+Gems*. Addison-Wesley, 2004.
+
+A. P. Chandrakasan, M. Potkonjak, R. Mehra, J. Rabaey, and R.W. Brodersen. Optimizing
+power using transformations. *IEEE Transactions on Computer-Aided Design of Integrated
+Circuits and Systems*, 14(1), 1995.
+
+Frederic Devernay and Olivier Faugeras. Straight lines have to be straight: Automatic
+calibration and removal of distortion from scenes of structured environments. *Machine
+Vision and Applications*, 2001.
+
+Andrew W. Fitzgibbon. Simultaneous linear estimation of multiple view geometry and
+lens distortion. Technical report, The University of Oxford, Department of Engineering
+Science, 2001.
+
+Erich Gamma, Richard Helm, Ralph Johnson, and John Vlissides. *Design Patterns: Elements
+of Reusable Object-Oriented Software*. Addison-Wesley, 1995.
+
+Richard Hartley and Andrew Zisserman. *Multiple View Geometry in Computer Vision*.
+Cambridge University Press, 2 edition, 2004.
+
+Jeff R. Heard. Beautiful code, compelling evidence: Functional programming for
+information visualization and visual analytics. Technical report, University of North
+Carolina, 2008.
+
+Tom McReynolds and David Blythe. *Advanced Graphics Programming Using OpenGL*.
+Morgan Kaufmann Publishers, 2005.
+
+Aaftab Munshi, Dan Ginsburg, and Dave Shreiner. *OpenGL ES 3.0 Programming Guide*.
+Addison-Wesley Professional, 2014.
+
+Nvidia. Drive px from nvidia tegra automotive, 2015. URL <http://www.nvidia.com/object/
+drive-px.html>.
+
+PGI. Pgi cuda-x86: Cuda programming for multi-core cpus, 2010. URL <https://www.pgroup.
+com/lit/articles/insider/v2n4a1.htm>.
+
+Qt. Qt documentation: Qglwidget, 2015. URL <http://doc.qt.io/qt-4.8/qglwidget.html>.
+
+Matthew Scarpino. *OpenCL in Action*. Manning, 2012.
+
+E. L. Schwarz. Computational anatomy and functional architecture of striate cortex: a
+spatial mapping approach to perceptual coding. *Vision Research*, 20:656--669, 1980.
+
+Graham Sellers, Richard S. Wright, and Nicholas Haemel. *OpenGL SuperBible:
+Comprehensive Tutorial and Reference*. Addison-Wesley, 2014.
+
+Christian Sigg and Markus Hadwiger. Fast third-order texture filtering. In Matt Pharr,
+editor, *GPU Gems 2*. Addison-Wesley, 2005.
+
+Alvy Ray Smith. A pixel is *Not* a little square, a pixel is *Not* a
+little square, a pixel is *Not* a little square! (and a voxel is *Not* a
+little cube). Technical report, Microsoft, 1995.
+
+Bjarne Stroustrup. The *C++ Programming Language*. Addison-Wesley, 4 edition, 2013.
+
+Ken Turkowski and Steve Gabriel. *Graphics Gems I*, chapter Filters for Common
+Resampling Tasks, pages 147--165. Academic Press, 1990.
+
+Dan Wexler and Eric Enderton. High-quality antialiased rasterization. In Matt Pharr,
+editor, *GPU Gems 2*. Addison-Wesley, 2005.
+
+George Wolberg. *Digital Image Warping*. Columbia University, 1990.
 
 [^1]: @wolberg90:-digital-image-warp, chapter 1: "Introduction", p. 1.
 
