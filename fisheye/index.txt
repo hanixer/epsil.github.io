@@ -1,9 +1,15 @@
 title: Accelerating nonlinear image transformations with OpenGL ES
 subtitle: A study on fish-eye undistortion
 author: Vegard Øye
+date: 2015-08-02
+mathjax: mathjax.js
 ---
 
-Abstract {#abstract .unnumbered}
+![](uio.png){width=400}
+
+**[PDF version](thesis.pdf).**
+
+Abstract
 ========
 
 We study the use of OpenGL ES to achieve hardware acceleration of
@@ -21,7 +27,7 @@ accelerating nonlinear image transformations, and outline some ways in
 which greater speed may be achieved with the use of a parallel computing
 framework such as OpenCL.
 
-Acknowledgments {#acknowledgments .unnumbered}
+Acknowledgments
 ===============
 
 I would like to thank my advisors Carsten Griwodz and Andreas Aardal
@@ -78,7 +84,7 @@ camera, whose feed was displayed on a curved screen in front of the bus
 and also on rectangular screens spread throughout the bus. A more
 sophisticated example is Nvidia's Drive CX automotive system, which
 stitches together data from multiple wide-angle lenses in order to
-provide surround vision (Nvidia 2015).
+provide surround vision ([Nvidia 2015](#nvidia15:-drivepx)).
 
 The main topic of the thesis is the efficient undistortion of
 photographs taken with fish-eye lenses, and we will look at various ways
@@ -87,7 +93,7 @@ general class of operations on an image: applying a geometric
 transformation to it, also known as "warping" the image. Such an
 operation transforms the spatial relationship between points in the
 image. In his seminal work on digital image warping,
-Wolberg (1990) offers the following analogy:
+[Wolberg (1990)](#wolberg90:-digital-image-warp) offers the following analogy:
 
 > Imagine printing an image onto a sheet of rubber. Depending on what
 > forces are applied to that sheet, the image may simply appear rotated
@@ -117,16 +123,21 @@ performance per watt expended. Although vendors will continue to fit
 more and more transistors onto a single die, they will compete on power
 efficiency instead. This entails a transition to multi-core chips.
 
-The multi-core imperative was first laid out by Chandrakasan et al. (1995).
-The gist of their argument is as follows. The energy expended in
-switching the gates in a processor is given by: $$P = CV^2f$$ Here, $C$
-is the capacitance, $V$ is the voltage and $f$ is the frequency.
-According to their models, if we compare a single-core processor running
-at voltage of $V$ and a frequency $f$ to a dual-core processor running
-at $f/2$, then the capacitance for the latter increases by $2.2$, while
-the voltage drops to $0.6V$. Therefore, the power in the dual-core case
-is $0.396$ of the power in the single-core case. In general, many cores
-running at lower frequencies are fundamentally more power-efficient.
+The multi-core imperative was first laid out by
+[Chandrakasan et al. (1995)](#chandrakasan95:-power). The gist of
+their argument is as follows. The energy expended in switching the
+gates in a processor is given by:
+
+$$P = CV^2f$$
+
+Here, $C$ is the capacitance, $V$ is the voltage and $f$ is the
+frequency. According to their models, if we compare a single-core
+processor running at voltage of $V$ and a frequency $f$ to a dual-core
+processor running at $f/2$, then the capacitance for the latter
+increases by $2.2$, while the voltage drops to $0.6V$. Therefore, the
+power in the dual-core case is $0.396$ of the power in the single-core
+case. In general, many cores running at lower frequencies are
+fundamentally more power-efficient.
 
 Power considerations are especially important on mobile devices.
 Whenever maximizing performance per watt is essential, the general trend
@@ -143,11 +154,12 @@ to achieve hardware-accelerated rendering. It enjoys the strong
 advantage that it supports a wide range of platforms and hardware. It is
 maintained by the non-profit technology consortium Khronos Group.
 
-Current GPUs consist of a large number of programmable processors called
-*shader cores* which run mini-programs called *shaders*. While each core
-may be relatively primitive -- having low throughput and typically
-lacking advanced features like branch prediction -- the GPU may contain
-thousands of these cores (Sellers et al. 2014). This enables for
+Current GPUs consist of a large number of programmable processors
+called *shader cores* which run mini-programs called *shaders*. While
+each core may be relatively primitive -- having low throughput and
+typically lacking advanced features like branch prediction -- the GPU
+may contain thousands of these cores
+([Sellers et al. 2014](#sellers14:-opengl-super)). This enables for
 very efficient parallelization of program code.
 
 Historically, OpenGL was structured around a fixed-function pipeline.
@@ -164,7 +176,7 @@ OpenGL ES is a new version of OpenGL, aimed at mobile devices. It is the
 primary graphics library for handheld and embedded devices with
 programmable 3D hardware including cell phones, personal digital
 assistants (PDAs), consoles, appliances, vehicles, and
-avionics (Munshi et al. 2014). It is a stripped-down and updated
+avionics ([Munshi et al. 2014](#aaftab14:-opengl-es)). It is a stripped-down and updated
 version that is simpler than desktop OpenGL in some respects, and more
 advanced and flexible in other respects. OpenGL ES can also be run on
 the desktop, and it provides the underpinnings of WebGL, a web standard
@@ -191,7 +203,7 @@ be the same thing. Shaders are written in a C-like language called GLSL
 OpenGL ES pipeline; the data flow of our implementation is described in
 chapter [4](#chap:strategies).
 
-![OpenGL ES pipeline](pipeline.png){#fig:pipeline}
+![Figure 1.1: OpenGL ES pipeline](pipeline.png){#fig:pipeline width=500}
 
 Both vertices and fragments are automatically shaded in parallel. This
 gives rise to a significant performance boost while freeing the
@@ -215,7 +227,7 @@ knowledge of how it fits into the larger picture. Furthermore, OpenGL ES
 offers limited support for profiling code. A motivation for using a
 general library in place of OpenGL ES would be to gain more fine-grained
 control over parallelized code. Indeed, as we will see in
-chapter \[chap:conclusion\], there are some aspects of our
+chapter [7](#chap:conclusion), there are some aspects of our
 implementation that may benefit from such control.
 
 ### 1.3.1 CUDA
@@ -239,7 +251,7 @@ specific hardware and is not very portable.
 CUDA enjoys a huge community, and there are some independent efforts to
 make CUDA programming more heterogeneous. A compiler from PGI makes it
 possible to use the same CUDA code on x86 processors, Nvidia chips, or
-both (PGI 2010). It is also possible to combine CUDA with OpenGL.
+both ([PGI 2010](#pgi2010:-cuda)). It is also possible to combine CUDA with OpenGL.
 
 ### 1.3.2 OpenCL
 
@@ -269,7 +281,7 @@ no single company backing OpenCL, although AMD, ARM and Intel have
 declared support for the standard.
 
 As with CUDA, OpenCL can be combined with OpenGL ES, a task that is
-outlined in section \[sec:furtherwork\]. However, this is a complex
+outlined in section [7.2](#sec:furtherwork). However, this is a complex
 affair. All in all, little compares to OpenGL ES in terms of mobile
 support and ease of use with regard to graphical problems.
 
@@ -288,37 +300,37 @@ are met with several challenges:
 -   To provide high-quality interpolation, adapted to the
     characteristics of the transformation.
 
-We will reassess these challenges in chapter \[chap:conclusion\].
+We will reassess these challenges in chapter [7](#chap:conclusion).
 
 1.5 Overview
 ------------
 
 The structure of the thesis is as follows.
 
-1.  **Chapter \[chap:introduction\]: .** This chapter investigates the
+1.  **[Chapter 1: Introduction](#chap:introduction).** This chapter investigates the
     motivation for accelerating image transformation, along with the
     available technologies for doing so.
-2.  **Chapter \[chap:trans\]: .** The task of performing fish-eye
+2.  **[Chapter 2: Image transformation](#chap:trans).** The task of performing fish-eye
     undistortion is indicative of a larger class of problems. In this
     chapter, we outline a hierarchy of transformation problems and
     investigate their challenges with regard to interpolation.
-3.  **Chapter \[chap:models\]: .** Fish-eye distortion can be modeled in
+3.  **[Chapter 3: Models of fish-eye distortion](#chap:models).** Fish-eye distortion can be modeled in
     different ways. We compare several models and their pros and cons
     with regard to implementation.
-4.  **Chapter \[chap:strategies\]: .** We outline five implementation
+4.  **[Chapter 4: Implementation strategies](#chap:strategies).** We outline five implementation
     strategies for accelerating fish-eye undistortion. We also describe
     several interpolation methods.
-5.  **Chapter \[chap:opengl\]: .** The aforementioned strategies are
+5.  **[Chapter 5: Implementation with OpenGL ES](#chap:opengl).** The aforementioned strategies are
     implemented with a combination of Qt and OpenGL ES. We describe the
     class structure and give examples of shader code.
-6.  **Chapter \[chap:results\]: .** We compare the execution times of
+6.  **[Chapter 6: Results](#chap:results).** We compare the execution times of
     the implemented strategies. We also give visual examples of the
     interpolation results.
-7.  **Chapter \[chap:conclusion\]: .** We sum up which strategies give
+7.  **[Chapter 7: Conclusion](#chap:conclusion).** We sum up which strategies give
     the best results. We also highlight some weaknesses and suggest ways
     to improve the efficiency even further.
 
-Summary {#summary .unnumbered}
+Summary
 -------
 
 Image transformation is a general problem that crops up in different
@@ -361,22 +373,23 @@ following issues:
     barrel undistortion falls outside this class.
 
 We will outline a simple hierarchy of transformations that is roughly
-based on the terminology of @wolberg90:-digital-image-warp. Then we will
-discuss various interpolation techniques.
+based on the terminology of
+[Wolberg (1990)](#wolberg90:-digital-image-warp). Then we will discuss
+various interpolation techniques.
 
 2.1 Types of transformation
 ---------------------------
 
-![Transformation types](transformations.png){#fig:transformations}
-
 Image transformations can be roughly ordered from simple, linear
 transformations to complex, nonlinear transformations
-(figure \[fig:transformations\]). In the following discussion, we will
+(figure [2.1](#fig:transformations)). In the following discussion, we will
 consider that each sample in the source image has a coordinate $[x, y]$,
 and it is our task to calculate the corresponding position $[x', y']$ in
 the transformed image. The problem of blending together samples in order
 to produce a smooth output image is postponed to our treatment of
-interpolation in section \[sec:interpolation\].
+interpolation in section [2.2](#sec:interpolation).
+
+![Figure 2.1: Transformation types](transformations.png){#fig:transformations width=400}
 
 Note that in the following discussion, the transformation takes us
 *from* the untransformed coordinates of the source image *to* the
@@ -431,9 +444,14 @@ $$\begin{aligned}
 
 Note that the
 transformation doesn't shift the coordinate system -- it maps the zero
-coordinate onto itself: $$\label{eq:zero}
-  F(\mathbf{0}) = \mathbf{0}$$ Linear transformations can be expressed
-as multiplication by a two-by-two matrix $[\begin{smallmatrix}
+coordinate onto itself:
+
+$$\label{eq:zero}
+  F(\mathbf{0}) = \mathbf{0}$$
+
+Linear transformations can be expressed as multiplication by a
+two-by-two matrix
+$[\begin{smallmatrix}
   m_{11} & m_{12}\\
   m_{21} & m_{22}
 \end{smallmatrix}]$. For all practical purposes, these matrices are
@@ -448,6 +466,7 @@ x$ and $\Delta y$. Translations cannot be expressed by a two-by-two
 matrix, as equation shows. However, if we extend our two-dimensional
 coordinates with a "dummy" coordinate $z = 1$, we can express
 translation as multiplication by a three-by-three matrix:
+
 $$\left[\begin{matrix}
       1 & 0 & \Delta x\\
       0 & 1 & \Delta y\\
@@ -457,13 +476,15 @@ $$\left[\begin{matrix}
       x\\
       y\\
       1
-    \end{matrix}\right]
-  = \left[\begin{matrix}
+    \end{matrix}\right] = \left[\begin{matrix}
       x + \Delta x\\
       y + \Delta y\\
       1
-    \end{matrix}\right]$$ An affine transformation can then be expressed
-as: $$\left[\begin{matrix}
+    \end{matrix}\right]$$
+
+An affine transformation can then be expressed as:
+
+$$\left[\begin{matrix}
       m_{11} & m_{12} & \Delta x\\
       m_{21} & m_{22} & \Delta y\\
       0 & 0 & 1
@@ -472,12 +493,13 @@ as: $$\left[\begin{matrix}
       x\\
       y\\
       1
-    \end{matrix}\right]
-  = \left[\begin{matrix}
+    \end{matrix}\right] = \left[\begin{matrix}
       m_{11}x + m_{12}y + \Delta x\\
       m_{21}x + m_{22}y + \Delta y\\
       1
-    \end{matrix}\right]$$ In actuality, the coordinate $[x, y, z]$ is a
+    \end{matrix}\right]$$
+
+In actuality, the coordinate $[x, y, z]$ is a
 *homogeneous* coordinate. OpenGL ES provides built-in support for such
 coordinates, which extends the scope of transformations that can be
 expressed as matrix multiplication.
@@ -496,8 +518,7 @@ $$\left[\begin{matrix}
       x\\
       y\\
       z
-    \end{matrix}\right]
-  = \left[\begin{matrix}
+    \end{matrix}\right] = \left[\begin{matrix}
       m_{11}x + m_{12}y + m_{13}z\\
       m_{21}x + m_{22}y + m_{23}z\\
       m_{31}x + m_{32}y + m_{33}z
@@ -522,10 +543,10 @@ By transforming the input coordinates with
 this two-step process -- first multiplying with an homogeneous matrix and
 then mapping back to two-dimensional coordinates -- we can express more
 advanced transformations, for example perspective projection
-(figure \[fig:perspective\]). Any planar quadrilateral can be
+(figure [2.2](#fig:perspective)). Any planar quadrilateral can be
 transformed to any other quadrilateral.
 
-![Perspective projection](perspective.png){#fig:perspective}
+![Figure 2.2: Perspective projection](perspective.png){#fig:perspective width=300}
 
 In the case of nonplanar quadrilaterals, however, a more general
 solution is necessary. The general quadrilateral-to-quadrilateral
@@ -548,14 +569,14 @@ $$\left[\begin{matrix}
 For example, a photograph can be transformed from perspective
 projection to orthographic projection by mapping a rectangle imaged as
 a quadrilateral to a rectangle with the correct aspect ratio
-[@zisserman04:-multiple-view].
+([Hartley and Zisserman 2004](#zisserman04:-multiple-view)).
 
 Because projective transformations do not distribute samples as
 uniformly as simpler transformations do, they tend to present aliasing
 issues. A textured surface rendered at an angle as shown in
-figure \[fig:perspective\], for example, may introduce artifacts in the
+figure [2.2](#fig:perspective), for example, may introduce artifacts in the
 distance. We'll discuss how such effects can be mitigated in our
-treatment of interpolation in section \[sec:interpolation\].
+treatment of interpolation in section [2.2](#sec:interpolation).
 
 ### 2.1.5 Nonlinear transformations {#sec:nonlinear}
 
@@ -571,7 +592,9 @@ produce unwanted aliasing effects.
 
 A nonlinear transformation is not necessarily costly to calculate. If it
 is, however, then it might be preferable to compute it in advance and
-store it as a table of $[x, y]$-offsets: $$\left[
+store it as a table of $[x, y]$-offsets:
+
+$$\left[
     \begin{matrix}
       F(\mathbf{x}_{11}) & F(\mathbf{x}_{12}) & F(\mathbf{x}_{13}) & F(\mathbf{x}_{14}) & \dotsb & F(\mathbf{x}_{1n}) \\
       F(\mathbf{x}_{21}) & F(\mathbf{x}_{22}) & F(\mathbf{x}_{23}) & F(\mathbf{x}_{24}) & \dotsb & F(\mathbf{x}_{2n}) \\
@@ -581,7 +604,9 @@ store it as a table of $[x, y]$-offsets: $$\left[
       \vdots             & \vdots             & \vdots             & \vdots             & \ddots & \vdots             \\
       F(\mathbf{x}_{m1}) & F(\mathbf{x}_{m2}) & F(\mathbf{x}_{m3}) & F(\mathbf{x}_{m4}) & \dotsb & F(\mathbf{x}_{mn})
     \end{matrix}
-  \right]$$ Since coordinate transformation is reduced to a single table
+  \right]$$
+
+Since coordinate transformation is reduced to a single table
 lookup, this is very efficient, at least for small tables. For large
 tables, cache misses may outweigh the cost of computing the value
 directly. Note that if the image resolution is not known beforehand
@@ -622,7 +647,7 @@ step, the process can be divided into four stages:
     to their relative distance to the reconstructed position. A simple
     reconstruction filter may consider only the nearest sample, while a
     more sophisticated filter may compute a weighted average of the
-    surrounding area (see section \[sec:filter\]).
+    surrounding area (see section [2.2.1](#sec:filter)).
 2.  **Transformation:** The continuous input $f_c(x)$ is transformed to
     $g_c(x)$ according to the transformation function $F$. In the case
     of backward mapping, the transformation is defined as an inverse
@@ -648,21 +673,21 @@ In practice, interpolation is usually expressed in more compact terms
 (although there are promising efforts to bring a more "functional" style
 into graphics).[^2] The main point, for our purposes, is that the
 transformation is performed either through *forward mapping* or
-*backward mapping*. As we will see in chapter \[chap:opengl\], OpenGL ES
+*backward mapping*. As we will see in chapter [5](#chap:opengl), OpenGL ES
 lends itself well to both approaches. In the case of a forward mapping
 implementation, we go *from* coordinates in the input image *to*
-coordinates in the output image (figure \[fig:forwardmapping\]). This is
+coordinates in the output image (figure [2.3a](#fig:forwardandbackwardmapping)). This is
 done by constructing a constructing a grid mesh, transforming it, and
 then rasterizing the result. In the case of backward mapping, we go
 *from* output coordinates *to* input coordinates
-(figure \[fig:backwardmapping\]). We therefore make use of the *inverse*
+(figure [2.3b](#fig:forwardandbackwardmapping)). We therefore make use of the *inverse*
 transformation $F^{-1}(\mathbf{x})$, rather than the original
 transformation $F(\mathbf{x})$. For example, if the application is
 scaling, then instead of scaling coordinates in the input image by a
 factor of $k$, we scale coordinates in the output image by a factor of
 $1/k$.
 
-![Forward mapping and backward mapping](forwardandbackwardmapping.png){#fig:forwardandbackwardmapping}
+![Figure 2.3: Forward mapping and backward mapping](forwardandbackwardmapping.png){#fig:forwardandbackwardmapping width=600}
 
 Which approach is better is a question of context. A complex
 transformation may be faster to compute in one direction than the other.
@@ -673,7 +698,7 @@ usually done in one direction and then in the orthogonal direction
 a set of intermediate values which are blended together in the second
 step. But as complex transformations are not geometrically simple, it is
 difficult to generalize techniques which depend on the rows-and-columns
-shape of the problem. In section \[sec:adaptiveinterpolation\], we will
+shape of the problem. In section [2.2.3](#sec:adaptiveinterpolation), we will
 outline an interpolation method that is general enough to work well with
 any complex transformations, yet flexible enough to be adapted to the
 parameters of the transformation.
@@ -698,7 +723,7 @@ results can be obtained with *bicubic* interpolation, although some
 sharpness of edges gets lost; this method considers *sixteen*
 ($4 \times 4$) samples and is more computationally intensive.[^3]
 OpenGL ES contains built-in support for bilinear filtering; other
-methods can be implemented as shaders [@bjorke04:-filter].
+methods can be implemented as shaders ([Bjorke 2004](#bjorke04:-filter)).
 
 ### 2.2.2 Antialiasing {#sec:prefilter}
 
@@ -748,16 +773,16 @@ transformed in reverse to produce the input coordinates of some
 approximately quadrilateral shape. For more complex transformations, the
 preimage may *not* be quadrilateral at all, and additional coordinates
 may be necessary. There is also the recurrent problem that a "pixel is
-*not* a little square" [@smith95:-pixel]. A pixel is, in fact, a point
+*not* a little square" ([Smith 1995](#smith95:-pixel)). A pixel is, in fact, a point
 sample that is rendered in the form of a little square. This complicates
 the matter of drawing the line between samples that are "inside" the
 preimage and samples that are outside it. In practice, some
 approximation is necessary.
 
-![Supersampling](supersampling.png){#fig:supersampling}
+![Figure 2.4: Supersampling](supersampling.png){#fig:supersampling width=500}
 
 The technique of *supersampling* sidesteps these geometrical
-difficulties (figure \[fig:supersampling\]). Instead of dealing directly
+difficulties (figure [2.4](#fig:supersampling)). Instead of dealing directly
 with the shape of the preimage, the preimage is merely "sampled" a
 number of times. The value of the output pixel is computed on the basis
 of, say, nine ($3 \times 3$) positions that are overlaid onto the pixel
@@ -773,7 +798,7 @@ does little for the problem of image transformation, where aliasing
 artifacts are not confined to polygon edges. We need to provide a more
 general method, over whose implementation we can exert direct control.
 
-As we will see in chapter \[chap:strategies\], supersampling is simple
+As we will see in chapter [4](#chap:strategies), supersampling is simple
 to implement, but has the cost of increasing the amount of computations
 by nine in this case. If the input is a high-resolution image with lots
 of detail, then additional samples may be necessary, making the method
@@ -788,10 +813,10 @@ thus improve interpolation quality. In the case of barrel undistortion,
 we know that the "sampling density" depends on the distance from the
 center of the image. By building this knowledge into our interpolation
 method, we can employ a sharpening filter for "low-density" areas and a
-blurring filter for "high-density" areas. Section \[sec:gdbm\] describes
+blurring filter for "high-density" areas. Section [4.2.5](#sec:gdbm) describes
 such a strategy.
 
-Summary {#summary-1 .unnumbered}
+Summary
 -------
 
 Image transformations can be ordered by complexity. Some transformations
@@ -820,8 +845,6 @@ modeling barrel distortion.
 3 Models of fish-eye distortion {#chap:models}
 ===============================
 
-![Distortion](distortion.png){#fig:distortion}
-
 Wide-angle lenses produce a "fish-eye" effect, but all lenses exhibit
 some degree of barrel distortion. By modeling the distortion precisely,
 it is possible to undistort the image, producing a "pincushion" effect
@@ -830,12 +853,14 @@ regular lenses, as well as for the "fish-eye" effect of wide-angle
 images.
 
 Barrel distortion and pincushion are illustrated in
-figure \[fig:distortion\]. Observe that in the case of barrel
+figure [3.1](#fig:distortion). Observe that in the case of barrel
 distortion, the "density" of the lines increases towards the edges. In
 the case of pincushion distortion, on the other hand, the reverse is
 true: the center of the image has the highest "density". It is this area
 that is prone to aliasing effects when undistorting a high-frequency
 image.
+
+![Figure 3.1: Distortion](distortion.png){#fig:distortion width=400}
 
 The main challenge is to model the distortion precisely. Mitigating the
 "fish-eye" effect of a wide-angle lens can be done on the basis of known
@@ -861,42 +886,61 @@ OpenGL ES, however, uses Cartesian coordinates. Luckily, it is not
 necessary to perform coordinate conversion to and from polar coordinates
 in order to calculate the distortion. In this section, we will derive a
 *displacement factor* that lets us compute the distortion in Cartesian
-space (figure \[fig:displacement\]).
+space (figure [3.2](#fig:displacement)).
 
-![Displacement](displacement.png){#fig:displacement}
+![Figure 3.2: Displacement](displacement.png){#fig:displacement width=400}
 
 If $[x, y]$ are the Cartesian coordinates of a point, then the polar
 coordinates $[r, \theta]$ represent the radius $r$ and the angle
 $\theta$ with the positive $x$ axis. The relationship between Cartesian
-coordinates and polar coordinates is: $$\label{eq:cartesiantopolar}
+coordinates and polar coordinates is:
+
+$$\label{eq:cartesiantopolar}
     [r, \theta] = \left[\!\sqrt{x^2 + y^2}, \operatorname{atan2}(y, x)\right]$$
+
 where $\operatorname{atan2}$ is the arcus tangent function of *two*
 arguments $y$ and $x$, which expresses the quadrant of the angle
 accurately.[^5] The inverse relationship is given by:
+
 $$\label{eq:polartocartesian}
-  [x, y] = [r\cos{\theta}, r\sin{\theta}]$$ A model is a mapping from an
+  [x, y] = [r\cos{\theta}, r\sin{\theta}]$$
+
+A model is a mapping from an
 untransformed coordinate $[r, \theta]$ to a transformed coordinate
 $[r', \theta']$. (It may map undistorted coordinates to distorted
 coordinates or vice versa; for the time being, we ignore the direction
 of the model and only concern ourselves with the mapping itself.) Since
 the angle doesn't change (i.e., $\theta' = \theta$), the model can be
 expressed more compactly as the relationship between the undistorted
-radius $r$ and the distorted radius $r'$: $$\label{eq:model}
-  r' = F(r)$$ We can avoid incurring the cost of the trigonometric
-functions in
-equations (\[eq:cartesiantopolar\]--\[eq:polartocartesian\]). Let $d$ be
-the displacement factor, expressed as the ratio of the distorted radius
-to the undistorted radius: $$\label{eq:displacement}
-  d = \frac{r'}{r} = \frac{F(r)}{r}$$ Then the relationship between
+radius $r$ and the distorted radius $r'$:
+
+$$\label{eq:model}
+  r' = F(r)$$
+
+We can avoid incurring the cost of the trigonometric functions in
+equations (\ref{eq:cartesiantopolar}--\ref{eq:polartocartesian}). Let $d$
+be the displacement factor, expressed as the ratio of the distorted
+radius to the undistorted radius:
+
+$$\label{eq:displacement}
+  d = \frac{r'}{r} = \frac{F(r)}{r}$$
+
+Then the relationship between
 undistorted polar coordinates and distorted polar coordinates can be
-expressed in terms of this factor: $$\label{eq:polardisplacement}
+expressed in terms of this factor:
+
+$$\label{eq:polardisplacement}
   [r', \theta'] = [F(r), \theta] = \left[\frac{F(r)}{r}r, \theta\right] = [dr, \theta]$$
+
 Likewise, the relationship between undistorted Cartesian coordinates and
 distorted Cartesian coordinates is given by:
+
 $$\label{eq:cartesiandisplacement}
-  [x', y'] = d[x, d] = [dx, dy]$$ This is easily verified by
-substituting equation (\[eq:polardisplacement\]) into
-equation (\[eq:polartocartesian\]). In the rest of the chapter, we will
+  [x', y'] = d[x, d] = [dx, dy]$$
+
+This is easily verified by
+substituting equation \eqref{eq:polardisplacement} into
+equation \eq{eq:polartocartesian}. In the rest of the chapter, we will
 consider distortion to be a function of the radius.
 
 3.2 Polynomial models
@@ -905,39 +949,57 @@ consider distortion to be a function of the radius.
 The classical distortion model is Brown's model. In addition to radial
 distortion, it also models tangential distortion, which occurs when the
 lens is not aligned with the sensor. The model is commonly approximated
-as a Taylor series: $$\label{eq:brown}
+as a Taylor series:
+
+$$\label{eq:brown}
   \begin{split}
     x_u &= x_d + (x_d - x_c)(\kappa_1r^2 + \kappa_2r^4 + \kappa_3r^6 + \dotsb) + {} \\
     &\phantom{{}={}} [(\rho_1(r^2 + 2(x_d - x_c)^2) + 2\rho_2(x_d - x_c)(y_d - y_c))(1 + \rho_3r^2 + \dotsb)]\\
     y_u &= y_d + (y_d - y_c)(\kappa_1r^2 + \kappa_2r^4 + \kappa_3r^6 + \dotsb) + {} \\
     &\phantom{{}={}} [(\rho_1(r^2 + 2(y_d - y_c)^2) + 2\rho_2(y_d - y_c)(y_d - y_c))(1 + \rho_3r^2 + \dotsb)]
-  \end{split}$$ where $[x_u, y_u]$ is the undistorted image point,
+  \end{split}$$
+
+where $[x_u, y_u]$ is the undistorted image point,
 $[x_d, y_d]$ is the distorted image point, $[x_c, y_c]$ is the center of
 distortion (i.e., $[0, 0]$ under our assumptions), $\kappa_n$ is the
 $n$th radial distortion coefficient and $r$ is the radius as defined in
-equation (\[eq:cartesiantopolar\]). The part in brackets expresses
+equation \eqref{eq:cartesiantopolar}. The part in brackets expresses
 tangential distortion, where $\rho_n$ is the $n$th tangential distortion
 coefficient.
 
 If we substitute $[x_c, x_c] = [0, 0]$ and remove the tangential part,
-the model simplifies to: $$\label{eq:brownradial}
+the model simplifies to:
+
+$$\label{eq:brownradial}
   \begin{split}
     x_u &= x_d(1 + \kappa_1r^2 + \kappa_2r^4 + \kappa_3r^6 + \dotsb)\\
     y_u &= y_d(\underbrace{1 + \kappa_1r^2 + \kappa_2r^4 + \kappa_3r^6 + \dotsb}_d)
-  \end{split}$$ where $d$ is the displacement factor we defined in
-equation (\[eq:displacement\]). Since the polynomial $d = f(r)$ must be
+  \end{split}$$
+
+where $d$ is the displacement factor we defined in
+equation \eqref{eq:displacement}. Since the polynomial $d = f(r)$ must be
 symmetric in $r$, only the coefficients of even powers of $r$ will be
 nonzero. Higher-order terms contribute very little, so
-equation (\[eq:brownradial\]) can be approximated by a finite expression
+equation \eqref{eq:brownradial} can be approximated by a finite expression
 where the coefficient $\kappa_1$ controls the general behavior of the
-distortion: $$\label{eq:taylorone}
-  d = f(r) = 1 + \kappa_1r^2$$ The coefficient $\kappa_2$ needs only be
+distortion:
+
+$$\label{eq:taylorone}
+  d = f(r) = 1 + \kappa_1r^2$$
+
+The coefficient $\kappa_2$ needs only be
 added if a first-order approximation is insufficient:
+
 $$\label{eq:taylortwo}
-  d = f(r) = 1 + \kappa_1r^2 + \kappa_2r^4)$$ However, for larger
+  d = f(r) = 1 + \kappa_1r^2 + \kappa_2r^4)$$
+
+However, for larger
 distortions (i.e., wide-angle lenses), at least three terms are needed:
+
 $$\label{eq:taylorthree}
-  d = f(r) = 1 + \kappa_1r^2 + \kappa_2r^4 + \kappa_3r^6$$ Brown's model
+  d = f(r) = 1 + \kappa_1r^2 + \kappa_2r^4 + \kappa_3r^6$$
+
+Brown's model
 is a mapping from distorted positions to undistorted positions, i.e., a
 relationship of the form $[x_u, y_u] = F(x_d,
 y_d)$. This allows us to determine where any point in the distorted
@@ -946,39 +1008,51 @@ forward mapping image transformation, it produces a "pincushion" effect
 (the opposite of barrel distortion). However, lens undistortion can also
 be implemented in terms of the reverse relationship, $[x_d,
 y_d] = F^{-1}(x_u, y_u)$, provided we substitute backward mapping for
-forward mapping. Table \[tab:mappings\] shows the relationships between
+forward mapping. Table [3.1](#tab:mappings) shows the relationships between
 interpolation method, model direction, and the produced effect.
 
-  Interpolation      Model                             Effect
-  ------------------ --------------------------------- ------------
-  Forward mapping    $[x_u, y_u] = F(x_d, y_d)$        Pincushion
-  Backward mapping   $[x_u, y_u] = F(x_d, y_d)$        Barrel
-  Forward mapping    $[x_d, y_d] = F^{-1}(x_u, y_u)$   Barrel
-  Backward mapping   $[x_d, y_d] = F^{-1}(x_u, y_u)$   Pincushion
-
-  : Forward mapping and backward mapping<span
-  data-label="tab:mappings"></span>
+> | Interpolation    | Model                           | Effect     |
+> | ---------------- | ------------------------------- | ---------- |
+> | Forward mapping  | $[x_u, y_u] = F(x_d, y_d)$      | Pincushion |
+> | Backward mapping | $[x_u, y_u] = F(x_d, y_d)$      | Barrel     |
+> | Forward mapping  | $[x_d, y_d] = F^{-1}(x_u, y_u)$ | Barrel     |
+> | Backward mapping | $[x_d, y_d] = F^{-1}(x_u, y_u)$ | Pincushion |
+>
+> Table 3.1: Forward mapping and backward mapping
+{#tab:mappings}
 
 If we want to implement a backward mapping image transformation in terms
 of the inverse relationship, we encounter the problem that
-equation (\[eq:taylorthree\]) has no closed-form solution. If precision
+equation \eqref{eq:taylorthree} has no closed-form solution. If precision
 is less of a concern, we can precompute the mapping and store the values
-in a table, as outlined in section \[sec:nonlinear\]. However, methods
+in a table, as outlined in section [2.1.5](#sec:nonlinear). However, methods
 like supersampling are likely to request a position that is not stored
 in the table, requiring us to interpolate between table entries.
 
 Another approach is to compute the inverse by an iterative method such
-as Newton--Raphson approximation: $$\label{eq:newton}
-  x_{n+1} = x_n - \frac{f(x_n)}{f'(x_n)}$$ To approximate a value for
+as Newton--Raphson approximation:
+
+$$\label{eq:newton}
+  x_{n+1} = x_n - \frac{f(x_n)}{f'(x_n)}$$
+
+To approximate a value for
 $r$ corresponding to a displacement $d$, we rewrite
-equation (\[eq:taylorthree\]) on the form $f(r) = 0$:
+equation \eqref{eq:taylorthree} on the form $f(r) = 0$:
+
 $$\label{eq:rewrite}
-  f(r) = 0 = 1 + \kappa_1r^2 + \kappa_2r^4 + \kappa_3r^6 - d$$ The
-derivative of this polynomial is: $$\label{eq:derivative}
-  f'(r) = 2\kappa_1r + 4\kappa_2r^3 + 6\kappa_3r^5$$ Substituting
-equations (\[eq:rewrite\]--\[eq:derivative\]) into
-equation (\[eq:newton\]) gives us: $$\label{eq:approximation}
+  f(r) = 0 = 1 + \kappa_1r^2 + \kappa_2r^4 + \kappa_3r^6 - d$$
+
+The derivative of this polynomial is:
+
+$$\label{eq:derivative}
+  f'(r) = 2\kappa_1r + 4\kappa_2r^3 + 6\kappa_3r^5$$
+
+Substituting equations (\ref{eq:rewrite}--\ref{eq:derivative}) into
+equation \eqref{eq:newton} gives us:
+
+$$\label{eq:approximation}
   r_{n+1} = r_n - \frac{1 + \kappa_1r^2 + \kappa_2r^4 + \kappa_3r^6 - d}{2\kappa_1r + 4\kappa_2r^3 + 6\kappa_3r^5}$$
+
 This is an iterative equation for finding better and better estimates of
 $r$ such that $f(r) = d$. Since the equation is considerably more
 complicated than the forward relationship, we would like to reduce the
@@ -987,14 +1061,21 @@ towards better estimates depending on how good the previous estimate
 was. Thus, by combining Newton--Raphson approximation with precomputed
 values in a table, the number of iterations can be reduced. The initial
 estimate is picked from a precomputed table $T$, and subsequent
-iterations refine it. Algorithm \[alg:newton\] illustrates this
+iterations refine it. Algorithm [1](#alg:newton) illustrates this
 approach.
 
-\[h\]
-
-$r \leftarrow T(d)$
-$r \leftarrow r - \tfrac{1 + \kappa_1r^2 + \kappa_2r^4 +
-      \kappa_3r^6 - d}{2\kappa_1r + 4\kappa_2r^3 + 6\kappa_3r^5}$ $r$
+> Algorithm 1: Newton--Raphson approximation
+>
+> ```python
+> r <- T(d) # initial estimate from table
+> for n = 0 to N do
+>   # refine estimate
+>   r <- r - (1 + k_1 * r^2 + k_2 * r^4 + \k_3 * r^6 - d)
+>          / (2 * k_1 * r + 4 * k_2 * r^3 + 6 * k_3 * r^5)
+> end for
+> return r # final estimate
+> ```
+{#alg:newton}
 
 In general, Brown's model is cheap in one direction, but costly in the
 other direction. That makes it a less than optimal choice for backward
@@ -1009,40 +1090,54 @@ invert. There are several such models to choose from.
 
 ### 3.3.1 Exponential model {#sec:exponential}
 
-@schwarz80:-comput showed that the relationship between the distorted
+[Schwarz (1980)](#schwarz80:-comput) showed that the relationship between the distorted
 radius $r_d$ and the undistorted radius $r_u$ can be approximated by the
-following exponential equation: $$\label{eq:exp}
-  r_u = (\mathrm{e}^{r_d/s} - 1) / \lambda$$ where $s$ is a scaling
-factor and $\lambda$ is the amount of distortion. The *inverse*
-relationship is given by a logarithmic equation: $$\label{eq:logarithm}
-  r_d = s\ln(1 + \lambda r_u)$$ @basu95:-alter compared this model with
-a polynomial model, and found it to produce good results.
+following exponential equation:
+
+$$\label{eq:exp}
+  r_u = (\mathrm{e}^{r_d/s} - 1) / \lambda$$
+
+where $s$ is a scaling factor and $\lambda$ is the amount of
+distortion. The *inverse* relationship is given by a logarithmic
+equation:
+
+$$\label{eq:logarithm} r_d = s\ln(1 + \lambda r_u)$$
+
+[Basu and Licardie (1995)](#basu95:-alter) compared this model with a polynomial model,
+and found it to produce good results.
 
 ### 3.3.2 Trigonometric model
 
-@devernay01:-straig-lines proposed an alternate approximation:
+[Devernay and Faugeras (2001)](#devernay01:-straig-lines) proposed an alternate approximation:
+
 $$\begin{aligned}
   \label{eq:devernay}
   r_u &= \tfrac{1}{\omega} \operatorname{atan}(2r_d\tan{\tfrac{\omega}{2}})\\
   r_d &= \frac{\tan(r_u\omega)}{2\tan{\tfrac{\omega}{2}}}\end{aligned}$$
+
 where $\omega$ is the field-of-view of the corresponding ideal
 wide-angle lens.
 
 ### 3.3.3 Division model
 
-@fitzgibbon01:-simul described a fast inverse model called the "division
-model": $$\label{eq:division}
-  r_d = \frac{1}{1 + \kappa r^2}r_u$$ This model is about as good an
-approximation as the first-order Taylor expansion in
-equation <span>\[eq:taylorone\]</span>, but in the opposite direction.
+[Fitzgibbon (2001)](#fitzgibbon01:-simul) described a fast inverse
+model called the "division model":
+
+$$\label{eq:division}
+  r_d = \frac{1}{1 + \kappa r^2}r_u$$
+
+This model is about as good an approximation as the first-order Taylor
+expansion in equation \eqref{eq:taylorone}, but in the
+opposite direction.
 
 3.4 Parameter estimation
 ------------------------
 
-The coefficients of the models can be fitted to a curve using the least
-squares method. In the case of polynomial models, @basu95:-alter showed
-that the resulting set of linear equations can be solved by an
-analytical method such as Gauss--Jordan elimination.
+The coefficients of the models can be fitted to a curve using the
+least squares method. In the case of polynomial models,
+[Basu and Licardie (1995)](#basu95:-alter) showed that the resulting
+set of linear equations can be solved by an analytical method such as
+Gauss--Jordan elimination.
 
 In the case of non-polynomial models, there is no simple relationship
 between the parameters of one model and the parameters of another.
@@ -1051,21 +1146,32 @@ parameters can be estimated with successive evaluation techniques such
 as Newton--Raphson approximation.
 
 Using Matlab's `fitnlm()` function, we obtained the following
-coefficients for Brown's model:[^6] $$\label{eq:taylorparam}
-  d = f(r) = 1 - 3.5778r^2 + 7.1946r^4 + -3.9842r^6$$ For the
-exponential model: $$\begin{aligned}
+coefficients for Brown's model:[^6]
+
+$$\label{eq:taylorparam}
+  d = f(r) = 1 - 3.5778r^2 + 7.1946r^4 + -3.9842r^6$$
+
+For the exponential model:
+
+$$\begin{aligned}
   \label{eq:expparam}
   r_u &= (\mathrm{e}^{r_d/0.76} - 1) / 3.8342\\
   \label{eq:logparam}
-  r_d &= 0.76\ln(1 + 3.8342r_u)\end{aligned}$$ For the trigonometric
-model: $$\begin{aligned}
+  r_d &= 0.76\ln(1 + 3.8342r_u)\end{aligned}$$
+
+For the trigonometric model:
+
+$$\begin{aligned}
   \label{eq:devernayparam}
   r_u &= \tfrac{1}{0.95617} \operatorname{atan}(2r_d\tan{\tfrac{0.95617}{2}})\\
   r_d &= \frac{\tan(0.95617r_u)}{2\tan{\tfrac{0.95617}{2}}}\end{aligned}$$
-For the division model: $$\label{eq:divisionparam}
+
+For the division model:
+
+$$\label{eq:divisionparam}
   r_d = \frac{1}{1 - 0.29948r^2}r_u$$
 
-Summary {#summary-2 .unnumbered}
+Summary
 -------
 
 Fish-eye distortion can be modeled in various ways. Polynomial models
@@ -1110,10 +1216,10 @@ Let us discuss each of these items in detail.
 ### 4.1.1 CPU or GPU
 
 An OpenGL ES pipeline uses both the CPU and the GPU to some extent
-(figure \[fig:flow\]). However, the brunt of the workload can be
+(figure [4.1](#fig:flow)). However, the brunt of the workload can be
 computed by the CPU, or it can be accelerated by the GPU.
 
-![Data flow](flow.png){#fig:flow}
+![Figure 4.1: Data flow](flow.png){#fig:flow width=600}
 
 The transformation may be programmed in C (or in our case, in C++) and
 computed entirely by the CPU. If a vertex mesh is used to transform the
@@ -1165,28 +1271,25 @@ will explore how interpolation can be performed in the fragment shader.
 -----------------------------
 
 As we can see, we have several options when implementing image
-transformation. Table \[tab:strategies\] lists some possible
+transformation. Table [4.1](#tab:strategies) lists some possible
 *interpolation strategies* -- that is, ways of combining these options.
 Some options tend to go together with other options, but the table is
 not exhaustive; many other combinations are possible. In this section,
 we will focus on a selection of implementation strategies to illustrate
 the possibilities.
 
-  --- --------------- ------------------- ---------------- ----------------
-      Acceleration:   Computation:        Mapping:         Interpolation:
-      PU/PU           recomputed/ynamic   orward/ackward   uilt-in/anual
-  1   C               P                   F                B
-  2   C               P                   B                B
-  3   G               D                   F                B
-  4   G               D                   B                B
-  5   G               D                   B                M
-  --- --------------- ------------------- ---------------- ----------------
-
-  : Implementation strategies<span data-label="tab:strategies"></span>
+> |   | Acceleration:<br>CPU/GPU | Computation:<br>Precomputed/Dynamic | Mapping:<br>Forward/Backward | Interpolation:<br>Built-in/Manual |
+> | - | ------------------------ | ----------------------------------- | ---------------------------- | --------------------------------- |
+> | 1 | C                        | P                                   | F                            | B                                 |
+> | 2 | C                        | P                                   | B                            | B                                 |
+> | 3 | G                        | D                                   | F                            | B                                 |
+> | 4 | G                        | D                                   | B                            | B                                 |
+> | 5 | G                        | D                                   | B                            | M                                 |
+>
+> Table 4.1: Implementation strategies
+{#tab:strategies}
 
 ### 4.2.1 Strategy 1: CPFB
-
-![Transformation grid](gridmapping.png){#fig:gridmapping}
 
 The first strategy computes the transformation on the CPU (C),
 precomputes the transformation before use (P), employs forward mapping
@@ -1207,10 +1310,12 @@ is mapped to the upper-right corner, and so on. Then the positions of
 the vertices are transformed by means of the chosen model. In
 consequence, the texture is warped.
 
-As illustrated in figure \[fig:gridmapping\], the transformation is a
+As illustrated in figure [4.2](#fig:gridmapping), the transformation is a
 mapping from regular rectangles (the undistorted grid) to quadrilaterals
 (the distorted grid). Although the vertex positions have changed, the
 texture coordinates still map to the undistorted grid.
+
+![Figure 4.2: Transformation grid](gridmapping.png){#fig:gridmapping width=400}
 
 The strategy leaves interpolation to OpenGL ES. The smoothest results
 are achieved by OpenGL ES' `GL_LINEAR` option. Some versions also
@@ -1226,7 +1331,7 @@ between vertex positions and texture coordinates. That is, while the
 forward mapping strategy transformed the vertex positions and held the
 texture coordinates constant, the backward mapping strategy transforms
 the texture coordinates and holds the vertex positions constant
-[@mcreynolds05:-advanced].
+([McReynolds and Blythe 2005](#mcreynolds05:-advanced)).
 
 To explain this transformation in detail, we need to give an overview of
 OpenGL ES' coordinate spaces. By itself, OpenGL ES contains a mapping
@@ -1246,7 +1351,7 @@ $$\label{eq:mapping}
 This is an affine transformation, where vertex
 space is centered around $[0, 0]$. It is translated and scaled to
 texture space, which is centered around $[1/2, 1/2]$. Using the
-conventions established in chapter \[chap:trans\], we can express the
+conventions established in chapter [2](#chap:trans), we can express the
 translation in matrix form:
 
 $$\label{eq:affinemapping}
@@ -1293,29 +1398,32 @@ $$\label{eq:inversemapping}
     \end{matrix}\right]$$
 
 The utility of
-equations \[eq:mapping\]--\[eq:inversemapping\] is evident when we want
+equations (\ref{eq:mapping}--\ref{eq:inversemapping}) is evident when we want
 to transform texture space. The transformation equations assume that the
 coordinate space is centered around $[0,
 0]$, *not* $[1/2, 1/2]$. Therefore we must translate the coordinates
-before and after conversion, as shown in algorithm \[alg:coord\].
+before and after conversion, as shown in algorithm [2](#alg:coord).
 
-\[h\]
-
-$[x, y] \leftarrow [2(s - 1/2), 2(t - 1/2)]$
-$[x', y'] \leftarrow F([x, y])$
-$[s', t'] \leftarrow [x'/2 + 1/2, y'/2 + 1/2]$
+> Algorithm 2: Coordinate conversion
+>
+> ```python
+> [x, y] <- [2(s - 1/2), 2(t - 1/2)] # convert to vertex space
+> [x', y'] <- F([x, y]) # transform coordinate
+> [s', t'] <- [x'/2 + 1/2, y'/2 + 1/2] # convert to texture space
+> ```
+{#alg:coord}
 
 Aside from these caveats, the implementation is straightforward and
 yields comparable results to the first strategy. The additional
 computations introduced by the coordinate conversion in
-algorithm \[alg:coord\] are negligible and do not contribute much to the
+algorithm [2](#alg:coord) are negligible and do not contribute much to the
 overall cost. Which is the better choice? It depends. If all necessary
 parameters are known beforehand so that the whole mesh can be stored as
 precomputed data, it doesn't really matter whether we choose one or the
 other. However, if the image size is not known and the mesh needs to be
 computed as least once when the program is initialized, then backward
 mapping may be preferable over forward mapping *if the chosen model is
-faster in that direction*. As we saw in chapter \[chap:models\], models
+faster in that direction*. As we saw in chapter [3](#chap:models), models
 differ in this regard: a model well-suited for a forward mapping
 strategy may be a poor choice for a backward mapping strategy, or vice
 versa. If there is an "impedance mismatch" between model and strategy,
@@ -1358,7 +1466,7 @@ coordinate.
 As in the CPU case, we must perform coordinate conversion before and
 after the transformation. We must also check if the transformation
 returns a position that is out of range: if so, we return a blank color
-(e.g., white). Section \[sec:implementationgdbb\] describes the
+(e.g., white). Section [4.2.4](#sec:implementationgdbb) describes the
 implementation of such a coordinate check.
 
 ### 4.2.5 Strategy 5: GDBM {#sec:gdbm}
@@ -1370,28 +1478,36 @@ Instead of sampling a *single* color value, which will have been
 interpolated for us by OpenGL ES' `GL_LINEAR` option, we can sample
 multiple values and blend them together ourselves. If we know that the
 length and height of an output pixel is $l$, then the positions of the
-corners are given as follows: $$\begin{aligned}
+corners are given as follows:
+
+$$\begin{aligned}
   \label{eq:ul}
   [x, y]_{ul} &= [x - \tfrac{1}{2}l, y + \tfrac{1}{2}l] \\
   [x, y]_{ur} &= [x + \tfrac{1}{2}l, y + \tfrac{1}{2}l] \\
   [x, y]_{ll} &= [x - \tfrac{1}{2}l, y - \tfrac{1}{2}l] \\
   [x, y]_{lr} &= [x + \tfrac{1}{2}l, y - \tfrac{1}{2}l]\end{aligned}$$
+
 These four coordinates plus the original coordinate can then be
 transformed to input coordinates that are sampled to compute an average
 of five values. Alternatively, we can overlay a grid of $3
 \times 3$ positions over the pixel and sample the input at nine
 different positions. This gives us four more positions to compute:
+
 $$\begin{aligned}
   [x, y]_{um} &= [x, y + \tfrac{1}{2}l] \\
   [x, y]_{ml} &= [x - \tfrac{1}{2}l, y] \\
   [x, y]_{mr} &= [x + \tfrac{1}{2}l, y] \\
   \label{eq:lm}
-  [x, y]_{lm} &= [x, y - \tfrac{1}{2}l]\end{aligned}$$ An unweighed
+  [x, y]_{lm} &= [x, y - \tfrac{1}{2}l]\end{aligned}$$
+
+An unweighed
 average produces a smooth, if somewhat fuzzy result. We can achieve a
 different filtering effect by adjusting the coefficients -- that is, by
 computing a weighed average. A weighed average can be expressed a
 two-dimensional dot product with a weight matrix (or "kernel") divided
-by a normalization value [@bjorke04:-filter]: $$\label{eq:kernel}
+by a normalization value ([Bjorke 2004](#bjorke04:-filter)):
+
+$$\label{eq:kernel}
   \frac{1}{d}\left[\begin{matrix}
       w_{ul} & w_{um} & w_{ur}\\
       w_{ml} & w_{mm} & w_{mr}\\
@@ -1404,19 +1520,22 @@ by a normalization value [@bjorke04:-filter]: $$\label{eq:kernel}
       c_{lr} & c_{lm} & c_{lr}
     \end{matrix}\right]
   = \tfrac{1}{d}(w_{ul}c_{ul} + w_{um}c_{um} + \dotsb + w_{lr}c_{lr})$$
+
 A brief discussion of a few very simple filters follows. For example,
 the previously mentioned average of nine samples can be expressed as a
-matrix of $1$'s divided by $9$ (figure \[fig:nineaverage\]). This is
+matrix of $1$'s divided by $9$ (figure [4.4b](#fig:kernels)). This is
 also known as a box filter, since it weighs the neighboring samples
-equally (figure \[fig:boxfilter\]). Such a filter removes much of the
+equally (figure [4.3a](#fig:boxfilterandgaussianfilter)). Such a filter removes much of the
 noise in the original image by averaging samples together; but it also
 removes a significant amount of detail that isn't noise.
 
+![Figure 4.3: Filtering methods](boxfilterandgaussianfilter.png){#fig:boxfilterandgaussianfilter width=400}
+
 In this regard, better results are typically achieved by a Gaussian
-filter (figure \[fig:gaussianfilter\]). Filtering with such a filter
+filter (figure [4.3b](#fig:boxfilterandgaussianfilter)). Filtering with such a filter
 produces a blurring effect similar to that of the box filter, but the
 priority is on the central sample and the samples adjacent to it. The
-Gaussian kernel (figure \[fig:gaussian\]) gives most weight to the
+Gaussian kernel (figure [4.4c](#fig:kernels)) gives most weight to the
 center position, less weight to the closest neighbors, and least weight
 to the corners. Thus, the filter keeps more of the differences between
 one sample and the next. As such, the Gaussian filter is a compromise
@@ -1427,28 +1546,28 @@ Instead of reducing the difference between samples, we can also
 accentuate it. A sharpening filter works in the opposite way to the
 previous filters: instead of adding the values of the neighboring
 samples, the sharpening filter subtracts them from the central sample
-(figure \[fig:sharpeningfilter\]). If the central sample has the same
+(figure [4.3c](#fig:boxfilterandgaussianfilter)). If the central sample has the same
 value as the surrounding samples, then the filtered value is equal to
-the original (figure \[fig:sharpening\]). But if the central sample has
+the original (figure [4.4d](#fig:kernels)). But if the central sample has
 a greater value than the surrounding samples, then the filtered value is
 magnified significantly. Note that as a sharpening filter magnifies
 noise along with other details in the image, it can be a good idea to
 apply a blurring filter, such as the Gaussian filter, prior to
 sharpening.
 
-![Filtering methods](boxfilterandgaussianfilter.png){#fig:boxfilterandgaussianfilter}
+![Figure 4.4: Interpolation kernels](kernels.png){#fig:kernels width=300}
 
-These are only some of the image effects that can be expressed in terms
-of $3 \times 3$ filter kernels. As we will see in
-section \[sec:implementationgdbm\], one benefit of such filters is that
-they are easy to represent with OpenGL ES data structures. Since their
+These are only some of the image effects that can be expressed in
+terms of $3 \times 3$ filter kernels. As we will see in section
+[5.8](#sec:implementationgdbm), one benefit of such filters is that they
+are easy to represent with OpenGL ES data structures. Since their
 dimensionality is the same, it is easy to swap out one filter in
 preference of another under an adaptive strategy. More sophisticated
 filters can be implemented, but fall outside the scope of this thesis.
 An examination of current film renderers performed by
-@wexler05:-rasterization showed a wide variety of supported filters
-(sinc, Gaussian, Carmull-Rom, Lanczos, Mitchell and more) and default
-filter radii of 2 to 5 samples.
+[Wexler and Enderton (2005)](#wexler05:-rasterization) showed a wide
+variety of supported filters (sinc, Gaussian, Carmull-Rom, Lanczos,
+Mitchell and more) and default filter radii of 2 to 5 samples.
 
 If the supersampling approach is *combined* with OpenGL ES' `GL_LINEAR`
 option, the result is a "two-step" interpolation method. Each color
@@ -1459,9 +1578,9 @@ value on the basis of one, four, five or nine samples depending on the
 distance to the center and the resulting sampling density. In this way,
 we could improve the efficiency of the shader.
 
-More interestingly, the kernels listed in figure \[fig:kernels\] can be
+More interestingly, the kernels listed in figure [4.4](#fig:kernels) can be
 interchanged adaptively in order to improve interpolation quality.
-Recall from chapter \[chap:models\] that as barrel undistortion produces
+Recall from chapter [3](#chap:models) that as barrel undistortion produces
 a "pincushion" effect, the center of the image has the highest
 frequency, while the outer areas are often blurry because the samples
 are spread apart. This suggests that while a blurring kernel should be
@@ -1469,7 +1588,7 @@ employed in the center to mitigate aliasing effects, it may be swapped
 out in preference of a sharpening kernel when the outer parts of the
 image are dealt with.
 
-Summary {#summary-3 .unnumbered}
+Summary
 -------
 
 We have outlined five different implementation strategies for
@@ -1501,7 +1620,7 @@ of these strategies.
 ===============================
 
 In this chapter, we describe our implementation of the strategies
-outlined in chapter \[chap:strategies\]. We have written a test program
+outlined in chapter [4](#chap:strategies). We have written a test program
 that runs each strategy multiple times and measures the execution time.
 We describe the general structure of this program, the data flow of the
 shaders, and our implementation of the grid mesh and the interface for
@@ -1509,7 +1628,7 @@ transforming it. Then we turn to transformation on the GPU, illustrated
 by snippets of shader code.
 
 For instructions on how to obtain and compile the code, refer to
-appendix \[chap:code\].
+appendix [A](#chap:code).
 
 5.1 Qt
 ------
@@ -1524,7 +1643,7 @@ an object-oriented way.
 Qt is a cross-platform application framework maintained by Qt Company.
 Applications written in Qt can be compiled and run on Windows, Linux and
 OS X, as well as mobile platforms. Qt provides the `QGLWidget` class as
-an abstraction layer for OpenGL ES [@qt15:-qglwidget]. By subclassing
+an abstraction layer for OpenGL ES ([Qt 2015](#qt15:-qglwidget)). By subclassing
 this class, we can draw onto the current rendering context by invoking
 standard OpenGL ES functions.
 
@@ -1536,18 +1655,16 @@ variable names with special meanings. Qt encourages the writing of such
 "portable shaders", and so do we: all the code is backward compatible
 with desktop OpenGL.
 
-![UML diagram](uml.png){#fig:uml}
+![Figure 5.1: UML diagram](uml.png){#fig:uml width=600}
 
-The basic structure of the application is shown in figure \[fig:uml\]. A
+The basic structure of the application is shown in figure [5.1](#fig:uml). A
 `QApplication` is instantiated with a `Window` (`main.cpp`). `Window`
 instantiates a `GLWidget` (`window.cpp`). `GLWidget` is a subclass of
 `QGLWidget`, and it sets up and runs OpenGL ES code in its
 `initializeGL()` and `paintGL()` functions (`glwidget.cpp`). The
 OpenGL ES code is structured in a number of "strategies" inheriting from
 a base class (`strategy.cpp`), using the Template Method
-pattern [@erich95:-patterns].
-
-![OpenGL Shaders](shaders.png){#fig:shaders}
+pattern ([Gamma et al. 1995](#erich95:-patterns)).
 
 5.2 Shaders
 -----------
@@ -1559,16 +1676,18 @@ shader in order to render anything at all.
 
 Both shaders take a number of data entries as input and return a number
 of data entries as output. The vertex shader
-(figure \[fig:vertexshader\]) takes a number of *input attributes* and
+(figure [5.2a](#fig:shaders)) takes a number of *input attributes* and
 outputs a number of *varyings*. The fragment shader
-(figure \[fig:fragmentshader\]) takes the varyings as input and outputs
+(figure [5.2b](#fig:shaders)) takes the varyings as input and outputs
 a *color*.
+
+![Figure 5.2: OpenGL Shaders](shaders.png){#fig:shaders width=500}
 
 Constant data used by shaders are globally available as *uniforms*. A
 special type of uniform is the *sampler*, which represents a texture. It
 is used by the fragment shader for looking up the color of a texture
 coordinate. As of OpenGL ES 3.0, texture lookup operations are also
-possible in the vertex shader [@aaftab14:-opengl-es].
+possible in the vertex shader ([Munshi et al. 2014](#aaftab14:-opengl-es)).
 
 In the CPU-computed strategies, a pass-through vertex shader takes the
 texture coordinate and position of each vertex and outputs them
@@ -1585,14 +1704,14 @@ the texture.
 5.3 Compilation
 ---------------
 
-![Shader compilation](compilation.png){#fig:compilation}
-
 When the implementation is initialized, the shaders are read from a file
 on disk, parsed and compiled into a *shader object* in memory. The
 shader objects are then attached to and linked into a *program object*
-that performs the rendering (figure \[fig:compilation\]). At this stage,
+that performs the rendering (figure [5.3](#fig:compilation)). At this stage,
 vertex positions, texture coordinates and textures can be allocated and
 bound to the program object.
+
+![Figure 5.3: Shader compilation](compilation.png){#fig:compilation width=300}
 
 OpenGL ES does not specify a binary format for program objects. This is
 left to the vendor, which means that the format may change from one
@@ -1608,8 +1727,6 @@ initialized.
 5.4 Strategy 1: CPFB
 --------------------
 
-![Grid class](grid.png){#fig:grid}
-
 When computing the transformation on the CPU, we need to create a grid
 mesh of $M \times N$ vertices -- a higher number means a more precise
 transformation. This task is handled by the `Grid` class (`grid.cpp`).
@@ -1621,17 +1738,19 @@ of four corners is created with `Grid(2, 2)`.
 
 The mesh is constructed as a `GL_TRIANGLE_STRIP`, with alternating
 orientations of the inner triangles so that the whole strip can be drawn
-in one pass (figure \[fig:gridmesh\]). Observe that each point has a
+in one pass (figure [5.4a](#fig:grid)). Observe that each point has a
 *pair* of coordinates associated with it: a vertex position in the range
 $[-1, 1]$ and a texture coordinate in the range $[0, 1]$. The grid may
 be transformed by transforming the vertex positions and holding the
 texture coordinates constant, or by transforming the texture coordinates
 and holding the vertex positions constant.
 
+![Figure 5.4: Grid class](grid.png){#fig:grid width=300}
+
 To perform a forward mapping transformation, we iterate through each
 vertex position in the grid, transform it, and update the position. To
 this end, the `Grid` class provides an abstract interface
-(figure \[fig:gridclass\]). The `transform()` method takes a *functor
+(figure [5.4b](#fig:grid)). The `transform()` method takes a *functor
 class* as input. A functor class, in this context, is merely a wrapper
 class for a function on vertex positions.[^7] By implementing the
 transformation as such a class, we can pass it to the `Grid` class to
@@ -1643,8 +1762,8 @@ textured by the input image. Its vertex positions and texture
 coordinates are loaded as vertex attribute arrays, and become available
 as input attributes for the vertex shader. Since we are not using the
 GPU to accelerate the transformation, a simple a pass-through vertex
-shader (listing \[lst:vertexshader\]) and a texture sampling fragment
-shader (listing \[lst:fragmentshader\]) suffice.
+shader (listing [5.1](#lst:vertexshader)) and a texture sampling fragment
+shader (listing [5.2](#lst:fragmentshader)) suffice.
 
 In OpenGL ES, if no default precision is specified, then the default
 precision is `highp` (the highest precision). It is possible that the
@@ -1654,21 +1773,31 @@ multiple precisions, so it is perfectly valid for an implementation to
 ignore all qualifiers and perform the calculations at the highest
 precision level.
 
-    attribute vec2 a_texcoord;
-    attribute vec4 a_position;
-    varying vec2 v_texcoord;
+> Listing 5.1: Pass-through vertex shader
+>
+> ```c
+> attribute vec2 a_texcoord;
+> attribute vec4 a_position;
+> varying vec2 v_texcoord;
+>
+> void main() {
+>     gl_Position = a_position;
+>     v_texcoord = a_texcoord;
+> }
+> ```
+{#lst:vertexshader}
 
-    void main() {
-        gl_Position = a_position;
-        v_texcoord = a_texcoord;
-    }
-
-    varying vec2 v_texcoord;
-    uniform sampler2D s_texture;
-
-    void main() {
-        gl_FragColor = texture2D(s_texture, v_texcoord);
-    }
+> Listing 5.2: Texture sampling fragment shader
+>
+> ```c
+> varying vec2 v_texcoord;
+> uniform sampler2D s_texture;
+>
+> void main() {
+>     gl_FragColor = texture2D(s_texture, v_texcoord);
+> }
+> ```
+{#lst:fragmentshader}
 
 5.5 Strategy 2: CPBB {#sec:implementationcpbb}
 --------------------
@@ -1680,7 +1809,7 @@ transform the texture coordinates instead.
 To this end, the `Grid` class provides the `iTransform()` method, which
 iterates through the grid's texture coordinates. Recall that texture
 space's range of $[0, 1]$ differs from vertex space's range of
-$[-1, 1]$, so the method implements algorithm \[alg:coord\] and converts
+$[-1, 1]$, so the method implements algorithm [2](#alg:coord) and converts
 between coordinate spaces before and after transformation.
 
 In this regard, our `Functor` interface comes in handy. Coordinate
@@ -1690,16 +1819,16 @@ method for composing functor classes, we can build more complex
 transformations out of simpler transformations. Transformation in
 texture space, for example, can be defined as the composition of
 coordinate conversion and vertex transformation, composed with reverse
-coordinate conversion (figure \[fig:chain\]). Likewise, when we
+coordinate conversion (figure [5.5](#fig:chain)). Likewise, when we
 initialize the grid, we employ functor classes to normalize vertex
 positions within the $[-1, 1]$ range and texture coordinates within the
 $[0, 1]$ range.
 
-![Functor composition](chain.png){#fig:chain}
+![Figure 5.5: Functor composition](chain.png){#fig:chain width=500}
 
 As before, once the grid has been transformed, it stays transformed. The
 shaders are the same as for the previous strategy
-(listings \[lst:vertexshader\]--\[lst:fragmentshader\]).
+(listings [5.1](#lst:vertexshader)--[5.2](#lst:fragmentshader)).
 
 5.6 Strategy 3: GDFB
 --------------------
@@ -1710,24 +1839,29 @@ instantiate an object of the `Grid` class, but we *don't* invoke the
 `transform()` method. Instead, we leave it to the vertex shader to map
 each vertex to the transformed position.
 
-Listing \[lst:vertexshadertransform\] outlines the structure of the
+Listing [5.3](#lst:vertexshadertransform) outlines the structure of the
 vertex shader. The `transform()` function implements our choice of
 distortion model. Note that texture coordinates are passed through
 unchanged.
 
-    attribute vec2 a_texcoord;
-    attribute vec4 a_position;
-    varying vec2 v_texcoord;
-
-    // fish-eye transformation
-    vec4 transform(vec4 pos) {
-        ...
-    }
-
-    void main() {
-        gl_Position = transform(a_position);
-        v_texcoord = a_texcoord;
-    }
+> Listing 5.3: Transformation in the vertex shader
+>
+> ```c
+> attribute vec2 a_texcoord;
+> attribute vec4 a_position;
+> varying vec2 v_texcoord;
+>
+> // fish-eye transformation
+> vec4 transform(vec4 pos) {
+>     ...
+> }
+>
+> void main() {
+>     gl_Position = transform(a_position);
+>     v_texcoord = a_texcoord;
+> }
+> ```
+{#lst:vertexshadertransform}
 
 5.7 Strategy 4: GDBB {#strategy-4-gdbb}
 --------------------
@@ -1738,35 +1872,40 @@ sampling the texture. Since the fragment shader's texture coordinate is
 the interpolated value between the vertices surrounding the fragment's
 position, we don't need to create a detailed mesh beforehand -- a "grid"
 consisting of four corners suffices.
-Listing \[lst:fragmentshadertransform\] shows how the texture coordinate
+Listing [5.4](#lst:fragmentshadertransform) shows how the texture coordinate
 is passed to `transform()` before `texture2D()`.
 
-    varying vec2 v_texcoord;
-    uniform sampler2D s_texture;
-
-    // texture coordinates to vertex positions
-    vec2 texcoordtopos(vec2 tex) {
-        ...
-    }
-
-    // vertex positions to texture coordinates
-    vec2 postotexcoord(vec2 pos) {
-        ...
-    }
-
-    // fish-eye transformation
-    vec2 fisheye(vec2 pos) {
-        ...
-    }
-
-    // transformation function
-    vec2 transform(vec2 tex) {
-        return postotexcoord(fisheye(texcoordtopos(tex)));
-    }
-
-    void main() {
-        gl_FragColor = texture2D(s_texture, transform(v_texcoord));
-    }
+> Listing 5.4: Transformation in the fragment shader
+>
+> ```c
+> varying vec2 v_texcoord;
+> uniform sampler2D s_texture;
+>
+> // texture coordinates to vertex positions
+> vec2 texcoordtopos(vec2 tex) {
+>     ...
+> }
+>
+> // vertex positions to texture coordinates
+> vec2 postotexcoord(vec2 pos) {
+>     ...
+> }
+>
+> // fish-eye transformation
+> vec2 fisheye(vec2 pos) {
+>     ...
+> }
+>
+> // transformation function
+> vec2 transform(vec2 tex) {
+>     return postotexcoord(fisheye(texcoordtopos(tex)));
+> }
+>
+> void main() {
+>     gl_FragColor = texture2D(s_texture, transform(v_texcoord));
+> }
+> ```
+{#lst:fragmentshadertransform}
 
 As in the CPU case, we must perform coordinate conversion before and
 after transformation. This is done by the functions `texcoordtopos()`
@@ -1778,20 +1917,25 @@ Depending on the model parameters, it may be wise to check if the
 transformed coordinate is within the $[0, 1]$ range, and return a blank
 color if it isn't. This can done by substituting a custom `color()`
 function for the direct invocation of `texture2D()`
-(listing \[lst:color\]).
+(listing [5.5](#lst:color)).
 
-    vec4 color(sampler2D texture, vec2 pos) {
-        if(pos.x < 0.0 || pos.y < 0.0 ||
-           pos.x > 1.0 || pos.y > 1.0) {
-            return vec4(1.0, 1.0, 1.0, 1.0); // white
-        } else {
-            return texture2D(texture, pos);
-        }
-    }
-
-    void main() {
-        gl_FragColor = color(s_texture, transform(v_texcoord));
-    }
+> Listing 5.5: Texture sampling function
+>
+> ```c
+> vec4 color(sampler2D texture, vec2 pos) {
+>     if(pos.x < 0.0 || pos.y < 0.0 ||
+>        pos.x > 1.0 || pos.y > 1.0) {
+>         return vec4(1.0, 1.0, 1.0, 1.0); // white
+>     } else {
+>         return texture2D(texture, pos);
+>     }
+> }
+>
+> void main() {
+>     gl_FragColor = color(s_texture, transform(v_texcoord));
+> }
+> ```
+{#lst:color}
 
 5.8 Strategy 5: GDBM {#sec:implementationgdbm}
 --------------------
@@ -1800,59 +1944,84 @@ The final strategy builds upon the previous to include custom
 interpolation in the form of supersampling. This is done by sampling the
 texture not once, but multiple times, and blending the values together.
 The first task of the `main()` method is to compute the neighbor
-coordinates according to equations (\[eq:ul\]--\[eq:lm\]):
+coordinates according to equations (\ref{eq:ul}--\ref{eq:lm}):
 
-        vec2 v0 = vec2(v_texcoord.x - px/2.0,
-                       v_texcoord.y + px/2.0);
-        vec2 v1 = vec2(v_texcoord.x,
-                       v_texcoord.y + px/2.0);
-        ...
-        vec2 v8 = vec2(v_texcoord.x + px/2.0,
-                       v_texcoord.y - px/2.0);
+> Listing 5.6: Neighbor coordinates
+>
+> ```c
+> vec2 v0 = vec2(v_texcoord.x - px/2.0,
+>                v_texcoord.y + px/2.0);
+> vec2 v1 = vec2(v_texcoord.x,
+>                v_texcoord.y + px/2.0);
+> ...
+> vec2 v8 = vec2(v_texcoord.x + px/2.0,
+>                v_texcoord.y - px/2.0);
+> ```
+{lst:neighbor}
 
 Here, `px` is the normalized size of a fragment (i.e., $1$ divided by
 the number of fragment rows or columns). The next step is to transform
 these coordinates:
 
-        v0 = transform(v0);
-        v1 = transform(v1);
-        ...
-        v8 = transform(v8);
+> Listing 5.7: Transformed coordinates
+>
+> ```c
+> v0 = transform(v0);
+> v1 = transform(v1);
+> ...
+> v8 = transform(v8);
+> ```
+{#lst:transformed}
 
 We sample the texture at the transformed positions:
 
-        vec4 c0 = color(s_texture, v0);
-        vec4 c1 = color(s_texture, v1);
-        ...
-        vec4 c8 = color(s_texture, v4);
+> Listing 5.8: Transformed coordinates
+>
+> ```c
+> vec4 c0 = color(s_texture, v0);
+> vec4 c1 = color(s_texture, v1);
+> ...
+> vec4 c8 = color(s_texture, v4);
+> ```
+{#lst:sample}
 
 Then we can compute our interpolate value by blending these colors
 together. For example, if `blend9()` is a custom function computing an
 unweighed average, then we can call `blend9(c0, c1, ..., c8)`.
 
 We can also calculate a *weighed* average, expressed in terms of the
-kind of $3 \times 3$ kernel described in section \[sec:gdbm\]. The
+kind of $3 \times 3$ kernel described in section [4.2.5](#sec:gdbm). The
 `mat3` data type is well suited to representing such a kernel. First we
 write a general `filter9()` function which takes a set of colors, a
 kernel, a divisor, and returns a weighed average:
 
-    vec4 filter9(vec4 c1, vec4 c2, ..., vec4 c9,
-                 mat3 kernel, float div) {
-        return (c1 * kernel[0][0] +
-                c2 * kernel[0][1] +
-                ...
-                c9 * kernel[2][2]) / div;
-    }
+> Listing 5.9: Filtering function
+>
+> ```c
+> vec4 filter9(vec4 c1, vec4 c2, ..., vec4 c9,
+>              mat3 kernel, float div) {
+>     return (c1 * kernel[0][0] +
+>             c2 * kernel[0][1] +
+>             ...
+>             c9 * kernel[2][2]) / div;
+> }
+> ```
+{#lst:filtering}
 
 To this function we can for example pass a Gaussian kernel
-(figure \[fig:gaussian\]):
+(figure [4.4c](#fig:kernels)):
 
-    vec4 gaussian9(vec4 c1, vec4 c2, ..., vec4 c9) {
-        mat3 kernel = mat3(1.0, 2.0, 1.0,
-                           2.0, 4.0, 2.0,
-                           1.0, 2.0, 1.0);
-        return filter9(c1, c2, ..., c9, kernel, 16.0);
-    }
+> Listing 5.10: Filtering function
+>
+> ```c
+> vec4 gaussian9(vec4 c1, vec4 c2, ..., vec4 c9) {
+>     mat3 kernel = mat3(1.0, 2.0, 1.0,
+>                        2.0, 4.0, 2.0,
+>                        1.0, 2.0, 1.0);
+>     return filter9(c1, c2, ..., c9, kernel, 16.0);
+> }
+> ```
+{#lst:gaussian}
 
 This will typically produce a crisper result than the unweighed average.
 
@@ -1860,32 +2029,42 @@ The choice of kernel can be determined adaptively by specifying a way to
 classify the image into concentric regions. For example, classifying on
 the radius describes a circular area, while classifying on the maximum
 transformed width or height describes a "pincushion"-shaped area
-(illustrated in figure \[fig:distance\]):
+(illustrated in figure [6.8](#fig:distance)):
 
-    // radius
-    float distance() {
-        return length(texcoordtopos(v_texcoord));
-    }
-
-    // maximum transformed width/height
-    float distance2() {
-        vec2 vx = abs(fisheye(texcoordtopos(v_texcoord)));
-        return max(vx.x, vx.y);
-    }
+> Listing 5.11: Distance measure
+>
+> ```c
+> // radius
+> float distance() {
+>     return length(texcoordtopos(v_texcoord));
+> }
+>
+> // maximum transformed width/height
+> float distance2() {
+>     vec2 vx = abs(fisheye(texcoordtopos(v_texcoord)));
+>     return max(vx.x, vx.y);
+> }
+> ```
+{#lst:distance}
 
 The appropriate kernel can be selected according to a given threshold:
 
-    float r = distance();
-    if(r > 0.8) {
-        gl_FragColor = sharpen9(c0, c1, ..., c8);
-    } else {
-        gl_FragColor = gaussian9(c0, c1, ..., c8);
-    }
+> Listing 5.12: Adaptive interpolation
+>
+> ```c
+> float r = distance();
+> if(r > 0.8) {
+>     gl_FragColor = sharpen9(c0, c1, ..., c8);
+> } else {
+>     gl_FragColor = gaussian9(c0, c1, ..., c8);
+> }
+> ```
+{#lst:adaptive}
 
-See section \[sec:adaptive\] for the visual results of adaptive
+See section [6.6](#sec:adaptive) for the visual results of adaptive
 interpolation.
 
-Summary {#summary-4 .unnumbered}
+Summary
 -------
 
 Our implementation uses Qt for its surrounding framework, and is a
@@ -1915,24 +2094,26 @@ also compare built-in interpolation against manual interpolation.
 6.1 Setup
 ---------
 
-The code was executed on a MacBook Air 13$''$ 2011 model with a 1,7 GHz
+The code was executed on a MacBook Air 13" 2011 model with a 1,7 GHz
 Intel Core i5 processor, 4 GB 1333 MHz DDR3 RAM, and a Intel HD Graphics
 3000 graphics card with 384 MB memory, running OS X Yosemite 10.10.4.
 
 Our test image is a photograph of $700 \times 700$ pixels
-(figure \[fig:testimage\]).[^8] It has a grid-like structure, which
+(figure [6.1](#fig:testimage)).[^8] It has a grid-like structure, which
 makes it easy to gauge the effects of the transformation. It is also
 rich in detail, which makes it possible to spot aliasing effects.
 
-![Test image](testimage.png){#fig:testimage}
+![Figure 6.1: Test image](testimage.png){#fig:testimage width=400}
 
 Our model of choice is the exponential model with $s = 0.76$ and
-$\lambda = 3.8342$ (section \[sec:exponential\]). We will use
-equation (\[eq:expparam\]) for forward mapping and
-equation (\[eq:logparam\]) for backward mapping, which produces a strong
+$\lambda = 3.8342$ (section [3.3.1](#sec:exponential)). We will use
+equation \eqref{eq:expparam} for forward mapping and
+equation \eqref{eq:logparam} for backward mapping, which produces a strong
 pincushion effect when applied to a regular image
-(figure \[fig:transformedimage\]). In other words, our setup would
+(figure [6.2](#fig:transformedimage)). In other words, our setup would
 *undistort* a photograph exhibiting a large degree of barrel distortion.
+
+![Figure 6.2 Transformed image](transformedimage.png){#fig:transformedimage width=400}
 
 6.2 Measuring
 -------------
@@ -1945,17 +2126,22 @@ measurements are all in the millisecond range. We execute each strategy
 $1000$ times. Then we compute the average and the standard deviation of
 the measurements, which are stored in a designated class `Measurements`
 (`measurements.cpp`). For each execution, we reload the test image into
-memory, forcing recomputation (listing \[lst:reload\]). The image is
+memory, forcing recomputation (listing [6.1](#lst:reload)). The image is
 loaded in `GL_RGBA` format; some GPUs may prefer a different format
 (e.g., `GL_BGRA`), which forces the driver to perform an automatic
 conversion.
 
-    GLuint id = 0;
-    glDeleteTextures(1, &id);
-    glTexImage2D(GL_TEXTURE_2D, 0, GL_RGBA,
-                 img.height(), img.width(),
-                 0, GL_RGBA, GL_UNSIGNED_BYTE,
-                 img.constBits());
+> Listing 6.1: Reloading the image
+>
+> ```c
+> GLuint id = 0;
+> glDeleteTextures(1, &id);
+> glTexImage2D(GL_TEXTURE_2D, 0, GL_RGBA,
+>              img.height(), img.width(),
+>              0, GL_RGBA, GL_UNSIGNED_BYTE,
+>              img.constBits());
+> ```
+{#lst:reload}
 
 We measure the CPU strategies somewhat differently from the GPU
 strategies. For the CPU strategies, the main work is done prior to the
@@ -1972,39 +2158,20 @@ equivalent to the number of fragments. Of course, since the GPU
 strategies are processed in parallel, we should expect them to
 outperform the linear CPU strategies. However, a less fine-grained grid
 suffices in order to get good results, and we will experiment with
-lowering the vertex count in section \[sec:vertexcount\]. For the
+lowering the vertex count in section [6.4](#sec:vertexcount). For the
 backward mapping strategies on the GPU, a simple rectangle of four
 points is substituted for the grid.
-
-![Transformed image](transformedimage.png){#fig:transformedimage}
 
 6.3 Results {#results}
 -----------
 
-  --- -------- --------------------- ---------- ---------
-  1   (CPFB)   grid transformation      69.3 ms    7.8 ms
-               rendering                28.3 ms   11.6 ms
-  2   (CPBB)   grid transformation      89.8 ms    6.4 ms
-               rendering                35.2 ms    5.6 ms
-  3   (GDFB)   first rendering          25.5 ms
-               next renderings          28.2 ms    3.6 ms
-  4   (GDBB)   first rendering          33.4 ms
-               next renderings           3.5 ms    0.9 ms
-  5   (GDBM)   first rendering         293.8 ms
-               next renderings           5.8 ms    9.1 ms
-  --- -------- --------------------- ---------- ---------
-
-  : Time measurements<span data-label="tab:measurements"></span>
-
-![Time series](timeseries.png){#fig:timeseries}
-
-The results are listed in table \[tab:measurements\]. For the CPU
+The results are listed in table [6.1](#tab:measurements). For the CPU
 strategies, initializing and transforming the grid is considerably more
 costly than rendering, but this operation needs only be done once.
 Initialization is more costly for the backward mapping strategy than for
 the forward mapping strategy. This goes to show that the exponential
-equation (\[eq:logparam\]) is more costly to compute than the
-logarithmic equation (\[eq:expparam\]). Thus, in this context, the
+equation \eqref{eq:logparam} is more costly to compute than the
+logarithmic equation \eqref{eq:expparam}. Thus, in this context, the
 exponential model is *not* a good choice for backward mapping.
 
 For the GPU strategies, forward mapping on the GPU is considerably
@@ -2017,7 +2184,7 @@ for the CPU strategies.
 For the backward mapping strategies on the GPU, an interesting pattern
 emerges: the first rendering pass takes a long time, but subsequent
 passes are very efficient. This pattern is illustrated in
-figure \[fig:timeseries\], which shows the five first measurements from
+figure [6.3](#fig:timeseries), which shows the five first measurements from
 a test run of the strategies. For strategies 1--3, the measurements are
 in the same range, but for strategies 4--5, there is a sharp drop-off
 after the first pass. In other words, the computations are cached, even
@@ -2033,19 +2200,35 @@ the initial pass. Even more interestingly, this range is an order of
 magnitude cheaper than the other strategies, including strategy 3, which
 is also done on the GPU.
 
+> |   | Strategy |                     | Average  | Std. deviation |
+> | - | ------   | ------------------- | -------- | -------        |
+> | 1 | (CPFB)   | grid transformation | 69.3 ms  | 7.8 ms         |
+> |   |          | rendering           | 28.3 ms  | 11.6 ms        |
+> | 2 | (CPBB)   | grid transformation | 89.8 ms  | 6.4 ms         |
+> |   |          | rendering           | 35.2 ms  | 5.6 ms         |
+> | 3 | (GDFB)   | first rendering     | 25.5 ms  |                |
+> |   |          | next renderings     | 28.2 ms  | 3.6 ms         |
+> | 4 | (GDBB)   | first rendering     | 33.4 ms  |                |
+> |   |          | next renderings     | 3.5 ms   | 0.9 ms         |
+> | 5 | (GDBM)   | first rendering     | 293.8 ms |                |
+> |   |          | next renderings     | 5.8 ms   | 9.1 ms         |
+>
+> Table 6.1: Time measurements
+{#tab:measurements}
+
+![Figure 6.3: Time series](timeseries.png){#fig:timeseries width=600}
+
 6.4 Vertex count {#sec:vertexcount}
 ----------------
 
-![Strategy 3 (GDFB) rendering time versus grid size](strategy3graph.png){#fig:strategy3graph}
-
 The impact of vertex count on rendering time is illustrated in
-figure \[fig:strategy3graph\], which plots time measurements of
+figure [6.4](#fig:strategy3graph), which plots time measurements of
 strategy 3 (GDFB). It is not until the grid resolutions falls below
 $100 \times 100$ vertices that the efficiency becomes comparable to that
 of the other two GPU strategies.
 
 Moreover, the measurements of the CPU strategies in
-table \[tab:measurements\] show that a high vertex count has a
+table [6.1](#tab:measurements) show that a high vertex count has a
 significant impact on rendering time in and of itself, even when the
 transformation is precalculated.
 
@@ -2053,58 +2236,60 @@ However, it is not necessary to employ a high-resolution grid in order
 to see good results. Even a grid of as $50 \times 50$ vertices produces
 adequate, if less precise results.
 
+![Figure 6.4: Strategy 3 (GDFB) rendering time versus grid size](strategy3graph.png){#fig:strategy3graph width=500}
+
 6.5 Aliasing
 ------------
 
-![Interpolation](interpolation.png){#fig:interpolation}
-
 The impact of manual interpolation depends on the frequencies in the
-test image. Figure \[fig:interpolation\] compares OpenGL ES's built-in
+test image. Figure [6.5](#fig:interpolation) compares OpenGL ES's built-in
 bilinear interpolation against strategy 5 with a Gaussian kernel for a
 detail of the test image. Manual interpolation produces a slightly
 smoother result.
 
-![Stripes](stripes.png){#fig:stripes}
+![Figure 6.5: Interpolation](interpolation.png){#fig:interpolation width=500}
 
 Aliasing effects can be brought to the fore by substituting a
 high-frequency test pattern for the test image
-(figure \[fig:stripesimage\]). In this case, pronounced aliasing effects
-are unavoidable (figure \[fig:stripestransformed\]).
+(figure [6.6a](#fig:stripes)). In this case, pronounced aliasing effects
+are unavoidable (figure [6.6b](#fig:stripes)).
+
+![Figure 6.6: Stripes](stripes.png){#fig:stripes width=400}
 
 The effects are mitigated by supersampling
-(figure \[fig:supersamplingresults\]). The softest output is produced by
+(figure [6.7](#fig:supersamplingresults)). The softest output is produced by
 supersampling with an averaging kernel of five values
-(figure \[fig:fiveaveragestripes\]) or nine values
-(figure \[fig:nineaveragestripes\]). Gaussian supersampling produces a
-somewhat sharper result (figure \[fig:gaussianstripes\]). A sharpening
+(figure [6.7a](#fig:supersamplingresults)) or nine values
+(figure [6.7b](#fig:supersamplingresults)). Gaussian supersampling produces a
+somewhat sharper result (figure [6.7c](#fig:supersamplingresults)). A sharpening
 kernel retains the crispness of the lines, but pronounces the aliasing
 effects, particularly in the center of the image
-(figure \[fig:sharpeningstripes\]).
+(figure [6.7d](#fig:supersamplingresults)).
+
+![Figure 6.7: Supersampling results](supersamplingresults.png){#fig:supersamplingresults width=400}
 
 6.6 Adaptive interpolation {#sec:adaptive}
 --------------------------
 
-![Supersampling results](supersamplingresults.png){#fig:supersamplingresults}
-
 To smooth out the aliasing effects in the center of the image while
 mitigating the blurriness in the outer parts, we classify the image into
-different regions. In figure \[fig:distance1\], we classify based on the
+different regions. In figure [6.8a](#fig:distance), we classify based on the
 calculated radius, which produces a number of concentric, circular
-regions. In figure \[fig:distance2\], we classify based on the maximum
+regions. In figure [6.8b](#fig:distance), we classify based on the maximum
 transformed width or height, which produces a number of concentric,
 transformed rectangles.
 
-![Distance measures](distance.png){#fig:distance}
+![Figure 6.8: Distance measures](distance.png){#fig:distance width=400}
 
-Figure \[fig:adaptive\] shows the result with the maximum transformed
+Figure [6.9](#fig:adaptive) shows the result with the maximum transformed
 width or height as a distance measure, using gaussian supersampling for
 the center of the image and sharpening supersampling for the outer parts
 of the image. Regular bilinear interpolation is used as a compromise
 between the two.
 
-![Adaptive interpolation](adaptive.png){#fig:adaptive}
+![Figure 6.9: Adaptive interpolation](adaptive.png){#fig:adaptive width=500}
 
-Summary {#summary-5 .unnumbered}
+Summary
 -------
 
 The GPU strategies outperform the CPU strategies, and the backward
@@ -2165,7 +2350,7 @@ above.
 7.1 Discussion
 --------------
 
-In chapter \[chap:introduction\] we identified a number of challenges:
+In chapter [1](#chap:introduction) we identified a number of challenges:
 choosing a good model, selecting a fitting implementation strategy,
 writing parallel code and achieving high-quality interpolation. What is
 our assessment of these challenges?
@@ -2200,27 +2385,27 @@ today.
 7.2 Further work {#sec:furtherwork}
 ----------------
 
-![Overlapping samples](overlap.png){#fig:overlap}
-
 The multisampling shader makes nine texture accesses, most of which are
-shared by the surrounding fragments, as shown in figure \[fig:overlap\].
+shared by the surrounding fragments, as shown in figure [7.1](#fig:overlap).
 This means redundant accesses and coordinate transformations, which are
-"hopefully cached by the GPU", in the words of @bjorke04:-filter.
+"hopefully cached by the GPU", in the words of [Bjorke (2004)](#bjorke04:-filter).
 
-@sigg05:-filtering have presented a method for third-order texture
+![Figure 7.1: Overlapping samples](overlap.png){#fig:overlap width=300}
+
+[Sigg and Hadwiger (2005)](#sigg05:-filtering) have presented a method for third-order texture
 filtering which performs cubic filtering by building on linear texture
 fetches, which considerably reduces the number of input texture fetches.
 This could be used to optimize the supersampling method presented in
 this thesis.
 
-Furthermore, @wexler05:-rasterization have described a supersampling
+Furthermore, [Wexler and Enderton (2005)](#wexler05:-rasterization) have described a supersampling
 technique for rendering images of arbitrary resolution with arbitrarily
 wide user-defined filters and high sampling rates. The image is divided
 into constant-size rectangular tiles in order to support large
 supersampling rates and large final images.
 
 To accelerate the code beyond what is possible with OpenGL ES, we may
-look into other frameworks. @scarpino12:-opencl goes into detail on how
+look into other frameworks. [Scarpino (2012)](#scarpino12:-opencl) goes into detail on how
 to combine OpenGL with OpenCL in order to implement a sharpening filter.
 In this setup, the filter is computed in parallel by an OpenCL kernel,
 whose output is communicated to OpenGL by means of a pixel buffer
@@ -2231,7 +2416,7 @@ share data, this approach would make it possible to eliminate the
 redundancy mentioned earlier. Indeed, it is similar to our CPU
 strategies, except that the computations are not performed on the CPU,
 but by a designated parallelization framework. However, such an
-implementation would become considerably complex. As @scarpino12:-opencl
+implementation would become considerably complex. As [Scarpino](#scarpino12:-opencl)
 puts it:
 
 > OpenCL and OpenGL are both powerful toolsets, but no one has ever
@@ -2243,7 +2428,7 @@ There is also the consideration that OpenCL is not as widely supported,
 especially on mobile devices. A combined setup may pose serious
 restrictions on portability and development environments.
 
-Summary {#summary-6 .unnumbered}
+Summary
 -------
 
 We have found OpenGL ES to be well suited to the problem at hand. The
@@ -2280,84 +2465,125 @@ B Matlab program {#chap:matlab}
 
 Matlab program for estimating model parameters:
 
+```matlab
+%% Nonlinear regression
+
+%% Barrel distortion: r_d = f(r_u)
+
+% Reference
+
+barrel = @(x) x - 0.5 * x.^2;
+x = linspace(0,1)';
+logRef = @(b,x) b(1) * log(1 + b(2) * x);
+logNlm = fitnlm(x,barrel(x),logRef ,[1.0 1.0])
+
+% Logarithmic model
+
+% s = 1.0;
+% lambda = 1.7;
+s = logNlm.Coefficients.Estimate(1);
+lambda = logNlm.Coefficients.Estimate(2);
+logModel = @(x) s * log(1 + lambda * x);
+
+% Polynomial model
+
+pModel = @(b,x) b(1) + b(2) * x + b(3) * x.^2 +
+                b(4) * x.^3 + b(5) * x.^4;
+pNlm = fitnlm(x,logModel(x),pModel ,[0.5; 1.0; 0.01; 0.001; 0.0001])
+
+% Trigonometric model
+
+trigModel = @(b,x) tan(b(1) * x) / (2 * tan(b(1) / 2));
+trigNlm = fitnlm(x,logModel(x),trigModel ,[0.1])
+
+% Division model
+
+divNlm = fitnlm(x,logModel(x),divModel ,[1.0])
+
+%% Pincushion distortion: r_u = f(r_d)
+
+% Reference
+pincushion = @(r) abs(-sqrt(1.0 - 2.0 * r) + 1.0);
+
+% Exponential model
+expModel = @(x) (exp(x / s) - 1) / lambda;
+
+% Polynomial model
+
+pModelInv = @(b,x) x .* (1 + b(1) * x.^2 + b(2) * x.^4 +
+                         b(3) * x.^6);
+pNlmInv = fitnlm(x,expModel(x),pModelInv ,[1.0; 1.0; 1.0])
+
+% Trigonometric model
+
+omega = trigNlm.Coefficients.Estimate(1);
+trigModelInv = @(x) 1/omega * atan(2 * x * tan(omega/2));
+
+%% Plot models
+
+plot(x,x,x,barrel(x),x,pincushion(x),x,logModel(x),x,expModel(x),
+     x,predict(pNlm ,x),x,predict(pNlmInv ,x),x,predict(trigNlm ,x),
+     x,trigModelInv(x),x,predict(divNlm ,x));
+legend('x','barrel','pincushion','logModel','expModel','pModel',
+       'pModelInv','trigModel','trigModelInv','divModel');
+axis([0.0 1.0 0.0 1.0]);
+```
+
 Bibliography
 ============
 
-Anup Basu and Sergio Licardie. Alternative models for fish-eye lenses.
-*Pattern Recognition Letters*, 1995.
+Anup Basu and Sergio Licardie. Alternative models for fish-eye lenses. *Pattern Recognition Letters*, 1995. {#basu95:-alter}
 
-Kevin Bjorke. High-quality filtering. In Randima Fernando, editor, *GPU
-Gems*. Addison-Wesley, 2004.
+Kevin Bjorke. High-quality filtering. In Randima Fernando, editor, *GPU Gems*. Addison-Wesley, 2004. {#bjorke04:-filter}
 
-A. P. Chandrakasan, M. Potkonjak, R. Mehra, J. Rabaey, and R.W. Brodersen. Optimizing
-power using transformations. *IEEE Transactions on Computer-Aided Design of Integrated
-Circuits and Systems*, 14(1), 1995.
+A. P. Chandrakasan, M. Potkonjak, R. Mehra, J. Rabaey, and R.W. Brodersen. Optimizing power using transformations. *IEEE Transactions on Computer-Aided Design of Integrated Circuits and Systems*, 14(1), 1995. {#chandrakasan95:-power}
 
-Frederic Devernay and Olivier Faugeras. Straight lines have to be straight: Automatic
-calibration and removal of distortion from scenes of structured environments. *Machine
-Vision and Applications*, 2001.
+Frederic Devernay and Olivier Faugeras. Straight lines have to be straight: Automatic calibration and removal of distortion from scenes of structured environments. *Machine Vision and Applications*, 2001. {#devernay01:-straig-lines}
 
-Andrew W. Fitzgibbon. Simultaneous linear estimation of multiple view geometry and
-lens distortion. Technical report, The University of Oxford, Department of Engineering
-Science, 2001.
+Andrew W. Fitzgibbon. Simultaneous linear estimation of multiple view geometry and lens distortion. Technical report, The University of Oxford, Department of Engineering Science, 2001. {#fitzgibbon01:-simul}
 
-Erich Gamma, Richard Helm, Ralph Johnson, and John Vlissides. *Design Patterns: Elements
-of Reusable Object-Oriented Software*. Addison-Wesley, 1995.
+Erich Gamma, Richard Helm, Ralph Johnson, and John Vlissides. *Design Patterns: Elements of Reusable Object-Oriented Software*. Addison-Wesley, 1995. {#erich95:-patterns}
 
-Richard Hartley and Andrew Zisserman. *Multiple View Geometry in Computer Vision*.
-Cambridge University Press, 2 edition, 2004.
+Richard Hartley and Andrew Zisserman. *Multiple View Geometry in Computer Vision*. Cambridge University Press, 2 edition, 2004. {#zisserman04:-multiple-view}
 
-Jeff R. Heard. Beautiful code, compelling evidence: Functional programming for
-information visualization and visual analytics. Technical report, University of North
-Carolina, 2008.
+Jeff R. Heard. Beautiful code, compelling evidence: Functional programming for information visualization and visual analytics. Technical report, University of North Carolina, 2008. {#heard08:-beaut-code}
 
-Tom McReynolds and David Blythe. *Advanced Graphics Programming Using OpenGL*.
-Morgan Kaufmann Publishers, 2005.
+Tom McReynolds and David Blythe. *Advanced Graphics Programming Using OpenGL*. Morgan Kaufmann Publishers, 2005. {#mcreynolds05:-advanced}
 
-Aaftab Munshi, Dan Ginsburg, and Dave Shreiner. *OpenGL ES 3.0 Programming Guide*.
-Addison-Wesley Professional, 2014.
+Aaftab Munshi, Dan Ginsburg, and Dave Shreiner. *OpenGL ES 3.0 Programming Guide*. Addison-Wesley Professional, 2014. {#aaftab14:-opengl-es}
 
-Nvidia. Drive px from nvidia tegra automotive, 2015. URL <http://www.nvidia.com/object/
-drive-px.html>.
+Nvidia. Drive px from nvidia tegra automotive, 2015. URL <http://www.nvidia.com/object/drive-px.html>. {#nvidia15:-drivepx}
 
-PGI. Pgi cuda-x86: Cuda programming for multi-core cpus, 2010. URL <https://www.pgroup.
-com/lit/articles/insider/v2n4a1.htm>.
+PGI. Pgi cuda-x86: Cuda programming for multi-core cpus, 2010. URL <https://www.pgroup. com/lit/articles/insider/v2n4a1.htm>. {#pgi2010:-cuda}
 
-Qt. Qt documentation: Qglwidget, 2015. URL <http://doc.qt.io/qt-4.8/qglwidget.html>.
+Qt. Qt documentation: Qglwidget, 2015. URL <http://doc.qt.io/qt-4.8/qglwidget.html>. {#qt15:-qglwidget}
 
-Matthew Scarpino. *OpenCL in Action*. Manning, 2012.
+Matthew Scarpino. *OpenCL in Action*. Manning, 2012. {#scarpino12:-opencl}
 
-E. L. Schwarz. Computational anatomy and functional architecture of striate cortex: a
-spatial mapping approach to perceptual coding. *Vision Research*, 20:656--669, 1980.
+E. L. Schwarz. Computational anatomy and functional architecture of striate cortex: a spatial mapping approach to perceptual coding. *Vision Research*, 20:656--669, 1980. {#schwarz80:-comput}
 
-Graham Sellers, Richard S. Wright, and Nicholas Haemel. *OpenGL SuperBible:
-Comprehensive Tutorial and Reference*. Addison-Wesley, 2014.
+Graham Sellers, Richard S. Wright, and Nicholas Haemel. *OpenGL SuperBible: Comprehensive Tutorial and Reference*. Addison-Wesley, 2014. {#sellers14:-opengl-super}
 
-Christian Sigg and Markus Hadwiger. Fast third-order texture filtering. In Matt Pharr,
-editor, *GPU Gems 2*. Addison-Wesley, 2005.
+Christian Sigg and Markus Hadwiger. Fast third-order texture filtering. In Matt Pharr, editor, *GPU Gems 2*. Addison-Wesley, 2005. {#sigg05:-filtering}
 
-Alvy Ray Smith. A pixel is *Not* a little square, a pixel is *Not* a
-little square, a pixel is *Not* a little square! (and a voxel is *Not* a
-little cube). Technical report, Microsoft, 1995.
+Alvy Ray Smith. A pixel is *Not* a little square, a pixel is *Not* a little square, a pixel is *Not* a little square! (and a voxel is *Not* a little cube). Technical report, Microsoft, 1995. {#smith95:-pixel}
 
-Bjarne Stroustrup. The *C++ Programming Language*. Addison-Wesley, 4 edition, 2013.
+Bjarne Stroustrup. The *C++ Programming Language*. Addison-Wesley, 4 edition, 2013. {#stroustrup13:-cpp-lang}
 
-Ken Turkowski and Steve Gabriel. *Graphics Gems I*, chapter Filters for Common
-Resampling Tasks, pages 147--165. Academic Press, 1990.
+Ken Turkowski and Steve Gabriel. *Graphics Gems I*, chapter Filters for Common Resampling Tasks, pages 147--165. Academic Press, 1990. {#turkowski90:-graph-gems}
 
-Dan Wexler and Eric Enderton. High-quality antialiased rasterization. In Matt Pharr,
-editor, *GPU Gems 2*. Addison-Wesley, 2005.
+Dan Wexler and Eric Enderton. High-quality antialiased rasterization. In Matt Pharr, editor, *GPU Gems 2*. Addison-Wesley, 2005. {#wexler05:-rasterization}
 
-George Wolberg. *Digital Image Warping*. Columbia University, 1990.
+George Wolberg. *Digital Image Warping*. Columbia University, 1990. {#wolberg90:-digital-image-warp}
 
-[^1]: @wolberg90:-digital-image-warp, chapter 1: "Introduction", p. 1.
+[^1]: [Wolberg (1990)](#wolberg90:-digital-image-warp), chapter 1: "Introduction", p. 1.
 
-[^2]: @heard08:-beaut-code explores Haskell's *monad* concept in
+[^2]: [Heard (2008)](#heard08:-beaut-code) explores Haskell's *monad* concept in
     conjunction with graphics processing, giving several examples of how
     the control flow can be abstracted away.
 
 [^3]: An even more sophisticated choice for resampling is *Lanczos
-    interpolation*, which @turkowski90:-graph-gems considered the "best
+    interpolation*, which [Turkowski and Gabriel (1990)](#turkowski90:-graph-gems) considered the "best
     compromise in terms of reduction of aliasing, sharpness, and minimal
     ringing".
 
@@ -2366,19 +2592,19 @@ George Wolberg. *Digital Image Warping*. Columbia University, 1990.
 
 [^5]: This is provided as the `atan()` function in OpenGL ES.
 
-[^6]: The complete Matlab code is given in Appendix \[chap:matlab\].
+[^6]: The complete Matlab code is given in Appendix [B](#chap:matlab).
 
 [^7]: Our functor classes are implemented as *function objects*, that
     is, they overload the `operator()` operator. C++11 also provides
     support for anonymous functions in the form of lambda expressions
-    [@stroustrup13:-cpp-lang], but these are difficult to compose in the
-    way outlined in section \[sec:implementationcpbb\].
+    ([Stroustrup 2013](#stroustrup13:-cpp-lang)), but these are difficult to compose in the
+    way outlined in section [5.5](#sec:implementationcpbb).
 
-[^8]: Figure \[fig:testimage\] is an excerpt from the picture "Many
+[^8]: Figure [6.1](#fig:testimage) is an excerpt from the picture "Many
     Lovers" by Thomas Hawk, which is released under Creative Commons at
     <http://www.flickr.com/photos/thomashawk/102065939/>.
 
-[^9]: @scarpino12:-opencl, chapter 16: "Textures and renderbuffers",
+[^9]: [Scarpino (2012)](#scarpino12:-opencl), chapter 16: "Textures and renderbuffers",
     p. 349.
 
 [^10]: <http://opensource.org/licenses/MIT>.
