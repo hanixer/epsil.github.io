@@ -34,10 +34,10 @@ TeX: { equationNumbers: { autoNumber: "all" } }
 <li role="presentation"><a href="https://twitter.com/intent/tweet?url=about%3Ablank" title="Share on Twitter"><i class="fa fa-twitter-square"></i></a>
 </li>
 
-<li role="presentation"><a href="mailto:?body=about%3Ablank" title="Share by mail"><i class="fa fa-envelope"></i></a>
+<li role="presentation"><a href="https://github.com/epsil/epsil.github.io/edit/masterblank/index.txt" title="Edit on GitHub"><i class="fa fa-edit"></i></a>
 </li>
 
-<li role="presentation"><a href="https://github.com/epsil/epsil.github.io/edit/masterblank/index.txt" title="Edit on GitHub"><i class="fa fa-edit"></i></a>
+<li role="presentation"><a href="https://github.com/epsil/epsil.github.io/commits/masterblank/index.txt" title="View history"><i class="fa fa-history"></i></a>
 </li>
 
 <li role="presentation"><a href="index.txt" title="Get Markdown source"><i class="fa fa-download"></i></a>
@@ -125,7 +125,7 @@ TeX: { equationNumbers: { autoNumber: "all" } }
 <code>%SystemRoot%\system32;%SystemRoot%;C:\Ruby22\bin</code>
 </pre>
 
-<p>Thus, if <abbr class="acronym" title="Minimal System"><span class="caps">MSYS</span></abbr>&#8217; executables are located in <code>C:\msys\1.0\bin</code>, simply add <code>;C:\msys\1.0\bin</code> to the end of the&#160;variable:</p>
+<p>Thus, if <abbr class="acronym" title="Minimal System"><span class="caps">MSYS</span></abbr>&#8217; executables are located in <code>C:\msys\1.0\bin</code>, simply add <code>;C:\msys\1.0\bin</code> to the&#160;end:</p>
 
 <pre>
 <code>%SystemRoot%\system32;%SystemRoot%;C:\Ruby22\bin;C:\msys\1.0\bin</code>
@@ -142,7 +142,7 @@ TeX: { equationNumbers: { autoNumber: "all" } }
 <div class="collapse in" id="mingw-section">
 <p>For additional developer tools, augment the above setup with a complete installation of <a href="http://www.mingw.org/"><abbr title="Minimalist GNU for Windows">MinGW</abbr></a>. Append its directory to <code>PATH</code> <em>after</em> <abbr class="acronym" title="Minimal System"><span class="caps">MSYS</span></abbr>.</p>
 
-<p>We can now compile C programs (with <code>gcc</code>) and C++ programs (with <code>g++</code>).</p>
+<p>We can now link (<code>ld</code>) and compile C programs (<code>gcc</code>) and C++ programs (<code>g++</code>).</p>
 </div>
 </section>
 
@@ -174,7 +174,7 @@ start %*</code>
 <h2><a aria-hidden="true" class="header-anchor" href="#alias-find" title="Alias find"></a>Alias <code>find</code><a aria-controls="alias-find-section" aria-expanded="true" aria-hidden="true" class="collapse-button" data-toggle="collapse" href="#alias-find-section" role="button"></a></h2>
 
 <div class="collapse in" id="alias-find-section">
-<p>Windows&#8217; own <code>find</code> utility shadows the Unix <code>find</code> command. To create an alias for the latter, navigate to G<em>nu</em>W<em>in</em>32&#8217;s <code>bin/</code> directory and make a copy of <code>find.exe</code> called <code>find2.exe</code>. The Unix command can now be accessed as <code>find2</code>.</p>
+<p>Windows&#8217; own <code>find</code> utility shadows the Unix <code>find</code> command. To create an alias for the latter, navigate to <abbr class="acronym" title="Minimal System"><span class="caps">MSYS</span></abbr>&#8217; <code>bin/</code> directory and make a copy of <code>find.exe</code> called <code>find2.exe</code>. The Unix command can now be accessed as <code>find2</code>.</p>
 </div>
 </section>
 

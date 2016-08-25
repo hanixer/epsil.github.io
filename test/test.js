@@ -338,6 +338,26 @@ social.github = function () {
   return social.github.url(window.location.href)
 }
 
+social.github.history = function () {
+  return social.github.history.url(window.location.href)
+}
+
+social.github.history.url = function (url) {
+  if (URI(url).protocol() === 'file') {
+    return url
+  }
+
+  var github = 'https://github.com/epsil/epsil.github.io/commits/master'
+  var file = '/index.txt'
+  var path = social.github.path(url)
+
+  if (path === '') {
+    return 'https://github.com/epsil/epsil.github.io/'
+  }
+
+  return github + path + file
+}
+
 social.github.url = function (url) {
   if (URI(url).protocol() === 'file') {
     return url

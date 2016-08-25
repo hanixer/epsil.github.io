@@ -1469,6 +1469,7 @@ function dynamic (view) {
   }
   view.facebook = $.fn.facebook()
   view.github = $.fn.github()
+  view.history = $.fn.github.history()
   view.linkedin = $.fn.linkedin()
   view.twitter = $.fn.twitter()
   view.mail = $.fn.mail()
@@ -1877,6 +1878,26 @@ social.github = function () {
   return social.github.url(window.location.href)
 }
 
+social.github.history = function () {
+  return social.github.history.url(window.location.href)
+}
+
+social.github.history.url = function (url) {
+  if (URI(url).protocol() === 'file') {
+    return url
+  }
+
+  var github = 'https://github.com/epsil/epsil.github.io/commits/master'
+  var file = '/index.txt'
+  var path = social.github.path(url)
+
+  if (path === '') {
+    return 'https://github.com/epsil/epsil.github.io/'
+  }
+
+  return github + path + file
+}
+
 social.github.url = function (url) {
   if (URI(url).protocol() === 'file') {
     return url
@@ -2012,8 +2033,9 @@ templates.body = Handlebars.compile(
   '<li role="presentation"><a href="{{facebook}}" title="Share on Facebook"><i class="fa fa-facebook-square"></i></a></li>\n' +
   '<li role="presentation"><a href="{{twitter}}" title="Share on Twitter"><i class="fa fa-twitter-square"></i></a></li>\n' +
   // '<li role="presentation"><a href="{{linkedin}}" title="Share on LinkedIn"><i class="fa fa-linkedin-square"></i></a></li>\n' +
-  '<li role="presentation"><a href="{{mail}}" title="Share by mail"><i class="fa fa-envelope"></i></a></li>\n' +
+  // '<li role="presentation"><a href="{{mail}}" title="Share by mail"><i class="fa fa-envelope"></i></a></li>\n' +
   '<li role="presentation"><a href="{{github}}" title="Edit on GitHub"><i class="fa fa-edit"></i></a></li>\n' +
+  '<li role="presentation"><a href="{{history}}" title="View history"><i class="fa fa-history"></i></a></li>\n' +
   '<li role="presentation"><a href="index.txt" title="Get Markdown source"><i class="fa fa-download"></i></a></li>\n' +
   '{{#if toc}}' +
   '<li role="presentation"><a href="#toc" data-toggle="collapse" title="Table of contents"><i class="fa fa-bars"></i></a></li>\n' +
