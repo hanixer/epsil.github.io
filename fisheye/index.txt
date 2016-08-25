@@ -18,8 +18,7 @@ Hanssen
 
 * * * * *
 
-Abstract
-========
+### Abstract
 
 We study the use of OpenGL ES to achieve hardware acceleration of
 nonlinear image transformations, in particular, performing fish-eye

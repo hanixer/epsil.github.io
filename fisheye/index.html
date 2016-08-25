@@ -50,7 +50,15 @@ TeX: { equationNumbers: { autoNumber: "all" } }
 
 <div class="collapse" id="toc">
 <ul>
+<li>
+<ul class="collapse in" id="-section">
+<li>
+<ul class="collapse in" id="-section">
 <li><a href="#abstract" title="Abstract">Abstract</a>
+</li>
+</ul>
+</li>
+</ul>
 </li>
 
 <li><a href="#acknowledgments" title="Acknowledgments">Acknowledgments</a>
@@ -299,9 +307,9 @@ TeX: { equationNumbers: { autoNumber: "all" } }
 <hr>
 
 <section id="abstract">
-<h1><a aria-hidden="true" class="header-anchor" href="#abstract" title="Abstract"></a>Abstract</h1>
+<h3><a aria-hidden="true" class="header-anchor" href="#abstract" title="Abstract"></a>Abstract<a aria-controls="abstract-section" aria-expanded="true" aria-hidden="true" class="collapse-button" data-toggle="collapse" href="#abstract-section" role="button"></a></h3>
 
-<div id="abstract-section">
+<div class="collapse in" id="abstract-section">
 <p>We study the use of OpenGL ES to achieve hardware acceleration of nonlinear image transformations, in particular, performing fish-eye undistortion. We outline a hierarchy of transformations and describe interpolation methods. We compare several models of barrel distortion. Our code compares five different implementation strategies. Time measurements show that the best efficiency is achieved by accelerating the transformation in the fragment shader. This is also the setup that provides the greatest flexibility with regard to interpolation. We demonstrate an adaptive interpolation strategy where the most suitable interpolation kernel is chosen depending on to the distortion of the surrounding area. We conclude that OpenGL ES is well suited for accelerating nonlinear image transformations, and outline some ways in which greater speed may be achieved with the use of a parallel computing framework such as OpenCL.</p>
 </div>
 </section>
