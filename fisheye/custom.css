@@ -1,3 +1,10 @@
+hr {
+    border-top: 1px solid #ddd;
+    height: 0;
+    margin: 1em 0;
+    padding: 0;
+}
+
 hr:before {
     content: normal;
 }

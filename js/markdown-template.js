@@ -1989,9 +1989,11 @@ templates.document = Handlebars.compile(
   '{{#if js}}' +
   '<script src="{{urlResolve url js}}" type="text/javascript"></script>\n' +
   '{{/if}}' +
-  '{{#if mathjax}}' +
-  '<script src="{{urlResolve url mathjax}}" type="text/x-mathjax-config"></script>\n' +
-  '{{/if}}' +
+  '<script type="text/x-mathjax-config">\n' +
+  'MathJax.Hub.Config({\n' +
+  'TeX: { equationNumbers: { autoNumber: "all" } }\n' +
+  '})\n' +
+  '</script>\n' +
   '<script async src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-MML-AM_CHTML" type="text/javascript"></script>\n' +
   '<script src="{{urlResolve url "/js/markdown-template.js"}}"></script>\n' +
   '</head>\n' +

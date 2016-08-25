@@ -1,15 +1,22 @@
-title: Accelerating nonlinear image transformations with OpenGL ES
-subtitle: A study on fish-eye undistortion
-author: Vegard Øye
-date: 2015-08-02
 lang: en
 css: custom.css
-mathjax: mathjax.js
 ---
+
+A study on fish-eye undistortion. **[PDF version](thesis.pdf).**
+
+* * * * *
+
+Accelerating nonlinear image transformations with OpenGL ES
+===========================================================
 
 ![](uio.png){width=400}
 
-**[PDF version](thesis.pdf).**
+Vegard Øye
+
+Advisors: Carsten Griwodz and Andreas Aardal
+Hanssen
+
+* * * * *
 
 Abstract
 ========
