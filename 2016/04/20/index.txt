@@ -61,7 +61,7 @@ Windows does not have the `open` command, and none of the packages above provide
 Alias `find`
 ------------
 
-Windows' own `find` utility shadows the Unix `find` command. To create an alias for the latter, navigate to G*nu*W*in*32's `bin/` directory and make a copy of `find.exe` called `find2.exe`. The Unix command can now be accessed as `find2`.
+Windows' own `find` utility shadows the Unix `find` command. To create an alias for the latter, navigate to MSYS' `bin/` directory and make a copy of `find.exe` called `find2.exe`. The Unix command can now be accessed as `find2`.
 
 Alternatives
 ------------
