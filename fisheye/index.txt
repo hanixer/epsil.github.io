@@ -13,8 +13,9 @@ Accelerating nonlinear image transformations with OpenGL ES
 
 Vegard Øye
 
-Advisors: [Carsten Griwodz](https://www.simula.no/people/griff) (Simula Research Laboratory)\
-and [Andreas Aardal Hanssen](https://no.linkedin.com/in/andreas-aardal-hanssen-a1b2b110) (Cisco Systems)
+Advisors:\
+[Carsten Griwodz](https://www.simula.no/people/griff) (Simula Research Laboratory)\
+[Andreas Aardal Hanssen](https://no.linkedin.com/in/andreas-aardal-hanssen-a1b2b110) (Cisco Systems)
 
 * * * * *
 

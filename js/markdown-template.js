@@ -1496,6 +1496,7 @@ function process (view) {
   // https://github.com/ekalinin/typogr.js/issues/31
   if (html.match(/[\\][(]/g)) {
     view.typogr = false
+    view.refresh = false
   }
   if (view.typogr) {
     html = typogr.typogrify(html)
@@ -1579,6 +1580,8 @@ $.fn.addFigures = function () {
         // add classes
         div.addClass(img.attr('class'))
         img.removeAttr('class')
+
+        // TODO: move ID
         if (img.is('[width]')) {
           var width = parseInt(img.attr('width'))
           div.css('width', (width + 9) + 'px')
