@@ -18,6 +18,7 @@ En blogg skrevet i [Markdown](index.txt).
 -   [Leseliste](leseliste/)
 -   [Kopier til Markdown](clipboard/)
 -   [Diftongmaskinen -- kilden til et klangfullt språk](diftong/)
+-   [Accelerating nonlinear image transformations with OpenGL ES](fisheye/) (engelsk)
 -   [General Parser Combinators in Racket](gll/) (engelsk)
 -   [Tungestyrt USB-mus for bevegelseshemmede](tunge/)
 -   [Lydforsterker: Project 3A](p3a/)
@@ -34,6 +35,7 @@ En blogg skrevet i [Markdown](index.txt).
 
 -   [2015-12-10: Testing med Selenium](2015/12/10/)
 -   [2015-12-05: Nettilkobling med iPhone](2015/12/05/)
+-   [2015-08-02: Accelerating nonlinear image transformations with OpenGL ES](fisheye/) (engelsk)
 -   [2015-06-25: Dia på OS X](2015/06/25/)
 -   [2015-05-27: Gollum og Pandoc](2015/05/27/)
 -   [2015-05-20: Hvordan kombinere PDF-filer på OS X Mavericks](2015/05/20/)
