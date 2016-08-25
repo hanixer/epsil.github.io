@@ -1354,6 +1354,7 @@ var defaults = {
   lang: 'no',
   toc: true,
   tocTitle: 'Innhold',
+  refresh: true,
   typogr: true
 }
 
@@ -1640,6 +1641,7 @@ function convert (data) {
              .replace('</body>', '</div>')
   var doc = $('<div>').html(html)
   var head = $('head')
+  head.find('meta[name=refresh]').remove()
   var headDiv = doc.find('div.head')
   headDiv.find('link').appendTo(head)
   headDiv.find('title').each(function () {
@@ -1700,6 +1702,10 @@ function loadAjax (iframe) {
 function loadData () {
   var file = 'index.txt'
   var iframe = $('iframe').first()
+
+  if ($('head').find('meta[name=refresh]').length < 1) {
+    return
+  }
   if (iframe.length > 0) {
     // <body> contains <iframe src="index.txt">:
     // replace <iframe> with its converted contents
@@ -1891,10 +1897,6 @@ social.github.history.url = function (url) {
   var file = '/index.txt'
   var path = social.github.path(url)
 
-  if (path === '') {
-    return 'https://github.com/epsil/epsil.github.io/'
-  }
-
   return github + path + file
 }
 
@@ -2001,6 +2003,9 @@ templates.document = Handlebars.compile(
   '<meta content="text/html; charset=utf-8" http-equiv="Content-Type">\n' +
   '<meta content="text/css" http-equiv="Content-Style-Type">\n' +
   '<meta content="width=device-width, initial-scale=1" name="viewport">\n' +
+  '{{#if refresh}}' +
+  '<meta content="1" name="refresh">\n' +
+  '{{/if}}' +
   '<link href="{{urlResolve url "/favicon.ico"}}" rel="icon" type="image/x-icon">\n' +
   '<link href="{{urlResolve url "/css/markdown-template.css"}}" rel="stylesheet">\n' +
   '<link href="index.txt" rel="alternate" title="Markdown" type="text/markdown">\n' +
