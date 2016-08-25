@@ -12,11 +12,10 @@ hr:before {
 hr.footnotes-sep {
     border: none;
     color: #23527c;
-    font-family: "Segoe UI", Seravek, "Avenir Next", Avenir, Optima, "Optima Web", Candara, Futura, "Gill Sans", Calibri, Corbel, Helvetica, Arial, sans-serif !important;
+    font-family: "Segoe UI", Seravek, "Source Sans Pro", "League Spartan", "Open Sans", "Work Sans", Avenir, "Avenir Next", Optima, "Optima Web", "Linux Biolinum", Vegur, Karla, Candara, Futura, "Gill Sans", Calibri, Corbel, Helvetica, Arial, sans-serif !important;
     font-size: 1.8em;
     font-weight: bold;
-    /* margin: 1.7em 0 1.3em 0; */
-    margin: 0;
+    margin: 1.7em 0 1.3em 0;
     text-align: left;
 }
 
@@ -24,5 +23,5 @@ hr.footnotes-sep:before {
     color: inherit;
     content: "Notes";
     letter-spacing: 0;
-    /* padding-bottom: 0.5em; */
+    padding-bottom: 0.5em;
 }
