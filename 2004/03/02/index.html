@@ -94,7 +94,7 @@ TeX: { equationNumbers: { autoNumber: "all" } }
 <div class="collapse in" id="css-og-rullefelt-section">
 <p>F&#248;rst litt terminologi: <abbr class="acronym" title="Cascading Style Sheets"><span class="caps">CSS</span></abbr> definerer typografi og utforming innenfor et bestemt visningsomr&#229;de (<abbr title="figur">fig.</abbr> 1), referert til som &#171;the viewport&#187; i spesifikasjonene. Dette omr&#229;det tar vanligvis opp st&#248;rsteparten av nettleservinduet, og st&#248;rrelsen avhenger av hvor mye ledig skjermareal brukeren har til disposisjon (og velger &#229;&#160;bruke).</p>
 
-<div class="figure"><img alt="Figur 1. Visningsomr&#229;det (markert med r&#248;dt)." id="fig1" src="fig1.png">
+<div class="figure" id="fig1"><img alt="Figur 1. Visningsomr&#229;det (markert med r&#248;dt)." src="fig1.png">
 <p class="caption">Figur 1. Visningsomr&#229;det (markert med r&#248;dt).</p>
 </div>
 
@@ -145,11 +145,11 @@ TeX: { equationNumbers: { autoNumber: "all" } }
 
 <p>&#197; bruke disse egenskapene resulterer ikke bare i et brudd p&#229; standardene, men gir deg ironisk nok ogs&#229; <em>mindre</em> kontroll over nettsidens framtreden. Utvidelsene er nemlig bare st&#248;ttet i et f&#229;tall nettlesere, og er i tillegg praktisk talt umulig &#229; implementere p&#229; mange plattformer. Utformer man sidene sine rundt det premisset at rullefeltenes utseende m&#229; f&#248;lge stilen p&#229; siden, er man alts&#229; <em>garantert</em> at designet vil sl&#229; sprekker p&#229; flesteparten av plattformene, der utvidelsene ikke&#160;st&#248;ttes!</p>
 
-<div class="figure"><img alt="Figur 2. Egendefinerte rullefelt. Lengst til h&#248;yre er standardrullefeltet i Windows XP, som forsvinner n&#229;r rullefeltet p&#229;virkes." id="fig2" src="fig2.png">
+<div class="figure" id="fig2"><img alt="Figur 2. Egendefinerte rullefelt. Lengst til h&#248;yre er standardrullefeltet i Windows XP, som forsvinner n&#229;r rullefeltet p&#229;virkes." src="fig2.png">
 <p class="caption">Figur 2. Egendefinerte rullefelt. Lengst til h&#248;yre er standardrullefeltet i Windows XP, som forsvinner n&#229;r rullefeltet p&#229;virkes.</p>
 </div>
 
-<p>&#197;rsaken til at utvidelsene er vanskelig &#229; implementere, er at de p&#229;virker noe s&#229; <abbr class="acronym" title="operativsystem"><span class="caps">OS</span></abbr>-spesifikt som m&#229;ten rullefeltene tegnes opp p&#229;. F&#248;r Microsoft lanserte et mer grafisk grensesnitt med Windows <abbr class="acronym" title="Experience"><span class="caps">XP</span></abbr>, var det forholdsvis enkle og lett p&#229;virkelige former og figurer som utgjorde bestanddelene (<abbr title="jamf&#248;r">jf.</abbr> <a href="#fig2" title=""><abbr title="figur">fig.</abbr> 2</a>). B&#229;de p&#229; nyere Linux- og Macintosh-systemer og i Windows <abbr class="acronym" title="Experience"><span class="caps">XP</span></abbr> er imidlertid brukergrensesnittet bygd opp av sm&#229;, forseggjorte grafikkfiler som ikke like lett lar seg forandre p&#229;. Pr&#248;ver man ut <abbr class="acronym" title="Cascading Style Sheets"><span class="caps">CSS</span></abbr>-utvidelsene i Windows <abbr class="acronym" title="Experience"><span class="caps">XP</span></abbr> med standardtemaet valgt, blir faktisk rullefeltet byttet ut med den eldre utgaven fra de tidligere Windows-versjonene, som etter undertegnedes smak ikke er langt p&#229; n&#230;r like behagelig &#229; se p&#229;. Et annet problem er at det ikke n&#248;dvendigvis er rullefelt som brukes for &#229; rulle p&#229; en gitt plattform, noe <abbr class="acronym" title="Cascading Style Sheets"><span class="caps">CSS</span></abbr>-spesifikasjonen som nevnt lar v&#230;re &#229; si noe&#160;om.</p>
+<p>&#197;rsaken til at utvidelsene er vanskelig &#229; implementere, er at de p&#229;virker noe s&#229; <abbr class="acronym" title="operativsystem"><span class="caps">OS</span></abbr>-spesifikt som m&#229;ten rullefeltene tegnes opp p&#229;. F&#248;r Microsoft lanserte et mer grafisk grensesnitt med Windows <abbr class="acronym" title="Experience"><span class="caps">XP</span></abbr>, var det forholdsvis enkle og lett p&#229;virkelige former og figurer som utgjorde bestanddelene (<abbr title="jamf&#248;r">jf.</abbr> <a href="#fig2" title="Figur 2. Egendefinerte rullefelt. Lengst til h&#248;yre er standardrullefeltet i Windows XP, som forsvinner n&#229;r rullefeltet p&#229;virkes."><abbr title="figur">fig.</abbr> 2</a>). B&#229;de p&#229; nyere Linux- og Macintosh-systemer og i Windows <abbr class="acronym" title="Experience"><span class="caps">XP</span></abbr> er imidlertid brukergrensesnittet bygd opp av sm&#229;, forseggjorte grafikkfiler som ikke like lett lar seg forandre p&#229;. Pr&#248;ver man ut <abbr class="acronym" title="Cascading Style Sheets"><span class="caps">CSS</span></abbr>-utvidelsene i Windows <abbr class="acronym" title="Experience"><span class="caps">XP</span></abbr> med standardtemaet valgt, blir faktisk rullefeltet byttet ut med den eldre utgaven fra de tidligere Windows-versjonene, som etter undertegnedes smak ikke er langt p&#229; n&#230;r like behagelig &#229; se p&#229;. Et annet problem er at det ikke n&#248;dvendigvis er rullefelt som brukes for &#229; rulle p&#229; en gitt plattform, noe <abbr class="acronym" title="Cascading Style Sheets"><span class="caps">CSS</span></abbr>-spesifikasjonen som nevnt lar v&#230;re &#229; si noe&#160;om.</p>
 
 <p>N&#229; <em>er</em> det mulig &#229; unng&#229; ikke-validerende nettsider ved &#229; benytte seg av s&#229;kalte <a href="http://www.virtuelvis.com/archives/158.html">kondisjonelle kommentarer</a> for Internet Explorer, eller bruke en annen metode basert p&#229; JavaScript eller Flash. I de aller fleste tilfeller vil imidlertid egendefinerte rullefelt gj&#248;re nettsiden mer utiltalende eller vanskelig &#229; bruke, fordi b&#229;de brukervennligheten og <em>brukerh&#248;fligheten</em> st&#229;r p&#229;&#160;spill.</p>
 </div>
@@ -159,7 +159,7 @@ TeX: { equationNumbers: { autoNumber: "all" } }
 <h2><a aria-hidden="true" class="header-anchor" href="#rullefelt-hos-forskjellige-brukere" title="Rullefelt hos forskjellige&#160;brukere"></a>Rullefelt hos forskjellige&#160;brukere<a aria-controls="rullefelt-hos-forskjellige-brukere-section" aria-expanded="true" aria-hidden="true" class="collapse-button" data-toggle="collapse" href="#rullefelt-hos-forskjellige-brukere-section" role="button"></a></h2>
 
 <div class="collapse in" id="rullefelt-hos-forskjellige-brukere-section">
-<div class="figure"><img alt="Figur 3. Rullefelt i Windows XP, Linux med GNOME, Linux med KDE og Mac OS X." id="fig3" src="fig3.png">
+<div class="figure" id="fig3"><img alt="Figur 3. Rullefelt i Windows XP, Linux med GNOME, Linux med KDE og Mac OS X." src="fig3.png">
 <p class="caption">Figur 3. Rullefelt i Windows XP, Linux med GNOME, Linux med KDE og Mac OS X.</p>
 </div>
 
@@ -185,7 +185,7 @@ TeX: { equationNumbers: { autoNumber: "all" } }
 <h2><a aria-hidden="true" class="header-anchor" href="#rulling-innenfor-visningsomradet" title="Rulling innenfor visningsomr&#229;det"></a>Rulling innenfor visningsomr&#229;det<a aria-controls="rulling-innenfor-visningsomradet-section" aria-expanded="true" aria-hidden="true" class="collapse-button" data-toggle="collapse" href="#rulling-innenfor-visningsomradet-section" role="button"></a></h2>
 
 <div class="collapse in" id="rulling-innenfor-visningsomradet-section">
-<div class="figure"><img alt="Figur 4. Rulling innenfor visningsomr&#229;det. Fra 2Advanced Studios." id="fig4" src="fig4.png">
+<div class="figure" id="fig4"><img alt="Figur 4. Rulling innenfor visningsomr&#229;det. Fra 2Advanced Studios." src="fig4.png">
 <p class="caption">Figur 4. Rulling innenfor visningsomr&#229;det. Fra 2Advanced Studios.</p>
 </div>
 
