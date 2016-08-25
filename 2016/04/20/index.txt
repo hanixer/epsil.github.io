@@ -41,7 +41,7 @@ We can now run Bash scripts as shown [above](#usage), as well as use common Unix
 
 For additional developer tools, augment the above setup with a complete installation of [MinGW](http://www.mingw.org/). Append its directory to `PATH` *after* MSYS.
 
-We can now compile C programs (with `gcc`) and C++ programs (with `g++`).
+We can now link (`ld`) and compile C programs (`gcc`) and C++ programs (`g++`).
 
 [G*nu*W*in*32](http://gnuwin32.sourceforge.net/)
 ------------------------------------------------
