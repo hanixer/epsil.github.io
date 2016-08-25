@@ -30,7 +30,7 @@ To access the `PATH` variable, go to *Control Panel* -> *System* -> *Advanced* -
 
     %SystemRoot%\system32;%SystemRoot%;C:\Ruby22\bin
 
-Thus, if MSYS' executables are located in `C:\msys\1.0\bin`, simply add `;C:\msys\1.0\bin` to the end of the value:
+Thus, if MSYS' executables are located in `C:\msys\1.0\bin`, simply add `;C:\msys\1.0\bin` to the end:
 
     %SystemRoot%\system32;%SystemRoot%;C:\Ruby22\bin;C:\msys\1.0\bin
 
