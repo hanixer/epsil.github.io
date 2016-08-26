@@ -328,6 +328,11 @@ time {
     font-weight: normal;
 }
 
+.flag-icon {
+    font-size: 0.6em;
+    vertical-align: middle;
+}
+
 @media (max-width: 767px) {
     body {
         font-size: 130% !important;

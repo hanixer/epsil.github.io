@@ -10,7 +10,7 @@ En blogg skrevet i [Markdown](index.txt).
 -----------------------------------
 
 -   [Nyttige snarveier i Visual Studio](2016/05/25/)
--   [Running Bash scripts on Windows](2016/04/20/) (engelsk)
+-   [Running Bash scripts on Windows](2016/04/20/) <span class="flag-icon flag-icon-us" title="English"></span>
 -   [Testing med Selenium](2015/12/10/)
 -   [Nettilkobling med iPhone](2015/12/05/)
 -   [Oppsett `irssi` og `screen`](2014/05/06/)
@@ -18,8 +18,8 @@ En blogg skrevet i [Markdown](index.txt).
 -   [Leseliste](leseliste/)
 -   [Kopier til Markdown](clipboard/)
 -   [Diftongmaskinen -- kilden til et klangfullt språk](diftong/)
--   [Accelerating nonlinear image transformations with OpenGL ES](fisheye/) (engelsk)
--   [General Parser Combinators in Racket](gll/) (engelsk)
+-   [Accelerating nonlinear image transformations with OpenGL ES](fisheye/) <span class="flag-icon flag-icon-us" title="English"></span>
+-   [General Parser Combinators in Racket](gll/) <span class="flag-icon flag-icon-us" title="English"></span>
 -   [Tungestyrt USB-mus for bevegelseshemmede](tunge/)
 -   [Lydforsterker: Project 3A](p3a/)
 
@@ -29,13 +29,13 @@ En blogg skrevet i [Markdown](index.txt).
 ### 2016 {.collapse}
 
 -   [2016-05-25: Nyttige snarveier i Visual Studio](2016/05/25/)
--   [2016-04-20: Running Bash scripts on Windows](2016/04/20/) (engelsk)
+-   [2016-04-20: Running Bash scripts on Windows](2016/04/20/) <span class="flag-icon flag-icon-us" title="English"></span>
 
 ### 2015 {.collapse}
 
 -   [2015-12-10: Testing med Selenium](2015/12/10/)
 -   [2015-12-05: Nettilkobling med iPhone](2015/12/05/)
--   [2015-08-02: Accelerating nonlinear image transformations with OpenGL ES](fisheye/) (engelsk)
+-   [2015-08-02: Accelerating nonlinear image transformations with OpenGL ES](fisheye/) <span class="flag-icon flag-icon-us" title="English"></span>
 -   [2015-06-25: Dia på OS X](2015/06/25/)
 -   [2015-05-27: Gollum og Pandoc](2015/05/27/)
 -   [2015-05-20: Hvordan kombinere PDF-filer på OS X Mavericks](2015/05/20/)
