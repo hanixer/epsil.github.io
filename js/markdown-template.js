@@ -1370,9 +1370,11 @@ function urlResolve (base, href) {
   if (!href.match(/^\//)) {
     return href
   }
+  base = URI(base).pathname()
   var uri = new URI(href)
   var relUri = uri.relativeTo(base)
-  return relUri.toString()
+  var result = relUri.toString()
+  return result
 }
 
 function text (html) {
@@ -1471,12 +1473,12 @@ function dynamic (view, path) {
   if (view.lang === 'en') {
     view.tocTitle = 'Contents'
   }
-  view.facebook = $.fn.facebook()
-  view.github = $.fn.github()
-  view.history = $.fn.github.history()
-  view.linkedin = $.fn.linkedin()
-  view.twitter = $.fn.twitter()
-  view.mail = $.fn.mail()
+  view.facebook = $.fn.facebook.url(path)
+  view.github = $.fn.github.url(path)
+  view.history = $.fn.github.history.url(path)
+  view.linkedin = $.fn.linkedin.url(path)
+  view.twitter = $.fn.twitter.url(path)
+  view.mail = $.fn.mail.url(path)
   return view
 }
 
@@ -1629,6 +1631,10 @@ var $ = require('jquery')
 var URI = require('urijs')
 var md5 = require('md5')
 var compile = require('./compile')
+
+// TODO: the compiler should be required contingently as a chunk
+// (webpack?). There is no need to load it unless we are going to
+// regenerate the page because the MD5 checksum has changed.
 
 // address of current page
 function url () {
