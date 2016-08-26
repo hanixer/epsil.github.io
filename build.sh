@@ -1,4 +1,6 @@
 #/bin/sh
+
+# TODO: move this into lib/build.js
 node lib/build.js 2001/08/06/index.txt
 node lib/build.js 2002/06/03/index.txt
 node lib/build.js 2003/05/01/index.txt

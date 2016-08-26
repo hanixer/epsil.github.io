@@ -13,7 +13,7 @@ git clone https://github.com/epsil/gll.git
 
 The repository also includes the full text of the article in [Markdown](https://raw.githubusercontent.com/epsil/gll/master/README.md) ([GFM flavor](https://help.github.com/categories/writing-on-github/)). I welcome suggestions and improvements! Feel free to open an issue on the [bug tracker](https://github.com/epsil/gll/issues), or to [fork the repository](https://github.com/epsil/gll). You can also contact me, Vegard Øye, at `vegard (underline) oye (at) hotmail (dot) com`.
 
-The article aims to be an accessible introduction to the ideas found in the papers ["Memoization in Top-Down Parsing"](http://citeseerx.ist.psu.edu/viewdoc/summary?doi=10.1.1.14.3000) by Mark Johnson and ["Generalized Parser Combinators"](http://www.cs.uwm.edu/~dspiewak/papers/generalized-parser-combinators.pdf) by Daniel Spiewak. If you are interested in the topic, I especially recommend you go on to read Spiewak's paper. It is very good. Other reading suggestions are provided [at the end](#further-reading).
+The article aims to be an accessible introduction to the ideas found in the papers "[Memoization in Top-Down Parsing](#johnson95-memoization)" by Mark Johnson and "[Generalized Parser Combinators](#spiewak10-generalized)" by Daniel Spiewak. If you are interested in the topic, I especially recommend you go on to read Spiewak's paper. It is very good. Other reading suggestions are provided [at the end](#further-reading).
 
 The framework is implemented in [Racket](http://www.racket-lang.org/), a variant of Scheme, which is a dialect of Lisp. However, the principles are not specific to Racket and could be expressed in any language; porting is outlined at the end of the article.
 
@@ -171,7 +171,7 @@ We can now define `seq`{.scheme} in terms of `bind`{.scheme}:
 
 This terse definition can be read as: "Invoke the first parser `a`{.scheme} and bind the value-part of the result to `x`{.scheme}. Then invoke the second parser `b`{.scheme} and bind the value-part of the result to `y`{.scheme}. Finally, create a combined parse result from `x`{.scheme} and `y`{.scheme}." If any of the parsers fail, then `bind`{.scheme} stops; only successful results are passed down the chain. Thus, `bind`{.scheme} frees us from the burden of repeatedly doing pattern matching and discarding failing results.
 
-Let us now look at a complete example. The following implements a simple linguistic grammar taken from [*Structure and Interpretation of Computer Programs*](http://mitpress.mit.edu/sicp/full-text/book/book-Z-H-28.html#%_sec_Temp_618):
+Let us now look at a complete example. The following implements a simple linguistic grammar taken from [*Structure and Interpretation of Computer Programs*](#abelson96-sicp):
 
 ```scheme
 (define article
@@ -213,7 +213,7 @@ Memoization
 
 We now turn to the issue of efficiency. Currently, none of the functions cache their results. That is wasteful because parsing is a such a repetitious task. If each function maintains a table over its input and output values, it can avoid calculating things twice by returning the cached value instead. This is called *memoization*.
 
-In Racket, it is easy to write a `memo`{.scheme} function that takes any function as input and wraps it in a memoization routine. The wrapper takes the input arguments and looks them up in a memoization table. If it finds an output value, it just returns that. If not, then it calls the original function, saves its output in the table, and returns the output. Future calls with the same arguments will return the memoized value. The following is loosely adapted from [*SICP*](http://mitpress.mit.edu/sicp/full-text/book/book-Z-H-22.html#%_thm_3.27):
+In Racket, it is easy to write a `memo`{.scheme} function that takes any function as input and wraps it in a memoization routine. The wrapper takes the input arguments and looks them up in a memoization table. If it finds an output value, it just returns that. If not, then it calls the original function, saves its output in the table, and returns the output. Future calls with the same arguments will return the memoized value. The following is loosely adapted from [*SICP*](#abelson96-sicp):
 
 ```scheme
 (define (memo fn)
@@ -889,12 +889,12 @@ The code can be ported to an object-oriented language by creating a `Parser` int
 
 For more information, follow the references:
 
--   [*Structure and Interpretation of Computer Programs*](https://mitpress.mit.edu/sicp/full-text/book/book.html), second edition, Harold Abelson and Gerald Jay Sussman, The Massachusetts Institute of Technology, 1996. [Unofficial HTML5 version](http://sarabander.github.io/sicp/).
--   ["Memoization in Top-Down Parsing"](http://citeseerx.ist.psu.edu/viewdoc/summary?doi=10.1.1.14.3000), Mark Johnson, Brown University, 1995. Published in *Computational Linguistics*, Volume 21, Number 3. Covers regular memoization, continuation-passing style, and memoization of continuation-passing style functions.
--   ["Generalized Parser Combinators"](http://www.cs.uwm.edu/~dspiewak/papers/generalized-parser-combinators.pdf), Daniel Spiewak, University of Wisconsin, 2010. Implemented as the [gll-combinators](https://github.com/djspiewak/gll-combinators) Scala library, using continuation-passing style and trampolined dispatch. Offers a very accessible introduction to the GLL algorithm.
--   [*Parsing Techniques: A Practical Guide*](http://dickgrune.com/Books/PTAPG_2nd_Edition/) (Second Edition), Dick Grune and Ceriel J. H. Jacobs, Springer, 2008. Chapter 11 contains a richly illustrated description of generalized LL parsing.
--   ["GLL Parsing"](http://ldta.info/2009/ldta2009proceedings.pdf), Adrian Johnstone and Elizabeth Scott, University of London, 2009. Published in *Proceedings of LDTA*. Explains the GLL algorithm in abstract terms.
--   ["Modelling GLL Parser Implementations"](http://link.springer.com/chapter/10.1007%2F978-3-642-19440-5_4), Adrian Johnstone and Elizabeth Scott, University of London, 2011. Lecture Notes in *Computer Science*, Volume 6563. Models an implementation of the GLL algorithm in a theoretical language.
+-   [*Structure and Interpretation of Computer Programs*](http://mitpress.mit.edu/sicp/full-text/book/book-Z-H-28.html#%_sec_Temp_618), second edition, Harold Abelson and Gerald Jay Sussman, The Massachusetts Institute of Technology, 1996. The example grammar is from section 4.3.2, "[Examples of Nondeterministic Programs: Parsing natural language](http://mitpress.mit.edu/sicp/full-text/book/book-Z-H-28.html#%_sec_Temp_618)", while the memoization wrapper is outlined in exercise 3.27 in section 3.3.3, "[Representing Tables](http://mitpress.mit.edu/sicp/full-text/book/book-Z-H-22.html#%_thm_3.27)". Note that an updated and [unofficial HTML5 version](http://sarabander.github.io/sicp/) of the book offers a vastly improved reading experience on modern devices. {#abelson96-sicp}
+-   "[Memoization in Top-Down Parsing](http://citeseerx.ist.psu.edu/viewdoc/summary?doi=10.1.1.14.3000)", Mark Johnson, Brown University, 1995. Published in *Computational Linguistics*, Volume 21, Number 3. Covers regular memoization, continuation-passing style, and memoization of continuation-passing style functions. {#johnson95-memoization}
+-   "[Generalized Parser Combinators](http://www.cs.uwm.edu/~dspiewak/papers/generalized-parser-combinators.pdf)", Daniel Spiewak, University of Wisconsin, 2010. Implemented as the [gll-combinators](https://github.com/djspiewak/gll-combinators) Scala library, using continuation-passing style and trampolined dispatch. Offers a very accessible introduction to the GLL algorithm. {#spiewak10-generalized}
+-   [*Parsing Techniques: A Practical Guide*](http://dickgrune.com/Books/PTAPG_2nd_Edition/), second edition, Dick Grune and Ceriel J. H. Jacobs, Springer, 2008. Chapter 11 contains a richly illustrated description of generalized LL parsing. {#grune08-parsing}
+-   "[GLL Parsing](http://ldta.info/2009/ldta2009proceedings.pdf)", Adrian Johnstone and Elizabeth Scott, University of London, 2009. Published in *Proceedings of LDTA*. Explains the GLL algorithm in abstract terms. {#johnstone09-gll}
+-   "[Modelling GLL Parser Implementations](http://link.springer.com/chapter/10.1007%2F978-3-642-19440-5_4)", Adrian Johnstone and Elizabeth Scott, University of London, 2011. Lecture Notes in *Computer Science*, Volume 6563. Models an implementation of the GLL algorithm in a theoretical language. {#johnstone11-modelling}
 
 Comments? Suggestions? Post them at the [bug tracker](https://github.com/epsil/gll/issues)!
 
