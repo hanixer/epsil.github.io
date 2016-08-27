@@ -1,13 +1,6 @@
+title: Vegard Øye
 toc: false
 ---
-
-<i class="fa fa-rss"></i> Vegard Øye
-====================================
-
-<!-- En blogg skrevet i [Markdown](index.txt). -->
-
-<i class="fa fa-star"></i> Anbefalt
------------------------------------
 
 -   [Accelerating nonlinear image transformations with OpenGL ES](fisheye/) <span class="flag-icon flag-icon-us" title="English"></span>
 -   [General Parser Combinators in Racket](gll/) <span class="flag-icon flag-icon-us" title="English"></span>
@@ -16,8 +9,8 @@ toc: false
 -   [Tungestyrt USB-mus for bevegelseshemmede](tunge/) <span class="flag-icon flag-icon-no" title="Norwegian"></span>
 -   [Lydforsterker: Project 3A](p3a/) <span class="flag-icon flag-icon-no" title="Norwegian"></span>
 
-<i class="fa fa-folder-open"></i> Arkiver {.collapse}
------------------------------------------
+<i class="fa fa-rss"></i> Blogg {.collapse}
+-------------------------------
 
 ### 2016 {.collapse}
 
