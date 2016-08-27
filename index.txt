@@ -4,24 +4,17 @@ toc: false
 <i class="fa fa-rss"></i> Vegard Øye
 ====================================
 
-En blogg skrevet i [Markdown](index.txt).
+<!-- En blogg skrevet i [Markdown](index.txt). -->
 
 <i class="fa fa-star"></i> Anbefalt
 -----------------------------------
 
--   [Nyttige snarveier i Visual Studio](2016/05/25/)
--   [Running Bash scripts on Windows](2016/04/20/) <span class="flag-icon flag-icon-us" title="English"></span>
--   [Testing med Selenium](2015/12/10/)
--   [Nettilkobling med iPhone](2015/12/05/)
--   [Oppsett `irssi` og `screen`](2014/05/06/)
--   [iTerm2 som nedtrekksterminal](2013/11/28/)
--   [Leseliste](leseliste/)
--   [Kopier til Markdown](clipboard/)
--   [Diftongmaskinen -- kilden til et klangfullt språk](diftong/)
 -   [Accelerating nonlinear image transformations with OpenGL ES](fisheye/) <span class="flag-icon flag-icon-us" title="English"></span>
 -   [General Parser Combinators in Racket](gll/) <span class="flag-icon flag-icon-us" title="English"></span>
--   [Tungestyrt USB-mus for bevegelseshemmede](tunge/)
--   [Lydforsterker: Project 3A](p3a/)
+-   [Running Bash scripts on Windows](2016/04/20/) <span class="flag-icon flag-icon-us" title="English"></span>
+-   [Testing med Selenium](2015/12/10/) <span class="flag-icon flag-icon-no" title="Norwegian"></span>
+-   [Tungestyrt USB-mus for bevegelseshemmede](tunge/) <span class="flag-icon flag-icon-no" title="Norwegian"></span>
+-   [Lydforsterker: Project 3A](p3a/) <span class="flag-icon flag-icon-no" title="Norwegian"></span>
 
 <i class="fa fa-folder-open"></i> Arkiver {.collapse}
 -----------------------------------------
