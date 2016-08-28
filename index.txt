@@ -16,6 +16,9 @@ css: custom.css
 -   [Nyttige snarveier i Visual Studio](2016/05/25/) <span class="flag-icon flag-icon-no" title="Norwegian"></span>
 -   [Running Bash scripts on Windows](2016/04/20/) <span class="flag-icon flag-icon-us" title="English"></span>
 -   [Testing med Selenium](2015/12/10/) <span class="flag-icon flag-icon-no" title="Norwegian"></span>
+-   [Gitarspill](gitar/) <span class="flag-icon flag-icon-no" title="Norwegian"></span>
+-   [Rock step swing](swing/) <span class="flag-icon flag-icon-no" title="Norwegian"></span>
+-   [Cubansk salsa](salsa/) <span class="flag-icon flag-icon-no" title="Norwegian"></span>
 
 ### <i class="fa fa-folder-open"></i> Archives {.collapse}
 
