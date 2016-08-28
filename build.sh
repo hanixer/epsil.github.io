@@ -68,4 +68,5 @@ node lib/build.js fisheye/index.txt
 node lib/build.js gll/index.txt
 node lib/build.js p3a/index.txt
 node lib/build.js tunge/index.txt
+node lib/build.js wishlist/index.txt
 node lib/build.js index.txt
