@@ -223,8 +223,20 @@ mark:hover {
     background-color: #7cffb1; /* rgba(97, 255, 160, 0.8) */
 }
 
+nav, .navbar-default {
+    background-color: #ffffff;
+}
+
+.nav > li > a:hover,
+.nav > li > a:hover .fa,
+.nav > li > a:focus,
+.nav > li > a:focus .fa {
+    background-color: inherit;
+    color: #000000 !important;
+}
+
 nav {
-    box-shadow: 0 1px 6px rgba(0, 0, 0, 0.05);
+    box-shadow: 0 1px 6px rgba(0, 0, 0, 0.15);
     font-size: 14px;
 }
 
