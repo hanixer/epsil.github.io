@@ -3,10 +3,6 @@ title: Gitar
 
 En **gitar** er et strenginstrument med vanligvis seks strenger.
 
-<!-- C D E F G A H C -->
-<!-- A G A G F Emaj F Emaj -->
-<!-- A H G C G -->
-
 Notasjon
 --------
 
@@ -66,8 +62,6 @@ Følgende tips kan kanskje være til hjelp:
 
 -   **Jo nærmere båndet man presser ned strengen, jo mindre kraft trenger man å bruke.** Legg merke til at når Justin bruker siden av pekefingeren til å presse ned 1. og 2. streng, så utnytter han dette prinsippet så til fulle at det *ser ut som om* fingeren presser ned direkte på båndet (noe man *aldri* gjør); fingeren ligger bare over båndet slik at *kanten* til fingeren kan presse ned *rett bak* båndet. Man ønsker å presse ned så nært opptil båndet som mulig, men ikke lenger.
 -   **La tommelen presse imot fra undersiden.** Arbeidet som skal utføres, blir mye lettere dersom man deler det mellom musklene i tommelen og musklene i pekefingeren, fremfor å la pekefingeren gjøre hele jobben alene. Bruk tommelen og pekefingeren som en «klype» og klem til. Dette blir selvsagt lettere ettersom man utvikler mer styrke i fingrene og lærer seg å presse på den beste måten.
-
-<!-- Disse tekstlige betraktningene kan bare få en et stykke på vei. Den *riktige* måten å lære seg å spille et instrument på er under oppsyn av en erfaren utøver. I mangel av dette har man videoer som en halvgod erstatning. -->
 
 Hva man enn gjør, så ikke gi opp å lære Barré-grep -- det er en vanskelig kneik å komme over, men gevinsten ved å mestre flyttbare akkorder er en helt ny verden av muligheter hvor man ikke trenger å begrense seg til den nederste delen av gripebrettet bare fordi det er der de åpne akkordene ligger.
 
