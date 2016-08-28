@@ -1205,7 +1205,7 @@ templates.body = Handlebars.compile(
   '<h2 class="title">{{{subtitle}}}</h2>\n' +
   '{{/if}}' +
   '{{#if author}}' +
-  '<p><i class="fa fa-user"></i> ' +
+  '<p class="author"><i class="fa fa-user"></i> ' +
   '{{author}}' +
   '{{#if date}}' +
   ' <span style="float: right"><time><i class="fa fa-calendar-o"></i> {{dateFormat date}}</time></span>' +
