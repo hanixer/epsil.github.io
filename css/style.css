@@ -22,7 +22,8 @@ a {
 
 a:hover, a:focus {
     /* border-bottom: 1px solid #23527c; */
-    border-bottom: 1px dotted #337ab7;
+    /* border-bottom: 1px dotted #337ab7; */
+    border-bottom: 1px solid #ccc;
     color: #23527c;
     text-decoration: none;
 }
