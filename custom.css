@@ -2,6 +2,10 @@ body {
     margin-bottom: 5em;
 }
 
+header {
+    padding-top: 1em;
+}
+
 .container li {
     background-color: inherit;
     padding: 0.5em 0 0.5em 0;
