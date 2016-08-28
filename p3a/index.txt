@@ -1,3 +1,4 @@
+description: Rapport for konstruksjon av den 60 W klasse AB-forsterkeren Project 3A.
 css: css/custom.css
 js: js/custom.js
 mathjax: js/mathjax.js

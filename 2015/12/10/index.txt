@@ -1,4 +1,5 @@
 title: Testing med Selenium
+description: Hvordan kombinere Selenium, mocha og chai.
 date: 2015-12-10
 ---
 

@@ -1,3 +1,4 @@
+description: Rapport om prototype til en tungestyrt musepeker for bevegelseshemmede.
 css: css/custom.css
 js: js/custom.js
 mathjax: js/mathjax.js
