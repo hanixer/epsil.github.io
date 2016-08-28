@@ -479,7 +479,10 @@ function dateFormat (context, block) {
 }
 
 function urlResolve (base, href) {
-  if (!href.match(/^\//)) {
+  console.log(base)
+  console.log(href)
+  if (!href.match(/^\//) ||
+      (URI(base).is('relative') && !base.match(/^\//))) {
     return href
   }
   base = URI(base).pathname()
