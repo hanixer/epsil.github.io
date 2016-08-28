@@ -1181,7 +1181,7 @@ templates.body = Handlebars.compile(
   '<nav class="navbar navbar-default navbar-fixed-top">\n' +
   '<div class="container-fluid">\n' +
   '<ul class="nav nav-pills navbar-left">\n' +
-  '<li role="presentation"><a href="/" title="Return home"><i class="fa fa-home"></i></a></li>\n' +
+  '<li role="presentation"><a href="/" title="Go home"><i class="fa fa-home"></i></a></li>\n' +
   '</ul>\n' +
   '<ul class="nav nav-pills navbar-right">\n' +
   '<li role="presentation"><a href="{{facebook}}" title="Share on Facebook"><i class="fa fa-facebook-square"></i></a></li>\n' +
