@@ -1,4 +1,5 @@
 title: Vegard Øye
+description: The home page of Vegard Øye, IT consultant.
 toc: false
 css: custom.css
 ---
