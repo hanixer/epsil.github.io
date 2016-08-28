@@ -1148,9 +1148,12 @@ templates.document = Handlebars.compile(
   '<head>\n' +
   '<title>{{text title}}</title>\n' +
   '<meta content="text/html; charset=utf-8" http-equiv="Content-Type">\n' +
+  '{{#if author}}<meta content="{{{author}}}" name="author">\n{{/if}}' +
+  '{{#if description}}<meta content="{{{description}}}" name="description">\n{{/if}}' +
+  '{{#if keywords}}<meta content="{{{keywords}}}" name="keywords">\n{{/if}}' +
+  '{{#if md5}}<meta content="{{{md5}}}" name="md5">\n{{/if}}' +
   '<meta content="text/css" http-equiv="Content-Style-Type">\n' +
   '<meta content="width=device-width, initial-scale=1" name="viewport">\n' +
-  '<meta content="{{{md5}}}" name="md5">\n' +
   '<link href="{{urlResolve url "/favicon.ico"}}" rel="icon" type="image/x-icon">\n' +
   '<link href="{{urlResolve url "/css/markdown-template.css"}}" rel="stylesheet">\n' +
   '<link href="index.txt" rel="alternate" title="Markdown" type="text/markdown">\n' +
