@@ -573,7 +573,8 @@ function frontmatter (data) {
     props = jsyaml.safeLoad(matches[1])
     for (var key in props) {
       var val = props[key]
-      if (typeof (val) === 'string') {
+      if (key !== 'css' && key !== 'js' &&
+          typeof (val) === 'string') {
         props[key] = markdown(val, true)
       }
     }
