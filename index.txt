@@ -1,26 +1,25 @@
 title: Vegard Øye
 description: The home page of Vegard Øye, IT consultant.
-lang: en
 toc: false
 css: custom.css
 ---
 
 -   [Accelerating nonlinear image transformations with OpenGL ES](fisheye/) <span class="flag-icon flag-icon-us" title="English"></span>
 -   [General Parser Combinators in Racket](gll/) <span class="flag-icon flag-icon-us" title="English"></span>
--   [Tungestyrt USB-mus for bevegelseshemmede](tunge/) <span class="flag-icon flag-icon-no" title="Norwegian"></span>
--   [Lydforsterker: Project 3A](p3a/) <span class="flag-icon flag-icon-no" title="Norwegian"></span>
+-   [Tungestyrt USB-mus for bevegelseshemmede](tunge/)
+-   [Lydforsterker: Project 3A](p3a/)
 
-<i class="fa fa-rss"></i> Blog
-------------------------------
+<i class="fa fa-rss"></i> Blogg
+-------------------------------
 
--   [Nyttige snarveier i Visual Studio](2016/05/25/) <span class="flag-icon flag-icon-no" title="Norwegian"></span>
+-   [Nyttige snarveier i Visual Studio](2016/05/25/)
 -   [Running Bash scripts on Windows](2016/04/20/) <span class="flag-icon flag-icon-us" title="English"></span>
--   [Testing med Selenium](2015/12/10/) <span class="flag-icon flag-icon-no" title="Norwegian"></span>
--   [Gitarspill](gitar/) <span class="flag-icon flag-icon-no" title="Norwegian"></span>
--   [Rock step swing](swing/) <span class="flag-icon flag-icon-no" title="Norwegian"></span>
--   [Cubansk salsa](salsa/) <span class="flag-icon flag-icon-no" title="Norwegian"></span>
+-   [Testing med Selenium](2015/12/10/)
+-   [Rock step swing](swing/)
+-   [Cubansk salsa](salsa/)
+-   [Gitarspill](gitar/)
 
-### <i class="fa fa-folder-open"></i> Archives {.collapse}
+### <i class="fa fa-folder-open"></i> Arkiver {.collapse}
 
 #### <i class="fa fa-calendar-o"></i> 2016 {.collapse}
 
@@ -131,7 +130,7 @@ css: custom.css
 
 -   [2001-08-06: Tilleggsfunksjoner på Nokia 3210](2001/08/06/)
 
-<i class="fa fa-user"></i> Contact
+<i class="fa fa-user"></i> Kontakt
 ----------------------------------
 
 <i class="fa fa-linkedin-square"></i> [LinkedIn](http://www.linkedin.com/profile/view?id=68450352) | <i class="fa fa-github"></i> [GitHub](https://github.com/epsil/) | <i class="fa fa-at"></i> [E-mail](mailto:vegard_oye@hotmail.com)

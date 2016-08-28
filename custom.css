@@ -27,7 +27,7 @@ header {
     padding: 0;
 }
 
-#contact {
+#kontakt {
     box-shadow: 0 -1px 6px rgba(0, 0, 0, 0.15);
     background-color: #ffffff;
     position: fixed;
@@ -39,17 +39,17 @@ header {
     text-align: right;
 }
 
-#contact h2 {
+#kontakt h2 {
     float: left;
     font-size: 1em;
     margin-top: 10px;
 }
 
-#contact h2 a {
+#kontakt h2 a {
     display: none;
 }
 
-#contact p {
+#kontakt p {
     margin-top: 10px;
     margin-bottom: 0;
 }
