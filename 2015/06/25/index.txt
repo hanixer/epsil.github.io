@@ -17,3 +17,11 @@ For å lage PDF, er det best å eksportere til EPS (med Pango-skrifter) og deret
     $ epstopdf diagram.eps
 
 `epstopdf` er inkludert i TeX Live ([MacTeX](http://tug.org/mactex/)).
+
+* * * * *
+
+PDF kan konverteres til SVG med [`pdf2svg`](http://www.cityinthesky.co.uk/opensource/pdf2svg/) (kan installeres med `$ brew install pdf2svg`):
+
+    $ pdf2svg diagram.pdf diagram.svg
+
+Å [gå omveien om PDF](http://superuser.com/questions/198460/converting-from-eps-to-svg-format#answer-542987) fungerer bedre enn å konvertere direkte fra EPS.

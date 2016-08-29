@@ -81,6 +81,7 @@ module.exports =
   '*[GTK]: GIMP Toolkit\n' +
   '*[PS]: PostScript\n' +
   '*[EPS]: Encapsulated PostScript\n' +
+  '*[SVG]: Scalable Vector Graphics\n' +
   '*[ROT13]: Rotate By 13 Places\n' +
   '*[MD5]: Message-Digest algorithm 5\n' +
   '*[CRC]: Cyclic Redundancy Check\n' +

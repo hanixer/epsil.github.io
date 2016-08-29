@@ -3,7 +3,7 @@
 <head>
 <title>Dia p&#229; OS X</title>
 <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
-<meta content="1c4da9ab87e7456683d231a19c16883f" name="md5">
+<meta content="bea3f85b0a60c1c1286879b25ad9fa11" name="md5">
 <meta content="text/css" http-equiv="Content-Style-Type">
 <meta content="width=device-width, initial-scale=1" name="viewport">
 <link href="../../../favicon.ico" rel="icon" type="image/x-icon">
@@ -83,6 +83,16 @@ TeX: { equationNumbers: { autoNumber: "all" } }
 </pre>
 
 <p><code>epstopdf</code> er inkludert i <abbr title="TeX">T<span class="tex-e">e</span>X</abbr> Live (<a href="http://tug.org/mactex/"><abbr title="MacTeX">MacT<span class="tex-e">e</span>X</abbr></a>).</p>
+
+<hr>
+
+<p><abbr class="acronym" title="Portable Document Format"><span class="caps">PDF</span></abbr> kan konverteres til <abbr class="acronym" title="Scalable Vector Graphics"><span class="caps">SVG</span></abbr> med <a href="http://www.cityinthesky.co.uk/opensource/pdf2svg/"><code>pdf2svg</code></a> (kan installeres med <code>$ brew install pdf2svg</code>):</p>
+
+<pre>
+<code>$ pdf2svg diagram.pdf diagram.svg</code>
+</pre>
+
+<p>&#197; <a href="http://superuser.com/questions/198460/converting-from-eps-to-svg-format#answer-542987">g&#229; omveien om <abbr class="acronym" title="Portable Document Format"><span class="caps">PDF</span></abbr></a> fungerer bedre enn &#229; konvertere direkte fra <abbr class="acronym" title="Encapsulated PostScript"><span class="caps">EPS</span></abbr>.</p>
 </article>
 </div>
 </body>
