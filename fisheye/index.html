@@ -4,7 +4,7 @@
 <title>Accelerating nonlinear image transformations with OpenGL ES</title>
 <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
 <meta content="A study on fish-eye undistortion." name="description">
-<meta content="29cb43524e37e244f367ef4cc0bfba7c" name="md5">
+<meta content="f77ad7b21b97fd640d3eb4e6da54099d" name="md5">
 <meta content="text/css" http-equiv="Content-Style-Type">
 <meta content="width=device-width, initial-scale=1" name="viewport">
 <link href="../favicon.ico" rel="icon" type="image/x-icon">
@@ -289,7 +289,7 @@ TeX: { equationNumbers: { autoNumber: "all" } }
 <div class="container">
 <article>
 <header>
-<h1 class="title" id="accelerating-nonlinear-image-transformations-with-opengl-es"><a aria-hidden="true" class="header-anchor" href="#accelerating-nonlinear-image-transformations-with-opengl-es" title="Accelerating nonlinear image transformations with OpenGL ES"></a>Accelerating nonlinear image transformations with OpenGL ES</h1>
+<h1 class="title" id="accelerating-nonlinear-image-transformations-with-opengl-es"><a aria-hidden="true" class="header-anchor" href="#accelerating-nonlinear-image-transformations-with-opengl-es" title="Accelerating nonlinear image transformations with OpenGL ES"></a>Accelerating nonlinear image transformations with OpenGL ES<a aria-controls="accelerating-nonlinear-image-transformations-with-opengl-es-section" aria-expanded="true" aria-hidden="true" class="collapse-button" data-toggle="collapse" href="#accelerating-nonlinear-image-transformations-with-opengl-es-section" role="button"></a></h1>
 </header>
 
 <section>
@@ -318,9 +318,9 @@ TeX: { equationNumbers: { autoNumber: "all" } }
 </section>
 
 <section id="acknowledgments">
-<h1><a aria-hidden="true" class="header-anchor" href="#acknowledgments" title="Acknowledgments"></a>Acknowledgments</h1>
+<h1><a aria-hidden="true" class="header-anchor" href="#acknowledgments" title="Acknowledgments"></a>Acknowledgments<a aria-controls="acknowledgments-section" aria-expanded="true" aria-hidden="true" class="collapse-button" data-toggle="collapse" href="#acknowledgments-section" role="button"></a></h1>
 
-<div id="acknowledgments-section">
+<div class="collapse in" id="acknowledgments-section">
 <p>I would like to thank my advisors Carsten Griwodz and Andreas Aardal Hanssen for their help and support throughout the writing of this thesis.</p>
 
 <p>Thanks to B&#229;rd Winter for help with <abbr title="LaTeX">L<span class="latex-a">a</span>T<span class="tex-e">e</span>X</abbr> typesetting.</p>
@@ -335,9 +335,9 @@ July 2015</p>
 </section>
 
 <section id="chap-introduction">
-<h1><a aria-hidden="true" class="header-anchor" href="#chap-introduction" title="1 Introduction"></a>1 Introduction</h1>
+<h1><a aria-hidden="true" class="header-anchor" href="#chap-introduction" title="1 Introduction"></a>1 Introduction<a aria-controls="chap-introduction-section" aria-expanded="true" aria-hidden="true" class="collapse-button" data-toggle="collapse" href="#chap-introduction-section" role="button"></a></h1>
 
-<div id="chap-introduction-section">
+<div class="collapse in" id="chap-introduction-section">
 <section>
 <p>In the 21st century, video cameras are everywhere. Whether the technology is used for communication or surveillance purposes, there is a growing need for efficient processing of video data. Such processing may need to be adapted to the resources that are available on a mobile device. With the emergence of the multi-core imperative, parallel computing is increasingly important.</p>
 
@@ -495,9 +495,9 @@ July 2015</p>
 </section>
 
 <section id="chap-trans">
-<h1><a aria-hidden="true" class="header-anchor" href="#chap-trans" title="2 Image transformation"></a>2 Image transformation</h1>
+<h1><a aria-hidden="true" class="header-anchor" href="#chap-trans" title="2 Image transformation"></a>2 Image transformation<a aria-controls="chap-trans-section" aria-expanded="true" aria-hidden="true" class="collapse-button" data-toggle="collapse" href="#chap-trans-section" role="button"></a></h1>
 
-<div id="chap-trans-section">
+<div class="collapse in" id="chap-trans-section">
 <section>
 <p>In this chapter we will provide a general discussion of how images can be transformed. We will first look at how transformations can be expressed mathematically, and then we will investigate the challenges with regard to interpolation. In particular, we are interested in the following issues:</p>
 
@@ -715,9 +715,9 @@ July 2015</p>
 </section>
 
 <section id="chap-models">
-<h1><a aria-hidden="true" class="header-anchor" href="#chap-models" title="3 Models of fish-eye distortion"></a>3 Models of fish-eye distortion</h1>
+<h1><a aria-hidden="true" class="header-anchor" href="#chap-models" title="3 Models of fish-eye distortion"></a>3 Models of fish-eye distortion<a aria-controls="chap-models-section" aria-expanded="true" aria-hidden="true" class="collapse-button" data-toggle="collapse" href="#chap-models-section" role="button"></a></h1>
 
-<div id="chap-models-section">
+<div class="collapse in" id="chap-models-section">
 <section>
 <p>Wide-angle lenses produce a &#8220;fish-eye&#8221; effect, but all lenses exhibit some degree of barrel distortion. By modeling the distortion precisely, it is possible to undistort the image, producing a &#8220;pincushion&#8221; effect instead. In this way, we can correct for the inherent imprecision of regular lenses, as well as for the &#8220;fish-eye&#8221; effect of wide-angle images.</p>
 
@@ -766,7 +766,7 @@ July 2015</p>
 
 <p>\[\label{eq:cartesiandisplacement} [x&#8217;, y&#8217;] = d[x, d] = [dx, dy]\]</p>
 
-<p>This is easily verified by substituting equation \eqref{eq:polardisplacement} into equation \eq{eq:polartocartesian}. In the rest of the chapter, we will consider distortion to be a function of the radius.</p>
+<p>This is easily verified by substituting equation \eqref{eq:polardisplacement} into equation \eqref{eq:polartocartesian}. In the rest of the chapter, we will consider distortion to be a function of the radius.</p>
 </div>
 </section>
 
@@ -964,9 +964,9 @@ end <span class="hljs-keyword">for</span>
 </section>
 
 <section id="chap-strategies">
-<h1><a aria-hidden="true" class="header-anchor" href="#chap-strategies" title="4 Implementation strategies"></a>4 Implementation strategies</h1>
+<h1><a aria-hidden="true" class="header-anchor" href="#chap-strategies" title="4 Implementation strategies"></a>4 Implementation strategies<a aria-controls="chap-strategies-section" aria-expanded="true" aria-hidden="true" class="collapse-button" data-toggle="collapse" href="#chap-strategies-section" role="button"></a></h1>
 
-<div id="chap-strategies-section">
+<div class="collapse in" id="chap-strategies-section">
 <section>
 <p>So far, we have considered how image transformation can be expressed mathematically, the challenges it raises with regard to interpolation, and what models we may use to express fish-eye distortion. In this chapter, we will consider various strategies for implementing such distortion using OpenGL ES.</p>
 </section>
@@ -1246,9 +1246,9 @@ Built-in/Manual</th>
 </section>
 
 <section id="chap-opengl">
-<h1><a aria-hidden="true" class="header-anchor" href="#chap-opengl" title="5 Implementation with OpenGL ES"></a>5 Implementation with OpenGL ES</h1>
+<h1><a aria-hidden="true" class="header-anchor" href="#chap-opengl" title="5 Implementation with OpenGL ES"></a>5 Implementation with OpenGL ES<a aria-controls="chap-opengl-section" aria-expanded="true" aria-hidden="true" class="collapse-button" data-toggle="collapse" href="#chap-opengl-section" role="button"></a></h1>
 
-<div id="chap-opengl-section">
+<div class="collapse in" id="chap-opengl-section">
 <section>
 <p>In this chapter, we describe our implementation of the strategies outlined in chapter <a href="#chap-strategies" title="4 Implementation strategies">4</a>. We have written a test program that runs each strategy multiple times and measures the execution time. We describe the general structure of this program, the data flow of the shaders, and our implementation of the grid mesh and the interface for transforming it. Then we turn to transformation on the <abbr class="acronym" title="Graphics Processing Unit">GPU</abbr>, illustrated by snippets of shader code.</p>
 
@@ -1641,9 +1641,9 @@ vec4 c8 = color(s_texture, v4);</code>
 </section>
 
 <section id="chap-results">
-<h1><a aria-hidden="true" class="header-anchor" href="#chap-results" title="6 Results"></a>6 Results</h1>
+<h1><a aria-hidden="true" class="header-anchor" href="#chap-results" title="6 Results"></a>6 Results<a aria-controls="chap-results-section" aria-expanded="true" aria-hidden="true" class="collapse-button" data-toggle="collapse" href="#chap-results-section" role="button"></a></h1>
 
-<div id="chap-results-section">
+<div class="collapse in" id="chap-results-section">
 <section>
 <p>In this chapter, we compare the efficiency of the implementations. We also compare built-in interpolation against manual interpolation.</p>
 </section>
@@ -1902,9 +1902,9 @@ glTexImage2D(GL_TEXTURE_2D, <span class="hljs-number">0</span>, GL_RGBA,
 </section>
 
 <section id="chap-conclusion">
-<h1><a aria-hidden="true" class="header-anchor" href="#chap-conclusion" title="7 Conclusion"></a>7 Conclusion</h1>
+<h1><a aria-hidden="true" class="header-anchor" href="#chap-conclusion" title="7 Conclusion"></a>7 Conclusion<a aria-controls="chap-conclusion-section" aria-expanded="true" aria-hidden="true" class="collapse-button" data-toggle="collapse" href="#chap-conclusion-section" role="button"></a></h1>
 
-<div id="chap-conclusion-section">
+<div class="collapse in" id="chap-conclusion-section">
 <section>
 <p>In this thesis, we have studied and compared various approaches for accelerating image transformation using OpenGL ES. Our case has been the undistortion of fish-eye distortion, a problem that can be modeled in different ways. However, our results can be generalized to other transformations as well.</p>
 
@@ -1982,9 +1982,9 @@ glTexImage2D(GL_TEXTURE_2D, <span class="hljs-number">0</span>, GL_RGBA,
 </section>
 
 <section id="chap-code">
-<h1><a aria-hidden="true" class="header-anchor" href="#chap-code" title="A Source code"></a>A Source code</h1>
+<h1><a aria-hidden="true" class="header-anchor" href="#chap-code" title="A Source code"></a>A Source code<a aria-controls="chap-code-section" aria-expanded="true" aria-hidden="true" class="collapse-button" data-toggle="collapse" href="#chap-code-section" role="button"></a></h1>
 
-<div id="chap-code-section">
+<div class="collapse in" id="chap-code-section">
 <p>The source code is freely available from a Git repository. To obtain the code, run the following command:</p>
 
 <pre>
@@ -2004,9 +2004,9 @@ glTexImage2D(GL_TEXTURE_2D, <span class="hljs-number">0</span>, GL_RGBA,
 </section>
 
 <section id="chap-matlab">
-<h1><a aria-hidden="true" class="header-anchor" href="#chap-matlab" title="B Matlab program"></a>B Matlab program</h1>
+<h1><a aria-hidden="true" class="header-anchor" href="#chap-matlab" title="B Matlab program"></a>B Matlab program<a aria-controls="chap-matlab-section" aria-expanded="true" aria-hidden="true" class="collapse-button" data-toggle="collapse" href="#chap-matlab-section" role="button"></a></h1>
 
-<div id="chap-matlab-section">
+<div class="collapse in" id="chap-matlab-section">
 <p>Matlab program for estimating model parameters:</p>
 
 <pre>
@@ -2076,9 +2076,9 @@ axis([<span class="hljs-number">0.0</span> <span class="hljs-number">1.0</span> 
 </section>
 
 <section id="bibliography">
-<h1><a aria-hidden="true" class="header-anchor" href="#bibliography" title="Bibliography"></a>Bibliography</h1>
+<h1><a aria-hidden="true" class="header-anchor" href="#bibliography" title="Bibliography"></a>Bibliography<a aria-controls="bibliography-section" aria-expanded="true" aria-hidden="true" class="collapse-button" data-toggle="collapse" href="#bibliography-section" role="button"></a></h1>
 
-<div id="bibliography-section">
+<div class="collapse in" id="bibliography-section">
 <section>
 <p id="basu95-alter">Anup Basu and Sergio Licardie. Alternative models for fish-eye lenses. <em>Pattern Recognition Letters</em>, 1995.</p>
 

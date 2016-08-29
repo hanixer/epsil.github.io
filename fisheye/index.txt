@@ -965,9 +965,9 @@ $$\label{eq:cartesiandisplacement}
 [x', y'] = d[x, d] = [dx, dy]$$
 
 This is easily verified by substituting equation
-\eqref{eq:polardisplacement} into equation \eq{eq:polartocartesian}.
-In the rest of the chapter, we will consider distortion to be a
-function of the radius.
+\eqref{eq:polardisplacement} into equation
+\eqref{eq:polartocartesian}. In the rest of the chapter, we will
+consider distortion to be a function of the radius.
 
 3.2 Polynomial models
 ---------------------

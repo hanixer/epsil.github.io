@@ -397,39 +397,9 @@ $.fn.addCollapsibleSections.sectionId = function (header, section) {
   return id
 }
 
-// // click handler
-// $.fn.addCollapsibleSections.clickHandler = function (button, header, collapse, expand) {
-//   return function () {
-//     // change glyph
-//     if (header.hasClass('collapsed')) {
-//       button.attr('title', collapse)
-//       header.removeClass('collapsed')
-//     } else {
-//       button.attr('title', expand)
-//       header.addClass('collapsed')
-//     }
-//   }
-// }
-
-// // add click handler
-// $.fn.addCollapsibleClickHandlers = function (options) {
-//   return this.each(function () {
-//     $(this).find('.collapse-button').each(function () {
-//       var button = $(this)
-//       var header = button.parent()
-//       var collapse = $.fn.addCollapsibleSections.defaults.collapse
-//       var expand = $.fn.addCollapsibleSections.defaults.expand
-//       var handler = $.fn.addCollapsibleSections.clickHandler(button, header, collapse, expand)
-//       button.click(handler)
-//     })
-//   })
-// }
-
 // Default options
 $.fn.addCollapsibleSections.defaults = {
-  include: ['h2', 'h3', 'h4', 'h5', 'h6'] // skip h1
-  // collapse: 'Collapse', // collapse title
-  // expand: 'Expand', // expand title
+  include: ['h1', 'h2', 'h3', 'h4', 'h5', 'h6']
 }
 
 },{"bootstrap":14,"jquery":233,"string":346}],4:[function(require,module,exports){

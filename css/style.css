@@ -196,6 +196,14 @@ html {
     font-size: initial !important;
 }
 
+div.figure {
+    max-width: 100%;
+}
+
+div.figure img {
+    width: 100%;
+}
+
 img {
     max-width: 100%;
 }
