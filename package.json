@@ -48,6 +48,7 @@
     "markdown-it-abbr": "^1.0.3",
     "markdown-it-attrs": "^0.6.0",
     "markdown-it-footnote": "^3.0.0",
+    "markdown-it-math": "^4.0.1",
     "markdown-it-mathjax": "^1.0.3",
     "markdown-it-sub": "^1.0.0",
     "markdown-it-sup": "^1.0.0",
@@ -56,8 +57,10 @@
     "mocha": "^2.5.3",
     "moment": "^2.14.1",
     "string": "^3.3.1",
+    "texzilla": "^0.9.9",
     "tidy-html5": "^0.1.1",
     "typogr": "^0.6.6",
-    "urijs": "^1.18.1"
+    "urijs": "^1.18.1",
+    "webserver": "^1.1.2"
   }
 }
