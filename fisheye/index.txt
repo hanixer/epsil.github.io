@@ -433,16 +433,17 @@ $[\begin{smallmatrix}
 \end{smallmatrix}]$, or $k$ times the identity matrix:
 
 $$\left[\begin{matrix}
-      k & 0\\
-      0 & k
-    \end{matrix}\right]
-  \left[\begin{matrix}
-      x\\
-      y
-    \end{matrix}\right] = \left[\begin{matrix}
-      kx\\
-      ky
-    \end{matrix}\right]$$
+  k & 0\\
+  0 & k
+\end{matrix}\right]
+\left[\begin{matrix}
+  x\\
+  y
+\end{matrix}\right] =
+\left[\begin{matrix}
+  kx\\
+  ky
+\end{matrix}\right]$$
 
 Of course, scaling is invertible, since scaling by $k$ can be undone
 by scaling by $1/k$.
@@ -460,13 +461,14 @@ scalar $k$:
 
 $$\begin{aligned}
   F(\mathbf{x} + \mathbf{y}) &= F(\mathbf{x}) + F(\mathbf{y})\\
-  F(k\mathbf{x}) &= kF(\mathbf{x})\end{aligned}$$
+  F(k\mathbf{x}) &= kF(\mathbf{x})
+\end{aligned}$$
 
 Note that the transformation doesn't shift the coordinate system -- it
 maps the zero coordinate onto itself:
 
 $$\label{eq:zero}
-  F(\mathbf{0}) = \mathbf{0}$$
+F(\mathbf{0}) = \mathbf{0}$$
 
 Linear transformations can be expressed as multiplication by a
 two-by-two matrix
@@ -487,36 +489,36 @@ coordinates with a "dummy" coordinate $z = 1$, we can express
 translation as multiplication by a three-by-three matrix:
 
 $$\left[\begin{matrix}
-      1 & 0 & \Delta x\\
-      0 & 1 & \Delta y\\
-      0 & 0 & 1
-    \end{matrix}\right]
-  \left[\begin{matrix}
-      x\\
-      y\\
-      1
-    \end{matrix}\right] = \left[\begin{matrix}
-      x + \Delta x\\
-      y + \Delta y\\
-      1
-    \end{matrix}\right]$$
+  1 & 0 & \Delta x\\
+  0 & 1 & \Delta y\\
+  0 & 0 & 1
+\end{matrix}\right]
+\left[\begin{matrix}
+  x\\
+  y\\
+  1
+\end{matrix}\right] = \left[\begin{matrix}
+  x + \Delta x\\
+  y + \Delta y\\
+  1
+\end{matrix}\right]$$
 
 An affine transformation can then be expressed as:
 
 $$\left[\begin{matrix}
-      m_{11} & m_{12} & \Delta x\\
-      m_{21} & m_{22} & \Delta y\\
-      0 & 0 & 1
-    \end{matrix}\right]
-  \left[\begin{matrix}
-      x\\
-      y\\
-      1
-    \end{matrix}\right] = \left[\begin{matrix}
-      m_{11}x + m_{12}y + \Delta x\\
-      m_{21}x + m_{22}y + \Delta y\\
-      1
-    \end{matrix}\right]$$
+  m_{11} & m_{12} & \Delta x\\
+  m_{21} & m_{22} & \Delta y\\
+  0 & 0 & 1
+\end{matrix}\right]
+\left[\begin{matrix}
+  x\\
+  y\\
+  1
+\end{matrix}\right] = \left[\begin{matrix}
+  m_{11}x + m_{12}y + \Delta x\\
+  m_{21}x + m_{22}y + \Delta y\\
+  1
+\end{matrix}\right]$$
 
 In actuality, the coordinate $[x, y, z]$ is a *homogeneous*
 coordinate. OpenGL ES provides built-in support for such coordinates,
@@ -529,33 +531,33 @@ If the three-by-three matrix modifies the $z$ coordinate, then the
 transformation is projective:
 
 $$\left[\begin{matrix}
-      m_{11} & m_{12} & m_{13}\\
-      m_{21} & m_{22} & m_{23}\\
-      m_{31} & m_{32} & m_{33}
-    \end{matrix}\right]
-  \left[\begin{matrix}
-      x\\
-      y\\
-      z
-    \end{matrix}\right] = \left[\begin{matrix}
-      m_{11}x + m_{12}y + m_{13}z\\
-      m_{21}x + m_{22}y + m_{23}z\\
-      m_{31}x + m_{32}y + m_{33}z
-    \end{matrix}\right]$$
+  m_{11} & m_{12} & m_{13}\\
+  m_{21} & m_{22} & m_{23}\\
+  m_{31} & m_{32} & m_{33}
+\end{matrix}\right]
+\left[\begin{matrix}
+  x\\
+  y\\
+  z
+\end{matrix}\right] = \left[\begin{matrix}
+  m_{11}x + m_{12}y + m_{13}z\\
+  m_{21}x + m_{22}y + m_{23}z\\
+  m_{31}x + m_{32}y + m_{33}z
+\end{matrix}\right]$$
 
 In this case, the $z$ value contains information. We map from
 homogeneous coordinates to image coordinates by dividing by $z$:
 
 $$\frac{1}{z}
-  \left[\begin{matrix}
-      x\\
-      y\\
-      z
-    \end{matrix}\right] = \left[\begin{matrix}
-      x/z\\
-      y/z\\
-      1
-    \end{matrix}\right]$$
+\left[\begin{matrix}
+  x\\
+  y\\
+  z
+\end{matrix}\right] = \left[\begin{matrix}
+  x/z\\
+  y/z\\
+  1
+\end{matrix}\right]$$
 
 By transforming the input coordinates with this two-step process --
 first multiplying with an homogeneous matrix and then mapping back to
@@ -571,18 +573,18 @@ solution is necessary. The general quadrilateral-to-quadrilateral
 problem can be expressed as a bilinear transformation:
 
 $$\left[\begin{matrix}
-      a_3 & a_2 & a_1 & a_0\\
-      b_3 & b_2 & b_1 & b_0
-    \end{matrix}\right]
-  \left[\begin{matrix}
-      xy\\
-      x\\
-      y\\
-      1
-    \end{matrix}\right] = \left[\begin{matrix}
-      a_3xy + a_2x + a_1y + a_0\\
-      b_3xy + b_2x + b_1y + b_0
-    \end{matrix}\right]$$
+  a_3 & a_2 & a_1 & a_0\\
+  b_3 & b_2 & b_1 & b_0
+\end{matrix}\right]
+\left[\begin{matrix}
+  xy\\
+  x\\
+  y\\
+  1
+\end{matrix}\right] = \left[\begin{matrix}
+  a_3xy + a_2x + a_1y + a_0\\
+  b_3xy + b_2x + b_1y + b_0
+\end{matrix}\right]$$
 
 For example, a photograph can be transformed from perspective
 projection to orthographic projection by mapping a rectangle imaged as
@@ -613,16 +615,16 @@ it is, however, then it might be preferable to compute it in advance
 and store it as a table of $[x, y]$-offsets:
 
 $$\left[
-    \begin{matrix}
-      F(\mathbf{x}_{11}) & F(\mathbf{x}_{12}) & F(\mathbf{x}_{13}) & F(\mathbf{x}_{14}) & \dotsb & F(\mathbf{x}_{1n}) \\
-      F(\mathbf{x}_{21}) & F(\mathbf{x}_{22}) & F(\mathbf{x}_{23}) & F(\mathbf{x}_{24}) & \dotsb & F(\mathbf{x}_{2n}) \\
-      F(\mathbf{x}_{31}) & F(\mathbf{x}_{32}) & F(\mathbf{x}_{33}) & F(\mathbf{x}_{34}) & \dotsb & F(\mathbf{x}_{3n}) \\
-      F(\mathbf{x}_{41}) & F(\mathbf{x}_{42}) & F(\mathbf{x}_{43}) & F(\mathbf{x}_{44}) & \dotsb & F(\mathbf{x}_{4n}) \\
-      F(\mathbf{x}_{41}) & F(\mathbf{x}_{42}) & F(\mathbf{x}_{43}) & F(\mathbf{x}_{44}) & \dotsb & F(\mathbf{x}_{4n}) \\
-      \vdots             & \vdots             & \vdots             & \vdots             & \ddots & \vdots             \\
-      F(\mathbf{x}_{m1}) & F(\mathbf{x}_{m2}) & F(\mathbf{x}_{m3}) & F(\mathbf{x}_{m4}) & \dotsb & F(\mathbf{x}_{mn})
-    \end{matrix}
-  \right]$$
+\begin{matrix}
+  F(\mathbf{x}_{11}) & F(\mathbf{x}_{12}) & F(\mathbf{x}_{13}) & F(\mathbf{x}_{14}) & \dotsb & F(\mathbf{x}_{1n}) \\
+  F(\mathbf{x}_{21}) & F(\mathbf{x}_{22}) & F(\mathbf{x}_{23}) & F(\mathbf{x}_{24}) & \dotsb & F(\mathbf{x}_{2n}) \\
+  F(\mathbf{x}_{31}) & F(\mathbf{x}_{32}) & F(\mathbf{x}_{33}) & F(\mathbf{x}_{34}) & \dotsb & F(\mathbf{x}_{3n}) \\
+  F(\mathbf{x}_{41}) & F(\mathbf{x}_{42}) & F(\mathbf{x}_{43}) & F(\mathbf{x}_{44}) & \dotsb & F(\mathbf{x}_{4n}) \\
+  F(\mathbf{x}_{41}) & F(\mathbf{x}_{42}) & F(\mathbf{x}_{43}) & F(\mathbf{x}_{44}) & \dotsb & F(\mathbf{x}_{4n}) \\
+  \vdots             & \vdots             & \vdots             & \vdots             & \ddots & \vdots             \\
+  F(\mathbf{x}_{m1}) & F(\mathbf{x}_{m2}) & F(\mathbf{x}_{m3}) & F(\mathbf{x}_{m4}) & \dotsb & F(\mathbf{x}_{mn})
+\end{matrix}
+\right]$$
 
 Since coordinate transformation is reduced to a single table lookup,
 this is very efficient, at least for small tables. For large tables,
@@ -921,14 +923,14 @@ $\theta$ with the positive $x$ axis. The relationship between
 Cartesian coordinates and polar coordinates is:
 
 $$\label{eq:cartesiantopolar}
-    [r, \theta] = \left[\!\sqrt{x^2 + y^2}, \operatorname{atan2}(y, x)\right]$$
+[r, \theta] = \left[\!\sqrt{x^2 + y^2}, \operatorname{atan2}(y, x)\right]$$
 
 where $\operatorname{atan2}$ is the arcus tangent function of *two*
 arguments $y$ and $x$, which expresses the quadrant of the angle
 accurately.[^5] The inverse relationship is given by:
 
 $$\label{eq:polartocartesian}
-  [x, y] = [r\cos{\theta}, r\sin{\theta}]$$
+[x, y] = [r\cos{\theta}, r\sin{\theta}]$$
 
 A model is a mapping from an untransformed coordinate $[r, \theta]$ to
 a transformed coordinate $[r', \theta']$. (It may map undistorted
@@ -940,7 +942,7 @@ relationship between the undistorted radius $r$ and the distorted
 radius $r'$:
 
 $$\label{eq:model}
-  r' = F(r)$$
+r' = F(r)$$
 
 We can avoid incurring the cost of the trigonometric functions in
 equations (\ref{eq:cartesiantopolar}--\ref{eq:polartocartesian}). Let
@@ -948,19 +950,19 @@ $d$ be the displacement factor, expressed as the ratio of the
 distorted radius to the undistorted radius:
 
 $$\label{eq:displacement}
-  d = \frac{r'}{r} = \frac{F(r)}{r}$$
+d = \frac{r'}{r} = \frac{F(r)}{r}$$
 
 Then the relationship between undistorted polar coordinates and
 distorted polar coordinates can be expressed in terms of this factor:
 
 $$\label{eq:polardisplacement}
-  [r', \theta'] = [F(r), \theta] = \left[\frac{F(r)}{r}r, \theta\right] = [dr, \theta]$$
+[r', \theta'] = [F(r), \theta] = \left[\frac{F(r)}{r}r, \theta\right] = [dr, \theta]$$
 
 Likewise, the relationship between undistorted Cartesian coordinates
 and distorted Cartesian coordinates is given by:
 
 $$\label{eq:cartesiandisplacement}
-  [x', y'] = d[x, d] = [dx, dy]$$
+[x', y'] = d[x, d] = [dx, dy]$$
 
 This is easily verified by substituting equation
 \eqref{eq:polardisplacement} into equation \eq{eq:polartocartesian}.
@@ -976,12 +978,12 @@ the lens is not aligned with the sensor. The model is commonly
 approximated as a Taylor series:
 
 $$\label{eq:brown}
-  \begin{split}
-    x_u &= x_d + (x_d - x_c)(\kappa_1r^2 + \kappa_2r^4 + \kappa_3r^6 + \dotsb) + {} \\
-    &\phantom{{}={}} [(\rho_1(r^2 + 2(x_d - x_c)^2) + 2\rho_2(x_d - x_c)(y_d - y_c))(1 + \rho_3r^2 + \dotsb)]\\
-    y_u &= y_d + (y_d - y_c)(\kappa_1r^2 + \kappa_2r^4 + \kappa_3r^6 + \dotsb) + {} \\
-    &\phantom{{}={}} [(\rho_1(r^2 + 2(y_d - y_c)^2) + 2\rho_2(y_d - y_c)(y_d - y_c))(1 + \rho_3r^2 + \dotsb)]
-  \end{split}$$
+\begin{split}
+  x_u &= x_d + (x_d - x_c)(\kappa_1r^2 + \kappa_2r^4 + \kappa_3r^6 + \dotsb) + {} \\
+  &\phantom{{}={}} [(\rho_1(r^2 + 2(x_d - x_c)^2) + 2\rho_2(x_d - x_c)(y_d - y_c))(1 + \rho_3r^2 + \dotsb)]\\
+  y_u &= y_d + (y_d - y_c)(\kappa_1r^2 + \kappa_2r^4 + \kappa_3r^6 + \dotsb) + {} \\
+  &\phantom{{}={}} [(\rho_1(r^2 + 2(y_d - y_c)^2) + 2\rho_2(y_d - y_c)(y_d - y_c))(1 + \rho_3r^2 + \dotsb)]
+\end{split}$$
 
 where $[x_u, y_u]$ is the undistorted image point, $[x_d, y_d]$ is the
 distorted image point, $[x_c, y_c]$ is the center of distortion (i.e.,
@@ -995,10 +997,10 @@ If we substitute $[x_c, x_c] = [0, 0]$ and remove the tangential part,
 the model simplifies to:
 
 $$\label{eq:brownradial}
-  \begin{split}
-    x_u &= x_d(1 + \kappa_1r^2 + \kappa_2r^4 + \kappa_3r^6 + \dotsb)\\
-    y_u &= y_d(\underbrace{1 + \kappa_1r^2 + \kappa_2r^4 + \kappa_3r^6 + \dotsb}_d)
-  \end{split}$$
+\begin{split}
+  x_u &= x_d(1 + \kappa_1r^2 + \kappa_2r^4 + \kappa_3r^6 + \dotsb)\\
+  y_u &= y_d(\underbrace{1 + \kappa_1r^2 + \kappa_2r^4 + \kappa_3r^6 + \dotsb}_d)
+\end{split}$$
 
 where $d$ is the displacement factor we defined in equation
 \eqref{eq:displacement}. Since the polynomial $d = f(r)$ must be
@@ -1009,19 +1011,19 @@ where the coefficient $\kappa_1$ controls the general behavior of the
 distortion:
 
 $$\label{eq:taylorone}
-  d = f(r) = 1 + \kappa_1r^2$$
+d = f(r) = 1 + \kappa_1r^2$$
 
 The coefficient $\kappa_2$ needs only be added if a first-order
 approximation is insufficient:
 
 $$\label{eq:taylortwo}
-  d = f(r) = 1 + \kappa_1r^2 + \kappa_2r^4)$$
+d = f(r) = 1 + \kappa_1r^2 + \kappa_2r^4)$$
 
 However, for larger distortions (i.e., wide-angle lenses), at least
 three terms are needed:
 
 $$\label{eq:taylorthree}
-  d = f(r) = 1 + \kappa_1r^2 + \kappa_2r^4 + \kappa_3r^6$$
+d = f(r) = 1 + \kappa_1r^2 + \kappa_2r^4 + \kappa_3r^6$$
 
 Brown's model is a mapping from distorted positions to undistorted
 positions, i.e., a relationship of the form
@@ -1058,24 +1060,24 @@ Another approach is to compute the inverse by an iterative method such
 as Newton--Raphson approximation:
 
 $$\label{eq:newton}
-  x_{n+1} = x_n - \frac{f(x_n)}{f'(x_n)}$$
+x_{n+1} = x_n - \frac{f(x_n)}{f'(x_n)}$$
 
 To approximate a value for $r$ corresponding to a displacement $d$, we
 rewrite equation \eqref{eq:taylorthree} on the form $f(r) = 0$:
 
 $$\label{eq:rewrite}
-  f(r) = 0 = 1 + \kappa_1r^2 + \kappa_2r^4 + \kappa_3r^6 - d$$
+f(r) = 0 = 1 + \kappa_1r^2 + \kappa_2r^4 + \kappa_3r^6 - d$$
 
 The derivative of this polynomial is:
 
 $$\label{eq:derivative}
-  f'(r) = 2\kappa_1r + 4\kappa_2r^3 + 6\kappa_3r^5$$
+f'(r) = 2\kappa_1r + 4\kappa_2r^3 + 6\kappa_3r^5$$
 
 Substituting equations (\ref{eq:rewrite}--\ref{eq:derivative}) into
 equation \eqref{eq:newton} gives us:
 
 $$\label{eq:approximation}
-  r_{n+1} = r_n - \frac{1 + \kappa_1r^2 + \kappa_2r^4 + \kappa_3r^6 - d}{2\kappa_1r + 4\kappa_2r^3 + 6\kappa_3r^5}$$
+r_{n+1} = r_n - \frac{1 + \kappa_1r^2 + \kappa_2r^4 + \kappa_3r^6 - d}{2\kappa_1r + 4\kappa_2r^3 + 6\kappa_3r^5}$$
 
 This is an iterative equation for finding better and better estimates
 of $r$ such that $f(r) = d$. Since the equation is considerably more
@@ -1119,13 +1121,14 @@ between the distorted radius $r_d$ and the undistorted radius $r_u$
 can be approximated by the following exponential equation:
 
 $$\label{eq:exp}
-  r_u = (\mathrm{e}^{r_d/s} - 1) / \lambda$$
+r_u = (\mathrm{e}^{r_d/s} - 1) / \lambda$$
 
 where $s$ is a scaling factor and $\lambda$ is the amount of
 distortion. The *inverse* relationship is given by a logarithmic
 equation:
 
-$$\label{eq:logarithm} r_d = s\ln(1 + \lambda r_u)$$
+$$\label{eq:logarithm}
+r_d = s\ln(1 + \lambda r_u)$$
 
 [Basu and Licardie (1995)](#basu95-alter) compared this model with a
 polynomial model, and found it to produce good results.
@@ -1138,7 +1141,8 @@ alternate approximation:
 $$\begin{aligned}
   \label{eq:devernay}
   r_u &= \tfrac{1}{\omega} \operatorname{atan}(2r_d\tan{\tfrac{\omega}{2}})\\
-  r_d &= \frac{\tan(r_u\omega)}{2\tan{\tfrac{\omega}{2}}}\end{aligned}$$
+  r_d &= \frac{\tan(r_u\omega)}{2\tan{\tfrac{\omega}{2}}}
+\end{aligned}$$
 
 where $\omega$ is the field-of-view of the corresponding ideal
 wide-angle lens.
@@ -1149,7 +1153,7 @@ wide-angle lens.
 model called the "division model":
 
 $$\label{eq:division}
-  r_d = \frac{1}{1 + \kappa r^2}r_u$$
+r_d = \frac{1}{1 + \kappa r^2}r_u$$
 
 This model is about as good an approximation as the first-order Taylor
 expansion in equation \eqref{eq:taylorone}, but in the opposite
@@ -1174,7 +1178,7 @@ Using Matlab's `fitnlm()` function, we obtained the following
 coefficients for Brown's model:[^6]
 
 $$\label{eq:taylorparam}
-  d = f(r) = 1 - 3.5778r^2 + 7.1946r^4 + -3.9842r^6$$
+d = f(r) = 1 - 3.5778r^2 + 7.1946r^4 + -3.9842r^6$$
 
 For the exponential model:
 
@@ -1182,19 +1186,21 @@ $$\begin{aligned}
   \label{eq:expparam}
   r_u &= (\mathrm{e}^{r_d/0.76} - 1) / 3.8342\\
   \label{eq:logparam}
-  r_d &= 0.76\ln(1 + 3.8342r_u)\end{aligned}$$
+  r_d &= 0.76\ln(1 + 3.8342r_u)
+\end{aligned}$$
 
 For the trigonometric model:
 
 $$\begin{aligned}
   \label{eq:devernayparam}
   r_u &= \tfrac{1}{0.95617} \operatorname{atan}(2r_d\tan{\tfrac{0.95617}{2}})\\
-  r_d &= \frac{\tan(0.95617r_u)}{2\tan{\tfrac{0.95617}{2}}}\end{aligned}$$
+  r_d &= \frac{\tan(0.95617r_u)}{2\tan{\tfrac{0.95617}{2}}}
+\end{aligned}$$
 
 For the division model:
 
 $$\label{eq:divisionparam}
-  r_d = \frac{1}{1 - 0.29948r^2}r_u$$
+r_d = \frac{1}{1 - 0.29948r^2}r_u$$
 
 Summary
 -------
@@ -1369,13 +1375,13 @@ the range $[-1, 1]$ and texture coordinates $[s, t]$ in the range
 $[0, 1]$. The default mapping is given by the equation:
 
 $$\label{eq:mapping}
-  \left[\begin{matrix}
-      s\\
-      t
-    \end{matrix}\right] = \left[\begin{matrix}
-      x/2 + 1/2\\
-      y/2 + 1/2
-    \end{matrix}\right]$$
+\left[\begin{matrix}
+  s\\
+  t
+\end{matrix}\right] = \left[\begin{matrix}
+  x/2 + 1/2\\
+  y/2 + 1/2
+\end{matrix}\right]$$
 
 This is an affine transformation, where vertex space is centered
 around $[0, 0]$. It is translated and scaled to texture space, which
@@ -1384,47 +1390,48 @@ chapter [2](#chap-trans), we can express the translation in matrix
 form:
 
 $$\label{eq:affinemapping}
-  \left[\begin{matrix}
-      s\\
-      t\\
-      1
-    \end{matrix}\right] = \left[\begin{matrix}
-      x\\
-      y\\
-      1
-    \end{matrix}\right]
-  \left[\begin{matrix}
-      1/2 & 0 & 1/2\\
-      0 & 1/2 & 1/2\\
-      0 & 0 & 1
-    \end{matrix}\right]$$
+\left[\begin{matrix}
+  s\\
+  t\\
+  1
+\end{matrix}\right] =
+\left[\begin{matrix}
+  x\\
+  y\\
+  1
+\end{matrix}\right]
+\left[\begin{matrix}
+  1/2 & 0 & 1/2\\
+  0 & 1/2 & 1/2\\
+  0 & 0 & 1
+\end{matrix}\right]$$
 
 Or in tableaux form:
 
 $$\label{eq:table}
-  \left[\begin{matrix}
-      s\\
-      t
-    \end{matrix}\right] = \begin{cases}
-    [0, 0] & \text{if $[x, y] = [-1, -1]$}\\
-    [0, 1] & \text{if $[x, y] = [-1, 1]$}\\
-    [1, 0] & \text{if $[x, y] = [1, -1]$}\\
-    [1, 1] & \text{if $[x, y] = [1, 1]$}\\
-    [1/2, 1/2] & \text{if $[x, y] = [0, 0]$}\\
-    \dots & \\
-    [x/2 + 1/2, y/2 + 1/2] &
-  \end{cases}$$
+\left[\begin{matrix}
+  s\\
+  t
+\end{matrix}\right] = \begin{cases}
+  [0, 0] & \text{if $[x, y] = [-1, -1]$}\\
+  [0, 1] & \text{if $[x, y] = [-1, 1]$}\\
+  [1, 0] & \text{if $[x, y] = [1, -1]$}\\
+  [1, 1] & \text{if $[x, y] = [1, 1]$}\\
+  [1/2, 1/2] & \text{if $[x, y] = [0, 0]$}\\
+  \dots & \\
+  [x/2 + 1/2, y/2 + 1/2] &
+\end{cases}$$
 
 The inverse relationship is of course given by:
 
 $$\label{eq:inversemapping}
-  \left[\begin{matrix}
-      x\\
-      y
-    \end{matrix}\right] = \left[\begin{matrix}
-      2(s - 1/2)\\
-      2(t - 1/2)
-    \end{matrix}\right]$$
+\left[\begin{matrix}
+  x\\
+  y
+\end{matrix}\right] = \left[\begin{matrix}
+  2(s - 1/2)\\
+  2(t - 1/2)
+\end{matrix}\right]$$
 
 The utility of equations (\ref{eq:mapping}--\ref{eq:inversemapping})
 is evident when we want to transform texture space. The transformation
@@ -1515,7 +1522,8 @@ $$\begin{aligned}
   [x, y]_{ul} &= [x - \tfrac{1}{2}l, y + \tfrac{1}{2}l] \\
   [x, y]_{ur} &= [x + \tfrac{1}{2}l, y + \tfrac{1}{2}l] \\
   [x, y]_{ll} &= [x - \tfrac{1}{2}l, y - \tfrac{1}{2}l] \\
-  [x, y]_{lr} &= [x + \tfrac{1}{2}l, y - \tfrac{1}{2}l]\end{aligned}$$
+  [x, y]_{lr} &= [x + \tfrac{1}{2}l, y - \tfrac{1}{2}l]
+\end{aligned}$$
 
 These four coordinates plus the original coordinate can then be
 transformed to input coordinates that are sampled to compute an
@@ -1528,7 +1536,8 @@ $$\begin{aligned}
   [x, y]_{ml} &= [x - \tfrac{1}{2}l, y] \\
   [x, y]_{mr} &= [x + \tfrac{1}{2}l, y] \\
   \label{eq:lm}
-  [x, y]_{lm} &= [x, y - \tfrac{1}{2}l]\end{aligned}$$
+  [x, y]_{lm} &= [x, y - \tfrac{1}{2}l]
+\end{aligned}$$
 
 An unweighed average produces a smooth, if somewhat fuzzy result. We
 can achieve a different filtering effect by adjusting the coefficients
@@ -1538,18 +1547,19 @@ expressed a two-dimensional dot product with a weight matrix (or
 ([Bjorke 2004](#bjorke04-filter)):
 
 $$\label{eq:kernel}
-  \frac{1}{d}\left[\begin{matrix}
-      w_{ul} & w_{um} & w_{ur}\\
-      w_{ml} & w_{mm} & w_{mr}\\
-      w_{lr} & w_{lm} & w_{lr}
-    \end{matrix}\right]
-  \cdot
-  \left[\begin{matrix}
-      c_{ul} & c_{um} & c_{ur}\\
-      c_{ml} & c_{mm} & c_{mr}\\
-      c_{lr} & c_{lm} & c_{lr}
-    \end{matrix}\right]
-  = \tfrac{1}{d}(w_{ul}c_{ul} + w_{um}c_{um} + \dotsb + w_{lr}c_{lr})$$
+\frac{1}{d}
+\left[\begin{matrix}
+  w_{ul} & w_{um} & w_{ur}\\
+  w_{ml} & w_{mm} & w_{mr}\\
+  w_{lr} & w_{lm} & w_{lr}
+\end{matrix}\right]
+\cdot
+\left[\begin{matrix}
+  c_{ul} & c_{um} & c_{ur}\\
+  c_{ml} & c_{mm} & c_{mr}\\
+  c_{lr} & c_{lm} & c_{lr}
+\end{matrix}\right] =
+\tfrac{1}{d}(w_{ul}c_{ul} + w_{um}c_{um} + \dotsb + w_{lr}c_{lr})$$
 
 A brief discussion of a few very simple filters follows. For example,
 the previously mentioned average of nine samples can be expressed as a
