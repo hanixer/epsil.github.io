@@ -12,11 +12,11 @@ Trinn
 
 [![](cubanstyle.jpg)](http://www.justsalsa.com/salsa/dance/steps/)
 
-På kursene begynner vi på *steg 3*, altså frem med venstre fot:
+På kursene begynner vi på [steg 3](#steg-3), altså frem med venstre fot:
 
 1.  Venstre fot frem.
 2.  Vekten på høyre fot.
-3.  Venstre fot tilbake.
+3.  Venstre fot tilbake. {#steg-3}
 4.  Høyre fot tapp.
 5.  Høyre fot bak.
 6.  Vekten på venstre fot.
@@ -27,15 +27,15 @@ I profesjonell salsa danser man med synkopering, men det kommer vi ikke inn på 
 
 ### Paso marcado
 
-Omvendt: venstre fot bakover, høyre fot frem. Venstrehåndgrep: hun griper om tommelen, hånden griper om hennes. Høyrehåndsgrep (steg 3--7): hånden møter hennes fra undersiden. Albuene skal være foran kroppen, man skal ikke komme for nærme hverandre.
+Omvendt: venstre fot bakover, høyre fot frem. Venstrehåndgrep: hun griper om tommelen, hånden griper om hennes. Høyrehåndsgrep (steg [3](#paso-marcado-steg-3)--[7](#paso-marcado-steg-7)): hånden møter hennes fra undersiden. Albuene skal være foran kroppen, man skal ikke komme for nærme hverandre.
 
 1.  Venstre fot bakover.
 2.  Vekten på høyre fot.
-3.  Venstre fot fremover (høyre hånd møter hennes).
+3.  Venstre fot fremover (høyre hånd møter hennes). {#paso-marcado-steg-3}
 4.  Høyre fot tapp.
 5.  Høyre fot fremover.
 6.  Vekten på venstre fot.
-7.  Høyre fot bakover (høyre hånd dytter fra).
+7.  Høyre fot bakover (høyre hånd dytter fra). {#paso-marcado-steg-7}
 8.  Venstre fot tapp.
 
 ### Paso al lado
@@ -94,7 +94,9 @@ For gutter: «til siden, bak, kryss foran, pause».
 
 «Vis henne frem». Jenta snur mot høyre under armen («[exhíbela](#exhibela)» føres med guttens venstre hånd, «sacala» med høyre).
 
--   [YouTube](http://www.youtube.com/watch?v=2VaQidFunVg) (vist her fra trinnet aguajeo)
+<iframe width="560" height="315" src="https://www.youtube.com/embed/2VaQidFunVg" frameborder="0" allowfullscreen></iframe>
+
+Vist her fra trinnet [aguajeo](#aguajeo).
 
 ### Dile que sí
 
@@ -116,16 +118,18 @@ For gutter: «til siden, bak, kryss foran, pause».
 2.  Trekk henne fremover og ut mot siden.
 3.  Bytt til omvendt gange (fremover med *høyre* fot, bakover med *venstre* fot).
 
--   [YouTube](http://www.youtube.com/watch?v=4_it03LRExg)
+<iframe width="560" height="315" src="https://www.youtube.com/embed/4_it03LRExg" frameborder="0" allowfullscreen></iframe>
 
 ### Aguajeo
 
 Gutten går «[paso al lado](#paso-al-lado)», jenta går «[paso cruzado](#paso-cruzado)».
 
 1.  Med venstre arm, skyv armen hennes til og fra venstre skulder.
-2.  Gå *paso al lado* til venstre og til høyre.
+2.  Gå [paso al lado](#paso-al-lado) til venstre og til høyre.
 
--   [YouTube](http://www.youtube.com/watch?v=2VaQidFunVg) (første halvdel)
+<iframe width="560" height="315" src="https://www.youtube.com/embed/2VaQidFunVg" frameborder="0" allowfullscreen></iframe>
+
+Først halvdel.
 
 ### Enchufla
 
@@ -146,7 +150,13 @@ I «enchufla y quédate» fører gutten jenta først i venstre hånd, bytter så
 
 I «enchufla alternate» fører gutten en «enchufla» og snur seg så mot venstre, mens han bytter hånden bak på ryggen og gjør enda en «enchufla».
 
--   [YouTube 1](http://www.youtube.com/watch?v=7Jb8LRMPMfs) («koble inn»), [YouTube 2](http://www.youtube.com/watch?v=JswM_OUf2zA) (doble)
+<iframe width="560" height="315" src="https://www.youtube.com/embed/7Jb8LRMPMfs" frameborder="0" allowfullscreen></iframe>
+
+«Koble inn».
+
+<iframe width="560" height="315" src="https://www.youtube.com/embed/JswM_OUf2zA" frameborder="0" allowfullscreen></iframe>
+
+Doble.
 
 ### El Dedo
 
@@ -158,7 +168,7 @@ I «enchufla alternate» fører gutten en «enchufla» og snur seg så mot venst
 
 ### Setenta
 
-«70». El dedo + lukket enchufla + enchufla.
+«70». [El dedo](#el-dedo) + [lukket enchufla](#enchufla) + [enchufla](#enchufla).
 
 Eksterne lenker
 ---------------

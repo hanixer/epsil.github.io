@@ -20,7 +20,7 @@ Når man «presser ned på 1. bånd», trykker man egentlig fingeren ned på str
 
 Sammenlign gjerne med videoen:
 
--   [YouTube](http://www.youtube.com/watch?v=yf_9ygMjaJ8)
+<iframe width="560" height="315" src="https://www.youtube.com/embed/yf_9ygMjaJ8" frameborder="0" allowfullscreen></iframe>
 
 Ellers presiseres det at de følgende akkordene er navngitt med *engelsk* besifring. Dette gjør ikke noen forskjell unntatt i følgende tilfeller: Det vi nordmenn kaller H, kaller engelskmennene *B*, og det *vi* kaller B (eller «*b* for H»), kaller de *B flat* (B&#9837; eller «*b* for B»). Den eneste av akkordene over som påvirkes av dette, er (engelsk) B^7^, som på norsk besifres H^7^.
 
@@ -43,7 +43,13 @@ Dette er de [femten første akkordene man bør lære seg](http://www.amazon.com/
 
 Det anbefales å begynne med D, deretter A og E, så G, C, Am, Em og Dm før man eventuelt prøver seg på den «vriene» F. Hvis man står fast og ikke har noen som kan vise en, søk opp instruksjonsvideoer på YouTube og studer fingerstillingen. [justinguitar.com](http://www.justinguitar.com/) er et godt utgangspunkt:
 
--   [YouTube 1](http://www.youtube.com/watch?v=VsikHXIkk7g), [YouTube 2](http://www.youtube.com/watch?v=yf_9ygMjaJ8), [YouTube 3](http://www.youtube.com/watch?v=EQ7YMK1JpS4), [YouTube 4](http://www.youtube.com/watch?v=755CdzvXp8E)
+<iframe width="560" height="315" src="https://www.youtube.com/embed/VsikHXIkk7g" frameborder="0" allowfullscreen></iframe>
+
+<iframe width="560" height="315" src="https://www.youtube.com/embed/yf_9ygMjaJ8" frameborder="0" allowfullscreen></iframe>
+
+<iframe width="560" height="315" src="https://www.youtube.com/embed/EQ7YMK1JpS4" frameborder="0" allowfullscreen></iframe>
+
+<iframe width="560" height="315" src="https://www.youtube.com/embed/755CdzvXp8E" frameborder="0" allowfullscreen></iframe>
 
 Slå an alle strengene samtidig, plukk ut hver enkelt streng og hør om den låter klart, og slå an på nytt («strum, pick out, strum»). Øv på å bytte fra en akkord til en annen, f.eks. så mange bytter i løpet av ett minutt som mulig.
 
@@ -56,7 +62,7 @@ Barré-grep
 
 Ekte F:
 
--   [YouTube](http://www.youtube.com/watch?v=755CdzvXp8E)
+<iframe width="560" height="315" src="https://www.youtube.com/embed/755CdzvXp8E" frameborder="0" allowfullscreen></iframe>
 
 Følgende tips kan kanskje være til hjelp:
 
@@ -88,7 +94,7 @@ Mine egne noter baserer seg på dette, men retter opp enkelte unøyaktigheter ho
 
 Tallene under tabulaturet er fingersetning for venstre hånd, der 1 = pekefinger, 2 = langfinger, 3 = ringfinger og 4 = lillefinger. For høyre hånd er en vanlig teknikk at tommelen slår an 6.--4. streng («basstrengene»), pekefingeren 3. streng, langfingeren 2. streng og ringfingeren 1. streng, slik det er vist i denne videoen:
 
--   [YouTube](http://www.youtube.com/watch?v=WW8RlKJwOZA)
+<iframe width="560" height="315" src="https://www.youtube.com/embed/WW8RlKJwOZA" frameborder="0" allowfullscreen></iframe>
 
 Resten av låten kan spilles med Barré-grep (tabulatur) eller [åpne akkorder](#Akkordrepertoar-for-nybegynneren) (fret-diagram). I sistnevnte tilfelle kan F-en gjerne byttes ut med F^maj7^, som er lettere å spille:
 

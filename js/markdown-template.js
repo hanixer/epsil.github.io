@@ -635,7 +635,7 @@ function compile (data, path) {
   view = dynamic(view, path)
   view = title(view)
   view.url = path
-  if (!(view.content === '' || view.content.match(/<iframe/g))) {
+  if (view.content !== '') {
     view.content = body(view)
     view = process(view)
   }
@@ -839,7 +839,7 @@ function loadData () {
     return
   }
 
-  var iframe = $('iframe').first()
+  var iframe = $('iframe[type="text/markdown"]').first()
   if (iframe.length > 0) {
     // <body> contains <iframe src="index.txt">:
     // replace <iframe> with its converted contents
