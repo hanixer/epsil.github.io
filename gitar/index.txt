@@ -68,7 +68,7 @@ Hva man enn gjør, så ikke gi opp å lære Barré-grep -- det er en vanskelig k
 Noter {.collapse}
 -----
 
-### The Animals: «House of the Rising Sun» {.collapse}
+### House of the Rising Sun {.collapse}
 
 [![](hotrs.png)](hotrs.pdf)
 
@@ -80,7 +80,7 @@ Kryss (×) betyr her at strengen skal dempes med venstre hånd, men *fortsatt h�
 
 Mine egne noter baserer seg på dette, men retter opp enkelte unøyaktigheter hos «ohdan», blant annet en forveksling av E med E^7^. 40 sekunder ute i Animals' versjon kommer orgelet inn og gitaren trer i bakgrunnen, så jeg begrenser meg til begynnelsen av denne gjentagende sangen, hvor alle de små forsiringene faktisk er hørbare. Orgelet stjeler jo showet så til de grader, så presist gitarspill er ikke like viktig etter dette punktet.)
 
-### Marilyn Manson: «The Nobodies» {.collapse}
+### The Nobodies {.collapse}
 
 [![](thenobodies.png)](thenobodies.pdf)
 
@@ -96,7 +96,7 @@ Resten av låten kan spilles med Barré-grep (tabulatur) eller [åpne akkorder](
 
 Dette er faktisk *nærmere* opp mot den originale fremførelsen, hvor de lysere strengene slås an åpne.
 
-### Jeff Buckley: «Hallelujah» {.collapse}
+### Hallelujah {.collapse}
 
 [PDF](hallelujah.pdf), [LilyPond](hallelujah.ly).
 
