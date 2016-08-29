@@ -62,6 +62,7 @@ TeX: { equationNumbers: { autoNumber: "all" } }
 </section>
 </header>
 
+<section>
 <blockquote>
 <p>In the remotest regions, beyond the Functional Kingdoms, lies a fabled realm called Lambda the Ultimate. In this place it is said that there are no nouns at all, only verbs! There are &#8220;things&#8221; there, but all things are created from verbs, even the very integers for counting lambs, which are the most popular form of trading currency there, if the rumors speak truth. The number zero is simply <code class="language-python"><span class="hljs-keyword">lambda</span>()</code>, and 1 is <code class="language-python"><span class="hljs-keyword">lambda</span>(<span class="hljs-keyword">lambda</span>())</code>, 2 is <code class="language-python"><span class="hljs-keyword">lambda</span>(<span class="hljs-keyword">lambda</span>(<span class="hljs-keyword">lambda</span>()))</code>, and so on. Every single Thing in this legendary region, be it noun, verb or otherwise, is constructed from the primal verb&#160;&#8220;lambda&#8221;.</p>
 
@@ -105,15 +106,16 @@ TeX: { equationNumbers: { autoNumber: "all" } }
 </pre>
 
 <p>Det <code class="language-scheme">first</code> og <code class="language-scheme">second</code> s&#229; gj&#248;r, er &#229; kalle prosedyren med et bestemt argument slik at den f&#248;rste eller andre verdien returneres. Dermed vil <code class="language-scheme">(<span class="hljs-name">first</span> (<span class="hljs-name">pair</span> <span class="hljs-string">"foo"</span> <span class="hljs-string">"bar"</span>))</code> fortsatt gi <code class="language-scheme"><span class="hljs-string">"foo"</span></code>, og <code class="language-scheme">(<span class="hljs-name">second</span> (<span class="hljs-name">pair</span> <span class="hljs-string">"foo"</span> <span class="hljs-string">"bar"</span>))</code> gi <code class="language-scheme"><span class="hljs-string">"bar"</span></code>. P&#229; papiret en helt adekvat&#160;implementasjon.</p>
-<!--
-Se [GeirGrusoms innlegg](http://www.diskusjon.no/index.php?showtopic=800754&p=18412466&st=1420&#entry18412466) over.
--->
 
 <p>Koden over forutsetter <em>closures</em>, <abbr title="det vil si">dvs.</abbr> at prosedyren som <code class="language-scheme">pair</code> returnerer, er i stand til &#229; &#171;stikke av med&#187; argumentene til <code class="language-scheme">pair</code>.<sup class="footnote-ref"><a href="#fn3" id="fnref3" title="Hvis Lisp&#8217;en din mangler dette, kan du alltids &#171;jukse&#187; ved &#229; konstruere lambdaen som en liste og splice inn verdiene av x og y (forutsetter at x og y er immutable).">[3]</a></sup> Dermed kan man for s&#229; vidt tenke p&#229; prosedyren som et &#171;objekt&#187;, <abbr title="det vil si">dvs.</abbr> en bunt med data og instruksjoner. (I enkelte spr&#229;k, som JavaScript og Scala, <em>er</em> funksjoner&#160;objekter.)</p>
 
 <p>Denne litt alternative m&#229;ten &#229; konstruere &#171;objekter&#187; p&#229; &#8211; &#229; lage anomyme funksjoner som lukker om bindingene i et leksikalsk skop &#8211; er faktisk mye brukt i funksjonelle spr&#229;k. Google &#171;<a href="http://www.google.no/search?q=let+over+lambda">let over lambda</a>&#187; n&#229;r du har&#160;tid.</p>
 
 <hr class="footnotes-sep">
+</section>
+<!--
+Se [GeirGrusoms innlegg](http://www.diskusjon.no/index.php?showtopic=800754&p=18412466&st=1420&#entry18412466) over.
+-->
 
 <section class="footnotes">
 <ol class="footnotes-list">

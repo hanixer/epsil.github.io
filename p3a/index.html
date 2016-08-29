@@ -216,11 +216,10 @@ TeX: { equationNumbers: { autoNumber: "all" } }
 <div class="container">
 <article>
 <header>
-<section id="lydforsterker-project-3a">
-<h1 class="title"><a aria-hidden="true" class="header-anchor" href="#lydforsterker-project-3a" title="Lydforsterker: Project 3A"></a>Lydforsterker: <em>Project 3A</em></h1>
-</section>
+<h1 class="title" id="lydforsterker-project-3a"><a aria-hidden="true" class="header-anchor" href="#lydforsterker-project-3a" title="Lydforsterker: Project 3A"></a>Lydforsterker: <em>Project 3A</em></h1>
 </header>
 
+<section>
 <p>Rapport for konstruksjon av den 60 W klasse AB-forsterkeren <em>Project 3A</em>: enkelt design og god lydkvalitet. <strong><a href="rapport.pdf"><abbr class="acronym" title="Portable Document Format">PDF</abbr>-utgave</a></strong>.</p>
 
 <hr>
@@ -233,6 +232,7 @@ TeX: { equationNumbers: { autoNumber: "all" } }
 <p>Veileder: Herman Ranes.</p>
 
 <hr>
+</section>
 
 <section id="sammendrag">
 <h3><a aria-hidden="true" class="header-anchor" href="#sammendrag" title="Sammendrag"></a>Sammendrag<a aria-controls="sammendrag-section" aria-expanded="true" aria-hidden="true" class="collapse-button" data-toggle="collapse" href="#sammendrag-section" role="button"></a></h3>
@@ -258,6 +258,7 @@ TeX: { equationNumbers: { autoNumber: "all" } }
 <h1><a aria-hidden="true" class="header-anchor" href="#forsterkertype-og-spesifikasjoner" title="Forsterkertype og spesifikasjoner"></a>Forsterkertype og spesifikasjoner</h1>
 
 <div id="forsterkertype-og-spesifikasjoner-section">
+<section>
 <p>Mens det er trivielt &#229; forsterke en konstant inngangsstr&#248;m eller -spenning, er det vanskelig &#229; gjengi endringer i den samme str&#248;mmen eller spenningen. B&#229;de blant hobbyentusiaster og profesjonelle g&#229;r det sport i &#229; konstruere en &#171;enda bedre&#187; forsterker, og <em>hi-fi</em>-pressen ser aldri ut til &#229; g&#229; tom for anledninger til &#229; presentere det nyeste, mest avanserte og angivelig beste innen elektronisk lydgjengivelse. Hvor mye av utviklingen som er reell, er det opp til den enkelte &#229; vurdere, men et kjapt overblikk over markedet levner ingen tvil om at lydforsterkning er <em>big business</em>.</p>
 
 <p>Mot denne bakgrunnen presenterer vi et forsterkerdesign som er 20 &#229;r gammelt og forbausende enkelt. Rod Elliotts <em>Project 3A</em> (fork. <em><abbr class="acronym" title="Project 3A">P3A</abbr></em>) gir h&#248;y ytelse ved lave kostnader, er velutpr&#248;vd og er lett &#229; bygge. Det er et ideelt design for nybegynneren, men kan ogs&#229; anbefales til den kresne <em>hi-fi</em>-entusiasten. Designet bygger videre p&#229; det opprinnelige <em>Project 03</em>, og drar nytte av nyere og bedre utgangstransistorer.</p>
@@ -304,6 +305,7 @@ TeX: { equationNumbers: { autoNumber: "all" } }
 </table>
 
 <p>Forsterkeren er en <em>klasse AB-forsterker</em>, alts&#229; en blanding av en klasse A-forsterker og en klasse B-forsterker. For sm&#229; signaler fungerer den som en klasse A-forsterker, og utgangstransistorene er konstant &#171;p&#229;&#187; &#8211; men siden dette bare gjelder sm&#229; signaler, trekker ikke forsterkeren like mye str&#248;m som en ekte klasse A-forsterker, som er konstant &#171;p&#229;&#187; uavhengig av lydniv&#229;et. For store signaler fungerer forsterkeren som en klasse B-forsterker, og utgangstransistorene bytter p&#229; &#229; forsterke positive deler av signalet og negative. Forsterkeren bruker negativ tilbakekobling for &#229; oppn&#229; linearitet for h&#248;ye str&#248;mmer og spenninger. (For en detaljert gjennomgang av kretsens oppbygning og virkem&#229;te, se <a href="#analyse" title="Kretsanalyse">kretsanalysen</a>.)</p>
+</section>
 
 <section id="simulering">
 <h2><a aria-hidden="true" class="header-anchor" href="#simulering" title="Simulering"></a>Simulering<a aria-controls="simulering-section" aria-expanded="true" aria-hidden="true" class="collapse-button" data-toggle="collapse" href="#simulering-section" role="button"></a></h2>
@@ -540,9 +542,11 @@ TeX: { equationNumbers: { autoNumber: "all" } }
 <h2><a aria-hidden="true" class="header-anchor" href="#grunnleggende-begreper" title="Grunnleggende begreper"></a>Grunnleggende begreper<a aria-controls="grunnleggende-begreper-section" aria-expanded="true" aria-hidden="true" class="collapse-button" data-toggle="collapse" href="#grunnleggende-begreper-section" role="button"></a></h2>
 
 <div class="collapse in" id="grunnleggende-begreper-section">
+<section>
 <p>Den f&#248;lgende kretsanalysen forutsetter en viss kjennskap til elektroniske kretser og modellering av disse. For &#229; gj&#248;re den mer tilgjengelig, men ogs&#229; for presisjonens skyld, gjennomg&#229;r vi her noen av de grunnleggende begrepene som analysen baserer seg p&#229;.</p>
 
 <p>Denne seksjonen kan skumleses eller hoppes over av dem som allerede er kjent med element&#230;r elektronisk kretsteori.</p>
+</section>
 
 <section id="forspenning-av-transistorer-i-det-aktive-omradet">
 <h3><a aria-hidden="true" class="header-anchor" href="#forspenning-av-transistorer-i-det-aktive-omradet" title="Forspenning av transistorer i det aktive omr&#229;det"></a>Forspenning av transistorer i det aktive omr&#229;det<a aria-controls="forspenning-av-transistorer-i-det-aktive-omradet-section" aria-expanded="true" aria-hidden="true" class="collapse-button" data-toggle="collapse" href="#forspenning-av-transistorer-i-det-aktive-omradet-section" role="button"></a></h3>
@@ -632,6 +636,7 @@ TeX: { equationNumbers: { autoNumber: "all" } }
 <h2><a aria-hidden="true" class="header-anchor" href="#tilbakekobling" title="R&#229;forsterkning og tilbakekobling"></a>R&#229;forsterkning og tilbakekobling<a aria-controls="tilbakekobling-section" aria-expanded="true" aria-hidden="true" class="collapse-button" data-toggle="collapse" href="#tilbakekobling-section" role="button"></a></h2>
 
 <div class="collapse in" id="tilbakekobling-section">
+<section>
 <p>En klasse AB-forsterker kombinerer egenskapene til en klasse A-forsterker og en klasse B-forsterker. For <em>sm&#229;</em> inngangssignaler (lav musikk) fungerer forsterkeren som en klasse A-forsterker, og utgangstransistorene er i det aktive omr&#229;det. For <em>store</em> signaler (h&#248;y musikk) fungerer forsterkeren som en klasse B-forsterker, og utgangstransistorene bytter p&#229; &#229; forsterke henholdsvis positive halvperioder og negative halvperioder (for et sinussignal). N&#229;r forsterkeren fungerer som en klasse B-forsterker, p&#229;trykkes utgangstransistorene spenninger langt utover det aktive omr&#229;det. Forsterkningen blir dermed ikke line&#230;r, ettersom transistorene bare er i det aktive omr&#229;det for <em>sm&#229;</em> str&#248;mmer og spenninger.</p>
 
 <p>For &#229; oppn&#229; en kraftig forsterkning som ogs&#229; er line&#230;r, anvendes <em>negativ tilbakekobling</em>: Det uline&#230;rt forsterkede signalet fra utgangstransistorene sendes tilbake inn p&#229; en <em>differensialforsterker ved inngangen</em> (utgj&#248;res av transistorene \(Q_1\) og \(Q_2\)). I dette oppsettet <em>tvinges de to inngangssignalene til &#229; v&#230;re s&#229; like hverandre som mulig</em>, noe som har en fordelaktig effekt p&#229; det uline&#230;rt forsterkede signalet.</p>
@@ -649,6 +654,7 @@ TeX: { equationNumbers: { autoNumber: "all" } }
 
 <p>Det opprinnelige kretsskjemaet for forsterken, etter Rod Elliott. Komponenter markert med \(*\) er utelatt fra kretskortet.</p>
 </blockquote>
+</section>
 
 <section id="utgangstransistorene">
 <h3><a aria-hidden="true" class="header-anchor" href="#utgangstransistorene" title="Utgangstransistorene"></a>Utgangstransistorene<a aria-controls="utgangstransistorene-section" aria-expanded="true" aria-hidden="true" class="collapse-button" data-toggle="collapse" href="#utgangstransistorene-section" role="button"></a></h3>
@@ -1027,10 +1033,12 @@ TeX: { equationNumbers: { autoNumber: "all" } }
 <h2><a aria-hidden="true" class="header-anchor" href="#innsiden" title="Innsiden"></a>Innsiden<a aria-controls="innsiden-section" aria-expanded="true" aria-hidden="true" class="collapse-button" data-toggle="collapse" href="#innsiden-section" role="button"></a></h2>
 
 <div class="collapse in" id="innsiden-section">
+<section>
 <p class="center"><img alt="" src="fig/innside.jpg">
 </p>
 
 <p><em>1.</em> Str&#248;minngang. <em>2.</em> Hovedsikring. <em>3.</em> Transformator. <em>4.</em> Jordingspunkt (stjernejord). <em>5.</em> Brolikeretter. <em>6.</em> Glattefilter (fire glattekondensatorer). <em>7.</em> Av/p&#229;-knapp. <em>8.</em> Lysdiode. <em>9.</em> Volumkontroll (potensiometer). <em>10.</em> Venstre forsterkerkrets. <em>11.</em> H&#248;yre forsterkerkrets. <em>12.</em> Kj&#248;leribbe. <em>13.</em> Utganger. <em>14.</em> Innganger.</p>
+</section>
 
 <section id="ledninger">
 <h3><a aria-hidden="true" class="header-anchor" href="#ledninger" title="Ledninger"></a>Ledninger<a aria-controls="ledninger-section" aria-expanded="true" aria-hidden="true" class="collapse-button" data-toggle="collapse" href="#ledninger-section" role="button"></a></h3>
@@ -1165,6 +1173,7 @@ TeX: { equationNumbers: { autoNumber: "all" } }
 <h1><a aria-hidden="true" class="header-anchor" href="#kretskort" title="Kretskort"></a>Kretskort</h1>
 
 <div id="kretskort-section">
+<section>
 <blockquote>
 <p class="center"><img alt="" src="fig/kort.jpg">
 </p>
@@ -1188,6 +1197,7 @@ TeX: { equationNumbers: { autoNumber: "all" } }
 </p>
 
 <p class="startsWithDoubleQuote">&#171;Silk screen&#187;. Kobberbanene er vist i gr&#229;tt.</p>
+</section>
 
 <section id="feil-i-silk-screen">
 <h2><a aria-hidden="true" class="header-anchor" href="#feil-i-silk-screen" title="Feil i &#171;silk screen&#187;"></a>Feil i &#171;silk screen&#187;<a aria-controls="feil-i-silk-screen-section" aria-expanded="true" aria-hidden="true" class="collapse-button" data-toggle="collapse" href="#feil-i-silk-screen-section" role="button"></a></h2>
@@ -1922,6 +1932,7 @@ TeX: { equationNumbers: { autoNumber: "all" } }
 <h1><a aria-hidden="true" class="header-anchor" href="#konklusjon" title="Konklusjon"></a>Konklusjon</h1>
 
 <div id="konklusjon-section">
+<section>
 <p>Det ble en forsterker med et imponerende lydbilde. Valg av utgangstransistorer hadde noe &#229; si for lydkvaliteten: For testing benyttet vi f&#248;rst billige BD911- og BD912-transistorer, som ga et greit resultat, men uten presis lydgjengivning ved komplekse signaler. Vi byttet dem siden ut med dyrere MJL3281A- og MJL1302A-transistorer og opplevde en dramatisk &#248;kning i lydkvalitet (og pris). Temperaturutviklingen i transistorene ble lavere ettersom de dyre transistorene har en st&#248;rre flate og dermed overf&#248;rer temperaturen bedre til kj&#248;leribben.</p>
 
 <blockquote>
@@ -1939,6 +1950,7 @@ TeX: { equationNumbers: { autoNumber: "all" } }
 <p>En ytterligere forbedring av forsterkeren ville v&#230;re &#229; installere et delefilter ved inngangen, for &#229; tilpasse lyden til h&#248;yttalerne.</p>
 
 <hr class="footnotes-sep">
+</section>
 
 <section class="footnotes">
 <ol class="footnotes-list">

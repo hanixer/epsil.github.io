@@ -48,6 +48,12 @@ describe('section.js', function () {
       div.addSections().prop('outerHTML').should.equal(
         '<div><section id="header"><h1>Header</h1><section><p>Paragraph one</p></section><section id="subheader"><h2>Subheader</h2><p>Paragraph two</p></section></section></div>')
     })
+
+    it('should work recursively', function () {
+      var div = $('<div><h1 id="header">Header</h1><p>Paragraph one</p><h2 id="subheader">Subheader</h2><p>Paragraph two</p><h3 id="section">Section</h3><p>Paragraph three</p></div>')
+      div.addSections().prop('outerHTML').should.equal(
+        '<div><section id="header"><h1>Header</h1><section><p>Paragraph one</p></section><section id="subheader"><h2>Subheader</h2><section><p>Paragraph two</p></section><section id="section"><h3>Section</h3><p>Paragraph three</p></section></section></section></div>')
+    })
   })
 })
 

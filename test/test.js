@@ -328,25 +328,28 @@ $.fn.addSections = function () {
                }
                var end = stop.join(', ')
                var section = header.nextUntil(end).addBack()
-               section = section.wrapAll('<section>').parent()
-               var id = header.attr('id')
-               if (id === undefined || id === '') {
-                 id = S(header.text().trim()).slugify()
-                 header.attr('id', id)
+               if (section.length > 1) {
+                 section = section.wrapAll('<section>').parent()
+                 var id = header.attr('id')
+                 if (id === undefined || id === '') {
+                   id = S(header.text().trim()).slugify()
+                   header.attr('id', id)
+                 }
+                 section.attr('id', id)
+                 header.removeAttr('id')
                }
-               section.attr('id', id)
-               header.removeAttr('id')
              })
            })
-      // add missing sections
-      body.find('section').each(function (i, el) {
-        var section = $(this)
-        var prevSection = section.prevUntil('section')
-        if (prevSection.length > 0) {
-          prevSection = prevSection.last().nextUntil(section)
-          prevSection.wrapAll('<section>')
-        }
-      })
+    // add missing sections
+    body.find('section').each(function (i, el) {
+      var section = $(this)
+      var prevSection = section.prevUntil('header, h1, h2, h3, h4, h5, h6, section')
+      if (prevSection.length > 0) {
+        // prevUntil() returns elements in reverse order
+        prevSection = prevSection.last().nextUntil(section).addBack()
+        prevSection.wrapAll('<section>')
+      }
+    })
   })
 }
 
@@ -17696,6 +17699,12 @@ describe('section.js', function () {
       var div = $('<div><h1 id="header">Header</h1><p>Paragraph one</p><h2 id="subheader">Subheader</h2><p>Paragraph two</p></div>')
       div.addSections().prop('outerHTML').should.equal(
         '<div><section id="header"><h1>Header</h1><section><p>Paragraph one</p></section><section id="subheader"><h2>Subheader</h2><p>Paragraph two</p></section></section></div>')
+    })
+
+    it('should work recursively', function () {
+      var div = $('<div><h1 id="header">Header</h1><p>Paragraph one</p><h2 id="subheader">Subheader</h2><p>Paragraph two</p><h3 id="section">Section</h3><p>Paragraph three</p></div>')
+      div.addSections().prop('outerHTML').should.equal(
+        '<div><section id="header"><h1>Header</h1><section><p>Paragraph one</p></section><section id="subheader"><h2>Subheader</h2><section><p>Paragraph two</p></section><section id="section"><h3>Section</h3><p>Paragraph three</p></section></section></section></div>')
     })
   })
 })

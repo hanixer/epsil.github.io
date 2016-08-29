@@ -289,11 +289,10 @@ TeX: { equationNumbers: { autoNumber: "all" } }
 <div class="container">
 <article>
 <header>
-<section id="accelerating-nonlinear-image-transformations-with-opengl-es">
-<h1 class="title"><a aria-hidden="true" class="header-anchor" href="#accelerating-nonlinear-image-transformations-with-opengl-es" title="Accelerating nonlinear image transformations with OpenGL ES"></a>Accelerating nonlinear image transformations with OpenGL ES</h1>
-</section>
+<h1 class="title" id="accelerating-nonlinear-image-transformations-with-opengl-es"><a aria-hidden="true" class="header-anchor" href="#accelerating-nonlinear-image-transformations-with-opengl-es" title="Accelerating nonlinear image transformations with OpenGL ES"></a>Accelerating nonlinear image transformations with OpenGL ES</h1>
 </header>
 
+<section>
 <p>A study on fish-eye undistortion. <strong><a href="thesis.pdf"><abbr class="acronym" title="Portable Document Format">PDF</abbr> version</a>.</strong></p>
 
 <hr>
@@ -308,6 +307,7 @@ TeX: { equationNumbers: { autoNumber: "all" } }
 <a href="https://no.linkedin.com/in/andreas-aardal-hanssen-a1b2b110">Andreas Aardal Hanssen</a> (Cisco Systems)</p>
 
 <hr>
+</section>
 
 <section id="abstract">
 <h3><a aria-hidden="true" class="header-anchor" href="#abstract" title="Abstract"></a>Abstract<a aria-controls="abstract-section" aria-expanded="true" aria-hidden="true" class="collapse-button" data-toggle="collapse" href="#abstract-section" role="button"></a></h3>
@@ -338,6 +338,7 @@ July 2015</p>
 <h1><a aria-hidden="true" class="header-anchor" href="#chap-introduction" title="1 Introduction"></a>1 Introduction</h1>
 
 <div id="chap-introduction-section">
+<section>
 <p>In the 21st century, video cameras are everywhere. Whether the technology is used for communication or surveillance purposes, there is a growing need for efficient processing of video data. Such processing may need to be adapted to the resources that are available on a mobile device. With the emergence of the multi-core imperative, parallel computing is increasingly important.</p>
 
 <p>A taxing post-processing task is performing high-quality barrel undistortion. This well-studied problem crops up in several forms. At one end of the spectrum, there is the regular lens, whose inherent imprecision can be undistorted by means of careful calibration and a precise distortion model. At the other end of the spectrum, there is the wide-angle lens, which produces a characteristic &#8220;fish-eye&#8221; effect. This effect can undistorted in a similar manner, although a stronger model is needed. With an efficient implementation, this process may even be performed in real-time with limited resources.</p>
@@ -353,6 +354,7 @@ July 2015</p>
 </blockquote>
 
 <p>As the problem of image transformation is a general one, our findings can be generalized to other types of transformation. We investigate how custom methods of interpolation can produce smoother results when dealing with complex transformations, and how graphics acceleration may help us in this regard.</p>
+</section>
 
 <section id="11-the-multi-core-imperative">
 <h2><a aria-hidden="true" class="header-anchor" href="#11-the-multi-core-imperative" title="1.1 The multi-core imperative"></a>1.1 The multi-core imperative<a aria-controls="11-the-multi-core-imperative-section" aria-expanded="true" aria-hidden="true" class="collapse-button" data-toggle="collapse" href="#11-the-multi-core-imperative-section" role="button"></a></h2>
@@ -398,9 +400,11 @@ July 2015</p>
 <h2><a aria-hidden="true" class="header-anchor" href="#13-other-frameworks" title="1.3 Other frameworks"></a>1.3 Other frameworks<a aria-controls="13-other-frameworks-section" aria-expanded="true" aria-hidden="true" class="collapse-button" data-toggle="collapse" href="#13-other-frameworks-section" role="button"></a></h2>
 
 <div class="collapse in" id="13-other-frameworks-section">
+<section>
 <p>OpenGL ES is not the only <abbr class="acronym" title="Application Programming Interface">API</abbr> for enabling hardware acceleration. With the move from serial programming to parallel programming and the widespread availability of <abbr class="acronym" title="Graphics Processing Unit">GPU</abbr> hardware, we have seen the emergence of several libraries utilizing <abbr class="acronym" title="Graphics Processing Unit">GPU</abbr> hardware for general-purpose programming.</p>
 
 <p>Recall that in OpenGL ES, each shader runs in isolation and with little knowledge of how it fits into the larger picture. Furthermore, OpenGL ES offers limited support for profiling code. A motivation for using a general library in place of OpenGL ES would be to gain more fine-grained control over parallelized code. Indeed, as we will see in chapter <a href="#chap-conclusion" title="7 Conclusion">7</a>, there are some aspects of our implementation that may benefit from such control.</p>
+</section>
 
 <section id="131-cuda">
 <h3><a aria-hidden="true" class="header-anchor" href="#131-cuda" title="1.3.1 CUDA"></a>1.3.1 CUDA<a aria-controls="131-cuda-section" aria-expanded="true" aria-hidden="true" class="collapse-button" data-toggle="collapse" href="#131-cuda-section" role="button"></a></h3>
@@ -494,6 +498,7 @@ July 2015</p>
 <h1><a aria-hidden="true" class="header-anchor" href="#chap-trans" title="2 Image transformation"></a>2 Image transformation</h1>
 
 <div id="chap-trans-section">
+<section>
 <p>In this chapter we will provide a general discussion of how images can be transformed. We will first look at how transformations can be expressed mathematically, and then we will investigate the challenges with regard to interpolation. In particular, we are interested in the following issues:</p>
 
 <ul>
@@ -505,11 +510,13 @@ July 2015</p>
 </ul>
 
 <p>We will outline a simple hierarchy of transformations that is roughly based on the terminology of <a href="#wolberg90-digital-image-warp" title="George Wolberg. Digital Image Warping. Columbia University, 1990.">Wolberg (1990)</a>. Then we will discuss various interpolation techniques.</p>
+</section>
 
 <section id="21-types-of-transformation">
 <h2><a aria-hidden="true" class="header-anchor" href="#21-types-of-transformation" title="2.1 Types of transformation"></a>2.1 Types of transformation<a aria-controls="21-types-of-transformation-section" aria-expanded="true" aria-hidden="true" class="collapse-button" data-toggle="collapse" href="#21-types-of-transformation-section" role="button"></a></h2>
 
 <div class="collapse in" id="21-types-of-transformation-section">
+<section>
 <p>Image transformations can be roughly ordered from simple, linear transformations to complex, nonlinear transformations (figure <a href="#fig-transformations" title="Figure 2.1: Transformation types">2.1</a>). In the following discussion, we will consider that each sample in the source image has a coordinate \([x, y]\), and it is our task to calculate the corresponding position \([x&#8217;, y&#8217;]\) in the transformed image. The problem of blending together samples in order to produce a smooth output image is postponed to our treatment of interpolation in section <a href="#sec-interpolation" title="2.2 Interpolation">2.2</a>.</p>
 
 <div class="figure" id="fig-transformations" style="width: 409px;"><img alt="Figure 2.1: Transformation types" src="transformations.png" width="400">
@@ -517,6 +524,7 @@ July 2015</p>
 </div>
 
 <p>Note that in the following discussion, the transformation takes us <em>from</em> the untransformed coordinates of the source image <em>to</em> the transformed coordinates of the output image. As we will see later on, it can also be useful to go in the reverse direction. Many transformations are invertible and can be expressed either way.</p>
+</section>
 
 <section id="211-scaling">
 <h3><a aria-hidden="true" class="header-anchor" href="#211-scaling" title="2.1.1 Scaling"></a>2.1.1 Scaling<a aria-controls="211-scaling-section" aria-expanded="true" aria-hidden="true" class="collapse-button" data-toggle="collapse" href="#211-scaling-section" role="button"></a></h3>
@@ -618,6 +626,7 @@ July 2015</p>
 <h2><a aria-hidden="true" class="header-anchor" href="#sec-interpolation" title="2.2 Interpolation"></a>2.2 Interpolation<a aria-controls="sec-interpolation-section" aria-expanded="true" aria-hidden="true" class="collapse-button" data-toggle="collapse" href="#sec-interpolation-section" role="button"></a></h2>
 
 <div class="collapse in" id="sec-interpolation-section">
+<section>
 <p>Thus far, we have only considered how coordinates in the input image map onto coordinates in the output image. When we work with images, we encounter the practical problem that continuous coordinates may not map precisely onto discrete pixels. There may be &#8220;clusters&#8221; and &#8220;gaps&#8221;: when enlarging an image, for example, the samples are spread further apart, leaving empty spaces in between. To produce a smooth output image, we must perform interpolation.</p>
 
 <p>In the abstract, interpolation can be decomposed into two general problems: that of reconstructing a discrete image into a continuum, and that of rasterizing the continuum into a discrete image again. Transformation is performed in between. Adding an optional filtering step, the process can be divided into four stages:</p>
@@ -639,6 +648,7 @@ July 2015</p>
 </div>
 
 <p>Which approach is better is a question of context. A complex transformation may be faster to compute in one direction than the other. The geometry of the problem may also be exploited to increase performance. When scaling an image, for example, the interpolation is usually done in one direction and then in the orthogonal direction (<abbr title="exempli gratia">e.g.</abbr>, first horizontally and then vertically): the first step produces a set of intermediate values which are blended together in the second step. But as complex transformations are not geometrically simple, it is difficult to generalize techniques which depend on the rows-and-columns shape of the problem. In section <a href="#sec-adaptiveinterpolation" title="2.2.3 Adaptive interpolation">2.2.3</a>, we will outline an interpolation method that is general enough to work well with any complex transformations, yet flexible enough to be adapted to the parameters of the transformation.</p>
+</section>
 
 <section id="sec-filter">
 <h3><a aria-hidden="true" class="header-anchor" href="#sec-filter" title="2.2.1 Reconstruction"></a>2.2.1 Reconstruction<a aria-controls="sec-filter-section" aria-expanded="true" aria-hidden="true" class="collapse-button" data-toggle="collapse" href="#sec-filter-section" role="button"></a></h3>
@@ -708,6 +718,7 @@ July 2015</p>
 <h1><a aria-hidden="true" class="header-anchor" href="#chap-models" title="3 Models of fish-eye distortion"></a>3 Models of fish-eye distortion</h1>
 
 <div id="chap-models-section">
+<section>
 <p>Wide-angle lenses produce a &#8220;fish-eye&#8221; effect, but all lenses exhibit some degree of barrel distortion. By modeling the distortion precisely, it is possible to undistort the image, producing a &#8220;pincushion&#8221; effect instead. In this way, we can correct for the inherent imprecision of regular lenses, as well as for the &#8220;fish-eye&#8221; effect of wide-angle images.</p>
 
 <p>Barrel distortion and pincushion are illustrated in figure <a href="#fig-distortion" title="Figure 3.1: Distortion">3.1</a>. Observe that in the case of barrel distortion, the &#8220;density&#8221; of the lines increases towards the edges. In the case of pincushion distortion, on the other hand, the reverse is true: the center of the image has the highest &#8220;density&#8221;. It is this area that is prone to aliasing effects when undistorting a high-frequency image.</p>
@@ -719,6 +730,7 @@ July 2015</p>
 <p>The main challenge is to model the distortion precisely. Mitigating the &#8220;fish-eye&#8221; effect of a wide-angle lens can be done on the basis of known lens parameters. Correcting for the inherent imprecision of a normal lens, on the other hand, requires more fine-grained parameters measured by a calibration routine. These parameters must then be fed into an equation that is precise enough to undo the distortion, without introducing additional distortion of its own.</p>
 
 <p>When we compare models, we encounter a trade-off between precision and efficiency. If only approximate results are needed, then undistorting an image requires little computing power, and can be modeled in many ways. <em>Precisely</em> modeling the distortion is another matter. Not only are the precise models more costly; unfortunately, they are also less mathematically tractable than the simpler models.</p>
+</section>
 
 <section id="31-polar-coordinates">
 <h2><a aria-hidden="true" class="header-anchor" href="#31-polar-coordinates" title="3.1 Polar coordinates"></a>3.1 Polar coordinates<a aria-controls="31-polar-coordinates-section" aria-expanded="true" aria-hidden="true" class="collapse-button" data-toggle="collapse" href="#31-polar-coordinates-section" role="button"></a></h2>
@@ -955,12 +967,15 @@ end <span class="hljs-keyword">for</span>
 <h1><a aria-hidden="true" class="header-anchor" href="#chap-strategies" title="4 Implementation strategies"></a>4 Implementation strategies</h1>
 
 <div id="chap-strategies-section">
+<section>
 <p>So far, we have considered how image transformation can be expressed mathematically, the challenges it raises with regard to interpolation, and what models we may use to express fish-eye distortion. In this chapter, we will consider various strategies for implementing such distortion using OpenGL ES.</p>
+</section>
 
 <section id="41-implementation-considerations">
 <h2><a aria-hidden="true" class="header-anchor" href="#41-implementation-considerations" title="4.1 Implementation considerations"></a>4.1 Implementation considerations<a aria-controls="41-implementation-considerations-section" aria-expanded="true" aria-hidden="true" class="collapse-button" data-toggle="collapse" href="#41-implementation-considerations-section" role="button"></a></h2>
 
 <div class="collapse in" id="41-implementation-considerations-section">
+<section>
 <p>There are several factors to consider:</p>
 
 <ol>
@@ -974,6 +989,7 @@ end <span class="hljs-keyword">for</span>
 </ol>
 
 <p>Let us discuss each of these items in detail.</p>
+</section>
 
 <section id="411-cpu-or-gpu">
 <h3><a aria-hidden="true" class="header-anchor" href="#411-cpu-or-gpu" title="4.1.1 CPU or GPU"></a>4.1.1 <abbr class="acronym" title="Central Processing Unit">CPU</abbr> or <abbr class="acronym" title="Graphics Processing Unit">GPU</abbr><a aria-controls="411-cpu-or-gpu-section" aria-expanded="true" aria-hidden="true" class="collapse-button" data-toggle="collapse" href="#411-cpu-or-gpu-section" role="button"></a></h3>
@@ -1025,6 +1041,7 @@ end <span class="hljs-keyword">for</span>
 <h2><a aria-hidden="true" class="header-anchor" href="#implementation-strategies" title="4.2 Implementation strategies"></a>4.2 Implementation strategies<a aria-controls="implementation-strategies-section" aria-expanded="true" aria-hidden="true" class="collapse-button" data-toggle="collapse" href="#implementation-strategies-section" role="button"></a></h2>
 
 <div class="collapse in" id="implementation-strategies-section">
+<section>
 <p>As we can see, we have several options when implementing image transformation. Table <a href="#tab-strategies" title="Table 4.1: Implementation strategies">4.1</a> lists some possible <em>interpolation strategies</em> &#8211; that is, ways of combining these options. Some options tend to go together with other options, but the table is not exhaustive; many other combinations are possible. In this section, we will focus on a selection of implementation strategies to illustrate the possibilities.</p>
 
 <blockquote>
@@ -1089,6 +1106,7 @@ Built-in/Manual</th>
 
 <p id="tab-strategies">Table 4.1: Implementation strategies</p>
 </blockquote>
+</section>
 
 <section id="421-strategy-1-cpfb">
 <h3><a aria-hidden="true" class="header-anchor" href="#421-strategy-1-cpfb" title="4.2.1 Strategy 1: CPFB"></a>4.2.1 Strategy 1: CPFB<a aria-controls="421-strategy-1-cpfb-section" aria-expanded="true" aria-hidden="true" class="collapse-button" data-toggle="collapse" href="#421-strategy-1-cpfb-section" role="button"></a></h3>
@@ -1231,9 +1249,11 @@ Built-in/Manual</th>
 <h1><a aria-hidden="true" class="header-anchor" href="#chap-opengl" title="5 Implementation with OpenGL ES"></a>5 Implementation with OpenGL ES</h1>
 
 <div id="chap-opengl-section">
+<section>
 <p>In this chapter, we describe our implementation of the strategies outlined in chapter <a href="#chap-strategies" title="4 Implementation strategies">4</a>. We have written a test program that runs each strategy multiple times and measures the execution time. We describe the general structure of this program, the data flow of the shaders, and our implementation of the grid mesh and the interface for transforming it. Then we turn to transformation on the <abbr class="acronym" title="Graphics Processing Unit">GPU</abbr>, illustrated by snippets of shader code.</p>
 
 <p>For instructions on how to obtain and compile the code, refer to appendix <a href="#chap-code" title="A Source code">A</a>.</p>
+</section>
 
 <section id="51-qt">
 <h2><a aria-hidden="true" class="header-anchor" href="#51-qt" title="5.1 Qt"></a>5.1 <abbr title="Q Toolkit">Qt</abbr><a aria-controls="51-qt-section" aria-expanded="true" aria-hidden="true" class="collapse-button" data-toggle="collapse" href="#51-qt-section" role="button"></a></h2>
@@ -1624,7 +1644,9 @@ vec4 c8 = color(s_texture, v4);</code>
 <h1><a aria-hidden="true" class="header-anchor" href="#chap-results" title="6 Results"></a>6 Results</h1>
 
 <div id="chap-results-section">
+<section>
 <p>In this chapter, we compare the efficiency of the implementations. We also compare built-in interpolation against manual interpolation.</p>
+</section>
 
 <section id="61-setup">
 <h2><a aria-hidden="true" class="header-anchor" href="#61-setup" title="6.1 Setup"></a>6.1 Setup<a aria-controls="61-setup-section" aria-expanded="true" aria-hidden="true" class="collapse-button" data-toggle="collapse" href="#61-setup-section" role="button"></a></h2>
@@ -1883,6 +1905,7 @@ glTexImage2D(GL_TEXTURE_2D, <span class="hljs-number">0</span>, GL_RGBA,
 <h1><a aria-hidden="true" class="header-anchor" href="#chap-conclusion" title="7 Conclusion"></a>7 Conclusion</h1>
 
 <div id="chap-conclusion-section">
+<section>
 <p>In this thesis, we have studied and compared various approaches for accelerating image transformation using OpenGL ES. Our case has been the undistortion of fish-eye distortion, a problem that can be modeled in different ways. However, our results can be generalized to other transformations as well.</p>
 
 <p>In fitting a transformation model to an implementation strategy, we can identify the following trade-offs:</p>
@@ -1898,6 +1921,7 @@ glTexImage2D(GL_TEXTURE_2D, <span class="hljs-number">0</span>, GL_RGBA,
 <p>Weighing these factors against each other, the best results by far are produced by the backward-mapping strategies 4 (GDBB) and 5 (GDBM). Even though the exponential model is slower in the backward direction (and this is even more the case for other models, such as the polynomial model), this is more than offset by the efficiency of the strategies and the flexibility with regard to interpolation.</p>
 
 <p>In other words: the model would have to be <em>significantly</em> faster in the forward direction than in the backward direction in order to warrant a forward-mapping strategy over the backward-mapping strategies mentioned above.</p>
+</section>
 
 <section id="71-discussion">
 <h2><a aria-hidden="true" class="header-anchor" href="#71-discussion" title="7.1 Discussion"></a>7.1 Discussion<a aria-controls="71-discussion-section" aria-expanded="true" aria-hidden="true" class="collapse-button" data-toggle="collapse" href="#71-discussion-section" role="button"></a></h2>
@@ -2055,6 +2079,7 @@ axis([<span class="hljs-number">0.0</span> <span class="hljs-number">1.0</span> 
 <h1><a aria-hidden="true" class="header-anchor" href="#bibliography" title="Bibliography"></a>Bibliography</h1>
 
 <div id="bibliography-section">
+<section>
 <p id="basu95-alter">Anup Basu and Sergio Licardie. Alternative models for fish-eye lenses. <em>Pattern Recognition Letters</em>, 1995.</p>
 
 <p id="bjorke04-filter">Kevin Bjorke. High-quality filtering. In Randima Fernando, editor, <em><abbr class="acronym" title="Graphics Processing Unit">GPU</abbr> Gems</em>. Addison-Wesley, 2004.</p>
@@ -2100,6 +2125,7 @@ axis([<span class="hljs-number">0.0</span> <span class="hljs-number">1.0</span> 
 <p id="wolberg90-digital-image-warp">George Wolberg. <em>Digital Image Warping</em>. Columbia University, 1990.</p>
 
 <hr class="footnotes-sep">
+</section>
 
 <section class="footnotes">
 <ol class="footnotes-list">
