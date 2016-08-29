@@ -1888,6 +1888,15 @@ $.fn.addSections = function () {
                header.removeAttr('id')
              })
            })
+      // add missing sections
+      body.find('section').each(function (i, el) {
+        var section = $(this)
+        var prevSection = section.prevUntil('section')
+        if (prevSection.length > 0) {
+          prevSection = prevSection.last().nextUntil(section)
+          prevSection.wrapAll('<section>')
+        }
+      })
   })
 }
 
@@ -2129,9 +2138,7 @@ templates.body = Handlebars.compile(
   '{{/if}}' +
   '{{/if}}' +
   '</header>\n' +
-  '<section id="content">\n' +
   '{{{content}}}' +
-  '</section>\n' +
   '</article>\n' +
   '</div>')
 
@@ -2152,7 +2159,7 @@ $.fn.addTableOfContents = function () {
 }
 
 $.fn.tableOfContents = function (title) {
-  var body = $(this).find('#content') // FIXME: un-hardcode this
+  var body = $(this)
   var toc = body.listOfContents()
 
   if (toc === '') {

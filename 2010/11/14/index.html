@@ -62,7 +62,6 @@ TeX: { equationNumbers: { autoNumber: "all" } }
 </section>
 </header>
 
-<section id="content">
 <p>Hvis man skal bruke <code>find</code> sammen med, si, <code>rm</code> p&#229; filnavn som inneholder mellomrom, m&#229; man ta visse forh&#229;ndsregler. Den mest opplagte besvergelsen ville&#160;v&#230;re:</p>
 
 <pre>
@@ -79,7 +78,6 @@ find -name &lt;PATTERN&gt; -print0 | xargs -0 rm</code>
 <p>Den f&#248;rste eksekverer <code>rm</code> via <code>find</code>. Den siste bruker opsjonen <code>-print0</code> for &#229; terminere filnavn med <code>\0</code> istedenfor linjeskift, og <code>rm</code> gj&#248;res oppmerksom p&#229; dette med opsjonen <code>-0</code>. Begge programmer m&#229; alts&#229; tilpasses for &#229; kunne samarbeide om spesielle&#160;filnavn.</p>
 
 <p>Fortrinnet med <code>\0</code>-metoden er at den h&#229;ndterer de mest outrerte filnavn, selv navn som inneholder linjeskift! Jeg visste ikke at det var mulig f&#248;r jeg leste <code>man find</code>, men <code>touch 'some\</code> + <kbd title="Enter">&#8629;</kbd> + <code>file'</code> vil lage en slik fil. (Bytt ut &#171;<code>touch</code>&#187; med &#171;<code>rm</code>&#187; for &#229; slette&#160;filen.)</p>
-</section>
 </article>
 </div>
 </body>

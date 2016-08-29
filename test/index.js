@@ -5,6 +5,7 @@ require('../lib/social')
 require('../lib/figure')
 require('../lib/hanging')
 require('../lib/punctuation')
+require('../lib/section')
 require('../lib/toc')
 require('../lib/util')
 
@@ -30,6 +31,22 @@ describe('collapse.js', function () {
       var div = $('<div><h1 id="header">Header</h1><p>Paragraph one</p><p>Paragraph two</p><h2 id="subheader">Subheader</h2><p>Paragraph three</p><p>Paragraph four</p></div>')
       div.addCollapsibleSections().prop('outerHTML').should.equal(
         '<div><h1 id="header">Header</h1><div id="header-section"><p>Paragraph one</p><p>Paragraph two</p><h2 id="subheader">Subheader<a aria-hidden="true" aria-expanded="true" role="button" class="collapse-button" data-toggle="collapse" href="#subheader-section" aria-controls="subheader-section"></a></h2><div class="collapse in" id="subheader-section"><p>Paragraph three</p><p>Paragraph four</p></div></div></div>')
+    })
+  })
+})
+
+describe('section.js', function () {
+  describe('addSections()', function () {
+    it('should create a section for a header', function () {
+      var div = $('<div><h1 id="header">Header</h1><p>Paragraph one</p><p>Paragraph two</p></div>')
+      div.addSections().prop('outerHTML').should.equal(
+        '<div><section id="header"><h1>Header</h1><p>Paragraph one</p><p>Paragraph two</p></section></div>')
+    })
+
+    it('should wrap everything in a section', function () {
+      var div = $('<div><h1 id="header">Header</h1><p>Paragraph one</p><h2 id="subheader">Subheader</h2><p>Paragraph two</p></div>')
+      div.addSections().prop('outerHTML').should.equal(
+        '<div><section id="header"><h1>Header</h1><section><p>Paragraph one</p></section><section id="subheader"><h2>Subheader</h2><p>Paragraph two</p></section></section></div>')
     })
   })
 })
