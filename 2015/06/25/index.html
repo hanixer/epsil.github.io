@@ -3,7 +3,7 @@
 <head>
 <title>Dia p&#229; OS X</title>
 <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
-<meta content="be28cf5a2e6e84c501a6b680e83c526e" name="md5">
+<meta content="247ecfbf8f574df9a8689968fbdb5c08" name="md5">
 <meta content="text/css" http-equiv="Content-Style-Type">
 <meta content="width=device-width, initial-scale=1" name="viewport">
 <link href="../../../favicon.ico" rel="icon" type="image/x-icon">
@@ -62,7 +62,7 @@ TeX: { equationNumbers: { autoNumber: "all" } }
 </section>
 </header>
 
-<p><a href="http://dia-installer.de/">Dia</a> krasjer p&#229; <abbr class="acronym" title="Operating System 10"><span class="caps">OS</span> X</abbr> Yosemite. F&#248;lgende <a href="http://navkirats.blogspot.no/2014/10/dia-diagram-mac-osx-yosemite-fix-i-use.html">l&#248;sning</a> retter opp en <abbr class="acronym" title="GIMP Toolkit"><span class="caps">GTK</span></abbr>-feil:</p>
+<p>Grafikkprogrammet <a href="http://dia-installer.de/">Dia</a> krasjer p&#229; <abbr class="acronym" title="Operating System 10"><span class="caps">OS</span> X</abbr> Yosemite. F&#248;lgende <a href="http://navkirats.blogspot.no/2014/10/dia-diagram-mac-osx-yosemite-fix-i-use.html">l&#248;sning</a> retter opp en <abbr class="acronym" title="GIMP Toolkit"><span class="caps">GTK</span></abbr>-feil:</p>
 
 <ol>
 <li>&#197;pne filen <code>/Applications/Dia.app/Contents/Resources/bin/dia</code> i en&#160;editor.</li>
@@ -72,7 +72,7 @@ TeX: { equationNumbers: { autoNumber: "all" } }
 <li>Avslutt XQuartz hvis det kj&#248;rer og start Dia p&#229;&#160;nytt.</li>
 </ol>
 
-<p>Hvis det ovenst&#229;ende ikke fungerer, kan man pr&#248;ve &#229; legge til <code>export DISPLAY=:0</code> i <code>~/.bash_profile</code>.</p>
+<p>(Hvis det ovenst&#229;ende ikke fungerer, kan man pr&#248;ve &#229; legge til <code>export DISPLAY=:0</code> i <code>~/.bash_profile</code>.)</p>
 
 <hr>
 
@@ -86,13 +86,19 @@ TeX: { equationNumbers: { autoNumber: "all" } }
 
 <hr>
 
-<p><abbr class="acronym" title="Portable Document Format"><span class="caps">PDF</span></abbr> kan konverteres til <abbr class="acronym" title="Scalable Vector Graphics"><span class="caps">SVG</span></abbr> med <a href="http://www.cityinthesky.co.uk/opensource/pdf2svg/"><code>pdf2svg</code></a> (kan installeres med <code>$ brew install pdf2svg</code>):</p>
+<p>For &#229; konvertere til <abbr class="acronym" title="Scalable Vector Graphics"><span class="caps">SVG</span></abbr>, fungerer det bedre &#229; g&#229; <a href="http://superuser.com/questions/198460/converting-from-eps-to-svg-format#answer-542987">omveien om <abbr class="acronym" title="Portable Document Format"><span class="caps">PDF</span></abbr></a> enn &#229; eksportere direkte eller konvertere fra <abbr class="acronym" title="Encapsulated PostScript"><span class="caps">EPS</span></abbr>. <abbr class="acronym" title="Portable Document Format"><span class="caps">PDF</span></abbr> kan konverteres til <abbr class="acronym" title="Scalable Vector Graphics"><span class="caps">SVG</span></abbr> med <a href="http://www.cityinthesky.co.uk/opensource/pdf2svg/"><code>pdf2svg</code></a> (kan installeres med <code>$ brew install pdf2svg</code>):</p>
 
 <pre>
 <code>$ pdf2svg diagram.pdf diagram.svg</code>
 </pre>
 
-<p>&#197; g&#229; <a href="http://superuser.com/questions/198460/converting-from-eps-to-svg-format#answer-542987">omveien om <abbr class="acronym" title="Portable Document Format"><span class="caps">PDF</span></abbr></a> fungerer bedre enn &#229; konvertere direkte fra <abbr class="acronym" title="Encapsulated PostScript"><span class="caps">EPS</span></abbr>.</p>
+<p>For &#229; konvertere en bestemt&#160;side:</p>
+
+<pre>
+<code>$ pdf2svg diagrammer.pdf diagram.svg 20</code>
+</pre>
+
+<p><code>pdf2svg</code> har dessverre ingen valg for beskj&#230;ring. For dette kan man benytte <a href="https://sites.google.com/site/pdfscissors/"><abbr class="acronym" title="Portable Document Format"><span class="caps">PDF</span></abbr> Scissors</a> (grafisk) eller <a href="https://www.pdflabs.com/tools/pdftk-the-pdf-toolkit/"><abbr title="PDF Toolkit">PDFtk</abbr></a>&#160;(kommandolinje).</p>
 </article>
 </div>
 </body>

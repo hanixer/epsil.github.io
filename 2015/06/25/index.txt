@@ -2,13 +2,13 @@ title: Dia på OS X
 date: 2015-06-25
 ---
 
-[Dia](http://dia-installer.de/) krasjer på OS X Yosemite. Følgende [løsning](http://navkirats.blogspot.no/2014/10/dia-diagram-mac-osx-yosemite-fix-i-use.html) retter opp en GTK-feil:
+Grafikkprogrammet [Dia](http://dia-installer.de/) krasjer på OS X Yosemite. Følgende [løsning](http://navkirats.blogspot.no/2014/10/dia-diagram-mac-osx-yosemite-fix-i-use.html) retter opp en GTK-feil:
 
 1.  Åpne filen `/Applications/Dia.app/Contents/Resources/bin/dia` i en editor.
 2.  Legg til linjen `export DISPLAY=:0` etter linje 39.
 3.  Avslutt XQuartz hvis det kjører og start Dia på nytt.
 
-Hvis det ovenstående ikke fungerer, kan man prøve å legge til `export DISPLAY=:0` i `~/.bash_profile`.
+(Hvis det ovenstående ikke fungerer, kan man prøve å legge til `export DISPLAY=:0` i `~/.bash_profile`.)
 
 * * * * *
 
@@ -20,8 +20,12 @@ For å lage PDF, er det best å eksportere til EPS (med Pango-skrifter) og deret
 
 * * * * *
 
-PDF kan konverteres til SVG med [`pdf2svg`](http://www.cityinthesky.co.uk/opensource/pdf2svg/) (kan installeres med `$ brew install pdf2svg`):
+For å konvertere til SVG, fungerer det bedre å gå [omveien om PDF](http://superuser.com/questions/198460/converting-from-eps-to-svg-format#answer-542987) enn å eksportere direkte eller konvertere fra EPS. PDF kan konverteres til SVG med [`pdf2svg`](http://www.cityinthesky.co.uk/opensource/pdf2svg/) (kan installeres med `$ brew install pdf2svg`):
 
     $ pdf2svg diagram.pdf diagram.svg
 
-Å gå [omveien om PDF](http://superuser.com/questions/198460/converting-from-eps-to-svg-format#answer-542987) fungerer bedre enn å konvertere direkte fra EPS.
+For å konvertere en bestemt side:
+
+    $ pdf2svg diagrammer.pdf diagram.svg 20
+
+`pdf2svg` har dessverre ingen valg for beskjæring. For dette kan man benytte [PDF Scissors](https://sites.google.com/site/pdfscissors/) (grafisk) eller [PDFtk](https://www.pdflabs.com/tools/pdftk-the-pdf-toolkit/) (kommandolinje).
