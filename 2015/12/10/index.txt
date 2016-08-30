@@ -1,6 +1,7 @@
 title: Testing med Selenium
 description: Hvordan kombinere Selenium, mocha og chai.
 date: 2015-12-10
+css: custom.css
 ---
 
 Selenium
@@ -132,5 +133,6 @@ Resultat:
 Linker
 ------
 
+-   [test.js](test.js)
 -   [Getting started with Selenium Webdriver for node.js](http://bites.goodeggs.com/posts/selenium-webdriver-nodejs-tutorial/)
 -   [Selenium With Node.js and Mocha](http://simpleprogrammer.com/2014/02/03/selenium-with-node-js/)

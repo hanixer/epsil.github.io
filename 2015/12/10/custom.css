@@ -1,0 +1,56 @@
+a, a:hover {
+    color: #cf022b;
+    border: none;
+}
+
+a:hover {
+    text-decoration: underline;
+}
+
+body {
+    font-family: "Source Sans Pro", "Segoe UI", Seravek, "League Spartan", "Open Sans", "Work Sans", Avenir, "Avenir Next", Optima, "Optima Web", "Linux Biolinum", Vegur, Karla, Candara, Futura, "Gill Sans", Calibri, Corbel, Helvetica, Arial, sans-serif !important;
+    font-size: 115% !important;
+}
+
+code, kbd, samp, tt, pre {
+    background-color: inherit;
+    padding: 0;
+    font-size: 0.9em !important;
+}
+
+h1 {
+    color: #cf022b;
+}
+
+h1 a, h2 a, h3 a, h4 a, h5 a, h6 a {
+    text-decoration: none;
+}
+
+h2 {
+    border-bottom: 1px solid #cf022b;
+    color: inherit;
+    padding-bottom: 0.5em;
+}
+
+time, .description {
+    color: #5a5a5a;
+}
+
+.container ul > li:before {
+    content: "\2022";
+    color: #cf022b;
+    margin-left: -1.1em;
+    position: absolute;
+}
+
+.container ul ul > li:before {
+    color: #f79a08;
+}
+
+.container ul ul ul > li:before {
+    color: #000000;
+}
+
+.description {
+    display: none;
+}
