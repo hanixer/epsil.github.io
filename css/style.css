@@ -244,6 +244,7 @@ mark:hover {
 }
 
 nav, .navbar-default {
+    border: none;
     background-color: #ffffff;
 }
 

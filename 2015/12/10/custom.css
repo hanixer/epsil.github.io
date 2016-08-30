@@ -32,6 +32,25 @@ h2 {
     padding-bottom: 0.5em;
 }
 
+nav, .navbar-default {
+    background-color: #cf022b;
+    color: #ffffff;
+}
+
+nav {
+    box-shadow: none;
+}
+
+.nav li a,
+.nav li a .fa,
+.nav li a:hover,
+.nav li a:hover .fa,
+.nav li a:focus,
+.nav li > a:focus .fa,
+#toc li a {
+    color: #ffffff !important;
+}
+
 time, .description, .fa {
     color: #5a5a5a;
 }
