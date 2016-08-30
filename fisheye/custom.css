@@ -26,3 +26,7 @@ hr.footnotes-sep:before {
     letter-spacing: 0;
     padding-bottom: 0.5em;
 }
+
+.description {
+    display: none;
+}

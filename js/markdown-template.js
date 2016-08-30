@@ -1131,6 +1131,8 @@ module.exports =
   '*[m.m.]: med mer\n' +
   '*[Mfl.]: Med flere\n' +
   '*[mfl.]: med flere\n' +
+  '*[Pga.]: På grunn av\n' +
+  '*[pga.]: på grunn av\n' +
   '*[XeTeX]: XeTeX\n' +
   '*[ConTeXt]: ConTeXt\n' +
   '*[LuaTeX]: LuaTeX\n' +
@@ -2112,6 +2114,9 @@ templates.body = Handlebars.compile(
   '{{#if date}}' +
   '<h1 class="title">{{dateFormat date}}</h1>\n' +
   '{{/if}}' +
+  '{{/if}}' +
+  '{{#if description}}' +
+  '<p class="description">{{{description}}}</p>\n' +
   '{{/if}}' +
   '</header>\n' +
   '{{{content}}}' +

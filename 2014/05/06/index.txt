@@ -1,8 +1,7 @@
 title: Oppsett [`irssi` og `screen`](http://folk.uio.no/veronahe/CYB/IRC/)
 date: 2014-05-06
+description: Noen gamle [`#cyb`-notater](http://folk.uio.no/veronahe/CYB/IRC/), gjengitt her for dem som leter etter dem.
 ---
-
-*Noen gamle [`#cyb`-notater](http://folk.uio.no/veronahe/CYB/IRC/), gjengitt her for dem som leter etter dem.*
 
 Hva er `screen`, `nice` og `irssi`
 ----------------------------------

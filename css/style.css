@@ -365,8 +365,12 @@ time, .author {
     vertical-align: middle;
 }
 
+.description {
+    font-style: italic;
+}
+
 /* TODO: remove the actual HTML elements */
-header .header-anchor, .collapse-button {
+header .header-anchor, header .collapse-button {
     display: none;
 }
 

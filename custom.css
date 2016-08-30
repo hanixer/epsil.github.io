@@ -39,6 +39,10 @@ header {
     text-align: right;
 }
 
+.description {
+    display: none;
+}
+
 #kontakt h2 {
     float: left;
     font-size: 1em;
