@@ -4,6 +4,8 @@ date: 2015-12-10
 css: custom.css
 ---
 
+![](logo.svg){#logo .right width=200}
+
 Selenium
 --------
 

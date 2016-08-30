@@ -15,7 +15,7 @@ body {
 code, kbd, samp, tt, pre {
     background-color: inherit;
     padding: 0;
-    font-size: 0.85em !important;
+    font-size: 0.9em !important;
 }
 
 h1 {
@@ -53,4 +53,13 @@ time, .description, .fa {
 
 .description {
     display: none;
+}
+
+header {
+    padding-right: 200px;
+}
+
+#logo {
+    position: relative;
+    top: -7em;
 }
