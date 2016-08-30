@@ -3,14 +3,14 @@ description: A study on fish-eye undistortion.
 css: custom.css
 ---
 
-A study on fish-eye undistortion. **[PDF version](thesis.pdf).**
+A study on fish-eye undistortion. **[PDF version](thesis.pdf).** [DUO link](https://www.duo.uio.no/handle/10852/47636).
 
 * * * * *
 
 Accelerating nonlinear image transformations with OpenGL ES
 ===========================================================
 
-![](uio.png){width=400}
+![](uio.svg){width=400}
 
 Vegard Øye
 
@@ -216,7 +216,7 @@ a C-like language called GLSL (OpenGL Shading Language). Figure
 flow of our implementation is described in chapter
 [4](#chap-strategies).
 
-![Figure 1.1: OpenGL ES pipeline](pipeline.png){#fig-pipeline width=500}
+![Figure 1.1: OpenGL ES pipeline](pipeline.svg){#fig-pipeline width=500}
 
 Both vertices and fragments are automatically shaded in parallel. This
 gives rise to a significant performance boost while freeing the
@@ -409,7 +409,7 @@ $[x', y']$ in the transformed image. The problem of blending together
 samples in order to produce a smooth output image is postponed to our
 treatment of interpolation in section [2.2](#sec-interpolation).
 
-![Figure 2.1: Transformation types](transformations.png){#fig-transformations width=400}
+![Figure 2.1: Transformation types](transformations.svg){#fig-transformations width=400}
 
 Note that in the following discussion, the transformation takes us
 *from* the untransformed coordinates of the source image *to* the
@@ -566,7 +566,7 @@ transformations, for example perspective projection (figure
 [2.2](#fig-perspective)). Any planar quadrilateral can be transformed
 to any other quadrilateral.
 
-![Figure 2.2: Perspective projection](perspective.png){#fig-perspective width=300}
+![Figure 2.2: Perspective projection](perspective.svg){#fig-perspective width=300}
 
 In the case of nonplanar quadrilaterals, however, a more general
 solution is necessary. The general quadrilateral-to-quadrilateral
@@ -708,7 +708,7 @@ application is scaling, then instead of scaling coordinates in the
 input image by a factor of $k$, we scale coordinates in the output
 image by a factor of $1/k$.
 
-![Figure 2.3: Forward mapping and backward mapping](forwardandbackwardmapping.png){#fig-forwardandbackwardmapping width=600}
+![Figure 2.3: Forward mapping and backward mapping](forwardandbackwardmapping.svg){#fig-forwardandbackwardmapping width=600}
 
 Which approach is better is a question of context. A complex
 transformation may be faster to compute in one direction than the
@@ -804,7 +804,7 @@ little square. This complicates the matter of drawing the line between
 samples that are "inside" the preimage and samples that are outside
 it. In practice, some approximation is necessary.
 
-![Figure 2.4: Supersampling](supersampling.png){#fig-supersampling width=500}
+![Figure 2.4: Supersampling](supersampling.svg){#fig-supersampling width=500}
 
 The technique of *supersampling* sidesteps these geometrical
 difficulties (figure [2.4](#fig-supersampling)). Instead of dealing
@@ -887,7 +887,7 @@ pincushion distortion, on the other hand, the reverse is true: the
 center of the image has the highest "density". It is this area that is
 prone to aliasing effects when undistorting a high-frequency image.
 
-![Figure 3.1: Distortion](distortion.png){#fig-distortion width=400}
+![Figure 3.1: Distortion](distortion.svg){#fig-distortion width=400}
 
 The main challenge is to model the distortion precisely. Mitigating
 the "fish-eye" effect of a wide-angle lens can be done on the basis of
@@ -915,7 +915,7 @@ order to calculate the distortion. In this section, we will derive a
 *displacement factor* that lets us compute the distortion in Cartesian
 space (figure [3.2](#fig-displacement)).
 
-![Figure 3.2: Displacement](displacement.png){#fig-displacement width=400}
+![Figure 3.2: Displacement](displacement.svg){#fig-displacement width=400}
 
 If $[x, y]$ are the Cartesian coordinates of a point, then the polar
 coordinates $[r, \theta]$ represent the radius $r$ and the angle
@@ -1251,7 +1251,7 @@ An OpenGL ES pipeline uses both the CPU and the GPU to some extent
 (figure [4.1](#fig-flow)). However, the brunt of the workload can be
 computed by the CPU, or it can be accelerated by the GPU.
 
-![Figure 4.1: Data flow](flow.png){#fig-flow width=600}
+![Figure 4.1: Data flow](flow.svg){#fig-flow width=600}
 
 The transformation may be programmed in C (or in our case, in C++) and
 computed entirely by the CPU. If a vertex mesh is used to transform
@@ -1350,7 +1350,7 @@ quadrilaterals (the distorted grid). Although the vertex positions
 have changed, the texture coordinates still map to the undistorted
 grid.
 
-![Figure 4.2: Transformation grid](gridmapping.png){#fig-gridmapping width=400}
+![Figure 4.2: Transformation grid](gridmapping.svg){#fig-gridmapping width=400}
 
 The strategy leaves interpolation to OpenGL ES. The smoothest results
 are achieved by OpenGL ES' `GL_LINEAR` option. Some versions also
@@ -1570,7 +1570,7 @@ filter removes much of the noise in the original image by averaging
 samples together; but it also removes a significant amount of detail
 that isn't noise.
 
-![Figure 4.3: Filtering methods](boxfilterandgaussianfilter.png){#fig-boxfilterandgaussianfilter width=400}
+![Figure 4.3: Filtering methods](boxfilterandgaussianfilter.svg){#fig-boxfilterandgaussianfilter width=400}
 
 In this regard, better results are typically achieved by a Gaussian
 filter (figure [4.3b](#fig-boxfilterandgaussianfilter)). Filtering
@@ -1596,7 +1596,7 @@ as a sharpening filter magnifies noise along with other details in the
 image, it can be a good idea to apply a blurring filter, such as the
 Gaussian filter, prior to sharpening.
 
-![Figure 4.4: Interpolation kernels](kernels.png){#fig-kernels width=300}
+![Figure 4.4: Interpolation kernels](kernels.svg){#fig-kernels width=300}
 
 These are only some of the image effects that can be expressed in
 terms of $3 \times 3$ filter kernels. As we will see in section
@@ -1699,7 +1699,7 @@ and avoiding variable names with special meanings. Qt encourages the
 writing of such "portable shaders", and so do we: all the code is
 backward compatible with desktop OpenGL.
 
-![Figure 5.1: UML diagram](uml.png){#fig-uml width=600}
+![Figure 5.1: UML diagram](uml.svg){#fig-uml width=600}
 
 The basic structure of the application is shown in figure
 [5.1](#fig-uml). A `QApplication` is instantiated with a `Window`
@@ -1725,7 +1725,7 @@ a number of *varyings*. The fragment shader (figure
 [5.2b](#fig-shaders)) takes the varyings as input and outputs a
 *color*.
 
-![Figure 5.2: OpenGL Shaders](shaders.png){#fig-shaders width=500}
+![Figure 5.2: OpenGL Shaders](shaders.svg){#fig-shaders width=500}
 
 Constant data used by shaders are globally available as *uniforms*. A
 special type of uniform is the *sampler*, which represents a texture.
@@ -1756,7 +1756,7 @@ object* that performs the rendering (figure [5.3](#fig-compilation)).
 At this stage, vertex positions, texture coordinates and textures can
 be allocated and bound to the program object.
 
-![Figure 5.3: Shader compilation](compilation.png){#fig-compilation width=300}
+![Figure 5.3: Shader compilation](compilation.svg){#fig-compilation width=300}
 
 OpenGL ES does not specify a binary format for program objects. This
 is left to the vendor, which means that the format may change from one
@@ -1790,7 +1790,7 @@ The grid may be transformed by transforming the vertex positions and
 holding the texture coordinates constant, or by transforming the
 texture coordinates and holding the vertex positions constant.
 
-![Figure 5.4: Grid class](grid.png){#fig-grid width=300}
+![Figure 5.4: Grid class](grid.svg){#fig-grid width=300}
 
 To perform a forward mapping transformation, we iterate through each
 vertex position in the grid, transform it, and update the position. To
@@ -1871,7 +1871,7 @@ initialize the grid, we employ functor classes to normalize vertex
 positions within the $[-1, 1]$ range and texture coordinates within
 the $[0, 1]$ range.
 
-![Figure 5.5: Functor composition](chain.png){#fig-chain width=500}
+![Figure 5.5: Functor composition](chain.svg){#fig-chain width=500}
 
 As before, once the grid has been transformed, it stays transformed.
 The shaders are the same as for the previous strategy (listings
@@ -2269,7 +2269,7 @@ strategy 3, which is also done on the GPU.
 > Table 6.1: Time measurements
 {#tab-measurements}
 
-![Figure 6.3: Time series](timeseries.png){#fig-timeseries width=600}
+![Figure 6.3: Time series](timeseries.svg){#fig-timeseries width=600}
 
 6.4 Vertex count {#sec-vertexcount}
 ----------------
@@ -2289,7 +2289,7 @@ However, it is not necessary to employ a high-resolution grid in order
 to see good results. Even a grid of as $50 \times 50$ vertices
 produces adequate, if less precise results.
 
-![Figure 6.4: Strategy 3 (GDFB) rendering time versus grid size](strategy3graph.png){#fig-strategy3graph width=500}
+![Figure 6.4: Strategy 3 (GDFB) rendering time versus grid size](strategy3graph.svg){#fig-strategy3graph width=500}
 
 6.5 Aliasing
 ------------
@@ -2300,14 +2300,14 @@ built-in bilinear interpolation against strategy 5 with a Gaussian
 kernel for a detail of the test image. Manual interpolation produces a
 slightly smoother result.
 
-![Figure 6.5: Interpolation](interpolation.png){#fig-interpolation width=500}
+![Figure 6.5: Interpolation](interpolation.svg){#fig-interpolation width=500}
 
 Aliasing effects can be brought to the fore by substituting a
 high-frequency test pattern for the test image (figure
 [6.6a](#fig-stripes)). In this case, pronounced aliasing effects are
 unavoidable (figure [6.6b](#fig-stripes)).
 
-![Figure 6.6: Stripes](stripes.png){#fig-stripes width=400}
+![Figure 6.6: Stripes](stripes.svg){#fig-stripes width=400}
 
 The effects are mitigated by supersampling (figure
 [6.7](#fig-supersamplingresults)). The softest output is produced by
@@ -2319,7 +2319,7 @@ sharpening kernel retains the crispness of the lines, but pronounces
 the aliasing effects, particularly in the center of the image (figure
 [6.7d](#fig-supersamplingresults)).
 
-![Figure 6.7: Supersampling results](supersamplingresults.png){#fig-supersamplingresults width=400}
+![Figure 6.7: Supersampling results](supersamplingresults.svg){#fig-supersamplingresults width=400}
 
 6.6 Adaptive interpolation {#sec-adaptive}
 --------------------------
@@ -2332,7 +2332,7 @@ circular regions. In figure [6.8b](#fig-distance), we classify based
 on the maximum transformed width or height, which produces a number of
 concentric, transformed rectangles.
 
-![Figure 6.8: Distance measures](distance.png){#fig-distance width=400}
+![Figure 6.8: Distance measures](distance.svg){#fig-distance width=400}
 
 Figure [6.9](#fig-adaptive) shows the result with the maximum
 transformed width or height as a distance measure, using gaussian
@@ -2340,7 +2340,7 @@ supersampling for the center of the image and sharpening supersampling
 for the outer parts of the image. Regular bilinear interpolation is
 used as a compromise between the two.
 
-![Figure 6.9: Adaptive interpolation](adaptive.png){#fig-adaptive width=500}
+![Figure 6.9: Adaptive interpolation](adaptive.svg){#fig-adaptive width=500}
 
 Summary
 -------
@@ -2445,7 +2445,7 @@ are shared by the surrounding fragments, as shown in figure
 transformations, which are "hopefully cached by the GPU", in the words
 of [Bjorke (2004)](#bjorke04-filter).
 
-![Figure 7.1: Overlapping samples](overlap.png){#fig-overlap width=300}
+![Figure 7.1: Overlapping samples](overlap.svg){#fig-overlap width=200}
 
 [Sigg and Hadwiger (2005)](#sigg05-filtering) have presented a method
 for third-order texture filtering which performs cubic filtering by

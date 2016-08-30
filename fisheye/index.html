@@ -4,7 +4,7 @@
 <title>Accelerating nonlinear image transformations with OpenGL ES</title>
 <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
 <meta content="A study on fish-eye undistortion." name="description">
-<meta content="f77ad7b21b97fd640d3eb4e6da54099d" name="md5">
+<meta content="8f1777bef20e8363f88a297f03c8f484" name="md5">
 <meta content="text/css" http-equiv="Content-Style-Type">
 <meta content="width=device-width, initial-scale=1" name="viewport">
 <link href="../favicon.ico" rel="icon" type="image/x-icon">
@@ -293,11 +293,11 @@ TeX: { equationNumbers: { autoNumber: "all" } }
 </header>
 
 <section>
-<p>A study on fish-eye undistortion. <strong><a href="thesis.pdf"><abbr class="acronym" title="Portable Document Format">PDF</abbr> version</a>.</strong></p>
+<p>A study on fish-eye undistortion. <strong><a href="thesis.pdf"><abbr class="acronym" title="Portable Document Format">PDF</abbr> version</a>.</strong> <a href="https://www.duo.uio.no/handle/10852/47636"><abbr class="acronym" title="Digitale utgivelser ved UiO">DUO</abbr> link</a>.</p>
 
 <hr>
 
-<p class="center"><img alt="" src="uio.png" width="400">
+<p class="center"><img alt="" src="uio.svg" width="400">
 </p>
 
 <p>Vegard &#216;ye</p>
@@ -388,7 +388,7 @@ July 2015</p>
 
 <p>OpenGL ES emphasizes the dynamic programming style; indeed, from OpenGL ES 2.0 and onward, fixed-function techniques are no longer available and must instead be implemented in terms of shaders. This obliges the programmer to piece together the graphics pipeline from the ground up by writing shader programs. There are two classes of shaders: <em>vertex shaders</em> and <em>fragment shaders</em>. A vertex shader operates on a position, which it may transform; a fragment shader is responsible for specifying the color of a fragment, which determines the value of an output pixel. In general, fragments and output pixels are not the same concept: in multipass shading, for example, the fragment shader may be run multiple times per pixel. However, our implementation does not employ such techniques. Indeed, its pipeline is simple enough that for all practical purposes, fragments and output pixels can be considered to be the same thing. Shaders are written in a C-like language called GLSL (OpenGL Shading Language). Figure <a href="#fig-pipeline" title="Figure 1.1: OpenGL ES pipeline">1.1</a> shows the general OpenGL ES pipeline; the data flow of our implementation is described in chapter <a href="#chap-strategies" title="4 Implementation strategies">4</a>.</p>
 
-<div class="figure" id="fig-pipeline" style="width: 509px;"><img alt="Figure 1.1: OpenGL ES pipeline" src="pipeline.png" width="500">
+<div class="figure" id="fig-pipeline" style="width: 509px;"><img alt="Figure 1.1: OpenGL ES pipeline" src="pipeline.svg" width="500">
 <p class="caption">Figure 1.1: OpenGL ES pipeline</p>
 </div>
 
@@ -519,7 +519,7 @@ July 2015</p>
 <section>
 <p>Image transformations can be roughly ordered from simple, linear transformations to complex, nonlinear transformations (figure <a href="#fig-transformations" title="Figure 2.1: Transformation types">2.1</a>). In the following discussion, we will consider that each sample in the source image has a coordinate \([x, y]\), and it is our task to calculate the corresponding position \([x&#8217;, y&#8217;]\) in the transformed image. The problem of blending together samples in order to produce a smooth output image is postponed to our treatment of interpolation in section <a href="#sec-interpolation" title="2.2 Interpolation">2.2</a>.</p>
 
-<div class="figure" id="fig-transformations" style="width: 409px;"><img alt="Figure 2.1: Transformation types" src="transformations.png" width="400">
+<div class="figure" id="fig-transformations" style="width: 409px;"><img alt="Figure 2.1: Transformation types" src="transformations.svg" width="400">
 <p class="caption">Figure 2.1: Transformation types</p>
 </div>
 
@@ -588,7 +588,7 @@ July 2015</p>
 
 <p>By transforming the input coordinates with this two-step process &#8211; first multiplying with an homogeneous matrix and then mapping back to two-dimensional coordinates &#8211; we can express more advanced transformations, for example perspective projection (figure <a href="#fig-perspective" title="Figure 2.2: Perspective projection">2.2</a>). Any planar quadrilateral can be transformed to any other quadrilateral.</p>
 
-<div class="figure" id="fig-perspective" style="width: 309px;"><img alt="Figure 2.2: Perspective projection" src="perspective.png" width="300">
+<div class="figure" id="fig-perspective" style="width: 309px;"><img alt="Figure 2.2: Perspective projection" src="perspective.svg" width="300">
 <p class="caption">Figure 2.2: Perspective projection</p>
 </div>
 
@@ -643,7 +643,7 @@ July 2015</p>
 
 <p>In practice, interpolation is usually expressed in more compact terms (although there are promising efforts to bring a more &#8220;functional&#8221; style into graphics).<sup class="footnote-ref"><a href="#fn2" id="fnref2" title="Heard (2008) explores Haskell&#8217;s monad concept in conjunction with graphics processing, giving several examples of how the control flow can be abstracted away.">[2]</a></sup> The main point, for our purposes, is that the transformation is performed either through <em>forward mapping</em> or <em>backward mapping</em>. As we will see in chapter <a href="#chap-opengl" title="5 Implementation with OpenGL ES">5</a>, OpenGL ES lends itself well to both approaches. In the case of a forward mapping implementation, we go <em>from</em> coordinates in the input image <em>to</em> coordinates in the output image (figure <a href="#fig-forwardandbackwardmapping" title="Figure 2.3: Forward mapping and backward mapping">2.3a</a>). This is done by constructing a constructing a grid mesh, transforming it, and then rasterizing the result. In the case of backward mapping, we go <em>from</em> output coordinates <em>to</em> input coordinates (figure <a href="#fig-forwardandbackwardmapping" title="Figure 2.3: Forward mapping and backward mapping">2.3b</a>). We therefore make use of the <em>inverse</em> transformation \(F^{-1}(\mathbf{x})\), rather than the original transformation \(F(\mathbf{x})\). For example, if the application is scaling, then instead of scaling coordinates in the input image by a factor of \(k\), we scale coordinates in the output image by a factor of \(1/k\).</p>
 
-<div class="figure" id="fig-forwardandbackwardmapping" style="width: 609px;"><img alt="Figure 2.3: Forward mapping and backward mapping" src="forwardandbackwardmapping.png" width="600">
+<div class="figure" id="fig-forwardandbackwardmapping" style="width: 609px;"><img alt="Figure 2.3: Forward mapping and backward mapping" src="forwardandbackwardmapping.svg" width="600">
 <p class="caption">Figure 2.3: Forward mapping and backward mapping</p>
 </div>
 
@@ -682,7 +682,7 @@ July 2015</p>
 
 <p>Computing the preimage raises issues on its own, however. As a first approximation, the coordinates of the four corners of the pixel may be transformed in reverse to produce the input coordinates of some approximately quadrilateral shape. For more complex transformations, the preimage may <em>not</em> be quadrilateral at all, and additional coordinates may be necessary. There is also the recurrent problem that a &#8220;pixel is <em>not</em> a little square&#8221; (<a href="#smith95-pixel" title="Alvy Ray Smith. A pixel is Not a little square, a pixel is Not a little square, a pixel is Not a little square! (and a voxel is Not a little cube). Technical report, Microsoft, 1995.">Smith 1995</a>). A pixel is, in fact, a point sample that is rendered in the form of a little square. This complicates the matter of drawing the line between samples that are &#8220;inside&#8221; the preimage and samples that are outside it. In practice, some approximation is necessary.</p>
 
-<div class="figure" id="fig-supersampling" style="width: 509px;"><img alt="Figure 2.4: Supersampling" src="supersampling.png" width="500">
+<div class="figure" id="fig-supersampling" style="width: 509px;"><img alt="Figure 2.4: Supersampling" src="supersampling.svg" width="500">
 <p class="caption">Figure 2.4: Supersampling</p>
 </div>
 
@@ -723,7 +723,7 @@ July 2015</p>
 
 <p>Barrel distortion and pincushion are illustrated in figure <a href="#fig-distortion" title="Figure 3.1: Distortion">3.1</a>. Observe that in the case of barrel distortion, the &#8220;density&#8221; of the lines increases towards the edges. In the case of pincushion distortion, on the other hand, the reverse is true: the center of the image has the highest &#8220;density&#8221;. It is this area that is prone to aliasing effects when undistorting a high-frequency image.</p>
 
-<div class="figure" id="fig-distortion" style="width: 409px;"><img alt="Figure 3.1: Distortion" src="distortion.png" width="400">
+<div class="figure" id="fig-distortion" style="width: 409px;"><img alt="Figure 3.1: Distortion" src="distortion.svg" width="400">
 <p class="caption">Figure 3.1: Distortion</p>
 </div>
 
@@ -738,7 +738,7 @@ July 2015</p>
 <div class="collapse in" id="31-polar-coordinates-section">
 <p>Barrel distortion is most easily expressed in polar coordinates, with the center of the lens at the center of the coordinate system. OpenGL ES, however, uses Cartesian coordinates. Luckily, it is not necessary to perform coordinate conversion to and from polar coordinates in order to calculate the distortion. In this section, we will derive a <em>displacement factor</em> that lets us compute the distortion in Cartesian space (figure <a href="#fig-displacement" title="Figure 3.2: Displacement">3.2</a>).</p>
 
-<div class="figure" id="fig-displacement" style="width: 409px;"><img alt="Figure 3.2: Displacement" src="displacement.png" width="400">
+<div class="figure" id="fig-displacement" style="width: 409px;"><img alt="Figure 3.2: Displacement" src="displacement.svg" width="400">
 <p class="caption">Figure 3.2: Displacement</p>
 </div>
 
@@ -997,7 +997,7 @@ end <span class="hljs-keyword">for</span>
 <div class="collapse in" id="411-cpu-or-gpu-section">
 <p>An OpenGL ES pipeline uses both the <abbr class="acronym" title="Central Processing Unit">CPU</abbr> and the <abbr class="acronym" title="Graphics Processing Unit">GPU</abbr> to some extent (figure <a href="#fig-flow" title="Figure 4.1: Data flow">4.1</a>). However, the brunt of the workload can be computed by the <abbr class="acronym" title="Central Processing Unit">CPU</abbr>, or it can be accelerated by the <abbr class="acronym" title="Graphics Processing Unit">GPU</abbr>.</p>
 
-<div class="figure" id="fig-flow" style="width: 609px;"><img alt="Figure 4.1: Data flow" src="flow.png" width="600">
+<div class="figure" id="fig-flow" style="width: 609px;"><img alt="Figure 4.1: Data flow" src="flow.svg" width="600">
 <p class="caption">Figure 4.1: Data flow</p>
 </div>
 
@@ -1118,7 +1118,7 @@ Built-in/Manual</th>
 
 <p>As illustrated in figure <a href="#fig-gridmapping" title="Figure 4.2: Transformation grid">4.2</a>, the transformation is a mapping from regular rectangles (the undistorted grid) to quadrilaterals (the distorted grid). Although the vertex positions have changed, the texture coordinates still map to the undistorted grid.</p>
 
-<div class="figure" id="fig-gridmapping" style="width: 409px;"><img alt="Figure 4.2: Transformation grid" src="gridmapping.png" width="400">
+<div class="figure" id="fig-gridmapping" style="width: 409px;"><img alt="Figure 4.2: Transformation grid" src="gridmapping.svg" width="400">
 <p class="caption">Figure 4.2: Transformation grid</p>
 </div>
 
@@ -1207,7 +1207,7 @@ Built-in/Manual</th>
 
 <p>A brief discussion of a few very simple filters follows. For example, the previously mentioned average of nine samples can be expressed as a matrix of \(1\)&#8217;s divided by \(9\) (figure <a href="#fig-kernels" title="Figure 4.4: Interpolation kernels">4.4b</a>). This is also known as a box filter, since it weighs the neighboring samples equally (figure <a href="#fig-boxfilterandgaussianfilter" title="Figure 4.3: Filtering methods">4.3a</a>). Such a filter removes much of the noise in the original image by averaging samples together; but it also removes a significant amount of detail that isn&#8217;t noise.</p>
 
-<div class="figure" id="fig-boxfilterandgaussianfilter" style="width: 409px;"><img alt="Figure 4.3: Filtering methods" src="boxfilterandgaussianfilter.png" width="400">
+<div class="figure" id="fig-boxfilterandgaussianfilter" style="width: 409px;"><img alt="Figure 4.3: Filtering methods" src="boxfilterandgaussianfilter.svg" width="400">
 <p class="caption">Figure 4.3: Filtering methods</p>
 </div>
 
@@ -1215,7 +1215,7 @@ Built-in/Manual</th>
 
 <p>Instead of reducing the difference between samples, we can also accentuate it. A sharpening filter works in the opposite way to the previous filters: instead of adding the values of the neighboring samples, the sharpening filter subtracts them from the central sample (figure <a href="#fig-boxfilterandgaussianfilter" title="Figure 4.3: Filtering methods">4.3c</a>). If the central sample has the same value as the surrounding samples, then the filtered value is equal to the original (figure <a href="#fig-kernels" title="Figure 4.4: Interpolation kernels">4.4d</a>). But if the central sample has a greater value than the surrounding samples, then the filtered value is magnified significantly. Note that as a sharpening filter magnifies noise along with other details in the image, it can be a good idea to apply a blurring filter, such as the Gaussian filter, prior to sharpening.</p>
 
-<div class="figure" id="fig-kernels" style="width: 309px;"><img alt="Figure 4.4: Interpolation kernels" src="kernels.png" width="300">
+<div class="figure" id="fig-kernels" style="width: 309px;"><img alt="Figure 4.4: Interpolation kernels" src="kernels.svg" width="300">
 <p class="caption">Figure 4.4: Interpolation kernels</p>
 </div>
 
@@ -1265,7 +1265,7 @@ Built-in/Manual</th>
 
 <p>OpenGL ES is for the most part a subset of desktop OpenGL, with the exception of a few precision qualifiers (<code>highp</code>, <code>mediump</code> and <code>lowp</code>). In fact, most OpenGL ES code can easily be run on desktop OpenGL by prefixing the shaders with definitions of these qualifiers, and avoiding variable names with special meanings. <abbr title="Q Toolkit">Qt</abbr> encourages the writing of such &#8220;portable shaders&#8221;, and so do we: all the code is backward compatible with desktop OpenGL.</p>
 
-<div class="figure" id="fig-uml" style="width: 609px;"><img alt="Figure 5.1: UML diagram" src="uml.png" width="600">
+<div class="figure" id="fig-uml" style="width: 609px;"><img alt="Figure 5.1: UML diagram" src="uml.svg" width="600">
 <p class="caption">Figure 5.1: UML diagram</p>
 </div>
 
@@ -1281,7 +1281,7 @@ Built-in/Manual</th>
 
 <p>Both shaders take a number of data entries as input and return a number of data entries as output. The vertex shader (figure <a href="#fig-shaders" title="Figure 5.2: OpenGL Shaders">5.2a</a>) takes a number of <em>input attributes</em> and outputs a number of <em>varyings</em>. The fragment shader (figure <a href="#fig-shaders" title="Figure 5.2: OpenGL Shaders">5.2b</a>) takes the varyings as input and outputs a <em>color</em>.</p>
 
-<div class="figure" id="fig-shaders" style="width: 509px;"><img alt="Figure 5.2: OpenGL Shaders" src="shaders.png" width="500">
+<div class="figure" id="fig-shaders" style="width: 509px;"><img alt="Figure 5.2: OpenGL Shaders" src="shaders.svg" width="500">
 <p class="caption">Figure 5.2: OpenGL Shaders</p>
 </div>
 
@@ -1299,7 +1299,7 @@ Built-in/Manual</th>
 <div class="collapse in" id="53-compilation-section">
 <p>When the implementation is initialized, the shaders are read from a file on disk, parsed and compiled into a <em>shader object</em> in memory. The shader objects are then attached to and linked into a <em>program object</em> that performs the rendering (figure <a href="#fig-compilation" title="Figure 5.3: Shader compilation">5.3</a>). At this stage, vertex positions, texture coordinates and textures can be allocated and bound to the program object.</p>
 
-<div class="figure" id="fig-compilation" style="width: 309px;"><img alt="Figure 5.3: Shader compilation" src="compilation.png" width="300">
+<div class="figure" id="fig-compilation" style="width: 309px;"><img alt="Figure 5.3: Shader compilation" src="compilation.svg" width="300">
 <p class="caption">Figure 5.3: Shader compilation</p>
 </div>
 
@@ -1317,7 +1317,7 @@ Built-in/Manual</th>
 
 <p>The mesh is constructed as a <code>GL_TRIANGLE_STRIP</code>, with alternating orientations of the inner triangles so that the whole strip can be drawn in one pass (figure <a href="#fig-grid" title="Figure 5.4: Grid class">5.4a</a>). Observe that each point has a <em>pair</em> of coordinates associated with it: a vertex position in the range \([-1, 1]\) and a texture coordinate in the range \([0, 1]\). The grid may be transformed by transforming the vertex positions and holding the texture coordinates constant, or by transforming the texture coordinates and holding the vertex positions constant.</p>
 
-<div class="figure" id="fig-grid" style="width: 309px;"><img alt="Figure 5.4: Grid class" src="grid.png" width="300">
+<div class="figure" id="fig-grid" style="width: 309px;"><img alt="Figure 5.4: Grid class" src="grid.svg" width="300">
 <p class="caption">Figure 5.4: Grid class</p>
 </div>
 
@@ -1373,7 +1373,7 @@ uniform sampler2D s_texture;
 
 <p>In this regard, our <code>Functor</code> interface comes in handy. Coordinate conversion, after all, is just another transformation, and can be encapsulated in a functor class of its own. By defining a <code>chain()</code> method for composing functor classes, we can build more complex transformations out of simpler transformations. Transformation in texture space, for example, can be defined as the composition of coordinate conversion and vertex transformation, composed with reverse coordinate conversion (figure <a href="#fig-chain" title="Figure 5.5: Functor composition">5.5</a>). Likewise, when we initialize the grid, we employ functor classes to normalize vertex positions within the \([-1, 1]\) range and texture coordinates within the \([0, 1]\) range.</p>
 
-<div class="figure" id="fig-chain" style="width: 509px;"><img alt="Figure 5.5: Functor composition" src="chain.png" width="500">
+<div class="figure" id="fig-chain" style="width: 509px;"><img alt="Figure 5.5: Functor composition" src="chain.svg" width="500">
 <p class="caption">Figure 5.5: Functor composition</p>
 </div>
 
@@ -1821,7 +1821,7 @@ glTexImage2D(GL_TEXTURE_2D, <span class="hljs-number">0</span>, GL_RGBA,
 <p id="tab-measurements">Table 6.1: Time measurements</p>
 </blockquote>
 
-<div class="figure" id="fig-timeseries" style="width: 609px;"><img alt="Figure 6.3: Time series" src="timeseries.png" width="600">
+<div class="figure" id="fig-timeseries" style="width: 609px;"><img alt="Figure 6.3: Time series" src="timeseries.svg" width="600">
 <p class="caption">Figure 6.3: Time series</p>
 </div>
 </div>
@@ -1837,7 +1837,7 @@ glTexImage2D(GL_TEXTURE_2D, <span class="hljs-number">0</span>, GL_RGBA,
 
 <p>However, it is not necessary to employ a high-resolution grid in order to see good results. Even a grid of as \(50 \times 50\) vertices produces adequate, if less precise results.</p>
 
-<div class="figure" id="fig-strategy3graph" style="width: 509px;"><img alt="Figure 6.4: Strategy 3 (GDFB) rendering time versus grid size" src="strategy3graph.png" width="500">
+<div class="figure" id="fig-strategy3graph" style="width: 509px;"><img alt="Figure 6.4: Strategy 3 (GDFB) rendering time versus grid size" src="strategy3graph.svg" width="500">
 <p class="caption">Figure 6.4: Strategy 3 (GDFB) rendering time versus grid size</p>
 </div>
 </div>
@@ -1849,19 +1849,19 @@ glTexImage2D(GL_TEXTURE_2D, <span class="hljs-number">0</span>, GL_RGBA,
 <div class="collapse in" id="65-aliasing-section">
 <p>The impact of manual interpolation depends on the frequencies in the test image. Figure <a href="#fig-interpolation" title="Figure 6.5: Interpolation">6.5</a> compares OpenGL ES&#8217;s built-in bilinear interpolation against strategy 5 with a Gaussian kernel for a detail of the test image. Manual interpolation produces a slightly smoother result.</p>
 
-<div class="figure" id="fig-interpolation" style="width: 509px;"><img alt="Figure 6.5: Interpolation" src="interpolation.png" width="500">
+<div class="figure" id="fig-interpolation" style="width: 509px;"><img alt="Figure 6.5: Interpolation" src="interpolation.svg" width="500">
 <p class="caption">Figure 6.5: Interpolation</p>
 </div>
 
 <p>Aliasing effects can be brought to the fore by substituting a high-frequency test pattern for the test image (figure <a href="#fig-stripes" title="Figure 6.6: Stripes">6.6a</a>). In this case, pronounced aliasing effects are unavoidable (figure <a href="#fig-stripes" title="Figure 6.6: Stripes">6.6b</a>).</p>
 
-<div class="figure" id="fig-stripes" style="width: 409px;"><img alt="Figure 6.6: Stripes" src="stripes.png" width="400">
+<div class="figure" id="fig-stripes" style="width: 409px;"><img alt="Figure 6.6: Stripes" src="stripes.svg" width="400">
 <p class="caption">Figure 6.6: Stripes</p>
 </div>
 
 <p>The effects are mitigated by supersampling (figure <a href="#fig-supersamplingresults" title="Figure 6.7: Supersampling results">6.7</a>). The softest output is produced by supersampling with an averaging kernel of five values (figure <a href="#fig-supersamplingresults" title="Figure 6.7: Supersampling results">6.7a</a>) or nine values (figure <a href="#fig-supersamplingresults" title="Figure 6.7: Supersampling results">6.7b</a>). Gaussian supersampling produces a somewhat sharper result (figure <a href="#fig-supersamplingresults" title="Figure 6.7: Supersampling results">6.7c</a>). A sharpening kernel retains the crispness of the lines, but pronounces the aliasing effects, particularly in the center of the image (figure <a href="#fig-supersamplingresults" title="Figure 6.7: Supersampling results">6.7d</a>).</p>
 
-<div class="figure" id="fig-supersamplingresults" style="width: 409px;"><img alt="Figure 6.7: Supersampling results" src="supersamplingresults.png" width="400">
+<div class="figure" id="fig-supersamplingresults" style="width: 409px;"><img alt="Figure 6.7: Supersampling results" src="supersamplingresults.svg" width="400">
 <p class="caption">Figure 6.7: Supersampling results</p>
 </div>
 </div>
@@ -1873,13 +1873,13 @@ glTexImage2D(GL_TEXTURE_2D, <span class="hljs-number">0</span>, GL_RGBA,
 <div class="collapse in" id="sec-adaptive-section">
 <p>To smooth out the aliasing effects in the center of the image while mitigating the blurriness in the outer parts, we classify the image into different regions. In figure <a href="#fig-distance" title="Figure 6.8: Distance measures">6.8a</a>, we classify based on the calculated radius, which produces a number of concentric, circular regions. In figure <a href="#fig-distance" title="Figure 6.8: Distance measures">6.8b</a>, we classify based on the maximum transformed width or height, which produces a number of concentric, transformed rectangles.</p>
 
-<div class="figure" id="fig-distance" style="width: 409px;"><img alt="Figure 6.8: Distance measures" src="distance.png" width="400">
+<div class="figure" id="fig-distance" style="width: 409px;"><img alt="Figure 6.8: Distance measures" src="distance.svg" width="400">
 <p class="caption">Figure 6.8: Distance measures</p>
 </div>
 
 <p>Figure <a href="#fig-adaptive" title="Figure 6.9: Adaptive interpolation">6.9</a> shows the result with the maximum transformed width or height as a distance measure, using gaussian supersampling for the center of the image and sharpening supersampling for the outer parts of the image. Regular bilinear interpolation is used as a compromise between the two.</p>
 
-<div class="figure" id="fig-adaptive" style="width: 509px;"><img alt="Figure 6.9: Adaptive interpolation" src="adaptive.png" width="500">
+<div class="figure" id="fig-adaptive" style="width: 509px;"><img alt="Figure 6.9: Adaptive interpolation" src="adaptive.svg" width="500">
 <p class="caption">Figure 6.9: Adaptive interpolation</p>
 </div>
 </div>
@@ -1949,7 +1949,7 @@ glTexImage2D(GL_TEXTURE_2D, <span class="hljs-number">0</span>, GL_RGBA,
 <div class="collapse in" id="sec-furtherwork-section">
 <p>The multisampling shader makes nine texture accesses, most of which are shared by the surrounding fragments, as shown in figure <a href="#fig-overlap" title="Figure 7.1: Overlapping samples">7.1</a>. This means redundant accesses and coordinate transformations, which are &#8220;hopefully cached by the <abbr class="acronym" title="Graphics Processing Unit">GPU</abbr>&#8221;, in the words of <a href="#bjorke04-filter" title="Kevin Bjorke. High-quality filtering. In Randima Fernando, editor, GPU Gems. Addison-Wesley, 2004.">Bjorke (2004)</a>.</p>
 
-<div class="figure" id="fig-overlap" style="width: 309px;"><img alt="Figure 7.1: Overlapping samples" src="overlap.png" width="300">
+<div class="figure" id="fig-overlap" style="width: 209px;"><img alt="Figure 7.1: Overlapping samples" src="overlap.svg" width="200">
 <p class="caption">Figure 7.1: Overlapping samples</p>
 </div>
 

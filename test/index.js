@@ -29,7 +29,7 @@ describe('collapse.js', function () {
   describe('addCollapsibleSections()', function () {
     it('should add button to each header except h1', function () {
       var div = $('<div><h1 id="header">Header</h1><p>Paragraph one</p><p>Paragraph two</p><h2 id="subheader">Subheader</h2><p>Paragraph three</p><p>Paragraph four</p></div>')
-      div.addCollapsibleSections().prop('outerHTML').should.equal(
+      div.addCollapsibleSections({include: ['h2', 'h3', 'h4', 'h5', 'h6']}).prop('outerHTML').should.equal(
         '<div><h1 id="header">Header</h1><div id="header-section"><p>Paragraph one</p><p>Paragraph two</p><h2 id="subheader">Subheader<a aria-hidden="true" aria-expanded="true" role="button" class="collapse-button" data-toggle="collapse" href="#subheader-section" aria-controls="subheader-section"></a></h2><div class="collapse in" id="subheader-section"><p>Paragraph three</p><p>Paragraph four</p></div></div></div>')
     })
   })
