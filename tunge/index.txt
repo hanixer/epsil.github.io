@@ -12,7 +12,7 @@ Rapport om prototype til en tungestyrt musepeker for bevegelseshemmede.
 Virtuell arm for funksjonshemmede
 =================================
 
-![](fig/hist-logo.png)
+![](fig/hist-logo.svg)
 
 Stian Rishaug, Bastian S. Solem, Aleksander Uthus og Vegard Øye.
 
@@ -197,7 +197,7 @@ er ingen valgt bort.
 2.1 Teori: forspenning av trykksensorene
 ----------------------------------------
 
-> ![](fig/trykksensor.png) {#fig-trykksensorer}
+> ![](fig/trykksensor.svg) {#fig-trykksensorer}
 >
 > **Figur 2.1:** Resistive trykksensorer
 
@@ -984,7 +984,7 @@ tilnærming*.
 6.3 Første tilnærming {#sec-forstetilnerming}
 ---------------------
 
-> ![](fig/bevsensorfirkant1.png) {#fig-sensorknapper1}
+> ![](fig/bevsensorfirkant1.svg) {#fig-sensorknapper1}
 >
 > **Figur 6.2:** Første tilnærming: knapper på venstre kinn (a)
 > og bevegelse på høyre kinn (b)
@@ -1044,7 +1044,7 @@ Når dette er oppfylt, sier vi at vi «har et sprang». Marginen er
 fastsatt på forhånd, og er litt større for de store sensorene på
 knappkinnet enn de små sensorene på bevegelseskinnet.
 
-> ![](fig/kalibrering.png) {#fig-kalibrering}
+> ![](fig/kalibrering.svg) {#fig-kalibrering}
 >
 > **Figur 6.4:** Selvkalibrering og avlesning av sensor
 
@@ -1081,9 +1081,9 @@ tabell, og de seks nullnivåene, som disse sammenlignes med, i en
 annen. Det går så igjennom tabellene parvis og sjekker dem opp mot
 ligning (6.1) -- på leting etter en aktiv sensor.
 
-> ![](fig/sensortabenkel.png) {#fig-sensortabenkel}
+> ![](fig/sensortabenkel.svg) {#fig-sensortabenkel}
 >
-> ![](fig/sensortabtung.png) {#fig-sensortabtung}
+> ![](fig/sensortabtung.svg) {#fig-sensortabtung}
 >
 > **Figur 6.5:** Avlesningsløkker: enkel (a) og avansert (b) {#fig-sensortab}
 
@@ -1148,7 +1148,7 @@ mer omfattende, men også mer komfortabelt.
 6.4 Andre tilnærming {#sec-andretilnerming}
 --------------------
 
-> ![](fig/bevsensorfirkant2.png) {#fig-sensorknapper2}
+> ![](fig/bevsensorfirkant2.svg) {#fig-sensorknapper2}
 >
 > **Figur 6.6:** Andre tilnærming: knapper (a) og bevegelse (b).
 
@@ -1167,9 +1167,9 @@ Den viktigste forskjellen er måten pekeren styres på.
 
 ### 6.4.1 Normalmodus {#sec-normmodus}
 
-> ![](fig/normalmodusstart.png) {#fig-normalmodusstart}
+> ![](fig/normalmodusstart.svg) {#fig-normalmodusstart}
 >
-> ![](fig/normalmodusbev.png) {#fig-normalmodusbev}
+> ![](fig/normalmodusbev.svg) {#fig-normalmodusbev}
 >
 > **Figur 6.7:** Normalmodus: klikk (a) og bevegelse (b) {#fig-normalmodus}
 
@@ -1199,11 +1199,11 @@ For presisjonens skyld er diagonal bevegelse *deaktivert* når pekeren
 beveges med lette trykk. Det er bare mulig å bevege seg diagonalt ved
 å presse kontinuerlig på sensorene.
 
-> ![](fig/dramodus.png) {#fig-dramodus}
+> ![](fig/dramodus.svg) {#fig-dramodus}
 >
 > **Figur 6.8:** «Dra»-modus
 
-> ![](fig/scrollmodus.png) {#fig-scrollmodus}
+> ![](fig/scrollmodus.svg) {#fig-scrollmodus}
 >
 > **Figur 6.9:** «Scroll»-modus
 

@@ -3,7 +3,7 @@ description: A study on fish-eye undistortion.
 css: custom.css
 ---
 
-A study on fish-eye undistortion. **[PDF version](thesis.pdf).** [DUO link](https://www.duo.uio.no/handle/10852/47636).
+A study on fish-eye undistortion. **[PDF](thesis.pdf)**, [DUO](http://urn.nb.no/URN:NBN:no-51670).[^1]
 
 * * * * *
 
@@ -118,7 +118,7 @@ analogy:
 > into many applications, including distortion compensation of imaging
 > sensors, decalibration for image registration, geometrical
 > normalization for image analysis and display, map projection, and
-> texture mapping for image synthesis.[^1]
+> texture mapping for image synthesis.[^2]
 
 As the problem of image transformation is a general one, our findings
 can be generalized to other types of transformation. We investigate
@@ -691,7 +691,7 @@ step, the process can be divided into four stages:
 
 In practice, interpolation is usually expressed in more compact terms
 (although there are promising efforts to bring a more "functional"
-style into graphics).[^2] The main point, for our purposes, is that
+style into graphics).[^3] The main point, for our purposes, is that
 the transformation is performed either through *forward mapping* or
 *backward mapping*. As we will see in chapter [5](#chap-opengl),
 OpenGL ES lends itself well to both approaches. In the case of a
@@ -745,7 +745,7 @@ are considered, and a weighted average is computed according to the
 proximity to each. Even smoother results can be obtained with
 *bicubic* interpolation, although some sharpness of edges gets lost;
 this method considers *sixteen* ($4 \times 4$) samples and is more
-computationally intensive.[^3] OpenGL ES contains built-in support for
+computationally intensive.[^4] OpenGL ES contains built-in support for
 bilinear filtering; other methods can be implemented as shaders
 ([Bjorke 2004](#bjorke04-filter)).
 
@@ -770,7 +770,7 @@ where in the image the high frequencies are clustered, we can single
 those areas out for adaptive bandlimiting.
 
 In 3D applications, this is often done with a prefiltering technique
-known as "mip-mapping".[^4] The same texture is stored in a range of
+known as "mip-mapping".[^5] The same texture is stored in a range of
 decreasing resolutions before use. For example, when a polygon is
 rendered at an angle, high-resolution textures may be used for the
 close parts of the polygon and low-resolution textures for the distant
@@ -927,7 +927,7 @@ $$\label{eq:cartesiantopolar}
 
 where $\operatorname{atan2}$ is the arcus tangent function of *two*
 arguments $y$ and $x$, which expresses the quadrant of the angle
-accurately.[^5] The inverse relationship is given by:
+accurately.[^6] The inverse relationship is given by:
 
 $$\label{eq:polartocartesian}
 [x, y] = [r\cos{\theta}, r\sin{\theta}]$$
@@ -1175,7 +1175,7 @@ parameters can be estimated with successive evaluation techniques such
 as Newton--Raphson approximation.
 
 Using Matlab's `fitnlm()` function, we obtained the following
-coefficients for Brown's model:[^6]
+coefficients for Brown's model:[^7]
 
 $$\label{eq:taylorparam}
 d = f(r) = 1 - 3.5778r^2 + 7.1946r^4 + -3.9842r^6$$
@@ -1797,7 +1797,7 @@ vertex position in the grid, transform it, and update the position. To
 this end, the `Grid` class provides an abstract interface (figure
 [5.4b](#fig-grid)). The `transform()` method takes a *functor class*
 as input. A functor class, in this context, is merely a wrapper class
-for a function on vertex positions.[^7] By implementing the
+for a function on vertex positions.[^8] By implementing the
 transformation as such a class, we can pass it to the `Grid` class to
 perform transformation. (The vertex positions themselves are
 represented by a `Point` class with an `x` attribute and a `y`
@@ -2150,7 +2150,7 @@ Graphics 3000 graphics card with 384 MB memory, running OS X Yosemite
 10.10.4.
 
 Our test image is a photograph of $700 \times 700$ pixels (figure
-[6.1](#fig-testimage)).[^8] It has a grid-like structure, which makes
+[6.1](#fig-testimage)).[^9] It has a grid-like structure, which makes
 it easy to gauge the effects of the transformation. It is also rich in
 detail, which makes it possible to spot aliasing effects.
 
@@ -2478,7 +2478,7 @@ implementation would become considerably complex. As
 > OpenCL and OpenGL are both powerful toolsets, but no one has ever
 > called them simple. Getting the two to work together is one of the
 > most complex programming tasks I can think of ... I can't think of a
-> harder topic related to OpenCL.[^9]
+> harder topic related to OpenCL.[^10]
 
 There is also the consideration that OpenCL is not as widely
 supported, especially on mobile devices. A combined setup may pose
@@ -2514,7 +2514,7 @@ To compile and run the code, run the included compilation script:
 This will generate a Makefile (using `qmake`), run the Makefile, and
 then execute the resulting application.
 
-The code is freely available under the MIT License.[^10]
+The code is freely available under the MIT License.[^11]
 
 B Matlab program {#chap-matlab}
 ================
@@ -2673,38 +2673,40 @@ George Wolberg. *Digital Image Warping*. Columbia University, 1990.
 
 <!-- Notes -->
 
-[^1]: [Wolberg (1990)](#wolberg90-digital-image-warp), chapter 1:
+[^1]: <http://hdl.handle.net/10852/47636>.
+
+[^2]: [Wolberg (1990)](#wolberg90-digital-image-warp), chapter 1:
     "Introduction", p. 1.
 
-[^2]: [Heard (2008)](#heard08-beaut-code) explores Haskell's *monad*
+[^3]: [Heard (2008)](#heard08-beaut-code) explores Haskell's *monad*
     concept in conjunction with graphics processing, giving several
     examples of how the control flow can be abstracted away.
 
-[^3]: An even more sophisticated choice for resampling is *Lanczos
+[^4]: An even more sophisticated choice for resampling is *Lanczos
     interpolation*, which
     [Turkowski and Gabriel (1990)](#turkowski90-graph-gems) considered
     the "best compromise in terms of reduction of aliasing, sharpness,
     and minimal ringing".
 
-[^4]: "Mip" stands for "multum in parvo", at Latin phrase meaning
+[^5]: "Mip" stands for "multum in parvo", at Latin phrase meaning
     "many things in a small place".
 
-[^5]: This is provided as the `atan()` function in OpenGL ES.
+[^6]: This is provided as the `atan()` function in OpenGL ES.
 
-[^6]: The complete Matlab code is given in Appendix [B](#chap-matlab).
+[^7]: The complete Matlab code is given in Appendix [B](#chap-matlab).
 
-[^7]: Our functor classes are implemented as *function objects*, that
+[^8]: Our functor classes are implemented as *function objects*, that
     is, they overload the `operator()` operator. C++11 also provides
     support for anonymous functions in the form of lambda expressions
     ([Stroustrup 2013](#stroustrup13-cpp-lang)), but these are
     difficult to compose in the way outlined in section
     [5.5](#sec-implementationcpbb).
 
-[^8]: Figure [6.1](#fig-testimage) is an excerpt from the picture
+[^9]: Figure [6.1](#fig-testimage) is an excerpt from the picture
     "Many Lovers" by Thomas Hawk, which is released under Creative
     Commons at <http://www.flickr.com/photos/thomashawk/102065939/>.
 
-[^9]: [Scarpino (2012)](#scarpino12-opencl), chapter 16: "Textures and
-    renderbuffers", p. 349.
+[^10]: [Scarpino (2012)](#scarpino12-opencl), chapter 16: "Textures
+    and renderbuffers", p. 349.
 
-[^10]: <http://opensource.org/licenses/MIT>.
+[^11]: <http://opensource.org/licenses/MIT>.
