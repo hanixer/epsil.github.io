@@ -48,11 +48,11 @@ NB: For at Nokia Profile skal finne COM-porten hvor telefonen er tilkoblet, må 
 4.  Kryss av for «Enable all games». Ønsker du også å aktivere vibrerende varsling-funksjonen i telefonens fastvare (ikke hensiktsmessig med mindre du har installert en vibrator i telefonen), krysser du av for «Vibration menu». *For mer informasjon om programmets andre funksjoner, se [Ajax' Official Download Page For Nokia Profile](http://www.ajax.ic24.net/3210/index.htm).*
 5.  Trykk nå på **Restart phone**. Telefonen vil starte på nytt, med de nye funksjonene aktivert. *Dersom du ikke gjør dette, vil endringene tre i kraft neste gang du slår telefonen av og på.* De to ekstra spillene finnes forøvrig på meny 6-4 og meny 6-5.
 
-![Slik ser Nokia Profile ut. IMEI- og sikkerhetskode er fjernet av sikkerhetsmessige årsaker.](nkprofile.png)
+![Slik ser Nokia Profile ut. IMEI- og sikkerhetskode er fjernet av sikkerhetsmessige årsaker.](nkprofile.png){width=437}
 
 ### Net monitor
 
-![](netmonitor.png)
+![](netmonitor.png){width=54}
 
 Net monitor (også kalt *Network monitor*) er en egen skjult meny, som -- når aktivert -- viser forskjellig informasjon om nettverket, telefonen, SIM-kortet etc. De forskjellige dataene er inndelt i egne skjermer eller «tester», som velges ved å taste inn et tall fra 1 til ± 100 (antall tester varierer fra telefon til telefon, og valgt Net monitor-versjon). På Nokia 3210 har Net monitor-menyen snarveinummeret 11 (meny 10 er ikke aktiv på alle telefoner, fordi denne er regulert av SIM-kortet). Net monitor-menyen kan aktiveres på flere måter, men det vanligste er å benytte en datakabel og tilpasset programvare, slik beskrevet lengre nede på denne siden.
 
@@ -75,7 +75,7 @@ De fleste av telefonens funksjoner er fortsatt tilgjengelige selv om telefonen o
 
 En kan bytte fra fullversjonen til standardversjonen ved å trykke på ![](navi.png) (**Meny**), velge Net monitor-menyen og gå til test 242. Test 243 deaktiverer Net monitor-menyen på telefonen. For å gå ut av Net monitor-modus, gå til felt 0.
 
-![](n_test.png) ![](n_modus.png) ![](n_hjelp.png)
+![](n_test.png){width=84} ![](n_modus.png){width=84} ![](n_hjelp.png){width=84}
 
 **Net monitor i aksjon:** Til venstre vises Net monitor-menyens testnummersfunksjon, i midten test nr. 1 slik den fremtrer på tomt display, og til høyre hjelpeteksten for den samme testen.
 
@@ -91,7 +91,7 @@ Dersom telefonen ikke er i Net monitor-modus og du i Net monitor-menyen skriver 
 
 Både [LogoManager](http://www.logomanager.co.uk) og [Nokia Profile](http://www.ajax.ic24.net/3210/index.htm) kan aktivere Net monitor-menyen, både som standard- og fullversjon. I LogoManager velger du **Network monitor** fra **Tools**-menyen, og deretter klikke på **Enable**. Du vil da få opp et dialogvindu hvor du kan velge mellom alternativene «Deactivate», «Field test» og «Engineering». Velg det alternativet du ønsker, og klikk **OK**.
 
-![](enable.png)
+![](enable.png){width=279}
 
 I Nokia Profile trykker du på knappen **Network monitor**. Dialogvinduet over dukker opp, og så er det bare å trykke på den Net monitor-versjonen du ønsker å aktivere. Net monitor-menyen kan deaktiveres direkte på telefonen, men hvis du senere ønsker å aktivere den, må du igjen koble telefonen til datamaskinen og kjøre et av de to programmene beskrevet i dette avsnittet.
 
@@ -131,7 +131,7 @@ Den teoretiske maksimale toppscore er 20 × 11 - 9 × 9 = 1899, men forsøk har 
 
 For å oppnå den maksimale toppscore må en spille på det høyeste vanskelighetsnivået (vanskelighetsnivå nr. 9), og ormen må bli så stor at den fyller hele displayet. Skal dette bli mulig må den følge et fast, repetitivt mønster. Under sees et eksempel på et mønster ormen kan følge.
 
-![](2008.png)
+![](2008.png){width=84}
 
 #### «Juksing»
 
@@ -153,16 +153,16 @@ Steg 4 og 5 repeteres i rask rekkefølge når det er nødvendig, dvs. når spill
 
 Prøv å treffe bildene med tastene ![](1.png) til ![](6.png). Du har seks forsøk, og får seks nye ved å taste ![](9.png). Poengene avhenger av hvilke bilder du treffer. Du taper poeng for hver kaktus.
 
-|                      |             |               |                           |
-| -------------------- | ----------- | ------------- | ------------------------- |
-| ![](morkt_eple.png)  | Mørkt eple  | 20 poeng      | Gir seks nye sjangser     |
-| ![](lyst_eple.png)   | Lyst eple   | 15 poeng      |                           |
-| ![](lys_gulrot.png)  | Lys gulrot  | 10 poeng      |                           |
-| ![](ball.png)        | Mørk ball   | 10 poeng      | Nullstiller alle sjangser |
-| ![](mork_gulrot.png) | Mørk gulrot | 5 poeng       |                           |
-| ![](lys_kaktus.png)  | Lys kaktus  | 25 minuspoeng | Mister ett liv            |
-| ![](mork_kaktus.png) | Mørk kaktus | 25 minuspoeng | Mister ett liv            |
-| ![](tomt.png)        | Dersom du treffer et tomt felt, får du 10 minuspoeng. | |
+|                                |             |               |                           |
+| ------------------------------ | ----------- | ------------- | ------------------------- |
+| ![](morkt_eple.png){width=14}  | Mørkt eple  | 20 poeng      | Gir seks nye sjangser     |
+| ![](lyst_eple.png){width=14}   | Lyst eple   | 15 poeng      |                           |
+| ![](lys_gulrot.png){width=14}  | Lys gulrot  | 10 poeng      |                           |
+| ![](ball.png){width=14}        | Mørk ball   | 10 poeng      | Nullstiller alle sjangser |
+| ![](mork_gulrot.png){width=14} | Mørk gulrot | 5 poeng       |                           |
+| ![](lys_kaktus.png){width=14}  | Lys kaktus  | 25 minuspoeng | Mister ett liv            |
+| ![](mork_kaktus.png){width=14} | Mørk kaktus | 25 minuspoeng | Mister ett liv            |
+| ![](tomt.png){width=14}        | Dersom du treffer et tomt felt, får du 10 minuspoeng. | |
 
 `React` har fem vanskelighetsnivåer, og går på tid. En runde tar ca. 40 sekunder.
 
@@ -186,7 +186,7 @@ De toppscorene som lar seg samle opp ved å følge instruksjonene på denne side
 
 Under en runde må spilleren prioritere en plass fremfor en annen, dvs. treffe et bilde før et annet, etter et spesielt mønster for å unngå at noen av bildene forsvinner mens vedkommende treffer et annet. Mønsteret sees nedenfor, hvor 1 er høyeste prioritering og 6 laveste. I praksis betyr dette at dersom spilleren får en lys gulrot på plass nummer 1, et mørkt eple på plass nummer 3 og en mørk gulrot på plass nummer 4, skal vedkommende begynne med den lyse gulroten og fortsette med det mørke eplet, før den mørke gulroten treffes. De forskjellige bildenes poengverdi har *ingenting* å si i denne sammenhengen. Dersom et bilde havner på en høyere plass mens spilleren treffer et eller flere bilder på lavere plasser, skal vedkommende begynne på nytt med det bildet som da har den høyeste verdien (dvs. det laveste tallet).
 
-![](prior.png)
+![](prior.png){width=56}
 
 Den første runden med `React` etter at telefonen er slått på gir maks. 1305 poeng. Senere runder kan gi enda flere bilder og dermed høyere poengsummer, høyeste registrerte toppscore er 1450. Flaks er her en avgjørende faktor.
 
@@ -287,7 +287,7 @@ Flere av FLASHMSGs funksjoner beskrives nærmere på de andre sidene. Se Flash, 
 
 På enkelte datamaskiner må flytkontrollen på serialporten hvor telefonen tilkobles konfigureres før installasjonsprogrammet til Nokia Data Suite kjøres. Dersom programmet rapporterer «Setup did not find a phone!» etter å ha søkt etter den COM-porten hvor telefonen er tilkoblet, er mest sannsynlig dette problemet. For å endre flytkontrollen åpner du **Kontrollpanel**, velger **System** og klikker på fanen **Enhetsbehandling**. Dobbelklikk deretter på **Utganger** og velg den faste kommunikasjonsutgangen du kobler mobiltelefonen til. Deretter klikker du på **Egenskaper** og velger fanen **Utgangsinnstillinger**. Et sett alternativer lignende de avbildet under vil vises.
 
-![](u_innstillinger.png)
+![](u_innstillinger.png){width=362}
 
 Dersom flytkontrollen er satt til «Ingen» (standardinnstilling), må du endre denne til «Xon/Xoff» før du installerer Data Suite. NB! LogoManager-brukere: LogoManager kan vise seg å være inkompatibel med denne innstillingen. Dersom dette er tilfelle, kan du endre denne tilbake til «Ingen» etter at Data Suite er installert. FLASHMSG vil fortsatt fungere.
 
@@ -295,12 +295,12 @@ Dersom flytkontrollen er satt til «Ingen» (standardinnstilling), må du endre 
 
 Etter at Nokia Data Suite er installert, må du, dersom du bruker Nokia 3210 eller Nokia 3310, patche det så det kan brukes med disse telefonene. Begge disse telefonene har hver sin patch (tilgjengelig fra [Nkmobile.co.uk](http://www.nkmobile.co.uk/)), og kun en patch kan være installert av gangen.
 
-![](patch.png)
+![](patch.png){width=438}
 
 Kjør patchen, velg den mappen hvor Data Suite er installert, og velg ja til å overskrive filen Pr3SS.dll. Programmet vil så overskrive den opprinnelige DLL-filen med en patchet versjon som understøtter den mobiltelefonen du bruker. Maskinen trenger ikke å startes på nytt etter denne operasjonen. Du kan nå kjøre PanuWorld FLASHMSG.
 
 ### Velge COM-port i FLASHMSG
 
-![](utganger.png)
+![](utganger.png){width=257}
 
 Før du kan benytte deg av alle funksjonene i PanuWorld FLASHMSG, må du velge COM-porten programmet skal kommunisere med. Merk at denne *ikke* er porten hvor telefonen er tilkoblet, men det virtuelle grensesnittet som ble installert da du kjørte installasjonsprogrammet til Nokia Data Suite. For å finne ut hvilket nummer denne porten har, åpne **Kontrollpanel**, klikk på **System** og velg fanen **Enhetsbehandling**. Deretter dobbelklikker du på **Utganger**. Du vil nå se en liste over alle utganger konfigurert på datamaskinen, både faste såvel som virtuelle. Finn den porten som heter «Data Suite», og merk deg kommunikasjonsnummeret (etterfulgt i parentes). Som du ser, har jeg selv i tillegg til datamaskinenes to faste kommunikasjonsporter allerede en virtuell utgang installert samt en PnP-utgang, noe som fører til at Data Suite-porten havner på COM5. Din Data Suite-port kan ha et annet kommunikasjonsnummer, avhengig av hvor mange utganger som er konfigurert på systemet. Når du har valgt denne COM-porten i FLASHMSG og koblet til telefonen, kan du begynne å sende spesielle tekstmeldinger og annen fet graff.
