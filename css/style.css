@@ -365,6 +365,11 @@ time, .author {
     vertical-align: middle;
 }
 
+/* TODO: remove the actual HTML elements */
+header [aria-hidden="true"] {
+    display: none;
+}
+
 @media (max-width: 767px) {
     body {
         font-size: 130% !important;
