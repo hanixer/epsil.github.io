@@ -33,7 +33,7 @@ For å konvertere en bestemt side:
 
 * * * * *
 
-Det ser ut til at `pdf2svg` har problemer med å konvertere visse PDF-er. Et alternativ er å bruke [Inkscape](http://inkscape.org/), som kan [kjøres fra terminalen](http://stackoverflow.com/questions/10288065/convert-pdf-to-clean-svg#answer-10290006):
+Det ser ut til at `pdf2svg` har problemer med å konvertere enkelte PDF-er. Et alternativ er å bruke [Inkscape](http://inkscape.org/), som kan [kjøres fra terminalen](http://stackoverflow.com/questions/10288065/convert-pdf-to-clean-svg#answer-10290006):
 
     inkscape --without-gui --file=diagram.pdf --export-plain-svg=diagram.svg
 
