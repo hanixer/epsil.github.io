@@ -230,5 +230,5 @@ Eksterne lenker
 
 -   [Rock step swing](http://www.osidans.no/kurs/rock-step-swing) på OSI Dans
     -   [Turer og trinn i rock step swing](http://www.osidans.no/multimedia/tekster/swing---turer-i-rock-step-swing)
-    -   [Swing - Musikkteori og tilpasning](http://www.osidans.no/multimedia/tekster/swing---musikkteori-og-tilpasning)
-    -   [Swing - Swingmusikkens historie](http://www.osidans.no/multimedia/tekster/swing---swingmusikkens-historie )
+    -   [Swing -- Musikkteori og tilpasning](http://www.osidans.no/multimedia/tekster/swing---musikkteori-og-tilpasning)
+    -   [Swing -- Swingmusikkens historie](http://www.osidans.no/multimedia/tekster/swing---swingmusikkens-historie )
