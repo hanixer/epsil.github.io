@@ -13,7 +13,7 @@ Rapport for konstruksjon av den 60 W klasse AB-forsterkeren
 Lydforsterker: *Project 3A*
 ===========================
 
-![](fig/hist-logo.png)
+![](fig/hist-logo.svg){width=280}
 
 Stian Rishaug, Bastian S. Solem, Aleksander Uthus og Vegard Øye.
 
@@ -140,11 +140,11 @@ Utgangsimpedansen finnes ved å sammenligne utgangsspenningen med last
 med utgangsspenningen uten last. Vi har følgende målinger for 40 mV
 inn på inngangen:
 
-Frekvens | Uten last       | Ved 1 Ω          | Tap
--------- | --------------- | ---------------- | -------------
-40 Hz    | $v_o = 833,40$ mV | $v_{oL} = 830,50$ mV | $\Delta v_o = 2,9$ mV
-1 kHz    | $v_o = 834,78$ mV | $v_{oL} = 832,08$ mV | $\Delta v_o = 2,7$ mV
-16 kHz   | $v_o = 833,90$ mV | $v_{oL} = 831,90$ mV | $\Delta v_o = 2,0$ mV
+| Frekvens | Uten last         | Ved 1 Ω              | Tap                   |
+| -------- | ---------------   | ----------------     | --------------------- |
+| 40 Hz    | $v_o = 833,40$ mV | $v_{oL} = 830,50$ mV | $\Delta v_o = 2,9$ mV |
+| 1 kHz    | $v_o = 834,78$ mV | $v_{oL} = 832,08$ mV | $\Delta v_o = 2,7$ mV |
+| 16 kHz   | $v_o = 833,90$ mV | $v_{oL} = 831,90$ mV | $\Delta v_o = 2,0$ mV |
 
 Gjennomsnittlig verdi for utgangsspenning uten last blir
 $v_o = 834,03$ mV, for utgangsspenning med last $v_{oL} = 831,49$ mV
@@ -153,12 +153,12 @@ og for tap $\Delta v_o = 2,5$ mV.
 For å finne utgangsimpedansen, la oss betrakte en skjematisk
 fremstilling av forsterkeren uten last:
 
-![](fig/uimp1.png)
+![](fig/uimp1.svg){width=435}
 
 Ettersom det ikke går noen strøm i forsterkeren, er spenningsfallet over
 utgangsimpedansen, $R_o$, lik null, og vi har $v_o = Av_i$. Med last:
 
-![](fig/uimp2.png)
+![](fig/uimp2.svg){width=362}
 
 Her har vi følgende spenningsdeling over $R_o$ og $R_L$:
 
@@ -224,7 +224,7 @@ $$K = \sqrt{\frac{\hat{U}_2^2 + \hat{U}_3^2 + \hat{U}_4^2 + \dotsb}{\hat{U}_1^2}
 
 Vi målte klirr ved å koble opp og måle som vist på figuren:
 
-![](fig/klirr.png)
+![](fig/klirr.png){width=566}
 
 Vi målte en klirrfaktor på 0,015 % ved 1 W og 1 kHz.
 
@@ -273,7 +273,7 @@ hvor vi ser bort fra akustikk i vegger.
 Kretsskjema {#kretsskjema}
 ===========
 
-> ![](fig/kretsskjema.png)
+> ![](fig/kretsskjema.svg){width=847}
 >
 > Kretsskjema fra Multisim. For det opprinnelige kretsskjemaet til Rod
 > Elliott, se [kretsanalysen](#analyse). For et modifisert skjema som
@@ -318,8 +318,8 @@ $i_E = i_B + i_C$.) Transistorene symboliseres med en pil på
 emitterutgangen som indikerer strømretningen og dermed også
 transistortypen.
 
-> ![](fig/npn.png)
-> ![](fig/pnp.png)
+> ![](fig/npn.svg){width=206}
+> ![](fig/pnp.svg){width=205}
 >
 > NPN- og PNP-transistorer i det aktive området.
 
@@ -405,8 +405,8 @@ $\pi$-modellen* og *T-modellen*. Disse modellene inneholder en styrt
 strømkilde som tilsvarer strømforsterkningen ($\beta$), samt en
 inngangsmotstand enten på basen ($r_\pi$) eller emitteren ($r_e$).
 
-> ![](fig/hybridpimodell.png)
-> ![](fig/tmodell.png)
+> ![](fig/hybridpimodell.svg){width=350}
+> ![](fig/tmodell.svg){width=134}
 >
 > Forenklet hybrid $\pi$-modell og T-modell (NPN-transistor).
 
@@ -494,7 +494,7 @@ forsterkningen *mindre*. Differensialforsterkeren sammenligner det
 gir utgangstransistorene det signalet de trenger for å *summa
 summarum* produsere en nær lineær forsterkning.
 
-![](fig/flyt.png)
+![](fig/flyt.svg){width=599}
 
 For å finne forsterkningen med tilbakekobling må vi først finne
 forsterkningen *uten* tilbakekobling, dvs. råforsterkningen. Det betyr
@@ -512,7 +512,7 @@ f.eks. 0,8, som effektivt vil *forminske* signalet snarere enn
 forsterke det i den ordinære betydningen, betraktes altså også som en
 «forsterkning».
 
-> ![](fig/p3a.png) {#elliot}
+> ![](fig/p3a.png){#elliot}
 >
 > Det opprinnelige kretsskjemaet for forsterken, etter Rod Elliott.
 > Komponenter markert med $*$ er utelatt fra kretskortet.
@@ -548,7 +548,7 @@ kollektorstrømmen $i_{c5}$, mens basestrømmen til $Q_7$ kaller vi
 $i_{b7}$, osv. Dette navngivningssystemet følger vi konsekvent i hele
 analysen for å skille kretsens mange størrelser fra hverandre.
 
-![](fig/sziklai.png)
+![](fig/sziklai.png){width=397}
 
 Vi tar utgangspunkt i $i_{b5}$, som vi betrakter som trinnets
 inngangsstrøm -- og basespenningen til $Q_5$, $v_{b5}$, er tilsvarende
@@ -662,7 +662,7 @@ kollektoren til $Q_4$ koblet til en parallellkobling av $Q_5$, $Q_6$
 og *bootstrap*-motstanden $R_9$. Vi ser bort fra kondensatoren $C_4$,
 som er en koblingskondensator som fjerner «parasitt»-oscillasjoner.
 
-![](fig/driver.png)
+![](fig/driver.png){width=376}
 
 Når vi skal finne utgangslasten til klasse A-driveren, er
 inngangsimpedansen til $Q_5$ (så vel som $Q_6$) gitt ved $R_{iu}$.
@@ -674,7 +674,7 @@ Spenningsfallet over motstanden er differansen mellom disse to
 potensialene, og vi får at $v_{R_9} = v_{b5} - v_o = v_{b5} -
 A_uv_{b5}$.
 
-> ![](fig/bootstrap.png)
+> ![](fig/bootstrap.svg){width=257}
 >
 > Skjematisk fremstilling av bootstrap-koblingen.
 
@@ -727,8 +727,8 @@ $$\begin{equation}\label{eq:aa}
 
 ### Differensialforsterkeren
 
-> ![](fig/diff1.png)
-> ![](fig/diff2.png)
+> ![](fig/diff1.svg){width=190}
+> ![](fig/diff2.svg){width=189}
 >
 > Differensialforsterkeren konseptualisert som en operasjonsforsterker.
 >
@@ -756,7 +756,7 @@ så utgangsspenningen kan sies å utgjøres av spenningspotensialet til
 kollektoren til $Q_1$ alene.
 
 ![](fig/p3a-f4.png)
-![](fig/ltp.png)
+![](fig/ltp.svg){width=172}
 
 Fordi emitterne er koblet sammen og $Q_3$ faller bort, går den samme
 signalstrømmen gjennom emittermotstandene til $Q_1$ og $Q_2$, som er
@@ -789,7 +789,7 @@ $\pi$-modell, slik at vi får basemotstanden $r_{\pi4}$ i parallell med
 $R_6$.
 
 ![](fig/p3a-f5.png)
-![](fig/q4.png)
+![](fig/q4.svg){width=221}
 
 Skjemaet viser at vi også får kondensatoren $C_4$ i parallell med
 $r_{\pi4}$. Men vi ser bort fra $C_4$ og betrakter parallellkoblingen
@@ -1061,7 +1061,7 @@ videre gjennom en likeretterbro. Der foregår omformingen fra AC til
 DC. Til slutt har vi fire 10 mF glattekondensatorer som reduserer
 rippelspenningen.
 
-![](fig/stromf.png)
+![](fig/stromf.svg){width=572}
 
 For å oppnå en effekt på 2 × 60 W i 8 Ω trenger vi en
 spenningsforsyning på
@@ -1131,7 +1131,7 @@ Konstruksjon
 Kabinettet
 ----------
 
-> ![](fig/topp.jpg)
+> ![](fig/topp.svg){width=305}
 > ![](fig/bunn.jpg)
 >
 > Topp. Bunn.
@@ -1141,7 +1141,7 @@ Kabinettet
 >
 > Front. Bak.
 >
-> ![](fig/side.jpg)
+> ![](fig/side.svg){width=305}
 > ![](fig/perspektiv.jpg)
 >
 > Side. Perspektiv.
@@ -1158,7 +1158,7 @@ kabinettet skrus sammen igjen.
 Innsiden
 --------
 
-![](fig/innside.jpg)
+![](fig/innside.svg){width=639}
 
 *1.* Strøminngang. *2.* Hovedsikring. *3.* Transformator. *4.*
 Jordingspunkt (stjernejord). *5.* Brolikeretter. *6.* Glattefilter
@@ -1212,7 +1212,7 @@ til kabinettet med en holder fra oversiden og en skrue fra undersiden.
 
 ### Lysdiode
 
-> ![](fig/redled.png)
+> ![](fig/redled.svg){width=401}
 >
 > Dioden er koblet i serie med tre motstander for å gi riktig strøm.
 
@@ -1274,7 +1274,7 @@ mellom dem som bestemmes ved å skru på volumkontrollen. Hvert
 potensiometer har tre terminaler: utgangssignalet tas ut fra den
 midterste, mens de to andre kobles til inngangssignalet og jord.
 
-> ![](fig/potmeter.png)
+> ![](fig/potmeter.svg){width=447}
 >
 > Et potensiometer (a) kan betraktes som en enkel spenningsdeler over
 > to motstander (b). Når volumet er null, er $v_o$ lik jord (c). Når
@@ -1302,7 +1302,7 @@ kabinettet eller utgangstransistorene fra kjøleribben.**
 Kretskort
 =========
 
-> ![](fig/kort.jpg)
+> ![](fig/kort.svg){width=480}
 >
 > Hvert kretskort er festet til kabinettet med to skruer, her markert
 > med piler.
@@ -1362,7 +1362,7 @@ Modifikasjoner {#modifikasjoner}
 
 Kretsen er noe modifisert for å fungere optimalt.
 
-> ![](fig/kretsmod.png) {#mod}
+> ![](fig/kretsmod.svg){#mod width=847}
 >
 > Modifisert kretsskjema.
 

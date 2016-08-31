@@ -30,3 +30,11 @@ For å konvertere en bestemt side:
     $ pdf2svg diagrammer.pdf diagram.svg 20
 
 `pdf2svg` har dessverre ingen valg for beskjæring. For dette kan man benytte [PDF Scissors](https://sites.google.com/site/pdfscissors/) (grafisk) eller [PDFtk](https://www.pdflabs.com/tools/pdftk-the-pdf-toolkit/) (kommandolinje).
+
+* * * * *
+
+Det ser ut til at `pdf2svg` har problemer med å konvertere visse PDF-er. Et alternativ er å bruke [Inkscape](http://inkscape.org/), som kan [kjøres fra terminalen](http://stackoverflow.com/questions/10288065/convert-pdf-to-clean-svg#answer-10290006):
+
+    inkscape --without-gui --file=diagram.pdf --export-plain-svg=diagram.svg
+
+Dette er visstnok den foretrukne konverteringsmetoden til [Wikipedia](https://en.wikipedia.org/wiki/Wikipedia:Graphics_Lab/Resources/PDF_conversion_to_SVG#Conversion_with_Inkscape). (Hvis Inkscape ikke gjenkjennes i terminalen, legg til `C:\Program Files\Inkscape` i miljøvariabelen `PATH`.)

@@ -4,7 +4,7 @@
 <title>Dia p&#229; OS X</title>
 <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
 <meta content="Noen notater om bruk av grafikkprogrammet Dia p&#229; OS X." name="description">
-<meta content="eee1d49c8143051d602ac28e89bbdb08" name="md5">
+<meta content="31de8da6e736de800b8e1d1b96699cbe" name="md5">
 <meta content="text/css" http-equiv="Content-Style-Type">
 <meta content="width=device-width, initial-scale=1" name="viewport">
 <link href="../../../favicon.ico" rel="icon" type="image/x-icon">
@@ -102,6 +102,16 @@ TeX: { equationNumbers: { autoNumber: "all" } }
 </pre>
 
 <p><code>pdf2svg</code> har dessverre ingen valg for beskj&#230;ring. For dette kan man benytte <a href="https://sites.google.com/site/pdfscissors/"><abbr class="acronym" title="Portable Document Format"><span class="caps">PDF</span></abbr> Scissors</a> (grafisk) eller <a href="https://www.pdflabs.com/tools/pdftk-the-pdf-toolkit/"><abbr title="PDF Toolkit">PDFtk</abbr></a>&#160;(kommandolinje).</p>
+
+<hr>
+
+<p>Det ser ut til at <code>pdf2svg</code> har problemer med &#229; konvertere visse <abbr class="acronym" title="Portable Document Format"><span class="caps">PDF</span></abbr>-er. Et alternativ er &#229; bruke <a href="http://inkscape.org/">Inkscape</a>, som kan <a href="http://stackoverflow.com/questions/10288065/convert-pdf-to-clean-svg#answer-10290006">kj&#248;res fra terminalen</a>:</p>
+
+<pre>
+<code>inkscape --without-gui --file=diagram.pdf --export-plain-svg=diagram.svg</code>
+</pre>
+
+<p>Dette er visstnok den foretrukne konverteringsmetoden til <a href="https://en.wikipedia.org/wiki/Wikipedia:Graphics_Lab/Resources/PDF_conversion_to_SVG#Conversion_with_Inkscape">Wikipedia</a>. (Hvis Inkscape ikke gjenkjennes i terminalen, legg til <code>C:\Program Files\Inkscape</code> i milj&#248;variabelen <code>PATH</code>.)</p>
 </article>
 </div>
 </body>
