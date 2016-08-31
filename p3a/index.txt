@@ -1581,8 +1581,8 @@ Temperaturutviklingen i transistorene ble lavere ettersom de dyre
 transistorene har en større flate og dermed overfører temperaturen
 bedre til kjøleribben.
 
-> ![](fig/bd91x.png)
-> ![](fig/mjl3.png)
+> ![](fig/bd91x.svg)
+> ![](fig/mjl3.svg)
 >
 > Kvalitet koster: BD911 (venstre) kontra MJL3281A (høyre).
 

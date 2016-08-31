@@ -383,7 +383,7 @@ nullnivået med jevne mellomrom.
 > | 3                  | 13,05               | 31,05          | 66         |
 > | 2                  | 8,70                | 26,70          | 87         |
 
-> ![](fig/sensormalinger1.png) {#fig-litenvar}
+> ![](fig/sensormalinger1.svg){#fig-litenvar width=555}
 >
 > **Figur 2.5:** Liten sensor, varierende vekt ([tabell 2.2](#tab-litenvar))
 
@@ -486,21 +486,21 @@ kontaktpunktet har en unøyaktighet på $\pm 1$ mm når vektene tas av.
 > | 1,94      | 65,85    | 11                 | 236,59          | 10,82           |
 > | 2,08      | 70,20    | 12                 | 253,66          | 9,54            |
 
-> ![](fig/sensormalinger2.png) {#fig-litenokavspenning}
+> ![](fig/sensormalinger2.svg){#fig-litenokavspenning width=548}
 >
 > (a) Spenning mot trykk
 >
-> ![](fig/sensormalinger3.png) {#fig-litenokavmotstand}
+> ![](fig/sensormalinger3.svg){#fig-litenokavmotstand width=548}
 >
 > (b) Motstand mot trykk, utregnet fra (a)
 >
 > **Figur 2.8:** Liten sensor, økende vekt, vektene av mellom hver måling ([tabell 2.3](#tab-litenokav)) {#fig-litenokav}
 
-> ![](fig/sensormalinger4.png) {#fig-storokavspenning}
+> ![](fig/sensormalinger4.svg){#fig-storokavspenning width=356}
 >
 > (a) Spenning mot trykk
 >
-> ![](fig/sensormalinger5.png) {#fig-storokavmotstand}
+> ![](fig/sensormalinger5.svg){#fig-storokavmotstand width=544}
 >
 > (b) Motstand mot trykk, utregnet fra (a)
 >
@@ -561,11 +561,11 @@ hendelsesaktivering.
 > | 2,23      | 91,95    | 17                 | 271,95          | 8,35            |
 > | 2,25      | 96,30    | 18                 | 274,39          | 8,20            |
 
-> ![](fig/sensormalinger6.png) {#fig-litenokspenning}
+> ![](fig/sensormalinger6.svg){#fig-litenokspenning width=547}
 >
 > (a) Spenning mot trykk
 >
-> ![](fig/sensormalinger7.png) {#fig-litenokmotstand}
+> ![](fig/sensormalinger7.svg){#fig-litenokmotstand width=547}
 >
 > (b) Motstand mot trykk, utregnet fra (a)
 >
@@ -596,11 +596,11 @@ hendelsesaktivering.
 > | 2,39      | 91,95    | 17                 | 291,46          | 7,24            |
 > | 2,42      | 96,30    | 18                 | 295,12          | 7,05            |
 
-> ![](fig/sensormalinger8.png) {#fig-storokspenning}
+> ![](fig/sensormalinger8.svg){#fig-storokspenning width=545}
 >
 > (a) Spenning mot trykk
 >
-> ![](fig/sensormalinger9.png) {#fig-storokmotstand}
+> ![](fig/sensormalinger9.svg){#fig-storokmotstand width=540}
 >
 > (b) Motstand mot trykk, utregnet fra (a)
 >
