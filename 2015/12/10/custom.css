@@ -87,6 +87,10 @@ header {
     position: relative;
 }
 
+.collapse-button[aria-expanded="false"] {
+    border: none;
+}
+
 #logo {
     position: absolute;
     top: 5em;
