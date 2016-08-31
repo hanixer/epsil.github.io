@@ -4,7 +4,7 @@
 <title>Lydforsterker: Project 3A</title>
 <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
 <meta content="Rapport for konstruksjon av den 60 W klasse AB-forsterkeren Project 3A." name="description">
-<meta content="3e25900a6de940869d43594ebf982984" name="md5">
+<meta content="5eeadecb65409c1171f5e13fdda09b12" name="md5">
 <meta content="text/css" http-equiv="Content-Style-Type">
 <meta content="width=device-width, initial-scale=1" name="viewport">
 <link href="../favicon.ico" rel="icon" type="image/x-icon">
@@ -675,7 +675,7 @@ TeX: { equationNumbers: { autoNumber: "all" } }
 
 <p>For &#229; analysere Sziklai-koblingen av \(Q_5\) og \(Q_7\) bytter vi ut begge transistorene med forenklede hybride \(\pi\)-modeller. Vi f&#229;r dermed to basemotstander, \(r_{\pi5}\) og \(r_{\pi7}\), og to styrte str&#248;mkilder med forsterkningsgrad \(\beta_5\) og \(\beta_7\), henholdsvis. Basestr&#248;mmen til \(Q_5\) kaller vi \(i_{b5}\), emitterstr&#248;mmen \(i_{e5}\) og kollektorstr&#248;mmen \(i_{c5}\), mens basestr&#248;mmen til \(Q_7\) kaller vi \(i_{b7}\), <abbr title="og s&#229; videre">osv.</abbr> Dette navngivningssystemet f&#248;lger vi konsekvent i hele analysen for &#229; skille kretsens mange st&#248;rrelser fra hverandre.</p>
 
-<p class="center"><img alt="" src="fig/sziklai.png" width="397">
+<p class="center"><img alt="" src="fig/sziklai.svg" width="397">
 </p>
 
 <p>Vi tar utgangspunkt i \(i_{b5}\), som vi betrakter som trinnets inngangsstr&#248;m &#8211; og basespenningen til \(Q_5\), \(v_{b5}\), er tilsvarende inngangsspenningen. Trinnets utgangsspenning er spenningen over \(R_L\), \(v_o\), som skapes av utgangsstr&#248;mmen \(i_o\). Vi vil i analysen anta at den samme str&#248;mmen g&#229;r gjennom \(R_{13}\) og \(R_L\): Str&#248;mmen fra \(R_{13}\) g&#229;r riktignok ogs&#229; til \(R_5\), \(R_{14}\) og \(R_{15}\), men \(R_5\) ses bort fra ettersom vi beregner forsterkningen <em>uten tilbakekobling</em>, \(R_{15}\) er koblet i serie med kondensatoren \(C_7\), som har veldig lav kapasitans og dermed h&#248;y reaktans for alle frekvenser unntatt de aller h&#248;yeste, og \(R_{14}\) g&#229;r til utgangstransistoren \(Q_6\), som under analysens antagelser ikke er aktiv n&#229;r \(Q_7\) er aktiv og forsterkeren fungerer som en klasse B-forsterker.</p>
@@ -725,7 +725,7 @@ TeX: { equationNumbers: { autoNumber: "all" } }
 
 <p>\(Q_4\) er koblet til en <em>\(v_{BE}\)-multiplikator</em> som s&#248;rger for en konstant <abbr class="acronym" title="Direct Current">DC</abbr>-spenning mellom \(Q_5\) og \(Q_6\), og som utgj&#248;res av transistoren \(Q_9\), motstanden \(R_{16}\) og potensiometeret \(VR_1\). Multiplikatoren kan erstattes med en konstant spenningskilde, som i sm&#229;signalskjemaet erstattes med en kortslutning. S&#229;ledes f&#229;r vi kollektoren til \(Q_4\) koblet til en parallellkobling av \(Q_5\), \(Q_6\) og <em>bootstrap</em>-motstanden \(R_9\). Vi ser bort fra kondensatoren \(C_4\), som er en koblingskondensator som fjerner &#171;parasitt&#187;-oscillasjoner.</p>
 
-<p class="center"><img alt="" src="fig/driver.png" width="376">
+<p class="center"><img alt="" src="fig/driver.svg" width="376">
 </p>
 
 <p>N&#229;r vi skal finne utgangslasten til klasse A-driveren, er inngangsimpedansen til \(Q_5\) (s&#229; vel som \(Q_6\)) gitt ved \(R_{iu}\). Spenningsfallet over bootstrap-motstanden \(R_9\) avhenger imidlertid av forsterkningen til utgangstransistorene, \(A_u\): Spenningspotensialet i den <em>&#248;vre</em> terminalen til \(R_9\) er \(v_{b5}\), mens spenningspotensialet i den <em>nedre</em> terminalen er \(v_o\), som er gitt ved \(v_o = A_uv_{b5}\). Spenningsfallet over motstanden er differansen mellom disse to potensialene, og vi f&#229;r at \(v_{R_9} = v_{b5} - v_o = v_{b5} - A_uv_{b5}\).</p>

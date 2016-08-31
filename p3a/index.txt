@@ -548,7 +548,7 @@ kollektorstrømmen $i_{c5}$, mens basestrømmen til $Q_7$ kaller vi
 $i_{b7}$, osv. Dette navngivningssystemet følger vi konsekvent i hele
 analysen for å skille kretsens mange størrelser fra hverandre.
 
-![](fig/sziklai.png){width=397}
+![](fig/sziklai.svg){width=397}
 
 Vi tar utgangspunkt i $i_{b5}$, som vi betrakter som trinnets
 inngangsstrøm -- og basespenningen til $Q_5$, $v_{b5}$, er tilsvarende
@@ -662,7 +662,7 @@ kollektoren til $Q_4$ koblet til en parallellkobling av $Q_5$, $Q_6$
 og *bootstrap*-motstanden $R_9$. Vi ser bort fra kondensatoren $C_4$,
 som er en koblingskondensator som fjerner «parasitt»-oscillasjoner.
 
-![](fig/driver.png){width=376}
+![](fig/driver.svg){width=376}
 
 Når vi skal finne utgangslasten til klasse A-driveren, er
 inngangsimpedansen til $Q_5$ (så vel som $Q_6$) gitt ved $R_{iu}$.
