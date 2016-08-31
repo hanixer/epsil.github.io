@@ -44,9 +44,9 @@ h6 code, h6 kbd, h6 samp, h6 tt {
     padding: 0;
 }
 
-b, strong, h1 .fa, h2 .fa, h3 .fa, h4 .fa, h5 .fa, h6 .fa {
-    font-size: 0.85em;
-}
+/* b, strong, h1 .fa, h2 .fa, h3 .fa, h4 .fa, h5 .fa, h6 .fa { */
+/*     font-size: 0.85em; */
+/* } */
 
 h1 code, h1 kbd, h1 samp, h1 tt,
 h2 code, h2 kbd, h2 samp, h2 tt,
@@ -112,13 +112,15 @@ code, kbd, samp, tt, pre {
     -moz-osx-font-smoothing: auto;
 }
 
-h1, h2, h3, h4, h5, h6, b, strong, time, nav, kbd {
-    font-family: "Source Sans Pro", "Segoe UI", Seravek, "League Spartan", "Open Sans", "Work Sans", Avenir, "Avenir Next", Optima, "Optima Web", "Linux Biolinum", Vegur, Karla, Candara, Futura, "Gill Sans", Calibri, Corbel, Helvetica, Arial, sans-serif !important;
-}
+/* h1, h2, h3, h4, h5, h6, b, strong, time, nav, kbd { */
+/*     font-family: "Source Sans Pro", "Segoe UI", Seravek, "League Spartan", "Open Sans", "Work Sans", Avenir, "Avenir Next", Optima, "Optima Web", "Linux Biolinum", Vegur, Karla, Candara, Futura, "Gill Sans", Calibri, Corbel, Helvetica, Arial, sans-serif !important; */
+/* } */
 
 h1, h2, h3, h4, h5, h6 {
     color: #23527c;
-    font-weight: bold;
+    font-style: italic;
+    /* font-weight: bold; */
+    font-weight: normal;
     margin: 1em 0 15px;
 }
 
@@ -130,6 +132,7 @@ h1 a:hover, h2 a:hover, h3 a:hover, h4 a:hover, h5 a:hover, h6 a:hover {
 
 h1 {
     font-size: 1.8em;
+    font-style: normal;
     padding-bottom: 0.3em;
 }
 
@@ -138,7 +141,7 @@ h2 {
 }
 
 h3 {
-    color: rgba(0, 0, 0, 0.44);
+    /* color: rgba(0, 0, 0, 0.44); */
     font-size: 1.2em;
     font-weight: normal;
 }
@@ -148,7 +151,7 @@ h4 {
 }
 
 h5 {
-    color: rgba(0, 0, 0, 0.44);
+    /* color: rgba(0, 0, 0, 0.44); */
     font-size: 1em;
     font-weight: normal;
 }

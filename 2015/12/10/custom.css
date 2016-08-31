@@ -29,6 +29,7 @@ h1 a, h2 a, h3 a, h4 a, h5 a, h6 a {
 h2 {
     border-bottom: 1px solid #cf022b;
     color: inherit;
+    font-style: normal;
     padding-bottom: 0.5em;
 }
 
