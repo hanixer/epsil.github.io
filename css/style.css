@@ -384,14 +384,14 @@ header .header-anchor, header .collapse-button {
     display: none;
 }
 
-@media (max-width: 767px) {
+@media (max-width: 768px) {
     body {
         font-size: 130% !important;
         line-height: 1.25;
     }
 
     body > .container {
-        max-width: 500px;
+        max-width: 600px;
     }
 
     .navbar-left {
