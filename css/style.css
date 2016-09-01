@@ -391,7 +391,7 @@ header .header-anchor, header .collapse-button {
     }
 
     body > .container {
-        max-width: 600px;
+        max-width: 500px;
     }
 
     .navbar-left {
