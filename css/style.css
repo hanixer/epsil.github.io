@@ -48,6 +48,7 @@ h6 code, h6 kbd, h6 samp, h6 tt {
 /*     font-size: 0.85em; */
 /* } */
 
+/*
 h1 code, h1 kbd, h1 samp, h1 tt,
 h2 code, h2 kbd, h2 samp, h2 tt,
 h3 code, h3 kbd, h3 samp, h3 tt,
@@ -56,12 +57,14 @@ h5 code, h5 kbd, h5 samp, h5 tt,
 h6 code, h6 kbd, h6 samp, h6 tt {
     font-size: 1em !important;
 }
+*/
 
-
+/*
 b code, b kbd, b samp, b tt,
 strong code, strong kbd, strong samp, strong tt {
     font-size: 0.8em !important;
 }
+*/
 
 blockquote {
     border-left: 5px solid rgba(0, 0, 0, 0.1);
@@ -221,7 +224,7 @@ kbd {
     color: #555;
     display: inline-block;
     font-family: inherit !important;
-    font-size: 0.5em !important;
+    /* font-size: 0.5em !important; */
     font-variant-numeric: normal;
     line-height: 1em;
     padding: 3px 5px;
