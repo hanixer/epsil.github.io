@@ -3,7 +3,6 @@ var $ = require('jquery')
 require('../lib/collapse')
 require('../lib/social')
 require('../lib/figure')
-require('../lib/hanging')
 require('../lib/punctuation')
 require('../lib/section')
 require('../lib/toc')
@@ -118,22 +117,6 @@ describe('punctuation.js', function () {
         '<div>' +
         '<p>Is that so\u2026?</p>' +
         '</div>')
-    })
-  })
-})
-
-describe('hanging.js', function () {
-  describe('addHangingPunctuation()', function () {
-    it('should detect opening double quotation marks', function () {
-      var div = $('<div><p>\u201cTsk, tsk,\u201d said the Hatter, \u201cwhat a mess you\u2019ve made.\u201d</p></div>')
-      div.addHangingPunctuation().prop('outerHTML').should.equal(
-        '<div><p class="startsWithDoubleQuote">\u201cTsk, tsk,\u201d said the Hatter, \u201cwhat a mess you\u2019ve made.\u201d</p></div>')
-    })
-
-    it('should detect opening single quotation marks', function () {
-      var div = $('<div><p>\u2018Tsk, tsk,\u2019 said the Hatter, \u2018what a mess you\u2019ve made.\u2019</p></div>')
-      div.addHangingPunctuation().prop('outerHTML').should.equal(
-        '<div><p class="startsWithSingleQuote">\u2018Tsk, tsk,\u2019 said the Hatter, \u2018what a mess you\u2019ve made.\u2019</p></div>')
     })
   })
 })
