@@ -12,10 +12,9 @@ hr:before {
 hr.footnotes-sep {
     border: none;
     color: #23527c;
-    font-family: "Segoe UI", Seravek, "Source Sans Pro", "League Spartan", "Open Sans", "Work Sans", Avenir, "Avenir Next", Optima, "Optima Web", "Linux Biolinum", Vegur, Karla, Candara, Futura, "Gill Sans", Calibri, Corbel, Helvetica, Arial, sans-serif !important;
-    font-size: 1.8em;
-    font-weight: bold;
-    margin: 1.7em 0 1.3em 0;
+    font-family: "Crimson Text", Crimson, "Minion Pro", Minion, "Linux Libertine", "Hoefler Text", Georgia, Charter, "PT Serif", "Iowan Old Style", Iowan, "Iowan Web", Cambria, Constantia, Utopia, Marion, Cochin, "Palatino Linotype", Palatino, Baskerville, serif !important;
+    font-size: 2.1em;
+    margin: 1.5em 0 1em 0;
     padding: 0;
     text-align: left;
 }
