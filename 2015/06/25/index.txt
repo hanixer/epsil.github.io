@@ -3,6 +3,9 @@ date: 2015-06-25
 description: Noen notater om bruk av grafikkprogrammet [Dia](http://dia-installer.de/) på OS X.
 ---
 
+Hvis Dia krasjer
+----------------
+
 Hvis [Dia](http://dia-installer.de/) krasjer på OS X Yosemite pga. en GTK-feil, retter følgende [løsning](http://navkirats.blogspot.no/2014/10/dia-diagram-mac-osx-yosemite-fix-i-use.html) opp problemet:
 
 1.  Åpne filen `/Applications/Dia.app/Contents/Resources/bin/dia` i en editor.
@@ -11,7 +14,8 @@ Hvis [Dia](http://dia-installer.de/) krasjer på OS X Yosemite pga. en GTK-feil,
 
 (Hvis det ovenstående ikke fungerer, kan man prøve å legge til `export DISPLAY=:0` i `~/.bash_profile`.)
 
-* * * * *
+Eksportere til PDF
+------------------
 
 For å lage PDF, er det best å eksportere til EPS (med Pango-skrifter) og deretter [konvertere til PDF](http://www.dark.ca/2009/07/16/getting-dia-to-give-you-a-pdf/):
 
@@ -19,7 +23,8 @@ For å lage PDF, er det best å eksportere til EPS (med Pango-skrifter) og deret
 
 `epstopdf` er inkludert i TeX Live ([MacTeX](http://tug.org/mactex/)).
 
-* * * * *
+Konvertere PDF til SVG
+----------------------
 
 For å konvertere til SVG, fungerer det bedre å gå [omveien om PDF](http://superuser.com/questions/198460/converting-from-eps-to-svg-format#answer-542987) enn å eksportere direkte eller konvertere fra EPS. PDF kan konverteres til SVG med [`pdf2svg`](http://www.cityinthesky.co.uk/opensource/pdf2svg/) (kan installeres med `$ brew install pdf2svg`):
 
