@@ -30,6 +30,6 @@ Unity
 
 | Snarvei                                                                         | Funksjon |
 | ------------------------------------------------------------------------------- | -------- |
-| <kbd>Ctrl</kbd> + <kbd>Alt</kbd> + <kbd>M</kbd>, <kbd>Ctrl</kbd> + <kbd>H</kbd> | Unity API Reference |
+| <kbd>Ctrl</kbd> + <kbd>Alt</kbd> + <kbd>M</kbd>, <kbd>Ctrl</kbd> + <kbd>H</kbd> | [Unity API Reference](https://unity3d.com/learn/tutorials/projects/roll-ball-tutorial/moving-player?playlist=17141) |
 
 Krever [Visual Studio 2015 Tools for Unity](https://visualstudiogallery.msdn.microsoft.com/8d26236e-4a64-4d64-8486-7df95156aba9).
