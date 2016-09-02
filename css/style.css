@@ -390,12 +390,30 @@ header h1 {
     padding: 0;
 }
 
-@media (max-width: 768px) {
-    body {
-        font-size: 130% !important;
-        line-height: 1.25;
-    }
+/*
+Bootstrap provides four classes (configurable with Less):
+-   xs (<768px): 0-767 pixels
+    -   "xxs" (<=480px): 0-480 pixels
+        -   max-width: 480px (or max-device-width: 480px)
+        -   iPhone (orientation: portrait)
+    -   481-767 pixels
+        -   Extra small devices
+        -   Phones
+        -   iPhone (orientation: landscape)
+-   sm (>=768px): 768-991 pixels
+    -   Small devices
+        -   Tablets
+        -   iPad (orientation: portrait)
+-   md (>=992px): 992-1199 pixels
+    -   Medium devices
+        -   Desktops
+        -   iPad (orientation: landscape)
+-   lg (>=1200px): 1200-oo pixels
+    -   Large devices
+        -   Large desktops
+*/
 
+@media (max-width: 768px) {
     body > .container {
         max-width: 600px;
     }
@@ -406,5 +424,12 @@ header h1 {
 
     .navbar-right {
         float: right;
+    }
+}
+
+@media (max-width: 480px) {
+    body {
+        font-size: 130% !important;
+        line-height: 1.25;
     }
 }
