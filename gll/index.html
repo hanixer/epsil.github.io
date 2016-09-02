@@ -4,7 +4,7 @@
 <title>General Parser Combinators in Racket</title>
 <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
 <meta content="How to implement a general parser combinator framework which handles left-recursive and ambiguous grammars." name="description">
-<meta content="1d43eb976951406e9f592b794095d518" name="md5">
+<meta content="16dbf7bfbc1372121375c2194dc71380" name="md5">
 <meta content="text/css" http-equiv="Content-Style-Type">
 <meta content="width=device-width, initial-scale=1" name="viewport">
 <link href="../favicon.ico" rel="icon" type="image/x-icon">
@@ -135,7 +135,7 @@ TeX: { equationNumbers: { autoNumber: "all" } }
 #&lt;stream&gt;</code>
 </pre>
 
-<p>The worst-case efficiency of the parser in this article is <em>O</em>(<em>n</em><sup>4</sup>), but with more efficient data structures, <em>O</em>(<em>n</em><sup>3</sup>) is achievable. Furthermore, by adorning the parsers with additional metadata, <span class="caps">LL</span>(1) grammars can be parsed in <em>O</em>(<em>n</em>) time. See the <a href="#further-reading" title="Further reading">references</a> for details on&#160;optimization.</p>
+<p>The worst-case efficiency of the parser in this article is <em>O</em>(<em>n</em><sup>4</sup>), but with more efficient data structures, <em>O</em>(<em>n</em><sup>3</sup>) is achievable. Furthermore, by adorning the parsers with additional metadata, <abbr class="acronym" title="Left-to-right Left-most derivation"><span class="caps">LL</span></abbr>(1) grammars can be parsed in <em>O</em>(<em>n</em>) time. See the <a href="#further-reading" title="Further reading">references</a> for details on&#160;optimization.</p>
 
 <p>The article is organized into several stages, leading up to a complete interpreter for arithmetic expressions. To get there, the parsers will be rewritten multiple&#160;times:</p>
 
@@ -1000,13 +1000,13 @@ factor -&gt; "(" expr ")"
 <p>For more information, follow the&#160;references:</p>
 
 <ul>
-<li id="abelson96-sicp"><a href="http://mitpress.mit.edu/sicp/full-text/book/book-Z-H-28.html#%25_sec_Temp_618"><em>Structure and Interpretation of Computer Programs</em></a> (<abbr class="acronym" title="HyperText Markup Language"><span class="caps">HTML</span></abbr>), second edition, Harold Abelson and Gerald Jay Sussman, The Massachusetts Institute of Technology, 1996. The example grammar is from section 4.3.2, &#8220;<a href="http://mitpress.mit.edu/sicp/full-text/book/book-Z-H-28.html#%25_sec_Temp_618">Examples of Nondeterministic Programs: Parsing natural language</a>&#8221;, while the memoization wrapper is outlined in exercise 3.27 from section 3.3.3, &#8220;<a href="http://mitpress.mit.edu/sicp/full-text/book/book-Z-H-22.html#%25_thm_3.27">Representing Tables</a>&#8221;. Note that an updated and <a href="http://sarabander.github.io/sicp/">unofficial <abbr class="acronym" title="HyperText Markup Language Version 5"><span class="caps">HTML5</span></abbr> version</a> of the book offers a vastly improved reading experience on modern&#160;devices.</li>
+<li id="abelson96-sicp"><a href="http://mitpress.mit.edu/sicp/full-text/book/book-Z-H-28.html#%25_sec_Temp_618"><em>Structure and Interpretation of Computer Programs</em></a> (<abbr class="acronym" title="HyperText Markup Language"><span class="caps">HTML</span></abbr>), second edition, Harold Abelson and Gerald Jay Sussman, The Massachusetts Institute of Technology, 1996. The example grammar is from section 4.3.2, &#8220;<a href="http://mitpress.mit.edu/sicp/full-text/book/book-Z-H-28.html#%25_sec_Temp_618">Examples of Nondeterministic Programs: Parsing natural language</a>&#8221;, while the memoization wrapper is outlined in exercise 3.27 from section 3.3.3, &#8220;<a href="http://mitpress.mit.edu/sicp/full-text/book/book-Z-H-22.html#%25_thm_3.27">Representing Tables</a>&#8221;. Note that an updated and <a href="http://sarabander.github.io/sicp/">unofficial <abbr class="acronym" title="HyperText Markup Language version 5"><span class="caps">HTML5</span></abbr> version</a> of the book offers a vastly improved reading experience on modern&#160;devices.</li>
 
 <li class="startsWithDoubleQuote" id="johnson95-memoization">&#8220;<a href="http://citeseerx.ist.psu.edu/viewdoc/summary?doi=10.1.1.14.3000">Memoization in Top-Down Parsing</a>&#8221; (<abbr class="acronym" title="Portable Document Format"><span class="caps">PDF</span></abbr>), Mark Johnson, Brown University, 1995. Published in <em>Computational Linguistics</em>, Volume 21, Number 3. Covers regular memoization, continuation-passing style, and memoization of continuation-passing style&#160;functions.</li>
 
 <li class="startsWithDoubleQuote" id="spiewak10-generalized">&#8220;<a href="http://www.cs.uwm.edu/~dspiewak/papers/generalized-parser-combinators.pdf">Generalized Parser Combinators</a>&#8221; (<abbr class="acronym" title="Portable Document Format"><span class="caps">PDF</span></abbr>), Daniel Spiewak, University of Wisconsin, 2010. Implemented as the <a href="https://github.com/djspiewak/gll-combinators">gll-combinators</a> Scala library, using continuation-passing style and trampolined dispatch. Offers a very accessible introduction to the <abbr class="acronym" title="Generalized LL"><span class="caps">GLL</span></abbr>&#160;algorithm.</li>
 
-<li id="grune08-parsing"><a href="http://dickgrune.com/Books/PTAPG_2nd_Edition/"><em>Parsing Techniques: A Practical Guide</em></a>, second edition, Dick Grune and Ceriel <span class="caps">J. H.</span> Jacobs, Springer, 2008. Chapter 11 contains a richly illustrated description of generalized <span class="caps">LL</span>&#160;parsing.</li>
+<li id="grune08-parsing"><a href="http://dickgrune.com/Books/PTAPG_2nd_Edition/"><em>Parsing Techniques: A Practical Guide</em></a>, second edition, Dick Grune and Ceriel <span class="caps">J. H.</span> Jacobs, Springer, 2008. Chapter 11 contains a richly illustrated description of generalized <abbr class="acronym" title="Left-to-right Left-most derivation"><span class="caps">LL</span></abbr>&#160;parsing.</li>
 
 <li class="startsWithDoubleQuote" id="johnstone09-gll">&#8220;<a href="http://ldta.info/2009/ldta2009proceedings.pdf"><abbr class="acronym" title="Generalized LL"><span class="caps">GLL</span></abbr> Parsing</a>&#8221; (<abbr class="acronym" title="Portable Document Format"><span class="caps">PDF</span></abbr>), Adrian Johnstone and Elizabeth Scott, University of London, 2009. Published in <em>Proceedings of <abbr class="acronym" title="Language Descriptions, Tools and Applications"><span class="caps">LDTA</span></abbr></em>. Explains the <abbr class="acronym" title="Generalized LL"><span class="caps">GLL</span></abbr> algorithm in abstract&#160;terms.</li>
 
@@ -1021,6 +1021,7 @@ factor -&gt; "(" expr ")"
 <p><i class="fa fa-github"></i> <a href="https://github.com/epsil">Vegard &#216;ye</a> |&#160;2012</p>
 </div>
 </section>
+<!-- Abbreviations -->
 </article>
 </div>
 </body>

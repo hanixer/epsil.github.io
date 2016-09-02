@@ -901,3 +901,16 @@ Comments? Suggestions? Post them at the [bug tracker](https://github.com/epsil/g
 [![](shield.svg)](LICENSE)
 
 <i class="fa fa-github"></i> [Vegard Øye](https://github.com/epsil) | 2012
+
+<!-- Abbreviations -->
+
+*[MIT]: Massachusetts Institute of Technology
+*[LL]: Left-to-right Left-most derivation
+*[SICP]: Structure and Interpretation of Computer Programs
+*[CPS]: Continuation-Passing Style
+*[DSL]: Domain-Specific Language
+*[HTML]: HyperText Markup Language
+*[HTML5]: HyperText Markup Language version 5
+*[PDF]: Portable Document Format
+*[GLL]: Generalized LL
+*[LDTA]: Language Descriptions, Tools and Applications
