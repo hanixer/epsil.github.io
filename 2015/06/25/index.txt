@@ -26,6 +26,8 @@ For å lage PDF, er det best å eksportere til EPS (med Pango-skrifter) og deret
 Konvertere PDF til SVG
 ----------------------
 
+### Med `pdf2svg`
+
 For å konvertere til SVG, fungerer det bedre å gå [omveien om PDF](http://superuser.com/questions/198460/converting-from-eps-to-svg-format#answer-542987) enn å eksportere direkte eller konvertere fra EPS. PDF kan konverteres til SVG med [`pdf2svg`](http://www.cityinthesky.co.uk/opensource/pdf2svg/) (kan installeres med `$ brew install pdf2svg`):
 
     $ pdf2svg diagram.pdf diagram.svg
@@ -36,7 +38,7 @@ For å konvertere en bestemt side:
 
 `pdf2svg` har dessverre ingen valg for beskjæring. For dette kan man benytte [PDF Scissors](https://sites.google.com/site/pdfscissors/) (grafisk) eller [PDFtk](https://www.pdflabs.com/tools/pdftk-the-pdf-toolkit/) (kommandolinje).
 
-* * * * *
+### Med Inkscape
 
 Det ser ut til at `pdf2svg` har problemer med å konvertere enkelte PDF-er. Et alternativ er å bruke [Inkscape](http://inkscape.org/), som kan [kjøres fra terminalen](http://stackoverflow.com/questions/10288065/convert-pdf-to-clean-svg#answer-10290006):
 
