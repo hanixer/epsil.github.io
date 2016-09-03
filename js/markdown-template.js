@@ -1138,6 +1138,7 @@ templates.document = Handlebars.compile(
   '<title>{{text title}}</title>\n' +
   '<meta content="text/html; charset=utf-8" http-equiv="Content-Type">\n' +
   '{{#if author}}<meta content="{{text author}}" name="author">\n{{/if}}' +
+  '{{#if date}}<meta content="{{dateFormat date}}" name="date">\n{{/if}}' +
   '{{#if description}}<meta content="{{text description}}" name="description">\n{{/if}}' +
   '{{#if keywords}}<meta content="{{text keywords}}" name="keywords">\n{{/if}}' +
   '{{#if md5}}<meta content="{{{md5}}}" name="md5">\n{{/if}}' +
