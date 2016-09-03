@@ -51,19 +51,15 @@ TeX: { equationNumbers: { autoNumber: "all" } }
 </nav>
 
 <div class="container">
-<article>
+<article class="h-entry">
 <header>
-<section id="starte-gollum-med-launchd">
-<h1 class="title"><a aria-hidden="true" class="header-anchor" href="#starte-gollum-med-launchd" title="Starte Gollum med launchd"></a>Starte Gollum med <code>launchd</code><a aria-controls="starte-gollum-med-launchd-section" aria-expanded="true" aria-hidden="true" class="collapse-button" data-toggle="collapse" href="#starte-gollum-med-launchd-section" role="button"></a></h1>
+<h1 class="p-name">Starte Gollum med <code>launchd</code></h1>
 
-<div class="collapse in" id="starte-gollum-med-launchd-section">
-<p><time><i class="fa fa-calendar-o"></i> 2013-12-20</time>
+<p><time class="dt-published"><i class="fa fa-calendar-o"></i> 2013-12-20</time>
 </p>
-</div>
-</section>
 </header>
 
-<section>
+<section class="e-content">
 <p>P&#229; <abbr class="acronym" title="Operating System 10"><span class="caps">OS</span> X</abbr> startes <a href="https://github.com/gollum/gollum">Gollum</a> automatisk med <a href="http://www.nomachetejuggling.com/2012/05/15/personal-wiki-using-github-and-gollum-on-os-x/"><code>launchd</code></a>. Opprett en fil <code>~/Library/LaunchAgents/com.personalwiki.gollum.plist</code> (med eksklusive <a href="http://stackoverflow.com/questions/16809861/launchd-doesnt-launch-my-daemon">rettigheter</a>, <abbr title="det vil si">dvs.</abbr> <code>$ chmod 600</code>) som inneholder&#160;dette:</p>
 
 <pre>

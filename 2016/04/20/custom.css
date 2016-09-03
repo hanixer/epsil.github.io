@@ -21,6 +21,6 @@ header h1, header time, header .fa {
     color: inherit !important;
 }
 
-.description {
+.p-summary {
     display: none;
 }

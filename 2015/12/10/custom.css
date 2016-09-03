@@ -53,7 +53,7 @@ nav {
     color: #ffffff !important;
 }
 
-time, .description, .fa {
+time, .p-summary, .fa {
     color: #5a5a5a;
 }
 
@@ -76,7 +76,7 @@ li li {
     color: #000000;
 }
 
-.description {
+.p-summary {
     display: none;
 }
 

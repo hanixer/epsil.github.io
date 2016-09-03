@@ -612,6 +612,7 @@ function process (view) {
     html = typogr.typogrify(html)
   }
   var body = $('<div>').html(html)
+  var content = body.find('.e-content')
   highlightInline(body)
   body.fixWidont()
   body.addAcronyms()
@@ -621,14 +622,14 @@ function process (view) {
   body.addPunctuation()
   body.addHotkeys()
   body.addTeXLogos()
-  body.addAnchors()
+  content.addAnchors()
   body.fixBlockquotes()
-  body.addCollapsibleSections()
+  content.addCollapsibleSections()
   body.fixFootnotes()
   body.fixTables()
   body.addTableOfContents()
   body.fixLinks()
-  body.addSections()
+  content.addSections()
   html = body.html()
   view.content = html
   return view
@@ -1194,36 +1195,36 @@ templates.body = Handlebars.compile(
   '{{/if}}' +
   '</nav>\n' +
   '<div class="container">\n' +
-  '<article>\n' +
+  '<article class="h-entry">\n' +
   '{{#if include-before}}{{{include-before}}}{{/if}}' +
   '<header>\n' +
   '{{#if title}}' +
-  '<h1 class="title">{{{title}}}</h1>\n' +
+  '<h1 class="p-name">{{{title}}}</h1>\n' +
   '{{#if subtitle}}' +
-  '<h2 class="title">{{{subtitle}}}</h2>\n' +
+  '<h2>{{{subtitle}}}</h2>\n' +
   '{{/if}}' +
   '{{#if author}}' +
-  '<p class="author"><i class="fa fa-user"></i> ' +
+  '<p class="p-author"><i class="fa fa-user"></i> ' +
   '{{author}}' +
   '{{#if date}}' +
-  ' <span style="float: right"><time><i class="fa fa-calendar-o"></i> {{dateFormat date}}</time></span>' +
+  ' <span style="float: right"><time class="dt-published"><i class="fa fa-calendar-o"></i> {{dateFormat date}}</time></span>' +
   '{{/if}}' +
   '</p>\n' +
   '{{else}}' +
   '{{#if date}}' +
-  '<p><time><i class="fa fa-calendar-o"></i> {{dateFormat date}}</time></p>\n' +
+  '<p><time class="dt-published"><i class="fa fa-calendar-o"></i> {{dateFormat date}}</time></p>\n' +
   '{{/if}}' +
   '{{/if}}' +
   '{{else}}' +
   '{{#if date}}' +
-  '<h1 class="title">{{dateFormat date}}</h1>\n' +
+  '<h1 class="p-name">{{dateFormat date}}</h1>\n' +
   '{{/if}}' +
   '{{/if}}' +
   '{{#if description}}' +
-  '<p class="description">{{{description}}}</p>\n' +
+  '<p class="p-summary">{{{description}}}</p>\n' +
   '{{/if}}' +
   '</header>\n' +
-  '<section>\n' +
+  '<section class="e-content">\n' +
   '{{{content}}}' +
   '</section>\n' +
   '{{#if include-after}}{{{include-after}}}{{/if}}' +
@@ -1247,7 +1248,7 @@ $.fn.addTableOfContents = function () {
 }
 
 $.fn.tableOfContents = function (title) {
-  var body = $(this)
+  var body = $(this).find('.e-content')
   var toc = body.listOfContents()
 
   if (toc === '') {

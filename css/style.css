@@ -132,7 +132,7 @@ h1 a:hover, h2 a:hover, h3 a:hover, h4 a:hover, h5 a:hover, h6 a:hover {
     color: inherit;
 }
 
-h2 em, h3 em, h4 em, h6 em, .description em {
+h2 em, h3 em, h4 em, h6 em, .p-summary em {
     font-style: normal;
 }
 
@@ -380,7 +380,7 @@ time, .author {
     vertical-align: middle;
 }
 
-.description {
+.p-summary {
     font-style: italic;
 }
 

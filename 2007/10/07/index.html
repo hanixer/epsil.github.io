@@ -51,19 +51,15 @@ TeX: { equationNumbers: { autoNumber: "all" } }
 </nav>
 
 <div class="container">
-<article>
+<article class="h-entry">
 <header>
-<section id="delbroksoppspaltning">
-<h1 class="title"><a aria-hidden="true" class="header-anchor" href="#delbroksoppspaltning" title="Delbr&#248;ksoppspaltning"></a>Delbr&#248;ksoppspaltning<a aria-controls="delbroksoppspaltning-section" aria-expanded="true" aria-hidden="true" class="collapse-button" data-toggle="collapse" href="#delbroksoppspaltning-section" role="button"></a></h1>
+<h1 class="p-name">Delbr&#248;ksoppspaltning</h1>
 
-<div class="collapse in" id="delbroksoppspaltning-section">
-<p><time><i class="fa fa-calendar-o"></i> 2007-10-07</time>
+<p><time class="dt-published"><i class="fa fa-calendar-o"></i> 2007-10-07</time>
 </p>
-</div>
-</section>
 </header>
 
-<section>
+<section class="e-content">
 <p>Ved delbr&#248;ksoppspaltning faktoriseres <em>nevneren</em> i br&#248;ken som vi &#248;nsker &#229; spalte opp. Hver faktor gir s&#229; en delbr&#248;k med en eller flere ukjente verdier i <em>telleren</em>. De ukjente verdiene finnes s&#229; ved &#229; sette det nye delbr&#248;ksuttrykket, alts&#229; summen av alle delbr&#248;kene, lik det opprinnelige.</p>
 
 <p><strong>Eksempel 1:</strong> Dersom vi &#248;nsker &#229; utf&#248;re delbr&#248;ksoppspaltning av uttrykket \((6x + 8)/(x^2 + 3x + 2)\), faktoriserer vi f&#248;rst nevneren og f&#229;r \(x^2 + 3x + 2 = (x + 1)(x + 2)\). Her har vi to <strong>line&#230;re faktorer</strong>, <abbr title="det vil si">dvs.</abbr> faktorer p&#229; formen \(ax + b\), og prinsippet vi da skal f&#248;lge er dette: <strong>En line&#230;r faktor \(ax + b\) gir en delbr&#248;k p&#229; formen \(A/(ax + b)\), der \(A\) er en ukjent konstant.</strong> Nevnerfaktoren \(x + 1\) gir alts&#229; delbr&#248;ken \(A/(x + 1)\), mens nevnerfaktoren \(x + 2\) gir delbr&#248;ken \(B/(x + 2)\). N&#229; gjenst&#229;r det &#229; sette summen av disse delbr&#248;kene lik det opprinnelige uttrykket for &#229; finne \(A\) og \(B\): \((6x + 8)/(x^2 + 3x + 2) = (6x + 8)/((x + 1)(x + 2)) = A/(x + 1) + B/(x + 2)\), som ganges p&#229; begge sider med \((x + 1)\) og \((x + 2)\) slik at vi f&#229;r \(6x + 8 = A(x + 2) + B(x + 1)\). Dette uttrykket kan omformes til \(6x + 8 = (A + B)x + 2A + B\), slik at vi kan finne \(A\) og \(B\) ved &#229; betrakte <em>koeffisientene</em>: Koeffisienten til \(x\) p&#229; venstresiden, \(6\), m&#229; v&#230;re lik koeffisienten til \(x\) p&#229; h&#248;yresiden, \((A + B)\), slik at vi har \(6 = A + B\). Tilsvarende har vi at \(8 = 2A + B\). Dette ligningssettet kan l&#248;ses ved bruk av innsettingsmetoden, <abbr title="det vil si">dvs.</abbr> &#229; ordne den ene ligningen for en av de ukjente st&#248;rrelsene og sette dette uttrykket inn i den andre ligningen: \(B = 6 - A\), og da er \(8 = 2A + 6 - A\), som kan ordnes slik at vi f&#229;r \(A = 2\). Dermed er \(B = 6 - 2 = 4\), og det endelige svaret blir \((6x + 8)/(x^2 + 3x + 2) = 2/(x + 1) + 4/(x + 2)\).</p>
