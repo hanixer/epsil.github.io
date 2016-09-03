@@ -4,13 +4,12 @@
 <title>General Parser Combinators in Racket</title>
 <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
 <meta content="How to implement a general parser combinator framework which handles left-recursive and ambiguous grammars." name="description">
-<meta content="a45b75a0d455388668dadbe0054d9559" name="md5">
+<meta content="234e594425f2ecd2363604cd5db2b584" name="md5">
 <meta content="text/css" http-equiv="Content-Style-Type">
 <meta content="width=device-width, initial-scale=1" name="viewport">
 <link href="favicon.ico" rel="icon" type="image/x-icon">
 <link href="../css/markdown-template.css" rel="stylesheet">
 <link href="index.txt" rel="alternate" title="Markdown" type="text/markdown">
-<link href="custom.css" rel="stylesheet" type="text/css">
 <script type="text/x-mathjax-config">
 MathJax.Hub.Config({
 TeX: { equationNumbers: { autoNumber: "all" } }
@@ -89,7 +88,7 @@ TeX: { equationNumbers: { autoNumber: "all" } }
 </header>
 
 <section>
-<p>This article explains how to implement a general parser combinator framework which handles left-recursive and ambiguous grammars. The framework is implemented in <a href="http://www.racket-lang.org/">Racket</a>, a Lisp dialect with roots in Scheme. However, the principles are not specific to Racket and could be expressed in any language; porting is outlined at the end of the&#160;article.</p>
+<p>This article explains how to implement a general parser combinator framework in <a href="http://www.racket-lang.org/">Racket</a>, a Lisp dialect with roots in Scheme. However, the principles are not specific to Racket and could be expressed in any language; porting is outlined at the end of the&#160;article.</p>
 
 <p>All the code is <a href="https://github.com/epsil/gll">released freely on GitHub</a> under the <a href="LICENSE"><abbr class="acronym" title="Massachusetts Institute of Technology"><span class="caps">MIT</span></abbr> License</a>. You can <strong>download</strong> a <a href="https://github.com/epsil/gll/archive/master.zip">Zip file</a>, or you can <strong>clone</strong> the repository with the following&#160;command:</p>
 
@@ -97,7 +96,7 @@ TeX: { equationNumbers: { autoNumber: "all" } }
 <code>git clone https://github.com/epsil/gll.git</code>
 </pre>
 
-<p>The repository also includes the full text of the article in <a href="https://raw.githubusercontent.com/epsil/gll/master/gll.md">Markdown format</a> (<a href="http://pandoc.org/MANUAL.html#pandocs-markdown">Pandoc flavor</a>). I welcome suggestions and improvements! Feel free to open an issue on the <a href="https://github.com/epsil/gll/issues">bug tracker</a>, or to <a href="https://github.com/epsil/gll">fork the repository</a>. You can also contact me, Vegard &#216;ye, at <code>vegard (underline) oye (at) hotmail (dot) com</code>.</p>
+<p>The repository also includes the full text of the article in <a href="https://raw.githubusercontent.com/epsil/gll/master/article/index.md">Markdown format</a> (<a href="http://pandoc.org/MANUAL.html#pandocs-markdown">Pandoc flavor</a>). I welcome suggestions and improvements! Feel free to open an issue on the <a href="https://github.com/epsil/gll/issues">bug tracker</a>, or to <a href="https://github.com/epsil/gll">fork the repository</a>. You can also contact me, Vegard &#216;ye, at <code>vegard (underline) oye (at) hotmail (dot) com</code>.</p>
 
 <p>The article aims to be an accessible introduction to the ideas found in the papers &#8220;<a href="#johnson95-memoization" title="&#8220;Memoization in Top-Down Parsing&#8221; (PDF), Mark Johnson, Brown University, 1995. Published in Computational Linguistics, Volume 21, Number 3. Covers regular memoization, continuation-passing style, and memoization of continuation-passing style&#160;functions.">Memoization in Top-Down Parsing</a>&#8221; by Mark Johnson and &#8220;<a href="#spiewak10-generalized" title="&#8220;Generalized Parser Combinators&#8221; (PDF), Daniel Spiewak, University of Wisconsin, 2010. Implemented as the gll-combinators Scala library, using continuation-passing style and trampolined dispatch. Offers a very accessible introduction to the GLL&#160;algorithm.">Generalized Parser Combinators</a>&#8221; by Daniel Spiewak. If you are interested in the topic, I especially recommend you go on to read Spiewak&#8217;s paper. It is very good. Other reading suggestions are provided <a href="#further-reading" title="Further reading">at the&#160;end</a>.</p>
 </section>
