@@ -197,7 +197,7 @@ er ingen valgt bort.
 2.1 Teori: forspenning av trykksensorene
 ----------------------------------------
 
-> ![](fig/trykksensor.svg) {#fig-trykksensorer}
+> ![](fig/trykksensor.svg){#fig-trykksensorer}
 >
 > **Figur 2.1:** Resistive trykksensorer
 
@@ -213,7 +213,7 @@ Dermed fungerer sensorene som en variabel motstand under trykk (jo
 høyere trykk, jo lavere resistans), og som et brudd (uendelig
 resistans) ellers.
 
-> ![](fig/fsrguide.png) {#fig-sensortyper}
+> ![](fig/fsrguide.svg){#fig-sensortyper width=255}
 >
 > **Figur 2.2:** Sensor type FSR-400 (a), sensor type FSR-402 (b).
 > Millimetermål er gitt i klammer.
@@ -224,7 +224,7 @@ diameter på 8 mm (FSR-400), og (b) en *stor* sensor på 18 mm
 (FSR-402). Det trykkfølsomme området er litt mindre og er på hhv. 5 mm
 og 14 mm.
 
-> ![](fig/sensor.png) {#fig-sensor}
+> ![](fig/sensor.svg){#fig-sensor width=569}
 >
 > **Figur 2.3:** Forspenning av trykksensor (a), spenningsdeling (b) og brudd (c)
 
@@ -273,7 +273,7 @@ minker, så minker spenningen. Når $\rho = 0$, så er også $V_{IN} = 0$,
 og i programkoden har `ADC_VARIABEL` verdien 0. Dette er det ideelle
 *nullnivået*, verdien når sensoren ikke er i bruk. {#sec-nullnivaa}
 
-> ![](fig/vin.png) {#fig-vin}
+> ![](fig/vin.svg){#fig-vin width=620}
 >
 > **Figur 2.4:** $V_{IN}$ som funksjon av $R$ og $R_S$, ligning $\eqref{eq:spenningsdeling}$
 
@@ -436,11 +436,11 @@ sammenhengen i ligning $\eqref{eq:spenningsdeling}$.
 Spenningsstigningen har noen ujevnheter, dette kan være fordi
 kontaktpunktet har en unøyaktighet på $\pm 1$ mm når vektene tas av.
 
-> ![](fig/malepinne.png) {#fig-malepinne}
+> ![](fig/malepinne.png){#fig-malepinne}
 >
 > **Figur 2.6:** Arm for å legge vekt(er) på sensorene
 
-> ![](fig/sensorpress.png) {#fig-sensorpress}
+> ![](fig/sensorpress.png){#fig-sensorpress}
 >
 > **Figur 2.7:** Sensor under trykk
 
@@ -620,7 +620,7 @@ hendelsesaktivering.
 3.1 Problemstilling {#sec-hodeprob}
 -------------------
 
-> ![](fig/prototypeGammel.png) {#fig-gammelprototype}
+> ![](fig/prototypegammel.png){#fig-gammelprototype}
 >
 > **Figur 3.1:** Skisse av prototype, laget i AutoCAD
 
@@ -647,7 +647,7 @@ båndet gikk over hodet, det andre bak ([fig. 3.2a](#fig-prototype)).
 Dette fungerte, men det var uten muligheter til å justere og oppfylte
 derfor ikke alle kravene i produktspesifikasjonen.
 
-> ![](fig/prototype1.png) {#fig-prototype}
+> ![](fig/prototype1.svg){#fig-prototype width=506}
 >
 > **Figur 3.2:** Første (a) og andre (b) utkast av prototype for hodebøylen
 
@@ -669,7 +669,7 @@ at det er veldig solid og meget slitesterkt, og hvis en bøyer det i
 forkant, er det veldig stivt. Derfor er det mulighet til å få det
 veldig stramt imellom kinn og sensor.
 
-> ![](fig/justering.png) {#fig-justeringsboks}
+> ![](fig/justering.svg){#fig-justeringsboks width=515}
 >
 > **Figur 3.3:** Justeringsboks med lokk (a) og uten lokk (b)
 
@@ -698,7 +698,7 @@ ble det brukt to metallplater, en på hver side. Deretter ble de små
 kretskortene som sensorene er koblet sammen på, festet på
 metallplatene.
 
-> ![](fig/heleGreia.png) {#fig-prototype3}
+> ![](fig/helegreia.png){#fig-prototype3}
 >
 > **Figur 3.4:** Tegning av hodebøylens justeringsmuligheter
 
@@ -715,7 +715,7 @@ ta imot. På enden av kabelen ble det montert et motstykke til en
 COM-port, dette for å gjøre det enkelt å koble hodebøylen til
 «X-box»-en i [kapittel 4](#sec-xbox) ([fig. 3.5](#fig-signalkabel)).
 
-> ![](fig/overgangtilCOM.png) {#fig-signalkabel}
+> ![](fig/overgangtilcom.png){#fig-signalkabel}
 >
 > **Figur 3.5:** Bilde av signalkabel
 
@@ -732,7 +732,7 @@ at hodebøylen ikke har nok press mot kinnet hvor sensorene ligger.
 versjon ved hjelp av noen som har en bedre bakgrunn i mekanikk og ev.
 annet utstyr som gruppen ikke hadde til rådighet.)
 
-> ![](fig/prototype2.png) {#fig-ferdigprototype}
+> ![](fig/prototype2.png){#fig-ferdigprototype}
 >
 > **Figur 3.6:** Ferdig prototype
 
@@ -748,7 +748,7 @@ annet utstyr som gruppen ikke hadde til rådighet.)
 4.1 Problemstilling
 -------------------
 
-> ![](fig/x-boxsalangt.png) {#fig-xboxacad}
+> ![](fig/x-boxsalangt.png){#fig-xboxacad}
 >
 > **Figur 4.1:** Skisse av «X-box», laget i AutoCAD
 
@@ -778,7 +778,7 @@ andre enden til COM-porten. Nå var det altså bare å koble i headsettet
 på den ene siden, og maskinen med USB på den andre. «That's Plug 'n'
 Play!»
 
-> ![](fig/x-box2.png) {#fig-xboxtopp}
+> ![](fig/x-box2.png){#fig-xboxtopp}
 >
 > **Figur 4.2:** Bilde av «X-box» fra toppen
 
@@ -791,7 +791,7 @@ løsning for å på en enkel måte koble til hodebøylen. Videre går data
 fra hodebøylen inn til kretskortet, og videre til maskinen som utfører
 ønskede operasjoner.
 
-> ![](fig/x-box1.png) {#fig-xboxferdig}
+> ![](fig/x-box1.png){#fig-xboxferdig}
 >
 > **Figur 4.3:** Bilde av ferdig «X-box»
 
@@ -847,7 +847,7 @@ problem for prototypen, som bare bruker seks ADC-porter. Men ønsker
 man å bruke portene PF0 og PF3, kan kretsen endres ved å fysisk fjerne
 tilkoblingen til temperaturavlesningen.
 
-> ![](fig/USBkey.png) {#fig-at90usbkey}
+> ![](fig/usbkey.png){#fig-at90usbkey}
 >
 > **Figur 5.1:** AT90USBKey
 
@@ -886,7 +886,7 @@ $$V_{CC3} = 1,25 \cdot \left(1 + \frac{R_{15}+R_{18}}{R_{19}}\right)$$
 Dette gir en utspenning på $V_{CC3} = 3,266$ V. Denne spenningen blir
 også benyttet av sensorene som er koblet til.
 
-> ![](fig/power.png) {#fig-powerkrets-usb}
+> ![](fig/power.png){#fig-powerkrets-usb}
 >
 > **Figur 5.2:** AT90USBKey-powerkrets
 
@@ -944,7 +944,7 @@ kalibrere deretter.
 6.2 Plassering av sensorene
 ---------------------------
 
-> ![](fig/bevsensor.png) {#fig-trebevsensorer}
+> ![](fig/bevsensor.svg){#fig-trebevsensorer width=574}
 >
 > **Figur 6.1:** Sensorplate med tre bevegelsessensorer i linje (a) og trekant (b)
 
@@ -984,7 +984,7 @@ tilnærming*.
 6.3 Første tilnærming {#sec-forstetilnerming}
 ---------------------
 
-> ![](fig/bevsensorfirkant1.svg) {#fig-sensorknapper1}
+> ![](fig/bevsensorfirkant1.svg){#fig-sensorknapper1 width=500}
 >
 > **Figur 6.2:** Første tilnærming: knapper på venstre kinn (a)
 > og bevegelse på høyre kinn (b)
@@ -997,7 +997,7 @@ himmelretningene på et kompass -- ved å presse på den øverste
 sensoren, går pekeren oppover, osv. Når trykket forsvinner, slutter
 bevegelsen.
 
-> ![](fig/retninger.png) {#fig-retninger}
+> ![](fig/retninger.svg){#fig-retninger width=244}
 >
 > **Figur 6.3:** Retninger i intervallet 0--90°.
 > Tallene på aksene ganges med basishastigheten.
@@ -1044,7 +1044,7 @@ Når dette er oppfylt, sier vi at vi «har et sprang». Marginen er
 fastsatt på forhånd, og er litt større for de store sensorene på
 knappkinnet enn de små sensorene på bevegelseskinnet.
 
-> ![](fig/kalibrering.svg) {#fig-kalibrering}
+> ![](fig/kalibrering.svg){#fig-kalibrering}
 >
 > **Figur 6.4:** Selvkalibrering og avlesning av sensor
 
@@ -1081,11 +1081,9 @@ tabell, og de seks nullnivåene, som disse sammenlignes med, i en
 annen. Det går så igjennom tabellene parvis og sjekker dem opp mot
 ligning (6.1) -- på leting etter en aktiv sensor.
 
-> ![](fig/sensortabenkel.svg) {#fig-sensortabenkel}
+> ![](fig/sensortab.svg){#fig-sensortab width=450}
 >
-> ![](fig/sensortabtung.svg) {#fig-sensortabtung}
->
-> **Figur 6.5:** Avlesningsløkker: enkel (a) og avansert (b) {#fig-sensortab}
+> **Figur 6.5:** Avlesningsløkker: enkel (a) og avansert (b)
 
 Når en aktiv sensor er funnet, er det to muligheter
 ([fig. 6.5](#fig-sensortab)). Skal (a) resten av sensorene også
@@ -1148,7 +1146,7 @@ mer omfattende, men også mer komfortabelt.
 6.4 Andre tilnærming {#sec-andretilnerming}
 --------------------
 
-> ![](fig/bevsensorfirkant2.svg) {#fig-sensorknapper2}
+> ![](fig/bevsensorfirkant2.svg){#fig-sensorknapper2 width=500}
 >
 > **Figur 6.6:** Andre tilnærming: knapper (a) og bevegelse (b).
 
@@ -1167,11 +1165,9 @@ Den viktigste forskjellen er måten pekeren styres på.
 
 ### 6.4.1 Normalmodus {#sec-normmodus}
 
-> ![](fig/normalmodusstart.svg) {#fig-normalmodusstart}
+> ![](fig/normalmodus.svg){#fig-normalmodus width=500}
 >
-> ![](fig/normalmodusbev.svg) {#fig-normalmodusbev}
->
-> **Figur 6.7:** Normalmodus: klikk (a) og bevegelse (b) {#fig-normalmodus}
+> **Figur 6.7:** Normalmodus: klikk (a) og bevegelse (b)
 
 Dette er programmets utgangspunkt ([fig. 6.7](#fig-normalmodus)). Hvis
 brukeren trykker lett på en knappsensor, produseres et klikk. Hvis
@@ -1199,11 +1195,11 @@ For presisjonens skyld er diagonal bevegelse *deaktivert* når pekeren
 beveges med lette trykk. Det er bare mulig å bevege seg diagonalt ved
 å presse kontinuerlig på sensorene.
 
-> ![](fig/dramodus.svg) {#fig-dramodus}
+> ![](fig/dramodus.svg){#fig-dramodus}
 >
 > **Figur 6.8:** «Dra»-modus
 
-> ![](fig/scrollmodus.svg) {#fig-scrollmodus}
+> ![](fig/scrollmodus.svg){#fig-scrollmodus}
 >
 > **Figur 6.9:** «Scroll»-modus
 
@@ -1303,12 +1299,10 @@ unødvendig (se [kapittel 10](#sec-veienvidere)).
 
 ### 7.2.1 Resultater første tilnærming
 
-> ![](fig/brukertest.png) {#fig-brukertest1}
->
-> ![](fig/brukertestresultat1a.png) {#fig-brukertestresultat1a}
+> ![](fig/forstebrukertest.svg){#fig-forstebrukertest width=321}
 >
 > **Figur 7.1:** Testtegning for bruk over tid (a), resultat i første
-> tilnærming (b), første og eneste forsøk {#fig-forstebrukertest}
+> tilnærming (b), første og eneste forsøk
 
 Se [avsnitt 6.3](#sec-forstetilnerming) for detaljer om første
 tilnærming.
@@ -1340,14 +1334,10 @@ For drøfting av resultatene, se [avsnitt 6.3.3](#sec-forstedrofting).
 
 ### 7.2.2 Resultater andre tilnærming
 
-> ![](fig/brukertest.png) {#fig-brukertest2}
->
-> ![](fig/brukertestresultat2a.png) {#fig-brukertestresultat2a}
->
-> ![](fig/brukertestresultat2b.png) {#fig-brukertestresultat2b}
+> ![](fig/andrebrukertest.svg){#fig-andrebrukertest width=321}
 >
 > **Figur 7.2:** Testtegning for bruk over tid (a), resultat i andre
-> tilnærming første forsøk (b), andre forsøk (c) {#fig-andrebrukertest}
+> tilnærming første forsøk (b), andre forsøk (c)
 
 Se [avsnitt 6.4](#sec-andretilnerming) for detaljer om andre
 tilnærming.
