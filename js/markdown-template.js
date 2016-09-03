@@ -1223,7 +1223,9 @@ templates.body = Handlebars.compile(
   '<p class="description">{{{description}}}</p>\n' +
   '{{/if}}' +
   '</header>\n' +
+  '<section>\n' +
   '{{{content}}}' +
+  '</section>\n' +
   '{{#if include-after}}{{{include-after}}}{{/if}}' +
   '</article>\n' +
   '</div>')
