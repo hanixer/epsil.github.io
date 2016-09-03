@@ -10,6 +10,7 @@ a:hover {
 body {
     font-family: "Source Sans Pro", "Segoe UI", Seravek, "League Spartan", "Open Sans", "Work Sans", Avenir, "Avenir Next", Optima, "Optima Web", "Linux Biolinum", Vegur, Karla, Candara, Futura, "Gill Sans", Calibri, Corbel, Helvetica, Arial, sans-serif !important;
     font-size: 115% !important;
+    margin-top: 3em;
 }
 
 code, kbd, samp, tt, pre {
@@ -56,7 +57,7 @@ time, .description, .fa {
     color: #5a5a5a;
 }
 
-ul ul {
+li li {
     font-size: 0.85em;
 }
 
@@ -67,11 +68,11 @@ ul ul {
     position: absolute;
 }
 
-.container ul ul > li:before {
+.container li li:before {
     color: #f79a08;
 }
 
-.container ul ul ul > li:before {
+.container li li li:before {
     color: #000000;
 }
 
@@ -79,21 +80,16 @@ ul ul {
     display: none;
 }
 
-header {
-    padding-right: 200px;
-}
-
-
-.container {
-    position: relative;
-}
-
 .collapse-button[aria-expanded="false"] {
     border: none;
 }
 
 #logo {
-    position: absolute;
-    top: 5em;
-    right: 20px;
+    float: right;
+    margin: 0.5em 0 0 1em;
+}
+
+header {
+    padding: 0;
+    margin: 0;
 }

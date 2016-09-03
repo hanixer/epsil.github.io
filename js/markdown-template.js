@@ -1191,6 +1191,7 @@ templates.body = Handlebars.compile(
   '</nav>\n' +
   '<div class="container">\n' +
   '<article>\n' +
+  '{{#if include-before}}{{{include-before}}}{{/if}}' +
   '<header>\n' +
   '{{#if title}}' +
   '<h1 class="title">{{{title}}}</h1>\n' +
@@ -1219,6 +1220,7 @@ templates.body = Handlebars.compile(
   '{{/if}}' +
   '</header>\n' +
   '{{{content}}}' +
+  '{{#if include-after}}{{{include-after}}}{{/if}}' +
   '</article>\n' +
   '</div>')
 
