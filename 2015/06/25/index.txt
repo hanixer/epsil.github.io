@@ -8,7 +8,7 @@ Hvis Dia krasjer
 
 Hvis [Dia](http://dia-installer.de/) krasjer på OS X Yosemite pga. en GTK-feil, retter følgende [løsning](http://navkirats.blogspot.no/2014/10/dia-diagram-mac-osx-yosemite-fix-i-use.html) opp problemet:
 
-1.  Åpne filen `/Applications/Dia.app/Contents/Resources/bin/dia` i en editor.
+1.  Åpne filen `/Applications/Dia.app/Contents/Resources/bin/dia` i en teksteditor.
 2.  Legg til linjen `export DISPLAY=:0` etter linje 39.
 3.  Avslutt XQuartz hvis det kjører og start Dia på nytt.
 
