@@ -1144,7 +1144,11 @@ templates.document = Handlebars.compile(
   '{{#if md5}}<meta content="{{{md5}}}" name="md5">\n{{/if}}' +
   '<meta content="text/css" http-equiv="Content-Style-Type">\n' +
   '<meta content="width=device-width, initial-scale=1" name="viewport">\n' +
+  '{{#if icon}}' +
+  '<link href="{{urlResolve url icon}}" rel="icon" type="image/x-icon">\n' +
+  '{{else}}' +
   '<link href="{{urlResolve url "/favicon.ico"}}" rel="icon" type="image/x-icon">\n' +
+  '{{/if}}' +
   '<link href="{{urlResolve url "/css/markdown-template.css"}}" rel="stylesheet">\n' +
   '<link href="index.txt" rel="alternate" title="Markdown" type="text/markdown">\n' +
   '{{#if css}}' +
