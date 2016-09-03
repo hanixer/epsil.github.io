@@ -1,3 +1,7 @@
+body {
+    margin-top: 0;
+}
+
 code, kbd, samp, tt, pre {
     background-color: rgba(0, 128, 255, 0.08);
 }
@@ -10,11 +14,8 @@ header {
     background-image: url("tron.jpg");
     background-size: cover;
     color: #ffffff;
-    margin-left: -50em;
-    margin-right: -50em;
-    padding-left: 50em;
-    padding-right: 50em;
-    padding-bottom: 0.3em;
+    margin: auto -50em;
+    padding: 4em 50em 0.3em 50em;
 }
 
 header h1, header time, header .fa {

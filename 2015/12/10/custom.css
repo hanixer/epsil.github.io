@@ -1,4 +1,4 @@
-a, a:hover {
+a, a:hover, a:focus, a:visited {
     color: #cf022b;
     border: none;
 }
@@ -45,12 +45,15 @@ nav {
 
 .nav li a,
 .nav li a .fa,
+#toc li a {
+    color: #ffffff !important;
+}
+
 .nav li a:hover,
 .nav li a:hover .fa,
 .nav li a:focus,
-.nav li > a:focus .fa,
-#toc li a {
-    color: #ffffff !important;
+.nav li > a:focus .fa {
+    color: #f79a08 !important;
 }
 
 time, .p-summary, .fa {
