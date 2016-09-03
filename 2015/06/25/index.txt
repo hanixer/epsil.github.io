@@ -44,4 +44,6 @@ Det ser ut til at `pdf2svg` har problemer med å konvertere enkelte PDF-er. Et a
 
     $ inkscape --without-gui --file=diagram.pdf --export-plain-svg=diagram.svg
 
-Dette er visstnok den foretrukne konverteringsmetoden til [Wikipedia](https://en.wikipedia.org/wiki/Wikipedia:Graphics_Lab/Resources/PDF_conversion_to_SVG#Conversion_with_Inkscape). (Hvis Inkscape ikke gjenkjennes i terminalen, legg til `C:\Program Files\Inkscape` i miljøvariabelen `PATH`.)
+Dette er visstnok den foretrukne konverteringsmetoden til [Wikipedia](https://en.wikipedia.org/wiki/Wikipedia:Graphics_Lab/Resources/PDF_conversion_to_SVG#Conversion_with_Inkscape).
+
+<!-- (Hvis Inkscape ikke gjenkjennes i terminalen, legg til `C:\Program Files\Inkscape` i miljøvariabelen `PATH`.) -->
