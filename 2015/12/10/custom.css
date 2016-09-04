@@ -64,18 +64,18 @@ li li {
     font-size: 0.85em;
 }
 
-.container ul > li:before {
+.h-entry ul > li:before {
     content: "\2022";
     color: #cf022b;
     margin-left: -1.1em;
     position: absolute;
 }
 
-.container li li:before {
+.h-entry li li:before {
     color: #f79a08;
 }
 
-.container li li li:before {
+.h-entry li li li:before {
     color: #000000;
 }
 
