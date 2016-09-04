@@ -3,7 +3,8 @@ description: A study on fish-eye undistortion.
 css: custom.css
 ---
 
-A study on fish-eye undistortion. **[PDF](thesis.pdf)**, [DUO](http://urn.nb.no/URN:NBN:no-51670).[^1]
+A study on fish-eye undistortion. **[PDF version](thesis.pdf).**
+[DUO reference](http://urn.nb.no/URN:NBN:no-51670).[^1]
 
 * * * * *
 

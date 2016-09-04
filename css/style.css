@@ -9,6 +9,10 @@ abbr.acronym, .caps {
     letter-spacing: 0.1em;
 }
 
+article {
+    margin: 0 auto;
+}
+
 pre .caps {
     font-variant: normal;
     text-transform: none;
@@ -95,7 +99,7 @@ body {
     -webkit-font-smoothing: antialiased;
 }
 
-body > .container {
+body > article {
     max-width: 840px;
     padding: 0px 80px 0 80px;
     width: 100%;
@@ -169,7 +173,7 @@ h6 {
 }
 
 header {
-    padding: 3em 0 0 0;
+    padding: 1em 0 0 0;
 }
 
 hr {
@@ -297,15 +301,15 @@ time, .author {
     font-weight: normal;
 }
 
-.container ul {
+article ul {
     list-style-type: none;
 }
 
-.container ul > li {
+article ul > li {
     text-indent: 0 !important;
 }
 
-.container ul > li:before {
+article ul > li:before {
     color: rgba(0, 0, 0, 0.6);
     content: "\2022";
     margin-left: -0.9em;
@@ -449,7 +453,7 @@ Bootstrap provides four classes (configurable with Less):
         line-height: 1.25;
     }
 
-    body > .container {
+    body > article {
         padding: 0px 20px 0 20px;
     }
 }

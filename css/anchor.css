@@ -4,7 +4,7 @@ h1:hover .header-anchor, h2:hover .header-anchor, h3:hover .header-anchor, h4:ho
     transition: all 0.5s;
 }
 
-.container .header-anchor {
+.h-entry .header-anchor {
     border: none;
     color: rgba(0, 0, 0, 0.0);
     display: inline-block;
@@ -21,7 +21,7 @@ h1:hover .header-anchor, h2:hover .header-anchor, h3:hover .header-anchor, h4:ho
     -ms-user-select: none;       /* Internet Explorer/Edge */
 }
 
-.container .header-anchor:hover {
+.h-entry .header-anchor:hover {
     color: #999999 !important;
 }
 

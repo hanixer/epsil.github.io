@@ -50,13 +50,11 @@ TeX: { equationNumbers: { autoNumber: "all" } }
 </div>
 </nav>
 
-<div class="container">
 <article class="h-entry">
 <header>
 <h1 class="p-name">Bruke <code>find</code> p&#229; filnavn med&#160;mellomrom</h1>
 
-<p><time class="dt-published"><i class="fa fa-calendar-o"></i> 2010-11-14</time>
-</p>
+<p><i class="fa fa-calendar-o"></i> <time class="dt-published">2010-11-14</time></p>
 </header>
 
 <section class="e-content">
@@ -78,6 +76,5 @@ find -name &lt;PATTERN&gt; -print0 | xargs -0 rm</code>
 <p>Fortrinnet med <code>\0</code>-metoden er at den h&#229;ndterer de mest outrerte filnavn, selv navn som inneholder linjeskift! Jeg visste ikke at det var mulig f&#248;r jeg leste <code>man find</code>, men <code>touch 'some\</code> + <kbd title="Enter">&#8629;</kbd> + <code>file'</code> vil lage en slik fil. (Bytt ut &#171;<code>touch</code>&#187; med &#171;<code>rm</code>&#187; for &#229; slette&#160;filen.)</p>
 </section>
 </article>
-</div>
 </body>
 </html>

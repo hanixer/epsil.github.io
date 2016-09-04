@@ -7,22 +7,22 @@ header {
     padding-bottom: 0.5em;
 }
 
-.container li {
+.h-entry li {
     background-color: inherit;
     padding: 0.5em 0 0.5em 0;
     transition: all 0.3s;
 }
 
-.container li:nth-child(2n) {
+.h-entry li:nth-child(2n) {
     background-color: #f8f8f8;
     transition: all 0.3s;
 }
 
-.container li:before {
+.h-entry li:before {
     content: normal !important;
 }
 
-.container ul {
+.h-entry ul {
     list-style-type: none;
     margin: 0;
     padding: 0;
