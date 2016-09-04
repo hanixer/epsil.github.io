@@ -65,6 +65,7 @@ node lib/build.js 2015/12/10/index.txt
 node lib/build.js 2016/04/20/index.txt
 node lib/build.js 2016/05/25/index.txt
 node lib/build.js fisheye/index.txt
+node lib/build.js gitar/index.txt
 node lib/build.js gll/index.txt
 node lib/build.js p3a/index.txt
 node lib/build.js salsa/index.txt
