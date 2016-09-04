@@ -1,0 +1,9 @@
+code, samp, tt, pre {
+    background-color: inherit;
+    font-size: 0.75em !important;
+    padding: 0;
+}
+
+pre {
+    padding: 0 1.5em 0 1.5em;
+}

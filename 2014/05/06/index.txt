@@ -1,6 +1,7 @@
 title: Oppsett [`irssi` og `screen`](http://folk.uio.no/veronahe/CYB/IRC/)
 date: 2014-05-06
 description: Noen gamle [`#cyb`-notater](http://folk.uio.no/veronahe/CYB/IRC/), gjengitt her for dem som leter etter dem.
+css: custom.css
 ---
 
 Hva er `screen`, `nice` og `irssi`
@@ -23,7 +24,7 @@ Opprette `screen`
 
     ![](putty.jpg)
 
-2.  **Koble til med `ssh` til en server du husker** (*safir*, *rubin*, *smaragd*, *diamant*):
+2.  **Koble til med SSH til en server du husker** (*safir*, *rubin*, *smaragd*, *diamant*):
 
         $ ssh safir.ifi.uio.no
 
@@ -46,7 +47,7 @@ Opprette `screen`
 Neste gang du nå skal hente opp igjen din `screen`
 --------------------------------------------------
 
-1.  `ssh` til serveren du valgte i første del:
+1.  SSH til serveren du valgte i første del:
 
         $ ssh safir.ifi.uio.no
 
@@ -81,6 +82,8 @@ For å starte en privat samtale:
     /msg hei
 
 Bla eller hopp deg så frem til vinduet samtalen ble startet i.
+
+(Husk: man kan kopiere og lime inn!)
 
 Oppsummert
 ----------

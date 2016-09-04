@@ -45,23 +45,13 @@ h4 code, h4 kbd, h4 samp, h4 tt,
 h5 code, h5 kbd, h5 samp, h5 tt,
 h6 code, h6 kbd, h6 samp, h6 tt {
     background-color: inherit;
+    font-size: 0.75em !important;
     padding: 0;
 }
 
 /* b, strong, h1 .fa, h2 .fa, h3 .fa, h4 .fa, h5 .fa, h6 .fa { */
 /*     font-size: 0.85em; */
 /* } */
-
-/*
-h1 code, h1 kbd, h1 samp, h1 tt,
-h2 code, h2 kbd, h2 samp, h2 tt,
-h3 code, h3 kbd, h3 samp, h3 tt,
-h4 code, h4 kbd, h4 samp, h4 tt,
-h5 code, h5 kbd, h5 samp, h5 tt,
-h6 code, h6 kbd, h6 samp, h6 tt {
-    font-size: 1em !important;
-}
-*/
 
 /*
 b code, b kbd, b samp, b tt,
@@ -303,15 +293,15 @@ time, .author {
     font-weight: normal;
 }
 
-article ul {
+article ul, #toc ul {
     list-style-type: none;
 }
 
-article ul > li {
+article ul > li, #toc ul > li {
     text-indent: 0 !important;
 }
 
-article ul > li:before {
+article ul > li:before, #toc ul > li:before {
     color: rgba(0, 0, 0, 0.6);
     content: "\2022";
     margin-left: -0.9em;
