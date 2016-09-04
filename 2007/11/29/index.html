@@ -57,10 +57,7 @@ TeX: { equationNumbers: { autoNumber: "all" } }
 <p><i class="fa fa-calendar-o"></i> <time class="dt-published">2007-11-29</time></p>
 </header>
 
-<section class="e-content">
-<p class="center"><img alt="" src="emacsmakroer.gif">
-</p>
-
+<section class="e-content"><img alt="" class="center" src="emacsmakroer.gif">
 <p>Det ovenst&#229;ende er en liten video som viser hvordan en oppgave kan utf&#248;res i <a href="http://www.gnu.org/software/emacs/"><abbr class="acronym" title="GNU's Not Unix"><span class="caps">GNU</span></abbr> Emacs</a> ved bruk av tastaturmakroer. Jeg har laget 20 identiske filer som jeg har plassert i katalogen <code>D:\vcalendar</code>. I videoen &#229;pner jeg denne katalogen og definerer en makro som &#229;pner filen under mark&#248;ren, bruker et regul&#230;rt uttrykk for &#229; s&#248;ke seg frem til <code>LOCATION</code>-feltet, kopierer de to f&#248;rste tegnene (som <em>kan</em> v&#230;re kodet i quoted-printable, derfor et litt innfl&#248;kt uttrykk), s&#248;ker seg frem til <code>SUMMARY</code>-feltet, g&#229;r til slutten av linjen, setter inn et mellomrom, limer inn tegnene, lagrer filen, lukker bufferen og flytter mark&#248;ren til neste fil. Jeg utf&#248;rer s&#229; denne makroen p&#229; alle de resterende filene i katalogen, og &#229;pner til slutt en av dem for &#229; vise at den er&#160;forandret.</p>
 
 <p>Merk at den ovenst&#229;ende makroen forutsetter at hver fil bare inneholder &#233;n oppf&#248;ring. Dersom filene inneholdt flere oppf&#248;ringer, ville det ha v&#230;rt n&#248;dvendig &#229; definere <em>to</em> makroer: en som utf&#248;rer arbeidet med &#229; kopiere de to f&#248;rste tegnene i <code>LOCATION</code>-feltet, og en som &#229;pner hver fil og &#171;looper gjennom dem&#187; med den f&#248;rste makroen. Dette er ikke veldig mye mer komplisert enn det som vises i&#160;videoen.</p>

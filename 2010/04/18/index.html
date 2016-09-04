@@ -79,24 +79,15 @@ TeX: { equationNumbers: { autoNumber: "all" } }
 </ul>
 
 <p>La oss se p&#229; dette i&#160;praksis.</p>
-
-<p class="center"><img alt="" src="logg.png">
-</p>
-
+<img alt="" class="center" src="logg.png">
 <p>Her er endringsloggen til et <abbr title="TeX">T<span class="tex-e">e</span>X</abbr>-dokument. Kommentarene gir oss en oppsummering av endringene fra versjon til versjon, og forfatterkolonnen forteller oss hvem som har gjort hva. Jeg kan klikke p&#229; en hvilken som helst versjon i listen og gjenopprette denne: Ingenting som slettes, g&#229;r&#160;tapt.</p>
 
 <p>Det minner litt om <a href="http://en.wikipedia.org/w/index.php?title=Catch-22&amp;action=history">Wikipedia</a>, ikke sant? Siden <abbr title="TeX">T<span class="tex-e">e</span>X</abbr> er tekst, kan vi ogs&#229; sammenligne to versjoner med en <strong>diff</strong>:</p>
-
-<p class="center"><img alt="" src="diff.png">
-</p>
-
+<img alt="" class="center" src="diff.png">
 <p>Her ser vi at en mengde nye linjer er blitt lagt til siden forrige gang. Denne funksjonaliteten er kjempenyttig n&#229;r man jobber sammen med andre, men ogs&#229; n&#229;r man er usikker p&#229; hva man selv har gjort siden&#160;sist.</p>
 
 <p>Hvor blir all historikken lagret? Dersom du bruker <a href="http://git-scm.com/">Git</a>, opprettes det en skjult undermappe med navnet <code>.git</code> i arbeidskatalogen din. Med et grafisk grensesnitt som <a href="http://code.google.com/p/tortoisegit/">TortoiseGit</a> f&#229;r ogs&#229; filikonene et nytt utseende, der gr&#248;nt betyr &#171;sjekket inn&#187; og r&#248;dt at det er gjort endringer siden&#160;sist.</p>
-
-<p class="center"><img alt="" src="git.png">
-</p>
-
+<img alt="" class="center" src="git.png">
 <p>For &#229; plassere et nytt prosjekt under versjonskontroll, h&#248;yreklikker man bare p&#229; mappen med prosjektet, velger <em>Create repository here</em>, og legger til filene. (Alt kan ogs&#229; gj&#248;res via kommandolinjen, naturligvis, men Tortoise-klientene fungerer som en forlengelse av det grafiske&#160;grensesnittet.)</p>
 
 <p>Du kan i prinsippet plassere <strong>hva som helst</strong> under versjonskontroll, <abbr title="for eksempel">f.eks.</abbr> musikk, bilder og video. Men <abbr title="TeX">T<span class="tex-e">e</span>X</abbr>-dokumenter er s&#230;rlig godt egnet fordi de er ren tekst, og kan dermed &#171;diffes&#187;, <abbr title="det vil si">dvs.</abbr> betraktes som linjer fjernet og lagt til. Diffen kan lagres og utveksles med andre som sitter med den samme filen (men Git har ogs&#229; egne og automatiske verkt&#248;y for synkronisering). N&#229;r du har blitt vant til dette, vil du aldri mer g&#229; tilbake til Word, og du vil se med skjevt blikk p&#229; alle som &#171;lagrer&#187; arbeidet sitt i bin&#230;re og propriet&#230;re&#160;formater.</p>

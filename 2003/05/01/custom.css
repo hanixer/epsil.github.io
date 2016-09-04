@@ -1,0 +1,17 @@
+blockquote {
+    border: none;
+    color: inherit;
+    padding: 0 1.3em;
+}
+
+hr {
+    display: none;
+}
+
+p {
+    margin: 0;
+}
+
+p + p {
+    text-indent: 1.3em !important;
+}
