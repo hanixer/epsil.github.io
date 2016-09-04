@@ -2,7 +2,7 @@ title: General Parser Combinators in Racket
 description: How to implement a general parser combinator framework which handles left-recursive and ambiguous grammars.
 lang: en
 icon: favicon.ico
-uri: https://epsil.github.io/gll/
+url: https://epsil.github.io/gll/
 ---
 
 This article explains how to implement a general parser combinator framework in [Racket](http://www.racket-lang.org/), a Lisp dialect with roots in Scheme. However, the principles are not specific to Racket and could be expressed in any language; porting is outlined at the end of the article.
