@@ -407,6 +407,10 @@ header h1 {
     padding: 0;
 }
 
+header p {
+    margin-top: 1em !important;
+}
+
 /*
 Bootstrap provides four classes (configurable with Less):
 -   xs (<768px): 0-767 pixels
