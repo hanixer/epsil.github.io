@@ -289,7 +289,7 @@ pre code, pre kbd, pre samt, pre tt {
 }
 
 sub, sup {
-    font-variant-numeric: normal;
+    font-variant: normal;
 }
 
 table, .table {
