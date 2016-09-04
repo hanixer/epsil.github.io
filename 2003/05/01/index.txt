@@ -52,7 +52,7 @@ Typisk for de krimforfatterne som begynte å gjøre seg gjeldende i perioden 196
 Sven Elvestad
 -------------
 
-![](elvestad.jpg) {.right}
+![](elvestad.jpg){.right}
 
 Sven Elvestad (1884--1934) regnes som en av Norges beste forfattere av kriminalromaner. Han ble født i Halden, hvor han vokste opp med harde kår. Som 17-åring avslørte han en morder i Skjeberg og ble journalist i avisen *Fredriksten*. Han debuterte innenfor kriminallitteraturen i 1908, en sjanger han behersket med en suveren fabuleringsevne. Slik tradisjonen tilsa gikk han under pseudonym, og utga bøkene sine under navnet Stein Riverton, som kommer fra den engelske oversettelsen av Elvestad, Rivertown. Elvestad var for øvrig heller ikke forfatterens opprinnelige navn, han var født Sven Svendsen.
 
@@ -98,7 +98,7 @@ Sentralt i boka står dens klare overnaturlige paralleller, men er de realitet e
 André Bjerke
 ------------
 
-![](bjerke.jpg) {.right}
+![](bjerke.jpg){.right}
 
 André Bjerke ble født 1918 i Oslo. I 1929 begynte han 1. middel på Fagerborg skole, middelskoleeksamen ble avlagt i 1933, og i 1936 avla han examen artium på reallinja. I første gym ble han valgt til redaktør i FGS-avisen, hvor han fikk en ganske nedlatende kommentar om at han «vil være kjent som sønn av forfatteren Ejlert Bjerke, der som bekjent ikke har fått Nobelprisen». Denne jobben var nok likevel et viktig bidrag til hans senere yrke som forfatter.
 
@@ -128,7 +128,7 @@ Det er noe magisk som skjer når de unge urbane menneskene kommer ut av storbyen
 Karin Fossum
 ------------
 
-![](fossum.jpg) {.right}
+![](fossum.jpg){.right}
 
 Karin Fossum ble født 6. november 1954 i Sandefjord. Allerede som barn skrev hun mange brev og dagbøker. 15 år gammel begynte hun på Skjeberg folkehøyskole i Østvold, hvor hun kom inn i et kreativt miljø. Men det var først etter en omvisning på Gyldendal at hun bestemte seg for å bli forfatter. På Gyldendal møtte hun forfatteren Tor Obrestad, og ble grepet av hvordan han fremførte en tekst han leste opp. Teksten var ikke spesielt bra, men han klarte allikevel å kapre publikumets oppmerksomhet.
 

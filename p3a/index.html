@@ -225,7 +225,10 @@ TeX: { equationNumbers: { autoNumber: "all" } }
 <p>Rapport for konstruksjon av den 60 W klasse AB-forsterkeren <em>Project 3A</em>: enkelt design og god lydkvalitet. <strong><a href="rapport.pdf"><abbr class="acronym" title="Portable Document Format">PDF</abbr>-utgave</a></strong>.</p>
 
 <hr>
-<img alt="" class="center" src="fig/hist-logo.svg" width="280">
+
+<figure><img alt="" src="fig/hist-logo.svg" width="280">
+</figure>
+
 <p>Stian Rishaug, Bastian S. Solem, Aleksander Uthus og Vegard &#216;ye.</p>
 
 <p>Veileder: Herman Ranes.</p>
@@ -309,9 +312,21 @@ TeX: { equationNumbers: { autoNumber: "all" } }
 <section id="simulering">
 <h2><a aria-hidden="true" class="header-anchor" href="#simulering" title="Simulering"></a>Simulering<a aria-controls="simulering-section" aria-expanded="true" aria-hidden="true" class="collapse-button" data-toggle="collapse" href="#simulering-section" role="button"></a></h2>
 
-<div class="collapse in" id="simulering-section"><img alt="" class="center" src="fig/magnitude.png"><img alt="" class="center" src="fig/fasemargin.png">
+<div class="collapse in" id="simulering-section">
+<figure><img alt="" src="fig/magnitude.png">
+</figure>
+
+<figure><img alt="" src="fig/fasemargin.png">
+</figure>
+
 <p>Bode-diagrammet viser at forsterkeres maksimale b&#229;ndbredde ligger fra 1/2 <abbr title="hertz">Hz</abbr> til <abbr title="cirka">ca.</abbr> 500 <abbr title="kilohertz">kHz</abbr>. Den originale kretsen ville normalt g&#229;tt mye h&#248;yere, men siden vi har <em>modifisert</em> kretsen noe ved &#229; koble 368 <abbr title="pikofarad">pF</abbr> kondensatorer i parallell med \(C_4\) og \(C_6\) (se <a href="#modifikasjoner" title="Modifikasjoner">modifikasjonene</a> for detaljer), blir de flaskehalsen i kretsen.</p>
-<img alt="" class="center" src="fig/magnitude20-20kHz.png"><img alt="" class="center" src="fig/fasemargin20-20kHz.png">
+
+<figure><img alt="" src="fig/magnitude20-20kHz.png">
+</figure>
+
+<figure><img alt="" src="fig/fasemargin20-20kHz.png">
+</figure>
+
 <p>Det lydmessig interessante omr&#229;det ligger fra 20 <abbr title="hertz">Hz</abbr> til 20 <abbr title="kilohertz">kHz</abbr> (hi-fi), og av utsnittet ser vi at dette omr&#229;det ligger ganske flatt.</p>
 </div>
 </section>
@@ -377,9 +392,15 @@ TeX: { equationNumbers: { autoNumber: "all" } }
 <p>Gjennomsnittlig verdi for utgangsspenning uten last blir \(v_o = 834,03\) <abbr title="millivolt">mV</abbr>, for utgangsspenning med last \(v_{oL} = 831,49\) <abbr title="millivolt">mV</abbr> og for tap \(\Delta v_o = 2,5\) <abbr title="millivolt">mV</abbr>.</p>
 
 <p>For &#229; finne utgangsimpedansen, la oss betrakte en skjematisk fremstilling av forsterkeren uten last:</p>
-<img alt="" class="center" src="fig/uimp1.svg" width="435">
+
+<figure><img alt="" src="fig/uimp1.svg" width="435">
+</figure>
+
 <p>Ettersom det ikke g&#229;r noen str&#248;m i forsterkeren, er spenningsfallet over utgangsimpedansen, \(R_o\), lik null, og vi har \(v_o = Av_i\). Med last:</p>
-<img alt="" class="center" src="fig/uimp2.svg" width="362">
+
+<figure><img alt="" src="fig/uimp2.svg" width="362">
+</figure>
+
 <p>Her har vi f&#248;lgende spenningsdeling over \(R_o\) og \(R_L\):</p>
 
 <p>\[\begin{split} v_{oL} &amp;= Av_i\frac{R_L}{R_o + R_L}\\ &amp;= v_o\frac{R_L}{R_o + R_L} \end{split}\]</p>
@@ -427,7 +448,10 @@ TeX: { equationNumbers: { autoNumber: "all" } }
 <p>\[K = \sqrt{\frac{\hat{U}_2^2 + \hat{U}_3^2 + \hat{U}_4^2 + \dotsb}{\hat{U}_1^2}} \cdot 100\text{ %}\]</p>
 
 <p>Vi m&#229;lte klirr ved &#229; koble opp og m&#229;le som vist p&#229; figuren:</p>
-<img alt="" class="center" src="fig/klirr.png" width="566">
+
+<figure><img alt="" src="fig/klirr.png" width="566">
+</figure>
+
 <p>Vi m&#229;lte en klirrfaktor p&#229; 0,015 % ved 1 W og 1 <abbr title="kilohertz">kHz</abbr>.</p>
 </div>
 </section>
@@ -503,7 +527,10 @@ TeX: { equationNumbers: { autoNumber: "all" } }
 <h1><a aria-hidden="true" class="header-anchor" href="#kretsskjema" title="Kretsskjema"></a>Kretsskjema<a aria-controls="kretsskjema-section" aria-expanded="true" aria-hidden="true" class="collapse-button" data-toggle="collapse" href="#kretsskjema-section" role="button"></a></h1>
 
 <div class="collapse in" id="kretsskjema-section">
-<blockquote><img alt="" class="center" src="fig/kretsskjema.svg" width="847">
+<blockquote>
+<figure><img alt="" src="fig/kretsskjema.svg" width="847">
+</figure>
+
 <p>Kretsskjema fra Multisim. For det opprinnelige kretsskjemaet til Rod Elliott, se <a href="#analyse" title="Kretsanalyse">kretsanalysen</a>. For et modifisert skjema som viser hvordan kretsen ble etter egne justeringer, se <a href="#modifikasjoner" title="Modifikasjoner">modifikasjonene</a>.</p>
 </blockquote>
 </div>
@@ -532,7 +559,7 @@ TeX: { equationNumbers: { autoNumber: "all" } }
 <p>S&#229;kalte BJT-transistorer (bipolare transistorer) kommer i to varianter: <em>NPN-transistorer</em> og <em><abbr class="acronym" title="Plug and Play">PNP</abbr>-transistorer</em>. I en NPN-transistor g&#229;r str&#248;mmen <em>inn i</em> basen og kollektoren og kommer <em>ut av</em> emitteren. I en <abbr class="acronym" title="Plug and Play">PNP</abbr>-transistor g&#229;r str&#248;mmen <em>inn i</em> emitteren og kommer <em>ut av</em> basen og kollektoren. (For begge transistorer er emitterstr&#248;mmen lik summen av base- og kollektorstr&#248;mmen, <abbr title="det vil si">dvs.</abbr> \(i_E = i_B + i_C\).) Transistorene symboliseres med en pil p&#229; emitterutgangen som indikerer str&#248;mretningen og dermed ogs&#229; transistortypen.</p>
 
 <blockquote>
-<p class="center"><img alt="" src="fig/npn.svg" width="206"> <img alt="" src="fig/pnp.svg" width="205"></p>
+<figure><img alt="" src="fig/npn.svg" width="206"> <img alt="" src="fig/pnp.svg" width="205"></figure>
 
 <p>NPN- og <abbr class="acronym" title="Plug and Play">PNP</abbr>-transistorer i det aktive omr&#229;det.</p>
 </blockquote>
@@ -568,7 +595,7 @@ TeX: { equationNumbers: { autoNumber: "all" } }
 <p>Slike analyser <em>modellerer</em> transistorenes sm&#229;signalegenskaper. De to mest brukte sm&#229;signalmodellene er den <em>forenklede hybride \(\pi\)-modellen</em> og <em>T-modellen</em>. Disse modellene inneholder en styrt str&#248;mkilde som tilsvarer str&#248;mforsterkningen (\(\beta\)), samt en inngangsmotstand enten p&#229; basen (\(r_\pi\)) eller emitteren (\(r_e\)).</p>
 
 <blockquote>
-<p class="center"><img alt="" src="fig/hybridpimodell.svg" width="350"> <img alt="" src="fig/tmodell.svg" width="134"></p>
+<figure><img alt="" src="fig/hybridpimodell.svg" width="350"> <img alt="" src="fig/tmodell.svg" width="134"></figure>
 
 <p>Forenklet hybrid \(\pi\)-modell og T-modell (NPN-transistor).</p>
 </blockquote>
@@ -617,10 +644,16 @@ TeX: { equationNumbers: { autoNumber: "all" } }
 <p>For &#229; oppn&#229; en kraftig forsterkning som ogs&#229; er line&#230;r, anvendes <em>negativ tilbakekobling</em>: Det uline&#230;rt forsterkede signalet fra utgangstransistorene sendes tilbake inn p&#229; en <em>differensialforsterker ved inngangen</em> (utgj&#248;res av transistorene \(Q_1\) og \(Q_2\)). I dette oppsettet <em>tvinges de to inngangssignalene til &#229; v&#230;re s&#229; like hverandre som mulig</em>, noe som har en fordelaktig effekt p&#229; det uline&#230;rt forsterkede signalet.</p>
 
 <p>Med andre ord gj&#248;r den negative tilbakekoblingen den uline&#230;re forsterkningen <em>mindre</em>. Differensialforsterkeren sammenligner det &#171;line&#230;re&#187; inngangssignalet med det &#171;uline&#230;re&#187; forsterkningssignalet og gir utgangstransistorene det signalet de trenger for &#229; <em>summa summarum</em> produsere en n&#230;r line&#230;r forsterkning.</p>
-<img alt="" class="center" src="fig/flyt.svg" width="599">
+
+<figure><img alt="" src="fig/flyt.svg" width="599">
+</figure>
+
 <p>For &#229; finne forsterkningen med tilbakekobling m&#229; vi f&#248;rst finne forsterkningen <em>uten</em> tilbakekobling, <abbr title="det vil si">dvs.</abbr> r&#229;forsterkningen. Det betyr &#229; f&#248;lge signalets bane gjennom kretsen og, for hvert trinn i forsterkeren, beregne forsterkningen.<sup class="footnote-ref"><a href="#fn4" id="fnref4" title="Her bruker vi ordet &#171;forsterkning&#187; i en noe utvidet betydning, dvs. som en multiplikator som godt kan v&#230;re under 1. En verdi p&#229; f.eks. 0,8, som effektivt vil forminske signalet snarere enn forsterke det i den ordin&#230;re betydningen, betraktes alts&#229; ogs&#229; som en &#171;forsterkning&#187;.">[4]</a></sup> Den totale r&#229;forsterkningen er dermed gitt som produktet av alle enkelttrinnforsterkningene. Fordi vi f&#229;r behov for &#229; beregne utgangslasten til hvert trinn, g&#229;r vi gjennom kretsen <em>baklengs</em> &#8211; fra utgangssignalet til inngangssignalet &#8211; slik at vi kan uttrykke utgangslasten til tidligere trinn med utgangspunkt i inngangsimpedansen til senere trinn.</p>
 
-<blockquote><img alt="" class="center" id="elliot" src="fig/p3a.png">
+<blockquote>
+<figure><img alt="" id="elliot" src="fig/p3a.png">
+</figure>
+
 <p>Det opprinnelige kretsskjemaet for forsterken, etter Rod Elliott. Komponenter markert med \(*\) er utelatt fra kretskortet.</p>
 </blockquote>
 </section>
@@ -630,11 +663,17 @@ TeX: { equationNumbers: { autoNumber: "all" } }
 
 <div class="collapse in" id="utgangstransistorene-section">
 <p>Forsterkeren har to store utgangstransistorer, \(Q_7\) og \(Q_8\), som forsterker henholdsvis positive og negative halvperioder av signalet n&#229;r den fungerer som en klasse B-forsterker, som vi i denne analysen vil betrakte den som. Vi vil derfor begrense oss til &#229; se p&#229; \(Q_7\), som er koblet sammen med \(Q_5\) i en s&#229;kalt <em>Sziklai-kobling</em>. Denne koblingen gj&#248;r det mulig &#229; betrakte \(Q_7\) og \(Q_5\) som &#233;n stor transistor med str&#248;mforsterkning lik produktet av str&#248;mforsterkningene til \(Q_7\) og \(Q_5\) (noe som vil vises under), og det er dermed rimelig &#229; regne ogs&#229; \(Q_5\) som en del av dette trinnet.</p>
-<img alt="" class="center" src="fig/p3a-f1.png">
+
+<figure><img alt="" src="fig/p3a-f1.png">
+</figure>
+
 <p>Str&#248;mmen avhenger av utgangslasten (<abbr title="det vil si">dvs.</abbr> impedansverdien til h&#248;yttaleren), som vi kaller \(R_L\), og som typisk er p&#229; 8 <abbr class="acronym" title="ohm">&#937;</abbr>. Verdien er imidlertid ikke relevant f&#248;r vi har foretatt en <em>arbeidspunktanalyse</em> av kretsen som gir oss den informasjonen vi trenger for numeriske utregninger. Inntil videre begrenser vi oss til <em>sm&#229;signalanalyser</em>, som gir oss symbolske uttrykk for enkelttrinnforsterkningene. De numeriske verdiene fyller vi inn siden.</p>
 
 <p>For &#229; analysere Sziklai-koblingen av \(Q_5\) og \(Q_7\) bytter vi ut begge transistorene med forenklede hybride \(\pi\)-modeller. Vi f&#229;r dermed to basemotstander, \(r_{\pi5}\) og \(r_{\pi7}\), og to styrte str&#248;mkilder med forsterkningsgrad \(\beta_5\) og \(\beta_7\), henholdsvis. Basestr&#248;mmen til \(Q_5\) kaller vi \(i_{b5}\), emitterstr&#248;mmen \(i_{e5}\) og kollektorstr&#248;mmen \(i_{c5}\), mens basestr&#248;mmen til \(Q_7\) kaller vi \(i_{b7}\), <abbr title="og s&#229; videre">osv.</abbr> Dette navngivningssystemet f&#248;lger vi konsekvent i hele analysen for &#229; skille kretsens mange st&#248;rrelser fra hverandre.</p>
-<img alt="" class="center" src="fig/sziklai.svg" width="397">
+
+<figure><img alt="" src="fig/sziklai.svg" width="397">
+</figure>
+
 <p>Vi tar utgangspunkt i \(i_{b5}\), som vi betrakter som trinnets inngangsstr&#248;m &#8211; og basespenningen til \(Q_5\), \(v_{b5}\), er tilsvarende inngangsspenningen. Trinnets utgangsspenning er spenningen over \(R_L\), \(v_o\), som skapes av utgangsstr&#248;mmen \(i_o\). Vi vil i analysen anta at den samme str&#248;mmen g&#229;r gjennom \(R_{13}\) og \(R_L\): Str&#248;mmen fra \(R_{13}\) g&#229;r riktignok ogs&#229; til \(R_5\), \(R_{14}\) og \(R_{15}\), men \(R_5\) ses bort fra ettersom vi beregner forsterkningen <em>uten tilbakekobling</em>, \(R_{15}\) er koblet i serie med kondensatoren \(C_7\), som har veldig lav kapasitans og dermed h&#248;y reaktans for alle frekvenser unntatt de aller h&#248;yeste, og \(R_{14}\) g&#229;r til utgangstransistoren \(Q_6\), som under analysens antagelser ikke er aktiv n&#229;r \(Q_7\) er aktiv og forsterkeren fungerer som en klasse B-forsterker.</p>
 
 <p>Det f&#248;rste vi kan se er at \(i_{c5}\) er lik summen av \(i_{b7}\) og str&#248;mmen gjennom \(R_{11}\), og da kan vi bruke str&#248;mdelingsprinsippet for &#229; finne \(i_{b7}\) uttrykt ved \(i_{c5}\). Vi f&#229;r</p>
@@ -676,12 +715,21 @@ TeX: { equationNumbers: { autoNumber: "all" } }
 
 <div class="collapse in" id="klasse-a-driveren-section">
 <p>Av de foreg&#229;ende resultatene er to av avgj&#248;rende viktighet for analysen av klasse A-driveren (transistoren \(Q_4\)). Det ene er inngangsimpedansen til utgangstransistortrinnet, \(R_{iu}\). Det andre er nevnte trinns forsterkning, \(A_u\).</p>
-<img alt="" class="center" src="fig/p3a-f2.png">
+
+<figure><img alt="" src="fig/p3a-f2.png">
+</figure>
+
 <p>\(Q_4\) er koblet til en <em>\(v_{BE}\)-multiplikator</em> som s&#248;rger for en konstant <abbr class="acronym" title="Direct Current">DC</abbr>-spenning mellom \(Q_5\) og \(Q_6\), og som utgj&#248;res av transistoren \(Q_9\), motstanden \(R_{16}\) og potensiometeret \(VR_1\). Multiplikatoren kan erstattes med en konstant spenningskilde, som i sm&#229;signalskjemaet erstattes med en kortslutning. S&#229;ledes f&#229;r vi kollektoren til \(Q_4\) koblet til en parallellkobling av \(Q_5\), \(Q_6\) og <em>bootstrap</em>-motstanden \(R_9\). Vi ser bort fra kondensatoren \(C_4\), som er en koblingskondensator som fjerner &#171;parasitt&#187;-oscillasjoner.</p>
-<img alt="" class="center" src="fig/driver.svg" width="376">
+
+<figure><img alt="" src="fig/driver.svg" width="376">
+</figure>
+
 <p>N&#229;r vi skal finne utgangslasten til klasse A-driveren, er inngangsimpedansen til \(Q_5\) (s&#229; vel som \(Q_6\)) gitt ved \(R_{iu}\). Spenningsfallet over bootstrap-motstanden \(R_9\) avhenger imidlertid av forsterkningen til utgangstransistorene, \(A_u\): Spenningspotensialet i den <em>&#248;vre</em> terminalen til \(R_9\) er \(v_{b5}\), mens spenningspotensialet i den <em>nedre</em> terminalen er \(v_o\), som er gitt ved \(v_o = A_uv_{b5}\). Spenningsfallet over motstanden er differansen mellom disse to potensialene, og vi f&#229;r at \(v_{R_9} = v_{b5} - v_o = v_{b5} - A_uv_{b5}\).</p>
 
-<blockquote><img alt="" class="center" src="fig/bootstrap.svg" width="257">
+<blockquote>
+<figure><img alt="" src="fig/bootstrap.svg" width="257">
+</figure>
+
 <p>Skjematisk fremstilling av bootstrap-koblingen.</p>
 </blockquote>
 
@@ -716,7 +764,7 @@ TeX: { equationNumbers: { autoNumber: "all" } }
 
 <div class="collapse in" id="differensialforsterkeren-section">
 <blockquote>
-<p class="center"><img alt="" src="fig/diff1.svg" width="190"> <img alt="" src="fig/diff2.svg" width="189"></p>
+<figure><img alt="" src="fig/diff1.svg" width="190"> <img alt="" src="fig/diff2.svg" width="189"></figure>
 
 <p>Differensialforsterkeren konseptualisert som en operasjonsforsterker.</p>
 
@@ -724,10 +772,13 @@ TeX: { equationNumbers: { autoNumber: "all" } }
 </blockquote>
 
 <p>Differensialforsterkeren p&#229; inngangen realiseres av et s&#229;kalt <em>long-tailed pair</em> som utgj&#248;res av de identiske transistorene \(Q_1\) og \(Q_2\). Transistoren \(Q_3\), som dette er koblet videre til, utgj&#248;r sammen med lysdioden, \(D_1\), en <em>str&#248;mkilde</em>. I et sm&#229;signalskjema erstattes str&#248;mkilder med brudd, og dermed kan vi eliminere \(Q_3\) fra analysen.</p>
-<img alt="" class="center" src="fig/p3a-f3.png">
+
+<figure><img alt="" src="fig/p3a-f3.png">
+</figure>
+
 <p><em>Basen til \(Q_1\)</em> er differensialforsterkerens ene inngang. <em>Basen til \(Q_2\)</em> er dens andre inngang. <em>Kollektoren til \(Q_1\)</em> er utgangen.<sup class="footnote-ref"><a href="#fn5" id="fnref5" title="En differensialforsterker har vanligvis to utganger s.a. utgangsspenningen er gitt ved differansen mellom spenningspotensialene. Her er imidlertid kollektoren til \(Q_2\) jordet, s&#229; utgangsspenningen kan sies &#229; utgj&#248;res av spenningspotensialet til kollektoren til \(Q_1\) alene.">[5]</a></sup> For &#229; finne <em>differensialforsterkningen uten tilbakekobling</em> kobler vi basen til \(Q_2\) til jord, og bytter s&#229; ut \(Q_1\) og \(Q_2\) med T-modeller.</p>
 
-<p class="center"><img alt="" src="fig/p3a-f4.png"> <img alt="" src="fig/ltp.svg" width="172"></p>
+<figure><img alt="" src="fig/p3a-f4.png"> <img alt="" src="fig/ltp.svg" width="172"></figure>
 
 <p>Fordi emitterne er koblet sammen og \(Q_3\) faller bort, g&#229;r den samme signalstr&#248;mmen gjennom emittermotstandene til \(Q_1\) og \(Q_2\), som er identiske (\(r_{e1} = r_{e2}\)). Ettersom basen til \(Q_2\) i denne analysen er koblet til jord, er spenningen over motstandene lik basespenningen til \(Q_1\), \(v_{b1}\). Dermed er emitterstr&#248;mmen til begge transistorene gitt ved</p>
 
@@ -737,7 +788,7 @@ TeX: { equationNumbers: { autoNumber: "all" } }
 
 <p>Imidlertid er kollektoren til \(Q_1\) koblet til <em>to</em> komponenter i parallell &#8211; motstanden \(R_6\) og transistoren \(Q_4\). For &#229; finne spenningsfallet mot jord erstatter vi \(Q_4\) med en forenklet hybrid \(\pi\)-modell, slik at vi f&#229;r basemotstanden \(r_{\pi4}\) i parallell med \(R_6\).</p>
 
-<p class="center"><img alt="" src="fig/p3a-f5.png"> <img alt="" src="fig/q4.svg" width="221"></p>
+<figure><img alt="" src="fig/p3a-f5.png"> <img alt="" src="fig/q4.svg" width="221"></figure>
 
 <p>Skjemaet viser at vi ogs&#229; f&#229;r kondensatoren \(C_4\) i parallell med \(r_{\pi4}\). Men vi ser bort fra \(C_4\) og betrakter parallellkoblingen av \(R_6\) og \(r_{\pi4}\), som vi kaller \(R_6&#8217;\) (<abbr title="det vil si">dvs.</abbr> \(R_6&#8217; = R_6 \parallel r_{\pi4}\)). Denne g&#229;r til jord, og kollektorspenningen er dermed gitt ved</p>
 
@@ -752,7 +803,10 @@ TeX: { equationNumbers: { autoNumber: "all" } }
 <section id="inngangen">
 <h3><a aria-hidden="true" class="header-anchor" href="#inngangen" title="Inngangen"></a>Inngangen<a aria-controls="inngangen-section" aria-expanded="true" aria-hidden="true" class="collapse-button" data-toggle="collapse" href="#inngangen-section" role="button"></a></h3>
 
-<div class="collapse in" id="inngangen-section"><img alt="" class="center" src="fig/p3a-f6.png">
+<div class="collapse in" id="inngangen-section">
+<figure><img alt="" src="fig/p3a-f6.png">
+</figure>
+
 <p>Mellom differensialforsterkeren og inngangen er det plassert noen kondensatorer og motstander som filtrerer bort <abbr class="acronym" title="Direct Current">DC</abbr>-spenning og st&#248;y, samt s&#248;rger for korrekte inngangsstr&#248;mmer og -spenninger. Vi ser bort fra kondensatorene, men er interessert i &#229; finne spenningsforsterkningen. F&#248;rst finner vi utgangsspenningen, \(v_{b1}\), som er summen av alle spenningsfallene fra basen til \(Q_1\) og jord:</p>
 
 <p>\[v_{b1} = i_{e1}(r_{e1} + r_{e2}) = (\beta_1 + 1)i_{b1}(r_{e1} + r_{e2}) \approx i_{b1}(\underbrace{2\beta_1r_{e1}}_{R_{Li}})\]</p>
@@ -776,7 +830,10 @@ TeX: { equationNumbers: { autoNumber: "all" } }
 <section id="tilbakekoblingen">
 <h3><a aria-hidden="true" class="header-anchor" href="#tilbakekoblingen" title="Tilbakekoblingen"></a>Tilbakekoblingen<a aria-controls="tilbakekoblingen-section" aria-expanded="true" aria-hidden="true" class="collapse-button" data-toggle="collapse" href="#tilbakekoblingen-section" role="button"></a></h3>
 
-<div class="collapse in" id="tilbakekoblingen-section"><img alt="" class="center" src="fig/p3a-f7.png">
+<div class="collapse in" id="tilbakekoblingen-section">
+<figure><img alt="" src="fig/p3a-f7.png">
+</figure>
+
 <p>Selve tilbakekoblingen er en enkel spenningsdeler inn p&#229; basen til \(Q_2\) (kondensatoren \(C_3\) ignoreres). Vi g&#229;r fra h&#248;yre til venstre, slik at inngangsspenningen til tilbakekoblingen er <em>utgangsspenningen</em> til forsterkeren, \(v_o\), mens utgangsspenningen til tilbakekoblingen er basespenningen til \(Q_2\), \(v_{b2}\). Basestr&#248;mmen er neglisjerbar, og spenningsdeleren gir f&#248;lgende sammenheng mellom spenningene:</p>
 
 <p>\[v_o\frac{R_4}{R_4 + R_5} = v_{b2}\]</p>
@@ -904,7 +961,10 @@ TeX: { equationNumbers: { autoNumber: "all" } }
 
 <div class="collapse in" id="stromforsyning-section">
 <p>Str&#248;mmen kommer fra lysnettet og inn gjennom transformatoren. Den omgj&#248;r 230 V fra lysnettet til et spenningsniv&#229; som passer for elektronikken. Den gir ogs&#229; et galvanisk skille mellom lysnettet og forsterkerkretsen. I v&#229;rt tilfelle bruker vi en ringkjernetrafo. Fordelen med &#229; bruke en ringkjernetrafo er at den gir liten lekkasjefluks, en viktig egenskap i en lydforsterker. Str&#248;mmen g&#229;r s&#229; videre gjennom en likeretterbro. Der foreg&#229;r omformingen fra <abbr class="acronym" title="Alternating Current">AC</abbr> til <abbr class="acronym" title="Direct Current">DC</abbr>. Til slutt har vi fire 10 <abbr title="millifarad">mF</abbr> glattekondensatorer som reduserer rippelspenningen.</p>
-<img alt="" class="center" src="fig/stromf.svg" width="572">
+
+<figure><img alt="" src="fig/stromf.svg" width="572">
+</figure>
+
 <p>For &#229; oppn&#229; en effekt p&#229; 2 &#215; 60 W i 8 <abbr class="acronym" title="ohm">&#937;</abbr> trenger vi en spenningsforsyning p&#229;</p>
 
 <p>\[U_{\mathrm{maks}} = \sqrt{2 \cdot P \cdot R_L} = \sqrt{2 \cdot 60\text{ W} \cdot 8\text{ $\Omega$}} \approx 31\text{ V}\]</p>
@@ -928,11 +988,11 @@ TeX: { equationNumbers: { autoNumber: "all" } }
 <p>Vi ser at en trafo p&#229; 300 <abbr class="acronym" title="voltampere">VA</abbr> oppfyller kravet.</p>
 
 <blockquote>
-<p class="center"><img alt="" src="fig/skopbilde1.png"> <img alt="" src="fig/skopbilde2.png"></p>
+<figure><img alt="" src="fig/skopbilde1.png"> <img alt="" src="fig/skopbilde2.png"></figure>
 
 <p>Skopbilder fra glattekondensatorene (venstre) og utgangen (h&#248;yre) med forsterkeren p&#229; tomgang og 29&#8211;0&#8211;24 V trafo.</p>
 
-<p class="center"><img alt="" src="fig/skopbilde3.png"> <img alt="" src="fig/skopbilde4.png"></p>
+<figure><img alt="" src="fig/skopbilde3.png"> <img alt="" src="fig/skopbilde4.png"></figure>
 
 <p>Skopbilder fra glattekondensatorene (venstre) og utgangen (h&#248;yre) med forsterkeren p&#229; tomgang og 24&#8211;0&#8211;24 V trafo.</p>
 </blockquote>
@@ -952,15 +1012,15 @@ TeX: { equationNumbers: { autoNumber: "all" } }
 
 <div class="collapse in" id="kabinettet-section">
 <blockquote>
-<p class="center"><img alt="" src="fig/topp.svg" width="305"> <img alt="" src="fig/bunn.jpg"></p>
+<figure><img alt="" src="fig/topp.svg" width="305"> <img alt="" src="fig/bunn.jpg"></figure>
 
 <p>Topp. Bunn.</p>
 
-<p class="center"><img alt="" src="fig/front.jpg"> <img alt="" src="fig/bak.jpg"></p>
+<figure><img alt="" src="fig/front.jpg"> <img alt="" src="fig/bak.jpg"></figure>
 
 <p>Front. Bak.</p>
 
-<p class="center"><img alt="" src="fig/side.svg" width="305"> <img alt="" src="fig/perspektiv.jpg"></p>
+<figure><img alt="" src="fig/side.svg" width="305"> <img alt="" src="fig/perspektiv.jpg"></figure>
 
 <p>Side. Perspektiv.</p>
 </blockquote>
@@ -975,16 +1035,25 @@ TeX: { equationNumbers: { autoNumber: "all" } }
 <h2><a aria-hidden="true" class="header-anchor" href="#innsiden" title="Innsiden"></a>Innsiden<a aria-controls="innsiden-section" aria-expanded="true" aria-hidden="true" class="collapse-button" data-toggle="collapse" href="#innsiden-section" role="button"></a></h2>
 
 <div class="collapse in" id="innsiden-section">
-<section><img alt="" class="center" src="fig/innside.svg" width="639">
+<section>
+<figure><img alt="" src="fig/innside.svg" width="639">
+</figure>
+
 <p><em>1.</em> Str&#248;minngang. <em>2.</em> Hovedsikring. <em>3.</em> Transformator. <em>4.</em> Jordingspunkt (stjernejord). <em>5.</em> Brolikeretter. <em>6.</em> Glattefilter (fire glattekondensatorer). <em>7.</em> Av/p&#229;-knapp. <em>8.</em> Lysdiode. <em>9.</em> Volumkontroll (potensiometer). <em>10.</em> Venstre forsterkerkrets. <em>11.</em> H&#248;yre forsterkerkrets. <em>12.</em> Kj&#248;leribbe. <em>13.</em> Utganger. <em>14.</em> Innganger.</p>
 </section>
 
 <section id="ledninger">
 <h3><a aria-hidden="true" class="header-anchor" href="#ledninger" title="Ledninger"></a>Ledninger<a aria-controls="ledninger-section" aria-expanded="true" aria-hidden="true" class="collapse-button" data-toggle="collapse" href="#ledninger-section" role="button"></a></h3>
 
-<div class="collapse in" id="ledninger-section"><img alt="" class="center" src="fig/ledninger.jpg">
+<div class="collapse in" id="ledninger-section">
+<figure><img alt="" src="fig/ledninger.jpg">
+</figure>
+
 <p>Gulgr&#248;nne ledninger g&#229;r til jord. Ledninger merket med gulgr&#248;nn elektrikertape er ogs&#229; jordledninger.</p>
-<img alt="" class="center" src="fig/stjernejord.jpg">
+
+<figure><img alt="" src="fig/stjernejord.jpg">
+</figure>
+
 <p>For &#229; unng&#229; st&#248;y har forsterkeren ett jordingspunkt &#8211; stjernejord. Det befinner seg i n&#230;rheten av transformatoren og kan demonteres ved &#229; skru ut skruen som holder kablene sammen.</p>
 </div>
 </section>
@@ -992,11 +1061,14 @@ TeX: { equationNumbers: { autoNumber: "all" } }
 <section id="stromforsyningen">
 <h3><a aria-hidden="true" class="header-anchor" href="#stromforsyningen" title="Str&#248;mforsyningen"></a>Str&#248;mforsyningen<a aria-controls="stromforsyningen-section" aria-expanded="true" aria-hidden="true" class="collapse-button" data-toggle="collapse" href="#stromforsyningen-section" role="button"></a></h3>
 
-<div class="collapse in" id="stromforsyningen-section"><img alt="" class="center" src="fig/stromfbilde.jpg">
+<div class="collapse in" id="stromforsyningen-section">
+<figure><img alt="" src="fig/stromfbilde.jpg">
+</figure>
+
 <p>Str&#248;mforsyningen omfatter en str&#248;minngang, en hovedsikring, en transformator, en brolikeretter, et glattefilter og en av/p&#229;-knapp.</p>
 
 <blockquote>
-<p class="center"><img alt="" src="fig/strominngang.jpg"> <img alt="" src="fig/sikring.jpg"> <img alt="" src="fig/knapp.jpg"></p>
+<figure><img alt="" src="fig/strominngang.jpg"> <img alt="" src="fig/sikring.jpg"> <img alt="" src="fig/knapp.jpg"></figure>
 
 <p>Str&#248;minngang. Hovedsikring. Av/p&#229;-knapp.</p>
 </blockquote>
@@ -1004,7 +1076,7 @@ TeX: { equationNumbers: { autoNumber: "all" } }
 <p>Str&#248;minngangen er festet til kabinettet med to skruer fra utsiden. Den er koblet videre til hovedsikringen, som kan skiftes ut uten &#229; &#229;pne kabinettet. Av/p&#229;-knappen, som fungerer som et brudd n&#229;r den er av og leder str&#248;m n&#229;r den er p&#229;, er ikke festet med skruer, men er klemt p&#229; plass. Koblingspunktene er isolert med tape.</p>
 
 <blockquote>
-<p class="center"><img alt="" src="fig/trafo.jpg"> <img alt="" src="fig/brolikeretter.jpg"> <img alt="" src="fig/glattek.jpg"></p>
+<figure><img alt="" src="fig/trafo.jpg"> <img alt="" src="fig/brolikeretter.jpg"> <img alt="" src="fig/glattek.jpg"></figure>
 
 <p>Transformator. Brolikeretter. Glattekondensatorer.</p>
 </blockquote>
@@ -1017,14 +1089,17 @@ TeX: { equationNumbers: { autoNumber: "all" } }
 <h3><a aria-hidden="true" class="header-anchor" href="#lysdiode" title="Lysdiode"></a>Lysdiode<a aria-controls="lysdiode-section" aria-expanded="true" aria-hidden="true" class="collapse-button" data-toggle="collapse" href="#lysdiode-section" role="button"></a></h3>
 
 <div class="collapse in" id="lysdiode-section">
-<blockquote><img alt="" class="center" src="fig/redled.svg" width="401">
+<blockquote>
+<figure><img alt="" src="fig/redled.svg" width="401">
+</figure>
+
 <p>Dioden er koblet i serie med tre motstander for &#229; gi riktig str&#248;m.</p>
 </blockquote>
 
 <p>Som en visuell indikator er det koblet en r&#248;d lysdiode over p&#229;trykksspenningene p&#229; \(+35\) V og \(-35\) V. S&#229; lenge det er spenning i glattekondensatorene, vil dioden lyse, s&#229; den vil ikke umiddelbart slukne n&#229;r forsterkeren sl&#229;s av ettersom utladningen tar litt tid. Det er imidlertid slett ikke noen ulempe med en p&#229;litelig indikator p&#229; glattefilterets spenningsstatus (se under).</p>
 
 <blockquote>
-<p class="center"><img alt="" src="fig/diode.jpg"> <img alt="" src="fig/diodetape.jpg"></p>
+<figure><img alt="" src="fig/diode.jpg"> <img alt="" src="fig/diodetape.jpg"></figure>
 
 <p>Venstre: Dioden forfra. H&#248;yre: Diodekretsen er festet til kabinettet med tape.</p>
 </blockquote>
@@ -1036,7 +1111,7 @@ TeX: { equationNumbers: { autoNumber: "all" } }
 
 <div class="collapse in" id="innganger-og-utganger-section">
 <blockquote>
-<p class="center"><img alt="" src="fig/inng.jpg"> <img alt="" src="fig/inngbak.jpg"></p>
+<figure><img alt="" src="fig/inng.jpg"> <img alt="" src="fig/inngbak.jpg"></figure>
 
 <p>Inngangene utenfra. Inngangene innenfra.</p>
 </blockquote>
@@ -1044,7 +1119,7 @@ TeX: { equationNumbers: { autoNumber: "all" } }
 <p>Inngangene er festet til kabinettet med to skruer utenfra. De har felles jord.</p>
 
 <blockquote>
-<p class="center"><img alt="" src="fig/utg.jpg"> <img alt="" src="fig/utgbak.jpg"></p>
+<figure><img alt="" src="fig/utg.jpg"> <img alt="" src="fig/utgbak.jpg"></figure>
 
 <p>Utgangene utenfra. Utgangene innenfra.</p>
 </blockquote>
@@ -1058,14 +1133,17 @@ TeX: { equationNumbers: { autoNumber: "all" } }
 
 <div class="collapse in" id="volumkontroll-section">
 <blockquote>
-<p class="center"><img alt="" src="fig/volumknott.jpg"> <img alt="" src="fig/volumpot.jpg"></p>
+<figure><img alt="" src="fig/volumknott.jpg"> <img alt="" src="fig/volumpot.jpg"></figure>
 
 <p>Volumkontrollen. Volumpotensiometeret.</p>
 </blockquote>
 
 <p>F&#248;r det n&#229;r forsterkerkretsen g&#229;r inngangssignalet gjennom volumkontrollen, som utgj&#248;res av et dobbelt potensiometer - et for hver kanal. Potensiometerene fungerer som en variabel spenningsdeler som bestemmer hvor mye av inngangssignalet som skal sendes videre til forsterkerkretsen. Hvis inngangssignalet (\(v_i\)) og jord kan betraktes som ytterpunkter, er det utgangssignalet (\(v_o\)) sin &#171;plassering&#187; mellom dem som bestemmes ved &#229; skru p&#229; volumkontrollen. Hvert potensiometer har tre terminaler: utgangssignalet tas ut fra den midterste, mens de to andre kobles til inngangssignalet og jord.</p>
 
-<blockquote><img alt="" class="center" src="fig/potmeter.svg" width="447">
+<blockquote>
+<figure><img alt="" src="fig/potmeter.svg" width="447">
+</figure>
+
 <p>Et potensiometer (a) kan betraktes som en enkel spenningsdeler over to motstander (b). N&#229;r volumet er null, er \(v_o\) lik jord (c). N&#229;r volumet er p&#229; fullt, er \(v_o = v_i\) (d).</p>
 </blockquote>
 </div>
@@ -1075,12 +1153,15 @@ TeX: { equationNumbers: { autoNumber: "all" } }
 <h3><a aria-hidden="true" class="header-anchor" href="#kjoleribben" title="Kj&#248;leribben"></a>Kj&#248;leribben<a aria-controls="kjoleribben-section" aria-expanded="true" aria-hidden="true" class="collapse-button" data-toggle="collapse" href="#kjoleribben-section" role="button"></a></h3>
 
 <div class="collapse in" id="kjoleribben-section">
-<p class="center"><img alt="" src="fig/kjoleskrue1.jpg"> <img alt="" src="fig/kjoleskrue2.jpg"></p>
+<figure><img alt="" src="fig/kjoleskrue1.jpg"> <img alt="" src="fig/kjoleskrue2.jpg"></figure>
 
 <p>Kj&#248;leribben er plassert mellom de to kretskortene og er festet til kabinettet med fire skruer fra oversiden. Hver skrue har fire muttere mellom kj&#248;leribben og kabinettet for &#229; gi riktig h&#248;yde over kretskortene. For enkel tilgang til skruene (ovenfra) er det borret hull i kj&#248;leribben.</p>
 
 <p>Utgangstransistorene er festet til kj&#248;leribben med skruer fra undersiden. Disse kan n&#229;s gjennom hull i kabinettet.</p>
-<img alt="" class="center" src="fig/transhull.jpg">
+
+<figure><img alt="" src="fig/transhull.jpg">
+</figure>
+
 <p><strong>Ikke l&#248;ft opp kj&#248;leribben uten &#229; ha skrudd kretskortene fra kabinettet eller utgangstransistorene fra kj&#248;leribben.</strong>
 </p>
 </div>
@@ -1095,7 +1176,10 @@ TeX: { equationNumbers: { autoNumber: "all" } }
 
 <div class="collapse in" id="kretskort-section">
 <section>
-<blockquote><img alt="" class="center" src="fig/kort.svg" width="480">
+<blockquote>
+<figure><img alt="" src="fig/kort.svg" width="480">
+</figure>
+
 <p>Hvert kretskort er festet til kabinettet med to skruer, her markert med piler.</p>
 </blockquote>
 
@@ -1105,9 +1189,15 @@ TeX: { equationNumbers: { autoNumber: "all" } }
 
 <p><strong>Advarsel: Det er avvik mellom overlegget og komponentplasseringen. Ved reparasjon p&#229; kortet <em>m&#229;</em> man f&#248;rst lese denne teksten.</strong>
 </p>
-<img alt="" class="center" src="fig/copperb.png">
+
+<figure><img alt="" src="fig/copperb.png">
+</figure>
+
 <p>Kobberbunn.</p>
-<img alt="" class="center" src="fig/silkscreen.png">
+
+<figure><img alt="" src="fig/silkscreen.png">
+</figure>
+
 <p>&#171;Silk screen&#187;. Kobberbanene er vist i gr&#229;tt.</p>
 </section>
 
@@ -1137,15 +1227,24 @@ TeX: { equationNumbers: { autoNumber: "all" } }
 <div class="collapse in" id="modifikasjoner-section">
 <p>Kretsen er noe modifisert for &#229; fungere optimalt.</p>
 
-<blockquote><img alt="" class="center" id="mod" src="fig/kretsmod.svg" width="847">
+<blockquote>
+<figure><img alt="" id="mod" src="fig/kretsmod.svg" width="847">
+</figure>
+
 <p>Modifisert kretsskjema.</p>
 </blockquote>
 
 <p><abbr title="P&#229; grunn av">Pga.</abbr> problemer med st&#248;y (1 <abbr title="megahertz">MHz</abbr>) koblet vi 368 <abbr title="pikofarad">pF</abbr> kondensatorer i parallell med \(C_4\) og \(C_6\), for &#229; &#248;ke kapasitansen. De ekstra kondensatorene er loddet fast til benene til transistorene \(Q_4\) og \(Q_6\) (se bilde).</p>
-<img alt="" class="center" src="fig/ekstrac.jpg">
+
+<figure><img alt="" src="fig/ekstrac.jpg">
+</figure>
+
 <p>Videre er \(C_+\) og \(C_-\) parallellkoblet med 100 <abbr title="nanofarad">nF</abbr> kondensatorer p&#229; motsatt side av sikringene (\(F_1\) og \(F_2\)). Disse er festet p&#229; undersiden av kortet.</p>
 
-<blockquote><img alt="" class="center" src="fig/termisk.jpg">
+<blockquote>
+<figure><img alt="" src="fig/termisk.jpg">
+</figure>
+
 <p>Termisk tilbakekobling av \(Q_9\).</p>
 </blockquote>
 
@@ -1164,7 +1263,10 @@ TeX: { equationNumbers: { autoNumber: "all" } }
 
 <div class="collapse in" id="trimming-section">
 <p>F&#248;rste gang man skal starte opp forsterkeren, anbefales det at man gj&#248;r det med en <em>ekstern</em> spenningskilde med str&#248;mbegrensning. Ved feil kan en ekstern kilde kuttes, mens den interne str&#248;mforsyningen har ingen slik sikkerhet <abbr title="p&#229; grunn av">pga.</abbr> glattekondensatorene.</p>
-<img alt="" class="center" src="fig/vr1.jpg">
+
+<figure><img alt="" src="fig/vr1.jpg">
+</figure>
+
 <p>Hvilestr&#248;mmen (\(I_Q\)) stilles inn med potensiometeret \(VR_1\). Skru det til full motstand (med klokken) og f&#248;lg med p&#229; spenningen over motstandene \(R_{13}\) og \(R_{14}\) med et multimeter. Hvis spenningen plutselig skulle begynne &#229; stige, er noe galt &#8211; skru av spenningskilden og feils&#248;k kretsen.</p>
 
 <p>N&#229;r p&#229;trykksspenningen er p&#229; \(\pm 35\) V, justeres <em>hvilestr&#248;mmen</em> gjennom \(R_{13}\) og \(R_{14}\) ved &#229; stille p&#229; potensiometeret. If&#248;lge Rod Elliott b&#248;r str&#248;mmen gjennom motstandene ligge p&#229; 75 <abbr title="milliampere">mA</abbr>, som svarer til et spenningsfall p&#229; 50 <abbr title="millivolt">mV</abbr>:</p>
@@ -1836,7 +1938,7 @@ TeX: { equationNumbers: { autoNumber: "all" } }
 <p>Det ble en forsterker med et imponerende lydbilde. Valg av utgangstransistorer hadde noe &#229; si for lydkvaliteten: For testing benyttet vi f&#248;rst billige BD911- og BD912-transistorer, som ga et greit resultat, men uten presis lydgjengivning ved komplekse signaler. Vi byttet dem siden ut med dyrere MJL3281A- og MJL1302A-transistorer og opplevde en dramatisk &#248;kning i lydkvalitet (og pris). Temperaturutviklingen i transistorene ble lavere ettersom de dyre transistorene har en st&#248;rre flate og dermed overf&#248;rer temperaturen bedre til kj&#248;leribben.</p>
 
 <blockquote>
-<p class="center"><img alt="" src="fig/bd91x.svg"> <img alt="" src="fig/mjl3.svg"></p>
+<figure><img alt="" src="fig/bd91x.svg"> <img alt="" src="fig/mjl3.svg"></figure>
 
 <p>Kvalitet koster: BD911 (venstre) kontra MJL3281A (h&#248;yre).</p>
 </blockquote>

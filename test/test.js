@@ -122,7 +122,7 @@ $.fn.addCollapsibleSections.defaults = {
 },{"bootstrap":8,"jquery":21,"string":25}],2:[function(require,module,exports){
 var $ = require('jquery')
 
-$.fn.addFigures = function () {
+$.fn.fixFigures = function () {
   return this.each(function () {
     $(this).find('p img').each(function () {
       var img = $(this)
@@ -134,29 +134,43 @@ $.fn.addFigures = function () {
 
       if (alt === '') {
         // for images without a caption:
-        // replace <p><img></p> with <img>
+        // replace <p><img></p> with <figure><img></figure>
         if (p.text().trim() === '') {
-          if (p.find('img').length === 1) {
-            var pclass = (p.attr('class') || '').trim()
-            if (pclass !== '') {
-              img.addClass(pclass)
-            } else {
-              img.addClass('center')
-            }
-            if (p.is('[width]')) {
-              img.attr('width', p.attr('width'))
-            }
-            img.insertBefore(p)
-            if (p.is(':empty')) {
-              p.remove()
-            }
-          } else {
-            p.addClass('center')
+          var figure = $('<figure>')
+          figure.insertBefore(p)
+          figure.html(p.html())
+          img = figure.find('img')
+          p.remove()
+
+          if (img.length === 1) {
+            figure.addClass(img.attr('class'))
+            img.removeAttr('class')
           }
+
+          // if (p.find('img').length === 1) {
+          //   var pclass = (p.attr('class') || '').trim()
+          //   if (pclass !== '') {
+          //     img.addClass(pclass)
+          //   } else {
+          //     console.log(p.prop('outerHTML'))
+          //     img.addClass('center')
+          //   }
+          //   if (p.is('[width]')) {
+          //     img.attr('width', p.attr('width'))
+          //   }
+          //   img.insertBefore(p)
+          //   if (p.is(':empty')) {
+          //     p.remove()
+          //   }
+          // } else {
+          //   console.log(p.prop('outerHTML'))
+          //   p.addClass('center')
+          // }
         }
       } else {
         // for images with a caption:
-        // create figure div
+        // create <figure> with <figcaption>
+
         var div = $('<figure></figure>')
         var caption = $('<figcaption>' + alt + '</figcaption>')
         div.append(img)
