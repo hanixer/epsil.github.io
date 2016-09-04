@@ -157,8 +157,8 @@ $.fn.addFigures = function () {
       } else {
         // for images with a caption:
         // create figure div
-        var div = $('<div class="figure"></div>')
-        var caption = $('<p class="caption">' + alt + '</p>')
+        var div = $('<figure></figure>')
+        var caption = $('<figcaption>' + alt + '</figcaption>')
         div.append(img)
         div.append(caption)
 

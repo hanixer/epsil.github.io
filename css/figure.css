@@ -1,9 +1,9 @@
-.caption {
+figcaption {
     margin: 3px 0 0 0;
     padding: 0;
 }
 
-.figure {
+figure {
     font-size: 80%;
     font-style: italic;
     line-height: 1.35;
@@ -12,7 +12,7 @@
     text-align: center;
 }
 
-.figure img {
+figure img {
     /* border: 1px solid #ccc; */
 }
 
@@ -32,6 +32,13 @@
     text-align: left;
 }
 
+img.center {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    text-align: center;
+}
+
 .center {
     text-align: center;
 }
@@ -41,7 +48,7 @@
 }
 
 @media (max-width: 767px) {
-    .figure, .figure.left, .figure.right {
+    figure, figure.left, figure.right {
         border: none;
         /* color: #666666; */
         display: block;
@@ -51,7 +58,7 @@
         text-align: center;
     }
 
-    .figure img {
+    figure img {
         border: none;
     }
 }

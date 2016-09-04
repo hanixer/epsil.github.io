@@ -297,7 +297,7 @@ Etter at Nokia Data Suite er installert, må du, dersom du bruker Nokia 3210 ell
 
 ![](patch.png){width=438}
 
-Kjør patchen, velg den mappen hvor Data Suite er installert, og velg ja til å overskrive filen Pr3SS.dll. Programmet vil så overskrive den opprinnelige DLL-filen med en patchet versjon som understøtter den mobiltelefonen du bruker. Maskinen trenger ikke å startes på nytt etter denne operasjonen. Du kan nå kjøre PanuWorld FLASHMSG.
+Kjør patchen, velg den mappen hvor Data Suite er installert, og velg ja til å overskrive filen `Pr3SS.dll`. Programmet vil så overskrive den opprinnelige DLL-filen med en patchet versjon som understøtter den mobiltelefonen du bruker. Maskinen trenger ikke å startes på nytt etter denne operasjonen. Du kan nå kjøre PanuWorld FLASHMSG.
 
 ### Velge COM-port i FLASHMSG
 
