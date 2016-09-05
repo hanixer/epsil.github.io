@@ -9,6 +9,7 @@ css: custom.css
 To do:
 
 -   Git Bash should be installed first.
+    -   How does the override option affect `PATH`?
 -   MSYS may be superfluous.
     -   If so, where to place `open.bat`?
 -   Does Git Bash's MingGW differ from the default MinGW?
