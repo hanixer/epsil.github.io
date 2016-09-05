@@ -37,7 +37,7 @@ Below follow installation instructions for [MSYS](#msys), [MinGW](#mingw) and [G
 [Git for Windows](https://git-scm.com/)
 ---------------------------------------
 
-Install [Git for Windows](https://git-scm.com/). During the installation, you will be asked if you want to install additional Unix utilities; choose yes.
+Install [Git for Windows](https://git-scm.com/). When asked whether to install additional Unix utilities, choose yes.
 
 We can now run Bash scripts as shown [above](#usage), as well as use common Unix commands like `ls`, `cp` and `rm`. A standalone "Git Bash" shell is also provided.
 
