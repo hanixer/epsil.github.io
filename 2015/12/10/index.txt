@@ -38,7 +38,7 @@ Installasjon
 ------------
 
 1.  npm
-    -   <http://www.npmjs.com/>
+    -   <https://nodejs.org/>
 2.  ChromeDriver
     -   <http://sites.google.com/a/chromium.org/chromedriver/>
 3.  selenium-webdriver
