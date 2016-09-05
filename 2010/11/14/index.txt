@@ -13,4 +13,4 @@ Men dette fungerer altså bare på filnavn uten mellomrom. For mer kronglete fil
 
 Den første eksekverer `rm` via `find`. Den siste bruker opsjonen `-print0` for å terminere filnavn med `\0` istedenfor linjeskift, og `rm` gjøres oppmerksom på dette med opsjonen `-0`. Begge programmer må altså tilpasses for å kunne samarbeide om spesielle filnavn.
 
-Fortrinnet med `\0`-metoden er at den håndterer de mest outrerte filnavn, selv navn som inneholder linjeskift! Jeg visste ikke at det var mulig før jeg leste `man find`, men `touch 'some\` + <kbd>Enter</kbd> + `file'` vil lage en slik fil. (Bytt ut «`touch`» med «`rm`» for å slette filen.)
+Fortrinnet med `\0`-metoden er at den håndterer de mest *outrerte* filnavn, selv navn som inneholder linjeskift! Jeg visste ikke at det var mulig før jeg leste `man find`, men `touch 'some\` + <kbd>Enter</kbd> + `file'` vil lage en slik fil. (Bytt ut «`touch`» med «`rm`» for å slette filen.)
