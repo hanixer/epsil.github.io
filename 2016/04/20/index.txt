@@ -44,11 +44,9 @@ We can now run Bash scripts as shown [above](#usage), as well as use common Unix
 [MSYS](http://www.mingw.org/wiki/msys)
 --------------------------------------
 
-Git for Windows bundles MSYS for Unix compatibility. Alternatively, MSYS can be installed without Git, as explained below.
+Git for Windows bundles [MSYS](http://www.mingw.org/wiki/msys) for Unix compatibility. Alternatively, MSYS can be installed without Git.
 
-After installing [MSYS](http://www.mingw.org/wiki/msys), ensure that `sh.exe` is globally available by *appending* the location of MSYS' executables (its `bin/` directory) to the `PATH` environment variable.
-
-To access the `PATH` variable, go to *Control Panel* -> *System* -> *Advanced* -> *Environment Variables*. The value is a list of file paths separated by `;`, for example:
+If MSYS is installed separately, ensure that `sh.exe` is globally available by *appending* the location of MSYS' executables (its `bin/` directory) to the `PATH` environment variable. To access the `PATH` variable, go to *Control Panel* -> *System* -> *Advanced* -> *Environment Variables*. The value is a list of file paths separated by `;`, for example:
 
     %SystemRoot%\system32;%SystemRoot%;C:\Ruby22\bin
 
