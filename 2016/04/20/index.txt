@@ -5,6 +5,17 @@ description: How to run Bash scripts from Windows' command prompt and extend it 
 css: custom.css
 ---
 
+<!--
+To do:
+
+-   Git Bash should be installed first.
+-   MSYS may be superfluous.
+    -   If so, where to place `open.bat`?
+-   Does Git Bash's MingGW differ from the default MinGW?
+-   On Windows 10, the `PATH` variable is not separated by `;`.
+-   Update CSS so that header does not affect the width of the window.
+-->
+
 The following setup allows us to [run Bash scripts from Windows' command prompt](#usage). It also augments the command prompt with common Unix commands like `ls`, `cp` and `rm`, which is useful if these are ingrained into muscle memory.
 
 (For a list of standalone Bash shells for Windows, see [alternatives](#alternatives).)
