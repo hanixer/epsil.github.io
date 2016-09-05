@@ -44,9 +44,9 @@ We can now run Bash scripts as shown [above](#usage), as well as use common Unix
 [MSYS](http://www.mingw.org/wiki/msys)
 --------------------------------------
 
-Git for Windows bundles [MSYS](http://www.mingw.org/wiki/msys) for Unix compatibility. Therefore, this step can be skipped unless you wish to install and configure MSYS separately.
+Git for Windows bundles MSYS for Unix compatibility. Alternatively, MSYS can be installed without Git, as explained below.
 
-After installing MSYS, ensure that `sh.exe` is globally available by *appending* the location of MSYS' executables (its `bin/` directory) to the `PATH` environment variable.
+After installing [MSYS](http://www.mingw.org/wiki/msys), ensure that `sh.exe` is globally available by *appending* the location of MSYS' executables (its `bin/` directory) to the `PATH` environment variable.
 
 To access the `PATH` variable, go to *Control Panel* -> *System* -> *Advanced* -> *Environment Variables*. The value is a list of file paths separated by `;`, for example:
 
@@ -58,8 +58,7 @@ Thus, if MSYS' executables are located in `C:\msys\1.0\bin`, simply add `;C:\msy
 
 On Windows 10, the variable is displayed as an editable list of directories.
 
-[MinGW](http://www.mingw.org/)
-------------------------------
+### [MinGW](http://www.mingw.org/)
 
 For additional developer tools, augment the above setup with a complete installation of [MinGW](http://www.mingw.org/). Append its directory to `PATH` *after* the other directories.
 
