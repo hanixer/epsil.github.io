@@ -8,12 +8,12 @@ css: custom.css
 <!--
 To do:
 
--   Git Bash should be installed first.
+-   ~~Git Bash should be installed first.~~
     -   How does the override option affect `PATH`?
--   MSYS may be superfluous.
+-   ~~MSYS may be superfluous.~~
     -   If so, where to place `open.bat`?
 -   Does Git Bash's MingGW differ from the default MinGW?
--   On Windows 10, the `PATH` variable is not separated by `;`.
+-   ~~On Windows 10, the `PATH` variable is not separated by `;`.~~
 -   Update CSS so that header does not affect the width of the window.
 -->
 
@@ -24,7 +24,7 @@ The following setup allows us to [run Bash scripts from Windows' command prompt]
 Usage
 -----
 
-The minimum requirement is to [install MSYS](#msys). We can then open a command prompt window and run a Bash script as follows:
+The minimum requirement is to [install Git for Windows](#git-for-windows). We can then open a command prompt window and run a Bash script as follows:
 
     sh script.sh
 
@@ -34,10 +34,19 @@ If the script accepts parameters, we just provide them at the end:
 
 Below follow installation instructions for [MSYS](#msys), [MinGW](#mingw) and [G*nu*W*in*32](#gnuwin32).
 
+[Git for Windows](https://git-scm.com/)
+---------------------------------------
+
+Install [Git for Windows](https://git-scm.com/). During the installation, you will be asked if you want to install additional Unix utilities; choose yes.
+
+We can now run Bash scripts as shown [above](#usage), as well as use common Unix commands like `ls`, `cp` and `rm`. A standalone "Git Bash" shell is also provided.
+
 [MSYS](http://www.mingw.org/wiki/msys)
 --------------------------------------
 
-Install [MSYS](http://www.mingw.org/wiki/msys). Ensure that `sh.exe` is globally available by *appending* the location of MSYS' executables (its `bin/` directory) to the `PATH` environment variable.
+Git for Windows bundles [MSYS](http://www.mingw.org/wiki/msys) for Unix compatibility. Therefore, this step can be skipped unless you wish to install and configure MSYS separately.
+
+After installing MSYS, ensure that `sh.exe` is globally available by *appending* the location of MSYS' executables (its `bin/` directory) to the `PATH` environment variable.
 
 To access the `PATH` variable, go to *Control Panel* -> *System* -> *Advanced* -> *Environment Variables*. The value is a list of file paths separated by `;`, for example:
 
@@ -47,26 +56,26 @@ Thus, if MSYS' executables are located in `C:\msys\1.0\bin`, simply add `;C:\msy
 
     %SystemRoot%\system32;%SystemRoot%;C:\Ruby22\bin;C:\msys\1.0\bin
 
-We can now run Bash scripts as shown [above](#usage), as well as use common Unix commands like `ls`, `cp` and `rm`.
+On Windows 10, the variable is displayed as an editable list of directories.
 
 [MinGW](http://www.mingw.org/)
 ------------------------------
 
-For additional developer tools, augment the above setup with a complete installation of [MinGW](http://www.mingw.org/). Append its directory to `PATH` *after* MSYS.
+For additional developer tools, augment the above setup with a complete installation of [MinGW](http://www.mingw.org/). Append its directory to `PATH` *after* the other directories.
 
 We can now link (`ld`) and compile C programs (`gcc`) and C++ programs (`g++`).
 
 [G*nu*W*in*32](http://gnuwin32.sourceforge.net/)
 ------------------------------------------------
 
-For even more Unix utilities, install [G*nu*W*in*32](http://gnuwin32.sourceforge.net/). Append its directory to `PATH` *after* MSYS and MinGW.
+For even more Unix utilities, install [G*nu*W*in*32](http://gnuwin32.sourceforge.net/). Append its directory to `PATH` *after* the other directories.
 
 We now have a host of tools at our command. For example, `wget` downloads a file via the command prompt, while `md5sum` calculates its MD5 hash.
 
 Alias `open`
 ------------
 
-Windows does not have the `open` command, and none of the packages above provide it. To alias `open` to Windows' `start` command, navigate to MSYS' `bin/` directory and create an `open.bat` file containing the following:
+Windows does not have the `open` command, and none of the packages above provide it. To alias `open` to Windows' `start` command, navigate to MSYS' `bin/` directory (`C:\Program Files\Git\usr\bin` or `C:\msys\1.0\bin`) and create an `open.bat` file containing the following:
 
     @echo off
     start %*
@@ -74,11 +83,11 @@ Windows does not have the `open` command, and none of the packages above provide
 Alias `find`
 ------------
 
-Windows' own `find` utility shadows the Unix `find` command. To create an alias for the latter, navigate to MSYS' `bin/` directory and make a copy of `find.exe` called `find2.exe`. The Unix command can now be accessed as `find2`.
+Windows' own `find` utility shadows the Unix `find` command. To create an alias for the latter, make a copy of `find.exe`, `find2.exe`, in the same folder. The Unix command can now be accessed as `find2`.
 
 Alternatives
 ------------
 
 Windows 10 includes its own [Linux Bash Shell](http://www.howtogeek.com/249966/how-to-install-and-use-the-linux-bash-shell-on-windows-10/), based on Ubuntu. Note that this is a *standalone* shell, and does not interfere with Windows' command prompt. A standalone shell has the advantage that it may provide functionality that is unavailable or shadowed by the command prompt.
 
-Another comprehensive standalone shell is provided by the [Cygwin](http://www.cygwin.com/) project, which can be used on older Windows versions. MSYS and MinGW also include standalone shells, and [Git for Windows](https://git-scm.com/download/win) provides a "Git Bash" shell.
+Another comprehensive standalone shell is provided by the [Cygwin](http://www.cygwin.com/) project, which can be used on older Windows versions.
