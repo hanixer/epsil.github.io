@@ -5,7 +5,7 @@
 <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
 <meta content="2016-04-20" name="date">
 <meta content="How to run Bash scripts from Windows&#8217; command prompt and extend it with common Unix commands." name="description">
-<meta content="16e92a2adcd8d4e2e3ef7419dac38414" name="md5">
+<meta content="366189220161ea246bbdd2334d33d40b" name="md5">
 <meta content="text/css" http-equiv="Content-Style-Type">
 <meta content="width=device-width, initial-scale=1" name="viewport">
 <link href="../../../favicon.ico" rel="icon" type="image/x-icon">
@@ -60,10 +60,11 @@ TeX: { equationNumbers: { autoNumber: "all" } }
 <li><a href="#git-for-windows" title="Git for Windows">Git for Windows</a>
 </li>
 
-<li><a href="#msys" title="MSYS"><abbr class="acronym" title="Minimal System"><span class="caps">MSYS</span></abbr></a>
-</li>
-
+<li><span class="" id="msys-link"><a href="#msys" title="MSYS"><abbr class="acronym" title="Minimal System"><span class="caps">MSYS</span></abbr></a><a aria-controls="msys-link-section" aria-expanded="false" aria-hidden="true" class="collapse-button" data-toggle="collapse" href="#msys-link-section" role="button"></a></span>
+<ul class="collapse" id="msys-link-section">
 <li><a href="#mingw" title="MinGW"><abbr title="Minimalist GNU for Windows">MinGW</abbr></a>
+</li>
+</ul>
 </li>
 
 <li><a href="#gnuwin32" title="GnuWin32">G<em>nu</em>W<em>in</em>32</a>
@@ -145,11 +146,10 @@ To do:
 </h2>
 
 <div class="collapse in" id="msys-section">
-<p>Git for Windows bundles <a href="http://www.mingw.org/wiki/msys"><abbr class="acronym" title="Minimal System"><span class="caps">MSYS</span></abbr></a> for Unix compatibility. Therefore, this step can be skipped unless you wish to install and configure <abbr class="acronym" title="Minimal System"><span class="caps">MSYS</span></abbr>&#160;separately.</p>
+<section>
+<p>Git for Windows bundles <a href="http://www.mingw.org/wiki/msys"><abbr class="acronym" title="Minimal System"><span class="caps">MSYS</span></abbr></a> for Unix compatibility. Alternatively, <abbr class="acronym" title="Minimal System"><span class="caps">MSYS</span></abbr> can be installed without&#160;Git.</p>
 
-<p>After installing <abbr class="acronym" title="Minimal System"><span class="caps">MSYS</span></abbr>, ensure that <code>sh.exe</code> is globally available by <em>appending</em> the location of <abbr class="acronym" title="Minimal System"><span class="caps">MSYS</span></abbr>&#8217; executables (its <code>bin/</code> directory) to the <code>PATH</code> environment variable.</p>
-
-<p>To access the <code>PATH</code> variable, go to <em>Control Panel</em> &#8594; <em>System</em> &#8594; <em>Advanced</em> &#8594; <em>Environment Variables</em>. The value is a list of file paths separated by <code>;</code>, for example:</p>
+<p>If <abbr class="acronym" title="Minimal System"><span class="caps">MSYS</span></abbr> is installed separately, ensure that <code>sh.exe</code> is globally available by <em>appending</em> the location of <abbr class="acronym" title="Minimal System"><span class="caps">MSYS</span></abbr>&#8217; executables (its <code>bin/</code> directory) to the <code>PATH</code> environment variable. To access the <code>PATH</code> variable, go to <em>Control Panel</em> &#8594; <em>System</em> &#8594; <em>Advanced</em> &#8594; <em>Environment Variables</em>. The value is a list of file paths separated by <code>;</code>, for example:</p>
 
 <pre>
 <code>%SystemRoot%\system32;%SystemRoot%;C:\Ruby22\bin</code>
@@ -162,17 +162,18 @@ To do:
 </pre>
 
 <p>On Windows 10, the variable is displayed as an editable list of&#160;directories.</p>
-</div>
 </section>
 
 <section id="mingw">
-<h2><a aria-hidden="true" class="header-anchor" href="#mingw" title="MinGW"></a><a href="http://www.mingw.org/"><abbr title="Minimalist GNU for Windows">MinGW</abbr></a><a aria-controls="mingw-section" aria-expanded="true" aria-hidden="true" class="collapse-button" data-toggle="collapse" href="#mingw-section" role="button"></a>
-</h2>
+<h3><a aria-hidden="true" class="header-anchor" href="#mingw" title="MinGW"></a><a href="http://www.mingw.org/"><abbr title="Minimalist GNU for Windows">MinGW</abbr></a><a aria-controls="mingw-section" aria-expanded="true" aria-hidden="true" class="collapse-button" data-toggle="collapse" href="#mingw-section" role="button"></a>
+</h3>
 
 <div class="collapse in" id="mingw-section">
 <p>For additional developer tools, augment the above setup with a complete installation of <a href="http://www.mingw.org/"><abbr title="Minimalist GNU for Windows">MinGW</abbr></a>. Append its directory to <code>PATH</code> <em>after</em> the other&#160;directories.</p>
 
 <p>We can now link (<code>ld</code>) and compile C programs (<code>gcc</code>) and C++ programs (<code>g++</code>).</p>
+</div>
+</section>
 </div>
 </section>
 

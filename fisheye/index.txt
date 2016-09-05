@@ -4,7 +4,7 @@ css: custom.css
 ---
 
 A study on fish-eye undistortion. **[PDF version](thesis.pdf).**
-[DUO entry](http://urn.nb.no/URN:NBN:no-51670).[^1]
+DUO: [URN:NBN:no-51670](http://urn.nb.no/URN:NBN:no-51670).[^1]
 
 * * * * *
 
