@@ -32,7 +32,7 @@ If the script accepts parameters, we just provide them at the end:
 
     sh script.sh --param1 val1 --param2 val2
 
-Below follow installation instructions for [MSYS](#msys), [MinGW](#mingw) and [G*nu*W*in*32](#gnuwin32).
+Below follow installation instructions for [Git for Windows](#git-for-windows), [MSYS](#msys), [MinGW](#mingw) and [G*nu*W*in*32](#gnuwin32).
 
 [Git for Windows](https://git-scm.com/)
 ---------------------------------------
@@ -41,12 +41,11 @@ Install [Git for Windows](https://git-scm.com/). When asked whether to install a
 
 We can now run Bash scripts as shown [above](#usage), as well as use common Unix commands like `ls`, `cp` and `rm`. A standalone "Git Bash" shell is also provided.
 
-[MSYS](http://www.mingw.org/wiki/msys)
---------------------------------------
+### [MSYS](http://www.mingw.org/wiki/msys)
 
-Git for Windows bundles [MSYS](http://www.mingw.org/wiki/msys) for Unix compatibility. Alternatively, MSYS can be installed without Git.
+Git for Windows bundles [MSYS](http://www.mingw.org/wiki/msys) for Unix compatibility. Alternatively, MSYS can also be installed *without* Git.
 
-If MSYS is installed separately, ensure that `sh.exe` is globally available by *appending* the location of MSYS' executables (its `bin/` directory) to the `PATH` environment variable. To access the `PATH` variable, go to *Control Panel* -> *System* -> *Advanced* -> *Environment Variables*. The value is a list of file paths separated by `;`, for example:
+If MSYS is installed separately, then ensure that `sh.exe` is globally available by *appending* the location of MSYS' executables (its `bin/` directory) to the `PATH` environment variable. To access the `PATH` variable, go to *Control Panel* -> *System* -> *Advanced* -> *Environment Variables*. The value is a list of file paths separated by `;`, for example:
 
     %SystemRoot%\system32;%SystemRoot%;C:\Ruby22\bin
 
