@@ -40,6 +40,32 @@ header {
     text-align: right;
 }
 
+#blogg h2:before,
+#arkiver h3:before,
+#arkiver h4:before,
+#kontakt h2:before {
+  color: rgba(0, 0, 0, 0.5);
+  font-family: FontAwesome;
+  font-style: normal;
+  margin-right: 0.3em;
+}
+
+#blogg h2:before {
+  content: "\f09e"; /* fa-feed */
+}
+
+#arkiver h3:before {
+  content: "\f07c"; /* fa-folder-open */
+}
+
+#arkiver h4:before {
+  content: "\f133"; /* fa-calendar-o */
+}
+
+#kontakt h2:before {
+  content: "\f007"; /* fa-user */
+}
+
 .p-summary {
     display: none;
 }
