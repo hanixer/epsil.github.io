@@ -5,7 +5,7 @@
 <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
 <meta content="2016-04-20" name="date">
 <meta content="How to run Bash scripts from Windows&#8217; command prompt and extend it with common Unix commands." name="description">
-<meta content="366189220161ea246bbdd2334d33d40b" name="md5">
+<meta content="16df6c2a1c5fddcb755a2d8636cc1e22" name="md5">
 <meta content="text/css" http-equiv="Content-Style-Type">
 <meta content="width=device-width, initial-scale=1" name="viewport">
 <link href="../../../favicon.ico" rel="icon" type="image/x-icon">
@@ -57,11 +57,11 @@ TeX: { equationNumbers: { autoNumber: "all" } }
 <li><a href="#usage" title="Usage">Usage</a>
 </li>
 
-<li><a href="#git-for-windows" title="Git for Windows">Git for Windows</a>
+<li><span class="" id="git-for-windows-link"><a href="#git-for-windows" title="Git for Windows">Git for Windows</a><a aria-controls="git-for-windows-link-section" aria-expanded="false" aria-hidden="true" class="collapse-button" data-toggle="collapse" href="#git-for-windows-link-section" role="button"></a></span>
+<ul class="collapse" id="git-for-windows-link-section">
+<li><a href="#msys" title="MSYS"><abbr class="acronym" title="Minimal System"><span class="caps">MSYS</span></abbr></a>
 </li>
 
-<li><span class="" id="msys-link"><a href="#msys" title="MSYS"><abbr class="acronym" title="Minimal System"><span class="caps">MSYS</span></abbr></a><a aria-controls="msys-link-section" aria-expanded="false" aria-hidden="true" class="collapse-button" data-toggle="collapse" href="#msys-link-section" role="button"></a></span>
-<ul class="collapse" id="msys-link-section">
 <li><a href="#mingw" title="MinGW"><abbr title="Minimalist GNU for Windows">MinGW</abbr></a>
 </li>
 </ul>
@@ -126,7 +126,7 @@ To do:
 <code>sh script.sh --param1 val1 --param2 val2</code>
 </pre>
 
-<p>Below follow installation instructions for <a href="#msys" title="MSYS"><abbr class="acronym" title="Minimal System"><span class="caps">MSYS</span></abbr></a>, <a href="#mingw" title="MinGW"><abbr title="Minimalist GNU for Windows">MinGW</abbr></a> and <a href="#gnuwin32" title="GnuWin32">G<em>nu</em>W<em>in</em>32</a>.</p>
+<p>Below follow installation instructions for <a href="#git-for-windows" title="Git for Windows">Git for Windows</a>, <a href="#msys" title="MSYS"><abbr class="acronym" title="Minimal System"><span class="caps">MSYS</span></abbr></a>, <a href="#mingw" title="MinGW"><abbr title="Minimalist GNU for Windows">MinGW</abbr></a> and <a href="#gnuwin32" title="GnuWin32">G<em>nu</em>W<em>in</em>32</a>.</p>
 </div>
 </section>
 
@@ -135,21 +135,20 @@ To do:
 </h2>
 
 <div class="collapse in" id="git-for-windows-section">
-<p>Install <a href="https://git-scm.com/">Git for Windows</a>. During the installation, you will be asked if you want to install additional Unix utilities; choose&#160;yes.</p>
+<section>
+<p>Install <a href="https://git-scm.com/">Git for Windows</a>. When asked whether to install additional Unix utilities, choose&#160;yes.</p>
 
 <p>We can now run Bash scripts as shown <a href="#usage" title="Usage">above</a>, as well as use common Unix commands like <code>ls</code>, <code>cp</code> and <code>rm</code>. A standalone &#8220;Git Bash&#8221; shell is also&#160;provided.</p>
-</div>
 </section>
 
 <section id="msys">
-<h2><a aria-hidden="true" class="header-anchor" href="#msys" title="MSYS"></a><a href="http://www.mingw.org/wiki/msys"><abbr class="acronym" title="Minimal System"><span class="caps">MSYS</span></abbr></a><a aria-controls="msys-section" aria-expanded="true" aria-hidden="true" class="collapse-button" data-toggle="collapse" href="#msys-section" role="button"></a>
-</h2>
+<h3><a aria-hidden="true" class="header-anchor" href="#msys" title="MSYS"></a><a href="http://www.mingw.org/wiki/msys"><abbr class="acronym" title="Minimal System"><span class="caps">MSYS</span></abbr></a><a aria-controls="msys-section" aria-expanded="true" aria-hidden="true" class="collapse-button" data-toggle="collapse" href="#msys-section" role="button"></a>
+</h3>
 
 <div class="collapse in" id="msys-section">
-<section>
-<p>Git for Windows bundles <a href="http://www.mingw.org/wiki/msys"><abbr class="acronym" title="Minimal System"><span class="caps">MSYS</span></abbr></a> for Unix compatibility. Alternatively, <abbr class="acronym" title="Minimal System"><span class="caps">MSYS</span></abbr> can be installed without&#160;Git.</p>
+<p>Git for Windows bundles <a href="http://www.mingw.org/wiki/msys"><abbr class="acronym" title="Minimal System"><span class="caps">MSYS</span></abbr></a> for Unix compatibility. Alternatively, <abbr class="acronym" title="Minimal System"><span class="caps">MSYS</span></abbr> can also be installed <em>without</em>&#160;Git.</p>
 
-<p>If <abbr class="acronym" title="Minimal System"><span class="caps">MSYS</span></abbr> is installed separately, ensure that <code>sh.exe</code> is globally available by <em>appending</em> the location of <abbr class="acronym" title="Minimal System"><span class="caps">MSYS</span></abbr>&#8217; executables (its <code>bin/</code> directory) to the <code>PATH</code> environment variable. To access the <code>PATH</code> variable, go to <em>Control Panel</em> &#8594; <em>System</em> &#8594; <em>Advanced</em> &#8594; <em>Environment Variables</em>. The value is a list of file paths separated by <code>;</code>, for example:</p>
+<p>If <abbr class="acronym" title="Minimal System"><span class="caps">MSYS</span></abbr> is installed with Git for Windows, then skip this step. Otherwise, run the <abbr class="acronym" title="Minimal System"><span class="caps">MSYS</span></abbr> installer and ensure that <code>sh.exe</code> is globally available by <em>appending</em> the location of <abbr class="acronym" title="Minimal System"><span class="caps">MSYS</span></abbr>&#8217; executables (its <code>bin/</code> directory) to the <code>PATH</code> environment variable. To access the <code>PATH</code> variable, go to <em>Control Panel</em> &#8594; <em>System</em> &#8594; <em>Advanced</em> &#8594; <em>Environment Variables</em>. The value is a list of file paths separated by <code>;</code>, for example:</p>
 
 <pre>
 <code>%SystemRoot%\system32;%SystemRoot%;C:\Ruby22\bin</code>
@@ -162,6 +161,7 @@ To do:
 </pre>
 
 <p>On Windows 10, the variable is displayed as an editable list of&#160;directories.</p>
+</div>
 </section>
 
 <section id="mingw">
@@ -205,7 +205,7 @@ start %*</code>
 <h2><a aria-hidden="true" class="header-anchor" href="#alias-find" title="Alias find"></a>Alias <code>find</code><a aria-controls="alias-find-section" aria-expanded="true" aria-hidden="true" class="collapse-button" data-toggle="collapse" href="#alias-find-section" role="button"></a></h2>
 
 <div class="collapse in" id="alias-find-section">
-<p>Windows&#8217; own <code>find</code> utility shadows the Unix <code>find</code> command. To create an alias for the latter, make a copy of <code>find.exe</code>, <code>find2.exe</code>, in the same folder. The Unix command can now be accessed as <code>find2</code>.</p>
+<p>Windows&#8217; own <code>find</code> utility shadows the Unix <code>find</code> command. To create an alias for the latter, make a copy of <code>find.exe</code>, <code>find2.exe</code>, in the same folder (typically <code>C:\Program Files\Git\usr\bin</code>). The Unix command can now be accessed as <code>find2</code>.</p>
 </div>
 </section>
 
