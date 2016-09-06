@@ -441,9 +441,11 @@ var document = templates.document
 var body = templates.body
 
 var defaults = {
+  author: 'Vegard Øye',
+  'author-url': 'https://epsil.github.io/',
   lang: 'no',
   toc: true,
-  tocTitle: 'Innhold',
+  'toc-title': 'Innhold',
   typogr: true
 }
 
@@ -1199,7 +1201,7 @@ var templates = {
     '</ul>\n' +
     '</div>\n' +
     '{{#if toc}}' +
-    '<div id="toc" class="collapse" title="{{tocTitle}}"></div>\n' +
+    '<div id="toc" class="collapse" title="{{toc-title}}"></div>\n' +
     '{{/if}}' +
     '</nav>\n' +
     '<article class="h-entry">\n' +
@@ -1211,15 +1213,15 @@ var templates = {
     '<h2>{{{subtitle}}}</h2>\n' +
     '{{/if}}' +
     '{{#if author}}' +
-    '<p class="p-author"><i class="fa fa-user"></i> ' +
-    '{{author}}' +
+    '<p>' +
+    '<a class="p-author h-card" href="{{author-url}}">{{author}}</a>' +
     '{{#if date}}' +
-    ' <span style="float: right"><i class="fa fa-calendar-o"></i> <time class="dt-published" datetime="{{dateFormat date}}" datetime="{{dateFormat date}}">{{dateFormat date}}</time></span>' +
+    ' <time class="dt-published" datetime="{{dateFormat date}}" datetime="{{dateFormat date}}">{{dateFormat date}}</time>' +
     '{{/if}}' +
     '</p>\n' +
     '{{else}}' +
     '{{#if date}}' +
-    '<p><i class="fa fa-calendar-o"></i> <time class="dt-published" datetime="{{dateFormat date}}">{{dateFormat date}}</time></p>\n' +
+    '<p><time class="dt-published" datetime="{{dateFormat date}}">{{dateFormat date}}</time></p>\n' +
     '{{/if}}' +
     '{{/if}}' +
     '{{else}}' +
@@ -1238,6 +1240,7 @@ var templates = {
     '</article>'
 }
 
+// TODO: precompile the templates
 templates.document = Handlebars.compile(templates.document)
 templates.body = Handlebars.compile(templates.body)
 

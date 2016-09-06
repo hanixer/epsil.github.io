@@ -372,6 +372,16 @@ article ul > li:before, #toc ul > li:before {
     font-weight: normal;
 }
 
+.h-card {
+    display: none;
+}
+
+.dt-published:before {
+  content: "\f133"; /* fa-calendar-o */
+  font: FontAwesome;
+  margin-right: 0.5em;
+}
+
 .flag-icon {
     font-size: 0.6em;
     vertical-align: middle;
