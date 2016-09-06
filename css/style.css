@@ -378,7 +378,7 @@ article ul > li:before, #toc ul > li:before {
 
 .dt-published:before {
   content: "\f133"; /* fa-calendar-o */
-  font: FontAwesome;
+  font-family: FontAwesome;
   margin-right: 0.5em;
 }
 
