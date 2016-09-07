@@ -53,7 +53,7 @@ Thus, if MSYS' executables are located in `C:\msys\1.0\bin`, simply add `;C:\msy
 
     %SystemRoot%\system32;%SystemRoot%;C:\Ruby22\bin;C:\msys\1.0\bin
 
-On Windows 10, the variable is displayed as an editable list of directories. Add the directory to the bottom of the list.
+On Windows 10, the variable may be displayed as an editable list of directories. Add the directory to the bottom of the list.
 
 ### [MinGW](http://www.mingw.org/)
 
