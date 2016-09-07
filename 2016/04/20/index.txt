@@ -37,15 +37,15 @@ Below follow installation instructions for [Git for Windows](#git-for-windows), 
 [Git for Windows](https://git-scm.com/)
 ---------------------------------------
 
-Install [Git for Windows](https://git-scm.com/). When asked whether to install additional Unix utilities, choose yes.
+Install [Git for Windows](https://git-scm.com/). When asked whether to install additional Unix utilities, choose *yes*.
 
 We can now run Bash scripts as shown [above](#usage), as well as use common Unix commands like `ls`, `cp` and `rm`. A standalone "Git Bash" shell is also provided.
 
 ### [MSYS](http://www.mingw.org/wiki/msys)
 
-Git for Windows bundles [MSYS](http://www.mingw.org/wiki/msys) for Unix compatibility. Alternatively, MSYS can also be installed *without* Git.
+Git for Windows bundles MSYS for Unix compatibility. Alternatively, MSYS can also be installed *without* Git.
 
-If MSYS is installed with Git for Windows, then skip this step. Otherwise, run the MSYS installer and ensure that `sh.exe` is globally available by *appending* the location of MSYS' executables (its `bin/` directory) to the `PATH` environment variable. To access the `PATH` variable, go to *Control Panel* -> *System* -> *Advanced* -> *Environment Variables*. The value is a list of file paths separated by `;`, for example:
+If MSYS is installed with [Git for Windows](#git-for-windows), as recommended above, then skip this step. Otherwise, run the [MSYS](http://www.mingw.org/wiki/msys) installer and ensure that `sh.exe` is globally available by *appending* the location of MSYS' executables (its `bin/` directory) to the `PATH` environment variable. To access the `PATH` variable, go to *Control Panel* -> *System* -> *Advanced* -> *Environment Variables*. The value is a list of file paths separated by `;`, for example:
 
     %SystemRoot%\system32;%SystemRoot%;C:\Ruby22\bin
 
@@ -53,7 +53,7 @@ Thus, if MSYS' executables are located in `C:\msys\1.0\bin`, simply add `;C:\msy
 
     %SystemRoot%\system32;%SystemRoot%;C:\Ruby22\bin;C:\msys\1.0\bin
 
-On Windows 10, the variable is displayed as an editable list of directories.
+On Windows 10, the variable is displayed as an editable list of directories. Add the directory to the bottom of the list.
 
 ### [MinGW](http://www.mingw.org/)
 
