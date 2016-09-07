@@ -132,4 +132,4 @@ Blogg
 Kontakt
 -------
 
-<i class="fa fa-linkedin-square"></i> [LinkedIn](http://www.linkedin.com/profile/view?id=68450352) | <i class="fa fa-github"></i> [GitHub](https://github.com/epsil/) | <i class="fa fa-at"></i> [E-mail](mailto:vegard_oye@hotmail.com)
+[LinkedIn](http://www.linkedin.com/profile/view?id=68450352){#linkedin} [GitHub](https://github.com/epsil/){#github} [E-mail](mailto:vegard_oye@hotmail.com){#email}

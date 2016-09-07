@@ -6,7 +6,7 @@
 <meta content="Vegard &#216;ye" name="author">
 <meta content="2016-04-20" name="date">
 <meta content="How to run Bash scripts from Windows&#8217; command prompt and extend it with common Unix commands." name="description">
-<meta content="16df6c2a1c5fddcb755a2d8636cc1e22" name="md5">
+<meta content="4c43808a5976656ff09e3493c3cd18b5" name="md5">
 <meta content="text/css" http-equiv="Content-Style-Type">
 <meta content="width=device-width, initial-scale=1" name="viewport">
 <link href="../../../favicon.ico" rel="icon" type="image/x-icon">
@@ -99,10 +99,11 @@ To do:
 -   ~~Git Bash should be installed first.~~
     -   How does the override option affect `PATH`?
 -   ~~MSYS may be superfluous.~~
-    -   If so, where to place `open.bat`?
+    -   ~~If so, where to place `open.bat`?~~
 -   Does Git Bash's MingGW differ from the default MinGW?
 -   ~~On Windows 10, the `PATH` variable is not separated by `;`.~~
 -   Update CSS so that header does not affect the width of the window.
+    -   Requires refactoring the default stylesheet
 -->
 
 <section>
@@ -137,7 +138,7 @@ To do:
 
 <div class="collapse in" id="git-for-windows-section">
 <section>
-<p>Install <a href="https://git-scm.com/">Git for Windows</a>. When asked whether to install additional Unix utilities, choose&#160;yes.</p>
+<p>Install <a href="https://git-scm.com/">Git for Windows</a>. When asked whether to install additional Unix utilities, choose <em>yes</em>.</p>
 
 <p>We can now run Bash scripts as shown <a href="#usage" title="Usage">above</a>, as well as use common Unix commands like <code>ls</code>, <code>cp</code> and <code>rm</code>. A standalone &#8220;Git Bash&#8221; shell is also&#160;provided.</p>
 </section>
@@ -147,9 +148,9 @@ To do:
 </h3>
 
 <div class="collapse in" id="msys-section">
-<p>Git for Windows bundles <a href="http://www.mingw.org/wiki/msys"><abbr class="acronym" title="Minimal System"><span class="caps">MSYS</span></abbr></a> for Unix compatibility. Alternatively, <abbr class="acronym" title="Minimal System"><span class="caps">MSYS</span></abbr> can also be installed <em>without</em>&#160;Git.</p>
+<p>Git for Windows bundles <abbr class="acronym" title="Minimal System"><span class="caps">MSYS</span></abbr> for Unix compatibility. Alternatively, <abbr class="acronym" title="Minimal System"><span class="caps">MSYS</span></abbr> can also be installed <em>without</em>&#160;Git.</p>
 
-<p>If <abbr class="acronym" title="Minimal System"><span class="caps">MSYS</span></abbr> is installed with Git for Windows, then skip this step. Otherwise, run the <abbr class="acronym" title="Minimal System"><span class="caps">MSYS</span></abbr> installer and ensure that <code>sh.exe</code> is globally available by <em>appending</em> the location of <abbr class="acronym" title="Minimal System"><span class="caps">MSYS</span></abbr>&#8217; executables (its <code>bin/</code> directory) to the <code>PATH</code> environment variable. To access the <code>PATH</code> variable, go to <em>Control Panel</em> &#8594; <em>System</em> &#8594; <em>Advanced</em> &#8594; <em>Environment Variables</em>. The value is a list of file paths separated by <code>;</code>, for example:</p>
+<p>If <abbr class="acronym" title="Minimal System"><span class="caps">MSYS</span></abbr> is installed with <a href="#git-for-windows" title="Git for Windows">Git for Windows</a>, as recommended above, then skip this step. Otherwise, run the <a href="http://www.mingw.org/wiki/msys"><abbr class="acronym" title="Minimal System"><span class="caps">MSYS</span></abbr></a> installer and ensure that <code>sh.exe</code> is globally available by <em>appending</em> the location of <abbr class="acronym" title="Minimal System"><span class="caps">MSYS</span></abbr>&#8217; executables (its <code>bin/</code> directory) to the <code>PATH</code> environment variable. To access the <code>PATH</code> variable, go to <em>Control Panel</em> &#8594; <em>System</em> &#8594; <em>Advanced</em> &#8594; <em>Environment Variables</em>. The value is a list of file paths separated by <code>;</code>, for example:</p>
 
 <pre>
 <code>%SystemRoot%\system32;%SystemRoot%;C:\Ruby22\bin</code>
@@ -161,7 +162,7 @@ To do:
 <code>%SystemRoot%\system32;%SystemRoot%;C:\Ruby22\bin;C:\msys\1.0\bin</code>
 </pre>
 
-<p>On Windows 10, the variable is displayed as an editable list of&#160;directories.</p>
+<p>On Windows 10, the variable may be displayed as an editable list of directories. Add the directory to the bottom of the&#160;list.</p>
 </div>
 </section>
 

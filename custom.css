@@ -28,25 +28,21 @@ header {
     padding: 0;
 }
 
-#kontakt {
-    box-shadow: 0 -1px 6px rgba(0, 0, 0, 0.15);
-    background-color: #ffffff;
-    position: fixed;
-    bottom: 0;
-    left: 0;
-    font-size: 0.8em;
-    padding: 0 20px 0 20px;
-    width: 100%;
-    text-align: right;
+.p-summary {
+    display: none;
 }
 
 #blogg h2:before,
 #arkiver h3:before,
 #arkiver h4:before,
-#kontakt h2:before {
+#kontakt h2:before,
+#linkedin:before,
+#github:before,
+#email:before {
   color: rgba(0, 0, 0, 0.5);
   font-family: FontAwesome;
   font-style: normal;
+  font-size: 0.9em;
   margin-right: 0.3em;
 }
 
@@ -66,8 +62,16 @@ header {
   content: "\f007"; /* fa-user */
 }
 
-.p-summary {
-    display: none;
+#kontakt {
+    box-shadow: 0 -1px 6px rgba(0, 0, 0, 0.15);
+    background-color: #ffffff;
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    font-size: 0.8em;
+    padding: 0 20px 0 20px;
+    width: 100%;
+    text-align: right;
 }
 
 #kontakt h2 {
@@ -83,4 +87,20 @@ header {
 #kontakt p {
     margin-top: 10px;
     margin-bottom: 0;
+}
+
+#linkedin, #github {
+    margin-right: 1em;
+}
+
+#linkedin:before {
+    content: "\f08c"; /* fa-linkedin-square */
+}
+
+#github:before {
+    content: "\f09b"; /* fa-github */
+}
+
+#email:before {
+    content: "\f1fa"; /* fa-at */
 }
