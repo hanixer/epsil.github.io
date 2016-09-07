@@ -11,7 +11,7 @@ To do:
 -   ~~Git Bash should be installed first.~~
     -   How does the override option affect `PATH`?
 -   ~~MSYS may be superfluous.~~
-    -   If so, where to place `open.bat`?
+    -   ~~If so, where to place `open.bat`?~~
 -   Does Git Bash's MingGW differ from the default MinGW?
 -   ~~On Windows 10, the `PATH` variable is not separated by `;`.~~
 -   Update CSS so that header does not affect the width of the window.
