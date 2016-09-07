@@ -1,5 +1,6 @@
 lang: en
 description: A study on fish-eye undistortion.
+footnotes-title: Notes
 css: custom.css
 ---
 

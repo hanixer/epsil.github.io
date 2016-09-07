@@ -9,23 +9,6 @@ hr:before {
     content: normal;
 }
 
-hr.footnotes-sep {
-    border: none;
-    color: #23527c;
-    font-family: "Crimson Text", Crimson, "Minion Pro", Minion, "Linux Libertine", "Hoefler Text", Georgia, Charter, "PT Serif", "Iowan Old Style", Iowan, "Iowan Web", Cambria, Constantia, Utopia, Marion, Cochin, "Palatino Linotype", Palatino, Baskerville, serif !important;
-    font-size: 2.1em;
-    margin: 1.5em 0 1em 0;
-    padding: 0;
-    text-align: left;
-}
-
-hr.footnotes-sep:before {
-    color: inherit;
-    content: "Notes";
-    letter-spacing: 0;
-    padding-bottom: 0.5em;
-}
-
 .p-summary {
     display: none;
 }
