@@ -447,6 +447,14 @@ var defaults = {
   lang: 'no',
   toc: true,
   'toc-title': 'Innhold',
+  'home-title': 'Gå hjem',
+  'facebook-title': 'Del på Facebook',
+  'twitter-title': 'Del på Twitter',
+  'linkedin-title': 'Del på LinkedIn',
+  'mail-title': 'Del på e-post',
+  'github-title': 'Rediger på GitHub',
+  'history-title': 'Vis historie',
+  'markdown-title': 'Vis Markdown-kilde',
   typogr: true
 }
 
@@ -535,7 +543,15 @@ function frontmatter (data) {
 
 function i18n (view) {
   if (view.lang === 'en') {
-    view.tocTitle = 'Contents'
+    view['toc-title'] = 'Contents'
+    view['home-title'] = 'Go home'
+    view['facebook-title'] = 'Share on Facebook'
+    view['twitter-title'] = 'Share on Twitter'
+    view['linkedin-title'] = 'Share on LinkedIn'
+    view['mail-title'] = 'Share by mail'
+    view['github-title'] = 'Edit on GitHub'
+    view['history-title'] = 'View history'
+    view['markdown-title'] = 'Get Markdown source'
   }
   return view
 }
@@ -1239,16 +1255,16 @@ var templates = {
     '<nav class="navbar navbar-default navbar-fixed-top">\n' +
     '<div class="container-fluid">\n' +
     '<ul class="nav nav-pills navbar-left">\n' +
-    '<li role="presentation"><a href="/" title="Go home"><i class="fa fa-home"></i></a></li>\n' +
+    '<li role="presentation"><a href="/" title="{{home-title}}"><i class="fa fa-home"></i></a></li>\n' +
     '</ul>\n' +
     '<ul class="nav nav-pills navbar-right">\n' +
-    '<li role="presentation"><a href="{{facebook}}" title="Share on Facebook"><i class="fa fa-facebook-square"></i></a></li>\n' +
-    '<li role="presentation"><a href="{{twitter}}" title="Share on Twitter"><i class="fa fa-twitter-square"></i></a></li>\n' +
-    // '<li role="presentation"><a href="{{linkedin}}" title="Share on LinkedIn"><i class="fa fa-linkedin-square"></i></a></li>\n' +
-    // '<li role="presentation"><a href="{{mail}}" title="Share by mail"><i class="fa fa-envelope"></i></a></li>\n' +
-    '<li role="presentation"><a href="{{github}}" title="Edit on GitHub"><i class="fa fa-edit"></i></a></li>\n' +
-    '<li role="presentation"><a href="{{history}}" title="View history"><i class="fa fa-history"></i></a></li>\n' +
-    '<li role="presentation"><a href="index.txt" title="Get Markdown source"><i class="fa fa-download"></i></a></li>\n' +
+    '<li role="presentation"><a href="{{facebook}}" title="{{facebook-title}}"><i class="fa fa-facebook-square"></i></a></li>\n' +
+    '<li role="presentation"><a href="{{twitter}}" title="{{twitter-title}}"><i class="fa fa-twitter-square"></i></a></li>\n' +
+    // '<li role="presentation"><a href="{{linkedin}}" title="{{linkedin-title}}"><i class="fa fa-linkedin-square"></i></a></li>\n' +
+    // '<li role="presentation"><a href="{{mail}}" title="{{mail-title}}"><i class="fa fa-envelope"></i></a></li>\n' +
+    '<li role="presentation"><a href="{{github}}" title="{{github-title}}"><i class="fa fa-edit"></i></a></li>\n' +
+    '<li role="presentation"><a href="{{history}}" title="{{history-title}}"><i class="fa fa-history"></i></a></li>\n' +
+    '<li role="presentation"><a href="index.txt" title="{{markdown-title}}"><i class="fa fa-download"></i></a></li>\n' +
     '{{#if toc}}' +
     '<li role="presentation"><a href="#toc" data-toggle="collapse" title="{{toc-title}}"><i class="fa fa-list"></i></a></li>\n' +
     '{{/if}}' +
