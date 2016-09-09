@@ -46,32 +46,32 @@ TeX: { equationNumbers: { autoNumber: "all" } }
 <li role="presentation"><a href="index.txt" title="Get Markdown source"><i class="fa fa-download"></i></a>
 </li>
 
-<li role="presentation"><a data-toggle="collapse" href="#toc" title="Table of contents"><i class="fa fa-list"></i></a>
+<li role="presentation"><a data-toggle="collapse" href="#toc" title="Innhold"><i class="fa fa-list"></i></a>
 </li>
 </ul>
 </div>
 
 <div class="collapse" id="toc">
 <ul>
-<li><a href="#introduction" title="Introduction">Introduction</a>
+<li><a href="#introduction">Introduction</a>
 </li>
 
-<li><a href="#simple-parser-combinators" title="Simple parser combinators">Simple parser combinators</a>
+<li><a href="#simple-parser-combinators">Simple parser combinators</a>
 </li>
 
-<li><a href="#memoization" title="Memoization">Memoization</a>
+<li><a href="#memoization">Memoization</a>
 </li>
 
-<li><a href="#continuation-passing-style" title="Continuation-passing style">Continuation-passing style</a>
+<li><a href="#continuation-passing-style">Continuation-passing style</a>
 </li>
 
-<li><a href="#trampoline" title="Trampoline">Trampoline</a>
+<li><a href="#trampoline">Trampoline</a>
 </li>
 
-<li><a href="#final-improvements" title="Final improvements">Final improvements</a>
+<li><a href="#final-improvements">Final improvements</a>
 </li>
 
-<li><a href="#further-reading" title="Further reading">Further reading</a>
+<li><a href="#further-reading">Further reading</a>
 </li>
 </ul>
 </div>
@@ -104,7 +104,7 @@ TeX: { equationNumbers: { autoNumber: "all" } }
 </section>
 
 <section id="introduction">
-<h2><a aria-hidden="true" class="header-anchor" href="#introduction" title="Introduction"></a>Introduction<a aria-controls="introduction-section" aria-expanded="true" aria-hidden="true" class="collapse-button" data-toggle="collapse" href="#introduction-section" role="button"></a></h2>
+<h2 id="introduction"><a aria-hidden="true" class="header-anchor" href="#introduction" title="Introduction"></a>Introduction<a aria-controls="introduction-section" aria-expanded="true" aria-hidden="true" class="collapse-button" data-toggle="collapse" href="#introduction-section" role="button"></a></h2>
 
 <div class="collapse in" id="introduction-section">
 <p>Traditional top-down parsers cannot handle all recursive grammars, even if recursion may be the most natural way to express the language. An example is the following grammar for left-associative arithmetic on 0&#8217;s and&#160;1&#8217;s:</p>
@@ -157,7 +157,7 @@ TeX: { equationNumbers: { autoNumber: "all" } }
 </section>
 
 <section id="simple-parser-combinators">
-<h2><a aria-hidden="true" class="header-anchor" href="#simple-parser-combinators" title="Simple parser combinators"></a>Simple parser combinators<a aria-controls="simple-parser-combinators-section" aria-expanded="true" aria-hidden="true" class="collapse-button" data-toggle="collapse" href="#simple-parser-combinators-section" role="button"></a></h2>
+<h2 id="simple-parser-combinators"><a aria-hidden="true" class="header-anchor" href="#simple-parser-combinators" title="Simple parser combinators"></a>Simple parser combinators<a aria-controls="simple-parser-combinators-section" aria-expanded="true" aria-hidden="true" class="collapse-button" data-toggle="collapse" href="#simple-parser-combinators-section" role="button"></a></h2>
 
 <div class="collapse in" id="simple-parser-combinators-section">
 <p>Let us start by defining some terms. A <em>parser</em> is a function that takes a string as input and returns a <em>parse result</em>. A parse result is either a <em>success</em> or a <em>failure</em>. (All our parsers will work on strings, but one could easily define parsers working on a stream of symbols or&#160;tokens.)</p>
@@ -307,7 +307,7 @@ TeX: { equationNumbers: { autoNumber: "all" } }
 </section>
 
 <section id="memoization">
-<h2><a aria-hidden="true" class="header-anchor" href="#memoization" title="Memoization"></a>Memoization<a aria-controls="memoization-section" aria-expanded="true" aria-hidden="true" class="collapse-button" data-toggle="collapse" href="#memoization-section" role="button"></a></h2>
+<h2 id="memoization"><a aria-hidden="true" class="header-anchor" href="#memoization" title="Memoization"></a>Memoization<a aria-controls="memoization-section" aria-expanded="true" aria-hidden="true" class="collapse-button" data-toggle="collapse" href="#memoization-section" role="button"></a></h2>
 
 <div class="collapse in" id="memoization-section">
 <p>We now turn to the issue of efficiency. Currently, none of the functions cache their results. That is wasteful because parsing is a such a repetitious task. If each function maintains a table over its input and output values, it can avoid calculating things twice by returning the cached value instead. This is called <em>memoization</em>.</p>
@@ -414,7 +414,7 @@ TeX: { equationNumbers: { autoNumber: "all" } }
 </section>
 
 <section id="continuation-passing-style">
-<h2><a aria-hidden="true" class="header-anchor" href="#continuation-passing-style" title="Continuation-passing style"></a>Continuation-passing style<a aria-controls="continuation-passing-style-section" aria-expanded="true" aria-hidden="true" class="collapse-button" data-toggle="collapse" href="#continuation-passing-style-section" role="button"></a></h2>
+<h2 id="continuation-passing-style"><a aria-hidden="true" class="header-anchor" href="#continuation-passing-style" title="Continuation-passing style"></a>Continuation-passing style<a aria-controls="continuation-passing-style-section" aria-expanded="true" aria-hidden="true" class="collapse-button" data-toggle="collapse" href="#continuation-passing-style-section" role="button"></a></h2>
 
 <div class="collapse in" id="continuation-passing-style-section">
 <p>So far, we have taken advantage of the fact that many grammars can be translated directly into a program. Such a program will have a straightforward, hierarchical structure, with functions calling functions all the way down to the level of string matching. It will either return a single result or no result at&#160;all.</p>
@@ -629,7 +629,7 @@ TeX: { equationNumbers: { autoNumber: "all" } }
 </section>
 
 <section id="trampoline">
-<h2><a aria-hidden="true" class="header-anchor" href="#trampoline" title="Trampoline"></a>Trampoline<a aria-controls="trampoline-section" aria-expanded="true" aria-hidden="true" class="collapse-button" data-toggle="collapse" href="#trampoline-section" role="button"></a></h2>
+<h2 id="trampoline"><a aria-hidden="true" class="header-anchor" href="#trampoline" title="Trampoline"></a>Trampoline<a aria-controls="trampoline-section" aria-expanded="true" aria-hidden="true" class="collapse-button" data-toggle="collapse" href="#trampoline-section" role="button"></a></h2>
 
 <div class="collapse in" id="trampoline-section">
 <p>A weakness of the current implementation is that the memoized parser results are scattered all over the place. Each parser has its own memoization table, storing the accumulated results from both the current parsing and from previous parsings. This is difficult to maintain and&#160;optimize.</p>
@@ -877,7 +877,7 @@ TeX: { equationNumbers: { autoNumber: "all" } }
 </section>
 
 <section id="final-improvements">
-<h2><a aria-hidden="true" class="header-anchor" href="#final-improvements" title="Final improvements"></a>Final improvements<a aria-controls="final-improvements-section" aria-expanded="true" aria-hidden="true" class="collapse-button" data-toggle="collapse" href="#final-improvements-section" role="button"></a></h2>
+<h2 id="final-improvements"><a aria-hidden="true" class="header-anchor" href="#final-improvements" title="Final improvements"></a>Final improvements<a aria-controls="final-improvements-section" aria-expanded="true" aria-hidden="true" class="collapse-button" data-toggle="collapse" href="#final-improvements-section" role="button"></a></h2>
 
 <div class="collapse in" id="final-improvements-section">
 <p>As defined, the <code class="language-scheme">alt</code> and <code class="language-scheme">seq</code> combinators only take two arguments: we can write <code class="language-scheme">(<span class="hljs-name">alt</span> a b)</code>, but not <code class="language-scheme">(<span class="hljs-name">alt</span> a b c)</code>. We can generalize <code class="language-scheme">alt</code> by iterating over a rest argument <code class="language-scheme">parsers</code>:</p>
@@ -991,7 +991,7 @@ factor -&gt; "(" expr ")"
 </section>
 
 <section id="further-reading">
-<h2><a aria-hidden="true" class="header-anchor" href="#further-reading" title="Further reading"></a>Further reading<a aria-controls="further-reading-section" aria-expanded="true" aria-hidden="true" class="collapse-button" data-toggle="collapse" href="#further-reading-section" role="button"></a></h2>
+<h2 id="further-reading"><a aria-hidden="true" class="header-anchor" href="#further-reading" title="Further reading"></a>Further reading<a aria-controls="further-reading-section" aria-expanded="true" aria-hidden="true" class="collapse-button" data-toggle="collapse" href="#further-reading-section" role="button"></a></h2>
 
 <div class="collapse in" id="further-reading-section">
 <p>This concludes the article. Several improvements are possible from here. For example, one could specify a monadic interface for composing parsers. Racket&#8217;s macro system could be used to define an even simpler <abbr class="acronym" title="Domain-Specific Language"><span class="caps">DSL</span></abbr>. Branches in the grammar could be parallelized by using a monitor for the trampoline. Finally, one can optimize the combinators by adorning the parsers with metadata for calculating the <span class="caps">FIRST</span> and <span class="caps">FOLLOW</span> sets&#160;(Spiewak).</p>

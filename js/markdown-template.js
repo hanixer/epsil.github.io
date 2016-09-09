@@ -414,6 +414,7 @@ $.fn.addCollapsibleSections.defaults = {
 
 },{"bootstrap":13,"jquery":236,"string":349}],4:[function(require,module,exports){
 var $ = require('jquery')
+var S = require('string')
 var markdownit = require('markdown-it')
 var attr = require('markdown-it-attrs')
 var sub = require('markdown-it-sub')
@@ -532,10 +533,14 @@ function frontmatter (data) {
   return props
 }
 
-function dynamic (view, path) {
+function i18n (view) {
   if (view.lang === 'en') {
     view.tocTitle = 'Contents'
   }
+  return view
+}
+
+function dynamic (view, path) {
   view.facebook = $.fn.facebook.url(path)
   view.github = $.fn.github.url(path)
   view.history = $.fn.github.history.url(path)
@@ -573,6 +578,36 @@ function footnotes (view) {
   return view
 }
 
+function tocPlaceholder (view) {
+  if (view.toc !== false) {
+    view.toc = '<div id="toc-placeholder"></div>'
+  }
+  return view
+}
+
+function toc (view) {
+  if (view.toc !== false) {
+    var content = $('<div>').html(view.content)
+    var body = content.find('.e-content')
+    var toc = body.listOfContents()
+    if (toc === '') {
+      return view
+    }
+    toc = $('<div id="toc" class="collapse">' + toc + '</div>')
+    toc.find('li ul').each(function (i, el) {
+      var ul = $(this)
+      var a = ul.prev()
+      var id = S(a.text().trim()).slugify() + '-link'
+      var span = a.wrap('<span class="collapse" id="' + id + '">').parent()
+      $.fn.addCollapsibleSections.addButton(span, ul)
+    })
+    var placeholder = content.find('#toc-placeholder')
+    placeholder.replaceWith(toc)
+    view.content = content.html()
+  }
+  return view
+}
+
 function process (view) {
   var html = view.content
   // typogr.js doesn't work well with MathJax
@@ -604,7 +639,7 @@ function process (view) {
   content.addCollapsibleSections()
   body.fixFootnotes()
   body.fixTables()
-  body.addTableOfContents()
+  // body.addTableOfContents()
   body.fixLinks()
   content.addSections()
   html = body.html()
@@ -616,21 +651,24 @@ function compile (data, path) {
   data = data.trim()
   var view = $.extend({}, defaults, yaml(data))
   view.md5 = md5(data)
+  view = i18n(view)
   view = dynamic(view, path)
   view = title(view)
   view = footnotes(view)
+  view = tocPlaceholder(view)
   view.url = path
   if (view.content !== '') {
     view.content = body(view)
     view = process(view)
   }
-  var html = document(view)
-  return html
+  view = toc(view)
+  view.content = document(view)
+  return view.content
 }
 
 module.exports = compile
 
-},{"./abbrev":1,"./anchor":2,"./collapse":3,"./figure":5,"./punctuation":7,"./section":8,"./social":9,"./templates":10,"./toc":11,"./util":12,"highlight.js":73,"jquery":236,"js-yaml":237,"markdown-it":275,"markdown-it-abbr":267,"markdown-it-attrs":268,"markdown-it-footnote":270,"markdown-it-implicit-figures":271,"markdown-it-mathjax":272,"markdown-it-sub":273,"markdown-it-sup":274,"md5":341,"typogr":350}],5:[function(require,module,exports){
+},{"./abbrev":1,"./anchor":2,"./collapse":3,"./figure":5,"./punctuation":7,"./section":8,"./social":9,"./templates":10,"./toc":11,"./util":12,"highlight.js":73,"jquery":236,"js-yaml":237,"markdown-it":275,"markdown-it-abbr":267,"markdown-it-attrs":268,"markdown-it-footnote":270,"markdown-it-implicit-figures":271,"markdown-it-mathjax":272,"markdown-it-sub":273,"markdown-it-sup":274,"md5":341,"string":349,"typogr":350}],5:[function(require,module,exports){
 var $ = require('jquery')
 
 $.fn.fixFigures = function () {
@@ -1212,12 +1250,12 @@ var templates = {
     '<li role="presentation"><a href="{{history}}" title="View history"><i class="fa fa-history"></i></a></li>\n' +
     '<li role="presentation"><a href="index.txt" title="Get Markdown source"><i class="fa fa-download"></i></a></li>\n' +
     '{{#if toc}}' +
-    '<li role="presentation"><a href="#toc" data-toggle="collapse" title="Table of contents"><i class="fa fa-list"></i></a></li>\n' +
+    '<li role="presentation"><a href="#toc" data-toggle="collapse" title="{{toc-title}}"><i class="fa fa-list"></i></a></li>\n' +
     '{{/if}}' +
     '</ul>\n' +
     '</div>\n' +
     '{{#if toc}}' +
-    '<div id="toc" class="collapse" title="{{toc-title}}"></div>\n' +
+    '{{{toc}}}' +
     '{{/if}}' +
     '</nav>\n' +
     '<article class="h-entry">\n' +
