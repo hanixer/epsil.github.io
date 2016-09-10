@@ -584,8 +584,16 @@ $.fn.listOfContents = function () {
   }
 
   // generate ID if missing
-  var fixHeader = function (header) {
+  var headerId = function (header) {
     var id = header.attr('id')
+
+    if (id === undefined || id === '') {
+      var section = header.parent()
+      if (section.prop('tagName') === 'SECTION') {
+        id = section.attr('id')
+      }
+    }
+
     if (id === undefined || id === '') {
       var clone = header.clone()
       clone.find('[aria-hidden="true"]').remove()
@@ -593,7 +601,7 @@ $.fn.listOfContents = function () {
       id = S(title).slugify()
       header.attr('id', id)
     }
-    return header
+    return id
   }
 
   var headers = body.find('h1, h2, h3, h4, h5, h6')
@@ -607,9 +615,9 @@ $.fn.listOfContents = function () {
     return !$(this).is(exclude)
   })
   headers.each(function (i, el) {
-    var header = fixHeader($(this))
+    var header = $(this)
+    var id = headerId(header)
     var html = header.html()
-    var id = header.attr('id')
     var level = parseInt(header.prop('tagName').match(/\d+/)[0])
     endList(level)
     startList(level)
