@@ -79,6 +79,10 @@ li li {
     color: #000000;
 }
 
+.p-name {
+    padding-right: 200px;
+}
+
 .p-summary {
     display: none;
 }
@@ -89,4 +93,9 @@ li li {
 
 img {
     margin-top: 0.5em !important;
+}
+
+header figure {
+    float: right;
+    margin-top: -105px;
 }

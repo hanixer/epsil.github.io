@@ -1225,6 +1225,15 @@ var templates = {
     '{{#if md5}}<meta content="{{{md5}}}" name="md5">\n{{/if}}' +
     '<meta content="text/css" http-equiv="Content-Style-Type">\n' +
     '<meta content="width=device-width, initial-scale=1" name="viewport">\n' +
+    '<meta property="og:title" content="{{text title}}">\n' +
+    '<meta property="og:type" content="article">\n' +
+    '<meta property="og:url" content="{{url}}">\n' +
+    '{{#if image}}<meta property="og:image" content="{{image}}" />\n{{/if}}' +
+    '<meta name="twitter:card" content="summary">\n' +
+    '<meta name="twitter:site" content="@github">\n' +
+    '<meta name="twitter:title" content="{{text title}}">\n' +
+    '{{#if description}}<meta name="twitter:description" content="{{text description}}">\n{{/if}}' +
+    '{{#if image}}<meta name="twitter:image" content="{{image}}">\n{{/if}}' +
     '{{#if icon}}' +
     '<link href="{{urlResolve url icon}}" rel="icon" type="image/x-icon">\n' +
     '{{else}}' +
@@ -1301,6 +1310,11 @@ var templates = {
     '{{/if}}' +
     '{{#if description}}' +
     '<p class="p-summary">{{{description}}}</p>\n' +
+    '{{/if}}' +
+    '{{#if image}}' +
+    '<figure>\n' +
+    '<img alt="{{#if image-alt}}{{image-alt}}{{/if}}" class="u-photo" {{#if image-height}}height="{{image-height}}"{{/if}} {{#if image-width}}width="{{image-width}}"{{/if}} src="{{image}}">\n' +
+    '</figure>\n' +
     '{{/if}}' +
     '</header>\n' +
     '<section class="e-content">\n' +

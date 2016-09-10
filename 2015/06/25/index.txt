@@ -1,8 +1,12 @@
 title: Dia på OS X
 date: 2015-06-25
 description: Noen notater om bruk av grafikkprogrammet [Dia](http://dia-installer.de/) på OS X.
-include-before: "![](dia.svg){.right width=70}"
+image: dia.svg
+image-width: 70
+css: custom.css
 ---
+
+<!-- include-before: "![](dia.svg){.right width=70}" -->
 
 Hvis Dia krasjer
 ----------------

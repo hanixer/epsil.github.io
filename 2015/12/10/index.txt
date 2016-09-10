@@ -1,7 +1,8 @@
 title: Testing med Selenium
 description: Hvordan kombinere Selenium, mocha og chai.
-include-before: "![](logo.svg){.right width=200}"
 date: 2015-12-10
+image: logo.svg
+image-width: 200
 css: custom.css
 ---
 
