@@ -47,6 +47,7 @@ nav {
 .nav li a .fa,
 .nav li a:focus,
 .nav li > a:focus .fa,
+#toc li:before,
 #toc li a {
     color: #ffffff !important;
 }
