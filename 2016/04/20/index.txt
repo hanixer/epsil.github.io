@@ -105,6 +105,6 @@ Windows' own `find` utility shadows the Unix `find` command. To create an alias 
 Alternatives
 ------------
 
-Windows 10 includes its own [Linux Bash Shell](http://www.howtogeek.com/249966/how-to-install-and-use-the-linux-bash-shell-on-windows-10/), based on Ubuntu. Note that this is a *standalone* shell, like PowerShell, so it does not interfere with the command prompt. A standalone shell has the advantage that it may provide functionality that is unavailable or shadowed by the command prompt.
+Windows 10 includes its own [Linux Bash Shell](http://www.howtogeek.com/249966/how-to-install-and-use-the-linux-bash-shell-on-windows-10/), based on Ubuntu. Note that this is a *standalone* shell, like PowerShell, so it does not interfere with the command prompt. A standalone shell has the advantage that it may provide functionality that is unavailable in the command prompt, such as persistent command history.
 
 Another comprehensive standalone shell is provided by the [Cygwin](http://www.cygwin.com/) project, which can be used on older Windows versions. [MSYS](#msys) and [MinGW](#mingw) also provide standalone shells. "Git Bash", the shell provided by [Git for Windows](#git-for-windows), is an extension of these.
