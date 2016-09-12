@@ -14,18 +14,21 @@ To do:
     -   ~~If so, where to place `open.bat`?~~
 -   Does Git Bash's MingGW differ from the default MinGW?
 -   ~~On Windows 10, the `PATH` variable is not separated by `;`.~~
+-   ~~Update PATHEXT~~
 -   Update CSS so that header does not affect the width of the window.
     -   Requires refactoring the default stylesheet
 -->
 
-The following setup allows us to [run Bash scripts from Windows' command prompt](#usage). It also augments the command prompt with common Unix commands like `ls`, `cp` and `rm`, which is useful if these are ingrained into muscle memory.
+The following setup allows us to [run Bash scripts from Windows' command prompt](#usage). It also augments the command prompt with common Unix commands like `cp`, `rm` and `mv`, which is useful if these are ingrained into muscle memory.
 
 (For a list of standalone Bash shells for Windows, see [alternatives](#alternatives).)
 
-Usage
------
+[Git for Windows](https://git-scm.com/)
+---------------------------------------
 
-The minimum requirement is to [install Git for Windows](#git-for-windows). We can then open a command prompt window and run a Bash script as follows:
+Install [Git for Windows](https://git-scm.com/). When asked whether to install additional Unix utilities, choose *yes*.
+
+We can now open a command prompt window and run a Bash script as follows:
 
     sh script.sh
 
@@ -33,20 +36,37 @@ If the script accepts parameters, we just provide them at the end:
 
     sh script.sh --param1 val1 --param2 val2
 
-Below follow installation instructions for [Git for Windows](#git-for-windows), [MSYS](#msys), [MinGW](#mingw) and [G*nu*W*in*32](#gnuwin32).
+Git for Windows also extends the command prompt with common Unix commands like `cp`, `rm` and `mv`:
 
-[Git for Windows](https://git-scm.com/)
----------------------------------------
+    cp script.sh script2.sh
+    rm script.sh
+    mv script2.sh script.sh
 
-Install [Git for Windows](https://git-scm.com/). When asked whether to install additional Unix utilities, choose *yes*.
+"Git Bash", a [standalone shell](#alternatives), is installed as well.
 
-We can now run Bash scripts as shown [above](#usage), as well as use common Unix commands like `ls`, `cp` and `rm`. A standalone "Git Bash" shell is also provided.
+### Update `PATHEXT`
+
+With further refinements, we can trim the initial "`sh`" from the script invocation. First, associate `.sh` files with `sh.exe`. To do this, create a blank `script.sh` file (with Notepad, for example) and right-click on it. Choose *Open with* from the context menu. Click *More apps* and navigate to `C:\Program Files\Git\bin\sh.exe`. Enable *Always use this app to open .sh files* and click *OK*.
+
+Next, update the value of the `PATHEXT` environmental variable. To access the variable, go to *Control Panel* -> *System* -> *Advanced* -> *Environment Variables*. The value is a list of file extensions separated by `;`, for example:
+
+    .COM;.EXE;.BAT;.CMD;.VBS;.VBE;.JS;.JSE;.WSF;.WSH;.MSC
+
+Add `;.SH` to the end:
+
+    .COM;.EXE;.BAT;.CMD;.VBS;.VBE;.JS;.JSE;.WSF;.WSH;.MSC;.SH
+
+We can now run `.sh` files *directly* from the command prompt, like so:
+
+    script.sh --param1 val1 --param2 val2
+
+Note that the `.sh` extension is required to identify the file as a Bash script. Windows does *not* parse the `#!/bin/sh` shebang line; to execute an extensionless script, use `sh` (e.g., `sh script`).
 
 ### [MSYS](http://www.mingw.org/wiki/msys)
 
-Git for Windows bundles MSYS for Unix compatibility. Alternatively, MSYS can also be installed *without* Git.
+Git for Windows bundles MSYS for all Unix functionality. Alternatively, MSYS can also be installed *without* Git.
 
-If MSYS is installed with [Git for Windows](#git-for-windows), as recommended above, then skip this step. Otherwise, run the [MSYS](http://www.mingw.org/wiki/msys) installer and ensure that `sh.exe` is globally available by *appending* the location of MSYS' executables (its `bin/` directory) to the `PATH` environment variable. To access the `PATH` variable, go to *Control Panel* -> *System* -> *Advanced* -> *Environment Variables*. The value is a list of file paths separated by `;`, for example:
+If MSYS is installed with [Git for Windows](#git-for-windows), as shown above, then skip this step. Otherwise, run the [MSYS](http://www.mingw.org/wiki/msys) installer and ensure that `sh.exe` is globally available by *appending* the location of MSYS' executables (its `bin/` directory) to the `PATH` environment variable. The value is a list of file paths separated by `;`, for example:
 
     %SystemRoot%\system32;%SystemRoot%;C:\Ruby22\bin
 
@@ -67,7 +87,7 @@ We can now link (`ld`) and compile C programs (`gcc`) and C++ programs (`g++`).
 
 For even more Unix utilities, install [G*nu*W*in*32](http://gnuwin32.sourceforge.net/). Append its directory to `PATH` *after* the other directories.
 
-We now have a host of tools at our command. For example, `wget` downloads a file via the command prompt, while `md5sum` calculates its MD5 hash.
+We now have a host of tools at our command. For example, `wget` downloads a file via the command prompt, while `md5sum` calculates its MD5 hash. Explore the [package list](http://gnuwin32.sourceforge.net/packages.html) to get a sense of the possibilities.
 
 Alias `open`
 ------------
@@ -85,6 +105,6 @@ Windows' own `find` utility shadows the Unix `find` command. To create an alias 
 Alternatives
 ------------
 
-Windows 10 includes its own [Linux Bash Shell](http://www.howtogeek.com/249966/how-to-install-and-use-the-linux-bash-shell-on-windows-10/), based on Ubuntu. Note that this is a *standalone* shell, and does not interfere with Windows' command prompt. A standalone shell has the advantage that it may provide functionality that is unavailable or shadowed by the command prompt.
+Windows 10 includes its own [Linux Bash Shell](http://www.howtogeek.com/249966/how-to-install-and-use-the-linux-bash-shell-on-windows-10/), based on Ubuntu. Note that this is a *standalone* shell, like PowerShell, so it does not interfere with the command prompt. A standalone shell has the advantage that it may provide functionality that is unavailable or shadowed by the command prompt.
 
-Another comprehensive standalone shell is provided by the [Cygwin](http://www.cygwin.com/) project, which can be used on older Windows versions.
+Another comprehensive standalone shell is provided by the [Cygwin](http://www.cygwin.com/) project, which can be used on older Windows versions. [MSYS](#msys) and [MinGW](#mingw) also provide standalone shells. "Git Bash", the shell provided by [Git for Windows](#git-for-windows), is an extension of these.

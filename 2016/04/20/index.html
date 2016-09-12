@@ -6,7 +6,7 @@
 <meta content="Vegard &#216;ye" name="author">
 <meta content="2016-04-20" name="date">
 <meta content="How to run Bash scripts from Windows&#8217; command prompt and extend it with common Unix commands." name="description">
-<meta content="4c43808a5976656ff09e3493c3cd18b5" name="md5">
+<meta content="320d22d2bcc97f81769a71293a4c7e84" name="md5">
 <meta content="text/css" http-equiv="Content-Style-Type">
 <meta content="width=device-width, initial-scale=1" name="viewport">
 <meta content="Running Bash scripts on Windows" name="DC.Title">
@@ -71,11 +71,11 @@ TeX: { equationNumbers: { autoNumber: "all" } }
 
 <div class="collapse" id="toc">
 <ul>
-<li><a href="#usage">Usage</a>
-</li>
-
 <li><span class="" id="git-for-windows-link"><a href="#git-for-windows">Git for Windows</a><a aria-controls="git-for-windows-link-section" aria-expanded="false" aria-hidden="true" class="collapse-button" data-toggle="collapse" href="#git-for-windows-link-section" role="button"></a></span>
 <ul class="collapse" id="git-for-windows-link-section">
+<li><a href="#update-pathext">Update <code>PATHEXT</code></a>
+</li>
+
 <li><a href="#msys"><abbr class="acronym" title="Minimal System"><span class="caps">MSYS</span></abbr></a>
 </li>
 
@@ -118,21 +118,26 @@ To do:
     -   ~~If so, where to place `open.bat`?~~
 -   Does Git Bash's MingGW differ from the default MinGW?
 -   ~~On Windows 10, the `PATH` variable is not separated by `;`.~~
+-   ~~Update PATHEXT~~
 -   Update CSS so that header does not affect the width of the window.
     -   Requires refactoring the default stylesheet
 -->
 
 <section>
-<p>The following setup allows us to <a href="#usage" title="Usage">run Bash scripts from Windows&#8217; command prompt</a>. It also augments the command prompt with common Unix commands like <code>ls</code>, <code>cp</code> and <code>rm</code>, which is useful if these are ingrained into muscle&#160;memory.</p>
+<p>The following setup allows us to <a href="#usage">run Bash scripts from Windows&#8217; command prompt</a>. It also augments the command prompt with common Unix commands like <code>cp</code>, <code>rm</code> and <code>mv</code>, which is useful if these are ingrained into muscle&#160;memory.</p>
 
 <p>(For a list of standalone Bash shells for Windows, see <a href="#alternatives" title="Alternatives">alternatives</a>.)</p>
 </section>
 
-<section id="usage">
-<h2><a aria-hidden="true" class="header-anchor" href="#usage" title="Usage"></a>Usage<a aria-controls="usage-section" aria-expanded="true" aria-hidden="true" class="collapse-button" data-toggle="collapse" href="#usage-section" role="button"></a></h2>
+<section id="git-for-windows">
+<h2><a aria-hidden="true" class="header-anchor" href="#git-for-windows" title="Git for Windows"></a><a href="https://git-scm.com/">Git for Windows</a><a aria-controls="git-for-windows-section" aria-expanded="true" aria-hidden="true" class="collapse-button" data-toggle="collapse" href="#git-for-windows-section" role="button"></a>
+</h2>
 
-<div class="collapse in" id="usage-section">
-<p>The minimum requirement is to <a href="#git-for-windows" title="Git for Windows">install Git for Windows</a>. We can then open a command prompt window and run a Bash script as&#160;follows:</p>
+<div class="collapse in" id="git-for-windows-section">
+<section>
+<p>Install <a href="https://git-scm.com/">Git for Windows</a>. When asked whether to install additional Unix utilities, choose <em>yes</em>.</p>
+
+<p>We can now open a command prompt window and run a Bash script as&#160;follows:</p>
 
 <pre>
 <code>sh script.sh</code>
@@ -144,19 +149,43 @@ To do:
 <code>sh script.sh --param1 val1 --param2 val2</code>
 </pre>
 
-<p>Below follow installation instructions for <a href="#git-for-windows" title="Git for Windows">Git for Windows</a>, <a href="#msys" title="MSYS"><abbr class="acronym" title="Minimal System"><span class="caps">MSYS</span></abbr></a>, <a href="#mingw" title="MinGW"><abbr title="Minimalist GNU for Windows">MinGW</abbr></a> and <a href="#gnuwin32" title="GnuWin32">G<em>nu</em>W<em>in</em>32</a>.</p>
-</div>
+<p>Git for Windows also extends the command prompt with common Unix commands like <code>cp</code>, <code>rm</code> and <code>mv</code>:</p>
+
+<pre>
+<code>cp script.sh script2.sh
+rm script.sh
+mv script2.sh script.sh</code>
+</pre>
+
+<p><span class="dquo">&#8220;</span>Git Bash&#8221;, a <a href="#alternatives" title="Alternatives">standalone shell</a>, is installed as&#160;well.</p>
 </section>
 
-<section id="git-for-windows">
-<h2><a aria-hidden="true" class="header-anchor" href="#git-for-windows" title="Git for Windows"></a><a href="https://git-scm.com/">Git for Windows</a><a aria-controls="git-for-windows-section" aria-expanded="true" aria-hidden="true" class="collapse-button" data-toggle="collapse" href="#git-for-windows-section" role="button"></a>
-</h2>
+<section id="update-pathext">
+<h3><a aria-hidden="true" class="header-anchor" href="#update-pathext" title="Update PATHEXT"></a>Update <code>PATHEXT</code><a aria-controls="update-pathext-section" aria-expanded="true" aria-hidden="true" class="collapse-button" data-toggle="collapse" href="#update-pathext-section" role="button"></a></h3>
 
-<div class="collapse in" id="git-for-windows-section">
-<section>
-<p>Install <a href="https://git-scm.com/">Git for Windows</a>. When asked whether to install additional Unix utilities, choose <em>yes</em>.</p>
+<div class="collapse in" id="update-pathext-section">
+<p>With further refinements, we can trim the initial &#8220;<code>sh</code>&#8221; from the script invocation. First, associate <code>.sh</code> files with <code>sh.exe</code>. To do this, create a blank <code>script.sh</code> file (with Notepad, for example) and right-click on it. Choose <em>Open with</em> from the context menu. Click <em>More apps</em> and navigate to <code>C:\Program Files\Git\bin\sh.exe</code>. Enable <em>Always use this app to open .sh files</em> and click <em><abbr class="acronym" title="okay"><span class="caps">OK</span></abbr></em>.</p>
 
-<p>We can now run Bash scripts as shown <a href="#usage" title="Usage">above</a>, as well as use common Unix commands like <code>ls</code>, <code>cp</code> and <code>rm</code>. A standalone &#8220;Git Bash&#8221; shell is also&#160;provided.</p>
+<p>Next, update the value of the <code>PATHEXT</code> environmental variable. To access the variable, go to <em>Control Panel</em> &#8594; <em>System</em> &#8594; <em>Advanced</em> &#8594; <em>Environment Variables</em>. The value is a list of file extensions separated by <code>;</code>, for example:</p>
+
+<pre>
+<code>.COM;.EXE;.BAT;.CMD;.VBS;.VBE;.JS;.JSE;.WSF;.WSH;.MSC</code>
+</pre>
+
+<p>Add <code>;.SH</code> to the&#160;end:</p>
+
+<pre>
+<code>.COM;.EXE;.BAT;.CMD;.VBS;.VBE;.JS;.JSE;.WSF;.WSH;.MSC;.SH</code>
+</pre>
+
+<p>We can now run <code>.sh</code> files <em>directly</em> from the command prompt, like&#160;so:</p>
+
+<pre>
+<code>script.sh --param1 val1 --param2 val2</code>
+</pre>
+
+<p>Note that the <code>.sh</code> extension is required to identify the file as a Bash script. Windows does <em>not</em> parse the <code>#!/bin/sh</code> shebang line; to execute an extensionless script, use <code>sh</code> (<abbr title="exempli gratia">e.g.</abbr>, <code>sh script</code>).</p>
+</div>
 </section>
 
 <section id="msys">
@@ -164,9 +193,9 @@ To do:
 </h3>
 
 <div class="collapse in" id="msys-section">
-<p>Git for Windows bundles <abbr class="acronym" title="Minimal System"><span class="caps">MSYS</span></abbr> for Unix compatibility. Alternatively, <abbr class="acronym" title="Minimal System"><span class="caps">MSYS</span></abbr> can also be installed <em>without</em>&#160;Git.</p>
+<p>Git for Windows bundles <abbr class="acronym" title="Minimal System"><span class="caps">MSYS</span></abbr> for all Unix functionality. Alternatively, <abbr class="acronym" title="Minimal System"><span class="caps">MSYS</span></abbr> can also be installed <em>without</em>&#160;Git.</p>
 
-<p>If <abbr class="acronym" title="Minimal System"><span class="caps">MSYS</span></abbr> is installed with <a href="#git-for-windows" title="Git for Windows">Git for Windows</a>, as recommended above, then skip this step. Otherwise, run the <a href="http://www.mingw.org/wiki/msys"><abbr class="acronym" title="Minimal System"><span class="caps">MSYS</span></abbr></a> installer and ensure that <code>sh.exe</code> is globally available by <em>appending</em> the location of <abbr class="acronym" title="Minimal System"><span class="caps">MSYS</span></abbr>&#8217; executables (its <code>bin/</code> directory) to the <code>PATH</code> environment variable. To access the <code>PATH</code> variable, go to <em>Control Panel</em> &#8594; <em>System</em> &#8594; <em>Advanced</em> &#8594; <em>Environment Variables</em>. The value is a list of file paths separated by <code>;</code>, for example:</p>
+<p>If <abbr class="acronym" title="Minimal System"><span class="caps">MSYS</span></abbr> is installed with <a href="#git-for-windows" title="Git for Windows">Git for Windows</a>, as shown above, then skip this step. Otherwise, run the <a href="http://www.mingw.org/wiki/msys"><abbr class="acronym" title="Minimal System"><span class="caps">MSYS</span></abbr></a> installer and ensure that <code>sh.exe</code> is globally available by <em>appending</em> the location of <abbr class="acronym" title="Minimal System"><span class="caps">MSYS</span></abbr>&#8217; executables (its <code>bin/</code> directory) to the <code>PATH</code> environment variable. The value is a list of file paths separated by <code>;</code>, for example:</p>
 
 <pre>
 <code>%SystemRoot%\system32;%SystemRoot%;C:\Ruby22\bin</code>
@@ -202,7 +231,7 @@ To do:
 <div class="collapse in" id="gnuwin32-section">
 <p>For even more Unix utilities, install <a href="http://gnuwin32.sourceforge.net/">G<em>nu</em>W<em>in</em>32</a>. Append its directory to <code>PATH</code> <em>after</em> the other&#160;directories.</p>
 
-<p>We now have a host of tools at our command. For example, <code>wget</code> downloads a file via the command prompt, while <code>md5sum</code> calculates its <abbr class="acronym" title="Message-Digest algorithm 5"><span class="caps">MD5</span></abbr>&#160;hash.</p>
+<p>We now have a host of tools at our command. For example, <code>wget</code> downloads a file via the command prompt, while <code>md5sum</code> calculates its <abbr class="acronym" title="Message-Digest algorithm 5"><span class="caps">MD5</span></abbr> hash. Explore the <a href="http://gnuwin32.sourceforge.net/packages.html">package list</a> to get a sense of the&#160;possibilities.</p>
 </div>
 </section>
 
@@ -231,9 +260,9 @@ start %*</code>
 <h2><a aria-hidden="true" class="header-anchor" href="#alternatives" title="Alternatives"></a>Alternatives<a aria-controls="alternatives-section" aria-expanded="true" aria-hidden="true" class="collapse-button" data-toggle="collapse" href="#alternatives-section" role="button"></a></h2>
 
 <div class="collapse in" id="alternatives-section">
-<p>Windows 10 includes its own <a href="http://www.howtogeek.com/249966/how-to-install-and-use-the-linux-bash-shell-on-windows-10/">Linux Bash Shell</a>, based on Ubuntu. Note that this is a <em>standalone</em> shell, and does not interfere with Windows&#8217; command prompt. A standalone shell has the advantage that it may provide functionality that is unavailable or shadowed by the command&#160;prompt.</p>
+<p>Windows 10 includes its own <a href="http://www.howtogeek.com/249966/how-to-install-and-use-the-linux-bash-shell-on-windows-10/">Linux Bash Shell</a>, based on Ubuntu. Note that this is a <em>standalone</em> shell, like PowerShell, so it does not interfere with the command prompt. A standalone shell has the advantage that it may provide functionality that is unavailable or shadowed by the command&#160;prompt.</p>
 
-<p>Another comprehensive standalone shell is provided by the <a href="http://www.cygwin.com/">Cygwin</a> project, which can be used on older Windows&#160;versions.</p>
+<p>Another comprehensive standalone shell is provided by the <a href="http://www.cygwin.com/">Cygwin</a> project, which can be used on older Windows versions. <a href="#msys" title="MSYS"><abbr class="acronym" title="Minimal System"><span class="caps">MSYS</span></abbr></a> and <a href="#mingw" title="MinGW"><abbr title="Minimalist GNU for Windows">MinGW</abbr></a> also provide standalone shells. &#8220;Git Bash&#8221;, the shell provided by <a href="#git-for-windows" title="Git for Windows">Git for Windows</a>, is an extension of&#160;these.</p>
 </div>
 </section>
 </section>
