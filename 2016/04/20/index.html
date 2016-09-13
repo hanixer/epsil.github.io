@@ -6,7 +6,7 @@
 <meta content="Vegard &#216;ye" name="author">
 <meta content="2016-04-20" name="date">
 <meta content="How to run Bash scripts from Windows&#8217; command prompt and extend it with common Unix commands." name="description">
-<meta content="4d82d8d7c0730fe479078bdbdbe8ff8a" name="md5">
+<meta content="eee0bad92fd496cfef32b3f0a0dc6a65" name="md5">
 <meta content="text/css" http-equiv="Content-Style-Type">
 <meta content="width=device-width, initial-scale=1" name="viewport">
 <meta content="Running Bash scripts on Windows" name="DC.Title">
@@ -115,7 +115,7 @@ TeX: { equationNumbers: { autoNumber: "all" } }
 </header>
 
 <section class="e-content"><!--
-To do:
+TO DO:
 
 -   ~~Git Bash should be installed first.~~
     -   How does the override option affect `PATH`?
@@ -131,7 +131,7 @@ To do:
 <section>
 <p>The following setup allows us to run Bash scripts from Windows&#8217; command prompt. It also augments it with common Unix commands like <code>cp</code>, <code>rm</code> and <code>mv</code>, which is useful if these are ingrained into muscle&#160;memory.</p>
 
-<p>Note that this setup affects the <em>command prompt</em>. Although Windows 10 includes an <a href="http://www.howtogeek.com/249966/how-to-install-and-use-the-linux-bash-shell-on-windows-10/">Ubuntu Linux Bash Shell</a>, this shell &#8211; like PowerShell &#8211; is independent of the command prompt. Therefore, the following instructions still apply to Windows 10, as well as to earlier Windows versions. (For a list of standalone Bash shells for Windows, see the <a href="#standalone-shells" title="Standalone shells">discussion</a> at the&#160;end.)</p>
+<p>Note that this setup affects the <em>command prompt</em> (<abbr class="acronym" title="Also Known As"><span class="caps">AKA</span></abbr> <code>cmd.exe</code>). Although Windows 10 includes a full-fledged <a href="http://www.howtogeek.com/249966/how-to-install-and-use-the-linux-bash-shell-on-windows-10/">Ubuntu Linux Bash Shell</a>, this shell &#8211; like PowerShell &#8211; is separate from the command prompt. Therefore, the following instructions still apply to Windows 10, as well as to earlier Windows versions. (For a list of standalone Bash shells for Windows, see the <a href="#standalone-shells" title="Standalone shells">discussion</a> at the&#160;end.)</p>
 </section>
 
 <section id="git-for-windows">
@@ -275,6 +275,8 @@ start %*</code>
 
 <div class="collapse in" id="standalone-shells-section">
 <p>Windows 10 includes its own <a href="http://www.howtogeek.com/249966/how-to-install-and-use-the-linux-bash-shell-on-windows-10/">Linux Bash Shell</a>, based on Ubuntu. Note that this is a <em>standalone</em> shell, similar to PowerShell; Windows 10&#8217;s command prompt is unaffected and will still benefit from the instructions above. However, a standalone shell may provide built-in functionality that cannot be added to the command prompt (searchable history, for&#160;example).</p>
+
+<p>Furthermore, note that tools added to the command prompt are also available in PowerShell and the Linux Bash Shell (unless shadowed by a different implementation). For example, after following the instructions above, G<em>nu</em>W<em>in</em>32&#8217;s <code>md5sum</code> command can be invoked not only from the command prompt, but from PowerShell and the Linux Bash Shell as&#160;well.</p>
 
 <p>Another comprehensive standalone shell is provided by the <a href="http://www.cygwin.com/">Cygwin</a> project, which can be used on older Windows versions. <a href="#msys" title="MSYS"><abbr class="acronym" title="Minimal System"><span class="caps">MSYS</span></abbr></a> and <a href="#mingw" title="MinGW"><abbr title="Minimalist GNU for Windows">MinGW</abbr></a> also provide standalone shells. &#8220;Git Bash&#8221;, the shell provided by <a href="#git-for-windows" title="Git for Windows">Git for Windows</a>, is in fact an extension of&#160;these.</p>
 </div>
