@@ -46,7 +46,7 @@ Git for Windows also extends the command prompt with common Unix commands like `
     rm script.sh
     mv script2.sh script.sh
 
-"Git Bash", a [standalone shell](#alternatives), is installed as well. It provides additional amenities like aliases and searchable command history, and can be used as a complete replacement for the command prompt.
+"Git Bash", a [standalone shell](#alternatives), is installed as well. It provides additional amenities like aliases and searchable command history.
 
 ### Update `PATHEXT`
 
