@@ -30,7 +30,7 @@ Install [Git for Windows](https://git-scm.com/). When asked whether to install a
 
 ![](git.png)
 
-(The lighter *Use Git from the Windows Command Prompt* option can also be used, but then one must [install MSYS manually](#msys).)
+(The lighter *Use Git from the Windows Command Prompt* option can also be chosen, but then one must [install MSYS manually](#msys).)
 
 We can now open a command prompt window and run a Bash script as follows:
 
