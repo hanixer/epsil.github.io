@@ -21,7 +21,7 @@ TO DO:
 
 The following setup allows us to run Bash scripts from Windows' command prompt. It also augments it with common Unix commands like `cp`, `rm` and `mv`, which is useful if these are ingrained into muscle memory.
 
-Note that this setup affects the *command prompt* (AKA `cmd.exe`). Although Windows 10 includes a full-fledged [Ubuntu Linux Bash Shell](http://www.howtogeek.com/249966/how-to-install-and-use-the-linux-bash-shell-on-windows-10/), this shell -- like PowerShell -- is separate from the command prompt. Therefore, the following instructions still apply to Windows 10, as well as to earlier Windows versions. (For a list of standalone Bash shells for Windows, see the [discussion](#standalone-shells) at the end.)
+Note that this setup affects the *command prompt* (AKA `cmd.exe`). Although Windows 10 includes a full-fledged [Ubuntu Linux Bash Shell](http://www.howtogeek.com/249966/how-to-install-and-use-the-linux-bash-shell-on-windows-10/), that shell -- like PowerShell -- is separate from the command prompt. Therefore, the following instructions still apply to Windows 10, as well as to earlier Windows versions. (For a list of standalone Bash shells for Windows, see the [discussion](#standalone-shells) at the end.)
 
 [Git for Windows](https://git-scm.com/)
 ---------------------------------------
@@ -111,6 +111,6 @@ The above instructions assume that MSYS is installed along with [Git for Windows
 
 Windows 10 includes its own [Linux Bash Shell](http://www.howtogeek.com/249966/how-to-install-and-use-the-linux-bash-shell-on-windows-10/), based on Ubuntu. Note that this is a *standalone* shell, similar to PowerShell; Windows 10's command prompt is unaffected and will still benefit from the instructions above. However, a standalone shell may provide built-in functionality that cannot be added to the command prompt (searchable history, for example).
 
-Furthermore, note that tools added to the command prompt are also available in PowerShell and the Linux Bash Shell (unless shadowed by a different implementation). For example, after following the instructions above, G*nu*W*in*32's `md5sum` command can be invoked not only from the command prompt, but from PowerShell and the Linux Bash Shell as well.
+Furthermore, be aware that tools added to the command prompt are also available in PowerShell and the Linux Bash Shell (unless shadowed by a different implementation). For example, after following the instructions above, G*nu*W*in*32's `md5sum` command can be invoked not only from the command prompt, but from PowerShell and the Linux Bash Shell as well.
 
 Another comprehensive standalone shell is provided by the [Cygwin](http://www.cygwin.com/) project, which can be used on older Windows versions. [MSYS](#msys) and [MinGW](#mingw) also provide standalone shells. "Git Bash", the shell provided by [Git for Windows](#git-for-windows), is in fact an extension of these.
