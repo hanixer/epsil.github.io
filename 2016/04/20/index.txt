@@ -19,7 +19,7 @@ To do:
     -   Requires refactoring the default stylesheet
 -->
 
-The following setup allows us to [run Bash scripts from Windows' command prompt](#usage). It also augments the command prompt with common Unix commands like `cp`, `rm` and `mv`, which is useful if these are ingrained into muscle memory.
+The following setup allows us to run Bash scripts from Windows' command prompt. It also augments the command prompt with common Unix commands like `cp`, `rm` and `mv`, which is useful if these are ingrained into muscle memory.
 
 (For a list of standalone Bash shells for Windows, see [alternatives](#alternatives).)
 
