@@ -7,7 +7,7 @@
   },
   "scripts": {
     "clean": "rm -f standalone.html",
-    "build": "npm run browser && ./build.sh",
+    "build": "npm run browser && node lib/build.js",
     "compile": "node lib/build.js index.txt test.html",
     "browser": "browserify lib/index.js -o js/markdown-template.js && browserify test/index.js -o test/test.js && npm run lint",
     "minify": "uglifyjs js/markdown-template.js -o js/markdown-template.js",
@@ -38,6 +38,7 @@
   "dependencies": {
     "bootstrap": "^3.3.7",
     "browserify": "^13.1.0",
+    "glob": "^7.0.6",
     "handlebars": "^4.0.5",
     "highlight.js": "^9.5.0",
     "jquery": "^3.1.0",
