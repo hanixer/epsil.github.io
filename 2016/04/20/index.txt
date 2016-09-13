@@ -21,7 +21,7 @@ To do:
 
 The following setup allows us to run Bash scripts from Windows' command prompt. It also augments the command prompt with common Unix commands like `cp`, `rm` and `mv`, which is useful if these are ingrained into muscle memory.
 
-(Note that this setup augments the *command prompt*. Windows 10 includes a [Linux Bash Shell](http://www.howtogeek.com/249966/how-to-install-and-use-the-linux-bash-shell-on-windows-10/), but like PowerShell, this is independent of the command prompt. Therefore, these instructions also apply to Windows 10. For a list of standalone Bash shells for Windows, see [alternatives](#alternatives).)
+(Note that this setup augments the *command prompt*. Windows 10 includes a [Linux Bash Shell](http://www.howtogeek.com/249966/how-to-install-and-use-the-linux-bash-shell-on-windows-10/), but like PowerShell, this is independent of the command prompt. Therefore, these instructions apply to Windows 10 as well. For a list of standalone Bash shells for Windows, see [alternatives](#alternatives).)
 
 [Git for Windows](https://git-scm.com/)
 ---------------------------------------
