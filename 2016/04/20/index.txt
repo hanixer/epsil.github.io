@@ -26,7 +26,11 @@ The following setup allows us to run Bash scripts from Windows' command prompt. 
 [Git for Windows](https://git-scm.com/)
 ---------------------------------------
 
-Install [Git for Windows](https://git-scm.com/). When asked whether to install additional Unix utilities, choose *yes*.
+Install [Git for Windows](https://git-scm.com/). When asked whether to install additional Unix utilities, choose *Use Git and optional Unix tools from the Windows Command Prompt*:
+
+![](git.png)
+
+(The lighter *Use Git from the Windows Command Prompt* option can also be used, but then one must [install MSYS manually](#msys).)
 
 We can now open a command prompt window and run a Bash script as follows:
 
@@ -42,7 +46,7 @@ Git for Windows also extends the command prompt with common Unix commands like `
     rm script.sh
     mv script2.sh script.sh
 
-"Git Bash", a [standalone shell](#alternatives), is installed as well.
+"Git Bash", a [standalone shell](#alternatives), is installed as well. It provides additional amenities like aliases and searchable command history, and can be used as a complete replacement for the command prompt.
 
 ### Update `PATHEXT`
 
@@ -62,32 +66,26 @@ We can now run `.sh` files *directly* from the command prompt, like so:
 
 Note that the `.sh` extension is required to identify the file as a Bash script. Windows does *not* parse the `#!/bin/sh` shebang line; to execute an extensionless script, use `sh` (e.g., `sh script`).
 
-### [MSYS](http://www.mingw.org/wiki/msys)
+[G*nu*W*in*32](http://gnuwin32.sourceforge.net/)
+------------------------------------------------
 
-Git for Windows bundles MSYS for all Unix functionality. Alternatively, MSYS can also be installed *without* Git.
-
-If MSYS is installed with [Git for Windows](#git-for-windows), as shown above, then skip this step. Otherwise, run the [MSYS](http://www.mingw.org/wiki/msys) installer and ensure that `sh.exe` is globally available by *appending* the location of MSYS' executables (its `bin/` directory) to the `PATH` environment variable. The value is a list of file paths separated by `;`, for example:
+For even more Unix utilities, install [G*nu*W*in*32](http://gnuwin32.sourceforge.net/). Ensure that its utilities are globally available by *appending* the location of G*nu*W*in*32's executables (its `bin/` directory) to the `PATH` environment variable. The value is a list of file paths separated by `;`, for example:
 
     %SystemRoot%\system32;%SystemRoot%;C:\Ruby22\bin
 
-Thus, if MSYS' executables are located in `C:\msys\1.0\bin`, simply add `;C:\msys\1.0\bin` to the end:
+Thus, if G*nu*W*in*32's executables are located in `C:\GnuWin32\bin`, simply add `;C:\GnuWin32\bin` to the end:
 
-    %SystemRoot%\system32;%SystemRoot%;C:\Ruby22\bin;C:\msys\1.0\bin
+    %SystemRoot%\system32;%SystemRoot%;C:\Ruby22\bin;C:\GnuWin32\bin
 
 On Windows 10, the variable may be displayed as an editable list of directories. Add the directory to the bottom of the list.
+
+We now have a host of tools at our command. For example, `wget` downloads a file via the command prompt, while `md5sum` calculates its MD5 hash. Explore the [package list](http://gnuwin32.sourceforge.net/packages.html) to get a sense of the possibilities.
 
 ### [MinGW](http://www.mingw.org/)
 
 For additional developer tools, augment the above setup with a complete installation of [MinGW](http://www.mingw.org/). Append its directory to `PATH` *after* the other directories.
 
 We can now link (`ld`) and compile C programs (`gcc`) and C++ programs (`g++`).
-
-[G*nu*W*in*32](http://gnuwin32.sourceforge.net/)
-------------------------------------------------
-
-For even more Unix utilities, install [G*nu*W*in*32](http://gnuwin32.sourceforge.net/). Append its directory to `PATH` *after* the other directories.
-
-We now have a host of tools at our command. For example, `wget` downloads a file via the command prompt, while `md5sum` calculates its MD5 hash. Explore the [package list](http://gnuwin32.sourceforge.net/packages.html) to get a sense of the possibilities.
 
 Alias `open`
 ------------
@@ -105,6 +103,12 @@ Windows' own `find` utility shadows the Unix `find` command. To create an alias 
 Alternatives
 ------------
 
-Windows 10 includes its own [Linux Bash Shell](http://www.howtogeek.com/249966/how-to-install-and-use-the-linux-bash-shell-on-windows-10/), based on Ubuntu. Note that this is a *standalone* shell, like PowerShell, so it does not interfere with the command prompt. A standalone shell has the advantage that it may provide functionality that is unavailable in the command prompt, such as persistent command history.
+### [MSYS](http://www.mingw.org/wiki/msys)
+
+The above instructions assume that MSYS is installed along with with [Git for Windows](#git-for-windows). However, it is also possible to install MSYS manually. If this applies, then run the [MSYS](http://www.mingw.org/wiki/msys) installer and append MSYS' `bin/` directory to `PATH` *after* the other directories.
+
+### Standalone shells
+
+Windows 10 includes its own [Linux Bash Shell](http://www.howtogeek.com/249966/how-to-install-and-use-the-linux-bash-shell-on-windows-10/), based on Ubuntu. Note that this is a *standalone* shell, like PowerShell, so it does not interfere with the command prompt. A standalone shell has the advantage that it may provide functionality that is unavailable in the command prompt.
 
 Another comprehensive standalone shell is provided by the [Cygwin](http://www.cygwin.com/) project, which can be used on older Windows versions. [MSYS](#msys) and [MinGW](#mingw) also provide standalone shells. "Git Bash", the shell provided by [Git for Windows](#git-for-windows), is an extension of these.
