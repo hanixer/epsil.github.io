@@ -79,7 +79,7 @@ Thus, if G*nu*W*in*32's executables are located in `C:\GnuWin32\bin`, simply add
 
 On Windows 10, the variable may be displayed as an editable list of directories. Add the directory to the bottom of the list.
 
-We now have a host of tools at our command. For example, `wget` downloads a file via the command prompt, while `md5sum` calculates its MD5 hash. Explore the [package list](http://gnuwin32.sourceforge.net/packages.html) to get a sense of the possibilities.
+We now have a host of tools at our command. For example, `wget` downloads a file via the command prompt, while `md5sum` calculates its MD5 hash. Explore G*nu*W*in*32's [package list](http://gnuwin32.sourceforge.net/packages.html) to get a sense of the possibilities.
 
 ### [MinGW](http://www.mingw.org/)
 
@@ -109,6 +109,6 @@ The above instructions assume that MSYS is installed along with [Git for Windows
 
 ### Standalone shells
 
-Windows 10 includes its own [Linux Bash Shell](http://www.howtogeek.com/249966/how-to-install-and-use-the-linux-bash-shell-on-windows-10/), based on Ubuntu. Note that this is a *standalone* shell, like PowerShell, so it does not interfere with the command prompt. A standalone shell has the advantage that it may provide functionality that is unavailable in the command prompt.
+Windows 10 includes its own [Linux Bash Shell](http://www.howtogeek.com/249966/how-to-install-and-use-the-linux-bash-shell-on-windows-10/), based on Ubuntu. Note that this is a *standalone* shell, similar to PowerShell; Windows 10's command prompt is unaffected and will still benefit from the instructions above. However, a standalone shell may provide built-in functionality that cannot be added to the command prompt.
 
 Another comprehensive standalone shell is provided by the [Cygwin](http://www.cygwin.com/) project, which can be used on older Windows versions. [MSYS](#msys) and [MinGW](#mingw) also provide standalone shells. "Git Bash", the shell provided by [Git for Windows](#git-for-windows), is in fact an extension of these.
