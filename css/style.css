@@ -392,18 +392,10 @@ article ul > li:before, #toc ul > li:before {
 }
 
 .dquo {
-    margin-left: -0.4em;
+    margin-left: -0.2em;
 }
 
 .quo {
-    margin-left: -0.2em;
-}
-
-li .dquo {
-    margin-left: -0.2em;
-}
-
-li .quo {
     margin-left: -0.1em;
 }
 
