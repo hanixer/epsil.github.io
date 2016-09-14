@@ -6,7 +6,7 @@
 <meta content="Vegard &#216;ye" name="author">
 <meta content="2016-04-20" name="date">
 <meta content="How to run Bash scripts from Windows&#8217; command prompt and extend it with common Unix commands." name="description">
-<meta content="dcfb92d2f0be14ccfde5bc3db398d0f8" name="md5">
+<meta content="c0a48d75fa0c4035e8b861cae18239b0" name="md5">
 <meta content="text/css" http-equiv="Content-Style-Type">
 <meta content="width=device-width, initial-scale=1" name="viewport">
 <meta content="Running Bash scripts on Windows" name="DC.Title">
@@ -256,6 +256,14 @@ start %*</code>
 
 <div class="collapse in" id="alias-find-section">
 <p>Windows&#8217; own <code>find</code> utility shadows the Unix <code>find</code> command. To create an alias for the latter, make a copy of <code>find.exe</code>, <code>find2.exe</code>, in the same folder (typically <code>C:\Program Files\Git\usr\bin</code>). The Unix command can now be accessed as <code>find2</code>.</p>
+
+<p>Alternatively, switch to &#8220;Git Bash&#8221; for the duration of the&#160;command:</p>
+
+<pre>
+<code>bash
+find . -name "*.txt"
+exit</code>
+</pre>
 </div>
 </section>
 
