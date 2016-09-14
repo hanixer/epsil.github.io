@@ -6,7 +6,7 @@
 <meta content="Vegard &#216;ye" name="author">
 <meta content="2016-04-20" name="date">
 <meta content="How to run Bash scripts from Windows&#8217; command prompt and extend it with common Unix commands." name="description">
-<meta content="c0a48d75fa0c4035e8b861cae18239b0" name="md5">
+<meta content="a7b5ba82a94a80297438457c010ec50c" name="md5">
 <meta content="text/css" http-equiv="Content-Style-Type">
 <meta content="width=device-width, initial-scale=1" name="viewport">
 <meta content="Running Bash scripts on Windows" name="DC.Title">
@@ -176,7 +176,7 @@ mv script2.sh script.sh</code>
 <h3><a aria-hidden="true" class="header-anchor" href="#update-pathext" title="Update PATHEXT"></a>Update <code>PATHEXT</code><a aria-controls="update-pathext-section" aria-expanded="true" aria-hidden="true" class="collapse-button" data-toggle="collapse" href="#update-pathext-section" role="button"></a></h3>
 
 <div class="collapse in" id="update-pathext-section">
-<p>With further refinements, we can trim the initial &#8220;<code>sh</code>&#8221; from the script invocation. First, associate <code>.sh</code> files with <code>sh.exe</code>. To do this, create a blank <code>script.sh</code> file (with Notepad, for example) and right-click on it. Choose <em>Open with</em> from the context menu. Click <em>More apps</em> and navigate to <code>C:\Program Files\Git\bin\sh.exe</code>. Enable <em>Always use this app to open .sh files</em> and click <em><abbr class="acronym" title="okay"><span class="caps">OK</span></abbr></em>.</p>
+<p>With further refinements, we can trim the initial &#8220;<code>sh</code>&#8221; from the script invocation in the command prompt. First, associate <code>.sh</code> files with <code>sh.exe</code>. To do this, create a blank <code>script.sh</code> file (with Notepad, for example) and right-click on it. Choose <em>Open with</em> from the context menu. Click <em>More apps</em> and navigate to <code>C:\Program Files\Git\bin\sh.exe</code>. Enable <em>Always use this app to open .sh files</em> and click <em><abbr class="acronym" title="okay"><span class="caps">OK</span></abbr></em>.</p>
 
 <p>Next, update the value of the <code>PATHEXT</code> environmental variable. To access the variable, go to <em>Control Panel</em> &#8594; <em>System</em> &#8594; <em>Advanced</em> &#8594; <em>Environment Variables</em>. The value is a list of file extensions separated by <code>;</code>, for example:</p>
 
