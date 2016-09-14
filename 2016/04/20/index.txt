@@ -23,6 +23,8 @@ The following setup allows us to run Bash scripts from Windows' command prompt. 
 
 Note that this setup affects the *command prompt* (AKA `cmd.exe`). Although Windows 10 includes a full-fledged [Ubuntu Linux Bash Shell](http://www.howtogeek.com/249966/how-to-install-and-use-the-linux-bash-shell-on-windows-10/), that shell -- like PowerShell -- is separate from the command prompt. Therefore, the following instructions still apply to Windows 10, as well as to earlier Windows versions. (For a list of standalone Bash shells for Windows, see the [discussion](#standalone-shells) at the end.)
 
+*Bash scripts* (with an extension of `.sh`) are a Unix invention, and should not be confused with *batch files* (with an extension of `.bat`), which are a Windows invention. However, the goal of this guide may be said to be to let Windows run Bash scripts *as if* they were batch files.
+
 [Git for Windows](https://git-scm.com/)
 ---------------------------------------
 
@@ -64,7 +66,7 @@ We can now run `.sh` files *directly* from the command prompt, like so:
 
     script.sh --param1 val1 --param2 val2
 
-Note that the `.sh` extension is required to identify the file as a Bash script. Windows does *not* parse the `#!/bin/sh` shebang line; to execute an extensionless script, use `sh` (e.g., `sh script`).
+We can also run a `.sh` file by clicking on it. However, note that the `.sh` extension is required to identify the file as a Bash script. Windows does *not* parse the `#!/bin/sh` shebang line; to execute an extensionless script, use `sh` (e.g., `sh script`).
 
 [G*nu*W*in*32](http://gnuwin32.sourceforge.net/)
 ------------------------------------------------
@@ -79,7 +81,7 @@ Thus, if G*nu*W*in*32's executables are located in `C:\GnuWin32\bin`, simply add
 
 On Windows 10, the variable may be displayed as an editable list of directories. Add the directory to the bottom of the list.
 
-We now have a host of tools at our command. For example, `wget` downloads a file via the command prompt, while `md5sum` calculates its MD5 hash. Explore G*nu*W*in*32's [package list](http://gnuwin32.sourceforge.net/packages.html) to get a sense of the possibilities.
+We now have a host of tools at our command. For example, `wget` downloads a file via the command prompt, while `md5sum` calculates its MD5 hash. Peruse G*nu*W*in*32's [package list](http://gnuwin32.sourceforge.net/packages.html) to get a sense of the possibilities.
 
 ### [MinGW](http://www.mingw.org/)
 
