@@ -52,7 +52,7 @@ Git for Windows also extends the command prompt with common Unix commands like `
 
 ### Update `PATHEXT`
 
-With further refinements, we can trim the initial "`sh`" from the script invocation. First, associate `.sh` files with `sh.exe`. To do this, create a blank `script.sh` file (with Notepad, for example) and right-click on it. Choose *Open with* from the context menu. Click *More apps* and navigate to `C:\Program Files\Git\bin\sh.exe`. Enable *Always use this app to open .sh files* and click *OK*.
+With further refinements, we can trim the initial "`sh`" from the script invocation in the command prompt. First, associate `.sh` files with `sh.exe`. To do this, create a blank `script.sh` file (with Notepad, for example) and right-click on it. Choose *Open with* from the context menu. Click *More apps* and navigate to `C:\Program Files\Git\bin\sh.exe`. Enable *Always use this app to open .sh files* and click *OK*.
 
 Next, update the value of the `PATHEXT` environmental variable. To access the variable, go to *Control Panel* -> *System* -> *Advanced* -> *Environment Variables*. The value is a list of file extensions separated by `;`, for example:
 
