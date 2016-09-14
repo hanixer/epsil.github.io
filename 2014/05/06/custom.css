@@ -4,6 +4,15 @@ code, samp, tt, pre {
     padding: 0;
 }
 
+header figure {
+    float: right;
+    margin-top: -180px;
+}
+
 pre {
     padding: 0 1.5em 0 1.5em;
+}
+
+.p-name {
+    padding-right: 200px;
 }

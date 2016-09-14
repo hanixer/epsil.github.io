@@ -1209,7 +1209,7 @@ Handlebars.registerHelper('text', function (html) {
 var templates = {
   document:
     '<!DOCTYPE html>\n' +
-    '<html{{#if lang}} lang="{{lang}}"{{/if}}>\n' +
+    '<html{{#if lang}} lang="{{lang}}"{{/if}} prefix="og: http://ogp.me/ns#">\n' +
     '<head>\n' +
     '<title>{{text title}}{{#if site-name}} &ndash; {{site-name}}{{/if}}</title>\n' +
     '<meta content="text/html; charset=utf-8" http-equiv="Content-Type">\n' +
