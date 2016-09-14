@@ -48,7 +48,7 @@ Git for Windows also extends the command prompt with common Unix commands like `
     rm script.sh
     mv script2.sh script.sh
 
-"Git Bash", a [standalone shell](#standalone-shells), is installed as well. It provides additional amenities like aliases and searchable command history.
+"Git Bash", a [standalone shell](#standalone-shells), is installed as well. To run it in the command prompt, type `bash`. To return to the standard command prompt, type `exit`. It can also be run as a separate program.
 
 ### Update `PATHEXT`
 
