@@ -525,7 +525,9 @@ function parse (data) {
     for (var key in props.data) {
       var val = props.data[key]
       if (key !== 'css' && key !== 'js' &&
+          key !== 'image' && key !== 'video' &&
           typeof (val) === 'string') {
+        // Perhaps this is better implemented as a Handlebars helper?
         val = markdown(val, true)
       }
       props[key] = val
@@ -1231,9 +1233,9 @@ var templates = {
     '{{#if lang}}<meta name="og:locale" content="{{lang}}">\n{{/if}}' +
     '<meta property="og:type" content="article">\n' +
     '<meta property="og:url" content="{{url}}">\n' +
-    '{{#if site-name}}<meta property="og:site_name" content="{{site-name}}" />\n{{/if}}' +
-    '{{#if image}}<meta property="og:image" content="{{image}}" />\n{{/if}}' +
-    '{{#if video}}<meta property="og:video" content="{{video}}" />\n{{/if}}' +
+    '{{#if site-name}}<meta property="og:site_name" content="{{site-name}}">\n{{/if}}' +
+    '{{#if image}}<meta property="og:image" content="{{image}}">\n{{/if}}' +
+    '{{#if video}}<meta property="og:video" content="{{video}}">\n{{/if}}' +
     '<meta name="twitter:card" content="summary">\n' +
     '<meta name="twitter:site" content="@github">\n' +
     '<meta name="twitter:title" content="{{text title}}">\n' +
