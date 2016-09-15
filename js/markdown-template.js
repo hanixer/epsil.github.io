@@ -839,14 +839,6 @@ var mathjax = require('markdown-it-mathjax')
 var abbr = require('markdown-it-abbr')
 var hljs = require('highlight.js')
 var abbrev = require('./abbrev')
-require('./anchor')
-require('./collapse')
-require('./section')
-require('./social')
-require('./figure')
-require('./punctuation')
-require('./toc')
-require('./util')
 
 function highlightBlock (str, lang) {
   if (lang && hljs.getLanguage(lang)) {
@@ -905,7 +897,7 @@ function markdown (str, inline) {
 
 module.exports = markdown
 
-},{"./abbrev":1,"./anchor":2,"./collapse":3,"./figure":5,"./punctuation":8,"./section":9,"./social":10,"./toc":12,"./util":13,"highlight.js":124,"jquery":287,"markdown-it":296,"markdown-it-abbr":288,"markdown-it-attrs":289,"markdown-it-footnote":291,"markdown-it-implicit-figures":292,"markdown-it-mathjax":293,"markdown-it-sub":294,"markdown-it-sup":295}],8:[function(require,module,exports){
+},{"./abbrev":1,"highlight.js":124,"jquery":287,"markdown-it":296,"markdown-it-abbr":288,"markdown-it-attrs":289,"markdown-it-footnote":291,"markdown-it-implicit-figures":292,"markdown-it-mathjax":293,"markdown-it-sub":294,"markdown-it-sup":295}],8:[function(require,module,exports){
 var $ = require('jquery')
 
 $.fn.addPunctuation = function () {
