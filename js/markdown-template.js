@@ -887,8 +887,8 @@ var md = markdownit({
 function markdown (str, inline) {
   str += '\n\n'
   str += abbrev
-  str = md.render(str).trim()
-  str = highlightInline(str)
+  str = md.render(str)
+  str = highlightInline(str).trim()
   if (inline && str.match(/^<p>/) && str.match(/<\/p>$/)) {
     str = str.substring(3, str.length - 4)
   }
