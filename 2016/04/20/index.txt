@@ -58,7 +58,7 @@ Git for Windows also extends the command prompt with common Unix commands like `
     HISTSIZE=10000
     HISTFILESIZE=10000
 
-Configuring Bash settings is not covered here; that is a topic in its own right. Note that "Git Bash" typically stores the `.bash_profile` file at `C:\Users\user\.bash_profile`.
+Configuring Bash settings is not covered here -- that is a topic in its own right. Note that "Git Bash" typically stores the `.bash_profile` file at `C:\Users\user\.bash_profile`.
 
 ### Update `PATHEXT`
 
