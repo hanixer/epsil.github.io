@@ -14,8 +14,18 @@ header {
     background-image: url("tron-background.jpg");
     background-size: cover;
     color: #ffffff;
-    margin: auto -50em;
-    padding: 4em 50em 0.3em 50em;
+    margin: 0;
+    padding: 4em 0 1em 0;
+    max-width: 100% !important;
+    text-align: left;
+    width: 100%;
+}
+
+header > * {
+    margin: 0 auto !important;
+    max-width: 840px !important;
+    padding: 0px 80px 0 80px !important;
+    width: 100% !important;
 }
 
 header h1, header time, header .fa {
@@ -28,4 +38,11 @@ header figure {
 
 .p-summary {
     display: none;
+}
+
+@media (max-width: 550px) {
+    header > * {
+        padding-left: 20px !important;
+        padding-right: 20px !important;
+    }
 }

@@ -9,10 +9,6 @@ abbr.acronym, .caps {
     letter-spacing: 0.1em;
 }
 
-article {
-    margin: 0 auto;
-}
-
 pre .caps {
     font-variant: normal;
     text-transform: none;
@@ -90,9 +86,11 @@ body {
     -webkit-font-smoothing: antialiased;
 }
 
-body > article {
+article > * {
+    margin: 0 auto;
     max-width: 840px;
-    padding: 0px 80px 0 80px;
+    padding-left: 80px;
+    padding-right: 80px;
     width: 100%;
 }
 
@@ -162,11 +160,6 @@ h5 {
 h6 {
     font-size: 1em;
     font-style: italic;
-}
-
-header {
-    margin: 0;
-    padding: 0;
 }
 
 hr {
@@ -452,7 +445,8 @@ Bootstrap provides four classes (configurable with Less):
         line-height: 1.25;
     }
 
-    body > article {
-        padding: 0px 20px 0 20px;
+    article > * {
+        padding-left: 20px;
+        padding-right: 20px;
     }
 }
