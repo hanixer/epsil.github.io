@@ -22,7 +22,7 @@ TO DO:
 
 The following setup allows one to run Bash scripts from Windows' command prompt. It also augments it with common Unix commands like `cp`, `rm` and `mv`, which is useful if these are ingrained into muscle memory.
 
-Note that this setup affects the *command prompt* (AKA `cmd.exe`). Although Windows 10 includes a full-fledged [Ubuntu Linux Bash Shell](http://www.howtogeek.com/249966/how-to-install-and-use-the-linux-bash-shell-on-windows-10/), that shell -- like PowerShell -- is separate from the command prompt. Therefore, the following instructions still apply to Windows 10, as well as to earlier Windows versions. (For a list of standalone Bash shells for Windows, see the [discussion](#standalone-shells) at the end.)
+Note that this setup affects the *command prompt* (AKA `cmd.exe`). Although Windows 10 includes a full-fledged [Ubuntu Linux Bash Shell](http://www.howtogeek.com/249966/how-to-install-and-use-the-linux-bash-shell-on-windows-10/), that shell -- like PowerShell -- is separate from the command prompt. Therefore, the following instructions still apply to Windows 10, as well as to earlier Windows versions. (For a brief list of standalone Bash shells for Windows, see the [discussion](#standalone-shells) at the end.)
 
 *Bash scripts* (with an extension of `.sh`) are a Unix invention, and should not be confused with *batch files* (with an extension of `.bat`), which are a Windows invention. However, the goal of this guide may be expressed as helping Windows run Bash scripts *as if* they were batch files.
 
