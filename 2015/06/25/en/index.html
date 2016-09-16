@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html lang="en" prefix="og: http://ogp.me/ns#">
+<head>
+<title>Dia on OS X &#8211; Vegard&#8217;s blog</title>
+<meta content="text/html; charset=utf-8" http-equiv="Content-Type">
+<meta content="Vegard &#216;ye" name="author">
+<meta content="2015-06-25" name="date">
+<meta content="Some notes on using the graphics program Dia on OS X." name="description">
+<meta content="30abc122db1e42309ae3050626e23544" name="md5">
+<meta content="text/css" http-equiv="Content-Style-Type">
+<meta content="width=device-width, initial-scale=1" name="viewport">
+<meta content="Dia on OS X" name="DC.Title">
+<meta content="Vegard &#216;ye" name="DC.Creator">
+<meta content="2015-06-25" name="DC.Date">
+<meta content="Some notes on using the graphics program Dia on OS X." name="DC.Description">
+<meta content="en" name="DC.Language">
+<meta content="text/html" name="DC.Format">
+<meta content="Dia on OS X" property="og:title">
+<meta content="Some notes on using the graphics program Dia on OS X." property="og:description">
+<meta content="en" name="og:locale">
+<meta content="article" property="og:type">
+<meta content="https://epsil.github.io/2015/06/25/en/" property="og:url">
+<meta content="Vegard&#8217;s blog" property="og:site_name">
+<meta content="https://epsil.github.io/2015/06/25/dia.svg" property="og:image">
+<meta content="summary" name="twitter:card">
+<meta content="@github" name="twitter:site">
+<meta content="Dia on OS X" name="twitter:title">
+<meta content="Some notes on using the graphics program Dia on OS X." name="twitter:description">
+<meta content="https://epsil.github.io/2015/06/25/dia.svg" name="twitter:image">
+<link href="../../../../favicon.ico" rel="icon" type="image/x-icon">
+<link href="../../../../css/markdown-template.css" rel="stylesheet">
+<link href="https://epsil.github.io/2015/06/25/en/" rel="canonical">
+<link href="index.txt" rel="alternate" title="Markdown" type="text/markdown">
+<link href="../custom.css" rel="stylesheet" type="text/css">
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+TeX: { equationNumbers: { autoNumber: "all" } }
+})
+</script>
+<script async="" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-MML-AM_CHTML" type="text/javascript">
+</script>
+<script src="../../../../js/markdown-template.js">
+</script>
+</head>
+<body>
+<nav class="navbar navbar-default navbar-fixed-top">
+<div class="container-fluid">
+<ul class="nav nav-pills navbar-left">
+<li role="presentation"><a href="/" title="Go home"><i class="fa fa-home"></i></a>
+</li>
+</ul>
+
+<ul class="nav nav-pills navbar-right">
+<li role="presentation"><a href="http://www.facebook.com/share.php?u=https%3A%2F%2Fepsil.github.io%2F2015%2F06%2F25%2Fen%2F" title="Share on Facebook"><i class="fa fa-facebook-square"></i></a>
+</li>
+
+<li role="presentation"><a href="https://twitter.com/intent/tweet?url=https%3A%2F%2Fepsil.github.io%2F2015%2F06%2F25%2Fen%2F" title="Share on Twitter"><i class="fa fa-twitter-square"></i></a>
+</li>
+
+<li role="presentation"><a href="https://github.com/epsil/epsil.github.io/edit/master/2015/06/25/en/index.txt" title="Edit on GitHub"><i class="fa fa-edit"></i></a>
+</li>
+
+<li role="presentation"><a href="https://github.com/epsil/epsil.github.io/commits/master/2015/06/25/en/index.txt" title="View history"><i class="fa fa-history"></i></a>
+</li>
+
+<li role="presentation"><a href="index.txt" title="Get Markdown source"><i class="fa fa-download"></i></a>
+</li>
+
+<li role="presentation"><a data-toggle="collapse" href="#toc" title="Contents"><i class="fa fa-list"></i></a>
+</li>
+</ul>
+</div>
+
+<div class="collapse" id="toc">
+<ul>
+<li><a href="#if-dia-crashes" title="If Dia crashes">If Dia crashes</a>
+</li>
+
+<li><a href="#export-to-pdf" title="Export to PDF">Export to <abbr class="acronym" title="Portable Document Format"><span class="caps">PDF</span></abbr></a>
+</li>
+
+<li><span class="" id="convert-pdf-to-svg-link"><a href="#convert-pdf-to-svg" title="Convert PDF to SVG">Convert <abbr class="acronym" title="Portable Document Format"><span class="caps">PDF</span></abbr> to <abbr class="acronym" title="Scalable Vector Graphics"><span class="caps">SVG</span></abbr></a><a aria-controls="convert-pdf-to-svg-link-section" aria-expanded="false" aria-hidden="true" class="collapse-button" data-toggle="collapse" href="#convert-pdf-to-svg-link-section" role="button"></a></span>
+<ul class="collapse" id="convert-pdf-to-svg-link-section">
+<li><a href="#with-pdf2svg" title="With pdf2svg">With <code>pdf2svg</code></a>
+</li>
+
+<li><a href="#with-inkscape" title="With Inkscape">With Inkscape</a>
+</li>
+</ul>
+</li>
+</ul>
+</div>
+</nav>
+
+<article class="h-entry">
+<header>
+<h1 class="p-name"><a class="u-uid u-url" href="https://epsil.github.io/2015/06/25/en/" title="Permalink">Dia on <abbr class="acronym" title="Operating System 10"><span class="caps">OS</span>&#160;X</abbr></a>
+</h1>
+
+<p><a class="p-author h-card" href="https://epsil.github.io/">Vegard &#216;ye</a> <time class="dt-published" datetime="2015-06-25">2015-06-25</time></p>
+
+<p class="p-summary">Some notes on using the graphics program <a href="http://dia-installer.de/">Dia</a> on <abbr class="acronym" title="Operating System 10"><span class="caps">OS</span>&#160;X</abbr>.</p>
+
+<figure><img alt="" class="u-photo" src="../dia.svg" width="70">
+</figure>
+</header>
+
+<section class="e-content">
+<section id="if-dia-crashes">
+<h2><a aria-hidden="true" class="header-anchor" href="#if-dia-crashes" title="If Dia crashes"></a>If Dia crashes<a aria-controls="if-dia-crashes-section" aria-expanded="true" aria-hidden="true" class="collapse-button" data-toggle="collapse" href="#if-dia-crashes-section" role="button"></a></h2>
+
+<div class="collapse in" id="if-dia-crashes-section">
+<p>If <a href="http://dia-installer.de/">Dia</a> crashes on <abbr class="acronym" title="Operating System 10"><span class="caps">OS</span> X</abbr> Yosemite because of a <abbr class="acronym" title="GIMP Toolkit"><span class="caps">GTK</span></abbr> error, apply the following <a href="http://navkirats.blogspot.no/2014/10/dia-diagram-mac-osx-yosemite-fix-i-use.html">solution</a>:</p>
+
+<ol>
+<li>Open the file <code>/Applications/Dia.app/Contents/Resources/bin/dia</code> in a text&#160;editor.</li>
+
+<li>Add the line <code>export DISPLAY=:0</code> after line&#160;39.</li>
+
+<li>Quit XQuartz if it is running and restart&#160;Dia.</li>
+</ol>
+
+<p>(If this does not work, try adding <code>export DISPLAY=:0</code> to <code>~/.bash_profile</code>.)</p>
+</div>
+</section>
+
+<section id="export-to-pdf">
+<h2><a aria-hidden="true" class="header-anchor" href="#export-to-pdf" title="Export to PDF"></a>Export to <abbr class="acronym" title="Portable Document Format"><span class="caps">PDF</span></abbr><a aria-controls="export-to-pdf-section" aria-expanded="true" aria-hidden="true" class="collapse-button" data-toggle="collapse" href="#export-to-pdf-section" role="button"></a></h2>
+
+<div class="collapse in" id="export-to-pdf-section">
+<p>To create a <abbr class="acronym" title="Portable Document Format"><span class="caps">PDF</span></abbr> file, it is best to export to <abbr class="acronym" title="Encapsulated PostScript"><span class="caps">EPS</span></abbr> first (with Pango fonts) and then <a href="http://www.dark.ca/2009/07/16/getting-dia-to-give-you-a-pdf/">convert to <abbr class="acronym" title="Portable Document Format"><span class="caps">PDF</span></abbr></a>:</p>
+
+<pre>
+<code>$ epstopdf diagram.eps</code>
+</pre>
+
+<p><code>epstopdf</code> is included in <abbr title="TeX">T<span class="tex-e">e</span>X</abbr> Live (<a href="http://tug.org/mactex/"><abbr title="MacTeX">MacT<span class="tex-e">e</span>X</abbr></a>).</p>
+</div>
+</section>
+
+<section id="convert-pdf-to-svg">
+<h2><a aria-hidden="true" class="header-anchor" href="#convert-pdf-to-svg" title="Convert PDF to SVG"></a>Convert <abbr class="acronym" title="Portable Document Format"><span class="caps">PDF</span></abbr> to <abbr class="acronym" title="Scalable Vector Graphics"><span class="caps">SVG</span></abbr><a aria-controls="convert-pdf-to-svg-section" aria-expanded="true" aria-hidden="true" class="collapse-button" data-toggle="collapse" href="#convert-pdf-to-svg-section" role="button"></a></h2>
+
+<div class="collapse in" id="convert-pdf-to-svg-section">
+<section id="with-pdf2svg">
+<h3><a aria-hidden="true" class="header-anchor" href="#with-pdf2svg" title="With pdf2svg"></a>With <code>pdf2svg</code><a aria-controls="with-pdf2svg-section" aria-expanded="true" aria-hidden="true" class="collapse-button" data-toggle="collapse" href="#with-pdf2svg-section" role="button"></a></h3>
+
+<div class="collapse in" id="with-pdf2svg-section">
+<p>To convert to <abbr class="acronym" title="Scalable Vector Graphics"><span class="caps">SVG</span></abbr>, it is better to <a href="http://superuser.com/questions/198460/converting-from-eps-to-svg-format#answer-542987">convert to <abbr class="acronym" title="Portable Document Format"><span class="caps">PDF</span></abbr></a> first than to export directly or convert from <abbr class="acronym" title="Encapsulated PostScript"><span class="caps">EPS</span></abbr>. <abbr class="acronym" title="Portable Document Format"><span class="caps">PDF</span></abbr> can be converted to <abbr class="acronym" title="Scalable Vector Graphics"><span class="caps">SVG</span></abbr> with <a href="http://www.cityinthesky.co.uk/opensource/pdf2svg/"><code>pdf2svg</code></a> (may be installed with <code>$ brew install pdf2svg</code>):</p>
+
+<pre>
+<code>$ pdf2svg diagram.pdf diagram.svg</code>
+</pre>
+
+<p>To convert a specific&#160;page:</p>
+
+<pre>
+<code>$ pdf2svg diagrammer.pdf diagram.svg 20</code>
+</pre>
+
+<p>Unfortunately, <code>pdf2svg</code> has no options for cropping. For this, one can use <a href="https://sites.google.com/site/pdfscissors/"><abbr class="acronym" title="Portable Document Format"><span class="caps">PDF</span></abbr> Scissors</a> (graphics) or <a href="https://www.pdflabs.com/tools/pdftk-the-pdf-toolkit/"><abbr title="PDF Toolkit">PDFtk</abbr></a> (command&#160;line).</p>
+</div>
+</section>
+
+<section id="with-inkscape">
+<h3><a aria-hidden="true" class="header-anchor" href="#with-inkscape" title="With Inkscape"></a>With Inkscape<a aria-controls="with-inkscape-section" aria-expanded="true" aria-hidden="true" class="collapse-button" data-toggle="collapse" href="#with-inkscape-section" role="button"></a></h3>
+
+<div class="collapse in" id="with-inkscape-section">
+<p>It seems that <code>pdf2svg</code> runs into problems with some <abbr class="acronym" title="Portable Document Format"><span class="caps">PDF</span></abbr> files. An alternative is to use <a href="http://inkscape.org/">Inkscape</a>, which can be <a href="http://stackoverflow.com/questions/10288065/convert-pdf-to-clean-svg#answer-10290006">run from the terminal</a>:</p>
+
+<pre>
+<code>$ inkscape --without-gui --file=diagram.pdf --export-plain-svg=diagram.svg</code>
+</pre>
+
+<p>This is apparently the conversion method recommended by <a href="https://en.wikipedia.org/wiki/Wikipedia:Graphics_Lab/Resources/PDF_conversion_to_SVG#Conversion_with_Inkscape">Wikipedia</a>.</p>
+</div>
+</section>
+</div>
+</section>
+</section>
+</article>
+</body>
+</html>

@@ -6,8 +6,6 @@ image-width: 70
 css: custom.css
 ---
 
-<!-- include-before: "![](dia.svg){.right width=70}" -->
-
 Hvis Dia krasjer
 ----------------
 
