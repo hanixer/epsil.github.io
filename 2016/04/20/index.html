@@ -6,7 +6,7 @@
 <meta content="Vegard &#216;ye" name="author">
 <meta content="2016-04-20" name="date">
 <meta content="How to run Bash scripts from Windows&#8217; command prompt and extend it with common Unix commands." name="description">
-<meta content="f4b12d84855421376aad02587284f6c1" name="md5">
+<meta content="7fef4ceb22fadd572d2ad022dc6e5700" name="md5">
 <meta content="text/css" http-equiv="Content-Style-Type">
 <meta content="width=device-width, initial-scale=1" name="viewport">
 <meta content="Running Bash scripts on Windows" name="DC.Title">
@@ -117,16 +117,16 @@ TeX: { equationNumbers: { autoNumber: "all" } }
 <section class="e-content"><!--
 TO DO:
 
--   ~~Git Bash should be installed first.~~
-    -   How does the override option affect `PATH`?
 -   ~~MSYS may be superfluous.~~
     -   ~~If so, where to place `open.bat`?~~
--   Does Git Bash's MingGW differ from the default MinGW?
 -   ~~On Windows 10, the `PATH` variable is not separated by `;`.~~
 -   ~~Update PATHEXT~~
+-   ~~.bashrc~~
+-   ~~Git Bash should be installed first.~~
+    -   How does the override option affect `PATH`?
+-   Does Git Bash's MingGW differ from the default MinGW?
 -   Update CSS so that header does not affect the width of the window.
     -   Requires refactoring the default stylesheet
--   .bashrc
 -->
 
 <section>
@@ -170,7 +170,20 @@ rm script.sh
 mv script2.sh script.sh</code>
 </pre>
 
-<p><span class="dquo">&#8220;</span>Git Bash&#8221;, a <a href="#standalone-shells" title="Standalone shells">standalone shell</a>, is installed as well. To run it in the command prompt, type <code>bash</code>. To return to the standard command prompt, type <code>exit</code>. It can also be run as a separate&#160;program.</p>
+<p><span class="dquo">&#8220;</span>Git Bash&#8221;, a <a href="#standalone-shells" title="Standalone shells">standalone shell</a>, is installed as well. It can be run as a separate program, or in the command prompt. To do the latter, just type <code>bash</code>; to return to the standard command prompt, type <code>exit</code>. A <code>.bash_profile</code> file can be used to store settings between sessions. To edit this file, start &#8220;Git Bash&#8221; and&#160;type:</p>
+
+<pre>
+<code>vi ~/.bash_profile</code>
+</pre>
+
+<p>(Substitute <code>notepad</code> for <code>vi</code> if the latter is unfamiliar.) Below is an example file that configures the history&#160;size:</p>
+
+<pre>
+<code>HISTSIZE=10000
+HISTFILESIZE=10000</code>
+</pre>
+
+<p>Configuring Bash settings is not covered here; that is a topic in its own right. Note that &#8220;Git Bash&#8221; typically stores the <code>.bash_profile</code> file at <code>C:\Users\user\.bash_profile</code>.</p>
 </section>
 
 <section id="update-pathext">
