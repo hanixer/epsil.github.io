@@ -6,7 +6,7 @@
 <meta content="Vegard &#216;ye" name="author">
 <meta content="2016-04-20" name="date">
 <meta content="How to run Bash scripts from Windows&#8217; command prompt and extend it with common Unix commands." name="description">
-<meta content="7fef4ceb22fadd572d2ad022dc6e5700" name="md5">
+<meta content="02bfd9eddee7b7c97a08183988ea2c66" name="md5">
 <meta content="text/css" http-equiv="Content-Style-Type">
 <meta content="width=device-width, initial-scale=1" name="viewport">
 <meta content="Running Bash scripts on Windows" name="DC.Title">
@@ -21,10 +21,12 @@
 <meta content="article" property="og:type">
 <meta content="https://epsil.github.io/2016/04/20/" property="og:url">
 <meta content="Vegard&#8217;s blog" property="og:site_name">
+<meta content="tron.jpg" property="og:image">
 <meta content="summary" name="twitter:card">
 <meta content="@github" name="twitter:site">
 <meta content="Running Bash scripts on Windows" name="twitter:title">
 <meta content="How to run Bash scripts from Windows&#8217; command prompt and extend it with common Unix commands." name="twitter:description">
+<meta content="tron.jpg" name="twitter:image">
 <link href="../../../favicon.ico" rel="icon" type="image/x-icon">
 <link href="../../../css/markdown-template.css" rel="stylesheet">
 <link href="https://epsil.github.io/2016/04/20/" rel="canonical">
@@ -112,6 +114,9 @@ TeX: { equationNumbers: { autoNumber: "all" } }
 <p><a class="p-author h-card" href="https://epsil.github.io/">Vegard &#216;ye</a> <time class="dt-published" datetime="2016-04-20">2016-04-20</time></p>
 
 <p class="p-summary">How to run Bash scripts from Windows&#8217; command prompt and extend it with common Unix&#160;commands.</p>
+
+<figure><img alt="" class="u-photo" src="tron.jpg">
+</figure>
 </header>
 
 <section class="e-content"><!--
@@ -132,9 +137,9 @@ TO DO:
 <section>
 <p>The following setup allows one to run Bash scripts from Windows&#8217; command prompt. It also augments it with common Unix commands like <code>cp</code>, <code>rm</code> and <code>mv</code>, which is useful if these are ingrained into muscle&#160;memory.</p>
 
-<p>Note that this setup affects the <em>command prompt</em> (<abbr class="acronym" title="Also Known As"><span class="caps">AKA</span></abbr> <code>cmd.exe</code>). Although Windows 10 includes a full-fledged <a href="http://www.howtogeek.com/249966/how-to-install-and-use-the-linux-bash-shell-on-windows-10/">Ubuntu Linux Bash Shell</a>, that shell &#8211; like PowerShell &#8211; is separate from the command prompt. Therefore, the following instructions still apply to Windows 10, as well as to earlier Windows versions. (For a list of standalone Bash shells for Windows, see the <a href="#standalone-shells" title="Standalone shells">discussion</a> at the&#160;end.)</p>
+<p>Note that this setup affects the <em>command prompt</em> (<abbr class="acronym" title="Also Known As"><span class="caps">AKA</span></abbr> <code>cmd.exe</code>). Although Windows 10 includes a full-fledged <a href="http://www.howtogeek.com/249966/how-to-install-and-use-the-linux-bash-shell-on-windows-10/">Ubuntu Linux Bash Shell</a>, that shell &#8211; like PowerShell &#8211; is separate from the command prompt. Therefore, the following instructions still apply to Windows 10, as well as to earlier Windows versions. (For a brief list of standalone Bash shells for Windows, see the <a href="#standalone-shells" title="Standalone shells">discussion</a> at the&#160;end.)</p>
 
-<p><em>Bash scripts</em> (with an extension of <code>.sh</code>) are a Unix invention, and should not be confused with <em>batch files</em> (with an extension of <code>.bat</code>), which are a Windows invention. However, the goal of this guide may be expressed as helping Windows run Bash scripts <em>as if</em> they were batch&#160;files.</p>
+<p><em>Bash scripts</em> (with an extension of <code>.sh</code>) are a Unix invention, and should not be confused with <em>batch files</em> (with an extension of <code>.bat</code>), which are a Windows invention. However, the goal of this guide could be summed up as helping Windows run Bash scripts <em>as if</em> they were batch&#160;files.</p>
 </section>
 
 <section id="git-for-windows">
@@ -183,7 +188,7 @@ mv script2.sh script.sh</code>
 HISTFILESIZE=10000</code>
 </pre>
 
-<p>Configuring Bash settings is not covered here; that is a topic in its own right. Note that &#8220;Git Bash&#8221; typically stores the <code>.bash_profile</code> file at <code>C:\Users\user\.bash_profile</code>.</p>
+<p>Configuring Bash settings is not covered here &#8211; that is a topic in its own right. Note that &#8220;Git Bash&#8221; typically stores the <code>.bash_profile</code> file at <code>C:\Users\user\.bash_profile</code>.</p>
 </section>
 
 <section id="update-pathext">

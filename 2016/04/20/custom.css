@@ -11,7 +11,7 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 header {
-    background-image: url("tron.jpg");
+    background-image: url("tron-background.jpg");
     background-size: cover;
     color: #ffffff;
     margin: auto -50em;
@@ -20,6 +20,10 @@ header {
 
 header h1, header time, header .fa {
     color: inherit !important;
+}
+
+header figure {
+    display: none;
 }
 
 .p-summary {
