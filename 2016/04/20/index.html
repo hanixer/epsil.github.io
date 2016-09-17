@@ -6,7 +6,7 @@
 <meta content="Vegard &#216;ye" name="author">
 <meta content="2016-04-20" name="date">
 <meta content="How to run Bash scripts from Windows&#8217; command prompt and extend it with common Unix commands." name="description">
-<meta content="02bfd9eddee7b7c97a08183988ea2c66" name="md5">
+<meta content="f2da5cb690dadb0129d30cb85dde8be3" name="md5">
 <meta content="text/css" http-equiv="Content-Style-Type">
 <meta content="width=device-width, initial-scale=1" name="viewport">
 <meta content="Running Bash scripts on Windows" name="DC.Title">
@@ -80,11 +80,10 @@ TeX: { equationNumbers: { autoNumber: "all" } }
 </ul>
 </li>
 
-<li><span class="" id="gnuwin32-link"><a href="#gnuwin32" title="GnuWin32">G<em>nu</em>W<em>in</em>32</a><a aria-controls="gnuwin32-link-section" aria-expanded="false" aria-hidden="true" class="collapse-button" data-toggle="collapse" href="#gnuwin32-link-section" role="button"></a></span>
-<ul class="collapse" id="gnuwin32-link-section">
-<li><a href="#mingw" title="MinGW"><abbr title="Minimalist GNU for Windows">MinGW</abbr></a>
+<li><a href="#gnuwin32" title="GnuWin32">G<em>nu</em>W<em>in</em>32</a>
 </li>
-</ul>
+
+<li><a href="#mingw" title="MinGW"><abbr title="Minimalist GNU for Windows">MinGW</abbr></a>
 </li>
 
 <li><a href="#alias-open" title="Alias open">Alias <code>open</code></a>
@@ -130,8 +129,8 @@ TO DO:
 -   ~~Git Bash should be installed first.~~
     -   How does the override option affect `PATH`?
 -   Does Git Bash's MingGW differ from the default MinGW?
--   Update CSS so that header does not affect the width of the window.
-    -   Requires refactoring the default stylesheet
+-   ~~Update CSS so that header does not affect the width of the window.~~
+    -   ~~Requires refactoring the default stylesheet~~
 -->
 
 <section>
@@ -226,7 +225,6 @@ HISTFILESIZE=10000</code>
 </h2>
 
 <div class="collapse in" id="gnuwin32-section">
-<section>
 <p>For even more Unix utilities, install <a href="http://gnuwin32.sourceforge.net/">G<em>nu</em>W<em>in</em>32</a>. Ensure that its utilities are globally available by <em>appending</em> the location of G<em>nu</em>W<em>in</em>32&#8217;s executables (its <code>bin/</code> directory) to the <code>PATH</code> environment variable. The value is a list of file paths separated by <code>;</code>, for example:</p>
 
 <pre>
@@ -242,18 +240,17 @@ HISTFILESIZE=10000</code>
 <p>On Windows 10, the variable may be displayed as an editable list of directories. Add the directory to the bottom of the&#160;list.</p>
 
 <p>We now have a host of tools at our command. For example, <code>wget</code> downloads a file via the command prompt, while <code>md5sum</code> calculates its <abbr class="acronym" title="Message-Digest algorithm 5"><span class="caps">MD5</span></abbr> hash. Peruse G<em>nu</em>W<em>in</em>32&#8217;s <a href="http://gnuwin32.sourceforge.net/packages.html">package list</a> to get a sense of the&#160;possibilities.</p>
+</div>
 </section>
 
 <section id="mingw">
-<h3><a aria-hidden="true" class="header-anchor" href="#mingw" title="MinGW"></a><a href="http://www.mingw.org/"><abbr title="Minimalist GNU for Windows">MinGW</abbr></a><a aria-controls="mingw-section" aria-expanded="true" aria-hidden="true" class="collapse-button" data-toggle="collapse" href="#mingw-section" role="button"></a>
-</h3>
+<h2><a aria-hidden="true" class="header-anchor" href="#mingw" title="MinGW"></a><a href="http://www.mingw.org/"><abbr title="Minimalist GNU for Windows">MinGW</abbr></a><a aria-controls="mingw-section" aria-expanded="true" aria-hidden="true" class="collapse-button" data-toggle="collapse" href="#mingw-section" role="button"></a>
+</h2>
 
 <div class="collapse in" id="mingw-section">
 <p>For additional developer tools, augment the above setup with a complete installation of <a href="http://www.mingw.org/"><abbr title="Minimalist GNU for Windows">MinGW</abbr></a>. Append its directory to <code>PATH</code> <em>after</em> the other&#160;directories.</p>
 
 <p>We can now link (<code>ld</code>) and compile C programs (<code>gcc</code>) and C++ programs (<code>g++</code>).</p>
-</div>
-</section>
 </div>
 </section>
 
