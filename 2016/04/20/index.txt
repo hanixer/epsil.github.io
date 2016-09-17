@@ -94,7 +94,8 @@ On Windows 10, the variable may be displayed as an editable list of directories.
 
 We now have a host of tools at our command. For example, `wget` downloads a file via the command prompt, while `md5sum` calculates its MD5 hash. Peruse G*nu*W*in*32's [package list](http://gnuwin32.sourceforge.net/packages.html) to get a sense of the possibilities.
 
-### [MinGW](http://www.mingw.org/)
+[MinGW](http://www.mingw.org/)
+------------------------------
 
 For additional developer tools, augment the above setup with a complete installation of [MinGW](http://www.mingw.org/). Append its directory to `PATH` *after* the other directories.
 
