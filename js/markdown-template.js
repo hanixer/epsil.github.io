@@ -265,7 +265,9 @@ module.exports =
 var $ = require('jquery')
 var S = require('string')
 
-$.fn.addAnchors = function () {
+var anchor = {}
+
+anchor.addAnchors = function () {
   return this.each(function () {
     $(this).find('h1, h2, h3, h4, h5, h6').each(function () {
       var header = $(this)
@@ -290,6 +292,10 @@ $.fn.addAnchors = function () {
     })
   })
 }
+
+$.fn.addAnchors = anchor.addAnchors
+
+module.exports = anchor
 
 },{"jquery":283,"string":366}],3:[function(require,module,exports){
 /* global jQuery:true */
@@ -319,8 +325,10 @@ var S = require('string')
 jQuery = $ // needed for Bootstrap
 require('bootstrap')
 
-$.fn.addCollapsibleSections = function (options) {
-  var opts = $.extend({}, $.fn.addCollapsibleSections.defaults, options)
+var collapse = {}
+
+collapse.addCollapsibleSections = function (options) {
+  var opts = $.extend({}, collapse.defaults, options)
   return this.each(function () {
     var body = $(this)
     // process innermost sections first
@@ -329,7 +337,7 @@ $.fn.addCollapsibleSections = function (options) {
              body.find(el).each(function () {
                // add section
                var header = $(this)
-               var section = $.fn.addCollapsibleSections.addSection(header)
+               var section = collapse.addSection(header)
 
                // skip top-level headers
                if ($.inArray(el, opts.include) < 0) {
@@ -337,14 +345,14 @@ $.fn.addCollapsibleSections = function (options) {
                }
 
                // add button to header
-               $.fn.addCollapsibleSections.addButton(header, section)
+               collapse.addButton(header, section)
              })
            })
   })
 }
 
 // add collapsible content for header
-$.fn.addCollapsibleSections.addSection = function (header) {
+collapse.addSection = function (header) {
   // h1 ends at next h1, h2 ends at next h1 or h2,
   // h3 ends at next h1, h2 or h3, and so on
   var stop = []
@@ -356,15 +364,15 @@ $.fn.addCollapsibleSections.addSection = function (header) {
   var end = stop.join(', ')
   var section = header.nextUntil(end)
   section = section.wrapAll('<div>').parent()
-  $.fn.addCollapsibleSections.sectionId(header, section)
+  collapse.sectionId(header, section)
   return section
 }
 
 // add button to header
-$.fn.addCollapsibleSections.addButton = function (header, section) {
+collapse.addButton = function (header, section) {
   // add button
-  var id = $.fn.addCollapsibleSections.sectionId(header, section)
-  var button = $.fn.addCollapsibleSections.button(id)
+  var id = collapse.sectionId(header, section)
+  var button = collapse.button(id)
   header.append(button)
 
   // add Bootstrap classes
@@ -382,12 +390,12 @@ $.fn.addCollapsibleSections.addButton = function (header, section) {
 }
 
 // button
-$.fn.addCollapsibleSections.button = function (id) {
+collapse.button = function (id) {
   return $('<a aria-hidden="true" aria-expanded="true" role="button" class="collapse-button" data-toggle="collapse" href="#' + id + '" aria-controls="' + id + '"></a>')
 }
 
 // header ID (add if missing)
-$.fn.addCollapsibleSections.headerId = function (header) {
+collapse.headerId = function (header) {
   var id = header.attr('id')
   if (id === undefined || id === '') {
     id = S(header.text().trim()).slugify()
@@ -397,10 +405,10 @@ $.fn.addCollapsibleSections.headerId = function (header) {
 }
 
 // section ID (based on header ID)
-$.fn.addCollapsibleSections.sectionId = function (header, section) {
+collapse.sectionId = function (header, section) {
   var id = section.attr('id')
   if (id === undefined || id === '') {
-    var headerId = $.fn.addCollapsibleSections.headerId(header)
+    var headerId = collapse.headerId(header)
     id = headerId ? headerId + '-section' : ''
     section.attr('id', id)
   }
@@ -408,9 +416,19 @@ $.fn.addCollapsibleSections.sectionId = function (header, section) {
 }
 
 // Default options
-$.fn.addCollapsibleSections.defaults = {
+collapse.defaults = {
   include: ['h1', 'h2', 'h3', 'h4', 'h5', 'h6']
 }
+
+$.fn.addCollapsibleSections = collapse.addCollapsibleSections
+$.fn.addCollapsibleSections.addSection = collapse.addSection
+$.fn.addCollapsibleSections.addButton = collapse.addButton
+$.fn.addCollapsibleSections.button = collapse.button
+$.fn.addCollapsibleSections.headerId = collapse.headerId
+$.fn.addCollapsibleSections.sectionId = collapse.sectionId
+$.fn.addCollapsibleSections.defaults = collapse.defaults
+
+module.exports = collapse
 
 },{"bootstrap":16,"jquery":283,"string":366}],4:[function(require,module,exports){
 var $ = require('jquery')
@@ -420,21 +438,16 @@ var markdown = require('./markdown')
 var defaults = require('./defaults')
 var i18n = require('./i18n')
 var templates = require('./templates')
+var util = require('./util')
 
 var document = templates.document
 var body = templates.body
 
-function dojQuery (html, fn) {
-  var body = $('<div>')
-  body.html(html)
-  fn(body)
-  return body.html()
-}
-
 function parse (data) {
-  // Allow the initial '---' to be omitted. Note: this hack
-  // does not allow the block to contain blank lines,
-  // although YAML does support such expressions!
+  // Allow the initial '---' to be omitted.
+  // Note: this hack does not allow the block
+  // to contain blank lines, although YAML
+  // does support such expressions!
   if (data.match(/^([\s\S]*)[\r\n]+---/)) {
     data = '---\n' + data
   }
@@ -469,7 +482,7 @@ function dynamic (view, path) {
 
 function title (view) {
   if (view.title === undefined || view.title === '') {
-    view.content = dojQuery(view.content, function (body) {
+    view.content = util.dojQuery(view.content, function (body) {
       var heading = body.find('h1').first()
       if (heading.length > 0) {
         view.title = heading.removeAriaHidden().html().trim()
@@ -482,7 +495,7 @@ function title (view) {
 
 function footnotes (view) {
   if (view.footnotes === undefined || view.footnotes === '') {
-    view.content = dojQuery(view.content, function (body) {
+    view.content = util.dojQuery(view.content, function (body) {
       var section = body.find('section.footnotes').first()
       if (section.length > 0) {
         var hr = body.find('hr.footnotes-sep')
@@ -497,7 +510,7 @@ function footnotes (view) {
 
 function toc (view) {
   if (view.toc !== false) {
-    view.content = dojQuery(view.content, function (body) {
+    view.content = util.dojQuery(view.content, function (body) {
       var placeholder = body.find('#toc-placeholder')
       var content = body.find('.e-content')
       var toc = content.tableOfContents()
@@ -526,7 +539,7 @@ function compile (data, path) {
 
 module.exports = compile
 
-},{"./defaults":5,"./i18n":7,"./markdown":9,"./templates":13,"gray-matter":29,"jquery":283,"md5":358}],5:[function(require,module,exports){
+},{"./defaults":5,"./i18n":7,"./markdown":9,"./templates":13,"./util":15,"gray-matter":29,"jquery":283,"md5":358}],5:[function(require,module,exports){
 module.exports = {
   author: 'Vegard Øye',
   'author-url': 'https://epsil.github.io/',
@@ -538,7 +551,9 @@ module.exports = {
 },{}],6:[function(require,module,exports){
 var $ = require('jquery')
 
-$.fn.fixFigures = function () {
+var figure = {}
+
+figure.fixFigures = function () {
   return this.each(function () {
     $(this).find('p img').each(function () {
       var img = $(this)
@@ -617,6 +632,10 @@ $.fn.fixFigures = function () {
     })
   })
 }
+
+$.fn.fixFigures = figure.fixFigures
+
+module.exports = figure
 
 },{"jquery":283}],7:[function(require,module,exports){
 module.exports = {
@@ -856,7 +875,9 @@ module.exports = markdown
 },{"./abbrev":1,"highlight.js":120,"jquery":283,"markdown-it":292,"markdown-it-abbr":284,"markdown-it-attrs":285,"markdown-it-footnote":287,"markdown-it-implicit-figures":288,"markdown-it-mathjax":289,"markdown-it-sub":290,"markdown-it-sup":291}],10:[function(require,module,exports){
 var $ = require('jquery')
 
-$.fn.addPunctuation = function () {
+var punctuation = {}
+
+punctuation.addPunctuation = function () {
   return this.each(function () {
     var root = this
     var node = root.childNodes[0]
@@ -927,6 +948,10 @@ $.fn.addPunctuation = function () {
   })
 }
 
+$.fn.addPunctuation = punctuation.addPunctuation
+
+module.exports = punctuation
+
 },{"jquery":283}],11:[function(require,module,exports){
 // Semantic sections
 //
@@ -936,7 +961,9 @@ $.fn.addPunctuation = function () {
 var $ = require('jquery')
 var S = require('string')
 
-$.fn.addSections = function () {
+var section = {}
+
+section.addSections = function () {
   return this.each(function () {
     var body = $(this)
     // process innermost sections first
@@ -978,12 +1005,15 @@ $.fn.addSections = function () {
   })
 }
 
+$.fn.addSections = section.addSections
+
+module.exports = section
+
 },{"jquery":283,"string":366}],12:[function(require,module,exports){
 var $ = require('jquery')
 var URI = require('urijs')
 
-var social = function () {
-}
+var social = {}
 
 social.bitbucket = function () {
   return social.bitbucket.url(window.location.href)
@@ -1128,6 +1158,8 @@ $.fn.facebook = social.facebook
 $.fn.linkedin = social.linkedin
 $.fn.twitter = social.twitter
 
+module.exports = social
+
 },{"jquery":283,"urijs":370}],13:[function(require,module,exports){
 var Handlebars = require('handlebars')
 var $ = require('jquery')
@@ -1135,6 +1167,7 @@ var moment = require('moment')
 var URI = require('urijs')
 var markdown = require('./markdown')
 var typogr = require('typogr')
+var util = require('./util')
 require('./anchor')
 require('./collapse')
 require('./section')
@@ -1142,7 +1175,6 @@ require('./social')
 require('./figure')
 require('./punctuation')
 require('./toc')
-require('./util')
 
 Handlebars.registerHelper('dateFormat', function (context, block) {
   if (moment) {
@@ -1190,25 +1222,25 @@ Handlebars.registerHelper('process', function (html) {
       .replace(/\u201d/gi, '&#8221;')
     html = typogr.typogrify(html)
   }
-  var body = $('<div>').html(html)
-  var content = body.find('.e-content')
-  body.fixWidont()
-  body.addAcronyms()
-  body.addSmallCaps()
-  body.addPullQuotes()
-  body.fixFigures()
-  body.addPunctuation()
-  body.addHotkeys()
-  body.addTeXLogos()
-  content.addAnchors()
-  body.fixBlockquotes()
-  content.addCollapsibleSections()
-  body.fixFootnotes()
-  body.fixTables()
-  body.fixLinks()
-  content.addSections()
-  html = body.html()
-  return html
+
+  return util.dojQuery(html, function (body) {
+    var content = body.find('.e-content')
+    body.fixWidont()
+    body.addAcronyms()
+    body.addSmallCaps()
+    body.addPullQuotes()
+    body.fixFigures()
+    body.addPunctuation()
+    body.addHotkeys()
+    body.addTeXLogos()
+    content.addAnchors()
+    body.fixBlockquotes()
+    content.addCollapsibleSections()
+    body.fixFootnotes()
+    body.fixTables()
+    body.fixLinks()
+    content.addSections()
+  })
 })
 
 var templates = {
@@ -1363,7 +1395,9 @@ module.exports = templates
 var $ = require('jquery')
 var S = require('string')
 
-$.fn.addTableOfContents = function () {
+var toc = {}
+
+toc.addTableOfContents = function () {
   return this.map(function () {
     var body = $(this)
     var placeholder = body.find('#toc-placeholder')
@@ -1374,7 +1408,7 @@ $.fn.addTableOfContents = function () {
   })
 }
 
-$.fn.tableOfContents = function (title) {
+toc.tableOfContents = function (title) {
   var body = $(this)
   var lst = body.listOfContents()
 
@@ -1394,7 +1428,7 @@ $.fn.tableOfContents = function (title) {
   return toc.prop('outerHTML')
 }
 
-$.fn.listOfContents = function () {
+toc.listOfContents = function () {
   var body = $(this)
   var currentLevel = 0
   var str = ''
@@ -1519,10 +1553,25 @@ $.fn.listOfContents = function () {
   return str
 }
 
+$.fn.addTableOfContents = toc.addTableOfContents
+$.fn.tableOfContents = toc.tableOfContents
+$.fn.listOfContents = toc.listOfContents
+
+module.exports = toc
+
 },{"jquery":283,"string":366}],15:[function(require,module,exports){
 var $ = require('jquery')
 
-$.fn.addAcronyms = function () {
+var util = {}
+
+util.dojQuery = function (html, fn) {
+  var body = $('<div>')
+  body.html(html)
+  fn(body)
+  return body.html()
+}
+
+util.addAcronyms = function () {
   return this.map(function () {
     $(this).find('abbr').filter(function () {
       var text = $(this).text().trim()
@@ -1531,7 +1580,7 @@ $.fn.addAcronyms = function () {
   })
 }
 
-$.fn.addHotkeys = function () {
+util.addHotkeys = function () {
   return this.map(function () {
     var body = $(this)
     body.find('kbd:contains("Ctrl")').replaceWith('<kbd title="Control">Ctrl</kbd>')
@@ -1555,7 +1604,7 @@ $.fn.addHotkeys = function () {
   })
 }
 
-$.fn.addPullQuotes = function () {
+util.addPullQuotes = function () {
   return this.map(function () {
     $(this).find('p.pull-quote').each(function () {
       var p = $(this)
@@ -1569,7 +1618,7 @@ $.fn.addPullQuotes = function () {
   })
 }
 
-$.fn.addSmallCaps = function () {
+util.addSmallCaps = function () {
   return this.map(function () {
     $(this).find('sc').replaceWith(function () {
       var span = $('<span class="caps"></span>')
@@ -1579,7 +1628,7 @@ $.fn.addSmallCaps = function () {
   })
 }
 
-$.fn.addTeXLogos = function () {
+util.addTeXLogos = function () {
   return this.map(function () {
     var body = $(this)
     // cf. http://edward.oconnor.cx/2007/08/tex-poshlet
@@ -1600,7 +1649,7 @@ $.fn.addTeXLogos = function () {
   })
 }
 
-$.fn.fixBlockquotes = function () {
+util.fixBlockquotes = function () {
   return this.each(function () {
     $(this).find('blockquote > p:last-child').each(function () {
       var p = $(this)
@@ -1616,7 +1665,7 @@ $.fn.fixBlockquotes = function () {
   })
 }
 
-$.fn.fixFootnotes = function () {
+util.fixFootnotes = function () {
   return this.each(function () {
     var body = $(this)
     body.find('.footnote-ref a').each(function () {
@@ -1635,7 +1684,7 @@ $.fn.fixFootnotes = function () {
   })
 }
 
-$.fn.fixLinks = function () {
+util.fixLinks = function () {
   return this.each(function () {
     var body = $(this)
     body.find('a[href^="#"]').each(function () {
@@ -1657,7 +1706,7 @@ $.fn.fixLinks = function () {
   })
 }
 
-$.fn.fixTables = function () {
+util.fixTables = function () {
   return this.each(function () {
     // add Bootstrap classes
     $(this).find('table').each(function () {
@@ -1675,23 +1724,38 @@ $.fn.fixTables = function () {
   })
 }
 
-$.fn.fixWidont = function () {
+util.fixWidont = function () {
   return this.each(function () {
     $(this).find('.widont').replaceWith('&nbsp;')
   })
 }
 
-$.fn.removeAria = function () {
+util.removeAria = function () {
   return this.map(function () {
     return $(this).clone().removeAriaHidden()
   })
 }
 
-$.fn.removeAriaHidden = function () {
+util.removeAriaHidden = function () {
   return this.each(function () {
     $(this).find('[aria-hidden="true"]').remove()
   })
 }
+
+$.fn.addAcronyms = util.addAcronyms
+$.fn.addHotkeys = util.addHotkeys
+$.fn.addPullQuotes = util.addPullQuotes
+$.fn.addSmallCaps = util.addSmallCaps
+$.fn.addTeXLogos = util.addTeXLogos
+$.fn.fixBlockquotes = util.fixBlockquotes
+$.fn.fixFootnotes = util.fixFootnotes
+$.fn.fixLinks = util.fixLinks
+$.fn.fixTables = util.fixTables
+$.fn.fixWidont = util.fixWidont
+$.fn.removeAria = util.removeAria
+$.fn.removeAriaHidden = util.removeAriaHidden
+
+module.exports = util
 
 },{"jquery":283}],16:[function(require,module,exports){
 // This file is autogenerated via the `commonjs` Grunt task. You can require() this file in a CommonJS environment.

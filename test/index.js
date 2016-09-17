@@ -57,15 +57,15 @@ describe('section.js', function () {
 })
 
 describe('figure.js', function () {
-  describe('addFigures()', function () {
+  describe('fixFigures()', function () {
     it('should add captions to images', function () {
       var div = $('<div>' +
                   '<p>' +
                   '<img alt="Caption text" class="right" src="image.png" width="200">' +
                   '</p>' +
                   '</div>')
-      div.addFigures().prop('outerHTML').should.equal(
-        '<div><div style="width: 209px;" class="figure right"><img alt="Caption text" src="image.png" width="200"><p class="caption">Caption text</p></div></div>')
+      div.fixFigures().prop('outerHTML').should.equal(
+        '<div><figure style="width: 209px;" class="right"><img alt="Caption text" src="image.png" width="200"><figcaption>Caption text</figcaption></figure></div>')
     })
 
     it('should handle multiple images within a paragraph', function () {
@@ -75,8 +75,8 @@ describe('figure.js', function () {
                   '<img alt="Caption text 2" class="right" src="image2.png" width="200">' +
                   '</p>' +
                   '</div>')
-      div.addFigures().prop('outerHTML').should.equal(
-        '<div><div style="width: 209px;" class="figure right"><img alt="Caption text 1" src="image1.png" width="200"><p class="caption">Caption text 1</p></div><div style="width: 209px;" class="figure right"><img alt="Caption text 2" src="image2.png" width="200"><p class="caption">Caption text 2</p></div></div>')
+      div.fixFigures().prop('outerHTML').should.equal(
+        '<div><figure style="width: 209px;" class="right"><img alt="Caption text 1" src="image1.png" width="200"><figcaption>Caption text 1</figcaption></figure><figure style="width: 209px;" class="right"><img alt="Caption text 2" src="image2.png" width="200"><figcaption>Caption text 2</figcaption></figure></div>')
     })
 
     it('should ignore captionless images', function () {
@@ -85,12 +85,8 @@ describe('figure.js', function () {
                   '<img alt="" src="image.png">' +
                   '</p>' +
                   '</div>')
-      div.addFigures().prop('outerHTML').should.equal(
-        '<div>' +
-        '<p class="center">' +
-        '<img alt="" src="image.png">' +
-        '</p>' +
-        '</div>')
+      div.fixFigures().prop('outerHTML').should.equal(
+        '<div><figure><img alt="" src="image.png"></figure></div>')
     })
   })
 })
