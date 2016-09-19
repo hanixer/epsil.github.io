@@ -439,6 +439,7 @@ var markdown = require('./markdown')
 var md5 = require('md5')
 var social = require('./social')
 var templates = require('./templates')
+var typogr = require('typogr')
 var util = require('./util')
 
 var document = templates.document
@@ -471,6 +472,12 @@ function addI18n (view) {
 function dynamic (view, path) {
   if (view.toc !== false) {
     view.toc = '<div id="toc-placeholder"></div>'
+  }
+  if (view.content.match(/[\\][(]|\$/g)) {
+    // typogr.js doesn't work well with MathJax
+    // https://github.com/ekalinin/typogr.js/issues/31
+    view.mathjax = true
+    view.typogr = false
   }
   view.facebook = social.facebook.url(path)
   view.github = social.github.url(path)
@@ -523,6 +530,19 @@ function toc (view) {
   return view
 }
 
+function typography (view) {
+  if (view.typogr) {
+    // typogr.js doesn't understand unescaped quotation marks
+    view.content =
+      view.content.replace(/\u2018/gi, '&#8216;')
+                  .replace(/\u2019/gi, '&#8217;')
+                  .replace(/\u201c/gi, '&#8220;')
+                  .replace(/\u201d/gi, '&#8221;')
+    view.content = typogr.typogrify(view.content)
+  }
+  return view
+}
+
 function compile (data, path) {
   data = data.trim()
   var view = $.extend({}, defaults, parse(data))
@@ -534,17 +554,19 @@ function compile (data, path) {
   view = footnotes(view)
   view.content = body(view)
   view = toc(view)
+  view = typography(view)
   view.content = document(view)
   return view.content
 }
 
 module.exports = compile
 
-},{"./defaults":5,"./i18n":7,"./markdown":9,"./social":12,"./templates":13,"./util":15,"gray-matter":35,"jquery":289,"md5":364}],5:[function(require,module,exports){
+},{"./defaults":5,"./i18n":7,"./markdown":9,"./social":12,"./templates":13,"./util":15,"gray-matter":35,"jquery":289,"md5":364,"typogr":373}],5:[function(require,module,exports){
 module.exports = {
   author: 'Vegard Øye',
   'author-url': 'https://epsil.github.io/',
   lang: 'no',
+  mathjax: false,
   toc: true,
   typogr: true
 }
@@ -1167,7 +1189,6 @@ var $ = require('jquery')
 var moment = require('moment')
 var URI = require('urijs')
 var markdown = require('./markdown')
-var typogr = require('typogr')
 var util = require('./util')
 require('./anchor')
 require('./collapse')
@@ -1213,17 +1234,6 @@ Handlebars.registerHelper('text', function (str) {
 })
 
 Handlebars.registerHelper('process', function (html) {
-  // typogr.js doesn't work well with MathJax
-  // https://github.com/ekalinin/typogr.js/issues/31
-  if (!html.match(/[\\][(]/g)) {
-    // typogr.js doesn't understand unescaped quotation marks
-    html = html.replace(/\u2018/gi, '&#8216;')
-      .replace(/\u2019/gi, '&#8217;')
-      .replace(/\u201c/gi, '&#8220;')
-      .replace(/\u201d/gi, '&#8221;')
-    html = typogr.typogrify(html)
-  }
-
   return util.dojQuery(html, function (body) {
     var content = body.find('.e-content')
     body.fixWidont()
@@ -1297,12 +1307,14 @@ var templates = {
     '{{#if js}}' +
     '<script src="{{urlRelative url js}}" type="text/javascript"></script>\n' +
     '{{/if}}' +
+    '{{#if mathjax}}' +
     '<script type="text/x-mathjax-config">\n' +
     'MathJax.Hub.Config({\n' +
     'TeX: { equationNumbers: { autoNumber: "all" } }\n' +
     '})\n' +
     '</script>\n' +
     '<script async src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-MML-AM_CHTML" type="text/javascript"></script>\n' +
+    '{{/if}}' +
     '<script src="{{urlRelative url "/js/markdown-template.js"}}"></script>\n' +
     '</head>\n' +
     '<body>\n' +
@@ -1398,7 +1410,7 @@ templates.body = Handlebars.compile(templates.body)
 
 module.exports = templates
 
-},{"./anchor":2,"./collapse":3,"./figure":6,"./markdown":9,"./punctuation":10,"./section":11,"./social":12,"./toc":14,"./util":15,"handlebars":112,"jquery":289,"moment":368,"typogr":373,"urijs":376}],14:[function(require,module,exports){
+},{"./anchor":2,"./collapse":3,"./figure":6,"./markdown":9,"./punctuation":10,"./section":11,"./social":12,"./toc":14,"./util":15,"handlebars":112,"jquery":289,"moment":368,"urijs":376}],14:[function(require,module,exports){
 var $ = require('jquery')
 var S = require('string')
 
