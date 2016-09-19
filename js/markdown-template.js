@@ -432,14 +432,14 @@ module.exports = collapse
 
 },{"bootstrap":16,"jquery":289,"string":372}],4:[function(require,module,exports){
 var $ = require('jquery')
-var matter = require('gray-matter')
-var md5 = require('md5')
-var markdown = require('./markdown')
 var defaults = require('./defaults')
 var i18n = require('./i18n')
+var matter = require('gray-matter')
+var markdown = require('./markdown')
+var md5 = require('md5')
+var social = require('./social')
 var templates = require('./templates')
 var util = require('./util')
-var social = require('./social')
 
 var document = templates.document
 var body = templates.body
@@ -1340,7 +1340,7 @@ var templates = {
     '{{/if}}' +
     '<header>\n' +
     '{{#if title}}' +
-    '<h1 class="p-name"><a class="u-uid u-url" href="{{url}}" title="Permalink">{{{markdown title}}}</a></h1>\n' +
+    '<h1 class="p-name"><a class="u-uid u-url" href="{{url}}" rel="bookmark" title="Permalink">{{{markdown title}}}</a></h1>\n' +
     '{{#if subtitle}}' +
     '<h2>{{{markdown subtitle}}}</h2>\n' +
     '{{/if}}' +
