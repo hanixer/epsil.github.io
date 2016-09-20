@@ -14,11 +14,11 @@ TO DO:
 -   ~~On Windows 10, the `PATH` variable is not separated by `;`.~~
 -   ~~Update PATHEXT~~
 -   ~~.bashrc~~
+-   ~~Update CSS so that header does not affect the width of the window.~~
+    -   ~~Requires refactoring the default stylesheet~~
 -   ~~Git Bash should be installed first.~~
     -   How does the override option affect `PATH`?
 -   Does Git Bash's MingGW differ from the default MinGW?
--   ~~Update CSS so that header does not affect the width of the window.~~
-    -   ~~Requires refactoring the default stylesheet~~
 -->
 
 The following setup allows one to run Bash scripts from Windows' command prompt. It also augments it with common Unix commands like `cp`, `rm` and `mv`, which is useful if these are ingrained into muscle memory.
