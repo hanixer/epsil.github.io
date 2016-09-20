@@ -823,6 +823,7 @@ function loadData () {
 }
 
 function addClickHandlers () {
+  // expand closed sections
   $('a[href^="#"]').each(function () {
     var link = $(this)
     var href = link.attr('href').replace(':', '\\:')
@@ -834,6 +835,13 @@ function addClickHandlers () {
 
     link.click(function (event) {
       util.unhideElement(target)
+    })
+  })
+  // close table of contents
+  $('#toc a[title]').each(function () {
+    var link = $(this)
+    link.click(function (event) {
+      $('#toc-button').click()
     })
   })
 }
@@ -1354,7 +1362,7 @@ var templates = {
     '<li role="presentation"><a href="{{history}}" title="{{text history-title}}"><i class="fa fa-history"></i></a></li>\n' +
     '<li role="presentation"><a href="index.txt" title="{{text markdown-title}}"><i class="fa fa-download"></i></a></li>\n' +
     '{{#if toc}}' +
-    '<li role="presentation"><a href="#toc" data-toggle="collapse" title="{{text toc-title}}"><i class="fa fa-list"></i></a></li>\n' +
+    '<li role="presentation"><a name="toc-button" href="#toc" data-toggle="collapse" title="{{text toc-title}}"><i class="fa fa-list"></i></a></li>\n' +
     '{{/if}}' +
     '</ul>\n' +
     '</div>\n' +
