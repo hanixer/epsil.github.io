@@ -1623,7 +1623,10 @@ util.unhideSection = function (section) {
     var button = section.find('.collapse-button').first()
     var div = section.find('div').first()
     if (div.hasClass('collapse') && !div.hasClass('in')) {
-      button.click()
+      button.attr('aria-expanded', 'true')
+      div.addClass('in')
+      div.css({'height': ''})
+      div.attr('aria-expanded', 'true')
     }
   }
 }
