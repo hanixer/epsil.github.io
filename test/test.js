@@ -688,6 +688,24 @@ util.dojQuery = function (html, fn) {
   return body.html()
 }
 
+util.unhideSection = function (section) {
+  if (section.prop('tagName') === 'SECTION') {
+    var div = section.find('div').first()
+    var button = section.find('.collapse-button').first()
+    if (div.hasClass('collapse') && !div.hasClass('in')) {
+      div.addClass('in')
+      button.attr('aria-expanded', 'true')
+    }
+  }
+}
+
+util.unhideElement = function (el) {
+  util.unhideSection(el)
+  el.parents().each(function (index, value) {
+    util.unhideSection($(this))
+  })
+}
+
 util.addAcronyms = function () {
   return this.map(function () {
     $(this).find('abbr').filter(function () {
