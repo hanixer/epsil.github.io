@@ -6,7 +6,7 @@
 <meta content="Vegard &#216;ye" name="author">
 <meta content="2016-04-20" name="date">
 <meta content="How to run Bash scripts from Windows&#8217; command prompt and extend it with common Unix commands." name="description">
-<meta content="f2da5cb690dadb0129d30cb85dde8be3" name="md5">
+<meta content="f15e714b6c981df6bc9996517f85f894" name="md5">
 <meta content="text/css" http-equiv="Content-Style-Type">
 <meta content="width=device-width, initial-scale=1" name="viewport">
 <meta content="Running Bash scripts on Windows" name="DC.Title">
@@ -120,11 +120,11 @@ TO DO:
 -   ~~On Windows 10, the `PATH` variable is not separated by `;`.~~
 -   ~~Update PATHEXT~~
 -   ~~.bashrc~~
+-   ~~Update CSS so that header does not affect the width of the window.~~
+    -   ~~Requires refactoring the default stylesheet~~
 -   ~~Git Bash should be installed first.~~
     -   How does the override option affect `PATH`?
 -   Does Git Bash's MingGW differ from the default MinGW?
--   ~~Update CSS so that header does not affect the width of the window.~~
-    -   ~~Requires refactoring the default stylesheet~~
 -->
 
 <section>
@@ -132,7 +132,7 @@ TO DO:
 
 <p>Note that this setup affects the <em>command prompt</em> (<abbr class="acronym" title="Also Known As"><span class="caps">AKA</span></abbr> <code>cmd.exe</code>). Although Windows 10 includes a full-fledged <a href="http://www.howtogeek.com/249966/how-to-install-and-use-the-linux-bash-shell-on-windows-10/">Ubuntu Linux Bash Shell</a>, that shell &#8211; like PowerShell &#8211; is separate from the command prompt. Therefore, the following instructions still apply to Windows 10, as well as to earlier Windows versions. (For a brief list of standalone Bash shells for Windows, see the <a href="#standalone-shells" title="Standalone shells">discussion</a> at the&#160;end.)</p>
 
-<p><em>Bash scripts</em> (with an extension of <code>.sh</code>) are a Unix invention, and should not be confused with <em>batch files</em> (with an extension of <code>.bat</code>), which are a Windows invention. However, the goal of this guide could be summed up as helping Windows run Bash scripts <em>as if</em> they were batch&#160;files.</p>
+<p><em>Bash scripts</em> (with an extension of <code>.sh</code>) are a Unix invention, and should not be confused with <em>batch files</em> (with an extension of <code>.bat</code>), which are a Windows invention. However, we could say that our goal is to help Windows run Bash scripts <em>as if</em> they were batch&#160;files.</p>
 </section>
 
 <section id="git-for-windows">
