@@ -690,11 +690,10 @@ util.dojQuery = function (html, fn) {
 
 util.unhideSection = function (section) {
   if (section.prop('tagName') === 'SECTION') {
-    var div = section.find('div').first()
     var button = section.find('.collapse-button').first()
+    var div = section.find('div').first()
     if (div.hasClass('collapse') && !div.hasClass('in')) {
-      div.addClass('in')
-      button.attr('aria-expanded', 'true')
+      button.click()
     }
   }
 }
