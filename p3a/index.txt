@@ -1,3 +1,4 @@
+title: "Lydforsterker: *Project 3A*"
 description: Rapport for konstruksjon av den 60 W klasse AB-forsterkeren Project 3A.
 footnotes-title: Fotnoter
 css: css/custom.css
@@ -10,9 +11,6 @@ Rapport for konstruksjon av den 60 W klasse AB-forsterkeren
 **[PDF-utgave](rapport.pdf)**.
 
 * * * * *
-
-Lydforsterker: *Project 3A*
-===========================
 
 ![](fig/hist-logo.svg){width=280}
 

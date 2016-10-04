@@ -1,3 +1,4 @@
+title: Virtuell arm for funksjonshemmede
 description: Rapport om prototype til en tungestyrt musepeker for bevegelseshemmede.
 footnotes-title: Fotnoter
 css: css/custom.css
@@ -9,9 +10,6 @@ Rapport om prototype til en tungestyrt musepeker for bevegelseshemmede.
 **[PDF-utgave](rapport.pdf)**.
 
 * * * * *
-
-Virtuell arm for funksjonshemmede
-=================================
 
 ![](fig/hist-logo.svg)
 

@@ -1,5 +1,6 @@
-lang: en
+title: Accelerating nonlinear image transformations with OpenGL ES
 description: A study on fish-eye undistortion.
+lang: en
 footnotes-title: Notes
 css: custom.css
 ---
@@ -8,9 +9,6 @@ A study on fish-eye undistortion. **[PDF version](thesis.pdf).**
 DUO: [URN:NBN:no-51670](http://urn.nb.no/URN:NBN:no-51670).[^1]
 
 * * * * *
-
-Accelerating nonlinear image transformations with OpenGL ES
-===========================================================
 
 ![](uio.svg){width=400}
 
