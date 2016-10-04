@@ -2,7 +2,7 @@ title: Bruke `find` på filnavn med mellomrom
 date: 2010-11-14
 ---
 
-Hvis man skal bruke `find` sammen med, si, `rm` på filnavn som inneholder mellomrom, må man ta visse forhåndsregler. Den mest opplagte besvergelsen ville være:
+Hvis man skal bruke `find` sammen med, si, `rm` på filnavn som inneholder mellomrom, må man ta visse [forhåndsregler](http://stackoverflow.com/questions/9612090/how-to-loop-through-file-names-returned-by-find#9612232). Den mest opplagte besvergelsen ville være:
 
     find -name <PATTERN> | xargs rm
 
