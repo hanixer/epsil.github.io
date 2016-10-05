@@ -6,4 +6,5 @@
 -   ~~Søppelkasse~~
 -   ~~Kjøkkenhåndklær~~
 -   ~~Strekklaken~~
--   Støvsuger
+-   ~~Støvsuger~~
+-   Riskoker
