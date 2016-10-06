@@ -5,7 +5,7 @@
 <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
 <meta content="Vegard &#216;ye" name="author">
 <meta content="2010-11-14" name="date">
-<meta content="336a39ea45106519fe7030142628038a" name="md5">
+<meta content="1a6962678ecc558d34c6a35e50bd6c4c" name="md5">
 <meta content="text/css" http-equiv="Content-Style-Type">
 <meta content="width=device-width, initial-scale=1" name="viewport">
 <meta content="Bruke find p&#229; filnavn med mellomrom" name="DC.Title">
@@ -74,14 +74,14 @@
 <p>Hvis man skal bruke <code>find</code> sammen med, si, <code>rm</code> p&#229; filnavn som inneholder mellomrom, m&#229; man ta visse <a href="http://stackoverflow.com/questions/9612090/how-to-loop-through-file-names-returned-by-find#9612232">forh&#229;ndsregler</a>. Den mest opplagte besvergelsen ville&#160;v&#230;re:</p>
 
 <pre>
-<code>find -name &lt;PATTERN&gt; | xargs rm</code>
+<code>find . -name &lt;PATTERN&gt; | xargs rm</code>
 </pre>
 
 <p>Men dette fungerer alts&#229; bare p&#229; filnavn uten mellomrom. For mer kronglete filer m&#229; man bruke en av&#160;disse:</p>
 
 <pre>
-<code>find -name &lt;PATTERN&gt; -exec rm {} \;
-find -name &lt;PATTERN&gt; -print0 | xargs -0 rm</code>
+<code>find . -name &lt;PATTERN&gt; -exec rm {} \;
+find . -name &lt;PATTERN&gt; -print0 | xargs -0 rm</code>
 </pre>
 
 <p>Den f&#248;rste eksekverer <code>rm</code> via <code>find</code>. Den siste bruker opsjonen <code>-print0</code> for &#229; terminere filnavn med <code>\0</code> istedenfor linjeskift, og <code>rm</code> gj&#248;res oppmerksom p&#229; dette med opsjonen <code>-0</code>. Begge programmer m&#229; alts&#229; tilpasses for &#229; kunne samarbeide om spesielle&#160;filnavn.</p>

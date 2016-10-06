@@ -52,9 +52,9 @@ Git for Windows also extends the command prompt with common Unix commands like `
 
 "Git Bash", a [standalone shell](#standalone-shells), is installed as well. It can be run as a separate program, or in the command prompt. To do the latter, just type `bash`; to return to the standard command prompt, type `exit`. A `.bash_profile` file can be used to store settings between sessions. To edit this file, start "Git Bash" and type:
 
-    vi ~/.bash_profile
+    notepad ~/.bash_profile
 
-(Substitute `notepad` for `vi` if the latter is unfamiliar.) Below is an example file that configures the history size:
+(Feel free to substitute `vi` for `notepad` if familiar with the former.) Below is an example file that configures the history size:
 
     HISTSIZE=10000
     HISTFILESIZE=10000
@@ -92,7 +92,7 @@ Thus, if G*nu*W*in*32's executables are located in `C:\GnuWin32\bin`, simply add
 
 On Windows 10, the variable may be displayed as an editable list of directories. Add the directory to the bottom of the list.
 
-We now have a host of tools at our command. For example, `wget` downloads a file via the command prompt, while `md5sum` calculates its MD5 hash. Peruse G*nu*W*in*32's [package list](http://gnuwin32.sourceforge.net/packages.html) to get a sense of the possibilities.
+We now have a host of tools at our command. For example, `make` builds a software project from a Makefile, `wget` downloads a file from the Internet, and `md5sum` calculates a file's MD5 hash. Peruse G*nu*W*in*32's [package list](http://gnuwin32.sourceforge.net/packages.html) to get a sense of the possibilities.
 
 [MinGW](http://www.mingw.org/)
 ------------------------------
@@ -108,6 +108,14 @@ Windows does not have the `open` command, and none of the packages above provide
 
     @echo off
     start %*
+
+For "Git Bash", we need to add a Bash alias to `.bash_profile`. Start "Git Bash" and type:
+
+    notepad ~/.bash_profile
+
+Then add the following line:
+
+    alias open='start'
 
 Alias `find`
 ------------

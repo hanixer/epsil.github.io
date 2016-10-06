@@ -6,7 +6,7 @@
 <meta content="Vegard &#216;ye" name="author">
 <meta content="2016-04-20" name="date">
 <meta content="How to run Bash scripts from Windows&#8217; command prompt and extend it with common Unix commands." name="description">
-<meta content="f15e714b6c981df6bc9996517f85f894" name="md5">
+<meta content="76777a82872bb9071f9a565d134881c8" name="md5">
 <meta content="text/css" http-equiv="Content-Style-Type">
 <meta content="width=device-width, initial-scale=1" name="viewport">
 <meta content="Running Bash scripts on Windows" name="DC.Title">
@@ -171,10 +171,10 @@ mv script2.sh script.sh</code>
 <p><span class="dquo">&#8220;</span>Git Bash&#8221;, a <a href="#standalone-shells" title="Standalone shells">standalone shell</a>, is installed as well. It can be run as a separate program, or in the command prompt. To do the latter, just type <code>bash</code>; to return to the standard command prompt, type <code>exit</code>. A <code>.bash_profile</code> file can be used to store settings between sessions. To edit this file, start &#8220;Git Bash&#8221; and&#160;type:</p>
 
 <pre>
-<code>vi ~/.bash_profile</code>
+<code>notepad ~/.bash_profile</code>
 </pre>
 
-<p>(Substitute <code>notepad</code> for <code>vi</code> if the latter is unfamiliar.) Below is an example file that configures the history&#160;size:</p>
+<p>(Feel free to substitute <code>vi</code> for <code>notepad</code> if familiar with the former.) Below is an example file that configures the history&#160;size:</p>
 
 <pre>
 <code>HISTSIZE=10000
@@ -233,7 +233,7 @@ HISTFILESIZE=10000</code>
 
 <p>On Windows 10, the variable may be displayed as an editable list of directories. Add the directory to the bottom of the&#160;list.</p>
 
-<p>We now have a host of tools at our command. For example, <code>wget</code> downloads a file via the command prompt, while <code>md5sum</code> calculates its <abbr class="acronym" title="Message-Digest algorithm 5"><span class="caps">MD5</span></abbr> hash. Peruse G<em>nu</em>W<em>in</em>32&#8217;s <a href="http://gnuwin32.sourceforge.net/packages.html">package list</a> to get a sense of the&#160;possibilities.</p>
+<p>We now have a host of tools at our command. For example, <code>make</code> builds a software project from a Makefile, <code>wget</code> downloads a file from the Internet, and <code>md5sum</code> calculates a file&#8217;s <abbr class="acronym" title="Message-Digest algorithm 5"><span class="caps">MD5</span></abbr> hash. Peruse G<em>nu</em>W<em>in</em>32&#8217;s <a href="http://gnuwin32.sourceforge.net/packages.html">package list</a> to get a sense of the&#160;possibilities.</p>
 </div>
 </section>
 
@@ -257,6 +257,18 @@ HISTFILESIZE=10000</code>
 <pre>
 <code>@echo off
 start %*</code>
+</pre>
+
+<p>For &#8220;Git Bash&#8221;, we need to add a Bash alias to <code>.bash_profile</code>. Start &#8220;Git Bash&#8221; and&#160;type:</p>
+
+<pre>
+<code>notepad ~/.bash_profile</code>
+</pre>
+
+<p>Then add the following&#160;line:</p>
+
+<pre>
+<code>alias open='start'</code>
 </pre>
 </div>
 </section>
