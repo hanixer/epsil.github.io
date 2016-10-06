@@ -6,7 +6,7 @@
 <meta content="Vegard &#216;ye" name="author">
 <meta content="2016-04-20" name="date">
 <meta content="How to run Bash scripts from Windows&#8217; command prompt and extend it with common Unix commands." name="description">
-<meta content="0f542ef79c3bc2ca60e3014d277b2eff" name="md5">
+<meta content="854167ae03c91fbedf78c3bc3e909ce1" name="md5">
 <meta content="text/css" http-equiv="Content-Style-Type">
 <meta content="width=device-width, initial-scale=1" name="viewport">
 <meta content="Running Bash scripts on Windows" name="DC.Title">
@@ -295,8 +295,6 @@ exit</code>
 <p>Windows 10 includes its own <a href="http://www.howtogeek.com/249966/how-to-install-and-use-the-linux-bash-shell-on-windows-10/">Linux Bash Shell</a>, based on Ubuntu. Note that this is a <em>standalone</em> shell, similar to PowerShell; Windows 10&#8217;s command prompt is unaffected and will still benefit from the instructions above. However, a standalone shell may provide built-in functionality that cannot be added to the command prompt (searchable history, for&#160;example).</p>
 
 <p>Also note that if we install the Linux Bash Shell, then the <code>bash</code> command switches to that shell, not to Git Bash. This can be remedied by making a copy of <code>C:\Program Files\Git\usr\bin\bash.exe</code> called <code>C:\Program Files\Git\usr\bin\git-bash.exe</code>. Then we can use the <code>git-bash</code> command to change to Git Bash from the command&#160;prompt.</p>
-
-<p>Furthermore, be aware that tools added to the command prompt are also available in PowerShell and the Linux Bash Shell (unless shadowed by a different implementation). For example, after following the instructions above, G<em>nu</em>W<em>in</em>32&#8217;s <code>make</code> command can be invoked not only from the command prompt, but from PowerShell and the Linux Bash Shell as&#160;well.</p>
 
 <p>Another comprehensive standalone shell is provided by the <a href="http://www.cygwin.com/">Cygwin</a> project, which can be used on older Windows versions. <a href="#msys" title="MSYS"><abbr class="acronym" title="Minimal System"><span class="caps">MSYS</span></abbr></a> and <a href="#mingw" title="MinGW"><abbr title="Minimalist GNU for Windows">MinGW</abbr></a> also provide standalone shells. Git Bash, the shell provided by <a href="#git-for-windows" title="Git for Windows">Git for Windows</a>, is in fact an extension of&#160;these.</p>
 </div>
