@@ -6,24 +6,9 @@ lang: en
 css: custom.css
 ---
 
-<!--
-TO DO:
-
--   ~~MSYS may be superfluous.~~
-    -   ~~If so, where to place `open.bat`?~~
--   ~~On Windows 10, the `PATH` variable is not separated by `;`.~~
--   ~~Update PATHEXT~~
--   ~~.bashrc~~
--   ~~Update CSS so that header does not affect the width of the window.~~
-    -   ~~Requires refactoring the default stylesheet~~
--   ~~Git Bash should be installed first.~~
-    -   How does the override option affect `PATH`?
--   Does Git Bash's MingGW differ from the default MinGW?
--->
-
 The following setup allows one to run Bash scripts from Windows' command prompt. It also augments it with common Unix commands like `cp`, `rm` and `mv`, which is useful if these are ingrained into muscle memory.
 
-Note that this setup affects the *command prompt* (AKA `cmd.exe`). Although Windows 10 includes a full-fledged [Ubuntu Linux Bash Shell](http://www.howtogeek.com/249966/how-to-install-and-use-the-linux-bash-shell-on-windows-10/), that shell -- like PowerShell -- is separate from the command prompt. Therefore, the following instructions still apply to Windows 10, as well as to earlier Windows versions. (For a brief list of standalone Bash shells for Windows, see the [discussion](#standalone-shells) at the end.)
+Note that this setup affects the *command prompt* (AKA `cmd.exe`). Although Windows 10 includes a full-fledged [Ubuntu Linux Bash Shell](#standalone-shells), that shell -- like PowerShell -- is separate from the command prompt. Therefore, the following instructions still apply to Windows 10, as well as to earlier Windows versions. (For a brief list of standalone Bash shells for Windows, see the [discussion](#standalone-shells) at the end.)
 
 *Bash scripts* (with an extension of `.sh`) are a Unix invention, and should not be confused with *batch files* (with an extension of `.bat`), which are a Windows invention. However, we could say that our goal is to help Windows run Bash scripts *as if* they were batch files.
 
@@ -50,7 +35,7 @@ Git for Windows also extends the command prompt with common Unix commands like `
     rm script.sh
     mv script2.sh script.sh
 
-"Git Bash", a [standalone shell](#standalone-shells), is installed as well. It can be run as a separate program, or in the command prompt. To do the latter, just type `bash`; to return to the standard command prompt, type `exit`. A `.bash_profile` file can be used to store settings between sessions. To edit this file, start "Git Bash" and type:
+Git Bash, a [standalone shell](#standalone-shells), is installed as well. It can be run as a separate program, or in the command prompt. To do the latter, just type `bash`; to return to the standard command prompt, type `exit`. A `.bash_profile` file can be used to store settings between sessions. To edit this file, start Git Bash and type:
 
     notepad ~/.bash_profile
 
@@ -59,7 +44,7 @@ Git for Windows also extends the command prompt with common Unix commands like `
     HISTSIZE=10000
     HISTFILESIZE=10000
 
-Configuring Bash settings is not covered here -- that is a topic in its own right. Note that "Git Bash" typically stores the `.bash_profile` file at `C:\Users\user\.bash_profile`.
+Configuring Bash settings is not covered here -- that is a topic in its own right. Note that Git Bash typically stores the `.bash_profile` file at `C:\Users\user\.bash_profile`.
 
 ### Update `PATHEXT`
 
@@ -92,7 +77,7 @@ Thus, if G*nu*W*in*32's executables are located in `C:\GnuWin32\bin`, simply add
 
 On Windows 10, the variable may be displayed as an editable list of directories. Add the directory to the bottom of the list.
 
-We now have a host of tools at our command. For example, `make` builds a software project from a Makefile, `wget` downloads a file from the Internet, and `md5sum` calculates a file's MD5 hash. Peruse G*nu*W*in*32's [package list](http://gnuwin32.sourceforge.net/packages.html) to get a sense of the possibilities.
+We now have a host of tools at our command. For example, `make` builds a software project from a Makefile, while `wget` downloads a file from the Internet. Peruse G*nu*W*in*32's [package list](http://gnuwin32.sourceforge.net/packages.html) to get a sense of the possibilities.
 
 [MinGW](http://www.mingw.org/)
 ------------------------------
@@ -109,7 +94,7 @@ Windows does not have the `open` command, and none of the packages above provide
     @echo off
     start %*
 
-For "Git Bash", we need to add a Bash alias to `.bash_profile`. Start "Git Bash" and type:
+For Git Bash, we need to add a Bash alias to `.bash_profile`. Start Git Bash and type:
 
     notepad ~/.bash_profile
 
@@ -122,7 +107,7 @@ Alias `find`
 
 Windows' own `find` utility shadows the Unix `find` command. To create an alias for the latter, make a copy of `find.exe`, `find2.exe`, in the same folder (typically `C:\Program Files\Git\usr\bin`). The Unix command can now be accessed as `find2`.
 
-Alternatively, switch to "Git Bash" for the duration of the command:
+Alternatively, switch to Git Bash for the duration of the command:
 
     bash
     find . -name "*.txt"
@@ -139,6 +124,21 @@ The above instructions assume that MSYS is installed along with [Git for Windows
 
 Windows 10 includes its own [Linux Bash Shell](http://www.howtogeek.com/249966/how-to-install-and-use-the-linux-bash-shell-on-windows-10/), based on Ubuntu. Note that this is a *standalone* shell, similar to PowerShell; Windows 10's command prompt is unaffected and will still benefit from the instructions above. However, a standalone shell may provide built-in functionality that cannot be added to the command prompt (searchable history, for example).
 
-Furthermore, be aware that tools added to the command prompt are also available in PowerShell and the Linux Bash Shell (unless shadowed by a different implementation). For example, after following the instructions above, G*nu*W*in*32's `md5sum` command can be invoked not only from the command prompt, but from PowerShell and the Linux Bash Shell as well.
+Also note that if we install the Linux Bash Shell, then the `bash` command switches to that shell, not to Git Bash. This can be remedied by making a copy of `C:\Program Files\Git\usr\bin\bash.exe` called `C:\Program Files\Git\usr\bin\git-bash.exe`. Then we can use the `git-bash` command to change to Git Bash from the command prompt.
 
-Another comprehensive standalone shell is provided by the [Cygwin](http://www.cygwin.com/) project, which can be used on older Windows versions. [MSYS](#msys) and [MinGW](#mingw) also provide standalone shells. "Git Bash", the shell provided by [Git for Windows](#git-for-windows), is in fact an extension of these.
+Furthermore, be aware that tools added to the command prompt are also available in PowerShell and the Linux Bash Shell (unless shadowed by a different implementation). For example, after following the instructions above, G*nu*W*in*32's `make` command can be invoked not only from the command prompt, but from PowerShell and the Linux Bash Shell as well.
+
+Another comprehensive standalone shell is provided by the [Cygwin](http://www.cygwin.com/) project, which can be used on older Windows versions. [MSYS](#msys) and [MinGW](#mingw) also provide standalone shells. Git Bash, the shell provided by [Git for Windows](#git-for-windows), is in fact an extension of these.
+
+<!--
+-   ~~MSYS may be superfluous.~~
+    -   ~~If so, where to place `open.bat`?~~
+-   ~~On Windows 10, the `PATH` variable is not separated by `;`.~~
+-   ~~Update PATHEXT~~
+-   ~~.bashrc~~
+-   ~~Update CSS so that header does not affect the width of the window.~~
+    -   ~~Requires refactoring the default stylesheet~~
+-   ~~Git Bash should be installed first.~~
+    -   How does the override option affect `PATH`?
+-   Does Git Bash's MingGW differ from the default MinGW?
+-->
