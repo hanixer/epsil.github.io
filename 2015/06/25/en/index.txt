@@ -1,6 +1,6 @@
 title: Dia on OS X
 date: 2015-06-25
-description: Some notes on using the graphics program [Dia](http://dia-installer.de/) on OS X.
+abstract: Some notes on using the graphics program [Dia](http://dia-installer.de/) on OS X.
 image: ../dia.svg
 image-width: 70
 lang: en

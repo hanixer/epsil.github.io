@@ -1,6 +1,6 @@
 title: Oppsett [`irssi` og `screen`](http://folk.uio.no/veronahe/CYB/IRC/)
 date: 2014-05-06
-description: Noen gamle [`#cyb`-notater](http://folk.uio.no/veronahe/CYB/IRC/), gjengitt her for dem som leter etter dem.
+abstract: Noen gamle [`#cyb`-notater](http://folk.uio.no/veronahe/CYB/IRC/), gjengitt her for dem som leter etter dem.
 image: logo.png
 image-width: 200
 css: custom.css

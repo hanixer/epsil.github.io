@@ -1,5 +1,5 @@
 title: Running Bash scripts on Windows
-description: How to run Bash scripts from Windows' command prompt and extend it with common Unix commands.
+abstract: How to run Bash scripts from Windows' command prompt and extend it with common Unix commands.
 date: 2016-04-20
 image: tron.jpg
 lang: en
