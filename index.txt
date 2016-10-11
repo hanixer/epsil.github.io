@@ -85,7 +85,7 @@ Blogg
 -   [2010-11-27: Klone harddisk](2010/11/27/)
 -   [2010-11-21: Bruene i Königsberg](2010/11/21/)
 -   [2010-11-20: Grenseverdisetningen](2010/11/20/)
--   [2010-11-14: Bruke `find` på filnavn med mellomrom](2010/11/14/)
+-   [2010-11-14: Bruke `grep` og `find`](2010/11/14/)
 -   [2010-04-20: Innføring i versjonskontroll](2010/04/20/)
 -   [2010-04-18: Bruk versjonskontroll](2010/04/18/)
 -   [2010-04-08: Skrifter for LaTeX](2010/04/08/)
