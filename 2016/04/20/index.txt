@@ -124,7 +124,7 @@ The above instructions assume that MSYS is installed along with [Git for Windows
 
 Windows 10 includes its own [Linux Bash Shell](http://www.howtogeek.com/249966/how-to-install-and-use-the-linux-bash-shell-on-windows-10/), based on Ubuntu. Note that this is a *standalone* shell, similar to PowerShell; Windows 10's command prompt is unaffected and will still benefit from the instructions above. However, a standalone shell may provide built-in functionality that cannot be added to the command prompt (searchable history, for example).
 
-Also note that if we install the Linux Bash Shell, then the `bash` command switches to that shell, not to Git Bash. This can be remedied by making a copy of `C:\Program Files\Git\usr\bin\bash.exe` called `C:\Program Files\Git\usr\bin\git-bash.exe`. Then we can use the `git-bash` command to change to Git Bash from the command prompt.
+Also note that if we install the Linux Bash Shell, then the `bash` command switches to that shell, not to Git Bash. However, we can still use the `git bash` command to change to Git Bash from the command prompt.
 
 Another comprehensive standalone shell is provided by the [Cygwin](http://www.cygwin.com/) project, which can be used on older Windows versions. [MSYS](#msys) and [MinGW](#mingw) also provide standalone shells. Git Bash, the shell provided by [Git for Windows](#git-for-windows), is in fact an extension of these.
 
