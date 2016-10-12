@@ -18,7 +18,7 @@ Det finnes også en `--exclude`-opsjon for å ekskludere filer fra søket.
 `find`
 ------
 
-For å søke i filenes *filnavn*, kan man bruke `find`. Merk at hvis man skal bruke `find` sammen med, si, `rm` på filnavn som inneholder mellomrom, må man ta visse [forhåndsregler](http://stackoverflow.com/questions/9612090/how-to-loop-through-file-names-returned-by-find#9612232). Den mest opplagte besvergelsen ville være:
+For å søke i filenes *filnavn*, kan man bruke `find`. Merk at hvis man skal bruke `find` sammen med f.eks. `rm` på filnavn som inneholder mellomrom, må man ta visse [forhåndsregler](http://stackoverflow.com/questions/9612090/how-to-loop-through-file-names-returned-by-find#9612232). Den mest opplagte besvergelsen ville være:
 
     $ find . -name <PATTERN> | xargs rm
 
