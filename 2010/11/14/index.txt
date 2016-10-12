@@ -9,7 +9,7 @@ For å søke i filenes *innhold*, kan man bruke `grep`:
 
     $ grep -Ri "test" .
 
-Dette søker rekursivt (`-R`) og case-insensitivt (`-i`) etter teksten `"test"` i den gjeldende mappen (`.`). Hvis man bare vil søke i `.txt`-filer, kan man bruke `--include`-opsjonen:
+Dette søker rekursivt (`-R`) og case-insensitivt (`-i`) etter teksten `"test"` i den gjeldende mappen (`.`). Hvis man *bare* vil søke i, si, `.txt`-filer, kan man bruke `--include`-opsjonen:
 
     $ grep -Ri --include="*.txt" "test" .
 
