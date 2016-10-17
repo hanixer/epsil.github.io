@@ -25,6 +25,7 @@ header > * {
     margin: 0 auto !important;
     max-width: 840px !important;
     padding: 0px 80px 0 80px !important;
+    text-shadow: 0px 0px 1px #000, 1px 1px 0px #000, 1px 1px 1px #000;
     width: 100% !important;
 }
 
