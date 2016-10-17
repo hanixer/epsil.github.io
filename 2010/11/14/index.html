@@ -5,7 +5,7 @@
 <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
 <meta content="Vegard &#216;ye" name="author">
 <meta content="2010-11-14" name="date">
-<meta content="403917e84f2a2737514bf34db48ebebc" name="md5">
+<meta content="29857a9d4552766c501ef403d277e08d" name="md5">
 <meta content="text/css" http-equiv="Content-Style-Type">
 <meta content="width=device-width, initial-scale=1" name="viewport">
 <meta content="Bruke grep og find" name="DC.Title">
@@ -96,7 +96,7 @@ TeX: { equationNumbers: { autoNumber: "all" } }
 <code>$ grep -Ri "test" .</code>
 </pre>
 
-<p>Dette s&#248;ker rekursivt (<code>-R</code>) og case-insensitivt (<code>-i</code>) etter teksten <code>"test"</code> i den gjeldende mappen (<code>.</code>). Hvis man bare vil s&#248;ke i <code>.txt</code>-filer, kan man bruke <code>--include</code>-opsjonen:</p>
+<p>Dette s&#248;ker rekursivt (<code>-R</code>) og case-insensitivt (<code>-i</code>) etter teksten <code>"test"</code> i den gjeldende mappen (<code>.</code>). Hvis man <em>bare</em> vil s&#248;ke i, si, <code>.txt</code>-filer, kan man bruke <code>--include</code>-opsjonen:</p>
 
 <pre>
 <code>$ grep -Ri --include="*.txt" "test" .</code>
@@ -112,7 +112,7 @@ TeX: { equationNumbers: { autoNumber: "all" } }
 
 <div class="collapse in" id="find-section">
 <section>
-<p>For &#229; s&#248;ke i filenes <em>filnavn</em>, kan man bruke <code>find</code>. Merk at hvis man skal bruke <code>find</code> sammen med, si, <code>rm</code> p&#229; filnavn som inneholder mellomrom, m&#229; man ta visse <a href="http://stackoverflow.com/questions/9612090/how-to-loop-through-file-names-returned-by-find#9612232">forh&#229;ndsregler</a>. Den mest opplagte besvergelsen ville v&#230;re:</p>
+<p>For &#229; s&#248;ke i filenes <em>filnavn</em>, kan man bruke <code>find</code>. Merk at hvis man skal bruke <code>find</code> sammen med <abbr title="for eksempel">f.eks.</abbr> <code>rm</code> p&#229; filnavn som inneholder mellomrom, m&#229; man ta visse <a href="http://stackoverflow.com/questions/9612090/how-to-loop-through-file-names-returned-by-find#9612232">forh&#229;ndsregler</a>. Den mest opplagte besvergelsen ville v&#230;re:</p>
 
 <pre>
 <code>$ find . -name &lt;PATTERN&gt; | xargs rm</code>
