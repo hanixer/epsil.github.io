@@ -14,7 +14,9 @@ Blogg
 -   [Nyttige snarveier i Visual Studio](2016/05/25/)
 -   [Running Bash scripts on Windows](2016/04/20/) <span class="flag-icon flag-icon-us" title="English"></span>
 -   [Testing med Selenium](2015/12/10/)
+-   [Nettilkobling med iPhone](2015/12/05/)
 -   [Dia på OS X](2015/06/25/)
+-   [Bruke `grep` og `find`](2010/11/14/)
 -   [Rock step swing](swing/)
 -   [Cubansk salsa](salsa/)
 -   [Gitarspill](gitar/)
