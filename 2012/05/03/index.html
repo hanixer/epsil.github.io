@@ -26,13 +26,6 @@
 <link href="../../../css/markdown-template.css" rel="stylesheet">
 <link href="https://epsil.github.io/2012/05/03/" rel="canonical">
 <link href="index.txt" rel="alternate" title="Markdown" type="text/markdown">
-<script type="text/x-mathjax-config">
-MathJax.Hub.Config({
-TeX: { equationNumbers: { autoNumber: "all" } }
-})
-</script>
-<script async="" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-MML-AM_CHTML" type="text/javascript">
-</script>
 <script src="../../../js/markdown-template.js">
 </script>
 </head>
@@ -45,16 +38,16 @@ TeX: { equationNumbers: { autoNumber: "all" } }
 </ul>
 
 <ul class="nav nav-pills navbar-right">
-<li role="presentation"><a href="http://www.facebook.com/share.php?u=https%3A%2F%2Fepsil.github.io%2F2012%2F05%2F03%2F" title="Del p&#229; Facebook"><i class="fa fa-facebook-square"></i></a>
+<li role="presentation"><a href="http://www.facebook.com/share.php?u=https%3A%2F%2Fepsil.github.io%2F2012%2F05%2F03%2F" target="_blank" title="Del p&#229; Facebook"><i class="fa fa-facebook-square"></i></a>
 </li>
 
-<li role="presentation"><a href="https://twitter.com/intent/tweet?url=https%3A%2F%2Fepsil.github.io%2F2012%2F05%2F03%2F" title="Del p&#229; Twitter"><i class="fa fa-twitter-square"></i></a>
+<li role="presentation"><a href="https://twitter.com/intent/tweet?url=https%3A%2F%2Fepsil.github.io%2F2012%2F05%2F03%2F" target="_blank" title="Del p&#229; Twitter"><i class="fa fa-twitter-square"></i></a>
 </li>
 
-<li role="presentation"><a href="https://github.com/epsil/epsil.github.io/edit/master/2012/05/03/index.txt" title="Rediger p&#229; GitHub"><i class="fa fa-edit"></i></a>
+<li role="presentation"><a href="https://github.com/epsil/epsil.github.io/edit/master/2012/05/03/index.txt" target="_blank" title="Rediger p&#229; GitHub"><i class="fa fa-edit"></i></a>
 </li>
 
-<li role="presentation"><a href="https://github.com/epsil/epsil.github.io/commits/master/2012/05/03/index.txt" title="Vis historie"><i class="fa fa-history"></i></a>
+<li role="presentation"><a href="https://github.com/epsil/epsil.github.io/commits/master/2012/05/03/index.txt" target="_blank" title="Vis historie"><i class="fa fa-history"></i></a>
 </li>
 
 <li role="presentation"><a href="index.txt" title="Vis Markdown-kilde"><i class="fa fa-download"></i></a>
@@ -71,20 +64,21 @@ TeX: { equationNumbers: { autoNumber: "all" } }
 
 <article class="h-entry">
 <header>
-<h1 class="p-name"><a class="u-uid u-url" href="https://epsil.github.io/2012/05/03/" rel="bookmark" title="Permalink">Greasemonkey-skript for Last.fm</a>
+<h1 class="p-name"><a class="u-uid u-url" href="https://epsil.github.io/2012/05/03/" rel="bookmark" target="_blank" title="Permalink">Greasemonkey-skript for Last.fm</a>
 </h1>
 
-<p><a class="p-author h-card" href="https://epsil.github.io/">Vegard &#216;ye</a> <time class="dt-published" datetime="2012-05-03">2012-05-03</time></p>
+<p><a class="p-author h-card" href="https://epsil.github.io/" target="_blank" title="Open epsil.github.io in a new window">Vegard &#216;ye</a> <time class="dt-published" datetime="2012-05-03">2012-05-03</time></p>
 </header>
 
 <section class="e-content">
-<p><a href="http://last.fm/">Last.fm</a> viser <em>ikke</em> totalt antall lytt under &#171;Tracks&#187; eller &#171;Charts&#187;. Last.fm viser antall lytt <em>de siste seks m&#229;nedene</em>. Dette favoriserer nye utgivelser.</p>
+<section>
+<p><a href="http://last.fm/" target="_blank" title="Open last.fm in a new window">Last.fm</a> viser <em>ikke</em> totalt antall lytt under &#171;Tracks&#187; eller &#171;Charts&#187;. Last.fm viser antall lytt <em>de siste seks m&#229;nedene</em>. Dette favoriserer nye&#160;utgivelser.</p>
 
-<p>Hvis jeg skal bruke Last.fm til &#229; oppdage klassiske l&#229;ter, trenger jeg de totale tallene, som finnes p&#229; siden til hver enkelt l&#229;t. Kan jeg skrive et Greasemonkey-skript som importerer denne informasjonen inn i &#171;Charts&#187;? Boken <em>Greasemonkey Hacks</em> av Mark Pilgrim, fra 2005, kan v&#230;re et utgangspunkt.</p>
+<p>Hvis jeg skal bruke Last.fm til &#229; oppdage klassiske l&#229;ter, trenger jeg de totale tallene, som finnes p&#229; siden til hver enkelt l&#229;t. Kan jeg skrive et Greasemonkey-skript som importerer denne informasjonen inn i &#171;Charts&#187;? Boken <em>Greasemonkey Hacks</em> av Mark Pilgrim, fra 2005, kan v&#230;re et&#160;utgangspunkt.</p>
 
 <hr>
 
-<p><strong>Oppdatering:</strong> Jeg har lykkes! Takket v&#230;re jQuery var det ikke mye kode &#229; skrive:</p>
+<p><strong>Oppdatering:</strong> Jeg har lykkes! Takket v&#230;re jQuery var det ikke mye kode &#229;&#160;skrive:</p>
 
 <pre>
 <code class="language-javascript">$(<span class="hljs-string">"#trackChart tbody tr"</span>).each(<span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params"></span>) </span>{
@@ -98,7 +92,8 @@ TeX: { equationNumbers: { autoNumber: "all" } }
 Men, la meg se litt kvantitativt p堤ette. For 堳krive de 6 linjene over, (skum)leste jeg 4 kapitler av *Greasemonkey Hacks*, 120 sider av *JavaScript & jQuery: The Missing Manual*, og ytterligere 20 sider av *jQuery in Action*. Hvis jeg runder ned dette til 12 timers arbeid, har jeg alts堢rukt gjennomsnittlig to timer per linje kode. Det tar tid 堳kaffe seg oversikt.
 -->
 
-<p>Jeg har ogs&#229; funnet to foobar2000-komponenter, <a href="http://chronial.de/foobar2000/#foo_scrobblecharts">foo_scrobblecharts</a> og <a href="http://www.foobar2000.org/components/view/foo_softplaylists">foo_softplaylists</a>, som sorterer musikken i henhold til Last.fm. (Det later til at man <em>kan</em> kj&#248;re foobar2000 under Linux med Wine, bare man bruker <code>winetricks</code> og installerer n&#248;dvendige <abbr class="acronym" title="Dynamic-Link Library">DLL</abbr>-er (og skriften Tahoma for bedre utseende). Om dette er en <em>god</em> id&#233; er en annen sak.)</p>
+<p>Jeg har ogs&#229; funnet to foobar2000-komponenter, <a href="http://chronial.de/foobar2000/#foo_scrobblecharts" target="_blank" title="Open chronial.de in a new window">foo_scrobblecharts</a> og <a href="http://www.foobar2000.org/components/view/foo_softplaylists" target="_blank" title="Open foobar2000.org in a new window">foo_softplaylists</a>, som sorterer musikken i henhold til Last.fm. (Det later til at man <em>kan</em> kj&#248;re foobar2000 under Linux med Wine, bare man bruker <code>winetricks</code> og installerer n&#248;dvendige <abbr class="acronym" title="Dynamic-Link Library"><span class="caps">DLL</span></abbr>-er (og skriften Tahoma for bedre utseende). Om dette er en <em>god</em> id&#233; er en annen&#160;sak.)</p>
+</section>
 </section>
 </article>
 </body>

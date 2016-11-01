@@ -26,13 +26,6 @@
 <link href="../../../css/markdown-template.css" rel="stylesheet">
 <link href="https://epsil.github.io/2014/12/27/" rel="canonical">
 <link href="index.txt" rel="alternate" title="Markdown" type="text/markdown">
-<script type="text/x-mathjax-config">
-MathJax.Hub.Config({
-TeX: { equationNumbers: { autoNumber: "all" } }
-})
-</script>
-<script async="" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-MML-AM_CHTML" type="text/javascript">
-</script>
 <script src="../../../js/markdown-template.js">
 </script>
 </head>
@@ -45,16 +38,16 @@ TeX: { equationNumbers: { autoNumber: "all" } }
 </ul>
 
 <ul class="nav nav-pills navbar-right">
-<li role="presentation"><a href="http://www.facebook.com/share.php?u=https%3A%2F%2Fepsil.github.io%2F2014%2F12%2F27%2F" title="Del p&#229; Facebook"><i class="fa fa-facebook-square"></i></a>
+<li role="presentation"><a href="http://www.facebook.com/share.php?u=https%3A%2F%2Fepsil.github.io%2F2014%2F12%2F27%2F" target="_blank" title="Del p&#229; Facebook"><i class="fa fa-facebook-square"></i></a>
 </li>
 
-<li role="presentation"><a href="https://twitter.com/intent/tweet?url=https%3A%2F%2Fepsil.github.io%2F2014%2F12%2F27%2F" title="Del p&#229; Twitter"><i class="fa fa-twitter-square"></i></a>
+<li role="presentation"><a href="https://twitter.com/intent/tweet?url=https%3A%2F%2Fepsil.github.io%2F2014%2F12%2F27%2F" target="_blank" title="Del p&#229; Twitter"><i class="fa fa-twitter-square"></i></a>
 </li>
 
-<li role="presentation"><a href="https://github.com/epsil/epsil.github.io/edit/master/2014/12/27/index.txt" title="Rediger p&#229; GitHub"><i class="fa fa-edit"></i></a>
+<li role="presentation"><a href="https://github.com/epsil/epsil.github.io/edit/master/2014/12/27/index.txt" target="_blank" title="Rediger p&#229; GitHub"><i class="fa fa-edit"></i></a>
 </li>
 
-<li role="presentation"><a href="https://github.com/epsil/epsil.github.io/commits/master/2014/12/27/index.txt" title="Vis historie"><i class="fa fa-history"></i></a>
+<li role="presentation"><a href="https://github.com/epsil/epsil.github.io/commits/master/2014/12/27/index.txt" target="_blank" title="Vis historie"><i class="fa fa-history"></i></a>
 </li>
 
 <li role="presentation"><a href="index.txt" title="Vis Markdown-kilde"><i class="fa fa-download"></i></a>
@@ -71,14 +64,15 @@ TeX: { equationNumbers: { autoNumber: "all" } }
 
 <article class="h-entry">
 <header>
-<h1 class="p-name"><a class="u-uid u-url" href="https://epsil.github.io/2014/12/27/" rel="bookmark" title="Permalink">Komprimere profilmappen til Firefox</a>
+<h1 class="p-name"><a class="u-uid u-url" href="https://epsil.github.io/2014/12/27/" rel="bookmark" target="_blank" title="Permalink">Komprimere profilmappen til&#160;Firefox</a>
 </h1>
 
-<p><a class="p-author h-card" href="https://epsil.github.io/">Vegard &#216;ye</a> <time class="dt-published" datetime="2014-12-27">2014-12-27</time></p>
+<p><a class="p-author h-card" href="https://epsil.github.io/" target="_blank" title="Open epsil.github.io in a new window">Vegard &#216;ye</a> <time class="dt-published" datetime="2014-12-27">2014-12-27</time></p>
 </header>
 
 <section class="e-content">
-<p>Profilmappene til Firefox og Thunderbird kan ta stor plass p&#229; grunn av <a href="http://en.kioskea.net/faq/2285-compacting-sqlite-bases-of-firefox-3">ukomprimerte SQLite-databaser</a>. Man kan komprimere dem manuelt med f&#248;lgende kommando:</p>
+<section>
+<p>Profilmappene til Firefox og Thunderbird kan ta stor plass p&#229; grunn av <a href="http://en.kioskea.net/faq/2285-compacting-sqlite-bases-of-firefox-3" target="_blank" title="Open en.kioskea.net in a new window">ukomprimerte SQLite-databaser</a>. Man kan komprimere dem manuelt med f&#248;lgende&#160;kommando:</p>
 
 <pre>
 <code>$ for f in *.sqlite; do sqlite3 "$f" "VACUUM"; done</code>
@@ -86,7 +80,8 @@ TeX: { equationNumbers: { autoNumber: "all" } }
 
 <p>Firefox-profilmappen befinner seg i <code>~/Library/Application Support/Firefox/Profiles</code> og Thunderbird-profilmappen i <code>~/Library/Thunderbird/Profiles</code>.</p>
 
-<p>Utvidelsen <a href="https://addons.mozilla.org/en-US/firefox/addon/epubreader/">EPUBReader</a> kan lage en stor <code>epub</code>-mappe i profilmappen til Firefox. Denne er det bare &#229; slette med jevne mellomrom.</p>
+<p>Utvidelsen <a href="https://addons.mozilla.org/en-US/firefox/addon/epubreader/" target="_blank" title="Open addons.mozilla.org in a new window">EPUBReader</a> kan lage en stor <code>epub</code>-mappe i profilmappen til Firefox. Denne er det bare &#229; slette med jevne&#160;mellomrom.</p>
+</section>
 </section>
 </article>
 </body>

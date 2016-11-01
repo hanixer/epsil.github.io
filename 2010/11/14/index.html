@@ -26,13 +26,6 @@
 <link href="../../../css/markdown-template.css" rel="stylesheet">
 <link href="https://epsil.github.io/2010/11/14/" rel="canonical">
 <link href="index.txt" rel="alternate" title="Markdown" type="text/markdown">
-<script type="text/x-mathjax-config">
-MathJax.Hub.Config({
-TeX: { equationNumbers: { autoNumber: "all" } }
-})
-</script>
-<script async="" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-MML-AM_CHTML" type="text/javascript">
-</script>
 <script src="../../../js/markdown-template.js">
 </script>
 </head>
@@ -45,16 +38,16 @@ TeX: { equationNumbers: { autoNumber: "all" } }
 </ul>
 
 <ul class="nav nav-pills navbar-right">
-<li role="presentation"><a href="http://www.facebook.com/share.php?u=https%3A%2F%2Fepsil.github.io%2F2010%2F11%2F14%2F" title="Del p&#229; Facebook"><i class="fa fa-facebook-square"></i></a>
+<li role="presentation"><a href="http://www.facebook.com/share.php?u=https%3A%2F%2Fepsil.github.io%2F2010%2F11%2F14%2F" target="_blank" title="Del p&#229; Facebook"><i class="fa fa-facebook-square"></i></a>
 </li>
 
-<li role="presentation"><a href="https://twitter.com/intent/tweet?url=https%3A%2F%2Fepsil.github.io%2F2010%2F11%2F14%2F" title="Del p&#229; Twitter"><i class="fa fa-twitter-square"></i></a>
+<li role="presentation"><a href="https://twitter.com/intent/tweet?url=https%3A%2F%2Fepsil.github.io%2F2010%2F11%2F14%2F" target="_blank" title="Del p&#229; Twitter"><i class="fa fa-twitter-square"></i></a>
 </li>
 
-<li role="presentation"><a href="https://github.com/epsil/epsil.github.io/edit/master/2010/11/14/index.txt" title="Rediger p&#229; GitHub"><i class="fa fa-edit"></i></a>
+<li role="presentation"><a href="https://github.com/epsil/epsil.github.io/edit/master/2010/11/14/index.txt" target="_blank" title="Rediger p&#229; GitHub"><i class="fa fa-edit"></i></a>
 </li>
 
-<li role="presentation"><a href="https://github.com/epsil/epsil.github.io/commits/master/2010/11/14/index.txt" title="Vis historie"><i class="fa fa-history"></i></a>
+<li role="presentation"><a href="https://github.com/epsil/epsil.github.io/commits/master/2010/11/14/index.txt" target="_blank" title="Vis historie"><i class="fa fa-history"></i></a>
 </li>
 
 <li role="presentation"><a href="index.txt" title="Vis Markdown-kilde"><i class="fa fa-download"></i></a>
@@ -78,10 +71,10 @@ TeX: { equationNumbers: { autoNumber: "all" } }
 
 <article class="h-entry">
 <header>
-<h1 class="p-name"><a class="u-uid u-url" href="https://epsil.github.io/2010/11/14/" rel="bookmark" title="Permalink">Bruke <code>grep</code> og <code>find</code></a>
+<h1 class="p-name"><a class="u-uid u-url" href="https://epsil.github.io/2010/11/14/" rel="bookmark" target="_blank" title="Permalink">Bruke <code>grep</code> og <code>find</code></a>
 </h1>
 
-<p><a class="p-author h-card" href="https://epsil.github.io/">Vegard &#216;ye</a> <time class="dt-published" datetime="2010-11-14">2010-11-14</time></p>
+<p><a class="p-author h-card" href="https://epsil.github.io/" target="_blank" title="Open epsil.github.io in a new window">Vegard &#216;ye</a> <time class="dt-published" datetime="2010-11-14">2010-11-14</time></p>
 </header>
 
 <section class="e-content">
@@ -102,7 +95,7 @@ TeX: { equationNumbers: { autoNumber: "all" } }
 <code>$ grep -Ri --include="*.txt" "test" .</code>
 </pre>
 
-<p>Det finnes ogs&#229; en <code>--exclude</code>-opsjon for &#229; ekskludere filer fra s&#248;ket.</p>
+<p>Det finnes ogs&#229; en <code>--exclude</code>-opsjon for &#229; ekskludere filer fra&#160;s&#248;ket.</p>
 </div>
 </section>
 
@@ -112,13 +105,13 @@ TeX: { equationNumbers: { autoNumber: "all" } }
 
 <div class="collapse in" id="find-section">
 <section>
-<p>For &#229; s&#248;ke i filenes <em>filnavn</em>, kan man bruke <code>find</code>. Merk at hvis man skal bruke <code>find</code> sammen med <abbr title="for eksempel">f.eks.</abbr> <code>rm</code> p&#229; filnavn som inneholder mellomrom, m&#229; man ta visse <a href="http://stackoverflow.com/questions/9612090/how-to-loop-through-file-names-returned-by-find#9612232">forh&#229;ndsregler</a>. Den mest opplagte besvergelsen ville v&#230;re:</p>
+<p>For &#229; s&#248;ke i filenes <em>filnavn</em>, kan man bruke <code>find</code>. Merk at hvis man skal bruke <code>find</code> sammen med <abbr title="for eksempel">f.eks.</abbr> <code>rm</code> p&#229; filnavn som inneholder mellomrom, m&#229; man ta visse <a href="http://stackoverflow.com/questions/9612090/how-to-loop-through-file-names-returned-by-find#9612232" target="_blank" title="Open stackoverflow.com in a new window">forh&#229;ndsregler</a>. Den mest opplagte besvergelsen ville&#160;v&#230;re:</p>
 
 <pre>
 <code>$ find . -name &lt;PATTERN&gt; | xargs rm</code>
 </pre>
 
-<p>Men dette fungerer alts&#229; bare p&#229; filnavn uten mellomrom. For mer kronglete filer m&#229; man bruke en av disse:</p>
+<p>Men dette fungerer alts&#229; bare p&#229; filnavn uten mellomrom. For mer kronglete filer m&#229; man bruke en av&#160;disse:</p>
 
 <pre>
 <code>$ find . -name &lt;PATTERN&gt; -exec rm {} \;

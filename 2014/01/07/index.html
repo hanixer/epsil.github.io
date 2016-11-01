@@ -26,13 +26,6 @@
 <link href="../../../css/markdown-template.css" rel="stylesheet">
 <link href="https://epsil.github.io/2014/01/07/" rel="canonical">
 <link href="index.txt" rel="alternate" title="Markdown" type="text/markdown">
-<script type="text/x-mathjax-config">
-MathJax.Hub.Config({
-TeX: { equationNumbers: { autoNumber: "all" } }
-})
-</script>
-<script async="" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-MML-AM_CHTML" type="text/javascript">
-</script>
 <script src="../../../js/markdown-template.js">
 </script>
 </head>
@@ -45,16 +38,16 @@ TeX: { equationNumbers: { autoNumber: "all" } }
 </ul>
 
 <ul class="nav nav-pills navbar-right">
-<li role="presentation"><a href="http://www.facebook.com/share.php?u=https%3A%2F%2Fepsil.github.io%2F2014%2F01%2F07%2F" title="Del p&#229; Facebook"><i class="fa fa-facebook-square"></i></a>
+<li role="presentation"><a href="http://www.facebook.com/share.php?u=https%3A%2F%2Fepsil.github.io%2F2014%2F01%2F07%2F" target="_blank" title="Del p&#229; Facebook"><i class="fa fa-facebook-square"></i></a>
 </li>
 
-<li role="presentation"><a href="https://twitter.com/intent/tweet?url=https%3A%2F%2Fepsil.github.io%2F2014%2F01%2F07%2F" title="Del p&#229; Twitter"><i class="fa fa-twitter-square"></i></a>
+<li role="presentation"><a href="https://twitter.com/intent/tweet?url=https%3A%2F%2Fepsil.github.io%2F2014%2F01%2F07%2F" target="_blank" title="Del p&#229; Twitter"><i class="fa fa-twitter-square"></i></a>
 </li>
 
-<li role="presentation"><a href="https://github.com/epsil/epsil.github.io/edit/master/2014/01/07/index.txt" title="Rediger p&#229; GitHub"><i class="fa fa-edit"></i></a>
+<li role="presentation"><a href="https://github.com/epsil/epsil.github.io/edit/master/2014/01/07/index.txt" target="_blank" title="Rediger p&#229; GitHub"><i class="fa fa-edit"></i></a>
 </li>
 
-<li role="presentation"><a href="https://github.com/epsil/epsil.github.io/commits/master/2014/01/07/index.txt" title="Vis historie"><i class="fa fa-history"></i></a>
+<li role="presentation"><a href="https://github.com/epsil/epsil.github.io/commits/master/2014/01/07/index.txt" target="_blank" title="Vis historie"><i class="fa fa-history"></i></a>
 </li>
 
 <li role="presentation"><a href="index.txt" title="Vis Markdown-kilde"><i class="fa fa-download"></i></a>
@@ -71,14 +64,15 @@ TeX: { equationNumbers: { autoNumber: "all" } }
 
 <article class="h-entry">
 <header>
-<h1 class="p-name"><a class="u-uid u-url" href="https://epsil.github.io/2014/01/07/" rel="bookmark" title="Permalink">Oppgradere Python p&#229; <abbr class="acronym" title="Operating System 10">OS X</abbr></a>
+<h1 class="p-name"><a class="u-uid u-url" href="https://epsil.github.io/2014/01/07/" rel="bookmark" target="_blank" title="Permalink">Oppgradere Python p&#229; <abbr class="acronym" title="Operating System 10"><span class="caps">OS</span>&#160;X</abbr></a>
 </h1>
 
-<p><a class="p-author h-card" href="https://epsil.github.io/">Vegard &#216;ye</a> <time class="dt-published" datetime="2014-01-07">2014-01-07</time></p>
+<p><a class="p-author h-card" href="https://epsil.github.io/" target="_blank" title="Open epsil.github.io in a new window">Vegard &#216;ye</a> <time class="dt-published" datetime="2014-01-07">2014-01-07</time></p>
 </header>
 
 <section class="e-content">
-<p>Pakkeh&#229;ndtering p&#229; <abbr class="acronym" title="Operating System 10">OS X</abbr> er et herk uten like. Her er det som skulle til for &#229; installere Python-biblioteket <a href="http://eyed3.nicfit.net/installation.html">eyeD3</a> med <code>pip</code>. F&#248;rst, <a href="http://www.pip-installer.org/en/latest/installing.html">installer pip</a> med <code>easy_install</code>:</p>
+<section>
+<p>Pakkeh&#229;ndtering p&#229; <abbr class="acronym" title="Operating System 10"><span class="caps">OS</span> X</abbr> er et herk uten like. Her er det som skulle til for &#229; installere Python-biblioteket <a href="http://eyed3.nicfit.net/installation.html" target="_blank" title="Open eyed3.nicfit.net in a new window">eyeD3</a> med <code>pip</code>. F&#248;rst, <a href="http://www.pip-installer.org/en/latest/installing.html" target="_blank" title="Open pip-installer.org in a new window">installer pip</a> med <code>easy_install</code>:</p>
 
 <pre>
 <code>$ sudo easy_install pip</code>
@@ -90,19 +84,19 @@ TeX: { equationNumbers: { autoNumber: "all" } }
 <code>$ pip install --upgrade setuptools</code>
 </pre>
 
-<p>Hvis dette ikke fungerer, pr&#248;v:</p>
+<p>Hvis dette ikke fungerer,&#160;pr&#248;v:</p>
 
 <pre>
 <code>$ sudo pip install --no-use-wheel --upgrade setuptools</code>
 </pre>
 
-<p>Alternativt, last ned og kj&#248;r det offisielle <a href="https://pypi.python.org/pypi/setuptools#unix-based-systems-including-mac-os-x">installasjonsskriptet</a>:</p>
+<p>Alternativt, last ned og kj&#248;r det offisielle <a href="https://pypi.python.org/pypi/setuptools#unix-based-systems-including-mac-os-x" target="_blank" title="Open pypi.python.org in a new window">installasjonsskriptet</a>:</p>
 
 <pre>
 <code>$ wget https://bitbucket.org/pypa/setuptools/raw/bootstrap/ez_setup.py -O - | sudo python</code>
 </pre>
 
-<p>(Hvis <code>wget</code> ikke er installert enn&#229;, gj&#248;r <code>$ brew install wget</code>. Hvis <code>brew</code> krangler, kj&#248;r <code>$ brew doctor</code> og p&#229;se at filrettigheter er som de skal v&#230;re.)</p>
+<p>(Hvis <code>wget</code> ikke er installert enn&#229;, gj&#248;r <code>$ brew install wget</code>. Hvis <code>brew</code> krangler, kj&#248;r <code>$ brew doctor</code> og p&#229;se at filrettigheter er som de skal&#160;v&#230;re.)</p>
 
 <p>N&#229;r <code>pip</code> <em>og</em> <code>setuptools</code> er installert, kan <code>pip</code>-pakken for <code>eye3D</code> finnes med <code>pip search</code>:</p>
 
@@ -110,6 +104,7 @@ TeX: { equationNumbers: { autoNumber: "all" } }
 <code>$ pip search eyeD3
 $ pip install eyeD3-pip</code>
 </pre>
+</section>
 </section>
 </article>
 </body>

@@ -40,16 +40,16 @@
 </ul>
 
 <ul class="nav nav-pills navbar-right">
-<li role="presentation"><a href="http://www.facebook.com/share.php?u=https%3A%2F%2Fepsil.github.io%2Fgll%2F" title="Share on Facebook"><i class="fa fa-facebook-square"></i></a>
+<li role="presentation"><a href="http://www.facebook.com/share.php?u=https%3A%2F%2Fepsil.github.io%2Fgll%2F" target="_blank" title="Share on Facebook"><i class="fa fa-facebook-square"></i></a>
 </li>
 
-<li role="presentation"><a href="https://twitter.com/intent/tweet?url=https%3A%2F%2Fepsil.github.io%2Fgll%2F" title="Share on Twitter"><i class="fa fa-twitter-square"></i></a>
+<li role="presentation"><a href="https://twitter.com/intent/tweet?url=https%3A%2F%2Fepsil.github.io%2Fgll%2F" target="_blank" title="Share on Twitter"><i class="fa fa-twitter-square"></i></a>
 </li>
 
-<li role="presentation"><a href="https://github.com/epsil/epsil.github.io/edit/master/gll/index.txt" title="Edit on GitHub"><i class="fa fa-edit"></i></a>
+<li role="presentation"><a href="https://github.com/epsil/epsil.github.io/edit/master/gll/index.txt" target="_blank" title="Edit on GitHub"><i class="fa fa-edit"></i></a>
 </li>
 
-<li role="presentation"><a href="https://github.com/epsil/epsil.github.io/commits/master/gll/index.txt" title="View history"><i class="fa fa-history"></i></a>
+<li role="presentation"><a href="https://github.com/epsil/epsil.github.io/commits/master/gll/index.txt" target="_blank" title="View history"><i class="fa fa-history"></i></a>
 </li>
 
 <li role="presentation"><a href="index.txt" title="Get Markdown source"><i class="fa fa-download"></i></a>
@@ -88,10 +88,10 @@
 
 <article class="h-entry">
 <header>
-<h1 class="p-name"><a class="u-uid u-url" href="https://epsil.github.io/gll/" rel="bookmark" title="Permalink">General Parser Combinators in&#160;Racket</a>
+<h1 class="p-name"><a class="u-uid u-url" href="https://epsil.github.io/gll/" rel="bookmark" target="_blank" title="Permalink">General Parser Combinators in&#160;Racket</a>
 </h1>
 
-<p><a class="p-author h-card" href="https://epsil.github.io/">Vegard &#216;ye</a>
+<p><a class="p-author h-card" href="https://epsil.github.io/" target="_blank" title="Open epsil.github.io in a new window">Vegard &#216;ye</a>
 </p>
 
 <p class="p-summary">How to implement a general parser combinator framework which handles left-recursive and ambiguous&#160;grammars.</p>
@@ -99,15 +99,15 @@
 
 <section class="e-content">
 <section>
-<p>This article explains how to implement a general parser combinator framework in <a href="http://www.racket-lang.org/">Racket</a>, a Lisp dialect with roots in Scheme. However, the principles are not specific to Racket and could be expressed in any language; porting is outlined at the end of the&#160;article.</p>
+<p>This article explains how to implement a general parser combinator framework in <a href="http://www.racket-lang.org/" target="_blank" title="Open racket-lang.org in a new window">Racket</a>, a Lisp dialect with roots in Scheme. However, the principles are not specific to Racket and could be expressed in any language; porting is outlined at the end of the&#160;article.</p>
 
-<p>All the code is <a href="https://github.com/epsil/gll">released freely on GitHub</a> under the <a href="LICENSE"><abbr class="acronym" title="Massachusetts Institute of Technology"><span class="caps">MIT</span></abbr> License</a>. You can <strong>download</strong> a <a href="https://github.com/epsil/gll/archive/master.zip">Zip file</a>, or you can <strong>clone</strong> the repository with the following&#160;command:</p>
+<p>All the code is <a href="https://github.com/epsil/gll" target="_blank" title="Open github.com in a new window">released freely on GitHub</a> under the <a href="LICENSE"><abbr class="acronym" title="Massachusetts Institute of Technology"><span class="caps">MIT</span></abbr> License</a>. You can <strong>download</strong> a <a href="https://github.com/epsil/gll/archive/master.zip" target="_blank" title="Open github.com in a new window">Zip file</a>, or you can <strong>clone</strong> the repository with the following&#160;command:</p>
 
 <pre>
 <code>git clone https://github.com/epsil/gll.git</code>
 </pre>
 
-<p>The repository also includes the full text of the article in <a href="https://raw.githubusercontent.com/epsil/gll/master/article/index.md">Markdown format</a> (<a href="http://pandoc.org/MANUAL.html#pandocs-markdown">Pandoc flavor</a>). I welcome suggestions and improvements! Feel free to open an issue on the <a href="https://github.com/epsil/gll/issues">bug tracker</a>, or to <a href="https://github.com/epsil/gll">fork the repository</a>. You can also contact me, Vegard &#216;ye, at <code>vegard (underline) oye (at) hotmail (dot) com</code>.</p>
+<p>The repository also includes the full text of the article in <a href="https://raw.githubusercontent.com/epsil/gll/master/article/index.md" target="_blank" title="Open raw.githubusercontent.com in a new window">Markdown format</a> (<a href="http://pandoc.org/MANUAL.html#pandocs-markdown" target="_blank" title="Open pandoc.org in a new window">Pandoc flavor</a>). I welcome suggestions and improvements! Feel free to open an issue on the <a href="https://github.com/epsil/gll/issues" target="_blank" title="Open github.com in a new window">bug tracker</a>, or to <a href="https://github.com/epsil/gll" target="_blank" title="Open github.com in a new window">fork the repository</a>. You can also contact me, Vegard &#216;ye, at <code>vegard (underline) oye (at) hotmail (dot) com</code>.</p>
 
 <p>The article aims to be an accessible introduction to the ideas found in the papers &#8220;<a href="#johnson95-memoization" title="&#8220;Memoization in Top-Down Parsing&#8221; (PDF), Mark Johnson, Brown University, 1995. Published in Computational Linguistics, Volume 21, Number 3. Covers regular memoization, continuation-passing style, and memoization of continuation-passing style&#160;functions.">Memoization in Top-Down Parsing</a>&#8221; by Mark Johnson and &#8220;<a href="#spiewak10-generalized" title="&#8220;Generalized Parser Combinators&#8221; (PDF), Daniel Spiewak, University of Wisconsin, 2010. Implemented as the gll-combinators Scala library, using continuation-passing style and trampolined dispatch. Offers a very accessible introduction to the GLL&#160;algorithm.">Generalized Parser Combinators</a>&#8221; by Daniel Spiewak. If you are interested in the topic, I especially recommend you go on to read Spiewak&#8217;s paper. It is very good. Other reading suggestions are provided <a href="#further-reading" title="Further reading">at the&#160;end</a>.</p>
 </section>
@@ -1010,25 +1010,25 @@ factor -&gt; "(" expr ")"
 <p>For more information, follow the&#160;references:</p>
 
 <ul>
-<li id="abelson96-sicp"><a href="https://mitpress.mit.edu/sicp/full-text/book/book.html"><em>Structure and Interpretation of Computer Programs</em></a> (<abbr class="acronym" title="HyperText Markup Language"><span class="caps">HTML</span></abbr>), second edition, Harold Abelson and Gerald Jay Sussman, The Massachusetts Institute of Technology, 1996. The example grammar is from section 4.3.2, &#8220;<a href="http://mitpress.mit.edu/sicp/full-text/book/book-Z-H-28.html#%25_sec_Temp_618">Examples of Nondeterministic Programs: Parsing natural language</a>&#8221;, while the memoization wrapper is outlined in exercise 3.27 from section 3.3.3, &#8220;<a href="http://mitpress.mit.edu/sicp/full-text/book/book-Z-H-22.html#%25_thm_3.27">Representing Tables</a>&#8221;. Note that an updated and <a href="http://sarabander.github.io/sicp/">unofficial <abbr class="acronym" title="HyperText Markup Language version 5"><span class="caps">HTML5</span></abbr> version</a> of the book offers a vastly improved reading experience on modern&#160;devices.</li>
+<li id="abelson96-sicp"><a href="https://mitpress.mit.edu/sicp/full-text/book/book.html" target="_blank" title="Open mitpress.mit.edu in a new window"><em>Structure and Interpretation of Computer Programs</em></a> (<abbr class="acronym" title="HyperText Markup Language"><span class="caps">HTML</span></abbr>), second edition, Harold Abelson and Gerald Jay Sussman, The Massachusetts Institute of Technology, 1996. The example grammar is from section 4.3.2, &#8220;<a href="http://mitpress.mit.edu/sicp/full-text/book/book-Z-H-28.html#%25_sec_Temp_618" target="_blank" title="Open mitpress.mit.edu in a new window">Examples of Nondeterministic Programs: Parsing natural language</a>&#8221;, while the memoization wrapper is outlined in exercise 3.27 from section 3.3.3, &#8220;<a href="http://mitpress.mit.edu/sicp/full-text/book/book-Z-H-22.html#%25_thm_3.27" target="_blank" title="Open mitpress.mit.edu in a new window">Representing Tables</a>&#8221;. Note that an updated and <a href="http://sarabander.github.io/sicp/" target="_blank" title="Open sarabander.github.io in a new window">unofficial <abbr class="acronym" title="HyperText Markup Language version 5"><span class="caps">HTML5</span></abbr> version</a> of the book offers a vastly improved reading experience on modern&#160;devices.</li>
 
-<li id="johnson95-memoization"><span class="dquo">&#8220;</span><a href="http://citeseerx.ist.psu.edu/viewdoc/summary?doi=10.1.1.14.3000">Memoization in Top-Down Parsing</a>&#8221; (<abbr class="acronym" title="Portable Document Format"><span class="caps">PDF</span></abbr>), Mark Johnson, Brown University, 1995. Published in <em>Computational Linguistics</em>, Volume 21, Number 3. Covers regular memoization, continuation-passing style, and memoization of continuation-passing style&#160;functions.</li>
+<li id="johnson95-memoization"><span class="dquo">&#8220;</span><a href="http://citeseerx.ist.psu.edu/viewdoc/summary?doi=10.1.1.14.3000" target="_blank" title="Open citeseerx.ist.psu.edu in a new window">Memoization in Top-Down Parsing</a>&#8221; (<abbr class="acronym" title="Portable Document Format"><span class="caps">PDF</span></abbr>), Mark Johnson, Brown University, 1995. Published in <em>Computational Linguistics</em>, Volume 21, Number 3. Covers regular memoization, continuation-passing style, and memoization of continuation-passing style&#160;functions.</li>
 
-<li id="spiewak10-generalized"><span class="dquo">&#8220;</span><a href="http://www.cs.uwm.edu/~dspiewak/papers/generalized-parser-combinators.pdf">Generalized Parser Combinators</a>&#8221; (<abbr class="acronym" title="Portable Document Format"><span class="caps">PDF</span></abbr>), Daniel Spiewak, University of Wisconsin, 2010. Implemented as the <a href="https://github.com/djspiewak/gll-combinators">gll-combinators</a> Scala library, using continuation-passing style and trampolined dispatch. Offers a very accessible introduction to the <abbr class="acronym" title="Generalized LL"><span class="caps">GLL</span></abbr>&#160;algorithm.</li>
+<li id="spiewak10-generalized"><span class="dquo">&#8220;</span><a href="http://www.cs.uwm.edu/~dspiewak/papers/generalized-parser-combinators.pdf" target="_blank" title="Open cs.uwm.edu in a new window">Generalized Parser Combinators</a>&#8221; (<abbr class="acronym" title="Portable Document Format"><span class="caps">PDF</span></abbr>), Daniel Spiewak, University of Wisconsin, 2010. Implemented as the <a href="https://github.com/djspiewak/gll-combinators" target="_blank" title="Open github.com in a new window">gll-combinators</a> Scala library, using continuation-passing style and trampolined dispatch. Offers a very accessible introduction to the <abbr class="acronym" title="Generalized LL"><span class="caps">GLL</span></abbr>&#160;algorithm.</li>
 
-<li id="grune08-parsing"><a href="http://dickgrune.com/Books/PTAPG_2nd_Edition/"><em>Parsing Techniques: A Practical Guide</em></a>, second edition, Dick Grune and Ceriel <span class="caps">J. H.</span> Jacobs, Springer, 2008. Chapter 11 contains a richly illustrated description of generalized <abbr class="acronym" title="Left-to-right Left-most derivation"><span class="caps">LL</span></abbr>&#160;parsing.</li>
+<li id="grune08-parsing"><a href="http://dickgrune.com/Books/PTAPG_2nd_Edition/" target="_blank" title="Open dickgrune.com in a new window"><em>Parsing Techniques: A Practical Guide</em></a>, second edition, Dick Grune and Ceriel <span class="caps">J. H.</span> Jacobs, Springer, 2008. Chapter 11 contains a richly illustrated description of generalized <abbr class="acronym" title="Left-to-right Left-most derivation"><span class="caps">LL</span></abbr>&#160;parsing.</li>
 
-<li id="johnstone09-gll"><span class="dquo">&#8220;</span><a href="http://ldta.info/2009/ldta2009proceedings.pdf"><abbr class="acronym" title="Generalized LL"><span class="caps">GLL</span></abbr> Parsing</a>&#8221; (<abbr class="acronym" title="Portable Document Format"><span class="caps">PDF</span></abbr>), Adrian Johnstone and Elizabeth Scott, University of London, 2009. Published in <em>Proceedings of <abbr class="acronym" title="Language Descriptions, Tools and Applications"><span class="caps">LDTA</span></abbr></em>. Explains the <abbr class="acronym" title="Generalized LL"><span class="caps">GLL</span></abbr> algorithm in abstract&#160;terms.</li>
+<li id="johnstone09-gll"><span class="dquo">&#8220;</span><a href="http://ldta.info/2009/ldta2009proceedings.pdf" target="_blank" title="Open ldta.info in a new window"><abbr class="acronym" title="Generalized LL"><span class="caps">GLL</span></abbr> Parsing</a>&#8221; (<abbr class="acronym" title="Portable Document Format"><span class="caps">PDF</span></abbr>), Adrian Johnstone and Elizabeth Scott, University of London, 2009. Published in <em>Proceedings of <abbr class="acronym" title="Language Descriptions, Tools and Applications"><span class="caps">LDTA</span></abbr></em>. Explains the <abbr class="acronym" title="Generalized LL"><span class="caps">GLL</span></abbr> algorithm in abstract&#160;terms.</li>
 
-<li id="johnstone11-modelling"><span class="dquo">&#8220;</span><a href="http://link.springer.com/chapter/10.1007%2F978-3-642-19440-5_4">Modelling <abbr class="acronym" title="Generalized LL"><span class="caps">GLL</span></abbr> Parser Implementations</a>&#8221;, Adrian Johnstone and Elizabeth Scott, University of London, 2011. Lecture Notes in <em>Computer Science</em>, Volume 6563. Models an implementation of the <abbr class="acronym" title="Generalized LL"><span class="caps">GLL</span></abbr> algorithm in a theoretical&#160;language.</li>
+<li id="johnstone11-modelling"><span class="dquo">&#8220;</span><a href="http://link.springer.com/chapter/10.1007%2F978-3-642-19440-5_4" target="_blank" title="Open link.springer.com in a new window">Modelling <abbr class="acronym" title="Generalized LL"><span class="caps">GLL</span></abbr> Parser Implementations</a>&#8221;, Adrian Johnstone and Elizabeth Scott, University of London, 2011. Lecture Notes in <em>Computer Science</em>, Volume 6563. Models an implementation of the <abbr class="acronym" title="Generalized LL"><span class="caps">GLL</span></abbr> algorithm in a theoretical&#160;language.</li>
 </ul>
 
-<p>Comments? Suggestions? Post them at the <a href="https://github.com/epsil/gll/issues">bug tracker</a>!</p>
+<p>Comments? Suggestions? Post them at the <a href="https://github.com/epsil/gll/issues" target="_blank" title="Open github.com in a new window">bug tracker</a>!</p>
 
 <figure><a href="LICENSE"><img alt="" src="shield.svg"></a>
 </figure>
 
-<p><i class="fa fa-github"></i> <a href="https://github.com/epsil">Vegard &#216;ye</a> |&#160;2012</p>
+<p><i class="fa fa-github"></i> <a href="https://github.com/epsil" target="_blank" title="Open github.com in a new window">Vegard &#216;ye</a> |&#160;2012</p>
 </div>
 </section>
 <!-- Abbreviations -->

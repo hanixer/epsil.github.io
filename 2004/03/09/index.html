@@ -38,16 +38,16 @@
 </ul>
 
 <ul class="nav nav-pills navbar-right">
-<li role="presentation"><a href="http://www.facebook.com/share.php?u=https%3A%2F%2Fepsil.github.io%2F2004%2F03%2F09%2F" title="Del p&#229; Facebook"><i class="fa fa-facebook-square"></i></a>
+<li role="presentation"><a href="http://www.facebook.com/share.php?u=https%3A%2F%2Fepsil.github.io%2F2004%2F03%2F09%2F" target="_blank" title="Del p&#229; Facebook"><i class="fa fa-facebook-square"></i></a>
 </li>
 
-<li role="presentation"><a href="https://twitter.com/intent/tweet?url=https%3A%2F%2Fepsil.github.io%2F2004%2F03%2F09%2F" title="Del p&#229; Twitter"><i class="fa fa-twitter-square"></i></a>
+<li role="presentation"><a href="https://twitter.com/intent/tweet?url=https%3A%2F%2Fepsil.github.io%2F2004%2F03%2F09%2F" target="_blank" title="Del p&#229; Twitter"><i class="fa fa-twitter-square"></i></a>
 </li>
 
-<li role="presentation"><a href="https://github.com/epsil/epsil.github.io/edit/master/2004/03/09/index.txt" title="Rediger p&#229; GitHub"><i class="fa fa-edit"></i></a>
+<li role="presentation"><a href="https://github.com/epsil/epsil.github.io/edit/master/2004/03/09/index.txt" target="_blank" title="Rediger p&#229; GitHub"><i class="fa fa-edit"></i></a>
 </li>
 
-<li role="presentation"><a href="https://github.com/epsil/epsil.github.io/commits/master/2004/03/09/index.txt" title="Vis historie"><i class="fa fa-history"></i></a>
+<li role="presentation"><a href="https://github.com/epsil/epsil.github.io/commits/master/2004/03/09/index.txt" target="_blank" title="Vis historie"><i class="fa fa-history"></i></a>
 </li>
 
 <li role="presentation"><a href="index.txt" title="Vis Markdown-kilde"><i class="fa fa-download"></i></a>
@@ -64,13 +64,14 @@
 
 <article class="h-entry">
 <header>
-<h1 class="p-name"><a class="u-uid u-url" href="https://epsil.github.io/2004/03/09/" rel="bookmark" title="Permalink">Gruppering av <abbr class="acronym" title="Cascading Style Sheets"><span class="caps">CSS</span></abbr>-stilark</a>
+<h1 class="p-name"><a class="u-uid u-url" href="https://epsil.github.io/2004/03/09/" rel="bookmark" target="_blank" title="Permalink">Gruppering av <abbr class="acronym" title="Cascading Style Sheets"><span class="caps">CSS</span></abbr>-stilark</a>
 </h1>
 
-<p><a class="p-author h-card" href="https://epsil.github.io/">Vegard &#216;ye</a> <time class="dt-published" datetime="2004-03-09">2004-03-09</time></p>
+<p><a class="p-author h-card" href="https://epsil.github.io/" target="_blank" title="Open epsil.github.io in a new window">Vegard &#216;ye</a> <time class="dt-published" datetime="2004-03-09">2004-03-09</time></p>
 </header>
 
 <section class="e-content">
+<section>
 <p>I <abbr class="acronym" title="HyperText Markup Language"><span class="caps">HTML</span></abbr> kan du med <code class="language-html">link</code>-elementet angi tre typer eksterne stilsett&#160;(stilark):</p>
 
 <ul>
@@ -109,7 +110,7 @@
 <code class="language-html"><span class="hljs-tag">&lt;<span class="hljs-name">link</span> <span class="hljs-attr">href</span>=<span class="hljs-string">"stilark.css"</span> <span class="hljs-attr">media</span>=<span class="hljs-string">"print,screen"</span> <span class="hljs-attr">rel</span>=<span class="hljs-string">"stylesheet"</span> <span class="hljs-attr">type</span>=<span class="hljs-string">"text/css"</span>&gt;</span></code>
 </pre>
 
-<p>Hva slags <a href="http://www.w3.org/TR/html4/types.html#type-media-descriptors">mediebeskrivelser</a> du kan bruke og hva de st&#229;r for, er beskrevet i <a href="http://www.w3.org/TR/html4/"><abbr class="acronym" title="HyperText Markup Language"><span class="caps">HTML</span></abbr>&#160;4.01-spesifikasjonen</a>.</p>
+<p>Hva slags <a href="http://www.w3.org/TR/html4/types.html#type-media-descriptors" target="_blank" title="Open w3.org in a new window">mediebeskrivelser</a> du kan bruke og hva de st&#229;r for, er beskrevet i <a href="http://www.w3.org/TR/html4/" target="_blank" title="Open w3.org in a new window"><abbr class="acronym" title="HyperText Markup Language"><span class="caps">HTML</span></abbr>&#160;4.01-spesifikasjonen</a>.</p>
 
 <p>Alt dette er vel og bra dersom du kun &#248;nsker ett utseende for siden din, med noe utskriftstilpasning og muligens litt ekstra tilrettelegging for andre medier. Men hva om du kunne tenke deg &#229; utstyre siden din med <em>flere stiler</em>, slik at den bes&#248;kende kan velge den vedkommende liker best? Da m&#229; vi gj&#248;re oss kjent med <code class="language-html">title</code>-attributtet, som vi &#8211; innlysende nok &#8211; bruker for &#229; gi ett eller flere stilsett en <em>tittel</em>. Jeg sier &#171;ett eller flere&#187; fordi du p&#229; denne m&#229;ten kan <em>gruppere</em> stilsett, og <abbr title="for eksempel">f.eks.</abbr> samle et generelt sideoppsett som inkluderer mindre tilpasninger til papir under <em>ett</em>&#160;navn.</p>
 
@@ -144,7 +145,8 @@
 <code class="language-html"><span class="hljs-tag">&lt;<span class="hljs-name">link</span> <span class="hljs-attr">href</span>=<span class="hljs-string">"sitrongul.css"</span> <span class="hljs-attr">rel</span>=<span class="hljs-string">"alternate stylesheet"</span> <span class="hljs-attr">title</span>=<span class="hljs-string">"Sitrongul"</span> <span class="hljs-attr">type</span>=<span class="hljs-string">"text/css"</span>&gt;</span></code>
 </pre>
 
-<p>Dersom dette legges til etter stilen &#171;Marinebl&#229;&#187;, kan brukeren skifte utseende p&#229; siden ved &#229; velge den alternative stilen &#171;Sitrongul&#187; med en funksjon i nettleseren. B&#229;de Opera og Mozilla &#8211; men ikke Internet Explorer &#8211; er utstyrt med dette. Ettersom <abbr class="acronym" title="Internet Explorer"><span class="caps">IE</span></abbr> fortsatt er den mest popul&#230;re nettleseren generelt sett, er det blitt vanlig &#229; ta i bruk en <a href="http://www.alistapart.com/articles/alternate/">JavaScript-l&#248;sning</a> som lar den bes&#248;kende velge stil ved &#229; klikke p&#229; lenker p&#229; selve siden. Dette g&#229;r imidlertid p&#229; bekostning av markeringen, som ikke vil gi noen s&#230;rlig mening i en nettleser som ikke st&#248;tter JavaScript (eller som har JavaScript avsl&#229;tt). (En annen mulighet er &#229; la skripting p&#229; serversiden gj&#248;re dynamiske inngrep i <abbr class="acronym" title="HyperText Markup Language"><span class="caps">HTML</span></abbr>-koden, slik at hvilken stil som angis som den foretrukne <abbr title="for eksempel">f.eks.</abbr> styres av verdien til en&#160;<span class="caps">GET</span>-variabel.)</p>
+<p>Dersom dette legges til etter stilen &#171;Marinebl&#229;&#187;, kan brukeren skifte utseende p&#229; siden ved &#229; velge den alternative stilen &#171;Sitrongul&#187; med en funksjon i nettleseren. B&#229;de Opera og Mozilla &#8211; men ikke Internet Explorer &#8211; er utstyrt med dette. Ettersom <abbr class="acronym" title="Internet Explorer"><span class="caps">IE</span></abbr> fortsatt er den mest popul&#230;re nettleseren generelt sett, er det blitt vanlig &#229; ta i bruk en <a href="http://www.alistapart.com/articles/alternate/" target="_blank" title="Open alistapart.com in a new window">JavaScript-l&#248;sning</a> som lar den bes&#248;kende velge stil ved &#229; klikke p&#229; lenker p&#229; selve siden. Dette g&#229;r imidlertid p&#229; bekostning av markeringen, som ikke vil gi noen s&#230;rlig mening i en nettleser som ikke st&#248;tter JavaScript (eller som har JavaScript avsl&#229;tt). (En annen mulighet er &#229; la skripting p&#229; serversiden gj&#248;re dynamiske inngrep i <abbr class="acronym" title="HyperText Markup Language"><span class="caps">HTML</span></abbr>-koden, slik at hvilken stil som angis som den foretrukne <abbr title="for eksempel">f.eks.</abbr> styres av verdien til en&#160;<span class="caps">GET</span>-variabel.)</p>
+</section>
 </section>
 </article>
 </body>

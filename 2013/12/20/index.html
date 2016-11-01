@@ -26,13 +26,6 @@
 <link href="../../../css/markdown-template.css" rel="stylesheet">
 <link href="https://epsil.github.io/2013/12/20/" rel="canonical">
 <link href="index.txt" rel="alternate" title="Markdown" type="text/markdown">
-<script type="text/x-mathjax-config">
-MathJax.Hub.Config({
-TeX: { equationNumbers: { autoNumber: "all" } }
-})
-</script>
-<script async="" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-MML-AM_CHTML" type="text/javascript">
-</script>
 <script src="../../../js/markdown-template.js">
 </script>
 </head>
@@ -45,16 +38,16 @@ TeX: { equationNumbers: { autoNumber: "all" } }
 </ul>
 
 <ul class="nav nav-pills navbar-right">
-<li role="presentation"><a href="http://www.facebook.com/share.php?u=https%3A%2F%2Fepsil.github.io%2F2013%2F12%2F20%2F" title="Del p&#229; Facebook"><i class="fa fa-facebook-square"></i></a>
+<li role="presentation"><a href="http://www.facebook.com/share.php?u=https%3A%2F%2Fepsil.github.io%2F2013%2F12%2F20%2F" target="_blank" title="Del p&#229; Facebook"><i class="fa fa-facebook-square"></i></a>
 </li>
 
-<li role="presentation"><a href="https://twitter.com/intent/tweet?url=https%3A%2F%2Fepsil.github.io%2F2013%2F12%2F20%2F" title="Del p&#229; Twitter"><i class="fa fa-twitter-square"></i></a>
+<li role="presentation"><a href="https://twitter.com/intent/tweet?url=https%3A%2F%2Fepsil.github.io%2F2013%2F12%2F20%2F" target="_blank" title="Del p&#229; Twitter"><i class="fa fa-twitter-square"></i></a>
 </li>
 
-<li role="presentation"><a href="https://github.com/epsil/epsil.github.io/edit/master/2013/12/20/index.txt" title="Rediger p&#229; GitHub"><i class="fa fa-edit"></i></a>
+<li role="presentation"><a href="https://github.com/epsil/epsil.github.io/edit/master/2013/12/20/index.txt" target="_blank" title="Rediger p&#229; GitHub"><i class="fa fa-edit"></i></a>
 </li>
 
-<li role="presentation"><a href="https://github.com/epsil/epsil.github.io/commits/master/2013/12/20/index.txt" title="Vis historie"><i class="fa fa-history"></i></a>
+<li role="presentation"><a href="https://github.com/epsil/epsil.github.io/commits/master/2013/12/20/index.txt" target="_blank" title="Vis historie"><i class="fa fa-history"></i></a>
 </li>
 
 <li role="presentation"><a href="index.txt" title="Vis Markdown-kilde"><i class="fa fa-download"></i></a>
@@ -71,18 +64,19 @@ TeX: { equationNumbers: { autoNumber: "all" } }
 
 <article class="h-entry">
 <header>
-<h1 class="p-name"><a class="u-uid u-url" href="https://epsil.github.io/2013/12/20/" rel="bookmark" title="Permalink">Starte Gollum med <code>launchd</code></a>
+<h1 class="p-name"><a class="u-uid u-url" href="https://epsil.github.io/2013/12/20/" rel="bookmark" target="_blank" title="Permalink">Starte Gollum med <code>launchd</code></a>
 </h1>
 
-<p><a class="p-author h-card" href="https://epsil.github.io/">Vegard &#216;ye</a> <time class="dt-published" datetime="2013-12-20">2013-12-20</time></p>
+<p><a class="p-author h-card" href="https://epsil.github.io/" target="_blank" title="Open epsil.github.io in a new window">Vegard &#216;ye</a> <time class="dt-published" datetime="2013-12-20">2013-12-20</time></p>
 </header>
 
 <section class="e-content">
-<p>P&#229; <abbr class="acronym" title="Operating System 10">OS X</abbr> startes <a href="https://github.com/gollum/gollum">Gollum</a> automatisk med <a href="http://www.nomachetejuggling.com/2012/05/15/personal-wiki-using-github-and-gollum-on-os-x/"><code>launchd</code></a>. Opprett en fil <code>~/Library/LaunchAgents/com.personalwiki.gollum.plist</code> (med eksklusive <a href="http://stackoverflow.com/questions/16809861/launchd-doesnt-launch-my-daemon">rettigheter</a>, <abbr title="det vil si">dvs.</abbr> <code>$ chmod 600</code>) som inneholder dette:</p>
+<section>
+<p>P&#229; <abbr class="acronym" title="Operating System 10"><span class="caps">OS</span> X</abbr> startes <a href="https://github.com/gollum/gollum" target="_blank" title="Open github.com in a new window">Gollum</a> automatisk med <a href="http://www.nomachetejuggling.com/2012/05/15/personal-wiki-using-github-and-gollum-on-os-x/" target="_blank" title="Open nomachetejuggling.com in a new window"><code>launchd</code></a>. Opprett en fil <code>~/Library/LaunchAgents/com.personalwiki.gollum.plist</code> (med eksklusive <a href="http://stackoverflow.com/questions/16809861/launchd-doesnt-launch-my-daemon" target="_blank" title="Open stackoverflow.com in a new window">rettigheter</a>, <abbr title="det vil si">dvs.</abbr> <code>$ chmod 600</code>) som inneholder&#160;dette:</p>
 
 <pre>
-<code class="language-xml"><span class="php"><span class="hljs-meta">&lt;?</span>xml version=<span class="hljs-string">"1.0"</span> encoding=<span class="hljs-string">"UTF-8"</span><span class="hljs-meta">?&gt;</span></span>
-<span class="hljs-meta">&lt;!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN"
+<code class="language-xml"><span class="php"><span class="hljs-meta">&lt;?</span>xml version=<span class="hljs-string">"1.0"</span> encoding=<span class="hljs-string">"<span class="caps">UTF</span>-8"</span><span class="hljs-meta">?&gt;</span></span>
+<span class="hljs-meta">&lt;!<span class="caps">DOCTYPE</span> plist <span class="caps">PUBLIC</span> "-//Apple//<span class="caps">DTD</span> <span class="caps">PLIST</span> 1.0//<span class="caps">EN</span>"
 "http://www.apple.com/DTDs/PropertyList-1.0.dtd"&gt;</span>
 <span class="hljs-tag">&lt;<span class="hljs-name">plist</span> <span class="hljs-attr">version</span>=<span class="hljs-string">"1.0"</span>&gt;</span>
 <span class="hljs-tag">&lt;<span class="hljs-name">dict</span>&gt;</span>
@@ -101,24 +95,24 @@ TeX: { equationNumbers: { autoNumber: "all" } }
 
 <hr>
 
-<p><strong>Oppdatering 2016-07-29:</strong> &#197; f&#229; <a href="https://github.com/indexzero/http-server">http-server</a> til &#229; starte automatisk krever at man eksplisitt oppgir plasseringen til <code>node</code>, for <a href="http://apple.stackexchange.com/questions/106355/setting-the-system-wide-path-environment-variable-in-mavericks"><code>launchd</code> leser ikke <code>/usr/local/bin</code></a>. Serveren startes med Bash-skriptet <code>start_httpserver.sh</code>:</p>
+<p><strong>Oppdatering 2016-07-29:</strong> &#197; f&#229; <a href="https://github.com/indexzero/http-server" target="_blank" title="Open github.com in a new window">http-server</a> til &#229; starte automatisk krever at man eksplisitt oppgir plasseringen til <code>node</code>, for <a href="http://apple.stackexchange.com/questions/106355/setting-the-system-wide-path-environment-variable-in-mavericks" target="_blank" title="Open apple.stackexchange.com in a new window"><code>launchd</code> leser ikke <code>/usr/local/bin</code></a>. Serveren startes med Bash-skriptet <code>start_httpserver.sh</code>:</p>
 
 <pre>
 <code class="language-bash"><span class="hljs-meta">#!/bin/bash</span>
-NODE=<span class="hljs-string">"/usr/local/bin/node"</span>
-PROGRAM=<span class="hljs-string">"/usr/local/bin/http-server"</span>
-HTTPSERVER=<span class="hljs-string">"<span class="hljs-variable">$NODE</span> <span class="hljs-variable">$PROGRAM</span>"</span>
-DIR=<span class="hljs-string">"<span class="hljs-variable">$( cd "$( dirname "${BASH_SOURCE[0]}" )</span>"</span> &amp;&amp; <span class="hljs-built_in">pwd</span> )<span class="hljs-string">"
-cd "</span><span class="hljs-variable">$DIR</span><span class="hljs-string">"
-<span class="hljs-variable">$HTTPSERVER</span> . -p 8000
+<span class="caps">NODE</span>=<span class="hljs-string">"/usr/local/bin/node"</span>
+<span class="caps">PROGRAM</span>=<span class="hljs-string">"/usr/local/bin/http-server"</span>
+<span class="caps">HTTPSERVER</span>=<span class="hljs-string">"<span class="hljs-variable">$<span class="caps">NODE</span></span> <span class="hljs-variable">$<span class="caps">PROGRAM</span></span>"</span>
+<span class="caps">DIR</span>=<span class="hljs-string">"<span class="hljs-variable">$( cd "$( dirname "${BASH_SOURCE[0]}" )</span>"</span> &amp;&amp; <span class="hljs-built_in">pwd</span> )<span class="hljs-string">"
+cd "</span><span class="hljs-variable">$<span class="caps">DIR</span></span><span class="hljs-string">"
+<span class="hljs-variable">$<span class="caps">HTTPSERVER</span></span> . -p 8000
 </span></code>
 </pre>
 
 <p>Skriptet refereres s&#229; av <code>~/Library/LaunchAgents/com.personalwiki.httpserver.plist</code>:</p>
 
 <pre>
-<code class="language-xml"><span class="php"><span class="hljs-meta">&lt;?</span>xml version=<span class="hljs-string">"1.0"</span> encoding=<span class="hljs-string">"UTF-8"</span><span class="hljs-meta">?&gt;</span></span>
-<span class="hljs-meta">&lt;!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN"
+<code class="language-xml"><span class="php"><span class="hljs-meta">&lt;?</span>xml version=<span class="hljs-string">"1.0"</span> encoding=<span class="hljs-string">"<span class="caps">UTF</span>-8"</span><span class="hljs-meta">?&gt;</span></span>
+<span class="hljs-meta">&lt;!<span class="caps">DOCTYPE</span> plist <span class="caps">PUBLIC</span> "-//Apple//<span class="caps">DTD</span> <span class="caps">PLIST</span> 1.0//<span class="caps">EN</span>"
 "http://www.apple.com/DTDs/PropertyList-1.0.dtd"&gt;</span>
 <span class="hljs-tag">&lt;<span class="hljs-name">plist</span> <span class="hljs-attr">version</span>=<span class="hljs-string">"1.0"</span>&gt;</span>
 <span class="hljs-tag">&lt;<span class="hljs-name">dict</span>&gt;</span>
@@ -138,7 +132,8 @@ cd "</span><span class="hljs-variable">$DIR</span><span class="hljs-string">"
 <span class="hljs-tag">&lt;/<span class="hljs-name">plist</span>&gt;</span></code>
 </pre>
 
-<p>For &#229; kunne <a href="http://stackoverflow.com/questions/6337513/how-can-i-debug-a-launchd-script-that-doesnt-run-on-startup#answer-29926482">debugge <code>launchd</code></a> dersom noe skulle g&#229; galt, loggf&#248;res resultatet til <code>StandardErrorPath</code> og <code>StandardOutPath</code>.</p>
+<p>For &#229; kunne <a href="http://stackoverflow.com/questions/6337513/how-can-i-debug-a-launchd-script-that-doesnt-run-on-startup#answer-29926482" target="_blank" title="Open stackoverflow.com in a new window">debugge <code>launchd</code></a> dersom noe skulle g&#229; galt, loggf&#248;res resultatet til <code>StandardErrorPath</code> og <code>StandardOutPath</code>.</p>
+</section>
 </section>
 </article>
 </body>

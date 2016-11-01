@@ -22,7 +22,7 @@
 //   (or does this belong in a plugin of its own?)
 
 var $ = require('jquery')
-var S = require('string')
+var util = require('./util')
 jQuery = $ // needed for Bootstrap
 require('bootstrap')
 
@@ -99,7 +99,7 @@ collapse.button = function (id) {
 collapse.headerId = function (header) {
   var id = header.attr('id')
   if (id === undefined || id === '') {
-    id = S(header.text().trim()).slugify()
+    id = util.generateId(header)
     header.attr('id', id)
   }
   return id
@@ -131,7 +131,7 @@ $.fn.addCollapsibleSections.defaults = collapse.defaults
 
 module.exports = collapse
 
-},{"bootstrap":8,"jquery":21,"string":25}],2:[function(require,module,exports){
+},{"./util":7,"bootstrap":8,"jquery":21}],2:[function(require,module,exports){
 var $ = require('jquery')
 
 var figure = {}
@@ -236,13 +236,13 @@ punctuation.addPunctuation = function () {
           node.nodeName !== 'PRE' &&
           node.nodeName !== 'TEXTAREA') {
         node.nodeValue = node.nodeValue
-          .replace(/([-([«\s]|^)"(\S)/g, '$1\u201c$2') // beginning "
-          .replace(/"/g, '\u201d') // ending "
+          // .replace(/([-([«\s]|^)"(\S)/g, '$1\u201c$2') // beginning "
+          // .replace(/"/g, '\u201d') // ending "
           // .replace(/([^0-9])"/g,'$1\u201d') // remaining " at end of word
           .replace(/([0-9])('|\u2019)([0-9])/g, '$1\u2032$3') // prime
           .replace(/([0-9]+)(\s*)x(\s*)([0-9]+)/g, '$1$2\u00d7$3$4') // times
-          .replace(/([-([«\u201c\s]|^)('|\u2019)(\S)/g, '$1\u2018$3') // beginning '
-          .replace(/'/ig, '\u2019') // ending '
+          // .replace(/([-([«\u201c\s]|^)('|\u2019)(\S)/g, '$1\u2018$3') // beginning '
+          // .replace(/'/ig, '\u2019') // ending '
           .replace(/\u2019\u201d/ig, '\u2019\u00a0\u201d') // "'
           .replace(/\u201d\u2019/ig, '\u201d\u00a0\u2019')
           .replace(/\u201c\u2018/ig, '\u201c\u00a0\u2018') // '"
@@ -307,7 +307,7 @@ module.exports = punctuation
 // http://pandoc.org/MANUAL.html#extension-auto_identifiers
 
 var $ = require('jquery')
-var S = require('string')
+var util = require('./util')
 
 var section = {}
 
@@ -332,7 +332,7 @@ section.addSections = function () {
                  section = section.wrapAll('<section>').parent()
                  var id = header.attr('id')
                  if (id === undefined || id === '') {
-                   id = S(header.text().trim()).slugify()
+                   id = util.generateId(header)
                    header.attr('id', id)
                  }
                  section.attr('id', id)
@@ -341,15 +341,20 @@ section.addSections = function () {
              })
            })
     // add missing sections
-    body.find('section').each(function (i, el) {
-      var section = $(this)
-      var prevSection = section.prevUntil('header, h1, h2, h3, h4, h5, h6, section')
-      if (prevSection.length > 0) {
-        // prevUntil() returns elements in reverse order
-        prevSection = prevSection.last().nextUntil(section).addBack()
-        prevSection.wrapAll('<section>')
-      }
-    })
+    var sections = body.find('section')
+    if (sections.length <= 0) {
+      body.wrapInner('<section>')
+    } else {
+      sections.each(function (i, el) {
+        var section = $(this)
+        var prevSection = section.prevUntil('header, h1, h2, h3, h4, h5, h6, section')
+        if (prevSection.length > 0) {
+          // prevUntil() returns elements in reverse order
+          prevSection = prevSection.last().nextUntil(section).addBack()
+          prevSection.wrapAll('<section>')
+        }
+      })
+    }
   })
 }
 
@@ -357,7 +362,7 @@ $.fn.addSections = section.addSections
 
 module.exports = section
 
-},{"jquery":21,"string":25}],5:[function(require,module,exports){
+},{"./util":7,"jquery":21}],5:[function(require,module,exports){
 var $ = require('jquery')
 var URI = require('urijs')
 
@@ -510,7 +515,7 @@ module.exports = social
 
 },{"jquery":21,"urijs":28}],6:[function(require,module,exports){
 var $ = require('jquery')
-var S = require('string')
+var util = require('./util')
 
 var toc = {}
 
@@ -537,7 +542,7 @@ toc.tableOfContents = function (title) {
   toc.find('li ul').each(function (i, el) {
     var ul = $(this)
     var a = ul.prev()
-    var id = S(a.text().trim()).slugify() + '-link'
+    var id = util.generateId(a)
     var span = a.wrap('<span class="collapse" id="' + id + '">').parent()
     $.fn.addCollapsibleSections.addButton(span, ul)
   })
@@ -631,8 +636,7 @@ toc.listOfContents = function () {
     if (id === undefined || id === '') {
       var clone = header.clone()
       clone.find('[aria-hidden="true"]').remove()
-      var title = clone.text().trim()
-      id = S(title).slugify()
+      id = util.generateId(header)
       header.attr('id', id)
     }
     return id
@@ -676,10 +680,38 @@ $.fn.listOfContents = toc.listOfContents
 
 module.exports = toc
 
-},{"jquery":21,"string":25}],7:[function(require,module,exports){
+},{"./util":7,"jquery":21}],7:[function(require,module,exports){
 var $ = require('jquery')
+var S = require('string')
+var URI = require('urijs')
 
 var util = {}
+
+util.isExternalUrl = function (str) {
+  return URI(str).host() !== ''
+}
+
+util.unique = function (fn) {
+  var results = []
+  return function (arg) {
+    var result = fn(arg)
+    if (results.indexOf(result.valueOf()) >= 0) {
+      var i = 1
+      var newresult = ''
+      do {
+        i++
+        newresult = result + '-' + i
+      } while (results.indexOf(newresult.valueOf()) >= 0)
+      result = newresult
+    }
+    results.push(result.valueOf())
+    return result
+  }
+}
+
+util.generateId = util.unique(function (el) {
+  return S(el.text().trim()).slugify()
+})
 
 util.dojQuery = function (html, fn) {
   var body = $('<div>')
@@ -743,13 +775,14 @@ util.addHotkeys = function () {
 
 util.addPullQuotes = function () {
   return this.map(function () {
-    $(this).find('p.pull-quote').each(function () {
+    $(this).find('p.pull-quote, blockquote p.left, blockquote p.right').each(function () {
       var p = $(this)
       var blockquote = p.parent()
       if (blockquote.prop('tagName') !== 'BLOCKQUOTE') {
         blockquote = p.wrap('<blockquote>').parent()
       }
-      blockquote.addClass(p.attr('class'))
+      var aside = blockquote.wrap('<aside>').parent()
+      aside.addClass(p.attr('class'))
       p.removeAttr('class')
     })
   })
@@ -802,6 +835,16 @@ util.fixBlockquotes = function () {
   })
 }
 
+util.fixCenteredText = function () {
+  return this.map(function () {
+    $(this).find('center').replaceWith(function () {
+      var p = $('<p class="text-center">')
+      p.html($(this).html())
+      return p
+    })
+  })
+}
+
 util.fixFootnotes = function () {
   return this.each(function () {
     var body = $(this)
@@ -817,6 +860,19 @@ util.fixFootnotes = function () {
       var source = p.text().trim()
       link.attr('title', text)
       backref.attr('title', source)
+    })
+  })
+}
+
+util.fixMarks = function () {
+  return this.each(function () {
+    var body = $(this)
+    body.find('mark').each(function () {
+      var mark = $(this)
+      mark.addClass('mark')
+      if (!mark.is('[title]')) {
+        mark.attr('title', 'Highlight')
+      }
     })
   })
 }
@@ -839,6 +895,20 @@ util.fixLinks = function () {
       target = target.first()
       var text = target.removeAria().text().trim()
       link.attr('title', text)
+    })
+    body.find('a').each(function () {
+      var a = $(this)
+      var href = a.attr('href')
+      if (href === undefined || href === '') {
+        return
+      }
+      if (util.isExternalUrl(href)) {
+        var host = URI(href).host().replace(/^www\./, '')
+        a.attr('target', '_blank')
+        if (!a.is('[title]')) {
+          a.attr('title', 'Open ' + host + ' in a new window')
+        }
+      }
     })
   })
 }
@@ -867,6 +937,32 @@ util.fixWidont = function () {
   })
 }
 
+util.process = function (html) {
+  return util.dojQuery(html, function (body) {
+    var content = body.find('.e-content')
+    if (content.length <= 0) {
+      return
+    }
+    body.fixWidont()
+    body.addAcronyms()
+    body.addSmallCaps()
+    body.addPullQuotes()
+    body.fixCenteredText()
+    body.fixFigures()
+    body.fixMarks()
+    body.addPunctuation()
+    body.addHotkeys()
+    body.addTeXLogos()
+    content.addAnchors()
+    body.fixBlockquotes()
+    content.addCollapsibleSections()
+    body.fixFootnotes()
+    body.fixTables()
+    body.fixLinks()
+    content.addSections()
+  })
+}
+
 util.removeAria = function () {
   return this.map(function () {
     return $(this).clone().removeAriaHidden()
@@ -885,7 +981,9 @@ $.fn.addPullQuotes = util.addPullQuotes
 $.fn.addSmallCaps = util.addSmallCaps
 $.fn.addTeXLogos = util.addTeXLogos
 $.fn.fixBlockquotes = util.fixBlockquotes
+$.fn.fixCenteredText = util.fixCenteredText
 $.fn.fixFootnotes = util.fixFootnotes
+$.fn.fixMarks = util.fixMarks
 $.fn.fixLinks = util.fixLinks
 $.fn.fixTables = util.fixTables
 $.fn.fixWidont = util.fixWidont
@@ -894,7 +992,7 @@ $.fn.removeAriaHidden = util.removeAriaHidden
 
 module.exports = util
 
-},{"jquery":21}],8:[function(require,module,exports){
+},{"jquery":21,"string":25,"urijs":28}],8:[function(require,module,exports){
 // This file is autogenerated via the `commonjs` Grunt task. You can require() this file in a CommonJS environment.
 require('../../js/transition.js')
 require('../../js/alert.js')

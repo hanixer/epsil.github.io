@@ -45,16 +45,16 @@ TeX: { equationNumbers: { autoNumber: "all" } }
 </ul>
 
 <ul class="nav nav-pills navbar-right">
-<li role="presentation"><a href="http://www.facebook.com/share.php?u=https%3A%2F%2Fepsil.github.io%2F2007%2F10%2F07%2F" title="Del p&#229; Facebook"><i class="fa fa-facebook-square"></i></a>
+<li role="presentation"><a href="http://www.facebook.com/share.php?u=https%3A%2F%2Fepsil.github.io%2F2007%2F10%2F07%2F" target="_blank" title="Del p&#229; Facebook"><i class="fa fa-facebook-square"></i></a>
 </li>
 
-<li role="presentation"><a href="https://twitter.com/intent/tweet?url=https%3A%2F%2Fepsil.github.io%2F2007%2F10%2F07%2F" title="Del p&#229; Twitter"><i class="fa fa-twitter-square"></i></a>
+<li role="presentation"><a href="https://twitter.com/intent/tweet?url=https%3A%2F%2Fepsil.github.io%2F2007%2F10%2F07%2F" target="_blank" title="Del p&#229; Twitter"><i class="fa fa-twitter-square"></i></a>
 </li>
 
-<li role="presentation"><a href="https://github.com/epsil/epsil.github.io/edit/master/2007/10/07/index.txt" title="Rediger p&#229; GitHub"><i class="fa fa-edit"></i></a>
+<li role="presentation"><a href="https://github.com/epsil/epsil.github.io/edit/master/2007/10/07/index.txt" target="_blank" title="Rediger p&#229; GitHub"><i class="fa fa-edit"></i></a>
 </li>
 
-<li role="presentation"><a href="https://github.com/epsil/epsil.github.io/commits/master/2007/10/07/index.txt" title="Vis historie"><i class="fa fa-history"></i></a>
+<li role="presentation"><a href="https://github.com/epsil/epsil.github.io/commits/master/2007/10/07/index.txt" target="_blank" title="Vis historie"><i class="fa fa-history"></i></a>
 </li>
 
 <li role="presentation"><a href="index.txt" title="Vis Markdown-kilde"><i class="fa fa-download"></i></a>
@@ -71,13 +71,14 @@ TeX: { equationNumbers: { autoNumber: "all" } }
 
 <article class="h-entry">
 <header>
-<h1 class="p-name"><a class="u-uid u-url" href="https://epsil.github.io/2007/10/07/" rel="bookmark" title="Permalink">Delbr&#248;ksoppspaltning</a>
+<h1 class="p-name"><a class="u-uid u-url" href="https://epsil.github.io/2007/10/07/" rel="bookmark" target="_blank" title="Permalink">Delbr&#248;ksoppspaltning</a>
 </h1>
 
-<p><a class="p-author h-card" href="https://epsil.github.io/">Vegard &#216;ye</a> <time class="dt-published" datetime="2007-10-07">2007-10-07</time></p>
+<p><a class="p-author h-card" href="https://epsil.github.io/" target="_blank" title="Open epsil.github.io in a new window">Vegard &#216;ye</a> <time class="dt-published" datetime="2007-10-07">2007-10-07</time></p>
 </header>
 
 <section class="e-content">
+<section>
 <p>Ved delbr&#248;ksoppspaltning faktoriseres <em>nevneren</em> i br&#248;ken som vi &#248;nsker &#229; spalte opp. Hver faktor gir s&#229; en delbr&#248;k med en eller flere ukjente verdier i <em>telleren</em>. De ukjente verdiene finnes s&#229; ved &#229; sette det nye delbr&#248;ksuttrykket, alts&#229; summen av alle delbr&#248;kene, lik det opprinnelige.</p>
 
 <p><strong>Eksempel 1:</strong> Dersom vi &#248;nsker &#229; utf&#248;re delbr&#248;ksoppspaltning av uttrykket \((6x + 8)/(x^2 + 3x + 2)\), faktoriserer vi f&#248;rst nevneren og f&#229;r \(x^2 + 3x + 2 = (x + 1)(x + 2)\). Her har vi to <strong>line&#230;re faktorer</strong>, <abbr title="det vil si">dvs.</abbr> faktorer p&#229; formen \(ax + b\), og prinsippet vi da skal f&#248;lge er dette: <strong>En line&#230;r faktor \(ax + b\) gir en delbr&#248;k p&#229; formen \(A/(ax + b)\), der \(A\) er en ukjent konstant.</strong> Nevnerfaktoren \(x + 1\) gir alts&#229; delbr&#248;ken \(A/(x + 1)\), mens nevnerfaktoren \(x + 2\) gir delbr&#248;ken \(B/(x + 2)\). N&#229; gjenst&#229;r det &#229; sette summen av disse delbr&#248;kene lik det opprinnelige uttrykket for &#229; finne \(A\) og \(B\): \((6x + 8)/(x^2 + 3x + 2) = (6x + 8)/((x + 1)(x + 2)) = A/(x + 1) + B/(x + 2)\), som ganges p&#229; begge sider med \((x + 1)\) og \((x + 2)\) slik at vi f&#229;r \(6x + 8 = A(x + 2) + B(x + 1)\). Dette uttrykket kan omformes til \(6x + 8 = (A + B)x + 2A + B\), slik at vi kan finne \(A\) og \(B\) ved &#229; betrakte <em>koeffisientene</em>: Koeffisienten til \(x\) p&#229; venstresiden, \(6\), m&#229; v&#230;re lik koeffisienten til \(x\) p&#229; h&#248;yresiden, \((A + B)\), slik at vi har \(6 = A + B\). Tilsvarende har vi at \(8 = 2A + B\). Dette ligningssettet kan l&#248;ses ved bruk av innsettingsmetoden, <abbr title="det vil si">dvs.</abbr> &#229; ordne den ene ligningen for en av de ukjente st&#248;rrelsene og sette dette uttrykket inn i den andre ligningen: \(B = 6 - A\), og da er \(8 = 2A + 6 - A\), som kan ordnes slik at vi f&#229;r \(A = 2\). Dermed er \(B = 6 - 2 = 4\), og det endelige svaret blir \((6x + 8)/(x^2 + 3x + 2) = 2/(x + 1) + 4/(x + 2)\).</p>
@@ -89,6 +90,7 @@ TeX: { equationNumbers: { autoNumber: "all" } }
 <p><strong>Eksempel 3:</strong> Fra uttrykket \((3x^2 + 11x + 14)/(x^3 + 2x^2 - 11x - 52)\) f&#229;r vi \((3x^2 + 11x + 14)/((x - 4)(x^2 - 6x + 13))\) n&#229;r vi faktoriserer nevneren, der \(x^2 - 6x + 13\) <em>ikke</em> lar seg faktorisere videre (den relaterte andregradsligningen har ingen reelle l&#248;sninger). Her har vi i tillegg til en line&#230;r faktor en <strong>kvadratisk faktor</strong>, <abbr title="det vil si">dvs.</abbr> en faktor p&#229; formen \(ax^2 + bx + c\), og prinsippet er da dette: <strong>En kvadratisk faktor \(ax^2 + bx + c\) gir en delbr&#248;k p&#229; formen \((Ax + B)/(ax^2 + bx + c)\), der \(A\) og \(B\) er ukjente konstanter.</strong> Nevnerfaktorene \(x - 4 og x^2 - 6x + 13\) gir alts&#229; delbr&#248;kene \(A/(x - 4) + (Bx + C)/(x^2 + 6x + 13)\). Dette settes lik det opprinnelige uttrykket for &#229; finne \(A\), \(B\) og \(C\): \((3x^2 + 11x + 14)/(x^3 + 2x^2 - 11x - 52) = (3x^2 + 11x + 14)/((x - 4)(x^2 - 6x + 13)) = A/(x - 4) + (Bx + C)/(x^2 + 6x + 13)\), som ganges p&#229; begge sider med \((x - 4)\) og \((x^2 - 6x + 13)\) slik at vi f&#229;r \(3x^2 + 11x + 14 = A(x^2 - 6x + 13) + (Bx + C)(x - 4)\). Ved &#229; ordne h&#248;yresiden f&#229;s \((A + B)x^2 + (6A - 4B + C)x + 13A - 4C\), men i stedet for &#229; betrakte koeffisientene og lage et ligningssett med tre ligninger, setter vi \(x = 4\) inn i ligningen. (Vi kan sette en hvilken som helst \(x\)-verdi inn i ligningen siden det er \(A\), \(B\) og \(C\) vi er interessert i, men vi velger \(x = 4\) fordi faktoren \((x - 4)\) da blir lik null, og dermed forsvinner hele det siste leddet.) Dermed f&#229;r vi det nye uttrykket \(106 = 53A\), hvorfra det f&#248;lger at \(A = 2\). N&#229; som denne verdien er kjent, blir det mye lettere &#229; finne \(B\) og \(C\): Ved &#229; betrakte koeffisientene til \(x^2\) har vi at \(3 = A + B\), hvorfra det f&#248;lger at \(B = 1\), og ved &#229; betrakte <em>konstantleddet</em> p&#229; begge sider har vi at \(14 = 13A - 4C\), hvorfra det f&#248;lger at \(C = 3\). Det endelige svaret blir \((3x^2 + 11x + 14)/(x^3 + 2x^2 - 11x - 52) = 2/(x - 4) + (x + 3)/(x^2 + 6x + 13)\).</p>
 
 <p>Merk at alle br&#248;kene over <em>ikke er uekte</em>, <abbr title="det vil si">dvs.</abbr> graden til telleren er alltid mindre enn graden til nevneren. Delbr&#248;ksoppspaltningen til uekte br&#248;ker, <abbr title="det vil si">dvs.</abbr> br&#248;ker hvor graden til telleren er st&#248;rre enn eller lik graden til nevneren, har noen ekstra ledd i tillegg til de som f&#248;lger av nevnerfaktorene. Disse ekstra leddene er p&#229; formen til et polynom av grad \(t - n\), der \(t\) er graden til telleren og \(n\) er graden til nevneren. Delbr&#248;ksoppspaltningen til uttrykket \((4x^3 + 10x + 4)/(2x^2 + x) = (4x^3 + 10x + 4)/(x(2x + 1))\) blir alts&#229; \(Ax + B + C/x + D/(2x + 1)\), der \(Ax + B\) er et polynom av grad \(1\), noe som f&#248;lger av at telleren er av grad \(3\) og nevneren av grad \(2\).</p>
+</section>
 </section>
 </article>
 </body>

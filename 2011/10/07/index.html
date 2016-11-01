@@ -38,16 +38,16 @@
 </ul>
 
 <ul class="nav nav-pills navbar-right">
-<li role="presentation"><a href="http://www.facebook.com/share.php?u=https%3A%2F%2Fepsil.github.io%2F2011%2F10%2F07%2F" title="Del p&#229; Facebook"><i class="fa fa-facebook-square"></i></a>
+<li role="presentation"><a href="http://www.facebook.com/share.php?u=https%3A%2F%2Fepsil.github.io%2F2011%2F10%2F07%2F" target="_blank" title="Del p&#229; Facebook"><i class="fa fa-facebook-square"></i></a>
 </li>
 
-<li role="presentation"><a href="https://twitter.com/intent/tweet?url=https%3A%2F%2Fepsil.github.io%2F2011%2F10%2F07%2F" title="Del p&#229; Twitter"><i class="fa fa-twitter-square"></i></a>
+<li role="presentation"><a href="https://twitter.com/intent/tweet?url=https%3A%2F%2Fepsil.github.io%2F2011%2F10%2F07%2F" target="_blank" title="Del p&#229; Twitter"><i class="fa fa-twitter-square"></i></a>
 </li>
 
-<li role="presentation"><a href="https://github.com/epsil/epsil.github.io/edit/master/2011/10/07/index.txt" title="Rediger p&#229; GitHub"><i class="fa fa-edit"></i></a>
+<li role="presentation"><a href="https://github.com/epsil/epsil.github.io/edit/master/2011/10/07/index.txt" target="_blank" title="Rediger p&#229; GitHub"><i class="fa fa-edit"></i></a>
 </li>
 
-<li role="presentation"><a href="https://github.com/epsil/epsil.github.io/commits/master/2011/10/07/index.txt" title="Vis historie"><i class="fa fa-history"></i></a>
+<li role="presentation"><a href="https://github.com/epsil/epsil.github.io/commits/master/2011/10/07/index.txt" target="_blank" title="Vis historie"><i class="fa fa-history"></i></a>
 </li>
 
 <li role="presentation"><a href="index.txt" title="Vis Markdown-kilde"><i class="fa fa-download"></i></a>
@@ -64,10 +64,10 @@
 
 <article class="h-entry">
 <header>
-<h1 class="p-name"><a class="u-uid u-url" href="https://epsil.github.io/2011/10/07/" rel="bookmark" title="Permalink">Closures i Lisp</a>
+<h1 class="p-name"><a class="u-uid u-url" href="https://epsil.github.io/2011/10/07/" rel="bookmark" target="_blank" title="Permalink">Closures i Lisp</a>
 </h1>
 
-<p><a class="p-author h-card" href="https://epsil.github.io/">Vegard &#216;ye</a> <time class="dt-published" datetime="2011-10-07">2011-10-07</time></p>
+<p><a class="p-author h-card" href="https://epsil.github.io/" target="_blank" title="Open epsil.github.io in a new window">Vegard &#216;ye</a> <time class="dt-published" datetime="2011-10-07">2011-10-07</time></p>
 </header>
 
 <section class="e-content">
@@ -78,7 +78,7 @@
 <footer>Steve Yegge: <cite>Execution in the Kingdom of Nouns</cite><sup class="footnote-ref"><a href="#fn1" id="fnref1" title="http://steve-yegge.blogspot.com/2006/03/execution-in-kingdom-of-nouns.html">[1]</a></sup></footer>
 </blockquote>
 
-<p>Det er i prinsippet mulig &#229; bruke lambdaer som et fundament for videre programmering. Det klassiske <a href="http://mitpress.mit.edu/sicp/full-text/book/book.html"><em><abbr class="acronym" title="Structure and Interpretation of Computer Programs"><span class="caps">SICP</span></abbr></em></a>-eksemplet er &#229; definere <code class="language-scheme">cons</code>, <code class="language-scheme">car</code> og <code class="language-scheme">cdr</code> p&#229; denne m&#229;ten,<sup class="footnote-ref"><a href="#fn2" id="fnref2" title="http://mitpress.mit.edu/sicp/full-text/book/book-Z-H-14.html#%_sec_2.1.3">[2]</a></sup> som vi kan tenke p&#229; som Lisp-sjargong for <code class="language-scheme">pair</code>, <code class="language-scheme">first</code> og <code class="language-scheme">second</code>. La <code class="language-scheme">pair</code> v&#230;re en funksjon som returnerer et par med verdier, <code class="language-scheme">first</code> returnere den f&#248;rste verdien til paret, og <code class="language-scheme">second</code> returnere den&#160;andre:</p>
+<p>Det er i prinsippet mulig &#229; bruke lambdaer som et fundament for videre programmering. Det klassiske <a href="http://mitpress.mit.edu/sicp/full-text/book/book.html" target="_blank" title="Open mitpress.mit.edu in a new window"><em><abbr class="acronym" title="Structure and Interpretation of Computer Programs"><span class="caps">SICP</span></abbr></em></a>-eksemplet er &#229; definere <code class="language-scheme">cons</code>, <code class="language-scheme">car</code> og <code class="language-scheme">cdr</code> p&#229; denne m&#229;ten,<sup class="footnote-ref"><a href="#fn2" id="fnref2" title="http://mitpress.mit.edu/sicp/full-text/book/book-Z-H-14.html#%_sec_2.1.3">[2]</a></sup> som vi kan tenke p&#229; som Lisp-sjargong for <code class="language-scheme">pair</code>, <code class="language-scheme">first</code> og <code class="language-scheme">second</code>. La <code class="language-scheme">pair</code> v&#230;re en funksjon som returnerer et par med verdier, <code class="language-scheme">first</code> returnere den f&#248;rste verdien til paret, og <code class="language-scheme">second</code> returnere den&#160;andre:</p>
 
 <pre>
 <code class="language-scheme">&gt; (<span class="hljs-name">pair</span> <span class="hljs-string">"foo"</span> <span class="hljs-string">"bar"</span>)
@@ -118,7 +118,7 @@
 
 <p>Koden over forutsetter <em>closures</em>, <abbr title="det vil si">dvs.</abbr> at prosedyren som <code class="language-scheme">pair</code> returnerer, er i stand til &#229; &#171;stikke av med&#187; argumentene til <code class="language-scheme">pair</code>.<sup class="footnote-ref"><a href="#fn3" id="fnref3" title="Hvis Lisp&#8217;en din mangler dette, kan du alltids &#171;jukse&#187; ved &#229; konstruere lambdaen som en liste og splice inn verdiene av x og y (forutsetter at x og y er immutable).">[3]</a></sup> Dermed kan man for s&#229; vidt tenke p&#229; prosedyren som et &#171;objekt&#187;, <abbr title="det vil si">dvs.</abbr> en bunt med data og instruksjoner. (I enkelte spr&#229;k, som JavaScript og Scala, <em>er</em> funksjoner&#160;objekter.)</p>
 
-<p>Denne litt alternative m&#229;ten &#229; konstruere &#171;objekter&#187; p&#229; &#8211; &#229; lage anomyme funksjoner som lukker om bindingene i et leksikalsk skop &#8211; er faktisk mye brukt i funksjonelle spr&#229;k. Google &#171;<a href="http://www.google.no/search?q=let+over+lambda">let over lambda</a>&#187; n&#229;r du har&#160;tid.</p>
+<p>Denne litt alternative m&#229;ten &#229; konstruere &#171;objekter&#187; p&#229; &#8211; &#229; lage anomyme funksjoner som lukker om bindingene i et leksikalsk skop &#8211; er faktisk mye brukt i funksjonelle spr&#229;k. Google &#171;<a href="http://www.google.no/search?q=let+over+lambda" target="_blank" title="Open google.no in a new window">let over lambda</a>&#187; n&#229;r du har&#160;tid.</p>
 
 <hr class="footnotes-sep">
 </section>
@@ -129,11 +129,11 @@ Se [GeirGrusoms innlegg](http://www.diskusjon.no/index.php?showtopic=800754&p=18
 <section class="footnotes">
 <ol class="footnotes-list">
 <li class="footnote-item" id="fn1">
-<p><a href="http://steve-yegge.blogspot.com/2006/03/execution-in-kingdom-of-nouns.html">http://steve-yegge.blogspot.com/2006/03/execution-in-kingdom-of-nouns.html</a> <a class="footnote-backref" href="#fnref1" title="Steve Yegge: Execution in the Kingdom of Nouns[1]">&#8617;&#65038;</a></p>
+<p><a href="http://steve-yegge.blogspot.com/2006/03/execution-in-kingdom-of-nouns.html" target="_blank" title="Open steve-yegge.blogspot.com in a new window">http://steve-yegge.blogspot.com/2006/03/execution-in-kingdom-of-nouns.html</a> <a class="footnote-backref" href="#fnref1" title="Steve Yegge: Execution in the Kingdom of Nouns[1]">&#8617;&#65038;</a></p>
 </li>
 
 <li class="footnote-item" id="fn2">
-<p><a href="http://mitpress.mit.edu/sicp/full-text/book/book-Z-H-14.html#%25_sec_2.1.3">http://mitpress.mit.edu/sicp/full-text/book/book-Z-H-14.html#%_sec_2.1.3</a> <a class="footnote-backref" href="#fnref2" title="Det er i prinsippet mulig &#229; bruke lambdaer som et fundament for videre programmering. Det klassiske SICP-eksemplet er &#229; definere cons, car og cdr p&#229; denne m&#229;ten,[2] som vi kan tenke p&#229; som Lisp-sjargong for pair, first og second. La pair v&#230;re en funksjon som returnerer et par med verdier, first returnere den f&#248;rste verdien til paret, og second returnere den&#160;andre:">&#8617;&#65038;</a></p>
+<p><a href="http://mitpress.mit.edu/sicp/full-text/book/book-Z-H-14.html#%25_sec_2.1.3" target="_blank" title="Open mitpress.mit.edu in a new window">http://mitpress.mit.edu/sicp/full-text/book/book-Z-H-14.html#%_sec_2.1.3</a> <a class="footnote-backref" href="#fnref2" title="Det er i prinsippet mulig &#229; bruke lambdaer som et fundament for videre programmering. Det klassiske SICP-eksemplet er &#229; definere cons, car og cdr p&#229; denne m&#229;ten,[2] som vi kan tenke p&#229; som Lisp-sjargong for pair, first og second. La pair v&#230;re en funksjon som returnerer et par med verdier, first returnere den f&#248;rste verdien til paret, og second returnere den&#160;andre:">&#8617;&#65038;</a></p>
 </li>
 
 <li class="footnote-item" id="fn3">
