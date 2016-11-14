@@ -5,7 +5,7 @@
 <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
 <meta content="Vegard &#216;ye" name="author">
 <meta content="2010-11-14" name="date">
-<meta content="29857a9d4552766c501ef403d277e08d" name="md5">
+<meta content="5dd572e45018d515766376c377e32adf" name="md5">
 <meta content="text/css" http-equiv="Content-Style-Type">
 <meta content="width=device-width, initial-scale=1" name="viewport">
 <meta content="Bruke grep og find" name="DC.Title">
@@ -86,13 +86,13 @@
 <p>For &#229; s&#248;ke i filenes <em>innhold</em>, kan man bruke <code>grep</code>:</p>
 
 <pre>
-<code>$ grep -Ri "test" .</code>
+<code class="language-bash">$ grep -Ri <span class="hljs-string">"test"</span> .</code>
 </pre>
 
 <p>Dette s&#248;ker rekursivt (<code>-R</code>) og case-insensitivt (<code>-i</code>) etter teksten <code>"test"</code> i den gjeldende mappen (<code>.</code>). Hvis man <em>bare</em> vil s&#248;ke i, si, <code>.txt</code>-filer, kan man bruke <code>--include</code>-opsjonen:</p>
 
 <pre>
-<code>$ grep -Ri --include="*.txt" "test" .</code>
+<code class="language-bash">$ grep -Ri --include=<span class="hljs-string">"*.txt"</span> <span class="hljs-string">"test"</span> .</code>
 </pre>
 
 <p>Det finnes ogs&#229; en <code>--exclude</code>-opsjon for &#229; ekskludere filer fra&#160;s&#248;ket.</p>
@@ -108,13 +108,13 @@
 <p>For &#229; s&#248;ke i filenes <em>filnavn</em>, kan man bruke <code>find</code>. Merk at hvis man skal bruke <code>find</code> sammen med <abbr title="for eksempel">f.eks.</abbr> <code>rm</code> p&#229; filnavn som inneholder mellomrom, m&#229; man ta visse <a href="http://stackoverflow.com/questions/9612090/how-to-loop-through-file-names-returned-by-find#9612232" target="_blank" title="Open stackoverflow.com in a new window">forh&#229;ndsregler</a>. Den mest opplagte besvergelsen ville&#160;v&#230;re:</p>
 
 <pre>
-<code>$ find . -name &lt;PATTERN&gt; | xargs rm</code>
+<code class="language-bash">$ find . -name &lt;PATTERN&gt; | xargs rm</code>
 </pre>
 
 <p>Men dette fungerer alts&#229; bare p&#229; filnavn uten mellomrom. For mer kronglete filer m&#229; man bruke en av&#160;disse:</p>
 
 <pre>
-<code>$ find . -name &lt;PATTERN&gt; -exec rm {} \;
+<code class="language-bash">$ find . -name &lt;PATTERN&gt; -exec rm {} \;
 $ find . -name &lt;PATTERN&gt; -print0 | xargs -0 rm</code>
 </pre>
 
