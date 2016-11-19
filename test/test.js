@@ -272,6 +272,7 @@ punctuation.addPunctuation = function () {
           .replace(/'/g, '\u2032') // prime
           .replace(/<3/g, '\u2764') // heart
           .replace(/!! :\)/g, '\u203c\u032e') // smiley
+          .replace(/!!/g, '\u203c')
           .replace(/:-\)/g, '\u263a') // smiley
           .replace(/:-\(/g, '\u2639') // frowning smiley
       }
@@ -880,10 +881,12 @@ util.fixMarks = function () {
 util.fixLinks = function () {
   return this.each(function () {
     var body = $(this)
+    // fix internal links
     body.find('a[href^="#"]').each(function () {
       var link = $(this)
       var href = link.attr('href').replace(':', '\\:')
       var title = link.attr('title')
+      // ignore aria-hidden anchors
       if (link.attr('aria-hidden') === 'true' || href === '#' ||
           (title !== undefined && title !== '')) {
         return
@@ -892,22 +895,35 @@ util.fixLinks = function () {
       if (target.length <= 0) {
         return
       }
+      // set title attribute to summary of target
       target = target.first()
       var text = target.removeAria().text().trim()
       link.attr('title', text)
     })
+    // fix external links
     body.find('a').each(function () {
       var a = $(this)
-      var href = a.attr('href')
+      var text = a.text().trim()
+      var href = a.attr('href').trim()
       if (href === undefined || href === '') {
+        // not a link: do nothing
         return
       }
-      if (util.isExternalUrl(href)) {
+      // add .url class for URL links
+      if (text !== '' &&
+          (text === href ||
+           text === decodeURIComponent(href))) {
+        a.addClass('url')
+      }
+      // open external links in a new window
+      if (a.hasClass('external') || util.isExternalUrl(href)) {
+        // add explanatory tooltip
         var host = URI(href).host().replace(/^www\./, '')
-        a.attr('target', '_blank')
         if (!a.is('[title]')) {
           a.attr('title', 'Open ' + host + ' in a new window')
         }
+        // set target="_blank"
+        a.attr('target', '_blank')
       }
     })
   })

@@ -24,6 +24,10 @@ aside blockquote {
     padding-left: 0.3em;
 }
 
+.e-content a[target=_blank].url:after {
+    content: normal;
+}
+
 pre .caps {
     font-variant: normal;
     text-transform: none;
@@ -299,6 +303,7 @@ p {
 }
 
 pre {
+    margin: 1em 0;
     padding: 1.5em;
 }
 
@@ -399,9 +404,9 @@ article ul > li:before, #toc ul > li:before {
     font-weight: normal;
 }
 
-.h-card {
-    display: none;
-}
+/* .h-card { */
+/*     display: none; */
+/* } */
 
 .p-author {
     font-style: italic;
@@ -428,6 +433,10 @@ article ul > li:before, #toc ul > li:before {
 
 .quo {
     margin-left: -0.1em;
+}
+
+.url {
+    font-style: italic;
 }
 
 header {
