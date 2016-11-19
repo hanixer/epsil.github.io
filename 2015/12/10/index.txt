@@ -3,7 +3,7 @@ abstract: Hvordan kombinere Selenium, mocha og chai.
 date: 2015-12-10
 image: selenium.png
 image-width: 100
-include-before: '![](steria.svg){width=150}'
+include-before: "![](steria.svg){width=150}"
 css: custom.css
 ---
 
