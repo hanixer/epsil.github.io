@@ -2,9 +2,22 @@ title: Importere Last.fm-spilleliste inn i Spotify
 date: 2013-11-23
 ---
 
--   Åpne spillelisten i Firefox, merk teksten og kopier den inn i Excel. Fjern overflødige kolonner.
+En gammel oppskrift for å importere spillelister inn i Spotify:
+
+-   Åpne Last.fm-spillelisten i Firefox, merk teksten og kopier den inn i Excel. Fjern overflødige kolonner.
 -   Kopier listen inn i Emacs. Gjør en søk-og-erstatt-operasjon slik at linjene er på formatet `Artist[tab]Track`.
--   Lagre dette som en tekstfil og last den opp til nettjenesten [spotmysongs.com](http://spotmysongs.com).
+-   Lagre dette som en tekstfil og last den opp til nettjenesten [SpotMySongs](http://spotmysongs.com/).
 -   Dra den resulterende sporlisten inn i en ny spilleliste i Spotify.
 
 En brukers «Most Played Tracks» kan være et interessant utgangspunkt når Last.fm oppgir høy kompatibilitet.
+
+* * * * *
+
+**Oppdatering 2016-11-24:** [SpotMySongs](http://spotmysongs.com/) er nedlagt. Fra nettsiden:^[<http://spotmysongs.com/>]
+
+> SpotMySongs is no longer available, but there are some other tools that can help you convert your playlists from other services to Spotify.
+>
+> 1.  [Ivy](http://www.ivyishere.org/): Import your existing playlists from iTunes and other applications and services into Spotify so you can listen to your favourite music anywhere with Ivy!
+> 2.  [Unify](http://www.getunify.com/): Transfer music from iTunes to Spotify. Unify lets you drag and drop your playlists and albums into Spotify. Unify is built for speed. Transfer hundreds of playlists and albums in seconds.
+>
+> Other Useful Websites and Apps: 1) [Spotify Web Player](https://play.spotify.com/), 2) [Pandora for iPhone](https://itunes.apple.com/us/app/pandora-radio/id284035177?mt=8&ign-mpt=uo%3D2), 3) [SpyBubble for iPhone and Android](http://www.prospybubble.com/), 4) [Highster Mobile for Android](http://www.bestphonespy.com/highster-mobile-review/)
