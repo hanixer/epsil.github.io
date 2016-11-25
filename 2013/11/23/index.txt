@@ -21,3 +21,21 @@ En brukers «Most Played Tracks» kan være et interessant utgangspunkt når Las
 > 2.  [Unify](http://www.getunify.com/): Transfer music from iTunes to Spotify. Unify lets you drag and drop your playlists and albums into Spotify. Unify is built for speed. Transfer hundreds of playlists and albums in seconds.
 >
 > Other Useful Websites and Apps: 1) [Spotify Web Player](https://play.spotify.com/), 2) [Pandora for iPhone](https://itunes.apple.com/us/app/pandora-radio/id284035177?mt=8&ign-mpt=uo%3D2), 3) [SpyBubble for iPhone and Android](http://www.prospybubble.com/), 4) [Highster Mobile for Android](http://www.bestphonespy.com/highster-mobile-review/)
+
+* * * * *
+
+**Oppdatering 2016-11-25:** Denne [reddit-tråden](https://www.reddit.com/r/spotify/comments/49uztj/how_to_import_text_file_playlist_to_spotify/) anbefaler [Playlist Converter](http://www.playlist-converter.net/#/):^[<https://www.reddit.com/r/spotify/comments/49uztj/how_to_import_text_file_playlist_to_spotify/>]
+
+> > > New user trying out premium but disappointed that importing playlists is quite difficult. The only option in the application is specifically import iTunes and Windows Media Player playlists.
+> > >
+> > > Also to try converting a playlist on a service like Ivyshare doesn't work anymore. (Seems like Spotify closed down that API this past January.)
+> > >
+> > > So I have an excel sheet with 1000+ songs but no way to import a txt/csv file. No webservices that work to do the conversion.
+> > >
+> > > Starting to think the only things that would work would be to try to make a media player or itunes playlist and import that. No idea where to start on that.
+> > >
+> > > Or to go through individually adding thousands on songs on Spotify.
+> >
+> > Trying out <http://www.playlist-converter.net/#/> to see if there might be a workaround this way.
+>
+> Ya that worked. Though don't try the auto import, it hangs. Have to select text from the converted spotify song codes and paste into a new spotify playlist inside the application.
