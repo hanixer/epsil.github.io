@@ -39,3 +39,25 @@ En brukers «Most Played Tracks» kan være et interessant utgangspunkt når Las
 > > Trying out <http://www.playlist-converter.net/#/> to see if there might be a workaround this way.
 >
 > Ya that worked. Though don't try the auto import, it hangs. Have to select text from the converted spotify song codes and paste into a new spotify playlist inside the application.
+
+* * * * *
+
+Det regulære uttrykket
+
+    %s/\(^[^\/]+\).*\/[-0-9]*[ ]*\(.*\)\..*/\2 - \1
+
+konverterer en spilleliste på formen
+
+    Beach House/Teen Dream/04 Walk in the Park.mp3
+    Beach House/Bloom/10 Irene.mp3
+    Beach House/Bloom/04 Other People.mp3
+    Beach House/Bloom/06 Troublemaker.mp3
+    Beach House/Bloom/08 Wishes.mp3
+
+til formen
+
+    Walk in the Park - Beach House
+    Irene - Beach House
+    Other People - Beach House
+    Troublemaker - Beach House
+    Wishes - Beach House
