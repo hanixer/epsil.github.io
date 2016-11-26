@@ -5,7 +5,7 @@
 <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
 <meta content="Vegard &#216;ye" name="author">
 <meta content="2013-11-23" name="date">
-<meta content="c24afc601441978d1b8238848a3439d0" name="md5">
+<meta content="4a066611242ac093b5aa973c83d2eaa6" name="md5">
 <meta content="text/css" http-equiv="Content-Style-Type">
 <meta content="width=device-width, initial-scale=1" name="viewport">
 <meta content="Importere Last.fm-spilleliste inn i Spotify" name="DC.Title">
@@ -103,7 +103,7 @@ TeX: { equationNumbers: { autoNumber: "all" } }
 <code>%s/\(^[^\/]+\).*\/[-0-9]*[ ]*\(.*\)\..*/\2 - \1</code>
 </pre>
 
-<p>konverterer en <abbr class="acronym" title="MP3 Uniform Resource Locator">M3U</abbr>-spilleliste p&#229; formen</p>
+<p>konverterer en <em><abbr class="acronym" title="MP3 Uniform Resource Locator">M3U</abbr></em>-spilleliste p&#229; formen</p>
 
 <pre>
 <code>Beach House/Teen Dream/04 Walk in the Park.mp3
@@ -121,6 +121,40 @@ Irene - Beach House
 Other People - Beach House
 Troublemaker - Beach House
 Wishes - Beach House</code>
+</pre>
+
+<hr>
+
+<p>Det regul&#230;re uttrykket</p>
+
+<pre>
+<code>%s/^#EXTM3U\n\|^#EXTINF:[0-9]+,\|^[^#].*\n?//g</code>
+</pre>
+
+<p>konverterer en <em>extended <abbr class="acronym" title="MP3 Uniform Resource Locator">M3U</abbr></em>-spilleliste p&#229; formen</p>
+
+<pre>
+<code>#EXTM3U
+#EXTINF:404,Desire Lines - Deerhunter
+Deerhunter/Halcyon Digest/06 Desire Lines.mp3
+#EXTINF:230,Saved By Old Times - Deerhunter
+Deerhunter/Microcastle/10 Saved By Old Times.mp3
+#EXTINF:202,Agoraphobia - Deerhunter
+Deerhunter/Microcastle/02 Agoraphobia.mp3
+#EXTINF:133,Revival - Deerhunter
+Deerhunter/Halcyon Digest/03 Revival.mp3
+#EXTINF:264,Twilight at Carbon Lake - Deerhunter
+Deerhunter/Microcastle/12 Twilight at Carbon Lake.mp3</code>
+</pre>
+
+<p>til den kompatible tekstfilen</p>
+
+<pre>
+<code>Desire Lines - Deerhunter
+Saved By Old Times - Deerhunter
+Agoraphobia - Deerhunter
+Revival - Deerhunter
+Twilight at Carbon Lake - Deerhunter</code>
 </pre>
 
 <hr class="footnotes-sep">

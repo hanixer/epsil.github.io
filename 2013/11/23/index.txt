@@ -19,7 +19,7 @@ Det regulære uttrykket
 
     %s/\(^[^\/]+\).*\/[-0-9]*[ ]*\(.*\)\..*/\2 - \1
 
-konverterer en M3U-spilleliste på formen
+konverterer en *M3U*-spilleliste på formen
 
     Beach House/Teen Dream/04 Walk in the Park.mp3
     Beach House/Bloom/10 Irene.mp3
@@ -34,6 +34,34 @@ til den kompatible tekstfilen
     Other People - Beach House
     Troublemaker - Beach House
     Wishes - Beach House
+
+* * * * *
+
+Det regulære uttrykket
+
+    %s/^#EXTM3U\n\|^#EXTINF:[0-9]+,\|^[^#].*\n?//g
+
+konverterer en *extended M3U*-spilleliste på formen
+
+    #EXTM3U
+    #EXTINF:404,Desire Lines - Deerhunter
+    Deerhunter/Halcyon Digest/06 Desire Lines.mp3
+    #EXTINF:230,Saved By Old Times - Deerhunter
+    Deerhunter/Microcastle/10 Saved By Old Times.mp3
+    #EXTINF:202,Agoraphobia - Deerhunter
+    Deerhunter/Microcastle/02 Agoraphobia.mp3
+    #EXTINF:133,Revival - Deerhunter
+    Deerhunter/Halcyon Digest/03 Revival.mp3
+    #EXTINF:264,Twilight at Carbon Lake - Deerhunter
+    Deerhunter/Microcastle/12 Twilight at Carbon Lake.mp3
+
+til den kompatible tekstfilen
+
+    Desire Lines - Deerhunter
+    Saved By Old Times - Deerhunter
+    Agoraphobia - Deerhunter
+    Revival - Deerhunter
+    Twilight at Carbon Lake - Deerhunter
 
 [^1]: Fra [SpotMySongs](http://spotmysongs.com/):
 
