@@ -17,6 +17,7 @@ Blogg
 -   [Nettilkobling med iPhone](2015/12/05/)
 -   [Dia på OS X](2015/06/25/)
 -   [Bruke `grep` og `find`](2010/11/14/)
+-   [Importere Last.fm-spilleliste inn i Spotify](2013/11/23/)
 -   [Rock step swing](swing/)
 -   [Cubansk salsa](salsa/)
 -   [Gitarspill](gitar/)
