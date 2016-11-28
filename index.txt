@@ -17,7 +17,7 @@ Blogg
 -   [Nettilkobling med iPhone](2015/12/05/)
 -   [Dia på OS X](2015/06/25/)
 -   [Bruke `grep` og `find`](2010/11/14/)
--   [Importere Last.fm-spilleliste inn i Spotify](2013/11/23/)
+-   [Importere spillelister inn i Spotify](2013/11/23/)
 -   [Rock step swing](swing/)
 -   [Cubansk salsa](salsa/)
 -   [Gitarspill](gitar/)
@@ -60,7 +60,7 @@ Blogg
 -   [2013-12-20: Starte Gollum med `launchd`](2013/12/20/)
 -   [2013-12-06: Fikse `mkfs.ntfs` på Ubuntu](2013/12/06/)
 -   [2013-11-28: iTerm2 som nedtrekksterminal](2013/11/28/)
--   [2013-11-23: Importere Last.fm-spilleliste inn i Spotify](2013/11/23/)
+-   [2013-11-23: Importere spillelister inn i Spotify](2013/11/23/)
 -   [2013-11-18: Slette manglende filer i iTunes](2013/11/18/)
 -   [2013-01-01: Last.fm-sortering i foobar2000](2013/01/01/)
 

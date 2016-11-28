@@ -29,7 +29,7 @@ Last.fm
 Spillelister på nettstedet [Last.fm](http://last.fm/) kan konverteres ved hjelp av regnearkprogrammet Excel og teksteditoren Emacs:
 
 1.  Åpne Last.fm-spillelisten i nettleseren, merk teksten og kopier den inn i Excel. Fjern overflødige kolonner.
-2.  Kopier listen inn i Emacs. Gjør en søk-og-erstatt-operasjon slik at linjene er på formatet `Track - Artist`.
+2.  Bruk formelen `= B1 & " - " & A1` til å opprette en ekstra kolonne på formatet `Track - Artist`, som kan kopieres til utklippstavlen. (Alternativt: kopier regnearket inn i Emacs. Gjør en søk-og-erstatt-operasjon slik at linjene er på formatet `Track - Artist`.)
 3.  Konverter spillelisten med [Playlist Converter](http://www.playlist-converter.net/).
 
 En brukers «Most Played Tracks» kan være et interessant utgangspunkt når Last.fm oppgir høy kompatibilitet.[^2]
@@ -102,6 +102,11 @@ Som [Playlist Converter](http://www.playlist-converter.net/) så konverterer til
     spotify:track:30wvVTkqA4Fp5ZCG0xGof7
     spotify:track:6vtwbm7YGkTwTINdrcXV5I
 
+Alternativer
+------------
+
+For å eksportere spillelister *fra* Spotify, kan man bruke verktøyet [Exportify](https://github.com/watsonbox/exportify).[^3] Spotify har dessverre ingen innebygd funksjonalitet for å sikkerhetskopiere spillelister.
+
 [^1]: Fra en [reddit-tråd](https://www.reddit.com/r/spotify/comments/49uztj/how_to_import_text_file_playlist_to_spotify/):
 
     > > > So I have an excel sheet with 1000+ songs but no way to import a txt/csv file. No webservices that work to do the conversion.
@@ -110,7 +115,7 @@ Som [Playlist Converter](http://www.playlist-converter.net/) så konverterer til
     >
     > Ya that worked. Though don't try the auto import, it hangs. Have to select text from the converted spotify song codes and paste into a new spotify playlist inside the application.
 
-[^2]: Denne oppskriften gjorde opprinnlig bruk av [SpotMySongs](http://spotmysongs.com/), som dessverre er nedlagt. Fra nettsiden:
+[^2]: Denne oppskriften gjorde opprinnelig bruk av [SpotMySongs](http://spotmysongs.com/), som dessverre er nedlagt. Fra nettsiden:
 
     > SpotMySongs is no longer available, but there are some other tools that can help you convert your playlists from other services to Spotify.
     >
@@ -118,3 +123,5 @@ Som [Playlist Converter](http://www.playlist-converter.net/) så konverterer til
     > 2.  [Unify](http://www.getunify.com/): Transfer music from iTunes to Spotify. Unify lets you drag and drop your playlists and albums into Spotify. Unify is built for speed. Transfer hundreds of playlists and albums in seconds.
     >
     > Other Useful Websites and Apps: 1) [Spotify Web Player](https://play.spotify.com/), 2) [Pandora for iPhone](https://itunes.apple.com/us/app/pandora-radio/id284035177?mt=8&ign-mpt=uo%3D2), 3) [SpyBubble for iPhone and Android](http://www.prospybubble.com/), 4) [Highster Mobile for Android](http://www.bestphonespy.com/highster-mobile-review/)
+
+[^3]: Referert i denne artikkelen om [Spotify og Apple Music](https://www.verschoren.com/2015/07/migrating-spotify-to-apple-music/).

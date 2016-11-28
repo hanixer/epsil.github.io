@@ -5,7 +5,7 @@
 <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
 <meta content="Vegard &#216;ye" name="author">
 <meta content="2013-11-23" name="date">
-<meta content="f7901f8d50ded21a460038d4c21f1b88" name="md5">
+<meta content="744ab4fd24dc38bf411bcfbd467e4b2c" name="md5">
 <meta content="text/css" http-equiv="Content-Style-Type">
 <meta content="width=device-width, initial-scale=1" name="viewport">
 <meta content="Importere spillelister inn i Spotify" name="DC.Title">
@@ -78,6 +78,9 @@ TeX: { equationNumbers: { autoNumber: "all" } }
 
 <li><a href="#extended-m3u" title="Extended M3U">Extended <abbr class="acronym" title="MP3 Uniform Resource Locator">M3U</abbr></a>
 </li>
+
+<li><a href="#alternativer-2" title="Alternativer">Alternativer</a>
+</li>
 </ul>
 </div>
 </nav>
@@ -127,12 +130,12 @@ spotify:track:7x4tFmih1JBITx0e2ucGrT</code>
 <ol>
 <li>&#197;pne Last.fm-spillelisten i nettleseren, merk teksten og kopier den inn i Excel. Fjern overfl&#248;dige kolonner.</li>
 
-<li>Kopier listen inn i Emacs. Gj&#248;r en s&#248;k-og-erstatt-operasjon slik at linjene er p&#229; formatet <code>Track - Artist</code>.</li>
+<li>Bruk formelen <code>= B1 &amp; " - " &amp; A1</code> til &#229; opprette en ekstra kolonne p&#229; formatet <code>Track - Artist</code>, som kan kopieres til utklippstavlen. (Alternativt: kopier regnearket inn i Emacs. Gj&#248;r en s&#248;k-og-erstatt-operasjon slik at linjene er p&#229; formatet <code>Track - Artist</code>.)</li>
 
 <li>Konverter spillelisten med <a href="http://www.playlist-converter.net/" target="_blank" title="Open playlist-converter.net in a new window">Playlist Converter</a>.</li>
 </ol>
 
-<p>En brukers &#171;Most Played Tracks&#187; kan v&#230;re et interessant utgangspunkt n&#229;r Last.fm oppgir h&#248;y kompatibilitet.<sup class="footnote-ref"><a href="#fn2" id="fnref2" title="Denne oppskriften gjorde opprinnlig bruk av SpotMySongs, som dessverre er nedlagt. Fra nettsiden: SpotMySongs is no longer available, but there are some other tools that can help you convert your playlists from other services to Spotify. Ivy: Import your existing playlists from iTunes and other applications and services into Spotify so you can listen to your favourite music anywhere with Ivy! Unify: Transfer music from iTunes to Spotify. Unify lets you drag and drop your playlists and albums into Spotify. Unify is built for speed. Transfer hundreds of playlists and albums in seconds. Other Useful Websites and Apps: 1) Spotify Web Player, 2) Pandora for iPhone, 3) SpyBubble for iPhone and Android, 4) Highster Mobile for Android">[2]</a></sup></p>
+<p>En brukers &#171;Most Played Tracks&#187; kan v&#230;re et interessant utgangspunkt n&#229;r Last.fm oppgir h&#248;y kompatibilitet.<sup class="footnote-ref"><a href="#fn2" id="fnref2" title="Denne oppskriften gjorde opprinnelig bruk av SpotMySongs, som dessverre er nedlagt. Fra nettsiden: SpotMySongs is no longer available, but there are some other tools that can help you convert your playlists from other services to Spotify. Ivy: Import your existing playlists from iTunes and other applications and services into Spotify so you can listen to your favourite music anywhere with Ivy! Unify: Transfer music from iTunes to Spotify. Unify lets you drag and drop your playlists and albums into Spotify. Unify is built for speed. Transfer hundreds of playlists and albums in seconds. Other Useful Websites and Apps: 1) Spotify Web Player, 2) Pandora for iPhone, 3) SpyBubble for iPhone and Android, 4) Highster Mobile for Android">[2]</a></sup></p>
 </div>
 </section>
 
@@ -183,7 +186,6 @@ spotify:track:7x4tFmih1JBITx0e2ucGrT</code>
 <h2><a aria-hidden="true" class="header-anchor" href="#extended-m3u" title="Extended M3U"></a>Extended <abbr class="acronym" title="MP3 Uniform Resource Locator">M3U</abbr><a aria-controls="extended-m3u-section" aria-expanded="true" aria-hidden="true" class="collapse-button" data-toggle="collapse" href="#extended-m3u-section" role="button"></a></h2>
 
 <div class="collapse in" id="extended-m3u-section">
-<section>
 <p>Man kan ogs&#229; konvertere <em>extended <abbr class="acronym" title="MP3 Uniform Resource Locator">M3U</abbr></em>-spillelister med Emacs. Det regul&#230;re uttrykket</p>
 
 <pre>
@@ -225,6 +227,15 @@ spotify:track:2SpHd4lGMrJMIQDf92V6VP
 spotify:track:30wvVTkqA4Fp5ZCG0xGof7
 spotify:track:6vtwbm7YGkTwTINdrcXV5I</code>
 </pre>
+</div>
+</section>
+
+<section id="alternativer-2">
+<h2><a aria-hidden="true" class="header-anchor" href="#alternativer-2" title="Alternativer"></a>Alternativer<a aria-controls="alternativer-2-section" aria-expanded="true" aria-hidden="true" class="collapse-button" data-toggle="collapse" href="#alternativer-2-section" role="button"></a></h2>
+
+<div class="collapse in" id="alternativer-2-section">
+<section>
+<p>For &#229; eksportere spillelister <em>fra</em> Spotify, kan man bruke verkt&#248;yet <a href="https://github.com/watsonbox/exportify" target="_blank" title="Open github.com in a new window">Exportify</a>.<sup class="footnote-ref"><a href="#fn3" id="fnref3" title="Referert i denne artikkelen om Spotify og Apple Music.">[3]</a></sup> Spotify har dessverre ingen innebygd funksjonalitet for &#229; sikkerhetskopiere spillelister.</p>
 
 <hr class="footnotes-sep">
 </section>
@@ -249,7 +260,7 @@ spotify:track:6vtwbm7YGkTwTINdrcXV5I</code>
 </li>
 
 <li class="footnote-item" id="fn2">
-<p>Denne oppskriften gjorde opprinnlig bruk av <a href="http://spotmysongs.com/" target="_blank" title="Open spotmysongs.com in a new window">SpotMySongs</a>, som dessverre er nedlagt. Fra nettsiden:</p>
+<p>Denne oppskriften gjorde opprinnelig bruk av <a href="http://spotmysongs.com/" target="_blank" title="Open spotmysongs.com in a new window">SpotMySongs</a>, som dessverre er nedlagt. Fra nettsiden:</p>
 
 <blockquote>
 <p>SpotMySongs is no longer available, but there are some other tools that can help you convert your playlists from other services to Spotify.</p>
@@ -263,6 +274,10 @@ spotify:track:6vtwbm7YGkTwTINdrcXV5I</code>
 <p>Other Useful Websites and Apps: 1) <a href="https://play.spotify.com/" target="_blank" title="Open play.spotify.com in a new window">Spotify Web Player</a>, 2) <a href="https://itunes.apple.com/us/app/pandora-radio/id284035177?mt=8&amp;ign-mpt=uo%3D2" target="_blank" title="Open itunes.apple.com in a new window">Pandora for iPhone</a>, 3) <a href="http://www.prospybubble.com/" target="_blank" title="Open prospybubble.com in a new window">SpyBubble for iPhone and Android</a>, 4) <a href="http://www.bestphonespy.com/highster-mobile-review/" target="_blank" title="Open bestphonespy.com in a new window">Highster Mobile for Android</a></p>
 </blockquote>
 <a class="footnote-backref" href="#fnref2" title="En brukers &#171;Most Played Tracks&#187; kan v&#230;re et interessant utgangspunkt n&#229;r Last.fm oppgir h&#248;y kompatibilitet.[2]">&#8617;&#65038;</a>
+</li>
+
+<li class="footnote-item" id="fn3">
+<p>Referert i denne artikkelen om <a href="https://www.verschoren.com/2015/07/migrating-spotify-to-apple-music/" target="_blank" title="Open verschoren.com in a new window">Spotify og Apple Music</a>. <a class="footnote-backref" href="#fnref3" title="For &#229; eksportere spillelister fra Spotify, kan man bruke verkt&#248;yet Exportify.[3] Spotify har dessverre ingen innebygd funksjonalitet for &#229; sikkerhetskopiere spillelister.">&#8617;&#65038;</a></p>
 </li>
 </ol>
 </section>
