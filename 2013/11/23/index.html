@@ -5,7 +5,7 @@
 <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
 <meta content="Vegard &#216;ye" name="author">
 <meta content="2013-11-23" name="date">
-<meta content="25c3876e1b3ad854e4ea20aa531cb08f" name="md5">
+<meta content="f7901f8d50ded21a460038d4c21f1b88" name="md5">
 <meta content="text/css" http-equiv="Content-Style-Type">
 <meta content="width=device-width, initial-scale=1" name="viewport">
 <meta content="Importere spillelister inn i Spotify" name="DC.Title">
@@ -18,14 +18,17 @@
 <meta content="article" property="og:type">
 <meta content="https://epsil.github.io/2013/11/23/" property="og:url">
 <meta content="Vegards blogg" property="og:site_name">
+<meta content="https://epsil.github.io/2013/11/23/spotify.png" property="og:image">
 <meta content="summary" name="twitter:card">
 <meta content="@github" name="twitter:site">
 <meta content="Importere spillelister inn i Spotify" name="twitter:title">
+<meta content="https://epsil.github.io/2013/11/23/spotify.png" name="twitter:image">
 <link href="../../../favicon.ico" rel="icon" type="image/x-icon">
-<link href="../../../apple-touch-icon.png" rel="apple-touch-icon">
+<link href="spotify.png" rel="apple-touch-icon">
 <link href="../../../css/markdown-template.css" rel="stylesheet">
 <link href="https://epsil.github.io/2013/11/23/" rel="canonical">
 <link href="index.txt" rel="alternate" title="Markdown" type="text/markdown">
+<link href="custom.css" rel="stylesheet" type="text/css">
 <script type="text/x-mathjax-config">
 MathJax.Hub.Config({
 TeX: { equationNumbers: { autoNumber: "all" } }
@@ -67,13 +70,13 @@ TeX: { equationNumbers: { autoNumber: "all" } }
 
 <div class="collapse" id="toc">
 <ul>
+<li><a href="#lastfm" title="Last.fm">Last.fm</a>
+</li>
+
 <li><a href="#m3u" title="M3U"><abbr class="acronym" title="MP3 Uniform Resource Locator">M3U</abbr></a>
 </li>
 
 <li><a href="#extended-m3u" title="Extended M3U">Extended <abbr class="acronym" title="MP3 Uniform Resource Locator">M3U</abbr></a>
-</li>
-
-<li><a href="#lastfm" title="Last.fm">Last.fm</a>
 </li>
 </ul>
 </div>
@@ -85,11 +88,14 @@ TeX: { equationNumbers: { autoNumber: "all" } }
 </h1>
 
 <p><a class="p-author h-card" href="https://epsil.github.io/" target="_blank" title="Open epsil.github.io in a new window">Vegard &#216;ye</a> <time class="dt-published" datetime="2013-11-23">2013-11-23</time></p>
+
+<figure><img alt="" class="u-photo" src="spotify.png" width="100">
+</figure>
 </header>
 
 <section class="e-content">
 <section>
-<p>Med <a href="http://www.playlist-converter.net/" target="_blank" title="Open playlist-converter.net in a new window">Playlist Converter</a> kan man enkelt importere spillelister inn i Spotify. Spillelisten m&#229; v&#230;re p&#229; formatet <code>Track - Artist</code>:</p>
+<p>Med nettstedet <a href="http://www.playlist-converter.net/" target="_blank" title="Open playlist-converter.net in a new window">Playlist Converter</a> kan man enkelt importere spillelister inn i Spotify. Spillelisten m&#229; v&#230;re p&#229; formatet <code>Track - Artist</code>:</p>
 
 <pre>
 <code>Walk in the Park - Beach House
@@ -112,12 +118,30 @@ spotify:track:7x4tFmih1JBITx0e2ucGrT</code>
 <p>Man kopierer dette til utklippstavlen, oppretter en ny spilleliste i Spotify, og limer inn. (<em>Ikke</em> bruk auto-importen, den skaper problemer.)<sup class="footnote-ref"><a href="#fn1" id="fnref1" title="Fra en reddit-tr&#229;d: So I have an excel sheet with 1000+ songs but no way to import a txt/csv file. No webservices that work to do the conversion. Trying out http://www.playlist-converter.net/#/ to see if there might be a workaround this way. Ya that worked. Though don&#8217;t try the auto import, it hangs. Have to select text from the converted spotify song codes and paste into a new spotify playlist inside the application.">[1]</a></sup></p>
 </section>
 
+<section id="lastfm">
+<h2><a aria-hidden="true" class="header-anchor" href="#lastfm" title="Last.fm"></a>Last.fm<a aria-controls="lastfm-section" aria-expanded="true" aria-hidden="true" class="collapse-button" data-toggle="collapse" href="#lastfm-section" role="button"></a></h2>
+
+<div class="collapse in" id="lastfm-section">
+<p>Spillelister p&#229; nettstedet <a href="http://last.fm/" target="_blank" title="Open last.fm in a new window">Last.fm</a> kan konverteres ved hjelp av regnearkprogrammet Excel og teksteditoren Emacs:</p>
+
+<ol>
+<li>&#197;pne Last.fm-spillelisten i nettleseren, merk teksten og kopier den inn i Excel. Fjern overfl&#248;dige kolonner.</li>
+
+<li>Kopier listen inn i Emacs. Gj&#248;r en s&#248;k-og-erstatt-operasjon slik at linjene er p&#229; formatet <code>Track - Artist</code>.</li>
+
+<li>Konverter spillelisten med <a href="http://www.playlist-converter.net/" target="_blank" title="Open playlist-converter.net in a new window">Playlist Converter</a>.</li>
+</ol>
+
+<p>En brukers &#171;Most Played Tracks&#187; kan v&#230;re et interessant utgangspunkt n&#229;r Last.fm oppgir h&#248;y kompatibilitet.<sup class="footnote-ref"><a href="#fn2" id="fnref2" title="Denne oppskriften gjorde opprinnlig bruk av SpotMySongs, som dessverre er nedlagt. Fra nettsiden: SpotMySongs is no longer available, but there are some other tools that can help you convert your playlists from other services to Spotify. Ivy: Import your existing playlists from iTunes and other applications and services into Spotify so you can listen to your favourite music anywhere with Ivy! Unify: Transfer music from iTunes to Spotify. Unify lets you drag and drop your playlists and albums into Spotify. Unify is built for speed. Transfer hundreds of playlists and albums in seconds. Other Useful Websites and Apps: 1) Spotify Web Player, 2) Pandora for iPhone, 3) SpyBubble for iPhone and Android, 4) Highster Mobile for Android">[2]</a></sup></p>
+</div>
+</section>
+
 <section id="m3u">
 <h2><a aria-hidden="true" class="header-anchor" href="#m3u" title="M3U"></a><abbr class="acronym" title="MP3 Uniform Resource Locator">M3U</abbr><a aria-controls="m3u-section" aria-expanded="true" aria-hidden="true" class="collapse-button" data-toggle="collapse" href="#m3u-section" role="button"></a>
 </h2>
 
 <div class="collapse in" id="m3u-section">
-<p>Hvis man har spillelister i <em><abbr class="acronym" title="MP3 Uniform Resource Locator">M3U</abbr></em>-format, kan man bruke teksteditoren Emacs til &#229; konvertere dem til tekstformatet som <a href="http://www.playlist-converter.net/" target="_blank" title="Open playlist-converter.net in a new window">Playlist Converter</a> bruker. Det regul&#230;re uttrykket</p>
+<p>Hvis man har spillelister i <em><abbr class="acronym" title="MP3 Uniform Resource Locator">M3U</abbr></em>-format, kan man bruke Emacs til &#229; konvertere dem til tekstformatet som <a href="http://www.playlist-converter.net/" target="_blank" title="Open playlist-converter.net in a new window">Playlist Converter</a> bruker. Det regul&#230;re uttrykket</p>
 
 <pre>
 <code>%s/\(^[^\/]+\).*\/[-0-9]*[ ]*\(.*\)\..*/\2 - \1</code>
@@ -133,7 +157,7 @@ Beach House/Bloom/06 Troublemaker.mp3
 Beach House/Bloom/08 Wishes.mp3</code>
 </pre>
 
-<p>til den kompatible tekstfilen</p>
+<p>til det kompatible formatet</p>
 
 <pre>
 <code>Walk in the Park - Beach House
@@ -159,6 +183,7 @@ spotify:track:7x4tFmih1JBITx0e2ucGrT</code>
 <h2><a aria-hidden="true" class="header-anchor" href="#extended-m3u" title="Extended M3U"></a>Extended <abbr class="acronym" title="MP3 Uniform Resource Locator">M3U</abbr><a aria-controls="extended-m3u-section" aria-expanded="true" aria-hidden="true" class="collapse-button" data-toggle="collapse" href="#extended-m3u-section" role="button"></a></h2>
 
 <div class="collapse in" id="extended-m3u-section">
+<section>
 <p>Man kan ogs&#229; konvertere <em>extended <abbr class="acronym" title="MP3 Uniform Resource Locator">M3U</abbr></em>-spillelister med Emacs. Det regul&#230;re uttrykket</p>
 
 <pre>
@@ -181,7 +206,7 @@ Deerhunter/Halcyon Digest/03 Revival.mp3
 Deerhunter/Microcastle/12 Twilight at Carbon Lake.mp3</code>
 </pre>
 
-<p>til den kompatible tekstfilen</p>
+<p>til det kompatible formatet</p>
 
 <pre>
 <code>Desire Lines - Deerhunter
@@ -200,25 +225,6 @@ spotify:track:2SpHd4lGMrJMIQDf92V6VP
 spotify:track:30wvVTkqA4Fp5ZCG0xGof7
 spotify:track:6vtwbm7YGkTwTINdrcXV5I</code>
 </pre>
-</div>
-</section>
-
-<section id="lastfm">
-<h2><a aria-hidden="true" class="header-anchor" href="#lastfm" title="Last.fm"></a>Last.fm<a aria-controls="lastfm-section" aria-expanded="true" aria-hidden="true" class="collapse-button" data-toggle="collapse" href="#lastfm-section" role="button"></a></h2>
-
-<div class="collapse in" id="lastfm-section">
-<section>
-<p>Spillelister p&#229; nettstedet <a href="http://last.fm/" target="_blank" title="Open last.fm in a new window">Last.fm</a> kan konverteres ved bruk av Excel og Emacs:</p>
-
-<ol>
-<li>&#197;pne Last.fm-spillelisten i Firefox, merk teksten og kopier den inn i Excel. Fjern overfl&#248;dige kolonner.</li>
-
-<li>Kopier listen inn i Emacs. Gj&#248;r en s&#248;k-og-erstatt-operasjon slik at linjene er p&#229; formatet <code>Track - Artist</code>.</li>
-
-<li>Konverter spillelisten med <a href="http://www.playlist-converter.net/" target="_blank" title="Open playlist-converter.net in a new window">Playlist Converter</a>.</li>
-</ol>
-
-<p>En brukers &#171;Most Played Tracks&#187; kan v&#230;re et interessant utgangspunkt n&#229;r Last.fm oppgir h&#248;y kompatibilitet.<sup class="footnote-ref"><a href="#fn2" id="fnref2" title="Denne oppskriften gjorde opprinnlig bruk av SpotMySongs, som dessverre er nedlagt. Fra nettsiden: SpotMySongs is no longer available, but there are some other tools that can help you convert your playlists from other services to Spotify. Ivy: Import your existing playlists from iTunes and other applications and services into Spotify so you can listen to your favourite music anywhere with Ivy! Unify: Transfer music from iTunes to Spotify. Unify lets you drag and drop your playlists and albums into Spotify. Unify is built for speed. Transfer hundreds of playlists and albums in seconds. Other Useful Websites and Apps: 1) Spotify Web Player, 2) Pandora for iPhone, 3) SpyBubble for iPhone and Android, 4) Highster Mobile for Android">[2]</a></sup></p>
 
 <hr class="footnotes-sep">
 </section>

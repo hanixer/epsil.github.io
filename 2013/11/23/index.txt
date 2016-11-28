@@ -1,8 +1,11 @@
 title: Importere spillelister inn i Spotify
 date: 2013-11-23
+image: spotify.png
+image-width: 100
+css: custom.css
 ---
 
-Med [Playlist Converter](http://www.playlist-converter.net/) kan man enkelt importere spillelister inn i Spotify. Spillelisten må være på formatet `Track - Artist`:
+Med nettstedet [Playlist Converter](http://www.playlist-converter.net/) kan man enkelt importere spillelister inn i Spotify. Spillelisten må være på formatet `Track - Artist`:
 
     Walk in the Park - Beach House
     Irene - Beach House
@@ -20,10 +23,21 @@ Med [Playlist Converter](http://www.playlist-converter.net/) kan man enkelt impo
 
 Man kopierer dette til utklippstavlen, oppretter en ny spilleliste i Spotify, og limer inn. (*Ikke* bruk auto-importen, den skaper problemer.)[^1]
 
+Last.fm
+-------
+
+Spillelister på nettstedet [Last.fm](http://last.fm/) kan konverteres ved hjelp av regnearkprogrammet Excel og teksteditoren Emacs:
+
+1.  Åpne Last.fm-spillelisten i nettleseren, merk teksten og kopier den inn i Excel. Fjern overflødige kolonner.
+2.  Kopier listen inn i Emacs. Gjør en søk-og-erstatt-operasjon slik at linjene er på formatet `Track - Artist`.
+3.  Konverter spillelisten med [Playlist Converter](http://www.playlist-converter.net/).
+
+En brukers «Most Played Tracks» kan være et interessant utgangspunkt når Last.fm oppgir høy kompatibilitet.[^2]
+
 M3U
 ---
 
-Hvis man har spillelister i *M3U*-format, kan man bruke teksteditoren Emacs til å konvertere dem til tekstformatet som [Playlist Converter](http://www.playlist-converter.net/) bruker. Det regulære uttrykket
+Hvis man har spillelister i *M3U*-format, kan man bruke Emacs til å konvertere dem til tekstformatet som [Playlist Converter](http://www.playlist-converter.net/) bruker. Det regulære uttrykket
 
     %s/\(^[^\/]+\).*\/[-0-9]*[ ]*\(.*\)\..*/\2 - \1
 
@@ -35,7 +49,7 @@ forvandler en spilleliste på formen
     Beach House/Bloom/06 Troublemaker.mp3
     Beach House/Bloom/08 Wishes.mp3
 
-til den kompatible tekstfilen
+til det kompatible formatet
 
     Walk in the Park - Beach House
     Irene - Beach House
@@ -72,7 +86,7 @@ forvandler en spilleliste på formen
     #EXTINF:264,Twilight at Carbon Lake - Deerhunter
     Deerhunter/Microcastle/12 Twilight at Carbon Lake.mp3
 
-til den kompatible tekstfilen
+til det kompatible formatet
 
     Desire Lines - Deerhunter
     Saved By Old Times - Deerhunter
@@ -87,17 +101,6 @@ Som [Playlist Converter](http://www.playlist-converter.net/) så konverterer til
     spotify:track:2SpHd4lGMrJMIQDf92V6VP
     spotify:track:30wvVTkqA4Fp5ZCG0xGof7
     spotify:track:6vtwbm7YGkTwTINdrcXV5I
-
-Last.fm
--------
-
-Spillelister på nettstedet [Last.fm](http://last.fm/) kan konverteres ved bruk av Excel og Emacs:
-
-1.  Åpne Last.fm-spillelisten i Firefox, merk teksten og kopier den inn i Excel. Fjern overflødige kolonner.
-2.  Kopier listen inn i Emacs. Gjør en søk-og-erstatt-operasjon slik at linjene er på formatet `Track - Artist`.
-3.  Konverter spillelisten med [Playlist Converter](http://www.playlist-converter.net/).
-
-En brukers «Most Played Tracks» kan være et interessant utgangspunkt når Last.fm oppgir høy kompatibilitet.[^2]
 
 [^1]: Fra en [reddit-tråd](https://www.reddit.com/r/spotify/comments/49uztj/how_to_import_text_file_playlist_to_spotify/):
 
