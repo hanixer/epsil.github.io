@@ -38,9 +38,9 @@ En brukers «Most Played Tracks» kan være et interessant utgangspunkt når Las
 M3U
 ---
 
-Hvis man har spillelister i *M3U*-format, kan man bruke Emacs til å konvertere dem til tekstformatet som [Playlist Converter](http://www.playlist-converter.net/) bruker. Det regulære uttrykket
+Hvis man har spillelister i *M3U*-format, kan man bruke Emacs til å konvertere dem til tekstformatet som [Playlist Converter](http://www.playlist-converter.net/) bruker. Det regulære uttrykket[^3]
 
-    %s/\(^[^\/]+\).*\/[-0-9]*[ ]*\(.*\)\..*/\2 - \1
+    %s/\(^[^\/]+\).*\/[-0-9]*[-. ]*\(.*\)\..*/\2 - \1
 
 forvandler en spilleliste på formen
 
@@ -106,7 +106,7 @@ Som [Playlist Converter](http://www.playlist-converter.net/) så konverterer til
 Alternativer
 ------------
 
-For å eksportere spillelister *fra* Spotify, kan man bruke verktøyet [Exportify](https://github.com/watsonbox/exportify).[^3] Spotify har dessverre ingen innebygd funksjonalitet for å sikkerhetskopiere spillelister.
+For å eksportere spillelister *fra* Spotify, kan man bruke verktøyet [Exportify](https://github.com/watsonbox/exportify).[^4] Spotify har dessverre ingen innebygd funksjonalitet for å sikkerhetskopiere spillelister.
 
 [^1]: Fra en [reddit-tråd](https://www.reddit.com/r/spotify/comments/49uztj/how_to_import_text_file_playlist_to_spotify/):
 
@@ -127,4 +127,12 @@ For å eksportere spillelister *fra* Spotify, kan man bruke verktøyet [Exportif
 
     I stedet for [Playlist Converter](http://www.playlist-converter.net/) kan man godt bruke [Yet Another Spotify Playlist Converter](http://michaeldick.me/YetAnotherSpotifyPlaylistConverter/), eller dette [skriptet](https://github.com/epsil/spotify-js) som jeg selv har skrevet.
 
-[^3]: Referert i denne artikkelen om [Spotify og Apple Music](https://www.verschoren.com/2015/07/migrating-spotify-to-apple-music/).
+[^3]: Andre nyttige uttrykk:
+
+    -   `%s/ - /\//g` bytter ut `-` med `/`.
+    -   `:%s/^[-0-9]*[ ]*//g` fjerner spornummer.
+    -   `%s/^[. ]*//` fjerner overflødige tegn.
+    -   `%s/\.[^.]*$//g` fjerner filendelsen.
+    -   `%s/\(.*\) - .* - .* - \(.*\)\.[^.]*$/\2 - \1` konverterer et filnavn på formen `Artist - Album - Track - Title`.
+
+[^4]: Referert i denne artikkelen om [Spotify og Apple Music](https://www.verschoren.com/2015/07/migrating-spotify-to-apple-music/).
