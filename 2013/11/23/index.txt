@@ -133,6 +133,6 @@ For å eksportere spillelister *fra* Spotify, kan man bruke verktøyet [Exportif
     -   `:%s/^[-0-9]*[ ]*//g` fjerner spornummer.
     -   `%s/^[. ]*//` fjerner overflødige tegn.
     -   `%s/\.[^.]*$//g` fjerner filendelsen.
-    -   `%s/\(.*\) - .* - .* - \(.*\)\.[^.]*$/\2 - \1` konverterer et filnavn på formen `Artist - Album - Track - Title`.
+    -   `%s/\(.*\) - .* - .* - \(.*\)\.[^.]*$/\2 - \1` konverterer filnavn på formen `Artist - Album - Track - Title`.
 
 [^4]: Referert i denne artikkelen om [Spotify og Apple Music](https://www.verschoren.com/2015/07/migrating-spotify-to-apple-music/).
