@@ -125,6 +125,6 @@ For å eksportere spillelister *fra* Spotify, kan man bruke verktøyet [Exportif
     >
     > Other Useful Websites and Apps: 1) [Spotify Web Player](https://play.spotify.com/), 2) [Pandora for iPhone](https://itunes.apple.com/us/app/pandora-radio/id284035177?mt=8&ign-mpt=uo%3D2), 3) [SpyBubble for iPhone and Android](http://www.prospybubble.com/), 4) [Highster Mobile for Android](http://www.bestphonespy.com/highster-mobile-review/)
 
-    I stedet for [Playlist Converter](http://www.playlist-converter.net/) kan man godt bruke [Yet Another Spotify Playlist Converter](http://michaeldick.me/YetAnotherSpotifyPlaylistConverter/).
+    I stedet for [Playlist Converter](http://www.playlist-converter.net/) kan man godt bruke [Yet Another Spotify Playlist Converter](http://michaeldick.me/YetAnotherSpotifyPlaylistConverter/), eller dette [skriptet](https://github.com/epsil/spotify-js) som jeg selv har skrevet.
 
 [^3]: Referert i denne artikkelen om [Spotify og Apple Music](https://www.verschoren.com/2015/07/migrating-spotify-to-apple-music/).
