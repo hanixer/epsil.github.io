@@ -135,4 +135,19 @@ For å eksportere spillelister *fra* Spotify, kan man bruke verktøyet [Exportif
     -   `%s/\.[^.]*$//g` fjerner filendelsen.
     -   `%s/\(.*\) - .* - .* - \(.*\)\.[^.]*$/\2 - \1/g` konverterer filnavn på formen `Artist - Album - Track - Title`.
 
+    Da jeg hadde mange spillelister å konvertere, gikk jeg til og med til det steget å skrive en Lisp-funksjon:
+
+    ```lisp
+    (defun playlist ()
+      (interactive)
+      (evil-ex "%s/ - /\\//g")
+      (evil-ex "%s/_/ /g")
+      (evil-ex "%s|^/Users/vegard/")
+      (evil-ex "%s|^\\(Music\\|Musikk\\)/")
+      (evil-ex "%s|^inbox/\\([0-9]+/\\)?")
+      (evil-ex "%s|^todo/\\([0-9]+/\\)?")
+      (evil-ex "%s|^\\(\\(soundtracks\\|classical\\|classics\\|new\\|pop\\|Favoritter\\|rock\\|vocal\\|unsorted\\|mu\\|hiphop\\|lyrics\\|metal\\|compilations\\|alternative\\|compilations\\|various\\|trance\\|wav\\|mp3\\)/\\)*")
+      (evil-ex "%s/\\(^[^\\/]+\\).*\\/[-0-9]*[-. ]*\\(.*\\)\\..*/\\2 - \\1/g"))
+    ```
+
 [^4]: Referert i denne artikkelen om [Spotify og Apple Music](https://www.verschoren.com/2015/07/migrating-spotify-to-apple-music/).
