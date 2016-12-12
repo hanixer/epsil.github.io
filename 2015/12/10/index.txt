@@ -4,7 +4,7 @@ date: 2015-12-10
 image: selenium.png
 image-width: 100
 include-before: "![](steria.svg){width=150}"
-css: custom.css
+css: style.css
 ---
 
 Selenium

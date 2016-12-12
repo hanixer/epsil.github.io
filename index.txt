@@ -1,6 +1,6 @@
 title: Vegard Øye
 abstract: The home page of Vegard Øye, software engineer and tech consultant.
-css: custom.css
+css: style.css
 ---
 
 -   [Accelerating nonlinear image transformations with OpenGL ES](fisheye/) <span class="flag-icon flag-icon-us" title="English"></span>

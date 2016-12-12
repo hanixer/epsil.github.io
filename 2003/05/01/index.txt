@@ -1,6 +1,6 @@
 title: Hvordan har hovedpersonene i norsk kriminallitteratur forandret seg de siste 100 årene?
 date: 2003-05-01
-css: custom.css
+css: style.css
 ---
 
 Forord

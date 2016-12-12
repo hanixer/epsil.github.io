@@ -1,7 +1,7 @@
 title: Virtuell arm for funksjonshemmede
 abstract: Rapport om prototype til en tungestyrt musepeker for bevegelseshemmede.
 footnotes-title: Fotnoter
-css: css/custom.css
+css: css/style.css
 js: js/custom.js
 mathjax: js/mathjax.js
 ---
