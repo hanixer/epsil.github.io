@@ -1,4 +1,3 @@
-/* global before, after, describe, it */
 var selenium = require('selenium-webdriver')
 var chai = require('chai')
 chai.use(require('chai-as-promised'))
