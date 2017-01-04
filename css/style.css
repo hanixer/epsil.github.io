@@ -166,9 +166,12 @@ h1 a:hover, h2 a:hover, h3 a:hover, h4 a:hover, h5 a:hover, h6 a:hover {
     font-style: normal;
 }
 
+header {
+    text-align: center;
+}
+
 header h1, header h2 {
     font-style: normal;
-    text-align: center;
 }
 
 h1 {
@@ -430,10 +433,6 @@ article ul > li:before, #toc ul > li:before {
 /*     display: none; */
 /* } */
 
-.author {
-    text-align: center;
-}
-
 .p-author {
     /* font-style: italic; */
 }
@@ -453,7 +452,6 @@ article ul > li:before, #toc ul > li:before {
     /* font-style: italic; */
     font-size: 1.3em;
     font-weight: 200;
-    text-align: center;
 }
 
 .dquo {

@@ -19,6 +19,10 @@ code, kbd, samp, tt, pre {
     font-size: 0.85em !important;
 }
 
+header {
+    text-align: left;
+}
+
 h1 {
     color: #cf022b;
 }
