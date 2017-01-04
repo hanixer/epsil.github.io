@@ -28,7 +28,7 @@ header {
     padding: 0;
 }
 
-.p-summary {
+.author, .p-summary {
     display: none;
 }
 
