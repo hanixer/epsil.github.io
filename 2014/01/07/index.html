@@ -1,111 +1,24 @@
 <!DOCTYPE html>
-<html lang="no" prefix="og: http://ogp.me/ns#">
+<html prefix="og: http://ogp.me/ns#">
 <head>
-<title>Oppgradere Python p&#229; OS X &#8211; Vegards blogg</title>
+<title>
+</title>
 <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
-<meta content="Vegard &#216;ye" name="author">
-<meta content="2014-01-07" name="date">
-<meta content="7ac8651dde0ee23ad6fc36178f798218" name="md5">
 <meta content="text/css" http-equiv="Content-Style-Type">
 <meta content="width=device-width, initial-scale=1" name="viewport">
-<meta content="Oppgradere Python p&#229; OS X" name="DC.Title">
-<meta content="Vegard &#216;ye" name="DC.Creator">
-<meta content="2014-01-07" name="DC.Date">
-<meta content="no" name="DC.Language">
 <meta content="text/html" name="DC.Format">
-<meta content="Oppgradere Python p&#229; OS X" property="og:title">
-<meta content="no" name="og:locale">
 <meta content="article" property="og:type">
-<meta content="https://epsil.github.io/2014/01/07/" property="og:url">
-<meta content="Vegards blogg" property="og:site_name">
+<meta content="http://localhost:8000/2014/01/07/" property="og:url">
 <meta content="summary" name="twitter:card">
 <meta content="@github" name="twitter:site">
-<meta content="Oppgradere Python p&#229; OS X" name="twitter:title">
 <link href="../../../favicon.ico" rel="icon" type="image/x-icon">
 <link href="../../../apple-touch-icon.png" rel="apple-touch-icon">
 <link href="../../../css/markdown-template.css" rel="stylesheet">
-<link href="https://epsil.github.io/2014/01/07/" rel="canonical">
+<link href="http://localhost:8000/2014/01/07/" rel="canonical">
 <link href="index.txt" rel="alternate" title="Markdown" type="text/markdown">
 <script src="../../../js/markdown-template.js">
 </script>
 </head>
 <body>
-<nav class="navbar navbar-default navbar-fixed-top">
-<div class="container-fluid">
-<ul class="nav nav-pills navbar-left">
-<li role="presentation"><a href="/" title="G&#229; hjem"><i class="fa fa-home"></i></a>
-</li>
-</ul>
-
-<ul class="nav nav-pills navbar-right">
-<li role="presentation"><a href="http://www.facebook.com/share.php?u=https%3A%2F%2Fepsil.github.io%2F2014%2F01%2F07%2F" target="_blank" title="Del p&#229; Facebook"><i class="fa fa-facebook-square"></i></a>
-</li>
-
-<li role="presentation"><a href="https://twitter.com/intent/tweet?url=https%3A%2F%2Fepsil.github.io%2F2014%2F01%2F07%2F" target="_blank" title="Del p&#229; Twitter"><i class="fa fa-twitter-square"></i></a>
-</li>
-
-<li role="presentation"><a href="https://github.com/epsil/epsil.github.io/edit/master/2014/01/07/index.txt" target="_blank" title="Rediger p&#229; GitHub"><i class="fa fa-edit"></i></a>
-</li>
-
-<li role="presentation"><a href="https://github.com/epsil/epsil.github.io/commits/master/2014/01/07/index.txt" target="_blank" title="Vis historie"><i class="fa fa-history"></i></a>
-</li>
-
-<li role="presentation"><a href="index.txt" title="Vis Markdown-kilde"><i class="fa fa-download"></i></a>
-</li>
-
-<li role="presentation"><a data-toggle="collapse" href="#toc" id="toc-button" name="toc-button" title="Innhold"><i class="fa fa-list"></i></a>
-</li>
-</ul>
-</div>
-
-<div id="toc-placeholder">
-</div>
-</nav>
-
-<article class="h-entry">
-<header>
-<h1 class="p-name"><a class="u-uid u-url" href="https://epsil.github.io/2014/01/07/" rel="bookmark" target="_blank" title="Permalink">Oppgradere Python p&#229; <abbr class="acronym" title="Operating System 10"><span class="caps">OS</span>&#160;X</abbr></a>
-</h1>
-
-<p><a class="p-author h-card" href="https://epsil.github.io/" target="_blank" title="Open epsil.github.io in a new window">Vegard &#216;ye</a> <time class="dt-published" datetime="2014-01-07">2014-01-07</time></p>
-</header>
-
-<section class="e-content">
-<section>
-<p>Pakkeh&#229;ndtering p&#229; <abbr class="acronym" title="Operating System 10"><span class="caps">OS</span> X</abbr> er et herk uten like. Her er det som skulle til for &#229; installere Python-biblioteket <a href="http://eyed3.nicfit.net/installation.html" target="_blank" title="Open eyed3.nicfit.net in a new window">eyeD3</a> med <code>pip</code>. F&#248;rst, <a href="http://www.pip-installer.org/en/latest/installing.html" target="_blank" title="Open pip-installer.org in a new window">installer pip</a> med <code>easy_install</code>:</p>
-
-<pre>
-<code>$ sudo easy_install pip</code>
-</pre>
-
-<p>Deretter kan det v&#230;re n&#248;dvendig &#229; oppgradere <code>setuptools</code>:</p>
-
-<pre>
-<code>$ pip install --upgrade setuptools</code>
-</pre>
-
-<p>Hvis dette ikke fungerer,&#160;pr&#248;v:</p>
-
-<pre>
-<code>$ sudo pip install --no-use-wheel --upgrade setuptools</code>
-</pre>
-
-<p>Alternativt, last ned og kj&#248;r det offisielle <a href="https://pypi.python.org/pypi/setuptools#unix-based-systems-including-mac-os-x" target="_blank" title="Open pypi.python.org in a new window">installasjonsskriptet</a>:</p>
-
-<pre>
-<code>$ wget https://bitbucket.org/pypa/setuptools/raw/bootstrap/ez_setup.py -O - | sudo python</code>
-</pre>
-
-<p>(Hvis <code>wget</code> ikke er installert enn&#229;, gj&#248;r <code>$ brew install wget</code>. Hvis <code>brew</code> krangler, kj&#248;r <code>$ brew doctor</code> og p&#229;se at filrettigheter er som de skal&#160;v&#230;re.)</p>
-
-<p>N&#229;r <code>pip</code> <em>og</em> <code>setuptools</code> er installert, kan <code>pip</code>-pakken for <code>eye3D</code> finnes med <code>pip search</code>:</p>
-
-<pre>
-<code>$ pip search eyeD3
-$ pip install eyeD3-pip</code>
-</pre>
-</section>
-</section>
-</article>
 </body>
 </html>

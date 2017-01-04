@@ -99,7 +99,7 @@ collapse.button = function (id) {
 collapse.headerId = function (header) {
   var id = header.attr('id')
   if (id === undefined || id === '') {
-    id = util.generateId(header)
+    id = util.generateUniqueId(header)
     header.attr('id', id)
   }
   return id
@@ -259,8 +259,9 @@ punctuation.addPunctuation = function () {
           .replace(/===/g, '\u2261')
           .replace(/---/g, '\u2014') // em-dashes
           .replace(/--/g, '\u2013') // en-dashes
-          // .replace(/ - /g, ' \u2013 ')
-          // .replace(/ -$/gm, ' \u2013')
+          // .replace(/([0-9])\u2013([0-9])/g, '$1\u2012$2') // figure dash
+          .replace(/ - /g, ' \u2013 ')
+          .replace(/ -$/gm, ' \u2013')
           .replace(/,-/g, ',\u2013')
           .replace(/\.\.\.\./g, '.\u2026') // ellipsis
           .replace(/\.\.\./g, '\u2026')
@@ -333,7 +334,7 @@ section.addSections = function () {
                  section = section.wrapAll('<section>').parent()
                  var id = header.attr('id')
                  if (id === undefined || id === '') {
-                   id = util.generateId(header)
+                   id = util.generateUniqueId(header)
                    header.attr('id', id)
                  }
                  section.attr('id', id)
@@ -543,7 +544,7 @@ toc.tableOfContents = function (title) {
   toc.find('li ul').each(function (i, el) {
     var ul = $(this)
     var a = ul.prev()
-    var id = util.generateId(a)
+    var id = util.generateUniqueId(a)
     var span = a.wrap('<span class="collapse" id="' + id + '">').parent()
     $.fn.addCollapsibleSections.addButton(span, ul)
   })
@@ -637,7 +638,7 @@ toc.listOfContents = function () {
     if (id === undefined || id === '') {
       var clone = header.clone()
       clone.find('[aria-hidden="true"]').remove()
-      id = util.generateId(header)
+      id = util.generateUniqueId(header)
       header.attr('id', id)
     }
     return id
@@ -710,9 +711,11 @@ util.unique = function (fn) {
   }
 }
 
-util.generateId = util.unique(function (el) {
+util.generateId = function (el) {
   return S(el.text().trim()).slugify()
-})
+}
+
+util.generateUniqueId = util.unique(util.generateId)
 
 util.dojQuery = function (html, fn) {
   var body = $('<div>')
@@ -920,7 +923,8 @@ util.fixLinks = function () {
         // add explanatory tooltip
         var host = URI(href).host().replace(/^www\./, '')
         if (!a.is('[title]')) {
-          a.attr('title', 'Open ' + host + ' in a new window')
+          var str = 'Open ' + host + ' in a new window'
+          a.attr('title', str.replace(/[ ]+/g, ' '))
         }
         // set target="_blank"
         a.attr('target', '_blank')

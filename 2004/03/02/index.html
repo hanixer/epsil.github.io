@@ -1,225 +1,24 @@
 <!DOCTYPE html>
-<html lang="no" prefix="og: http://ogp.me/ns#">
+<html prefix="og: http://ogp.me/ns#">
 <head>
-<title>Hvorfor unng&#229; egendefinerte rullefelt &#8211; Vegards blogg</title>
+<title>
+</title>
 <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
-<meta content="Vegard &#216;ye" name="author">
-<meta content="2004-03-02" name="date">
-<meta content="42fc4c1e805c2017397a7a6e330438e7" name="md5">
 <meta content="text/css" http-equiv="Content-Style-Type">
 <meta content="width=device-width, initial-scale=1" name="viewport">
-<meta content="Hvorfor unng&#229; egendefinerte rullefelt" name="DC.Title">
-<meta content="Vegard &#216;ye" name="DC.Creator">
-<meta content="2004-03-02" name="DC.Date">
-<meta content="no" name="DC.Language">
 <meta content="text/html" name="DC.Format">
-<meta content="Hvorfor unng&#229; egendefinerte rullefelt" property="og:title">
-<meta content="no" name="og:locale">
 <meta content="article" property="og:type">
-<meta content="https://epsil.github.io/2004/03/02/" property="og:url">
-<meta content="Vegards blogg" property="og:site_name">
+<meta content="http://localhost:8000/2004/03/02/" property="og:url">
 <meta content="summary" name="twitter:card">
 <meta content="@github" name="twitter:site">
-<meta content="Hvorfor unng&#229; egendefinerte rullefelt" name="twitter:title">
 <link href="../../../favicon.ico" rel="icon" type="image/x-icon">
 <link href="../../../apple-touch-icon.png" rel="apple-touch-icon">
 <link href="../../../css/markdown-template.css" rel="stylesheet">
-<link href="https://epsil.github.io/2004/03/02/" rel="canonical">
+<link href="http://localhost:8000/2004/03/02/" rel="canonical">
 <link href="index.txt" rel="alternate" title="Markdown" type="text/markdown">
 <script src="../../../js/markdown-template.js">
 </script>
 </head>
 <body>
-<nav class="navbar navbar-default navbar-fixed-top">
-<div class="container-fluid">
-<ul class="nav nav-pills navbar-left">
-<li role="presentation"><a href="/" title="G&#229; hjem"><i class="fa fa-home"></i></a>
-</li>
-</ul>
-
-<ul class="nav nav-pills navbar-right">
-<li role="presentation"><a href="http://www.facebook.com/share.php?u=https%3A%2F%2Fepsil.github.io%2F2004%2F03%2F02%2F" target="_blank" title="Del p&#229; Facebook"><i class="fa fa-facebook-square"></i></a>
-</li>
-
-<li role="presentation"><a href="https://twitter.com/intent/tweet?url=https%3A%2F%2Fepsil.github.io%2F2004%2F03%2F02%2F" target="_blank" title="Del p&#229; Twitter"><i class="fa fa-twitter-square"></i></a>
-</li>
-
-<li role="presentation"><a href="https://github.com/epsil/epsil.github.io/edit/master/2004/03/02/index.txt" target="_blank" title="Rediger p&#229; GitHub"><i class="fa fa-edit"></i></a>
-</li>
-
-<li role="presentation"><a href="https://github.com/epsil/epsil.github.io/commits/master/2004/03/02/index.txt" target="_blank" title="Vis historie"><i class="fa fa-history"></i></a>
-</li>
-
-<li role="presentation"><a href="index.txt" title="Vis Markdown-kilde"><i class="fa fa-download"></i></a>
-</li>
-
-<li role="presentation"><a data-toggle="collapse" href="#toc" id="toc-button" name="toc-button" title="Innhold"><i class="fa fa-list"></i></a>
-</li>
-</ul>
-</div>
-
-<div class="collapse" id="toc">
-<ul>
-<li><a href="#css-og-rullefelt" title="CSS og rullefelt"><abbr class="acronym" title="Cascading Style Sheets"><span class="caps">CSS</span></abbr> og rullefelt</a>
-</li>
-
-<li><a href="#microsofts-css-utvidelser" title="Microsofts CSS-utvidelser">Microsofts <abbr class="acronym" title="Cascading Style Sheets"><span class="caps">CSS</span></abbr>-utvidelser</a>
-</li>
-
-<li><a href="#rullefelt-hos-forskjellige-brukere" title="Rullefelt hos forskjellige&#160;brukere">Rullefelt hos forskjellige&#160;brukere</a>
-</li>
-
-<li><span class="" id="rulling-innenfor-visningsomradet-2"><a href="#rulling-innenfor-visningsomradet" title="Rulling innenfor visningsomr&#229;det">Rulling innenfor visningsomr&#229;det</a><a aria-controls="rulling-innenfor-visningsomradet-2-section" aria-expanded="false" aria-hidden="true" class="collapse-button" data-toggle="collapse" href="#rulling-innenfor-visningsomradet-2-section" role="button"></a></span>
-<ul class="collapse" id="rulling-innenfor-visningsomradet-2-section">
-<li><a href="#store-rullefelt" title="Store rullefelt">Store rullefelt</a>
-</li>
-</ul>
-</li>
-
-<li><a href="#oppfordring" title="Oppfordring">Oppfordring</a>
-</li>
-</ul>
-</div>
-</nav>
-
-<article class="h-entry">
-<header>
-<h1 class="p-name"><a class="u-uid u-url" href="https://epsil.github.io/2004/03/02/" rel="bookmark" target="_blank" title="Permalink">Hvorfor unng&#229; egendefinerte&#160;rullefelt</a>
-</h1>
-
-<p><a class="p-author h-card" href="https://epsil.github.io/" target="_blank" title="Open epsil.github.io in a new window">Vegard &#216;ye</a> <time class="dt-published" datetime="2004-03-02">2004-03-02</time></p>
-</header>
-
-<section class="e-content">
-<section>
-<p>Mange webdesignere tar skrittet til &#229; endre utseendet p&#229; rullefeltene for &#229; f&#229; disse til &#229; harmonere med nettsidene sine. Denne artikkelen forklarer hvorfor dette ikke er noen god l&#248;sning, og dr&#248;fter deretter generelle problemer med rullefelt p&#229;&#160;nettsider.</p>
-</section>
-
-<section id="css-og-rullefelt">
-<h2><a aria-hidden="true" class="header-anchor" href="#css-og-rullefelt" title="CSS og rullefelt"></a><abbr class="acronym" title="Cascading Style Sheets"><span class="caps">CSS</span></abbr> og rullefelt<a aria-controls="css-og-rullefelt-section" aria-expanded="true" aria-hidden="true" class="collapse-button" data-toggle="collapse" href="#css-og-rullefelt-section" role="button"></a></h2>
-
-<div class="collapse in" id="css-og-rullefelt-section">
-<p>F&#248;rst litt terminologi: <abbr class="acronym" title="Cascading Style Sheets"><span class="caps">CSS</span></abbr> definerer typografi og utforming innenfor et bestemt visningsomr&#229;de (<abbr title="figur">fig.</abbr> 1), referert til som &#171;the viewport&#187; i spesifikasjonene. Dette omr&#229;det tar vanligvis opp st&#248;rsteparten av nettleservinduet, og st&#248;rrelsen avhenger av hvor mye ledig skjermareal brukeren har til disposisjon (og velger &#229;&#160;bruke).</p>
-
-<figure id="fig1" style="width: 413px;"><img alt="Figur 1. Visningsomr&#229;det (markert med r&#248;dt)." src="fig1.png" width="404">
-<figcaption>Figur 1. Visningsomr&#229;det (markert med r&#248;dt).</figcaption>
-</figure>
-
-<blockquote>
-<p><strong>En utbredt misforst&#229;else blant webdesignere er at st&#248;rrelsen p&#229; visningsomr&#229;det tilsvarer skjermoppl&#248;sningen til brukeren, noe som slett ikke trenger &#229; v&#230;re tilfellet. Brukeren kan ha flere vinduer oppe samtidig, eller ha konfigurert nettleseren p&#229; en m&#229;te som begrenser visningsomr&#229;dets omfang i nettleservinduet. Det er alts&#229; meningsl&#248;st &#229; snakke om &#229; utforme nettsider for bestemte&#160;skjermoppl&#248;sninger.</strong>
-</p>
-</blockquote>
-
-<p>N&#229;r en nettside er for h&#248;y eller bred til &#229; f&#229; plass innenfor visningsomr&#229;det, skal nettleseren tilby en mekanisme som lar brukeren bestemme hvilket utsnitt av siden som skal vises &#8211; vanligvis ved hjelp av s&#229;kalt rulling eller&#160;&#171;scrolling&#187;.</p>
-
-<blockquote>
-<p><strong>Merk at <a href="http://www.w3.org/TR/CSS21/" target="_blank" title="Open w3.org in a new window"><abbr class="acronym" title="Cascading Style Sheets"><span class="caps">CSS</span></abbr> 2.1-spesifikasjonen</a> ikke sier noe om hva slags mekanisme som skal tas i bruk for &#229; rulle p&#229; en gitt plattform. Ved &#229; sette <a href="http://www.w3.org/TR/CSS21/visufx.html#propdef-overflow" target="_blank" title="Open w3.org in a new window"><code class="language-css"><span class="hljs-selector-tag">overflow</span></code></a>-egenskapen til verdien <code class="language-css"><span class="hljs-selector-tag">scroll</span></code> angir man riktignok rulling, men man har ikke sagt noe konkret om hvordan denne rullingen skal muliggj&#248;res rent praktisk. Rullefelt er her &#233;n mulig styringsmekanisme &#8211; piltaster og musehjul er&#160;andre.</strong>
-</p>
-</blockquote>
-</div>
-</section>
-
-<section id="microsofts-css-utvidelser">
-<h2><a aria-hidden="true" class="header-anchor" href="#microsofts-css-utvidelser" title="Microsofts CSS-utvidelser"></a>Microsofts <abbr class="acronym" title="Cascading Style Sheets"><span class="caps">CSS</span></abbr>-utvidelser<a aria-controls="microsofts-css-utvidelser-section" aria-expanded="true" aria-hidden="true" class="collapse-button" data-toggle="collapse" href="#microsofts-css-utvidelser-section" role="button"></a></h2>
-
-<div class="collapse in" id="microsofts-css-utvidelser-section">
-<p>Noen webdesignere har problemer med rullefelt fordi de avgrenser hele eller deler av nettsidene deres, uten &#229; n&#248;dvendigvis gli &#171;naturlig&#187; inn i omgivelsene. For &#229; &#248;ke spillerommet deres har Microsoft funnet opp sine egne utvidelser til <abbr class="acronym" title="Cascading Style Sheets"><span class="caps">CSS</span></abbr>, som lar en forandre p&#229; rullefeltenes utseende med utgangspunkt i en begrenset &#171;Windows-mal&#187;. (Det m&#229; nevnes at dette ikke er den <em>eneste</em> m&#229;ten &#229; endre rullefeltenes utseende p&#229; &#8211; man kan ogs&#229; bruke JavaScript, eller lage sine egne rullemekanismer i Flash &#8211; men det er den desidert letteste, og mest&#160;utbredte.)</p>
-
-<p>Egenskapene det er snakk om, er&#160;disse:</p>
-
-<ul>
-<li><code class="language-css"><span class="hljs-selector-tag">scrollbar-3dlight-color</span></code>
-</li>
-
-<li><code class="language-css"><span class="hljs-selector-tag">scrollbar-arrow-color</span></code>
-</li>
-
-<li><code class="language-css"><span class="hljs-selector-tag">scrollbar-base-color</span></code>
-</li>
-
-<li><code class="language-css"><span class="hljs-selector-tag">scrollbar-darkshadow-color</span></code>
-</li>
-
-<li><code class="language-css"><span class="hljs-selector-tag">scrollbar-face-color</span></code>
-</li>
-
-<li><code class="language-css"><span class="hljs-selector-tag">scrollbar-highlight-color</span></code>
-</li>
-
-<li><code class="language-css"><span class="hljs-selector-tag">scrollbar-shadow-color</span></code>
-</li>
-</ul>
-
-<p>&#197; bruke disse egenskapene resulterer ikke bare i et brudd p&#229; standardene, men gir deg ironisk nok ogs&#229; <em>mindre</em> kontroll over nettsidens framtreden. Utvidelsene er nemlig bare st&#248;ttet i et f&#229;tall nettlesere, og er i tillegg praktisk talt umulig &#229; implementere p&#229; mange plattformer. Utformer man sidene sine rundt det premisset at rullefeltenes utseende m&#229; f&#248;lge stilen p&#229; siden, er man alts&#229; <em>garantert</em> at designet vil sl&#229; sprekker p&#229; flesteparten av plattformene, der utvidelsene ikke&#160;st&#248;ttes!</p>
-
-<figure id="fig2" style="width: 226px;"><img alt="Figur 2. Egendefinerte rullefelt. Lengst til h&#248;yre er standardrullefeltet i Windows XP, som forsvinner n&#229;r rullefeltet p&#229;virkes." src="fig2.png" width="217">
-<figcaption>Figur 2. Egendefinerte rullefelt. Lengst til h&#248;yre er standardrullefeltet i Windows XP, som forsvinner n&#229;r rullefeltet p&#229;virkes.</figcaption>
-</figure>
-
-<p>&#197;rsaken til at utvidelsene er vanskelig &#229; implementere, er at de p&#229;virker noe s&#229; <abbr class="acronym" title="operativsystem"><span class="caps">OS</span></abbr>-spesifikt som m&#229;ten rullefeltene tegnes opp p&#229;. F&#248;r Microsoft lanserte et mer grafisk grensesnitt med Windows <abbr class="acronym" title="Experience"><span class="caps">XP</span></abbr>, var det forholdsvis enkle og lett p&#229;virkelige former og figurer som utgjorde bestanddelene (<abbr title="jamf&#248;r">jf.</abbr> <a href="#fig2" title="Figur 2. Egendefinerte rullefelt. Lengst til h&#248;yre er standardrullefeltet i Windows XP, som forsvinner n&#229;r rullefeltet p&#229;virkes."><abbr title="figur">fig.</abbr> 2</a>). B&#229;de p&#229; nyere Linux- og Macintosh-systemer og i Windows <abbr class="acronym" title="Experience"><span class="caps">XP</span></abbr> er imidlertid brukergrensesnittet bygd opp av sm&#229;, forseggjorte grafikkfiler som ikke like lett lar seg forandre p&#229;. Pr&#248;ver man ut <abbr class="acronym" title="Cascading Style Sheets"><span class="caps">CSS</span></abbr>-utvidelsene i Windows <abbr class="acronym" title="Experience"><span class="caps">XP</span></abbr> med standardtemaet valgt, blir faktisk rullefeltet byttet ut med den eldre utgaven fra de tidligere Windows-versjonene, som etter undertegnedes smak ikke er langt p&#229; n&#230;r like behagelig &#229; se p&#229;. Et annet problem er at det ikke n&#248;dvendigvis er rullefelt som brukes for &#229; rulle p&#229; en gitt plattform, noe <abbr class="acronym" title="Cascading Style Sheets"><span class="caps">CSS</span></abbr>-spesifikasjonen som nevnt lar v&#230;re &#229; si noe&#160;om.</p>
-
-<p>N&#229; <em>er</em> det mulig &#229; unng&#229; ikke-validerende nettsider ved &#229; benytte seg av s&#229;kalte <a href="http://www.virtuelvis.com/archives/158.html" target="_blank" title="Open virtuelvis.com in a new window">kondisjonelle kommentarer</a> for Internet Explorer, eller bruke en annen metode basert p&#229; JavaScript eller Flash. I de aller fleste tilfeller vil imidlertid egendefinerte rullefelt gj&#248;re nettsiden mer utiltalende eller vanskelig &#229; bruke, fordi b&#229;de brukervennligheten og <em>brukerh&#248;fligheten</em> st&#229;r p&#229;&#160;spill.</p>
-</div>
-</section>
-
-<section id="rullefelt-hos-forskjellige-brukere">
-<h2><a aria-hidden="true" class="header-anchor" href="#rullefelt-hos-forskjellige-brukere" title="Rullefelt hos forskjellige&#160;brukere"></a>Rullefelt hos forskjellige&#160;brukere<a aria-controls="rullefelt-hos-forskjellige-brukere-section" aria-expanded="true" aria-hidden="true" class="collapse-button" data-toggle="collapse" href="#rullefelt-hos-forskjellige-brukere-section" role="button"></a></h2>
-
-<div class="collapse in" id="rullefelt-hos-forskjellige-brukere-section">
-<figure id="fig3" style="width: 141px;"><img alt="Figur 3. Rullefelt i Windows XP, Linux med GNOME, Linux med KDE og Mac OS X." src="fig3.png" width="132">
-<figcaption>Figur 3. Rullefelt i Windows XP, Linux med GNOME, Linux med KDE og Mac OS X.</figcaption>
-</figure>
-
-<p>Er det noe som varierer fra plattform til plattform, s&#229; er det brukergrensesnittets utforming og utseende. Med funksjonalitet som egne fargevalg, temaer og skrivebordsmilj&#248;er, er dette ofte ikke bare forskjellig fra plattform til plattform, men ogs&#229; fra bruker til bruker. Selv hvis vi generaliserer og g&#229;r ut fra at alle som bruker et gitt operativsystem har samme type brukergrensesnitt, medf&#248;rer egendefinerte rullefelt komplikasjoner. Macintosh-brukere ser etter &#171;Macintosh-rullefelt&#187;, Windows-brukere ser etter &#171;Windows-rullefelt&#187;, men ingen finner n&#248;yaktig det de leter etter. En av de virkelig <em>flotte</em> sidene ved dagens operativsystemer er at folk kjenner seg igjen fra program til&#160;program.</p>
-
-<p>Det som er viktig &#229; forst&#229; er at brukergrensesnittets utseende i h&#248;yeste grad er en <em>privat</em> aff&#230;re, og at selv overstyring av noe s&#229; grunnleggende som fargene p&#229; skjermelementene kan skape irritasjon eller forvirring hos mange typer&#160;brukere:</p>
-
-<ul>
-<li>Blinde og svaksynte, som bruker et fargeoppsett med h&#248;y&#160;kontrast</li>
-
-<li>Fargeblinde, som har vanskeligheter med &#229; skille enkelte&#160;farger</li>
-
-<li>De av oss som er utpregede estetikere, og som bruker mye tid p&#229; &#229; velge farger etter egne&#160;preferanser</li>
-
-<li>Uerfarne brukere, som finner plutselige endringer i grensesnittet&#160;forvirrende</li>
-</ul>
-
-<p>I tillegg vil man aldri kunne vite hvilken farge det er p&#229; nettleseren som rullefeltene til visningsomr&#229;det er en del av, noe som vil si at man ikke engang kan <em>foresl&#229;</em> hvilke farger rullefeltene skal befinne seg ved siden av. Hos brukere som har satt sammen sitt eget fargeoppsett, er derfor sannsynligheten h&#248;y for at en grell kontrast oppst&#229;r, stikk i strid med selve hensikten med egendefinerte rullefelt. Enda mer problematisk er det dersom fargekombinasjonen gj&#248;r rullefeltene vanskeligere &#229; f&#229; &#248;ye p&#229; og&#160;bruke.</p>
-</div>
-</section>
-
-<section id="rulling-innenfor-visningsomradet">
-<h2><a aria-hidden="true" class="header-anchor" href="#rulling-innenfor-visningsomradet" title="Rulling innenfor visningsomr&#229;det"></a>Rulling innenfor visningsomr&#229;det<a aria-controls="rulling-innenfor-visningsomradet-section" aria-expanded="true" aria-hidden="true" class="collapse-button" data-toggle="collapse" href="#rulling-innenfor-visningsomradet-section" role="button"></a></h2>
-
-<div class="collapse in" id="rulling-innenfor-visningsomradet-section">
-<section>
-<figure id="fig4" style="width: 292px;"><img alt="Figur 4. Rulling innenfor visningsomr&#229;det. Fra 2Advanced Studios." src="fig4.png" width="283">
-<figcaption>Figur 4. Rulling innenfor visningsomr&#229;det. Fra 2Advanced Studios.</figcaption>
-</figure>
-
-<p>Til slutt kommer noen ord om rulling innenfor visningsomr&#229;det, eller &#171;inline scrolling&#187; som det gjerne heter i sjargongen. Det er alts&#229; snakk om at deler av nettsiden er utstyrt med egne mekanismer for rulling, enten det skyldes bruk av <a href="http://www.unrealized.org/les_guide/html/unnga_frames/" target="_blank" title="Open unrealized.org in a new window">rammer</a> (&#171;frames&#187;), <abbr class="acronym" title="Cascading Style Sheets"><span class="caps">CSS</span></abbr>-egenskapen <code class="language-css"><span class="hljs-selector-tag">overflow</span></code> eller Flash. Ogs&#229; dette gj&#248;r sidene vanskeligere &#229; bruke, av navigeringsmessige &#229;rsaker. Slike sideelementer krever stort sett at man velger dem med pekeren, og dermed &#248;kes klikkingen betraktelig. Samtidig &#248;kes ogs&#229; risikoen for <em>feilklikking</em>, fordi rullefeltene ofte befinner seg side om side med lenker og andre interaktive elementer. S&#230;rlig for folk som bruker styreplate, er det praktisk at klikkingen reduseres til et&#160;minimum.</p>
-
-<p>I tillegg er det bare mulig &#229; rulle ett element om gangen, noe som betyr at det ikke er mulig &#229; rulle hele siden (visningsomr&#229;det) med piltastene eller musehjulet n&#229;r et sideelement er valgt. For &#229; g&#229; tilbake til &#229; rulle hele nettsiden, m&#229; man alts&#229; bruke pekeren enda en gang for &#229; velge rullefeltene til visningsomr&#229;det. Derfor b&#248;r rulling innenfor visningsomr&#229;det brukes sparsommelig, fordi det medf&#248;rer et avbrudd i den tradisjonelle m&#229;ten &#229; navigere&#160;p&#229;.</p>
-</section>
-
-<section id="store-rullefelt">
-<h3><a aria-hidden="true" class="header-anchor" href="#store-rullefelt" title="Store rullefelt"></a>Store rullefelt<a aria-controls="store-rullefelt-section" aria-expanded="true" aria-hidden="true" class="collapse-button" data-toggle="collapse" href="#store-rullefelt-section" role="button"></a></h3>
-
-<div class="collapse in" id="store-rullefelt-section">
-<p>Det verste man kan gj&#248;re, er &#229; la selve <em>innholdet</em> eller andre st&#248;rre sideelementer rulle, fordi dette er d&#248;mt til &#229; medf&#248;re komplikasjoner for bes&#248;kende med begrenset skjermareal. St&#248;rrelsen p&#229; rullefeltene kan overstige st&#248;rrelsen p&#229; visningsomr&#229;det, noe som betyr at man blir n&#248;dt til &#229; rulle hele siden fram og tilbake for &#229; ta dem i bruk. En m&#229;te &#229; forhindre dette p&#229;, er selvsagt &#229; begrense st&#248;rrelsen p&#229; nettsiden, men dette vil sannsynligvis gj&#248;re teksten mindre leselig for brukere med h&#248;y&#160;skjermoppl&#248;sning.</p>
-</div>
-</section>
-</div>
-</section>
-
-<section id="oppfordring">
-<h2><a aria-hidden="true" class="header-anchor" href="#oppfordring" title="Oppfordring"></a>Oppfordring<a aria-controls="oppfordring-section" aria-expanded="true" aria-hidden="true" class="collapse-button" data-toggle="collapse" href="#oppfordring-section" role="button"></a></h2>
-
-<div class="collapse in" id="oppfordring-section">
-<p>Oppfordringen her g&#229;r alts&#229; p&#229; &#229; ikke overstyre grensesnittet til brukeren, og &#229; bruke rulling innenfor visningsomr&#229;det sparsommelig. Da blir iallfall <abbr class="acronym" title="World Wide Web"><span class="caps">WWW</span></abbr> et <em>litt</em> bedre sted &#229;&#160;ferdes!</p>
-</div>
-</section>
-</section>
-</article>
 </body>
 </html>

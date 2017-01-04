@@ -1,153 +1,24 @@
 <!DOCTYPE html>
-<html lang="no" prefix="og: http://ogp.me/ns#">
+<html prefix="og: http://ogp.me/ns#">
 <head>
-<title>Gruppering av CSS-stilark &#8211; Vegards blogg</title>
+<title>
+</title>
 <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
-<meta content="Vegard &#216;ye" name="author">
-<meta content="2004-03-09" name="date">
-<meta content="74ce190d2ca62682f3207ab11476d55a" name="md5">
 <meta content="text/css" http-equiv="Content-Style-Type">
 <meta content="width=device-width, initial-scale=1" name="viewport">
-<meta content="Gruppering av CSS-stilark" name="DC.Title">
-<meta content="Vegard &#216;ye" name="DC.Creator">
-<meta content="2004-03-09" name="DC.Date">
-<meta content="no" name="DC.Language">
 <meta content="text/html" name="DC.Format">
-<meta content="Gruppering av CSS-stilark" property="og:title">
-<meta content="no" name="og:locale">
 <meta content="article" property="og:type">
-<meta content="https://epsil.github.io/2004/03/09/" property="og:url">
-<meta content="Vegards blogg" property="og:site_name">
+<meta content="http://localhost:8000/2004/03/09/" property="og:url">
 <meta content="summary" name="twitter:card">
 <meta content="@github" name="twitter:site">
-<meta content="Gruppering av CSS-stilark" name="twitter:title">
 <link href="../../../favicon.ico" rel="icon" type="image/x-icon">
 <link href="../../../apple-touch-icon.png" rel="apple-touch-icon">
 <link href="../../../css/markdown-template.css" rel="stylesheet">
-<link href="https://epsil.github.io/2004/03/09/" rel="canonical">
+<link href="http://localhost:8000/2004/03/09/" rel="canonical">
 <link href="index.txt" rel="alternate" title="Markdown" type="text/markdown">
 <script src="../../../js/markdown-template.js">
 </script>
 </head>
 <body>
-<nav class="navbar navbar-default navbar-fixed-top">
-<div class="container-fluid">
-<ul class="nav nav-pills navbar-left">
-<li role="presentation"><a href="/" title="G&#229; hjem"><i class="fa fa-home"></i></a>
-</li>
-</ul>
-
-<ul class="nav nav-pills navbar-right">
-<li role="presentation"><a href="http://www.facebook.com/share.php?u=https%3A%2F%2Fepsil.github.io%2F2004%2F03%2F09%2F" target="_blank" title="Del p&#229; Facebook"><i class="fa fa-facebook-square"></i></a>
-</li>
-
-<li role="presentation"><a href="https://twitter.com/intent/tweet?url=https%3A%2F%2Fepsil.github.io%2F2004%2F03%2F09%2F" target="_blank" title="Del p&#229; Twitter"><i class="fa fa-twitter-square"></i></a>
-</li>
-
-<li role="presentation"><a href="https://github.com/epsil/epsil.github.io/edit/master/2004/03/09/index.txt" target="_blank" title="Rediger p&#229; GitHub"><i class="fa fa-edit"></i></a>
-</li>
-
-<li role="presentation"><a href="https://github.com/epsil/epsil.github.io/commits/master/2004/03/09/index.txt" target="_blank" title="Vis historie"><i class="fa fa-history"></i></a>
-</li>
-
-<li role="presentation"><a href="index.txt" title="Vis Markdown-kilde"><i class="fa fa-download"></i></a>
-</li>
-
-<li role="presentation"><a data-toggle="collapse" href="#toc" id="toc-button" name="toc-button" title="Innhold"><i class="fa fa-list"></i></a>
-</li>
-</ul>
-</div>
-
-<div id="toc-placeholder">
-</div>
-</nav>
-
-<article class="h-entry">
-<header>
-<h1 class="p-name"><a class="u-uid u-url" href="https://epsil.github.io/2004/03/09/" rel="bookmark" target="_blank" title="Permalink">Gruppering av <abbr class="acronym" title="Cascading Style Sheets"><span class="caps">CSS</span></abbr>-stilark</a>
-</h1>
-
-<p><a class="p-author h-card" href="https://epsil.github.io/" target="_blank" title="Open epsil.github.io in a new window">Vegard &#216;ye</a> <time class="dt-published" datetime="2004-03-09">2004-03-09</time></p>
-</header>
-
-<section class="e-content">
-<section>
-<p>I <abbr class="acronym" title="HyperText Markup Language"><span class="caps">HTML</span></abbr> kan du med <code class="language-html">link</code>-elementet angi tre typer eksterne stilsett&#160;(stilark):</p>
-
-<ul>
-<li>Grunnleggende stilsett</li>
-
-<li>Foretrukne stilsett</li>
-
-<li>Alternative stilsett</li>
-</ul>
-
-<p>Jeg skriver bare &#171;stilsett&#187; fordi du med <code class="language-html">style</code>-elementet &#8211; som bortsett fra <code class="language-html">rel</code> tar de samme attributtene som elementet <code class="language-html">link</code> &#8211; ogs&#229; kan angi grunnleggende og foretrukne stilsett. Et stilark er rett og slett en fil (vanligvis med endelsen <code>.css</code> n&#229;r det som her er <abbr class="acronym" title="Cascading Style Sheets"><span class="caps">CSS</span></abbr> vi snakker om) som inneholder et stilsett. For ordens skyld b&#248;r stilsettene angis i rekkef&#248;lgen vist&#160;over.</p>
-
-<p>Vi har dessuten ogs&#229; <em>mediespesifikke</em> stilsett; du kan for hvert stilsett, uavhengig av hvilke grupperinger du gj&#248;r, bestemme hvilke medier det enkelte stilsettet skal gjelde for. Jeg kommer tilbake til dette&#160;senere.</p>
-
-<p>Deklarasjonene i et <em>grunnleggende stilsett</em> blir brukt som standard (idet siden lastes), med mindre de overstyres i et p&#229;f&#248;lgende stilsett &#8211; <abbr title="jamf&#248;r">jf.</abbr> &#171;cascade&#187;-prinsippet i <abbr class="acronym" title="Cascading Style Sheets"><span class="caps">CSS</span></abbr>. (I denne artikkelen g&#229;r jeg ut fra den forenklingen at et p&#229;f&#248;lgende stilsetts deklarasjoner <em>alltid</em> overstyrer tidligere deklarasjoner med tilsvarende selektor. Det er mulig &#229; forhindre dette ved &#229; markere deklarasjoner med <code class="language-css">!<span class="hljs-selector-tag">important</span></code> eller benytte seg av mer spesifikke selektorer, men for enkelhetens skyld g&#229;r jeg ikke n&#230;rmere inn p&#229; dette&#160;her.)</p>
-
-<p>Med et grunnleggende stilsett slipper du &#229; definere stildeklarasjoner som ellers ville g&#229;tt igjen i p&#229;f&#248;lgende stilsett mer enn &#233;n gang. Dette kan for eksempel v&#230;re nyttig i et tilfelle der du har laget to separate fargesammensetninger for siden din, men den visuelle utformingen (<abbr title="det vil si">dvs.</abbr> &#171;layouten&#187;) fortsatt er den samme. Du angir et grunnleggende stilsett ved &#229; sette <code class="language-html">rel</code>-attributtet til <code class="language-html">stylesheet</code> og utelate <code class="language-html">title</code>-attributtet:</p>
-
-<pre>
-<code class="language-html"><span class="hljs-tag">&lt;<span class="hljs-name">link</span> <span class="hljs-attr">href</span>=<span class="hljs-string">"grunnleggende.css"</span> <span class="hljs-attr">rel</span>=<span class="hljs-string">"stylesheet"</span> <span class="hljs-attr">type</span>=<span class="hljs-string">"text/css"</span>&gt;</span></code>
-</pre>
-
-<p>Det er for &#248;vrig ingenting i veien for &#229; ha <em>flere</em> grunnleggende stilsett, men merk at dersom disse angir de samme egenskapene for et bestemt element eller elementmengde (for de samme mediene), blir deklarasjonene i det siste stilsettet brukt. Hoved&#229;rsaken til at man vil bruke flere stilsett, er ofte &#229; gj&#248;re diverse tilpasninger til andre&#160;medier:</p>
-
-<pre>
-<code class="language-html"><span class="hljs-tag">&lt;<span class="hljs-name">link</span> <span class="hljs-attr">href</span>=<span class="hljs-string">"felles.css"</span> <span class="hljs-attr">rel</span>=<span class="hljs-string">"stylesheet"</span> <span class="hljs-attr">type</span>=<span class="hljs-string">"text/css"</span>&gt;</span>
-<span class="hljs-tag">&lt;<span class="hljs-name">link</span> <span class="hljs-attr">href</span>=<span class="hljs-string">"skjerm.css"</span> <span class="hljs-attr">media</span>=<span class="hljs-string">"screen"</span> <span class="hljs-attr">rel</span>=<span class="hljs-string">"stylesheet"</span> <span class="hljs-attr">type</span>=<span class="hljs-string">"text/css"</span>&gt;</span>
-<span class="hljs-tag">&lt;<span class="hljs-name">link</span> <span class="hljs-attr">href</span>=<span class="hljs-string">"utskrift.css"</span> <span class="hljs-attr">media</span>=<span class="hljs-string">"print"</span> <span class="hljs-attr">rel</span>=<span class="hljs-string">"stylesheet"</span> <span class="hljs-attr">type</span>=<span class="hljs-string">"text/css"</span>&gt;</span></code>
-</pre>
-
-<p>Her har vi benyttet attributtet <code class="language-html">media</code> til &#229; spesifisere at stilarket <code>skjerm.css</code> bare skal brukes n&#229;r siden vises p&#229; skjerm, og at <code>utskrift.css</code> bare gjelder n&#229;r sidene skrives ut (eller utskriften forh&#229;ndsvises). Stilsettet i <code>utskrift.css</code> blir alts&#229; ikke brukt p&#229; skjerm, og stilsettet i <code>skjerm.css</code> blir ikke brukt ved utskrift. Standardverdien for <code class="language-html">media</code>-attributtet &#8211; alts&#229; den verdien som blir brukt dersom attributtet ikke spesifiseres &#8211; er <code class="language-html">all</code>, alts&#229; at stilsettet gjelder for alle medier. Stildeklarasjonene i <code>felles.css</code> kommer derfor med b&#229;de p&#229; skjerm og ved utskrift, med mindre skjerm- og utskriftsstilsettene inneholder deklarasjoner som overstyrer&#160;disse.</p>
-
-<p>Det g&#229;r ogs&#229; fint an &#229; angi at stilsettet skal gjelde for <em>flere</em> medier, ved &#229; skille mediebeskrivelsene med&#160;komma:</p>
-
-<pre>
-<code class="language-html"><span class="hljs-tag">&lt;<span class="hljs-name">link</span> <span class="hljs-attr">href</span>=<span class="hljs-string">"stilark.css"</span> <span class="hljs-attr">media</span>=<span class="hljs-string">"print,screen"</span> <span class="hljs-attr">rel</span>=<span class="hljs-string">"stylesheet"</span> <span class="hljs-attr">type</span>=<span class="hljs-string">"text/css"</span>&gt;</span></code>
-</pre>
-
-<p>Hva slags <a href="http://www.w3.org/TR/html4/types.html#type-media-descriptors" target="_blank" title="Open w3.org in a new window">mediebeskrivelser</a> du kan bruke og hva de st&#229;r for, er beskrevet i <a href="http://www.w3.org/TR/html4/" target="_blank" title="Open w3.org in a new window"><abbr class="acronym" title="HyperText Markup Language"><span class="caps">HTML</span></abbr>&#160;4.01-spesifikasjonen</a>.</p>
-
-<p>Alt dette er vel og bra dersom du kun &#248;nsker ett utseende for siden din, med noe utskriftstilpasning og muligens litt ekstra tilrettelegging for andre medier. Men hva om du kunne tenke deg &#229; utstyre siden din med <em>flere stiler</em>, slik at den bes&#248;kende kan velge den vedkommende liker best? Da m&#229; vi gj&#248;re oss kjent med <code class="language-html">title</code>-attributtet, som vi &#8211; innlysende nok &#8211; bruker for &#229; gi ett eller flere stilsett en <em>tittel</em>. Jeg sier &#171;ett eller flere&#187; fordi du p&#229; denne m&#229;ten kan <em>gruppere</em> stilsett, og <abbr title="for eksempel">f.eks.</abbr> samle et generelt sideoppsett som inkluderer mindre tilpasninger til papir under <em>ett</em>&#160;navn.</p>
-
-<p>Vi fortsetter med det forrige kodeeksemplet, som vi tenker oss er fra en side med en marinebl&#229; fargesammensetning. Med <code class="language-html">title</code>-attributtet kan vi n&#229; gi denne fargesammensetningen et&#160;navn:</p>
-
-<pre>
-<code class="language-html"><span class="hljs-tag">&lt;<span class="hljs-name">link</span> <span class="hljs-attr">href</span>=<span class="hljs-string">"felles.css"</span> <span class="hljs-attr">rel</span>=<span class="hljs-string">"stylesheet"</span> <span class="hljs-attr">type</span>=<span class="hljs-string">"text/css"</span>&gt;</span>
-<span class="hljs-tag">&lt;<span class="hljs-name">link</span> <span class="hljs-attr">href</span>=<span class="hljs-string">"skjerm.css"</span> <span class="hljs-attr">media</span>=<span class="hljs-string">"screen"</span> <span class="hljs-attr">rel</span>=<span class="hljs-string">"stylesheet"</span> <span class="hljs-attr">type</span>=<span class="hljs-string">"text/css"</span>&gt;</span>
-<span class="hljs-tag">&lt;<span class="hljs-name">link</span> <span class="hljs-attr">href</span>=<span class="hljs-string">"utskrift.css"</span> <span class="hljs-attr">media</span>=<span class="hljs-string">"print"</span> <span class="hljs-attr">rel</span>=<span class="hljs-string">"stylesheet"</span> <span class="hljs-attr">type</span>=<span class="hljs-string">"text/css"</span>&gt;</span>
-<span class="hljs-tag">&lt;<span class="hljs-name">link</span> <span class="hljs-attr">href</span>=<span class="hljs-string">"marineblaa.css"</span> <span class="hljs-attr">rel</span>=<span class="hljs-string">"stylesheet"</span> <span class="hljs-attr">title</span>=<span class="hljs-string">"Marinebl&#229;"</span> <span class="hljs-attr">type</span>=<span class="hljs-string">"text/css"</span>&gt;</span></code>
-</pre>
-
-<p>Stilarket <code>marineblaa.css</code> inneholder et s&#229;kalt <em>foretrukket</em> stilsett (som gjelder for b&#229;de skjerm og utskrift, ettersom vi ikke har angitt <code class="language-html">media</code>-attributtet). Dette inng&#229;r i sidens <em>foretrukne stil</em>. Det er alts&#229; stilen &#171;Marinebl&#229;&#187; som blir brukt f&#248;rste gang siden lastes, uavhengig av om vi har angitt en eller flere <em>alternative stiler</em> i tillegg. Kun &#233;n stil kan velges om gangen, og det er vanligvis ogs&#229; mulig &#229; ikke velge noen stil i det hele tatt, slik at siden faller tilbake p&#229; de stildeklarasjonene som er angitt i grunnleggende&#160;stilsett.</p>
-
-<p>Det er viktig &#229; forst&#229; at du med <code class="language-html">title</code>-attributtet ikke angir navnet p&#229; ett bestemt stilsett, men derimot en unik stil &#8211; som kan inkludere flere stilsett, ogs&#229; for forskjellige medier. Vi kan dele opp &#171;Marinebl&#229;&#187;-stilen i et skjermstilsett og et utskriftsstilsett, som bare blir brukt dersom stilen &#171;Marinebl&#229;&#187; er&#160;valgt:</p>
-
-<pre>
-<code class="language-html"><span class="hljs-tag">&lt;<span class="hljs-name">link</span> <span class="hljs-attr">href</span>=<span class="hljs-string">"felles.css"</span> <span class="hljs-attr">rel</span>=<span class="hljs-string">"stylesheet"</span> <span class="hljs-attr">type</span>=<span class="hljs-string">"text/css"</span>&gt;</span>
-<span class="hljs-tag">&lt;<span class="hljs-name">link</span> <span class="hljs-attr">href</span>=<span class="hljs-string">"skjerm.css"</span> <span class="hljs-attr">media</span>=<span class="hljs-string">"screen"</span> <span class="hljs-attr">rel</span>=<span class="hljs-string">"stylesheet"</span> <span class="hljs-attr">type</span>=<span class="hljs-string">"text/css"</span>&gt;</span>
-<span class="hljs-tag">&lt;<span class="hljs-name">link</span> <span class="hljs-attr">href</span>=<span class="hljs-string">"utskrift.css"</span> <span class="hljs-attr">media</span>=<span class="hljs-string">"print"</span> <span class="hljs-attr">rel</span>=<span class="hljs-string">"stylesheet"</span> <span class="hljs-attr">type</span>=<span class="hljs-string">"text/css"</span>&gt;</span>
-<span class="hljs-tag">&lt;<span class="hljs-name">link</span> <span class="hljs-attr">href</span>=<span class="hljs-string">"mbskjerm.css"</span> <span class="hljs-attr">media</span>=<span class="hljs-string">"screen"</span> <span class="hljs-attr">rel</span>=<span class="hljs-string">"stylesheet"</span> <span class="hljs-attr">title</span>=<span class="hljs-string">"Marinebl&#229;"</span> <span class="hljs-attr">type</span>=<span class="hljs-string">"text/css"</span>&gt;</span>
-<span class="hljs-tag">&lt;<span class="hljs-name">link</span> <span class="hljs-attr">href</span>=<span class="hljs-string">"mbutskrift.css"</span> <span class="hljs-attr">media</span>=<span class="hljs-string">"print"</span> <span class="hljs-attr">rel</span>=<span class="hljs-string">"stylesheet"</span> <span class="hljs-attr">title</span>=<span class="hljs-string">"Marinebl&#229;"</span> <span class="hljs-attr">type</span>=<span class="hljs-string">"text/css"</span>&gt;</span></code>
-</pre>
-
-<p>Merk at <code>skjerm.css</code> og <code>utskrift.css</code> fortsatt inneholder grunnleggende stilsett. Dersom stilen &#171;Marinebl&#229;&#187; er valgt, styres alts&#229; utskriftens utseende av summen av <code>felles.css</code>, <code>utskrift.css</code> og <code>mbutskrift.css</code>, der et p&#229;f&#248;lgende stilsetts deklarasjoner overstyrer tilsvarende deklarasjoner i tidligere stilark. Dersom ingen stil er valgt, blir utskriften formatert etter summen av <code>felles.css</code> og <code>utskrift.css</code>.</p>
-
-<p>Det er neppe verdt &#229; ta seg bryet med &#229; angi en foretrukken stil dersom man ikke i tillegg har angitt en eller flere alternative stiler. Disse m&#229; velges manuelt av den bes&#248;kende, og blir ikke brukt idet siden lastes for f&#248;rste gang (ettersom bare &#233;n stil &#8211; i utgangspunktet den foretrukne stilen &#8211; kan vises om&#160;gangen).</p>
-
-<p>Du lager alternative stiler p&#229; samme m&#229;te som den foretrukne stilen, men <code class="language-html">rel</code>-attributtet m&#229; n&#229; settes til <code class="language-html">alternate stylesheet</code>:</p>
-
-<pre>
-<code class="language-html"><span class="hljs-tag">&lt;<span class="hljs-name">link</span> <span class="hljs-attr">href</span>=<span class="hljs-string">"sitrongul.css"</span> <span class="hljs-attr">rel</span>=<span class="hljs-string">"alternate stylesheet"</span> <span class="hljs-attr">title</span>=<span class="hljs-string">"Sitrongul"</span> <span class="hljs-attr">type</span>=<span class="hljs-string">"text/css"</span>&gt;</span></code>
-</pre>
-
-<p>Dersom dette legges til etter stilen &#171;Marinebl&#229;&#187;, kan brukeren skifte utseende p&#229; siden ved &#229; velge den alternative stilen &#171;Sitrongul&#187; med en funksjon i nettleseren. B&#229;de Opera og Mozilla &#8211; men ikke Internet Explorer &#8211; er utstyrt med dette. Ettersom <abbr class="acronym" title="Internet Explorer"><span class="caps">IE</span></abbr> fortsatt er den mest popul&#230;re nettleseren generelt sett, er det blitt vanlig &#229; ta i bruk en <a href="http://www.alistapart.com/articles/alternate/" target="_blank" title="Open alistapart.com in a new window">JavaScript-l&#248;sning</a> som lar den bes&#248;kende velge stil ved &#229; klikke p&#229; lenker p&#229; selve siden. Dette g&#229;r imidlertid p&#229; bekostning av markeringen, som ikke vil gi noen s&#230;rlig mening i en nettleser som ikke st&#248;tter JavaScript (eller som har JavaScript avsl&#229;tt). (En annen mulighet er &#229; la skripting p&#229; serversiden gj&#248;re dynamiske inngrep i <abbr class="acronym" title="HyperText Markup Language"><span class="caps">HTML</span></abbr>-koden, slik at hvilken stil som angis som den foretrukne <abbr title="for eksempel">f.eks.</abbr> styres av verdien til en&#160;<span class="caps">GET</span>-variabel.)</p>
-</section>
-</section>
-</article>
 </body>
 </html>

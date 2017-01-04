@@ -1,147 +1,24 @@
 <!DOCTYPE html>
-<html lang="no" prefix="og: http://ogp.me/ns#">
+<html prefix="og: http://ogp.me/ns#">
 <head>
-<title>Closures i Lisp &#8211; Vegards blogg</title>
+<title>
+</title>
 <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
-<meta content="Vegard &#216;ye" name="author">
-<meta content="2011-10-07" name="date">
-<meta content="255adb468cf218cb8dae770b1eaec3b3" name="md5">
 <meta content="text/css" http-equiv="Content-Style-Type">
 <meta content="width=device-width, initial-scale=1" name="viewport">
-<meta content="Closures i Lisp" name="DC.Title">
-<meta content="Vegard &#216;ye" name="DC.Creator">
-<meta content="2011-10-07" name="DC.Date">
-<meta content="no" name="DC.Language">
 <meta content="text/html" name="DC.Format">
-<meta content="Closures i Lisp" property="og:title">
-<meta content="no" name="og:locale">
 <meta content="article" property="og:type">
-<meta content="https://epsil.github.io/2011/10/07/" property="og:url">
-<meta content="Vegards blogg" property="og:site_name">
+<meta content="http://localhost:8000/2011/10/07/" property="og:url">
 <meta content="summary" name="twitter:card">
 <meta content="@github" name="twitter:site">
-<meta content="Closures i Lisp" name="twitter:title">
 <link href="../../../favicon.ico" rel="icon" type="image/x-icon">
 <link href="../../../apple-touch-icon.png" rel="apple-touch-icon">
 <link href="../../../css/markdown-template.css" rel="stylesheet">
-<link href="https://epsil.github.io/2011/10/07/" rel="canonical">
+<link href="http://localhost:8000/2011/10/07/" rel="canonical">
 <link href="index.txt" rel="alternate" title="Markdown" type="text/markdown">
 <script src="../../../js/markdown-template.js">
 </script>
 </head>
 <body>
-<nav class="navbar navbar-default navbar-fixed-top">
-<div class="container-fluid">
-<ul class="nav nav-pills navbar-left">
-<li role="presentation"><a href="/" title="G&#229; hjem"><i class="fa fa-home"></i></a>
-</li>
-</ul>
-
-<ul class="nav nav-pills navbar-right">
-<li role="presentation"><a href="http://www.facebook.com/share.php?u=https%3A%2F%2Fepsil.github.io%2F2011%2F10%2F07%2F" target="_blank" title="Del p&#229; Facebook"><i class="fa fa-facebook-square"></i></a>
-</li>
-
-<li role="presentation"><a href="https://twitter.com/intent/tweet?url=https%3A%2F%2Fepsil.github.io%2F2011%2F10%2F07%2F" target="_blank" title="Del p&#229; Twitter"><i class="fa fa-twitter-square"></i></a>
-</li>
-
-<li role="presentation"><a href="https://github.com/epsil/epsil.github.io/edit/master/2011/10/07/index.txt" target="_blank" title="Rediger p&#229; GitHub"><i class="fa fa-edit"></i></a>
-</li>
-
-<li role="presentation"><a href="https://github.com/epsil/epsil.github.io/commits/master/2011/10/07/index.txt" target="_blank" title="Vis historie"><i class="fa fa-history"></i></a>
-</li>
-
-<li role="presentation"><a href="index.txt" title="Vis Markdown-kilde"><i class="fa fa-download"></i></a>
-</li>
-
-<li role="presentation"><a data-toggle="collapse" href="#toc" id="toc-button" name="toc-button" title="Innhold"><i class="fa fa-list"></i></a>
-</li>
-</ul>
-</div>
-
-<div id="toc-placeholder">
-</div>
-</nav>
-
-<article class="h-entry">
-<header>
-<h1 class="p-name"><a class="u-uid u-url" href="https://epsil.github.io/2011/10/07/" rel="bookmark" target="_blank" title="Permalink">Closures i Lisp</a>
-</h1>
-
-<p><a class="p-author h-card" href="https://epsil.github.io/" target="_blank" title="Open epsil.github.io in a new window">Vegard &#216;ye</a> <time class="dt-published" datetime="2011-10-07">2011-10-07</time></p>
-</header>
-
-<section class="e-content">
-<section>
-<blockquote>
-<p>In the remotest regions, beyond the Functional Kingdoms, lies a fabled realm called Lambda the Ultimate. In this place it is said that there are no nouns at all, only verbs! There are &#8220;things&#8221; there, but all things are created from verbs, even the very integers for counting lambs, which are the most popular form of trading currency there, if the rumors speak truth. The number zero is simply <code class="language-python"><span class="hljs-keyword">lambda</span>()</code>, and 1 is <code class="language-python"><span class="hljs-keyword">lambda</span>(<span class="hljs-keyword">lambda</span>())</code>, 2 is <code class="language-python"><span class="hljs-keyword">lambda</span>(<span class="hljs-keyword">lambda</span>(<span class="hljs-keyword">lambda</span>()))</code>, and so on. Every single Thing in this legendary region, be it noun, verb or otherwise, is constructed from the primal verb&#160;&#8220;lambda&#8221;.</p>
-
-<footer>Steve Yegge: <cite>Execution in the Kingdom of Nouns</cite><sup class="footnote-ref"><a href="#fn1" id="fnref1" title="http://steve-yegge.blogspot.com/2006/03/execution-in-kingdom-of-nouns.html">[1]</a></sup></footer>
-</blockquote>
-
-<p>Det er i prinsippet mulig &#229; bruke lambdaer som et fundament for videre programmering. Det klassiske <a href="http://mitpress.mit.edu/sicp/full-text/book/book.html" target="_blank" title="Open mitpress.mit.edu in a new window"><em><abbr class="acronym" title="Structure and Interpretation of Computer Programs"><span class="caps">SICP</span></abbr></em></a>-eksemplet er &#229; definere <code class="language-scheme">cons</code>, <code class="language-scheme">car</code> og <code class="language-scheme">cdr</code> p&#229; denne m&#229;ten,<sup class="footnote-ref"><a href="#fn2" id="fnref2" title="http://mitpress.mit.edu/sicp/full-text/book/book-Z-H-14.html#%_sec_2.1.3">[2]</a></sup> som vi kan tenke p&#229; som Lisp-sjargong for <code class="language-scheme">pair</code>, <code class="language-scheme">first</code> og <code class="language-scheme">second</code>. La <code class="language-scheme">pair</code> v&#230;re en funksjon som returnerer et par med verdier, <code class="language-scheme">first</code> returnere den f&#248;rste verdien til paret, og <code class="language-scheme">second</code> returnere den&#160;andre:</p>
-
-<pre>
-<code class="language-scheme">&gt; (<span class="hljs-name">pair</span> <span class="hljs-string">"foo"</span> <span class="hljs-string">"bar"</span>)
-#&lt;par av <span class="hljs-string">"foo"</span> og <span class="hljs-string">"bar"</span>&gt;
-
-&gt; (<span class="hljs-name">first</span> (<span class="hljs-name">pair</span> <span class="hljs-string">"foo"</span> <span class="hljs-string">"bar"</span>))
-<span class="hljs-string">"foo"</span>
-
-&gt; (<span class="hljs-name">second</span> (<span class="hljs-name">pair</span> <span class="hljs-string">"foo"</span> <span class="hljs-string">"bar"</span>))
-<span class="hljs-string">"bar"</span></code>
-</pre>
-
-<p>Den vanlige m&#229;ten &#229; implementere dette p&#229; ville v&#230;re &#229; konstruere en listestruktur &#8211; et stykke data &#8211; med <code class="language-scheme">pair</code>, og s&#229; la <code class="language-scheme">first</code> og <code class="language-scheme">second</code> hente ut riktig element fra strukturen. <em><abbr class="acronym" title="Structure and Interpretation of Computer Programs"><span class="caps">SICP</span></abbr></em> sin fremgangsm&#229;te er derimot &#229; implementere paret som en <em>prosedyre</em>:</p>
-
-<pre>
-<code class="language-scheme">(<span class="hljs-name"><span class="hljs-builtin-name">define</span></span> (<span class="hljs-name">pair</span> x y)
-  (<span class="hljs-name"><span class="hljs-builtin-name">lambda</span></span> (m)
-    (<span class="hljs-name"><span class="hljs-builtin-name">cond</span></span>
-     ((<span class="hljs-name"><span class="hljs-builtin-name">=</span></span> m <span class="hljs-number">1</span>) x)
-     ((<span class="hljs-name"><span class="hljs-builtin-name">=</span></span> m <span class="hljs-number">2</span>) y))))
-
-(<span class="hljs-name"><span class="hljs-builtin-name">define</span></span> (<span class="hljs-name">first</span> z)
-  (<span class="hljs-name">z</span> <span class="hljs-number">1</span>))
-
-(<span class="hljs-name"><span class="hljs-builtin-name">define</span></span> (<span class="hljs-name">second</span> z)
-  (<span class="hljs-name">z</span> <span class="hljs-number">2</span>))</code>
-</pre>
-
-<p>Her returnerer <code class="language-scheme">pair</code> en anonym funksjon (som lages med <code class="language-scheme">lambda</code> i Lisp). Denne funksjonen inneholder argumentene til <code class="language-scheme">pair</code>:</p>
-
-<pre>
-<code class="language-scheme">&gt; (<span class="hljs-name">pair</span> <span class="hljs-string">"foo"</span> <span class="hljs-string">"bar"</span>)
-#&lt;prosedyre som inneholder <span class="hljs-string">"foo"</span> og <span class="hljs-string">"bar"</span>&gt;</code>
-</pre>
-
-<p>Det <code class="language-scheme">first</code> og <code class="language-scheme">second</code> s&#229; gj&#248;r, er &#229; kalle prosedyren med et bestemt argument slik at den f&#248;rste eller andre verdien returneres. Dermed vil <code class="language-scheme">(<span class="hljs-name">first</span> (<span class="hljs-name">pair</span> <span class="hljs-string">"foo"</span> <span class="hljs-string">"bar"</span>))</code> fortsatt gi <code class="language-scheme"><span class="hljs-string">"foo"</span></code>, og <code class="language-scheme">(<span class="hljs-name">second</span> (<span class="hljs-name">pair</span> <span class="hljs-string">"foo"</span> <span class="hljs-string">"bar"</span>))</code> gi <code class="language-scheme"><span class="hljs-string">"bar"</span></code>. P&#229; papiret en helt adekvat&#160;implementasjon.</p>
-
-<p>Koden over forutsetter <em>closures</em>, <abbr title="det vil si">dvs.</abbr> at prosedyren som <code class="language-scheme">pair</code> returnerer, er i stand til &#229; &#171;stikke av med&#187; argumentene til <code class="language-scheme">pair</code>.<sup class="footnote-ref"><a href="#fn3" id="fnref3" title="Hvis Lisp&#8217;en din mangler dette, kan du alltids &#171;jukse&#187; ved &#229; konstruere lambdaen som en liste og splice inn verdiene av x og y (forutsetter at x og y er immutable).">[3]</a></sup> Dermed kan man for s&#229; vidt tenke p&#229; prosedyren som et &#171;objekt&#187;, <abbr title="det vil si">dvs.</abbr> en bunt med data og instruksjoner. (I enkelte spr&#229;k, som JavaScript og Scala, <em>er</em> funksjoner&#160;objekter.)</p>
-
-<p>Denne litt alternative m&#229;ten &#229; konstruere &#171;objekter&#187; p&#229; &#8211; &#229; lage anomyme funksjoner som lukker om bindingene i et leksikalsk skop &#8211; er faktisk mye brukt i funksjonelle spr&#229;k. Google &#171;<a href="http://www.google.no/search?q=let+over+lambda" target="_blank" title="Open google.no in a new window">let over lambda</a>&#187; n&#229;r du har&#160;tid.</p>
-
-<hr class="footnotes-sep">
-</section>
-<!--
-Se [GeirGrusoms innlegg](http://www.diskusjon.no/index.php?showtopic=800754&p=18412466&st=1420&#entry18412466) over.
--->
-
-<section class="footnotes">
-<ol class="footnotes-list">
-<li class="footnote-item" id="fn1">
-<p><a class="url" href="http://steve-yegge.blogspot.com/2006/03/execution-in-kingdom-of-nouns.html" target="_blank" title="Open steve-yegge.blogspot.com in a new window">http://steve-yegge.blogspot.com/2006/03/execution-in-kingdom-of-nouns.html</a> <a class="footnote-backref" href="#fnref1" title="Steve Yegge: Execution in the Kingdom of Nouns[1]">&#8617;&#65038;</a></p>
-</li>
-
-<li class="footnote-item" id="fn2">
-<p><a class="url" href="http://mitpress.mit.edu/sicp/full-text/book/book-Z-H-14.html#%25_sec_2.1.3" target="_blank" title="Open mitpress.mit.edu in a new window">http://mitpress.mit.edu/sicp/full-text/book/book-Z-H-14.html#%_sec_2.1.3</a> <a class="footnote-backref" href="#fnref2" title="Det er i prinsippet mulig &#229; bruke lambdaer som et fundament for videre programmering. Det klassiske SICP-eksemplet er &#229; definere cons, car og cdr p&#229; denne m&#229;ten,[2] som vi kan tenke p&#229; som Lisp-sjargong for pair, first og second. La pair v&#230;re en funksjon som returnerer et par med verdier, first returnere den f&#248;rste verdien til paret, og second returnere den&#160;andre:">&#8617;&#65038;</a></p>
-</li>
-
-<li class="footnote-item" id="fn3">
-<p>Hvis Lisp&#8217;en din mangler dette, kan du alltids &#171;jukse&#187; ved &#229; konstruere lambdaen som en liste og splice inn verdiene av <code class="language-scheme">x</code> og <code class="language-scheme">y</code> (forutsetter at <code class="language-scheme">x</code> og <code class="language-scheme">y</code> er immutable). <a class="footnote-backref" href="#fnref3" title="Koden over forutsetter closures, dvs. at prosedyren som pair returnerer, er i stand til &#229; &#171;stikke av med&#187; argumentene til pair.[3] Dermed kan man for s&#229; vidt tenke p&#229; prosedyren som et &#171;objekt&#187;, dvs. en bunt med data og instruksjoner. (I enkelte spr&#229;k, som JavaScript og Scala, er funksjoner&#160;objekter.)">&#8617;&#65038;</a></p>
-</li>
-</ol>
-</section>
-</section>
-</article>
 </body>
 </html>

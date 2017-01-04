@@ -1,134 +1,24 @@
 <!DOCTYPE html>
-<html lang="no" prefix="og: http://ogp.me/ns#">
+<html prefix="og: http://ogp.me/ns#">
 <head>
-<title>AUCTeX p&#229; Windows &#8211; Vegards blogg</title>
+<title>
+</title>
 <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
-<meta content="Vegard &#216;ye" name="author">
-<meta content="2007-10-09" name="date">
-<meta content="ad750c81034711213ca5e0d537255767" name="md5">
 <meta content="text/css" http-equiv="Content-Style-Type">
 <meta content="width=device-width, initial-scale=1" name="viewport">
-<meta content="AUCTeX p&#229; Windows" name="DC.Title">
-<meta content="Vegard &#216;ye" name="DC.Creator">
-<meta content="2007-10-09" name="DC.Date">
-<meta content="no" name="DC.Language">
 <meta content="text/html" name="DC.Format">
-<meta content="AUCTeX p&#229; Windows" property="og:title">
-<meta content="no" name="og:locale">
 <meta content="article" property="og:type">
-<meta content="https://epsil.github.io/2007/10/09/" property="og:url">
-<meta content="Vegards blogg" property="og:site_name">
+<meta content="http://localhost:8000/2007/10/09/" property="og:url">
 <meta content="summary" name="twitter:card">
 <meta content="@github" name="twitter:site">
-<meta content="AUCTeX p&#229; Windows" name="twitter:title">
 <link href="../../../favicon.ico" rel="icon" type="image/x-icon">
 <link href="../../../apple-touch-icon.png" rel="apple-touch-icon">
 <link href="../../../css/markdown-template.css" rel="stylesheet">
-<link href="https://epsil.github.io/2007/10/09/" rel="canonical">
+<link href="http://localhost:8000/2007/10/09/" rel="canonical">
 <link href="index.txt" rel="alternate" title="Markdown" type="text/markdown">
 <script src="../../../js/markdown-template.js">
 </script>
 </head>
 <body>
-<nav class="navbar navbar-default navbar-fixed-top">
-<div class="container-fluid">
-<ul class="nav nav-pills navbar-left">
-<li role="presentation"><a href="/" title="G&#229; hjem"><i class="fa fa-home"></i></a>
-</li>
-</ul>
-
-<ul class="nav nav-pills navbar-right">
-<li role="presentation"><a href="http://www.facebook.com/share.php?u=https%3A%2F%2Fepsil.github.io%2F2007%2F10%2F09%2F" target="_blank" title="Del p&#229; Facebook"><i class="fa fa-facebook-square"></i></a>
-</li>
-
-<li role="presentation"><a href="https://twitter.com/intent/tweet?url=https%3A%2F%2Fepsil.github.io%2F2007%2F10%2F09%2F" target="_blank" title="Del p&#229; Twitter"><i class="fa fa-twitter-square"></i></a>
-</li>
-
-<li role="presentation"><a href="https://github.com/epsil/epsil.github.io/edit/master/2007/10/09/index.txt" target="_blank" title="Rediger p&#229; GitHub"><i class="fa fa-edit"></i></a>
-</li>
-
-<li role="presentation"><a href="https://github.com/epsil/epsil.github.io/commits/master/2007/10/09/index.txt" target="_blank" title="Vis historie"><i class="fa fa-history"></i></a>
-</li>
-
-<li role="presentation"><a href="index.txt" title="Vis Markdown-kilde"><i class="fa fa-download"></i></a>
-</li>
-
-<li role="presentation"><a data-toggle="collapse" href="#toc" id="toc-button" name="toc-button" title="Innhold"><i class="fa fa-list"></i></a>
-</li>
-</ul>
-</div>
-
-<div id="toc-placeholder">
-</div>
-</nav>
-
-<article class="h-entry">
-<header>
-<h1 class="p-name"><a class="u-uid u-url" href="https://epsil.github.io/2007/10/09/" rel="bookmark" target="_blank" title="Permalink"><abbr title="AUCTeX">AUCT<span class="tex-e">e</span>X</abbr> p&#229; Windows</a>
-</h1>
-
-<p><a class="p-author h-card" href="https://epsil.github.io/" target="_blank" title="Open epsil.github.io in a new window">Vegard &#216;ye</a> <time class="dt-published" datetime="2007-10-09">2007-10-09</time></p>
-</header>
-
-<section class="e-content">
-<section>
-<p>Jeg oppgraderte nylig til <a href="http://www.gnu.org/software/emacs/" target="_blank" title="Open gnu.org in a new window"><abbr class="acronym" title="GNU's Not Unix"><span class="caps">GNU</span></abbr> Emacs 22.1</a>, og det er i gledesrus over &#229; ha f&#229;tt <a href="http://www.gnu.org/software/auctex/preview-latex.html" target="_blank" title="Open gnu.org in a new window">preview-latex</a> til &#229; fungere at jeg skriver dette innlegget. preview-latex er et tillegg til <abbr title="LaTeX">L<span class="latex-a">a</span>T<span class="tex-e">e</span>X</abbr>-modusen til Emacs, <a href="http://www.gnu.org/software/auctex/" target="_blank" title="Open gnu.org in a new window"><abbr title="AUCTeX">AUCT<span class="tex-e">e</span>X</abbr></a>, som forh&#229;ndsviser matematiske uttrykk <em>i selve kildefilen</em>. N&#229;r jeg velger &#171;Generate previews for document&#187; fra Preview-menyen, blir bufferen min seende slik&#160;ut:</p>
-
-<figure><img alt="" src="previewlatex.png">
-</figure>
-
-<p>Men merk at dette lille steget over i &#171;<abbr class="acronym" title="What You See Is What You Get"><span class="caps">WYSIWYG</span></abbr>&#187; <em>ikke</em> kludrer til skriveprosessen. N&#229;r jeg beveger mark&#248;ren over uttrykkene, vises <abbr title="LaTeX">L<span class="latex-a">a</span>T<span class="tex-e">e</span>X</abbr>-koden i stedet, som kan redigeres dersom det er behov for det. S&#229; kan eventuelt en oppdatert forh&#229;ndsvisning genereres etterp&#229;, n&#229;r man har skrevet tilstrekkelig mye kode til at det er greit med en tilbakemelding p&#229; hva man faktisk &#171;har gjort&#187;. Den st&#248;rste gevinsten med preview-latex er at det er <em>mye lettere</em> &#229; f&#229; oversikt over hvor man befinner seg i dokumentet til enhver tid, og dersom man starter skrive&#248;kten med &#229; generere en forh&#229;ndsvisning, f&#229;r man en tydelig visuell tilbakemelding om hva som er nye endringer og hva dokumentet inneholdt fra&#160;f&#248;r.</p>
-
-<p>&#197; f&#229; bildest&#248;tten til <abbr class="acronym" title="GNU's Not Unix"><span class="caps">GNU</span></abbr> Emacs for Windows til &#229; fungere kan imidlertid v&#230;re en noe innfl&#248;kt aff&#230;re, for denne st&#248;tten er ikke innebygd i selve programmet. Den enkleste m&#229;ten &#229; komme i gang p&#229; er &#229; laste ned <abbr title="AUCTeX">AUCT<span class="tex-e">e</span>X</abbr> sin <a href="ftp://alpha.gnu.org/gnu/auctex/emacs+auctex-w32-2007-07-07.zip" target="_blank" title="Open alpha.gnu.org in a new window">Emacs + <abbr title="AUCTeX">AUCT<span class="tex-e">e</span>X</abbr>-pakke</a>, som inkluderer alle de n&#248;dvendige filene. Denne er det bare &#229; pakke ut et passende sted, <abbr title="for eksempel">f.eks.</abbr> <code>C:\Programfiler</code>, i hvilket tilfelle Emacs vil f&#229; plasseringen <code>C:\Programfiler\Emacs</code>. S&#229; kan man starte opp Emacs ved &#229; kj&#248;re <code>C:\Programfiler\Emacs\bin\runemacs.exe</code> (lag <abbr title="eventuelt">ev.</abbr> en snarvei til denne p&#229;&#160;skrivebordet).</p>
-
-<p>Dersom en i stedet vil gj&#248;re ting &#171;selv&#187; med utgangspunkt i <a href="http://ftp.gnu.org/pub/gnu/emacs/windows/emacs-22.1-bin-i386.zip" target="_blank" title="Open ftp.gnu.org in a new window">den offisielle Emacs-utgivelsen</a>, m&#229; en laste ned noen ekstra <code>.dll</code>-filer som plasseres i samme katalog som <code>emacs.exe</code> (eller, for &#229; gj&#248;re dem tilgjengelige for andre programmer ogs&#229;, i systemkatalogen <code>Windows\system</code> eller <code>Windows\system32</code>). Hvilke filer det er snakk om, er beskrevet i <abbr class="acronym" title="File Transfer Protocol"><span class="caps">FTP</span></abbr>-<abbr class="acronym" title="les meg"><span class="caps">README</span></abbr>-filen <a href="http://ftp.gnu.org/pub/gnu/emacs/windows/README" target="_blank" title="Open ftp.gnu.org in a new window"><code>windows/README</code></a>, og de kan lastes ned enkeltvis fra <a href="http://gnuwin32.sourceforge.net/" target="_blank" title="Open gnuwin32.sourceforge.net in a new window">G<em>nu</em>W<em>in</em>32</a>-prosjektet.</p>
-<!--
-For 堧j𲥠ting litt enklere for folk har jeg laget en Zip-fil med alle `.dll`-filene Emacs kan nyttiggj𲥠seg av:
--->
-
-<p>N&#229;r alt er p&#229; plass, enten man g&#229;r for pakkel&#248;sningen eller installerer <a href="http://ftp.gnu.org/pub/gnu/emacs/windows/emacs-22.1-bin-i386.zip" target="_blank" title="Open ftp.gnu.org in a new window">Emacs</a>, <code>.dll</code>-filene og <a href="http://ftp.gnu.org/pub/gnu/auctex/auctex-11.84.zip" target="_blank" title="Open ftp.gnu.org in a new window"><abbr title="AUCTeX">AUCT<span class="tex-e">e</span>X</abbr></a> manuelt, er det vel verdt &#229; ta en kikk p&#229; <a href="http://www.math.aau.dk/%7Edethlef/Tips/tuning.html" target="_blank" title="Open math.aau.dk in a new window">Claus Dethlefsens <abbr title="LaTeX">L<span class="latex-a">a</span>T<span class="tex-e">e</span>X</abbr>/Emacs-side</a>, som tar for seg fintilpasning med <a href="http://www.wyrdrune.com/gnuserv.html" target="_blank" title="Open wyrdrune.com in a new window">gnuserv</a> (lastes ned separat). Selv har jeg <abbr title="blant annet">bl.a.</abbr> dette i <code>.emacs</code>-filen min:</p>
-
-<pre>
-<code class="language-lisp">(<span class="hljs-name">load</span> <span class="hljs-string">"gnuserv"</span>)
-(<span class="hljs-name">gnuserv-start</span>)
-(<span class="hljs-name">setq</span> gnuserv-frame (<span class="hljs-name">selected-frame</span>))
-
-(<span class="hljs-name">add-hook</span> 'text-mode-hook 'turn-on-auto-fill)
-(<span class="hljs-name">add-hook</span> 'text-mode-hook '(lambda ()
-  (setq show-trailing-whitespace <span class="hljs-literal">t</span>)))
-(<span class="hljs-name">global-font-lock-mode</span> <span class="hljs-literal">t</span>)
-(<span class="hljs-name">setq-default</span> indicate-empty-lines <span class="hljs-literal">t</span>)
-(<span class="hljs-name">column-number-mode</span> <span class="hljs-literal">t</span>)
-(<span class="hljs-name">size-indication-mode</span> <span class="hljs-literal">t</span>)
-(<span class="hljs-name">cua-mode</span> <span class="hljs-literal">t</span>)
-(<span class="hljs-name">setq</span> cua-enable-cua-keys <span class="hljs-literal">nil</span>)
-(<span class="hljs-name">show-paren-mode</span> <span class="hljs-literal">t</span>)
-(<span class="hljs-name">setq</span> show-paren-delay <span class="hljs-number">0</span>)
-(<span class="hljs-name">global-hl-line-mode</span> <span class="hljs-literal">t</span>)
-(<span class="hljs-name">set-face-background</span> 'hl-line <span class="hljs-string">"#fffacd"</span>)
-(<span class="hljs-name">setq</span> skeleton-pair <span class="hljs-literal">t</span>)
-(<span class="hljs-name">global-set-key</span> <span class="hljs-string">"("</span> 'skeleton-pair-insert-maybe)
-(<span class="hljs-name">global-set-key</span> <span class="hljs-string">"["</span> 'skeleton-pair-insert-maybe)
-(<span class="hljs-name">global-set-key</span> <span class="hljs-string">"{"</span> 'skeleton-pair-insert-maybe)
-(<span class="hljs-name">setq</span> disabled-command-hook <span class="hljs-literal">nil</span>)
-(<span class="hljs-name">fset</span> 'yes-or-no-p 'y-or-n-p)
-(<span class="hljs-name">setq</span> visible-bell <span class="hljs-literal">t</span>)
-(<span class="hljs-name">setq</span> inhibit-startup-message <span class="hljs-literal">t</span>)
-
-(<span class="hljs-name">require</span> 'ido)
-(<span class="hljs-name">ido-mode</span> <span class="hljs-literal">t</span>)
-
-(<span class="hljs-name">load</span> <span class="hljs-string">"auctex.el"</span> <span class="hljs-literal">nil</span> <span class="hljs-literal">t</span> <span class="hljs-literal">t</span>)
-(<span class="hljs-name">load</span> <span class="hljs-string">"preview-latex.el"</span> <span class="hljs-literal">nil</span> <span class="hljs-literal">t</span> <span class="hljs-literal">t</span>)
-(<span class="hljs-name">require</span> 'tex-mik)
-(<span class="hljs-name">add-hook</span> 'LaTeX-mode-hook 'LaTeX-math-mode)</code>
-</pre>
-
-<p>Det blir for mye &#229; g&#229; inn p&#229; hva alt dette gj&#248;r (men se bloggen <a href="http://www.emacsblog.org/" target="_blank" title="Open emacsblog.org in a new window">M-x all-things-emacs</a> for mange nybegynnertips), men de fire siste linjene laster inn <abbr title="AUCTeX">AUCT<span class="tex-e">e</span>X</abbr> og preview-latex med <abbr title="MiKTeX">MiKT<span class="tex-e">e</span>X</abbr>-oppsett og automatisk aktivering av <abbr title="AUCTeX">AUCT<span class="tex-e">e</span>X</abbr> sine mattefunksjoner n&#229;r Emacs g&#229;r inn i <abbr title="LaTeX">L<span class="latex-a">a</span>T<span class="tex-e">e</span>X</abbr>-modus.</p>
-
-<p>Dersom alt har g&#229;tt som det skulle, vil <abbr title="AUCTeX">AUCT<span class="tex-e">e</span>X</abbr> tre i kraft n&#229;r du &#229;pner en fil med endelsen <code>.tex</code>, og du kan generere forh&#229;ndsvisninger fra Preview-menyen. (Alt dette forutsetter naturligvis at du har en fungerende <abbr title="TeX">T<span class="tex-e">e</span>X</abbr>-distribusjon p&#229; systemet, som <abbr title="for eksempel">f.eks.</abbr> <a href="http://miktex.org/" target="_blank" title="Open miktex.org in a new window"><abbr title="MiKTeX">MiKT<span class="tex-e">e</span>X</abbr></a>. Merk at plasseringen til alle de kj&#248;rbare filene til <abbr title="TeX">T<span class="tex-e">e</span>X</abbr>-distribusjonen m&#229; v&#230;re oppf&#248;rt i milj&#248;variabelen <code>PATH</code>, slik at <abbr title="TeX">T<span class="tex-e">e</span>X</abbr>-programmene blir tilgjengelige som <em>kommandoer</em> p&#229; kommandolinjen, for det er ved &#229; sende instruksjoner til kommandolinjen at Emacs er i stand til &#229; nyttiggj&#248;re seg av <abbr title="TeX">T<span class="tex-e">e</span>X</abbr>-distribusjonen din.)</p>
-</section>
-</section>
-</article>
 </body>
 </html>

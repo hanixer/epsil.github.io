@@ -1,136 +1,24 @@
 <!DOCTYPE html>
-<html lang="no" prefix="og: http://ogp.me/ns#">
+<html prefix="og: http://ogp.me/ns#">
 <head>
-<title>Bruk versjonskontroll &#8211; Vegards blogg</title>
+<title>
+</title>
 <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
-<meta content="Vegard &#216;ye" name="author">
-<meta content="2010-04-18" name="date">
-<meta content="37c2eb6540673a373ccc1e0223605189" name="md5">
 <meta content="text/css" http-equiv="Content-Style-Type">
 <meta content="width=device-width, initial-scale=1" name="viewport">
-<meta content="Bruk versjonskontroll" name="DC.Title">
-<meta content="Vegard &#216;ye" name="DC.Creator">
-<meta content="2010-04-18" name="DC.Date">
-<meta content="no" name="DC.Language">
 <meta content="text/html" name="DC.Format">
-<meta content="Bruk versjonskontroll" property="og:title">
-<meta content="no" name="og:locale">
 <meta content="article" property="og:type">
-<meta content="https://epsil.github.io/2010/04/18/" property="og:url">
-<meta content="Vegards blogg" property="og:site_name">
+<meta content="http://localhost:8000/2010/04/18/" property="og:url">
 <meta content="summary" name="twitter:card">
 <meta content="@github" name="twitter:site">
-<meta content="Bruk versjonskontroll" name="twitter:title">
 <link href="../../../favicon.ico" rel="icon" type="image/x-icon">
 <link href="../../../apple-touch-icon.png" rel="apple-touch-icon">
 <link href="../../../css/markdown-template.css" rel="stylesheet">
-<link href="https://epsil.github.io/2010/04/18/" rel="canonical">
+<link href="http://localhost:8000/2010/04/18/" rel="canonical">
 <link href="index.txt" rel="alternate" title="Markdown" type="text/markdown">
 <script src="../../../js/markdown-template.js">
 </script>
 </head>
 <body>
-<nav class="navbar navbar-default navbar-fixed-top">
-<div class="container-fluid">
-<ul class="nav nav-pills navbar-left">
-<li role="presentation"><a href="/" title="G&#229; hjem"><i class="fa fa-home"></i></a>
-</li>
-</ul>
-
-<ul class="nav nav-pills navbar-right">
-<li role="presentation"><a href="http://www.facebook.com/share.php?u=https%3A%2F%2Fepsil.github.io%2F2010%2F04%2F18%2F" target="_blank" title="Del p&#229; Facebook"><i class="fa fa-facebook-square"></i></a>
-</li>
-
-<li role="presentation"><a href="https://twitter.com/intent/tweet?url=https%3A%2F%2Fepsil.github.io%2F2010%2F04%2F18%2F" target="_blank" title="Del p&#229; Twitter"><i class="fa fa-twitter-square"></i></a>
-</li>
-
-<li role="presentation"><a href="https://github.com/epsil/epsil.github.io/edit/master/2010/04/18/index.txt" target="_blank" title="Rediger p&#229; GitHub"><i class="fa fa-edit"></i></a>
-</li>
-
-<li role="presentation"><a href="https://github.com/epsil/epsil.github.io/commits/master/2010/04/18/index.txt" target="_blank" title="Vis historie"><i class="fa fa-history"></i></a>
-</li>
-
-<li role="presentation"><a href="index.txt" title="Vis Markdown-kilde"><i class="fa fa-download"></i></a>
-</li>
-
-<li role="presentation"><a data-toggle="collapse" href="#toc" id="toc-button" name="toc-button" title="Innhold"><i class="fa fa-list"></i></a>
-</li>
-</ul>
-</div>
-
-<div id="toc-placeholder">
-</div>
-</nav>
-
-<article class="h-entry">
-<header>
-<h1 class="p-name"><a class="u-uid u-url" href="https://epsil.github.io/2010/04/18/" rel="bookmark" target="_blank" title="Permalink">Bruk versjonskontroll</a>
-</h1>
-
-<p><a class="p-author h-card" href="https://epsil.github.io/" target="_blank" title="Open epsil.github.io in a new window">Vegard &#216;ye</a> <time class="dt-published" datetime="2010-04-18">2010-04-18</time></p>
-</header>
-
-<section class="e-content">
-<section>
-<p>Vi skriver 2010, og skikkelige lagringssystemer er ikke lenger forbeholdt dem som driver med teknisk utvikling. De kan og b&#248;r brukes av alle. Versjonskontroll gir&#160;deg:</p>
-
-<ul>
-<li><strong>Lagring:</strong> en sv&#230;rt trygg og oversiktlig m&#229;te &#229; lagre arbeidet&#160;p&#229;.</li>
-
-<li><strong>Sikkerhet:</strong> systemet beregner sjekksummen av filene dine, og verifiserer at de er&#160;intakte.</li>
-
-<li><strong>Endringslogg:</strong> oversikt over hvordan prosjektet skrider&#160;fremover.</li>
-
-<li><strong>Filhistorikk:</strong> alle tidligere utgaver kan hentes frem&#160;igjen.</li>
-
-<li><strong>Diffing:</strong> de konkrete endringene gjort fra en versjon til den&#160;neste.</li>
-
-<li><strong>Merging:</strong> ulike personer kan arbeide samtidig p&#229; den samme filen, og endringene kan&#160;integreres.</li>
-
-<li><strong>Branching:</strong> du kan jobbe p&#229; &#171;eksperimentelle&#187; utgaver av prosjektet i parallell, og integrere dem med hovedutgaven n&#229;r de er gode&#160;nok.</li>
-
-<li><strong>Distribuering:</strong> du kan dele arbeidet ditt via sosiale utviklingsportaler som <a href="http://github.com/" target="_blank" title="Open github.com in a new window">GitHub</a> og <a href="http://bitbucket.org/" target="_blank" title="Open bitbucket.org in a new window">BitBucket</a>.</li>
-</ul>
-
-<p>La oss se p&#229; dette i&#160;praksis.</p>
-
-<figure><img alt="" src="logg.png">
-</figure>
-
-<p>Her er endringsloggen til et <abbr title="TeX">T<span class="tex-e">e</span>X</abbr>-dokument. Kommentarene gir oss en oppsummering av endringene fra versjon til versjon, og forfatterkolonnen forteller oss hvem som har gjort hva. Jeg kan klikke p&#229; en hvilken som helst versjon i listen og gjenopprette denne: Ingenting som slettes, g&#229;r&#160;tapt.</p>
-
-<p>Det minner litt om <a href="http://en.wikipedia.org/w/index.php?title=Catch-22&amp;action=history" target="_blank" title="Open en.wikipedia.org in a new window">Wikipedia</a>, ikke sant? Siden <abbr title="TeX">T<span class="tex-e">e</span>X</abbr> er tekst, kan vi ogs&#229; sammenligne to versjoner med en <strong>diff</strong>:</p>
-
-<figure><img alt="" src="diff.png">
-</figure>
-
-<p>Her ser vi at en mengde nye linjer er blitt lagt til siden forrige gang. Denne funksjonaliteten er kjempenyttig n&#229;r man jobber sammen med andre, men ogs&#229; n&#229;r man er usikker p&#229; hva man selv har gjort siden&#160;sist.</p>
-
-<p>Hvor blir all historikken lagret? Dersom du bruker <a href="http://git-scm.com/" target="_blank" title="Open git-scm.com in a new window">Git</a>, opprettes det en skjult undermappe med navnet <code>.git</code> i arbeidskatalogen din. Med et grafisk grensesnitt som <a href="http://code.google.com/p/tortoisegit/" target="_blank" title="Open code.google.com in a new window">TortoiseGit</a> f&#229;r ogs&#229; filikonene et nytt utseende, der gr&#248;nt betyr &#171;sjekket inn&#187; og r&#248;dt at det er gjort endringer siden&#160;sist.</p>
-
-<figure><img alt="" src="git.png">
-</figure>
-
-<p>For &#229; plassere et nytt prosjekt under versjonskontroll, h&#248;yreklikker man bare p&#229; mappen med prosjektet, velger <em>Create repository here</em>, og legger til filene. (Alt kan ogs&#229; gj&#248;res via kommandolinjen, naturligvis, men Tortoise-klientene fungerer som en forlengelse av det grafiske&#160;grensesnittet.)</p>
-
-<p>Du kan i prinsippet plassere <strong>hva som helst</strong> under versjonskontroll, <abbr title="for eksempel">f.eks.</abbr> musikk, bilder og video. Men <abbr title="TeX">T<span class="tex-e">e</span>X</abbr>-dokumenter er s&#230;rlig godt egnet fordi de er ren tekst, og kan dermed &#171;diffes&#187;, <abbr title="det vil si">dvs.</abbr> betraktes som linjer fjernet og lagt til. Diffen kan lagres og utveksles med andre som sitter med den samme filen (men Git har ogs&#229; egne og automatiske verkt&#248;y for synkronisering). N&#229;r du har blitt vant til dette, vil du aldri mer g&#229; tilbake til Word, og du vil se med skjevt blikk p&#229; alle som &#171;lagrer&#187; arbeidet sitt i bin&#230;re og propriet&#230;re&#160;formater.</p>
-
-<p><strong>Sett i gang!</strong> Installer <a href="http://git-scm.com/" target="_blank" title="Open git-scm.com in a new window">Git</a> (Windows: <a href="http://code.google.com/p/msysgit/" target="_blank" title="Open code.google.com in a new window">msysGit</a>) eller <a href="http://mercurial.selenic.com/" target="_blank" title="Open mercurial.selenic.com in a new window">Mercurial</a> &#8211; samt en grafisk klient som <a href="http://code.google.com/p/tortoisegit/" target="_blank" title="Open code.google.com in a new window">TortoiseGit</a> eller <a href="http://tortoisehg.bitbucket.org/" target="_blank" title="Open tortoisehg.bitbucket.org in a new window">TortoiseHg</a>, om du vil &#8211; og les <a href="../20/">innf&#248;ringen</a>:</p>
-
-<ul>
-<li><strong><a href="http://progit.org/book/" target="_blank" title="Open progit.org in a new window">Pro Git</a></strong>
-</li>
-
-<li><strong><a href="http://hginit.com/" target="_blank" title="Open hginit.com in a new window">Hg Init: A Mercurial&#160;tutorial</a></strong>
-</li>
-</ul>
-
-<p>Det spiller ingen stor rolle om du velger Git eller Mercurial, bare du styrer langt, langt unna utdaterte og sentraliserte systemer som Subversion. (Mercurial er imidlertid bedre for dem som er vant med Subversion.) Git og Mercurial er <em>distribuerte</em>, som vil si at all revisjonshistorikk ligger lokalt i arbeidsmappen din (i underkatalogen <code>.git</code> eller <code>.hg</code>), og du er ikke avhengig av en&#160;server.</p>
-
-<p><strong>Bruk versjonskontroll. Begynn i&#160;dag.</strong>
-</p>
-</section>
-</section>
-</article>
 </body>
 </html>

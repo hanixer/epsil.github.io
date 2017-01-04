@@ -1,85 +1,24 @@
 <!DOCTYPE html>
-<html lang="no" prefix="og: http://ogp.me/ns#">
+<html prefix="og: http://ogp.me/ns#">
 <head>
-<title>Fikse mkfs.ntfs p&#229; Ubuntu &#8211; Vegards blogg</title>
+<title>
+</title>
 <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
-<meta content="Vegard &#216;ye" name="author">
-<meta content="2013-12-06" name="date">
-<meta content="4601b0371edda0a1bd55054116cc6839" name="md5">
 <meta content="text/css" http-equiv="Content-Style-Type">
 <meta content="width=device-width, initial-scale=1" name="viewport">
-<meta content="Fikse mkfs.ntfs p&#229; Ubuntu" name="DC.Title">
-<meta content="Vegard &#216;ye" name="DC.Creator">
-<meta content="2013-12-06" name="DC.Date">
-<meta content="no" name="DC.Language">
 <meta content="text/html" name="DC.Format">
-<meta content="Fikse mkfs.ntfs p&#229; Ubuntu" property="og:title">
-<meta content="no" name="og:locale">
 <meta content="article" property="og:type">
-<meta content="https://epsil.github.io/2013/12/06/" property="og:url">
-<meta content="Vegards blogg" property="og:site_name">
+<meta content="http://localhost:8000/2013/12/06/" property="og:url">
 <meta content="summary" name="twitter:card">
 <meta content="@github" name="twitter:site">
-<meta content="Fikse mkfs.ntfs p&#229; Ubuntu" name="twitter:title">
 <link href="../../../favicon.ico" rel="icon" type="image/x-icon">
 <link href="../../../apple-touch-icon.png" rel="apple-touch-icon">
 <link href="../../../css/markdown-template.css" rel="stylesheet">
-<link href="https://epsil.github.io/2013/12/06/" rel="canonical">
+<link href="http://localhost:8000/2013/12/06/" rel="canonical">
 <link href="index.txt" rel="alternate" title="Markdown" type="text/markdown">
 <script src="../../../js/markdown-template.js">
 </script>
 </head>
 <body>
-<nav class="navbar navbar-default navbar-fixed-top">
-<div class="container-fluid">
-<ul class="nav nav-pills navbar-left">
-<li role="presentation"><a href="/" title="G&#229; hjem"><i class="fa fa-home"></i></a>
-</li>
-</ul>
-
-<ul class="nav nav-pills navbar-right">
-<li role="presentation"><a href="http://www.facebook.com/share.php?u=https%3A%2F%2Fepsil.github.io%2F2013%2F12%2F06%2F" target="_blank" title="Del p&#229; Facebook"><i class="fa fa-facebook-square"></i></a>
-</li>
-
-<li role="presentation"><a href="https://twitter.com/intent/tweet?url=https%3A%2F%2Fepsil.github.io%2F2013%2F12%2F06%2F" target="_blank" title="Del p&#229; Twitter"><i class="fa fa-twitter-square"></i></a>
-</li>
-
-<li role="presentation"><a href="https://github.com/epsil/epsil.github.io/edit/master/2013/12/06/index.txt" target="_blank" title="Rediger p&#229; GitHub"><i class="fa fa-edit"></i></a>
-</li>
-
-<li role="presentation"><a href="https://github.com/epsil/epsil.github.io/commits/master/2013/12/06/index.txt" target="_blank" title="Vis historie"><i class="fa fa-history"></i></a>
-</li>
-
-<li role="presentation"><a href="index.txt" title="Vis Markdown-kilde"><i class="fa fa-download"></i></a>
-</li>
-
-<li role="presentation"><a data-toggle="collapse" href="#toc" id="toc-button" name="toc-button" title="Innhold"><i class="fa fa-list"></i></a>
-</li>
-</ul>
-</div>
-
-<div id="toc-placeholder">
-</div>
-</nav>
-
-<article class="h-entry">
-<header>
-<h1 class="p-name"><a class="u-uid u-url" href="https://epsil.github.io/2013/12/06/" rel="bookmark" target="_blank" title="Permalink">Fikse <code>mkfs.ntfs</code> p&#229; Ubuntu</a>
-</h1>
-
-<p><a class="p-author h-card" href="https://epsil.github.io/" target="_blank" title="Open epsil.github.io in a new window">Vegard &#216;ye</a> <time class="dt-published" datetime="2013-12-06">2013-12-06</time></p>
-</header>
-
-<section class="e-content">
-<section>
-<p>I Ubuntu 13.04 er <code>mkfs.ntfs</code> utilgjengelig (<code>mkntfs</code> fungerer). Dette skyldes en <a href="https://bugs.launchpad.net/ubuntu/+source/ntfs-3g/+bug/1148541" target="_blank" title="Open bugs.launchpad.net in a new window">manglende symlink</a> fra <code>/sbin/mkfs.ntfs</code> til <code>/sbin/mkntfs</code>. Det f&#248;lgende retter opp&#160;problemet:</p>
-
-<pre>
-<code>$ sudo unlink /sbin/mkfs.ntfs
-$ sudo ln -s /sbin/mkntfs /sbin/mkfs.ntfs</code>
-</pre>
-</section>
-</section>
-</article>
 </body>
 </html>

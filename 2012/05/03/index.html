@@ -1,100 +1,24 @@
 <!DOCTYPE html>
-<html lang="no" prefix="og: http://ogp.me/ns#">
+<html prefix="og: http://ogp.me/ns#">
 <head>
-<title>Greasemonkey-skript for Last.fm &#8211; Vegards blogg</title>
+<title>
+</title>
 <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
-<meta content="Vegard &#216;ye" name="author">
-<meta content="2012-05-03" name="date">
-<meta content="c423f6fb99ee5d7207ea37e60e5fe96e" name="md5">
 <meta content="text/css" http-equiv="Content-Style-Type">
 <meta content="width=device-width, initial-scale=1" name="viewport">
-<meta content="Greasemonkey-skript for Last.fm" name="DC.Title">
-<meta content="Vegard &#216;ye" name="DC.Creator">
-<meta content="2012-05-03" name="DC.Date">
-<meta content="no" name="DC.Language">
 <meta content="text/html" name="DC.Format">
-<meta content="Greasemonkey-skript for Last.fm" property="og:title">
-<meta content="no" name="og:locale">
 <meta content="article" property="og:type">
-<meta content="https://epsil.github.io/2012/05/03/" property="og:url">
-<meta content="Vegards blogg" property="og:site_name">
+<meta content="http://localhost:8000/2012/05/03/" property="og:url">
 <meta content="summary" name="twitter:card">
 <meta content="@github" name="twitter:site">
-<meta content="Greasemonkey-skript for Last.fm" name="twitter:title">
 <link href="../../../favicon.ico" rel="icon" type="image/x-icon">
 <link href="../../../apple-touch-icon.png" rel="apple-touch-icon">
 <link href="../../../css/markdown-template.css" rel="stylesheet">
-<link href="https://epsil.github.io/2012/05/03/" rel="canonical">
+<link href="http://localhost:8000/2012/05/03/" rel="canonical">
 <link href="index.txt" rel="alternate" title="Markdown" type="text/markdown">
 <script src="../../../js/markdown-template.js">
 </script>
 </head>
 <body>
-<nav class="navbar navbar-default navbar-fixed-top">
-<div class="container-fluid">
-<ul class="nav nav-pills navbar-left">
-<li role="presentation"><a href="/" title="G&#229; hjem"><i class="fa fa-home"></i></a>
-</li>
-</ul>
-
-<ul class="nav nav-pills navbar-right">
-<li role="presentation"><a href="http://www.facebook.com/share.php?u=https%3A%2F%2Fepsil.github.io%2F2012%2F05%2F03%2F" target="_blank" title="Del p&#229; Facebook"><i class="fa fa-facebook-square"></i></a>
-</li>
-
-<li role="presentation"><a href="https://twitter.com/intent/tweet?url=https%3A%2F%2Fepsil.github.io%2F2012%2F05%2F03%2F" target="_blank" title="Del p&#229; Twitter"><i class="fa fa-twitter-square"></i></a>
-</li>
-
-<li role="presentation"><a href="https://github.com/epsil/epsil.github.io/edit/master/2012/05/03/index.txt" target="_blank" title="Rediger p&#229; GitHub"><i class="fa fa-edit"></i></a>
-</li>
-
-<li role="presentation"><a href="https://github.com/epsil/epsil.github.io/commits/master/2012/05/03/index.txt" target="_blank" title="Vis historie"><i class="fa fa-history"></i></a>
-</li>
-
-<li role="presentation"><a href="index.txt" title="Vis Markdown-kilde"><i class="fa fa-download"></i></a>
-</li>
-
-<li role="presentation"><a data-toggle="collapse" href="#toc" id="toc-button" name="toc-button" title="Innhold"><i class="fa fa-list"></i></a>
-</li>
-</ul>
-</div>
-
-<div id="toc-placeholder">
-</div>
-</nav>
-
-<article class="h-entry">
-<header>
-<h1 class="p-name"><a class="u-uid u-url" href="https://epsil.github.io/2012/05/03/" rel="bookmark" target="_blank" title="Permalink">Greasemonkey-skript for Last.fm</a>
-</h1>
-
-<p><a class="p-author h-card" href="https://epsil.github.io/" target="_blank" title="Open epsil.github.io in a new window">Vegard &#216;ye</a> <time class="dt-published" datetime="2012-05-03">2012-05-03</time></p>
-</header>
-
-<section class="e-content">
-<section>
-<p><a href="http://last.fm/" target="_blank" title="Open last.fm in a new window">Last.fm</a> viser <em>ikke</em> totalt antall lytt under &#171;Tracks&#187; eller &#171;Charts&#187;. Last.fm viser antall lytt <em>de siste seks m&#229;nedene</em>. Dette favoriserer nye&#160;utgivelser.</p>
-
-<p>Hvis jeg skal bruke Last.fm til &#229; oppdage klassiske l&#229;ter, trenger jeg de totale tallene, som finnes p&#229; siden til hver enkelt l&#229;t. Kan jeg skrive et Greasemonkey-skript som importerer denne informasjonen inn i &#171;Charts&#187;? Boken <em>Greasemonkey Hacks</em> av Mark Pilgrim, fra 2005, kan v&#230;re et&#160;utgangspunkt.</p>
-
-<hr>
-
-<p><strong>Oppdatering:</strong> Jeg har lykkes! Takket v&#230;re jQuery var det ikke mye kode &#229;&#160;skrive:</p>
-
-<pre>
-<code class="language-javascript">$(<span class="hljs-string">"#trackChart tbody tr"</span>).each(<span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params"></span>) </span>{
-    <span class="hljs-keyword">var</span> cell = $(<span class="hljs-string">'&lt;td class="playCount"&gt;'</span>);
-    <span class="hljs-keyword">var</span> url = $(<span class="hljs-keyword">this</span>).find(<span class="hljs-string">".subjectCell a"</span>).attr(<span class="hljs-string">"href"</span>);
-    $(<span class="hljs-keyword">this</span>).append(cell);
-    cell.load(url + <span class="hljs-string">" [itemprop=playCount]"</span>);
-});</code>
-</pre>
-<!--
-Men, la meg se litt kvantitativt p堤ette. For 堳krive de 6 linjene over, (skum)leste jeg 4 kapitler av *Greasemonkey Hacks*, 120 sider av *JavaScript & jQuery: The Missing Manual*, og ytterligere 20 sider av *jQuery in Action*. Hvis jeg runder ned dette til 12 timers arbeid, har jeg alts堢rukt gjennomsnittlig to timer per linje kode. Det tar tid 堳kaffe seg oversikt.
--->
-
-<p>Jeg har ogs&#229; funnet to foobar2000-komponenter, <a href="http://chronial.de/foobar2000/#foo_scrobblecharts" target="_blank" title="Open chronial.de in a new window">foo_scrobblecharts</a> og <a href="http://www.foobar2000.org/components/view/foo_softplaylists" target="_blank" title="Open foobar2000.org in a new window">foo_softplaylists</a>, som sorterer musikken i henhold til Last.fm. (Det later til at man <em>kan</em> kj&#248;re foobar2000 under Linux med Wine, bare man bruker <code>winetricks</code> og installerer n&#248;dvendige <abbr class="acronym" title="Dynamic-Link Library"><span class="caps">DLL</span></abbr>-er (og skriften Tahoma for bedre utseende). Om dette er en <em>god</em> id&#233; er en annen&#160;sak.)</p>
-</section>
-</section>
-</article>
 </body>
 </html>

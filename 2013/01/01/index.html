@@ -1,90 +1,24 @@
 <!DOCTYPE html>
-<html lang="no" prefix="og: http://ogp.me/ns#">
+<html prefix="og: http://ogp.me/ns#">
 <head>
-<title>Last.fm-sortering i foobar2000 &#8211; Vegards blogg</title>
+<title>
+</title>
 <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
-<meta content="Vegard &#216;ye" name="author">
-<meta content="2013-01-01" name="date">
-<meta content="518f6eb6e55a1414a3e042d377be4efd" name="md5">
 <meta content="text/css" http-equiv="Content-Style-Type">
 <meta content="width=device-width, initial-scale=1" name="viewport">
-<meta content="Last.fm-sortering i foobar2000" name="DC.Title">
-<meta content="Vegard &#216;ye" name="DC.Creator">
-<meta content="2013-01-01" name="DC.Date">
-<meta content="no" name="DC.Language">
 <meta content="text/html" name="DC.Format">
-<meta content="Last.fm-sortering i foobar2000" property="og:title">
-<meta content="no" name="og:locale">
 <meta content="article" property="og:type">
-<meta content="https://epsil.github.io/2013/01/01/" property="og:url">
-<meta content="Vegards blogg" property="og:site_name">
+<meta content="http://localhost:8000/2013/01/01/" property="og:url">
 <meta content="summary" name="twitter:card">
 <meta content="@github" name="twitter:site">
-<meta content="Last.fm-sortering i foobar2000" name="twitter:title">
 <link href="../../../favicon.ico" rel="icon" type="image/x-icon">
 <link href="../../../apple-touch-icon.png" rel="apple-touch-icon">
 <link href="../../../css/markdown-template.css" rel="stylesheet">
-<link href="https://epsil.github.io/2013/01/01/" rel="canonical">
+<link href="http://localhost:8000/2013/01/01/" rel="canonical">
 <link href="index.txt" rel="alternate" title="Markdown" type="text/markdown">
 <script src="../../../js/markdown-template.js">
 </script>
 </head>
 <body>
-<nav class="navbar navbar-default navbar-fixed-top">
-<div class="container-fluid">
-<ul class="nav nav-pills navbar-left">
-<li role="presentation"><a href="/" title="G&#229; hjem"><i class="fa fa-home"></i></a>
-</li>
-</ul>
-
-<ul class="nav nav-pills navbar-right">
-<li role="presentation"><a href="http://www.facebook.com/share.php?u=https%3A%2F%2Fepsil.github.io%2F2013%2F01%2F01%2F" target="_blank" title="Del p&#229; Facebook"><i class="fa fa-facebook-square"></i></a>
-</li>
-
-<li role="presentation"><a href="https://twitter.com/intent/tweet?url=https%3A%2F%2Fepsil.github.io%2F2013%2F01%2F01%2F" target="_blank" title="Del p&#229; Twitter"><i class="fa fa-twitter-square"></i></a>
-</li>
-
-<li role="presentation"><a href="https://github.com/epsil/epsil.github.io/edit/master/2013/01/01/index.txt" target="_blank" title="Rediger p&#229; GitHub"><i class="fa fa-edit"></i></a>
-</li>
-
-<li role="presentation"><a href="https://github.com/epsil/epsil.github.io/commits/master/2013/01/01/index.txt" target="_blank" title="Vis historie"><i class="fa fa-history"></i></a>
-</li>
-
-<li role="presentation"><a href="index.txt" title="Vis Markdown-kilde"><i class="fa fa-download"></i></a>
-</li>
-
-<li role="presentation"><a data-toggle="collapse" href="#toc" id="toc-button" name="toc-button" title="Innhold"><i class="fa fa-list"></i></a>
-</li>
-</ul>
-</div>
-
-<div id="toc-placeholder">
-</div>
-</nav>
-
-<article class="h-entry">
-<header>
-<h1 class="p-name"><a class="u-uid u-url" href="https://epsil.github.io/2013/01/01/" rel="bookmark" target="_blank" title="Permalink">Last.fm-sortering i foobar2000</a>
-</h1>
-
-<p><a class="p-author h-card" href="https://epsil.github.io/" target="_blank" title="Open epsil.github.io in a new window">Vegard &#216;ye</a> <time class="dt-published" datetime="2013-01-01">2013-01-01</time></p>
-</header>
-
-<section class="e-content">
-<section>
-<p>En l&#230;rerikt C++-oppgave ville v&#230;re &#229; skrive et Last.fm-programtillegg for foobar2000. Dette blir et rent Windows-prosjekt, og jeg m&#229; sette opp <a href="http://www.microsoft.com/visualstudio/eng/products/visual-studio-2010-express" target="_blank" title="Open microsoft.com in a new window">Visual Studio Express</a> (2010-utgaven for Windows <abbr class="acronym" title="Experience"><span class="caps">XP</span></abbr>). I tillegg trenger jeg <a href="http://www.foobar2000.org/SDK" target="_blank" title="Open foobar2000.org in a new window"><abbr class="acronym" title="Software Development Kit"><span class="caps">SDK</span></abbr></a>-en for foobar2000.</p>
-
-<p>Det finnes <a href="http://foosion.foobar2000.org/components/?id=tutorial1" target="_blank" title="Open foosion.foobar2000.org in a new window">eksempelkode</a> og litt <a href="http://foosion.foobar2000.org/doxygen/" target="_blank" title="Open foosion.foobar2000.org in a new window">Doxygen</a>-dokumentasjon. Mest hjelp er det likevel i denne <a href="http://yirkha.fud.cz/tmp/496351ef.tutorial-draft.html" target="_blank" title="Open yirkha.fud.cz in a new window">innf&#248;ringen</a> fra&#160;2009.</p>
-
-<p>Jeg kan ta utgangspunkt i kildekoden til <a href="https://github.com/Chronial/foo_scrobblecharts" target="_blank" title="Open github.com in a new window">foo_scrobblecharts</a> (<a href="http://www.hydrogenaudio.org/forums/index.php?showtopic=76133&amp;st=375&amp;p=815519&amp;#entry815519" target="_blank" title="Open hydrogenaudio.org in a new window">foo_softplaylists</a> er frigitt, men p&#229; 5000&#160;linjer).</p>
-
-<hr>
-
-<p><strong>Oppdatering:</strong> <a href="https://github.com/epsil/foo_lastsort" target="_blank" title="Open github.com in a new window">foo_lastsort</a> er realisert. Betingelsene til Last.fm begrenser antall foresp&#248;rsler til fem i sekundet (gjennomsnitt over fem minutter), s&#229; koden er utstyrt med en timer som s&#248;rger for at en enkelt foresp&#248;rsel tar minst 0,2 sekunder. Ikke implementert enn&#229; er mulighet for &#229; endre <abbr class="acronym" title="Application Programming Interface"><span class="caps">API</span></abbr>-n&#248;kkelen og lagre Last.fm-informasjonen i databasen til&#160;foobar2000.</p>
-
-<p>For &#229; viderebehandle spillelister sortert etter Last.fm, se <a href="https://github.com/epsil/lastpy" target="_blank" title="Open github.com in a new window">last.py</a>.</p>
-</section>
-</section>
-</article>
 </body>
 </html>

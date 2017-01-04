@@ -1,138 +1,24 @@
 <!DOCTYPE html>
-<html lang="no" prefix="og: http://ogp.me/ns#">
+<html prefix="og: http://ogp.me/ns#">
 <head>
-<title>Bruke grep og find &#8211; Vegards blogg</title>
+<title>
+</title>
 <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
-<meta content="Vegard &#216;ye" name="author">
-<meta content="2010-11-14" name="date">
-<meta content="5dd572e45018d515766376c377e32adf" name="md5">
 <meta content="text/css" http-equiv="Content-Style-Type">
 <meta content="width=device-width, initial-scale=1" name="viewport">
-<meta content="Bruke grep og find" name="DC.Title">
-<meta content="Vegard &#216;ye" name="DC.Creator">
-<meta content="2010-11-14" name="DC.Date">
-<meta content="no" name="DC.Language">
 <meta content="text/html" name="DC.Format">
-<meta content="Bruke grep og find" property="og:title">
-<meta content="no" name="og:locale">
 <meta content="article" property="og:type">
-<meta content="https://epsil.github.io/2010/11/14/" property="og:url">
-<meta content="Vegards blogg" property="og:site_name">
+<meta content="http://localhost:8000/2010/11/14/" property="og:url">
 <meta content="summary" name="twitter:card">
 <meta content="@github" name="twitter:site">
-<meta content="Bruke grep og find" name="twitter:title">
 <link href="../../../favicon.ico" rel="icon" type="image/x-icon">
 <link href="../../../apple-touch-icon.png" rel="apple-touch-icon">
 <link href="../../../css/markdown-template.css" rel="stylesheet">
-<link href="https://epsil.github.io/2010/11/14/" rel="canonical">
+<link href="http://localhost:8000/2010/11/14/" rel="canonical">
 <link href="index.txt" rel="alternate" title="Markdown" type="text/markdown">
 <script src="../../../js/markdown-template.js">
 </script>
 </head>
 <body>
-<nav class="navbar navbar-default navbar-fixed-top">
-<div class="container-fluid">
-<ul class="nav nav-pills navbar-left">
-<li role="presentation"><a href="/" title="G&#229; hjem"><i class="fa fa-home"></i></a>
-</li>
-</ul>
-
-<ul class="nav nav-pills navbar-right">
-<li role="presentation"><a href="http://www.facebook.com/share.php?u=https%3A%2F%2Fepsil.github.io%2F2010%2F11%2F14%2F" target="_blank" title="Del p&#229; Facebook"><i class="fa fa-facebook-square"></i></a>
-</li>
-
-<li role="presentation"><a href="https://twitter.com/intent/tweet?url=https%3A%2F%2Fepsil.github.io%2F2010%2F11%2F14%2F" target="_blank" title="Del p&#229; Twitter"><i class="fa fa-twitter-square"></i></a>
-</li>
-
-<li role="presentation"><a href="https://github.com/epsil/epsil.github.io/edit/master/2010/11/14/index.txt" target="_blank" title="Rediger p&#229; GitHub"><i class="fa fa-edit"></i></a>
-</li>
-
-<li role="presentation"><a href="https://github.com/epsil/epsil.github.io/commits/master/2010/11/14/index.txt" target="_blank" title="Vis historie"><i class="fa fa-history"></i></a>
-</li>
-
-<li role="presentation"><a href="index.txt" title="Vis Markdown-kilde"><i class="fa fa-download"></i></a>
-</li>
-
-<li role="presentation"><a data-toggle="collapse" href="#toc" id="toc-button" name="toc-button" title="Innhold"><i class="fa fa-list"></i></a>
-</li>
-</ul>
-</div>
-
-<div class="collapse" id="toc">
-<ul>
-<li><a href="#grep" title="grep"><code>grep</code></a>
-</li>
-
-<li><a href="#find" title="find"><code>find</code></a>
-</li>
-</ul>
-</div>
-</nav>
-
-<article class="h-entry">
-<header>
-<h1 class="p-name"><a class="u-uid u-url" href="https://epsil.github.io/2010/11/14/" rel="bookmark" target="_blank" title="Permalink">Bruke <code>grep</code> og <code>find</code></a>
-</h1>
-
-<p><a class="p-author h-card" href="https://epsil.github.io/" target="_blank" title="Open epsil.github.io in a new window">Vegard &#216;ye</a> <time class="dt-published" datetime="2010-11-14">2010-11-14</time></p>
-</header>
-
-<section class="e-content">
-<section id="grep">
-<h2><a aria-hidden="true" class="header-anchor" href="#grep" title="grep"></a><code>grep</code><a aria-controls="grep-section" aria-expanded="true" aria-hidden="true" class="collapse-button" data-toggle="collapse" href="#grep-section" role="button"></a>
-</h2>
-
-<div class="collapse in" id="grep-section">
-<p>For &#229; s&#248;ke i filenes <em>innhold</em>, kan man bruke <code>grep</code>:</p>
-
-<pre>
-<code class="language-bash">$ grep -Ri <span class="hljs-string">"test"</span> .</code>
-</pre>
-
-<p>Dette s&#248;ker rekursivt (<code>-R</code>) og case-insensitivt (<code>-i</code>) etter teksten <code>"test"</code> i den gjeldende mappen (<code>.</code>). Hvis man <em>bare</em> vil s&#248;ke i, si, <code>.txt</code>-filer, kan man bruke <code>--include</code>-opsjonen:</p>
-
-<pre>
-<code class="language-bash">$ grep -Ri --include=<span class="hljs-string">"*.txt"</span> <span class="hljs-string">"test"</span> .</code>
-</pre>
-
-<p>Det finnes ogs&#229; en <code>--exclude</code>-opsjon for &#229; ekskludere filer fra&#160;s&#248;ket.</p>
-</div>
-</section>
-
-<section id="find">
-<h2><a aria-hidden="true" class="header-anchor" href="#find" title="find"></a><code>find</code><a aria-controls="find-section" aria-expanded="true" aria-hidden="true" class="collapse-button" data-toggle="collapse" href="#find-section" role="button"></a>
-</h2>
-
-<div class="collapse in" id="find-section">
-<section>
-<p>For &#229; s&#248;ke i filenes <em>filnavn</em>, kan man bruke <code>find</code>. Merk at hvis man skal bruke <code>find</code> sammen med <abbr title="for eksempel">f.eks.</abbr> <code>rm</code> p&#229; filnavn som inneholder mellomrom, m&#229; man ta visse <a href="http://stackoverflow.com/questions/9612090/how-to-loop-through-file-names-returned-by-find#9612232" target="_blank" title="Open stackoverflow.com in a new window">forh&#229;ndsregler</a>. Den mest opplagte besvergelsen ville&#160;v&#230;re:</p>
-
-<pre>
-<code class="language-bash">$ find . -name &lt;PATTERN&gt; | xargs rm</code>
-</pre>
-
-<p>Men dette fungerer alts&#229; bare p&#229; filnavn uten mellomrom. For mer kronglete filer m&#229; man bruke en av&#160;disse:</p>
-
-<pre>
-<code class="language-bash">$ find . -name &lt;PATTERN&gt; -exec rm {} \;
-$ find . -name &lt;PATTERN&gt; -print0 | xargs -0 rm</code>
-</pre>
-
-<p>Den f&#248;rste eksekverer <code>rm</code> via <code>find</code>. Den siste bruker opsjonen <code>-print0</code> for &#229; terminere filnavn med <code>\0</code> istedenfor linjeskift, og <code>rm</code> gj&#248;res oppmerksom p&#229; dette med opsjonen <code>-0</code>. Begge programmer m&#229; alts&#229; tilpasses for &#229; kunne samarbeide om spesielle filnavn.<sup class="footnote-ref"><a href="#fn1" id="fnref1" title="Fortrinnet med \0-metoden er at den h&#229;ndterer de mest outrerte filnavn, selv navn som inneholder linjeskift! Jeg visste ikke at det var mulig f&#248;r jeg leste man find, men touch 'some\ + &#8629; + file' vil lage en slik fil. (Bytt ut &#171;touch&#187; med &#171;rm&#187; for &#229; slette filen.)">[1]</a></sup></p>
-
-<hr class="footnotes-sep">
-</section>
-
-<section class="footnotes">
-<ol class="footnotes-list">
-<li class="footnote-item" id="fn1">
-<p>Fortrinnet med <code>\0</code>-metoden er at den h&#229;ndterer de mest <em>outrerte</em> filnavn, selv navn som inneholder linjeskift! Jeg visste ikke at det var mulig f&#248;r jeg leste <code>man find</code>, men <code>touch 'some\</code> + <kbd title="Enter">&#8629;</kbd> + <code>file'</code> vil lage en slik fil. (Bytt ut &#171;<code>touch</code>&#187; med &#171;<code>rm</code>&#187; for &#229; slette filen.) <a class="footnote-backref" href="#fnref1" title="Den f&#248;rste eksekverer rm via find. Den siste bruker opsjonen -print0 for &#229; terminere filnavn med \0 istedenfor linjeskift, og rm gj&#248;res oppmerksom p&#229; dette med opsjonen -0. Begge programmer m&#229; alts&#229; tilpasses for &#229; kunne samarbeide om spesielle filnavn.[1]">&#8617;&#65038;</a></p>
-</li>
-</ol>
-</section>
-</div>
-</section>
-</section>
-</article>
 </body>
 </html>
