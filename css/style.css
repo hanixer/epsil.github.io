@@ -6,7 +6,7 @@ abbr, abbr[title], abbr[data-original-title] {
 abbr.acronym, .caps {
     font-variant: oldstyle-nums small-caps;
     text-transform: lowercase;
-    letter-spacing: 0.1em;
+    letter-spacing: 0.05em;
 }
 
 aside blockquote {
@@ -18,10 +18,19 @@ aside blockquote {
 .e-content a[target=_blank]:after {
     content: "\f08e"; /* fa-external-link */
     font-family: FontAwesome;
-    font-size: 0.54em;
+    font-size: 0.65em;
     font-style: normal;
     font-weight: normal;
     padding-left: 0.3em;
+}
+
+.e-content a[target=_blank].url:before {
+    content: "\f08e"; /* fa-external-link */
+    font-family: FontAwesome;
+    font-size: 0.65em;
+    font-style: normal;
+    font-weight: normal;
+    padding-right: 0.3em;
 }
 
 .e-content a[target=_blank].url:after {
@@ -47,22 +56,22 @@ a:hover, a:focus {
     text-decoration: none;
 }
 
-a code, a kbd, a samp, a tt,
-b code, b kbd, b samp, b tt,
-del code, del kbd, del samp, del tt,
-s code, s kbd, s samp, s tt,
-strong code, strong kbd, strong samp, strong tt,
-table code, table samp, table tt,
-h1 code, h1 kbd, h1 samp, h1 tt,
-h2 code, h2 kbd, h2 samp, h2 tt,
-h3 code, h3 kbd, h3 samp, h3 tt,
-h4 code, h4 kbd, h4 samp, h4 tt,
-h5 code, h5 kbd, h5 samp, h5 tt,
-h6 code, h6 kbd, h6 samp, h6 tt {
-    background-color: inherit;
-    font-size: 0.75em !important;
-    padding: 0;
-}
+/* a code, a kbd, a samp, a tt, */
+/* b code, b kbd, b samp, b tt, */
+/* del code, del kbd, del samp, del tt, */
+/* s code, s kbd, s samp, s tt, */
+/* strong code, strong kbd, strong samp, strong tt, */
+/* table code, table samp, table tt, */
+/* h1 code, h1 kbd, h1 samp, h1 tt, */
+/* h2 code, h2 kbd, h2 samp, h2 tt, */
+/* h3 code, h3 kbd, h3 samp, h3 tt, */
+/* h4 code, h4 kbd, h4 samp, h4 tt, */
+/* h5 code, h5 kbd, h5 samp, h5 tt, */
+/* h6 code, h6 kbd, h6 samp, h6 tt { */
+/*     background-color: inherit; */
+/*     font-size: 0.75em !important; */
+/*     padding: 0; */
+/* } */
 
 /* b, strong, h1 .fa, h2 .fa, h3 .fa, h4 .fa, h5 .fa, h6 .fa { */
 /*     font-size: 0.85em; */
@@ -77,7 +86,7 @@ strong code, strong kbd, strong samp, strong tt {
 
 blockquote {
     border-left: 5px solid rgba(0, 0, 0, 0.1);
-    color: #555;
+    /* color: #555; */
     font-size: 1em;
     margin: 1em 0 1em 0;
     padding-left: 20px;
@@ -93,11 +102,12 @@ blockquote footer:before {
 }
 
 body {
-    color: rgba(0, 0, 0, 0.8) !important;
-    font-family: "Crimson Text", Crimson, "Minion Pro", Minion, "Linux Libertine", "Hoefler Text", Georgia, Charter, "PT Serif", "Iowan Old Style", Iowan, "Iowan Web", Cambria, Constantia, Utopia, Marion, Cochin, "Palatino Linotype", Palatino, Baskerville, serif !important;
-    font-size: 135% !important;
+    /* color: rgba(0, 0, 0, 0.8) !important; */
+    color: #555 !important;
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Avenir, "Avenir Next", "Myriad Set Pro", "Myriad Pro", Myriad, Georgia, Charter, "Iowan Old Style", Iowan, "Iowan Web", "Hoefler Text", Cambria, Constantia, Utopia, Marion, Cochin, "Palatino Linotype", Palatino, Baskerville, serif !important;
+    font-size: 105% !important;
     font-variant: oldstyle-nums;
-    line-height: 1.3;
+    line-height: 1.5;
     margin-bottom: 2em;
     margin-top: 3em;
     text-rendering: optimizelegibility;
@@ -119,19 +129,15 @@ code, kbd, samp, tt {
 }
 
 code, kbd, samp, tt, pre {
-    background-color: rgba(0, 0, 0, 0.05);
+    background-color: #f9f9f9;
     border-radius: 0;
     border: none;
     color: inherit;
     font-family: Consolas, "Consolas Web", Menlo, Monaco, "Liberation Mono", Courier, monospace !important;
-    font-size: 0.65em !important;
+    font-size: 0.8em !important;
     font-variant: normal;
     -moz-osx-font-smoothing: auto;
 }
-
-/* h1, h2, h3, h4, h5, h6, b, strong, time, nav, kbd { */
-/*     font-family: "Source Sans Pro", "Segoe UI", Seravek, "League Spartan", "Open Sans", "Work Sans", Avenir, "Avenir Next", Optima, "Optima Web", "Linux Biolinum", Vegur, Karla, Candara, Futura, "Gill Sans", Calibri, Corbel, Helvetica, Arial, sans-serif !important; */
-/* } */
 
 dd {
     margin-left: 1em;
@@ -143,9 +149,9 @@ figure {
 }
 
 h1, h2, h3, h4, h5, h6 {
-    color: #23527c;
+    color: #333;
+    font-style: normal;
     /* font-weight: bold; */
-    font-weight: normal;
     margin: 1em 0 15px;
 }
 
@@ -162,55 +168,71 @@ h1 a:hover, h2 a:hover, h3 a:hover, h4 a:hover, h5 a:hover, h6 a:hover {
 
 header h1, header h2 {
     font-style: normal;
+    text-align: center;
 }
 
 h1 {
-    font-size: 2.1em;
-    font-style: italic;
+    font-size: 3em;
+    /* font-style: italic; */
+    font-weight: 200;
     padding-bottom: 0.3em;
 }
 
 h2 {
-    font-size: 1.5em;
-    font-style: italic;
+    font-size: 1.9em;
+    font-weight: 200;
+    /* font-style: italic; */
 }
 
 h3 {
-    /* color: rgba(0, 0, 0, 0.44); */
-    font-size: 1.2em;
-    font-style: italic;
+    font-size: 1.4em;
+    font-weight: 200;
+    /* font-style: italic; */
 }
 
 h4 {
+    /* color: rgba(0, 0, 0, 0.44); */
+    color: inherit;
+    font-size: 1em;
+    font-weight: bold;
+    /* font-style: italic; */
+}
+
+h5 {
     font-size: 1em;
     font-style: italic;
 }
 
-h5 {
+h6 {
     /* color: rgba(0, 0, 0, 0.44); */
     font-size: 1em;
 }
 
-h6 {
-    font-size: 1em;
-    font-style: italic;
-}
+/* hr { */
+/*     border: none; */
+/*     color: rgba(0, 0, 0, 0.6); */
+/*     padding: 0.5em 0; */
+/*     text-align: center; */
+/* } */
+
+/* hr:before { */
+/*     content: "..."; */
+/*     /\* content: "\2766"; /\\* fleuron: floral heart *\\/ *\/ */
+/*     letter-spacing: 0.6em; */
+/*     position: relative; */
+/*     text-align: center; */
+/*     /\* top: -1em; *\/ */
+/*     top: -0.8em; */
+/* } */
 
 hr {
     border: none;
-    color: rgba(0, 0, 0, 0.6);
-    padding: 0.5em 0;
-    text-align: center;
+    border-bottom: 1px solid #eee;
+    padding: 0;
 }
 
 hr:before {
-    content: "...";
-    /* content: "\2766"; /\* fleuron: floral heart *\/ */
-    letter-spacing: 0.6em;
-    position: relative;
-    text-align: center;
-    /* top: -1em; */
-    top: -0.8em;
+    content: normal;
 }
 
 hr.footnotes-sep {
@@ -295,7 +317,7 @@ nav, .navbar-default {
 
 nav {
     box-shadow: 0 1px 6px rgba(0, 0, 0, 0.15);
-    font-size: 14px;
+    font-size: 12px;
 }
 
 p {
@@ -408,8 +430,12 @@ article ul > li:before, #toc ul > li:before {
 /*     display: none; */
 /* } */
 
+.author {
+    text-align: center;
+}
+
 .p-author {
-    font-style: italic;
+    /* font-style: italic; */
 }
 
 .dt-published:before {
@@ -424,7 +450,10 @@ article ul > li:before, #toc ul > li:before {
 }
 
 .p-summary {
-    font-style: italic;
+    /* font-style: italic; */
+    font-size: 1.3em;
+    font-weight: 200;
+    text-align: center;
 }
 
 .dquo {
@@ -437,6 +466,8 @@ article ul > li:before, #toc ul > li:before {
 
 .url {
     font-style: italic;
+    word-break: break-all;
+    word-wrap: break-word;
 }
 
 header {
@@ -492,8 +523,7 @@ Bootstrap provides four classes (configurable with Less):
 
 @media (max-width: 550px) {
     body {
-        font-size: 130% !important;
-        line-height: 1.25;
+        font-size: 100% !important;
     }
 
     .h-entry > header, .e-content > * {
