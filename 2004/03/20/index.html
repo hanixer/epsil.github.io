@@ -1,24 +1,116 @@
 <!DOCTYPE html>
-<html prefix="og: http://ogp.me/ns#">
+<html lang="no" prefix="og: http://ogp.me/ns#">
 <head>
-<title>
-</title>
+<title>Cache bakgrunnsbilder i Internet Explorer &#8211; Vegard&#8217;s blog</title>
 <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
+<meta content="Vegard &#216;ye" name="author">
+<meta content="2003-03-20" name="date">
+<meta content="79293a90ca51958db01ca05c162f6c90" name="md5">
 <meta content="text/css" http-equiv="Content-Style-Type">
 <meta content="width=device-width, initial-scale=1" name="viewport">
+<meta content="Cache bakgrunnsbilder i Internet Explorer" name="DC.Title">
+<meta content="Vegard &#216;ye" name="DC.Creator">
+<meta content="2003-03-20" name="DC.Date">
+<meta content="no" name="DC.Language">
 <meta content="text/html" name="DC.Format">
+<meta content="Cache bakgrunnsbilder i Internet Explorer" property="og:title">
+<meta content="no" name="og:locale">
 <meta content="article" property="og:type">
-<meta content="http://localhost:8000/2004/03/20/" property="og:url">
+<meta content="http://epsil.github.io/2004/03/20/" property="og:url">
+<meta content="Vegard&#8217;s blog" property="og:site_name">
 <meta content="summary" name="twitter:card">
 <meta content="@github" name="twitter:site">
+<meta content="Cache bakgrunnsbilder i Internet Explorer" name="twitter:title">
 <link href="../../../favicon.ico" rel="icon" type="image/x-icon">
 <link href="../../../apple-touch-icon.png" rel="apple-touch-icon">
 <link href="../../../css/markdown-template.css" rel="stylesheet">
-<link href="http://localhost:8000/2004/03/20/" rel="canonical">
+<link href="http://epsil.github.io/2004/03/20/" rel="canonical">
 <link href="index.txt" rel="alternate" title="Markdown" type="text/markdown">
 <script src="../../../js/markdown-template.js">
 </script>
 </head>
 <body>
+<nav class="navbar navbar-default navbar-fixed-top">
+<div class="container-fluid">
+<ul class="nav nav-pills navbar-left">
+<li role="presentation"><a href="/" title="G&#229; hjem"><i class="fa fa-home"></i></a>
+</li>
+</ul>
+
+<ul class="nav nav-pills navbar-right">
+<li role="presentation"><a href="http://www.facebook.com/share.php?u=http%3A%2F%2Fepsil.github.io%2F2004%2F03%2F20%2F" target="_blank" title="Del p&#229; Facebook"><i class="fa fa-facebook-square"></i></a>
+</li>
+
+<li role="presentation"><a href="https://twitter.com/intent/tweet?url=http%3A%2F%2Fepsil.github.io%2F2004%2F03%2F20%2F" target="_blank" title="Del p&#229; Twitter"><i class="fa fa-twitter-square"></i></a>
+</li>
+
+<li role="presentation"><a href="https://github.com/epsil/epsil.github.io/edit/master/2004/03/20/index.txt" target="_blank" title="Rediger p&#229; GitHub"><i class="fa fa-edit"></i></a>
+</li>
+
+<li role="presentation"><a href="https://github.com/epsil/epsil.github.io/commits/master/2004/03/20/index.txt" target="_blank" title="Vis historie"><i class="fa fa-history"></i></a>
+</li>
+
+<li role="presentation"><a href="index.txt" title="Vis Markdown-kilde"><i class="fa fa-download"></i></a>
+</li>
+
+<li role="presentation"><a data-toggle="collapse" href="#toc" id="toc-button" name="toc-button" title="Innhold"><i class="fa fa-list"></i></a>
+</li>
+</ul>
+</div>
+
+<div id="toc-placeholder">
+</div>
+</nav>
+
+<article class="h-entry">
+<header>
+<h1 class="p-name"><a class="u-uid u-url" href="http://epsil.github.io/2004/03/20/" rel="bookmark" target="_blank" title="Permalink">Cache bakgrunnsbilder i Internet&#160;Explorer</a>
+</h1>
+
+<p class="author"><a class="p-author h-card" href="https://epsil.github.io/" target="_blank" title="Open epsil.github.io in a new window">Vegard &#216;ye</a> <time class="dt-published" datetime="2003-03-20">2003-03-20</time></p>
+</header>
+
+<section class="e-content">
+<section>
+<p>Vel, det later til at jeg endelig har f&#229;tt til &#229; rekonstruere denne feilen som s&#229; mange snakker om, og muligens til og med har funnet en l&#248;sning p&#229; problemet. &#197;rsaken til at bildene &#171;blinker&#187; i Internet Explorer er at <abbr class="acronym" title="Internet Explorer"><span class="caps">IE</span></abbr> &#8211; av en eller annen merkelig grunn &#8211; bestemmer seg for &#229; laste ned bakgrunnsbilder i <abbr class="acronym" title="Cascading Style Sheets"><span class="caps">CSS</span></abbr> p&#229; nytt i ett sett dersom enkelte egenskaper og verdier er brukt (se artikkelen <a href="http://www.fivesevensix.com/studies/ie6flicker/" target="_blank" title="Open fivesevensix.com in a new window">&#171;Minimizing Flickering <abbr class="acronym" title="Cascading Style Sheets"><span class="caps">CSS</span></abbr> Background Images in <span class="caps">IE6</span>&#187;</a> for detaljer). I hvilken grad denne blinkingen finner sted, avhenger av hva &#171;Se etter nyere versjoner av lagrede sider&#187; under <code>Verkt&#248;y | Alternativer for Internett | Generelt &gt; Midlertidige Internett-filer &gt; Innstillinger</code> er satt til. Jeg antar at standardinnstillingen her er&#160;&#171;Automatisk&#187;.</p>
+<!--
+HalTan o.a. har kanskje noe mer hysterisk som 󈶥r gang siden vises󠩠stedet (ikke noe vondt ment).
+-->
+
+<p>Forsinkelsen oppst&#229;r alts&#229; fordi den bes&#248;kende m&#229; vente p&#229; at bildet lastes ned p&#229; nytt. En m&#229;te &#229; forhindre dette p&#229;, er ved &#229; ta <em>cache-styrende <abbr class="acronym" title="HyperText Transfer Protocol"><span class="caps">HTTP</span></abbr>-felt</em> i bruk. Med &#171;cache&#187; menes her mellomlager. Dette er noe de fleste nettlesere er utstyrt med &#8211; IEs g&#229;r ogs&#229; under tittelen &#171;Midlertidige Internett-filer&#187;. Konseptet er at nettsider og relaterte filer lagres midlertidig et sted p&#229; harddisken (eller lokalt), slik at nettleseren kan hente data som g&#229;r igjen p&#229; flere sider fra dette i stedet for &#229; m&#229;tte laste ned alt sammen p&#229; nytt hver eneste gang. Dette gj&#248;r ogs&#229; <abbr class="acronym" title="Internet Explorer"><span class="caps">IE</span></abbr> dersom mellomlager-innstillingen er satt til &#171;Hver gang Internet Explorer startes&#187; eller noe h&#248;yere &#8211; men, som vi har sett, alts&#229; ikke for &#171;rollover&#187;-bildene angitt i stilsettet. Hvis vi derimot klarer &#229; <em>tvinge</em> <abbr class="acronym" title="Internet Explorer"><span class="caps">IE</span></abbr> til &#229; lagre ogs&#229; disse lokalt, skulle problemet v&#230;re ute av&#160;verden.</p>
+
+<p>Dermed kommer vi inn p&#229; <abbr class="acronym" title="HyperText Transfer Protocol"><span class="caps">HTTP</span></abbr>-felt. Hver gang en fil overf&#248;res via <abbr class="acronym" title="HyperText Transfer Protocol"><span class="caps">HTTP</span></abbr>, legger serveren med litt metadata (data om data) i en <em>startblokk</em> f&#248;r selve filen. Startblokken best&#229;r av ren tekst, og en tekstlinje i startblokken kalles et <em>felt.</em> For &#229; se hva slags startblokker som er i oml&#248;p p&#229; <abbr class="acronym" title="World Wide Web"><span class="caps">WWW</span></abbr>, kan man bruke tjenesten <a href="http://www.delorie.com/web/headers.html" target="_blank" title="Open delorie.com in a new window"><abbr class="acronym" title="HyperText Transfer Protocol"><span class="caps">HTTP</span></abbr> Header&#160;Viewer</a>.</p>
+
+<p>For &#229; gj&#248;re websider og -filer mer &#171;cache-vennlige&#187; (og dermed <em>raskere &#229; laste</em> &#8211; ja, n&#229; spisser dere vel &#248;rene, ikke sant?), kan man ta det jeg kaller cache-styrende <abbr class="acronym" title="HyperText Transfer Protocol"><span class="caps">HTTP</span></abbr>-felt i bruk. For mer informasjon om dette, les artikkelen <a href="http://www.mnot.net/cache_docs/" target="_blank" title="Open mnot.net in a new window">&#171;Caching Tutorial for Web Authors And Webmasters&#187;</a>. Her vil jeg bare forklare hvordan vi blir kvitt &#171;rollover&#187;-problemet p&#229; en Apache-server ved &#229; bruke konfigurasjonsfilen <a href="http://wsabstract.com/howto/htaccess.shtml" target="_blank" title="Open wsabstract.com in a new window"><code>.htaccess</code></a>.</p>
+
+<p>Kort fortalt &#248;nsker vi &#229; sende to &#171;cache-felt&#187; med alle &#171;rollover&#187;-bilder: &#171;Cache-Control&#187;, som angir hvor lenge fila skal beholdes i mellomlageret, og &#171;Expires&#187;, som forteller n&#229;r den lokale fila &#171;utg&#229;r&#187; &#8211; dette er bare av hensyn til eldre nettlesere. Dette styrer vi i Apache med funksjoner fra de to <em>modulene</em> <code>mod_expires</code> og <code>mod_headers</code>. (En modul er et programtillegg til Apache. For at det f&#248;lgende skal fungere, m&#229; begge disse v&#230;re installert &#8211; kontakt webhotellet ditt for&#160;detaljer.)</p>
+
+<p>Dersom vi har plassert alle &#171;rollover&#187;-bildene i en egen mappe, <abbr title="for eksempel">f.eks.</abbr> <code>rollovers</code>, kan vi plassere en tekstfil med filnavnet <code>.htaccess</code> som inneholder ekstra serverinstruksjoner for disse filene i denne mappen. Kopier f&#248;lgende inn i en passende&#160;tekstbehandler:</p>
+
+<pre>
+<code>ExpiresActive on
+ExpiresDefault "access plus 1 day"
+Header append Cache-Control "must-revalidate"</code>
+</pre>
+
+<p>&#197; f&#229; lagret filen med navnet <code>.htaccess</code> kan v&#230;re litt problematisk p&#229; Windows-plattformen, men heldigvis fins det en enkel l&#248;sning. I Notisblokk skriver vi ganske enkelt <code>".htaccess"</code> &#8211; <em>med</em> anf&#248;rselstegnene &#8211; i <code>Filnavn</code>-feltet i <code>Lagre som</code>-dialogvinduet. Til slutt laster vi opp denne filen til samme mappe som &#171;rollover&#187;-bildene befinner seg i, alts&#229; rollovers. For &#229; kontrollere at dette fungerer som det skal, sjekker vi adressen <code>http://www.example.org/rollovers/bilde.png</code> med <a href="http://www.delorie.com/web/headers.html" target="_blank" title="Open delorie.com in a new window"><abbr class="acronym" title="HyperText Transfer Protocol"><span class="caps">HTTP</span></abbr> Header Viewer</a>. Dersom serveren har tatt notis av instruksjonene i <code>.htaccess</code>-fila, vil startblokken <abbr title="blant annet">bl.a.</abbr> inneholde to tekstlinjer som begynner med henholdsvis &#171;<code>Expires:</code>&#187; og &#171;<code>Cache-Control:</code>&#187;.</p>
+
+<p>Dersom de n&#248;dvendige modulene <em>ikke</em> er installert, vil serveren i stedet svare med en 500-feilmelding. Hvis bare funksjonene i <code>mod_headers</code> er tilgjengelige, kan vi heller&#160;skrive</p>
+
+<pre>
+<code>Header set Cache-Control "max-age=86400, must-revalidate"</code>
+</pre>
+
+<p>i <code>.htaccess.</code></p>
+
+<p>Etter omfattende testing av dette p&#229; min lokale Apache-server, ser det faktisk ut til at dette fjerner blinkingen for godt. <abbr class="acronym" title="Internet Explorer"><span class="caps">IE</span></abbr> behandler alts&#229; bildene p&#229; samme m&#229;te som enhver <em>fornuftig</em> nettleser gj&#248;r (dette problemet er ikke-eksisterende i Opera og Mozilla) &#8211; uavhengig av hvordan &#171;Midlertidige Internett-filer&#187; er konfigurert. F&#248;lgelig lastes ogs&#229; sidene raskere. Dersom du ikke har tilgang til disse funksjonene p&#229; webhotellet ditt &#8211; <em>klag,</em> eller bytt webhotell. Nei, dette har ikke noe med <abbr class="acronym" title="Cascading Style Sheets"><span class="caps">CSS</span></abbr>-rollovers &#229; gj&#248;re. <em><abbr class="acronym" title="HyperText Transfer Protocol"><span class="caps">HTTP</span></abbr>-kontroll er et</em> must <em>for alle med egen&#160;hjemmeside.</em></p>
+
+<p>For mer informasjon om <abbr class="acronym" title="HyperText Transfer Protocol"><span class="caps">HTTP</span></abbr>, se <abbr class="acronym" title="World Wide Web Consortium"><span class="caps">W3C</span></abbr>-dokumentet <a href="http://www.w3.org/TR/chips" target="_blank" title="Open w3.org in a new window">&#171;Common <abbr class="acronym" title="HyperText Transfer Protocol"><span class="caps">HTTP</span></abbr> Implementation&#160;Problems&#187;</a>.</p>
+<!--
+Har jeg forresten nevnt at s𫥭otorer setter stor pris p堪skikkelige* HTTP-startblokker?
+-->
+</section>
+</section>
+</article>
 </body>
 </html>

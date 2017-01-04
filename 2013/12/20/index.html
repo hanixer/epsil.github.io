@@ -1,24 +1,140 @@
 <!DOCTYPE html>
-<html prefix="og: http://ogp.me/ns#">
+<html lang="no" prefix="og: http://ogp.me/ns#">
 <head>
-<title>
-</title>
+<title>Starte Gollum med launchd &#8211; Vegard&#8217;s blog</title>
 <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
+<meta content="Vegard &#216;ye" name="author">
+<meta content="2013-12-20" name="date">
+<meta content="840dbfd02cb4bd80f8ca0f20ceb5651f" name="md5">
 <meta content="text/css" http-equiv="Content-Style-Type">
 <meta content="width=device-width, initial-scale=1" name="viewport">
+<meta content="Starte Gollum med launchd" name="DC.Title">
+<meta content="Vegard &#216;ye" name="DC.Creator">
+<meta content="2013-12-20" name="DC.Date">
+<meta content="no" name="DC.Language">
 <meta content="text/html" name="DC.Format">
+<meta content="Starte Gollum med launchd" property="og:title">
+<meta content="no" name="og:locale">
 <meta content="article" property="og:type">
-<meta content="http://localhost:8000/2013/12/20/" property="og:url">
+<meta content="http://epsil.github.io/2013/12/20/" property="og:url">
+<meta content="Vegard&#8217;s blog" property="og:site_name">
 <meta content="summary" name="twitter:card">
 <meta content="@github" name="twitter:site">
+<meta content="Starte Gollum med launchd" name="twitter:title">
 <link href="../../../favicon.ico" rel="icon" type="image/x-icon">
 <link href="../../../apple-touch-icon.png" rel="apple-touch-icon">
 <link href="../../../css/markdown-template.css" rel="stylesheet">
-<link href="http://localhost:8000/2013/12/20/" rel="canonical">
+<link href="http://epsil.github.io/2013/12/20/" rel="canonical">
 <link href="index.txt" rel="alternate" title="Markdown" type="text/markdown">
 <script src="../../../js/markdown-template.js">
 </script>
 </head>
 <body>
+<nav class="navbar navbar-default navbar-fixed-top">
+<div class="container-fluid">
+<ul class="nav nav-pills navbar-left">
+<li role="presentation"><a href="/" title="G&#229; hjem"><i class="fa fa-home"></i></a>
+</li>
+</ul>
+
+<ul class="nav nav-pills navbar-right">
+<li role="presentation"><a href="http://www.facebook.com/share.php?u=http%3A%2F%2Fepsil.github.io%2F2013%2F12%2F20%2F" target="_blank" title="Del p&#229; Facebook"><i class="fa fa-facebook-square"></i></a>
+</li>
+
+<li role="presentation"><a href="https://twitter.com/intent/tweet?url=http%3A%2F%2Fepsil.github.io%2F2013%2F12%2F20%2F" target="_blank" title="Del p&#229; Twitter"><i class="fa fa-twitter-square"></i></a>
+</li>
+
+<li role="presentation"><a href="https://github.com/epsil/epsil.github.io/edit/master/2013/12/20/index.txt" target="_blank" title="Rediger p&#229; GitHub"><i class="fa fa-edit"></i></a>
+</li>
+
+<li role="presentation"><a href="https://github.com/epsil/epsil.github.io/commits/master/2013/12/20/index.txt" target="_blank" title="Vis historie"><i class="fa fa-history"></i></a>
+</li>
+
+<li role="presentation"><a href="index.txt" title="Vis Markdown-kilde"><i class="fa fa-download"></i></a>
+</li>
+
+<li role="presentation"><a data-toggle="collapse" href="#toc" id="toc-button" name="toc-button" title="Innhold"><i class="fa fa-list"></i></a>
+</li>
+</ul>
+</div>
+
+<div id="toc-placeholder">
+</div>
+</nav>
+
+<article class="h-entry">
+<header>
+<h1 class="p-name"><a class="u-uid u-url" href="http://epsil.github.io/2013/12/20/" rel="bookmark" target="_blank" title="Permalink">Starte Gollum med <code>launchd</code></a>
+</h1>
+
+<p class="author"><a class="p-author h-card" href="https://epsil.github.io/" target="_blank" title="Open epsil.github.io in a new window">Vegard &#216;ye</a> <time class="dt-published" datetime="2013-12-20">2013-12-20</time></p>
+</header>
+
+<section class="e-content">
+<section>
+<p>P&#229; <abbr class="acronym" title="Operating System 10"><span class="caps">OS</span> X</abbr> startes <a href="https://github.com/gollum/gollum" target="_blank" title="Open github.com in a new window">Gollum</a> automatisk med <a href="http://www.nomachetejuggling.com/2012/05/15/personal-wiki-using-github-and-gollum-on-os-x/" target="_blank" title="Open nomachetejuggling.com in a new window"><code>launchd</code></a>. Opprett en fil <code>~/Library/LaunchAgents/com.personalwiki.gollum.plist</code> (med eksklusive <a href="http://stackoverflow.com/questions/16809861/launchd-doesnt-launch-my-daemon" target="_blank" title="Open stackoverflow.com in a new window">rettigheter</a>, <abbr title="det vil si">dvs.</abbr> <code>$ chmod 600</code>) som inneholder&#160;dette:</p>
+
+<pre>
+<code class="language-xml"><span class="php"><span class="hljs-meta">&lt;?</span>xml version=<span class="hljs-string">"1.0"</span> encoding=<span class="hljs-string">"<span class="caps">UTF</span>-8"</span><span class="hljs-meta">?&gt;</span></span>
+<span class="hljs-meta">&lt;!<span class="caps">DOCTYPE</span> plist <span class="caps">PUBLIC</span> "-//Apple//<span class="caps">DTD</span> <span class="caps">PLIST</span> 1.0//<span class="caps">EN</span>"
+"http://www.apple.com/DTDs/PropertyList-1.0.dtd"&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-name">plist</span> <span class="hljs-attr">version</span>=<span class="hljs-string">"1.0"</span>&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-name">dict</span>&gt;</span>
+  <span class="hljs-tag">&lt;<span class="hljs-name">key</span>&gt;</span>Label<span class="hljs-tag">&lt;/<span class="hljs-name">key</span>&gt;</span>
+  <span class="hljs-tag">&lt;<span class="hljs-name">string</span>&gt;</span>com.user.gollum<span class="hljs-tag">&lt;/<span class="hljs-name">string</span>&gt;</span>
+  <span class="hljs-tag">&lt;<span class="hljs-name">key</span>&gt;</span>ProgramArguments<span class="hljs-tag">&lt;/<span class="hljs-name">key</span>&gt;</span>
+  <span class="hljs-tag">&lt;<span class="hljs-name">array</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">string</span>&gt;</span>/usr/bin/gollum<span class="hljs-tag">&lt;/<span class="hljs-name">string</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">string</span>&gt;</span>/Users/vegard/Documents/wiki<span class="hljs-tag">&lt;/<span class="hljs-name">string</span>&gt;</span>
+  <span class="hljs-tag">&lt;/<span class="hljs-name">array</span>&gt;</span>
+  <span class="hljs-tag">&lt;<span class="hljs-name">key</span>&gt;</span>RunAtLoad<span class="hljs-tag">&lt;/<span class="hljs-name">key</span>&gt;</span>
+  <span class="hljs-tag">&lt;<span class="hljs-name">true</span>/&gt;</span>
+<span class="hljs-tag">&lt;/<span class="hljs-name">dict</span>&gt;</span>
+<span class="hljs-tag">&lt;/<span class="hljs-name">plist</span>&gt;</span></code>
+</pre>
+
+<hr>
+
+<p><strong>Oppdatering 2016-07-29:</strong> &#197; f&#229; <a href="https://github.com/indexzero/http-server" target="_blank" title="Open github.com in a new window">http-server</a> til &#229; starte automatisk krever at man eksplisitt oppgir plasseringen til <code>node</code>, for <a href="http://apple.stackexchange.com/questions/106355/setting-the-system-wide-path-environment-variable-in-mavericks" target="_blank" title="Open apple.stackexchange.com in a new window"><code>launchd</code> leser ikke <code>/usr/local/bin</code></a>. Serveren startes med Bash-skriptet <code>start_httpserver.sh</code>:</p>
+
+<pre>
+<code class="language-bash"><span class="hljs-meta">#!/bin/bash</span>
+<span class="caps">NODE</span>=<span class="hljs-string">"/usr/local/bin/node"</span>
+<span class="caps">PROGRAM</span>=<span class="hljs-string">"/usr/local/bin/http-server"</span>
+<span class="caps">HTTPSERVER</span>=<span class="hljs-string">"<span class="hljs-variable">$<span class="caps">NODE</span></span> <span class="hljs-variable">$<span class="caps">PROGRAM</span></span>"</span>
+<span class="caps">DIR</span>=<span class="hljs-string">"<span class="hljs-variable">$( cd "$( dirname "${BASH_SOURCE[0]}" )</span>"</span> &amp;&amp; <span class="hljs-built_in">pwd</span> )<span class="hljs-string">"
+cd "</span><span class="hljs-variable">$<span class="caps">DIR</span></span><span class="hljs-string">"
+<span class="hljs-variable">$<span class="caps">HTTPSERVER</span></span> . -p 8000
+</span></code>
+</pre>
+
+<p>Skriptet refereres s&#229; av <code>~/Library/LaunchAgents/com.personalwiki.httpserver.plist</code>:</p>
+
+<pre>
+<code class="language-xml"><span class="php"><span class="hljs-meta">&lt;?</span>xml version=<span class="hljs-string">"1.0"</span> encoding=<span class="hljs-string">"<span class="caps">UTF</span>-8"</span><span class="hljs-meta">?&gt;</span></span>
+<span class="hljs-meta">&lt;!<span class="caps">DOCTYPE</span> plist <span class="caps">PUBLIC</span> "-//Apple//<span class="caps">DTD</span> <span class="caps">PLIST</span> 1.0//<span class="caps">EN</span>"
+"http://www.apple.com/DTDs/PropertyList-1.0.dtd"&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-name">plist</span> <span class="hljs-attr">version</span>=<span class="hljs-string">"1.0"</span>&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-name">dict</span>&gt;</span>
+  <span class="hljs-tag">&lt;<span class="hljs-name">key</span>&gt;</span>Label<span class="hljs-tag">&lt;/<span class="hljs-name">key</span>&gt;</span>
+  <span class="hljs-tag">&lt;<span class="hljs-name">string</span>&gt;</span>com.user.httpserver<span class="hljs-tag">&lt;/<span class="hljs-name">string</span>&gt;</span>
+  <span class="hljs-tag">&lt;<span class="hljs-name">key</span>&gt;</span>ProgramArguments<span class="hljs-tag">&lt;/<span class="hljs-name">key</span>&gt;</span>
+  <span class="hljs-tag">&lt;<span class="hljs-name">array</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">string</span>&gt;</span>/Users/vegard/Documents/wiki/start_httpserver.sh<span class="hljs-tag">&lt;/<span class="hljs-name">string</span>&gt;</span>
+  <span class="hljs-tag">&lt;/<span class="hljs-name">array</span>&gt;</span>
+  <span class="hljs-tag">&lt;<span class="hljs-name">key</span>&gt;</span>RunAtLoad<span class="hljs-tag">&lt;/<span class="hljs-name">key</span>&gt;</span>
+  <span class="hljs-tag">&lt;<span class="hljs-name">true</span>/&gt;</span>
+  <span class="hljs-tag">&lt;<span class="hljs-name">key</span>&gt;</span>StandardErrorPath<span class="hljs-tag">&lt;/<span class="hljs-name">key</span>&gt;</span>
+  <span class="hljs-tag">&lt;<span class="hljs-name">string</span>&gt;</span>/tmp/mycommand.err<span class="hljs-tag">&lt;/<span class="hljs-name">string</span>&gt;</span>
+  <span class="hljs-tag">&lt;<span class="hljs-name">key</span>&gt;</span>StandardOutPath<span class="hljs-tag">&lt;/<span class="hljs-name">key</span>&gt;</span>
+  <span class="hljs-tag">&lt;<span class="hljs-name">string</span>&gt;</span>/tmp/mycommand.out<span class="hljs-tag">&lt;/<span class="hljs-name">string</span>&gt;</span>
+<span class="hljs-tag">&lt;/<span class="hljs-name">dict</span>&gt;</span>
+<span class="hljs-tag">&lt;/<span class="hljs-name">plist</span>&gt;</span></code>
+</pre>
+
+<p>For &#229; kunne <a href="http://stackoverflow.com/questions/6337513/how-can-i-debug-a-launchd-script-that-doesnt-run-on-startup#answer-29926482" target="_blank" title="Open stackoverflow.com in a new window">debugge <code>launchd</code></a> dersom noe skulle g&#229; galt, loggf&#248;res resultatet til <code>StandardErrorPath</code> og <code>StandardOutPath</code>.</p>
+</section>
+</section>
+</article>
 </body>
 </html>

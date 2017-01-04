@@ -1,24 +1,114 @@
 <!DOCTYPE html>
-<html prefix="og: http://ogp.me/ns#">
+<html lang="no" prefix="og: http://ogp.me/ns#">
 <head>
-<title>
-</title>
+<title>Klone harddisk &#8211; Vegard&#8217;s blog</title>
 <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
+<meta content="Vegard &#216;ye" name="author">
+<meta content="2010-11-27" name="date">
+<meta content="2139e7b05bdc16f9a8eb64d59618271f" name="md5">
 <meta content="text/css" http-equiv="Content-Style-Type">
 <meta content="width=device-width, initial-scale=1" name="viewport">
+<meta content="Klone harddisk" name="DC.Title">
+<meta content="Vegard &#216;ye" name="DC.Creator">
+<meta content="2010-11-27" name="DC.Date">
+<meta content="no" name="DC.Language">
 <meta content="text/html" name="DC.Format">
+<meta content="Klone harddisk" property="og:title">
+<meta content="no" name="og:locale">
 <meta content="article" property="og:type">
-<meta content="http://localhost:8000/2010/11/27/" property="og:url">
+<meta content="http://epsil.github.io/2010/11/27/" property="og:url">
+<meta content="Vegard&#8217;s blog" property="og:site_name">
 <meta content="summary" name="twitter:card">
 <meta content="@github" name="twitter:site">
+<meta content="Klone harddisk" name="twitter:title">
 <link href="../../../favicon.ico" rel="icon" type="image/x-icon">
 <link href="../../../apple-touch-icon.png" rel="apple-touch-icon">
 <link href="../../../css/markdown-template.css" rel="stylesheet">
-<link href="http://localhost:8000/2010/11/27/" rel="canonical">
+<link href="http://epsil.github.io/2010/11/27/" rel="canonical">
 <link href="index.txt" rel="alternate" title="Markdown" type="text/markdown">
 <script src="../../../js/markdown-template.js">
 </script>
 </head>
 <body>
+<nav class="navbar navbar-default navbar-fixed-top">
+<div class="container-fluid">
+<ul class="nav nav-pills navbar-left">
+<li role="presentation"><a href="/" title="G&#229; hjem"><i class="fa fa-home"></i></a>
+</li>
+</ul>
+
+<ul class="nav nav-pills navbar-right">
+<li role="presentation"><a href="http://www.facebook.com/share.php?u=http%3A%2F%2Fepsil.github.io%2F2010%2F11%2F27%2F" target="_blank" title="Del p&#229; Facebook"><i class="fa fa-facebook-square"></i></a>
+</li>
+
+<li role="presentation"><a href="https://twitter.com/intent/tweet?url=http%3A%2F%2Fepsil.github.io%2F2010%2F11%2F27%2F" target="_blank" title="Del p&#229; Twitter"><i class="fa fa-twitter-square"></i></a>
+</li>
+
+<li role="presentation"><a href="https://github.com/epsil/epsil.github.io/edit/master/2010/11/27/index.txt" target="_blank" title="Rediger p&#229; GitHub"><i class="fa fa-edit"></i></a>
+</li>
+
+<li role="presentation"><a href="https://github.com/epsil/epsil.github.io/commits/master/2010/11/27/index.txt" target="_blank" title="Vis historie"><i class="fa fa-history"></i></a>
+</li>
+
+<li role="presentation"><a href="index.txt" title="Vis Markdown-kilde"><i class="fa fa-download"></i></a>
+</li>
+
+<li role="presentation"><a data-toggle="collapse" href="#toc" id="toc-button" name="toc-button" title="Innhold"><i class="fa fa-list"></i></a>
+</li>
+</ul>
+</div>
+
+<div id="toc-placeholder">
+</div>
+</nav>
+
+<article class="h-entry">
+<header>
+<h1 class="p-name"><a class="u-uid u-url" href="http://epsil.github.io/2010/11/27/" rel="bookmark" target="_blank" title="Permalink">Klone harddisk</a>
+</h1>
+
+<p class="author"><a class="p-author h-card" href="https://epsil.github.io/" target="_blank" title="Open epsil.github.io in a new window">Vegard &#216;ye</a> <time class="dt-published" datetime="2010-11-27">2010-11-27</time></p>
+</header>
+
+<section class="e-content">
+<section>
+<p>Jeg fikk nylig en ny b&#230;rbar i hende og trengte en enkel m&#229;te &#229; klone den gamle harddisken p&#229;, heller enn &#229; installere alt p&#229; nytt. (Ubuntu-installasjoner er sv&#230;rt flyttbare takket v&#230;re glimrende autodeteksjon av maskinvare.) Slik gikk jeg&#160;frem:</p>
+
+<p><code>dd</code> er et kraftig kommandolinjeverkt&#248;y som leser fra og skriver til disker p&#229; lavniv&#229;. <code>nc</code>, <abbr class="acronym" title="Also Known As"><span class="caps">AKA</span></abbr> NetCat, overf&#248;rer data over nettverket. Alt som trengs er &#229; kombinere disse: Den gamle maskinen leser data og sender dem til den nye, som i sin tur skriver dem til&#160;harddisken.</p>
+
+<p>For &#229; f&#229; nettverk, la jeg i all enkelhet en krysset <abbr class="acronym" title="Twisted Pair"><span class="caps">TP</span></abbr>-kabel (<abbr class="acronym" title="Registered Jack 45"><span class="caps">RJ45</span></abbr>) mellom maskinene. Deretter startet jeg opp maskinene fra noen Ubuntu 10.04- og 10.10-<abbr class="acronym" title="Compact Disc"><span class="caps">CD</span></abbr>-er jeg hadde liggende for &#229; kj&#248;re Linux uten &#229; aksessere harddisken. Jeg valgte n&#248;dmodusen (&#171;recovery mode&#187;) fordi den stilte alle de riktige sp&#248;rsm&#229;lene &#8211; hvilken <abbr class="acronym" title="Internet Protocol"><span class="caps">IP</span></abbr>-adresse maskinen skulle ha (192.168.1.10 og .11), hvorvidt filsystemet skulle monteres (nei) &#8211; f&#248;r den overlot styringen til meg gjennom et enkelt, men kraftig&#160;rootshell.</p>
+
+<p>P&#229; maskinen jeg skulle kopiere <em>til</em>, skrev jeg n&#229;&#160;f&#248;lgende:</p>
+
+<pre>
+<code>nc -l -p 8888 | dd of=/dev/sda</code>
+</pre>
+
+<p>Dette satte maskinen til &#229; lytte p&#229; port 8888 og skrive alt den mottok derfra <em>direkte</em> til den nye harddisken, <code>/dev/sda</code>. Sterk kost! P&#229; maskinen jeg skulle kopiere <em>fra</em>, skrev jeg:</p>
+
+<pre>
+<code>dd if=/dev/sda | nc 192.168.1.10 8888</code>
+</pre>
+
+<p>Dermed begynte den gamle maskinen &#229; lese fra harddisken, blokk for blokk, og sende alt sammen over til den&#160;nye.</p>
+
+<p>S&#229; var det bare &#229; vente (den nye maskinen sluttet &#229; lytte straks den gamle var ferdig med &#229; sende). For min del tok dette 6 timer for 250 <abbr class="acronym" title="gigabyte"><span class="caps">GB</span></abbr>, alts&#229; <abbr title="cirka">ca.</abbr> 12 <abbr class="acronym" title="megabyte"><span class="caps">MB</span></abbr>/s. Ved &#229; bruke <code>bzip</code>-komprimering og en fornuftig blokkst&#248;rrelse kan tiden halveres, avhengig av dataene som overf&#248;res;<sup class="footnote-ref"><a href="#fn1" id="fnref1" title="http://www.ndchost.com/wiki/server-administration/netcat-over-ssh">[1]</a></sup> hvis man har en maskin med rom for to harddisker, er d&#233;t naturligvis enda raskere. S&#248;k ellers p&#229; &#171;<a href="http://www.google.no/search?q=dd+over+netcat" target="_blank" title="Open google.no in a new window">dd over netcat</a>&#187; og &#171;<a href="http://www.google.no/search?q=dd+over+ssh" target="_blank" title="Open google.no in a new window">dd over ssh</a>&#187; for mer info. (Den som &#248;nsker et mer polert verkt&#248;y med <abbr class="acronym" title="Graphical User Interface"><span class="caps">GUI</span></abbr> og fremdriftsindikatorer, kan kikke p&#229; <a href="http://clonezilla.org/" target="_blank" title="Open clonezilla.org in a new window">Clonezilla</a> eller <a href="http://ping.windowsdream.com/" target="_blank" title="Open ping.windowsdream.com in a new window"><span class="caps">PING</span></a>, men ogs&#229; disse bruker <code>dd</code> i bunnen.)</p>
+
+<p>Det sl&#229;ende med denne prosedyren er hvor enkel den er. <code>dd</code> leser fra og skriver til harddiskene, <code>nc</code> sender dataene over nettverket, og pipe-operatoren, <code>|</code>, kobler de to sammen. Dette er et elegant eksempel p&#229; &#171;Unix power&#187;, hvor sm&#229; og kraftige verkt&#248;y kombineres for &#229; utf&#248;re st&#248;rre&#160;oppgaver.</p>
+
+<p>Til slutt et stalltips til alle dual-bootere: lag en diskavbildning av Windows-installasjonen i Linux! <code>dd</code>, <code>ntfsclone</code> eller <code>partimage</code> gj&#248;r jobben. Straks Windows-installasjonen f&#229;r et virus eller noe, som iallfall min gj&#248;r med jevne mellomrom, er det bare &#229; g&#229; inn i det friske Linux-systemet og gjenopprette avbildningen. Ingen&#160;bekymringer!</p>
+
+<hr class="footnotes-sep">
+</section>
+
+<section class="footnotes">
+<ol class="footnotes-list">
+<li class="footnote-item" id="fn1">
+<p><a class="url" href="http://www.ndchost.com/wiki/server-administration/netcat-over-ssh" target="_blank" title="Open ndchost.com in a new window">http://www.ndchost.com/wiki/server-administration/netcat-over-ssh</a> <a class="footnote-backref" href="#fnref1" title="S&#229; var det bare &#229; vente (den nye maskinen sluttet &#229; lytte straks den gamle var ferdig med &#229; sende). For min del tok dette 6 timer for 250 GB, alts&#229; ca. 12 MB/s. Ved &#229; bruke bzip-komprimering og en fornuftig blokkst&#248;rrelse kan tiden halveres, avhengig av dataene som overf&#248;res;[1] hvis man har en maskin med rom for to harddisker, er d&#233;t naturligvis enda raskere. S&#248;k ellers p&#229; &#171;dd over netcat&#187; og &#171;dd over ssh&#187; for mer info. (Den som &#248;nsker et mer polert verkt&#248;y med GUI og fremdriftsindikatorer, kan kikke p&#229; Clonezilla eller PING, men ogs&#229; disse bruker dd i bunnen.)">&#8617;&#65038;</a></p>
+</li>
+</ol>
+</section>
+</section>
+</article>
 </body>
 </html>

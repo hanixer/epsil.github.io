@@ -1,24 +1,88 @@
 <!DOCTYPE html>
-<html prefix="og: http://ogp.me/ns#">
+<html lang="no" prefix="og: http://ogp.me/ns#">
 <head>
-<title>
-</title>
+<title>Komprimere profilmappen til Firefox &#8211; Vegard&#8217;s blog</title>
 <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
+<meta content="Vegard &#216;ye" name="author">
+<meta content="2014-12-27" name="date">
+<meta content="418928089ae14132678eff33c5a77fb5" name="md5">
 <meta content="text/css" http-equiv="Content-Style-Type">
 <meta content="width=device-width, initial-scale=1" name="viewport">
+<meta content="Komprimere profilmappen til Firefox" name="DC.Title">
+<meta content="Vegard &#216;ye" name="DC.Creator">
+<meta content="2014-12-27" name="DC.Date">
+<meta content="no" name="DC.Language">
 <meta content="text/html" name="DC.Format">
+<meta content="Komprimere profilmappen til Firefox" property="og:title">
+<meta content="no" name="og:locale">
 <meta content="article" property="og:type">
-<meta content="http://localhost:8000/2014/12/27/" property="og:url">
+<meta content="http://epsil.github.io/2014/12/27/" property="og:url">
+<meta content="Vegard&#8217;s blog" property="og:site_name">
 <meta content="summary" name="twitter:card">
 <meta content="@github" name="twitter:site">
+<meta content="Komprimere profilmappen til Firefox" name="twitter:title">
 <link href="../../../favicon.ico" rel="icon" type="image/x-icon">
 <link href="../../../apple-touch-icon.png" rel="apple-touch-icon">
 <link href="../../../css/markdown-template.css" rel="stylesheet">
-<link href="http://localhost:8000/2014/12/27/" rel="canonical">
+<link href="http://epsil.github.io/2014/12/27/" rel="canonical">
 <link href="index.txt" rel="alternate" title="Markdown" type="text/markdown">
 <script src="../../../js/markdown-template.js">
 </script>
 </head>
 <body>
+<nav class="navbar navbar-default navbar-fixed-top">
+<div class="container-fluid">
+<ul class="nav nav-pills navbar-left">
+<li role="presentation"><a href="/" title="G&#229; hjem"><i class="fa fa-home"></i></a>
+</li>
+</ul>
+
+<ul class="nav nav-pills navbar-right">
+<li role="presentation"><a href="http://www.facebook.com/share.php?u=http%3A%2F%2Fepsil.github.io%2F2014%2F12%2F27%2F" target="_blank" title="Del p&#229; Facebook"><i class="fa fa-facebook-square"></i></a>
+</li>
+
+<li role="presentation"><a href="https://twitter.com/intent/tweet?url=http%3A%2F%2Fepsil.github.io%2F2014%2F12%2F27%2F" target="_blank" title="Del p&#229; Twitter"><i class="fa fa-twitter-square"></i></a>
+</li>
+
+<li role="presentation"><a href="https://github.com/epsil/epsil.github.io/edit/master/2014/12/27/index.txt" target="_blank" title="Rediger p&#229; GitHub"><i class="fa fa-edit"></i></a>
+</li>
+
+<li role="presentation"><a href="https://github.com/epsil/epsil.github.io/commits/master/2014/12/27/index.txt" target="_blank" title="Vis historie"><i class="fa fa-history"></i></a>
+</li>
+
+<li role="presentation"><a href="index.txt" title="Vis Markdown-kilde"><i class="fa fa-download"></i></a>
+</li>
+
+<li role="presentation"><a data-toggle="collapse" href="#toc" id="toc-button" name="toc-button" title="Innhold"><i class="fa fa-list"></i></a>
+</li>
+</ul>
+</div>
+
+<div id="toc-placeholder">
+</div>
+</nav>
+
+<article class="h-entry">
+<header>
+<h1 class="p-name"><a class="u-uid u-url" href="http://epsil.github.io/2014/12/27/" rel="bookmark" target="_blank" title="Permalink">Komprimere profilmappen til&#160;Firefox</a>
+</h1>
+
+<p class="author"><a class="p-author h-card" href="https://epsil.github.io/" target="_blank" title="Open epsil.github.io in a new window">Vegard &#216;ye</a> <time class="dt-published" datetime="2014-12-27">2014-12-27</time></p>
+</header>
+
+<section class="e-content">
+<section>
+<p>Profilmappene til Firefox og Thunderbird kan ta stor plass p&#229; grunn av <a href="http://en.kioskea.net/faq/2285-compacting-sqlite-bases-of-firefox-3" target="_blank" title="Open en.kioskea.net in a new window">ukomprimerte SQLite-databaser</a>. Man kan komprimere dem manuelt med f&#248;lgende&#160;kommando:</p>
+
+<pre>
+<code>$ for f in *.sqlite; do sqlite3 "$f" "VACUUM"; done</code>
+</pre>
+
+<p>Firefox-profilmappen befinner seg i <code>~/Library/Application Support/Firefox/Profiles</code> og Thunderbird-profilmappen i <code>~/Library/Thunderbird/Profiles</code>.</p>
+
+<p>Utvidelsen <a href="https://addons.mozilla.org/en-US/firefox/addon/epubreader/" target="_blank" title="Open addons.mozilla.org in a new window">EPUBReader</a> kan lage en stor <code>epub</code>-mappe i profilmappen til Firefox. Denne er det bare &#229; slette med jevne&#160;mellomrom.</p>
+</section>
+</section>
+</article>
 </body>
 </html>

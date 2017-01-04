@@ -445,7 +445,7 @@ var templates = require('./templates')
 var typogr = require('typogr')
 var util = require('./util')
 var URI = require('urijs')
-var Handlebars = require('handlebars')
+// var Handlebars = require('handlebars')
 
 var document = templates.document
 var body = templates.body
@@ -462,25 +462,25 @@ function parse (data) {
   var view = matter(data)
   var props = view.data
   $.extend(view, props)
-  view.content = escape(view.content)
+  // view.content = escape(view.content)
   view.content = markdown(view.content, false)
-  view.content = unescape(view.content)
+  // view.content = unescape(view.content)
   return view
 }
 
-function escape (str) {
-  return str.replace(/{{{/g, '\u2222\u2222\u2222')
-            .replace(/}}}/g, '\u3333\u3333\u3333')
-            .replace(/{{/g, '\u2222\u2222')
-            .replace(/}}/g, '\u3333\u3333')
-}
+// function escape (str) {
+//   return str.replace(/{{{/g, '\u2222\u2222\u2222')
+//             .replace(/}}}/g, '\u3333\u3333\u3333')
+//             .replace(/{{/g, '\u2222\u2222')
+//             .replace(/}}/g, '\u3333\u3333')
+// }
 
-function unescape (str) {
-  return str.replace(/\u2222\u2222\u2222/g, '{{{')
-            .replace(/\u3333\u3333\u3333/g, '}}}')
-            .replace(/\u2222\u2222/g, '{{')
-            .replace(/\u3333\u3333/g, '}}')
-}
+// function unescape (str) {
+//   return str.replace(/\u2222\u2222\u2222/g, '{{{')
+//             .replace(/\u3333\u3333\u3333/g, '}}}')
+//             .replace(/\u2222\u2222/g, '{{')
+//             .replace(/\u3333\u3333/g, '}}')
+// }
 
 function addI18n (view) {
   if (view.lang === undefined || view.lang === '' ||
@@ -601,14 +601,14 @@ function compile (data, path) {
   view = toc(view)
   view = typography(view)
   view.content = document(view)
-  view.body = Handlebars.compile(view.content)
-  view.content = view.body(view)
+  // view.body = Handlebars.compile(view.content)
+  // view.content = view.body(view)
   return view.content
 }
 
 module.exports = compile
 
-},{"./defaults":5,"./i18n":7,"./markdown":9,"./social":12,"./templates":13,"./util":15,"gray-matter":35,"handlebars":112,"jquery":289,"md5":365,"typogr":374,"urijs":377}],5:[function(require,module,exports){
+},{"./defaults":5,"./i18n":7,"./markdown":9,"./social":12,"./templates":13,"./util":15,"gray-matter":35,"jquery":289,"md5":365,"typogr":374,"urijs":377}],5:[function(require,module,exports){
 module.exports = {
   author: 'Vegard Øye',
   'author-url': 'https://epsil.github.io/',

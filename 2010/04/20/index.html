@@ -1,24 +1,121 @@
 <!DOCTYPE html>
-<html prefix="og: http://ogp.me/ns#">
+<html lang="no" prefix="og: http://ogp.me/ns#">
 <head>
-<title>
-</title>
+<title>Innf&#248;ring i versjonskontroll &#8211; Vegard&#8217;s blog</title>
 <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
+<meta content="Vegard &#216;ye" name="author">
+<meta content="2010-04-20" name="date">
+<meta content="f4f24e6ea82d1361a7eae828e55f0692" name="md5">
 <meta content="text/css" http-equiv="Content-Style-Type">
 <meta content="width=device-width, initial-scale=1" name="viewport">
+<meta content="Innf&#248;ring i versjonskontroll" name="DC.Title">
+<meta content="Vegard &#216;ye" name="DC.Creator">
+<meta content="2010-04-20" name="DC.Date">
+<meta content="no" name="DC.Language">
 <meta content="text/html" name="DC.Format">
+<meta content="Innf&#248;ring i versjonskontroll" property="og:title">
+<meta content="no" name="og:locale">
 <meta content="article" property="og:type">
-<meta content="http://localhost:8000/2010/04/20/" property="og:url">
+<meta content="http://epsil.github.io/2010/04/20/" property="og:url">
+<meta content="Vegard&#8217;s blog" property="og:site_name">
 <meta content="summary" name="twitter:card">
 <meta content="@github" name="twitter:site">
+<meta content="Innf&#248;ring i versjonskontroll" name="twitter:title">
 <link href="../../../favicon.ico" rel="icon" type="image/x-icon">
 <link href="../../../apple-touch-icon.png" rel="apple-touch-icon">
 <link href="../../../css/markdown-template.css" rel="stylesheet">
-<link href="http://localhost:8000/2010/04/20/" rel="canonical">
+<link href="http://epsil.github.io/2010/04/20/" rel="canonical">
 <link href="index.txt" rel="alternate" title="Markdown" type="text/markdown">
 <script src="../../../js/markdown-template.js">
 </script>
 </head>
 <body>
+<nav class="navbar navbar-default navbar-fixed-top">
+<div class="container-fluid">
+<ul class="nav nav-pills navbar-left">
+<li role="presentation"><a href="/" title="G&#229; hjem"><i class="fa fa-home"></i></a>
+</li>
+</ul>
+
+<ul class="nav nav-pills navbar-right">
+<li role="presentation"><a href="http://www.facebook.com/share.php?u=http%3A%2F%2Fepsil.github.io%2F2010%2F04%2F20%2F" target="_blank" title="Del p&#229; Facebook"><i class="fa fa-facebook-square"></i></a>
+</li>
+
+<li role="presentation"><a href="https://twitter.com/intent/tweet?url=http%3A%2F%2Fepsil.github.io%2F2010%2F04%2F20%2F" target="_blank" title="Del p&#229; Twitter"><i class="fa fa-twitter-square"></i></a>
+</li>
+
+<li role="presentation"><a href="https://github.com/epsil/epsil.github.io/edit/master/2010/04/20/index.txt" target="_blank" title="Rediger p&#229; GitHub"><i class="fa fa-edit"></i></a>
+</li>
+
+<li role="presentation"><a href="https://github.com/epsil/epsil.github.io/commits/master/2010/04/20/index.txt" target="_blank" title="Vis historie"><i class="fa fa-history"></i></a>
+</li>
+
+<li role="presentation"><a href="index.txt" title="Vis Markdown-kilde"><i class="fa fa-download"></i></a>
+</li>
+
+<li role="presentation"><a data-toggle="collapse" href="#toc" id="toc-button" name="toc-button" title="Innhold"><i class="fa fa-list"></i></a>
+</li>
+</ul>
+</div>
+
+<div id="toc-placeholder">
+</div>
+</nav>
+
+<article class="h-entry">
+<header>
+<h1 class="p-name"><a class="u-uid u-url" href="http://epsil.github.io/2010/04/20/" rel="bookmark" target="_blank" title="Permalink">Innf&#248;ring i versjonskontroll</a>
+</h1>
+
+<p class="author"><a class="p-author h-card" href="https://epsil.github.io/" target="_blank" title="Open epsil.github.io in a new window">Vegard &#216;ye</a> <time class="dt-published" datetime="2010-04-20">2010-04-20</time></p>
+</header>
+
+<section class="e-content">
+<section>
+<p>F&#248;r vi begynner, <strong>installer</strong> <a href="http://mercurial.selenic.com/" target="_blank" title="Open mercurial.selenic.com in a new window">Mercurial</a> eller <a href="http://git-scm.com/" target="_blank" title="Open git-scm.com in a new window">Git</a> (<a href="http://code.google.com/p/msysgit/" target="_blank" title="Open code.google.com in a new window">msysGit</a> p&#229; Windows), samt <a href="http://tortoisehg.bitbucket.org/" target="_blank" title="Open tortoisehg.bitbucket.org in a new window">TortoiseHg</a> eller <a href="http://code.google.com/p/tortoisegit/" target="_blank" title="Open code.google.com in a new window">TortoiseGit</a>. De siste er ikke strengt n&#248;dvendige, men gir et felles brukergrensesnitt, slik at du kan f&#248;lge denne veiledningen uansett hva du&#160;velger.</p>
+
+<p>F&#248;rste steg er &#229; <strong>initialisere et repository</strong>. H&#248;yreklikk p&#229; prosjektmappen din og velg <em>Create repository here</em>:</p>
+
+<figure><img alt="" src="init.png">
+</figure>
+
+<p>I tillegg m&#229; vi inn i mappen, markere de aktuelle filene og <strong>legge dem til</strong>. (Du kan ha filer i repo&#8217;et ditt som ikke er under versjonskontroll: De vises med et bl&#229;tt sp&#248;rsm&#229;lstegn, som under.) Her h&#248;yreklikker vi p&#229; <code>catch22.tex</code> og velger <em>TortoiseGit</em> &#8594; <em>Add</em>:</p>
+
+<figure><img alt="" src="add.png">
+</figure>
+
+<p>Da er vi klare! Filen er n&#229; <strong>gr&#248;nn</strong>, ettersom de siste endringene er sjekket&#160;inn:</p>
+
+<figure><img alt="" src="repo.png">
+</figure>
+
+<p>La oss gj&#248;re noen <strong>nye endringer</strong>. Vi &#229;pner <code>catch22.tex</code> i en teksteditor, legger til litt tekst og&#160;lagrer:</p>
+
+<figure><img alt="" src="edit.png">
+</figure>
+
+<p>N&#229; blir filen <strong>r&#248;d</strong>, fordi det er avvik mellom den og det som er sjekket inn siden sist. For &#229; sjekke inn, h&#248;yreklikker vi p&#229; filen (eller den overordnede mappen) og velger <em>Commit</em>:</p>
+
+<figure><img alt="" src="commit.png">
+</figure>
+
+<p>Vi f&#229;r opp et tekstfelt hvor kan skrive et kort <strong>sammendrag</strong> av hva vi har&#160;gjort:</p>
+
+<figure><img alt="" src="message.png">
+</figure>
+
+<p>Suksess! Filen er n&#229; <strong>oppdatert</strong> og gr&#248;nn&#160;igjen.</p>
+
+<figure><img alt="" src="repo.png">
+</figure>
+
+<p>Stort mer er det ikke. Du kan opprette en konto p&#229; <a href="http://github.com/" target="_blank" title="Open github.com in a new window">GitHub</a> eller <a href="http://bitbucket.org/" target="_blank" title="Open bitbucket.org in a new window">BitBucket</a> og synkronisere arbeidet ditt mot en ekstern server, men i utgangspunktet gj&#248;res alt lokalt (distribuert). Du sjekker inn arbeidet ditt s&#229; ofte du f&#248;ler for det, kanskje ved arbeidsdagens slutt. For &#229; se hvordan prosjektet skrider fremover, h&#248;yreklikk p&#229; filen/mappen og velg <em>TortoiseGit</em> &#8594; <em>Show&#160;log</em>.</p>
+
+<p><strong>Lykke til!</strong> :)</p>
+
+<p>(Fortsatt ikke overbevist? Les om <a href="../18/">fordelene med versjonskontroll</a>.)</p>
+</section>
+</section>
+</article>
 </body>
 </html>

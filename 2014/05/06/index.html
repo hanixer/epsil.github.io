@@ -1,24 +1,242 @@
 <!DOCTYPE html>
-<html prefix="og: http://ogp.me/ns#">
+<html lang="no" prefix="og: http://ogp.me/ns#">
 <head>
-<title>
-</title>
+<title>Oppsett irssi og screen &#8211; Vegard&#8217;s blog</title>
 <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
+<meta content="Vegard &#216;ye" name="author">
+<meta content="2014-05-06" name="date">
+<meta content="Noen gamle #cyb-notater, gjengitt her for dem som leter etter dem." name="description">
+<meta content="36c3f58fbd23b8586d2b3812ef9ccaab" name="md5">
 <meta content="text/css" http-equiv="Content-Style-Type">
 <meta content="width=device-width, initial-scale=1" name="viewport">
+<meta content="Oppsett irssi og screen" name="DC.Title">
+<meta content="Vegard &#216;ye" name="DC.Creator">
+<meta content="2014-05-06" name="DC.Date">
+<meta content="Noen gamle #cyb-notater, gjengitt her for dem som leter etter dem." name="DC.Description">
+<meta content="no" name="DC.Language">
 <meta content="text/html" name="DC.Format">
+<meta content="Oppsett irssi og screen" property="og:title">
+<meta content="Noen gamle #cyb-notater, gjengitt her for dem som leter etter dem." property="og:description">
+<meta content="no" name="og:locale">
 <meta content="article" property="og:type">
-<meta content="http://localhost:8000/2014/05/06/" property="og:url">
+<meta content="http://epsil.github.io/2014/05/06/" property="og:url">
+<meta content="Vegard&#8217;s blog" property="og:site_name">
+<meta content="http://epsil.github.io/2014/05/06/logo.png" property="og:image">
 <meta content="summary" name="twitter:card">
 <meta content="@github" name="twitter:site">
+<meta content="Oppsett irssi og screen" name="twitter:title">
+<meta content="Noen gamle #cyb-notater, gjengitt her for dem som leter etter dem." name="twitter:description">
+<meta content="http://epsil.github.io/2014/05/06/logo.png" name="twitter:image">
 <link href="../../../favicon.ico" rel="icon" type="image/x-icon">
-<link href="../../../apple-touch-icon.png" rel="apple-touch-icon">
+<link href="logo.png" rel="apple-touch-icon">
 <link href="../../../css/markdown-template.css" rel="stylesheet">
-<link href="http://localhost:8000/2014/05/06/" rel="canonical">
+<link href="http://epsil.github.io/2014/05/06/" rel="canonical">
 <link href="index.txt" rel="alternate" title="Markdown" type="text/markdown">
+<link href="style.css" rel="stylesheet" type="text/css">
 <script src="../../../js/markdown-template.js">
 </script>
 </head>
 <body>
+<nav class="navbar navbar-default navbar-fixed-top">
+<div class="container-fluid">
+<ul class="nav nav-pills navbar-left">
+<li role="presentation"><a href="/" title="G&#229; hjem"><i class="fa fa-home"></i></a>
+</li>
+</ul>
+
+<ul class="nav nav-pills navbar-right">
+<li role="presentation"><a href="http://www.facebook.com/share.php?u=http%3A%2F%2Fepsil.github.io%2F2014%2F05%2F06%2F" target="_blank" title="Del p&#229; Facebook"><i class="fa fa-facebook-square"></i></a>
+</li>
+
+<li role="presentation"><a href="https://twitter.com/intent/tweet?url=http%3A%2F%2Fepsil.github.io%2F2014%2F05%2F06%2F" target="_blank" title="Del p&#229; Twitter"><i class="fa fa-twitter-square"></i></a>
+</li>
+
+<li role="presentation"><a href="https://github.com/epsil/epsil.github.io/edit/master/2014/05/06/index.txt" target="_blank" title="Rediger p&#229; GitHub"><i class="fa fa-edit"></i></a>
+</li>
+
+<li role="presentation"><a href="https://github.com/epsil/epsil.github.io/commits/master/2014/05/06/index.txt" target="_blank" title="Vis historie"><i class="fa fa-history"></i></a>
+</li>
+
+<li role="presentation"><a href="index.txt" title="Vis Markdown-kilde"><i class="fa fa-download"></i></a>
+</li>
+
+<li role="presentation"><a data-toggle="collapse" href="#toc" id="toc-button" name="toc-button" title="Innhold"><i class="fa fa-list"></i></a>
+</li>
+</ul>
+</div>
+
+<div class="collapse" id="toc">
+<ul>
+<li><a href="#hva-er-screen-nice-og-irssi" title="Hva er screen, nice og irssi">Hva er <code>screen</code>, <code>nice</code> og <code>irssi</code></a>
+</li>
+
+<li><a href="#opprette-screen" title="Opprette screen">Opprette <code>screen</code></a>
+</li>
+
+<li><a href="#neste-gang-du-na-skal-hente-opp-igjen-din-screen" title="Neste gang du n&#229; skal hente opp igjen din screen">Neste gang du n&#229; skal hente opp igjen din <code>screen</code></a>
+</li>
+
+<li><a href="#bruk-av-irssi" title="Bruk av irssi">Bruk av <code>irssi</code></a>
+</li>
+
+<li><a href="#oppsummert" title="Oppsummert">Oppsummert</a>
+</li>
+</ul>
+</div>
+</nav>
+
+<article class="h-entry">
+<header>
+<h1 class="p-name"><a class="u-uid u-url" href="http://epsil.github.io/2014/05/06/" rel="bookmark" target="_blank" title="Permalink">Oppsett</a> <a href="http://folk.uio.no/veronahe/CYB/IRC/" target="_blank" title="Open folk.uio.no in a new window"><code>irssi</code> og <code>screen</code></a></h1>
+
+<p class="author"><a class="p-author h-card" href="https://epsil.github.io/" target="_blank" title="Open epsil.github.io in a new window">Vegard &#216;ye</a> <time class="dt-published" datetime="2014-05-06">2014-05-06</time></p>
+
+<p class="p-summary">Noen gamle <a href="http://folk.uio.no/veronahe/CYB/IRC/" target="_blank" title="Open folk.uio.no in a new window"><code>#cyb</code>-notater</a>, gjengitt her for dem som leter etter&#160;dem.</p>
+
+<figure><img alt="" class="u-photo" src="logo.png" width="200">
+</figure>
+</header>
+
+<section class="e-content">
+<section id="hva-er-screen-nice-og-irssi">
+<h2><a aria-hidden="true" class="header-anchor" href="#hva-er-screen-nice-og-irssi" title="Hva er screen, nice og irssi"></a>Hva er <code>screen</code>, <code>nice</code> og <code>irssi</code><a aria-controls="hva-er-screen-nice-og-irssi-section" aria-expanded="true" aria-hidden="true" class="collapse-button" data-toggle="collapse" href="#hva-er-screen-nice-og-irssi-section" role="button"></a></h2>
+
+<div class="collapse in" id="hva-er-screen-nice-og-irssi-section">
+<p><strong><code>screen</code></strong> er et terminalprogram som lar deg kj&#248;re prosesser selv etter at du er logget ut, eller nettlinjen har falt ned. Prosessen blir liggende og kj&#248;re i en virtuell terminal p&#229;&#160;serveren.</p>
+
+<p><strong><code>nice</code></strong>: <abbr title="Universitetet i Oslo">UiO</abbr> har implementert <abbr class="acronym" title="Idle Job Killer"><span class="caps">IJK</span></abbr> (Idle Job Killer), som vil drepe denne prosessen etter en stund. Dette l&#248;ses ved &#229; sette en spesiell <code>nice</code>-verdi til prosessen, som gj&#248;r at <abbr class="acronym" title="Idle Job Killer"><span class="caps">IJK</span></abbr> ikke vil drepe&#160;prosessen.</p>
+
+<p><strong><code>irssi</code></strong> er en terminalbasert <abbr class="acronym" title="Internet Relay Chat"><span class="caps">IRC</span></abbr>-klient. Grunnen til at man bruker dette er fordi at man i kombinasjon med <code>screen</code> kan ligge tilkoblet konstant til <abbr class="acronym" title="Internet Relay Chat"><span class="caps">IRC</span></abbr>-nettverket. Fordelene er at man har en konstant backlog, samt at man ikke plager allerede p&#229;loggede brukere med stadige p&#229;logginger. Man vil ogs&#229; kunne beholde sin operator-status (<code>@</code>).</p>
+</div>
+</section>
+
+<section id="opprette-screen">
+<h2><a aria-hidden="true" class="header-anchor" href="#opprette-screen" title="Opprette screen"></a>Opprette <code>screen</code><a aria-controls="opprette-screen-section" aria-expanded="true" aria-hidden="true" class="collapse-button" data-toggle="collapse" href="#opprette-screen-section" role="button"></a></h2>
+
+<div class="collapse in" id="opprette-screen-section">
+<ol>
+<li>
+<p>&#197;pne en terminal:</p>
+
+<figure><img alt="" src="terminal_linux.jpg">
+</figure>
+
+<p>Eller last ned PuTTY om man bruker&#160;Windows:</p>
+
+<figure><img alt="" src="putty.jpg">
+</figure>
+</li>
+
+<li>
+<p><strong>Koble til med <abbr class="acronym" title="Secure Shell"><span class="caps">SSH</span></abbr> til en server du husker</strong> (<em>safir</em>, <em>rubin</em>, <em>smaragd</em>, <em>diamant</em>):</p>
+
+<pre>
+<code>$ ssh safir.ifi.uio.no</code>
+</pre>
+</li>
+
+<li>
+<p>Opprett en <code>screen</code> som ikke blir avsluttet av <abbr class="acronym" title="Idle Job Killer"><span class="caps">IJK</span></abbr>:</p>
+
+<pre>
+<code>$ nice -n 11 screen</code>
+</pre>
+
+<figure><img alt="" src="screen.png">
+</figure>
+</li>
+
+<li>
+<p>Start <code>irssi</code>:</p>
+
+<pre>
+<code>$ irssi</code>
+</pre>
+</li>
+
+<li>
+<p>Du er n&#229; koblet p&#229; <code>irssi</code> og kan koble til <code>#cyb</code> med f&#248;lgende&#160;kommando:</p>
+
+<pre>
+<code>/join #cyb</code>
+</pre>
+
+<figure><img alt="" src="cyb.png">
+</figure>
+</li>
+</ol>
+</div>
+</section>
+
+<section id="neste-gang-du-na-skal-hente-opp-igjen-din-screen">
+<h2><a aria-hidden="true" class="header-anchor" href="#neste-gang-du-na-skal-hente-opp-igjen-din-screen" title="Neste gang du n&#229; skal hente opp igjen din screen"></a>Neste gang du n&#229; skal hente opp igjen din <code>screen</code><a aria-controls="neste-gang-du-na-skal-hente-opp-igjen-din-screen-section" aria-expanded="true" aria-hidden="true" class="collapse-button" data-toggle="collapse" href="#neste-gang-du-na-skal-hente-opp-igjen-din-screen-section" role="button"></a></h2>
+
+<div class="collapse in" id="neste-gang-du-na-skal-hente-opp-igjen-din-screen-section">
+<ol>
+<li>
+<p><abbr class="acronym" title="Secure Shell"><span class="caps">SSH</span></abbr> til serveren du valgte i f&#248;rste&#160;del:</p>
+
+<pre>
+<code>$ ssh safir.ifi.uio.no</code>
+</pre>
+</li>
+
+<li>
+<p>Koble til din <code>screen</code> med:</p>
+
+<pre>
+<code>$ screen -rd</code>
+</pre>
+</li>
+</ol>
+
+<p>Hvis din <code>screen</code> ikke dukker opp igjen, sjekk om du er p&#229; riktig server eller om serveren har blitt restartet i senere tid (<code>$ screen -ls</code>). Gj&#248;r om igjen fra f&#248;rste&#160;del.</p>
+
+<p>(For &#229; <a href="http://stackoverflow.com/questions/1509677/kill-detached-screen-session" target="_blank" title="Open stackoverflow.com in a new window">avslutte</a> en <code>screen</code>-&#248;kt for godt, skriv <code>C-a :quit</code>.)</p>
+</div>
+</section>
+
+<section id="bruk-av-irssi">
+<h2><a aria-hidden="true" class="header-anchor" href="#bruk-av-irssi" title="Bruk av irssi"></a>Bruk av <code>irssi</code><a aria-controls="bruk-av-irssi-section" aria-expanded="true" aria-hidden="true" class="collapse-button" data-toggle="collapse" href="#bruk-av-irssi-section" role="button"></a></h2>
+
+<div class="collapse in" id="bruk-av-irssi-section">
+<p>For &#229; bytte kanalfane, trykk kombinasjonen: <kbd title="Alt">Alt</kbd> + <kbd><em>tall</em></kbd> (<abbr title="for eksempel">f.eks.</abbr> <kbd title="Alt">Alt</kbd> + <kbd>1</kbd>).</p>
+
+<p>Alternativt: <kbd title="Escape">Esc</kbd> + <kbd><em>tall</em></kbd> (<abbr title="for eksempel">f.eks.</abbr> <kbd title="Escape">Esc</kbd> + <kbd>1</kbd>).</p>
+
+<p>Alternativt: <kbd title="Control">Ctrl</kbd> + <kbd>N</kbd> eller <kbd title="Control">Ctrl</kbd> + <kbd>P</kbd>.</p>
+
+<p>Alternativt: skriv <code>/win + tall</code> (<abbr title="for eksempel">f.eks.</abbr> <code>/win 2</code>).</p>
+
+<p>For &#229; liste brukere i kanalen,&#160;skriv:</p>
+
+<pre>
+<code>/names</code>
+</pre>
+
+<p>For &#229; scrolle opp/ned: <kbd title="Page Up">PgUp</kbd>/<kbd title="Page Down">PgDn</kbd>.</p>
+
+<p>For &#229; starte en privat&#160;samtale:</p>
+
+<pre>
+<code>/msg hei</code>
+</pre>
+
+<p>Bla eller hopp deg s&#229; frem til vinduet samtalen ble startet&#160;i.</p>
+
+<p>(Husk: man kan kopiere og lime&#160;inn!)</p>
+</div>
+</section>
+
+<section id="oppsummert">
+<h2><a aria-hidden="true" class="header-anchor" href="#oppsummert" title="Oppsummert"></a>Oppsummert<a aria-controls="oppsummert-section" aria-expanded="true" aria-hidden="true" class="collapse-button" data-toggle="collapse" href="#oppsummert-section" role="button"></a></h2>
+
+<div class="collapse in" id="oppsummert-section">
+<figure><img alt="" src="diagram.png">
+</figure>
+</div>
+</section>
+</section>
+</article>
 </body>
 </html>

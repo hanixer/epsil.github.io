@@ -1,24 +1,99 @@
 <!DOCTYPE html>
-<html prefix="og: http://ogp.me/ns#">
+<html lang="no" prefix="og: http://ogp.me/ns#">
 <head>
-<title>
-</title>
+<title>Grenseverdisetningen &#8211; Vegard&#8217;s blog</title>
 <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
+<meta content="Vegard &#216;ye" name="author">
+<meta content="2010-11-20" name="date">
+<meta content="ca36de61f6d153edd5d0a76e0208bfe7" name="md5">
 <meta content="text/css" http-equiv="Content-Style-Type">
 <meta content="width=device-width, initial-scale=1" name="viewport">
+<meta content="Grenseverdisetningen" name="DC.Title">
+<meta content="Vegard &#216;ye" name="DC.Creator">
+<meta content="2010-11-20" name="DC.Date">
+<meta content="no" name="DC.Language">
 <meta content="text/html" name="DC.Format">
+<meta content="Grenseverdisetningen" property="og:title">
+<meta content="no" name="og:locale">
 <meta content="article" property="og:type">
-<meta content="http://localhost:8000/2010/11/20/" property="og:url">
+<meta content="http://epsil.github.io/2010/11/20/" property="og:url">
+<meta content="Vegard&#8217;s blog" property="og:site_name">
 <meta content="summary" name="twitter:card">
 <meta content="@github" name="twitter:site">
+<meta content="Grenseverdisetningen" name="twitter:title">
 <link href="../../../favicon.ico" rel="icon" type="image/x-icon">
 <link href="../../../apple-touch-icon.png" rel="apple-touch-icon">
 <link href="../../../css/markdown-template.css" rel="stylesheet">
-<link href="http://localhost:8000/2010/11/20/" rel="canonical">
+<link href="http://epsil.github.io/2010/11/20/" rel="canonical">
 <link href="index.txt" rel="alternate" title="Markdown" type="text/markdown">
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+TeX: { equationNumbers: { autoNumber: "all" } }
+})
+</script>
+<script async="" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-MML-AM_CHTML" type="text/javascript">
+</script>
 <script src="../../../js/markdown-template.js">
 </script>
 </head>
 <body>
+<nav class="navbar navbar-default navbar-fixed-top">
+<div class="container-fluid">
+<ul class="nav nav-pills navbar-left">
+<li role="presentation"><a href="/" title="G&#229; hjem"><i class="fa fa-home"></i></a>
+</li>
+</ul>
+
+<ul class="nav nav-pills navbar-right">
+<li role="presentation"><a href="http://www.facebook.com/share.php?u=http%3A%2F%2Fepsil.github.io%2F2010%2F11%2F20%2F" target="_blank" title="Del p&#229; Facebook"><i class="fa fa-facebook-square"></i></a>
+</li>
+
+<li role="presentation"><a href="https://twitter.com/intent/tweet?url=http%3A%2F%2Fepsil.github.io%2F2010%2F11%2F20%2F" target="_blank" title="Del p&#229; Twitter"><i class="fa fa-twitter-square"></i></a>
+</li>
+
+<li role="presentation"><a href="https://github.com/epsil/epsil.github.io/edit/master/2010/11/20/index.txt" target="_blank" title="Rediger p&#229; GitHub"><i class="fa fa-edit"></i></a>
+</li>
+
+<li role="presentation"><a href="https://github.com/epsil/epsil.github.io/commits/master/2010/11/20/index.txt" target="_blank" title="Vis historie"><i class="fa fa-history"></i></a>
+</li>
+
+<li role="presentation"><a href="index.txt" title="Vis Markdown-kilde"><i class="fa fa-download"></i></a>
+</li>
+
+<li role="presentation"><a data-toggle="collapse" href="#toc" id="toc-button" name="toc-button" title="Innhold"><i class="fa fa-list"></i></a>
+</li>
+</ul>
+</div>
+
+<div id="toc-placeholder">
+</div>
+</nav>
+
+<article class="h-entry">
+<header>
+<h1 class="p-name"><a class="u-uid u-url" href="http://epsil.github.io/2010/11/20/" rel="bookmark" target="_blank" title="Permalink">Grenseverdisetningen</a>
+</h1>
+
+<p class="author"><a class="p-author h-card" href="https://epsil.github.io/" target="_blank" title="Open epsil.github.io in a new window">Vegard &#216;ye</a> <time class="dt-published" datetime="2010-11-20">2010-11-20</time></p>
+</header>
+
+<section class="e-content">
+<section>
+<p>\[0 &lt; \lvert x &#8211; x_0\rvert &lt; \delta \quad\Rightarrow\quad 0 &lt; \lvert f(x) &#8211; L\rvert &lt; \epsilon\]</p>
+
+<p>Vi har en \(\delta\), og den bruker vi for &#229; komme n&#230;rmere \(x_0\), ved &#229; skvise sammen differansen mellom \(x\) og \(x_0\). (<abbr title="Det vil si">Dvs.</abbr> \(x\) er en fri variabel og kan v&#230;re hva som helst, men den kan ikke v&#230;re lengre unna \(x_0\) enn \(\delta\).) I tillegg har vi en \(\epsilon\), og den bruker vi for &#229; komme n&#230;rmere grenseverdien \(L\), ved &#229; skvise sammen differansen mellom \(f(x)\) og \(L\). Bokstavene \(\delta\) (delta) og \(\epsilon\) (epsilon) kan forst&#229;s som &#171;differanse&#187; og &#171;feilmargin&#187; (&#171;error&#187;), og differansen og feilmarginen henger sammen gjennom implikasjonspilen.</p>
+
+<p>Hvis feilmarginen n&#229; er gitt &#8211; la oss si at \(\epsilon = 3\) eller noe annet &#8211; s&#229; m&#229; vi s&#248;rge for at \(f(x)\) kommer s&#229;pass n&#230;rme \(L\). Hvordan gj&#248;r vi det? Jo, ved &#229; flytte p&#229; \(x\). Hvis vi reduserer spillerommet til \(x\) (differansen), s&#229; f&#248;lger det av implikasjonen at vi ogs&#229; reduserer spillerommet til \(f(x)\) (feilmarginen). Det er alts&#229; bare &#229; redusere \(\delta\) inntil \(x\) er s&#229; innsnevret at \(f(x)\) <em>m&#229;</em> komme n&#230;rme nok \(L\), alts&#229; inntil \(\lvert f(x) &#8211; L\rvert &lt; 3\).</p>
+
+<p>Poenget er at grenseverdidefinisjonen sier at vi kan gj&#248;re dette <em>uansett</em> hva \(\epsilon\) er. Uansett feilmargin, s&#229; kan differansen gj&#248;res liten nok:</p>
+
+<blockquote>
+<p>Grenseverdien \(\lim_{x \to x_0} f(x) = L\) eksisterer hvis og bare hvis det for enhver \(\epsilon &gt; 0\) finnes en \(\delta &gt; 0\) som oppfyller kriteriene over.</p>
+</blockquote>
+
+<p>S&#229; uansett hvor tett vi &#248;nsker &#229; skvise sammen \(f(x)\) og \(L\), er det mulig &#229; skvise sammen \(x\) og \(x_0\) tilsvarende. Dermed g&#229;r \(f(x)\) mot \(L\) n&#229;r \(x\) g&#229;r mot \(x_0\).</p>
+</section>
+</section>
+</article>
 </body>
 </html>
