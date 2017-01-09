@@ -3,7 +3,6 @@ abstract: Hvordan konvertere fra Last.fm, M3U og extended M3U.
 date: 2013-11-23
 image: spotify.png
 image-width: 100
-css: style.css
 ---
 
 Med nettstedet [Playlist Converter](http://www.playlist-converter.net/) kan man enkelt importere spillelister inn i Spotify. Spillelisten må være på formatet `Track - Artist`:

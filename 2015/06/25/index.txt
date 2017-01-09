@@ -3,7 +3,6 @@ date: 2015-06-25
 abstract: Noen notater om bruk av grafikkprogrammet [Dia](http://dia-installer.de/) på OS X.
 image: dia.svg
 image-width: 70
-css: style.css
 ---
 
 Hvis Dia krasjer
