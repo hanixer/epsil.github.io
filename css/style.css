@@ -104,7 +104,7 @@ blockquote footer:before {
 body {
     /* color: rgba(0, 0, 0, 0.8) !important; */
     color: #555 !important;
-    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Avenir, "Avenir Next", "Myriad Set Pro", "Myriad Pro", Myriad, Georgia, Charter, "Iowan Old Style", Iowan, "Iowan Web", "Hoefler Text", Cambria, Constantia, Utopia, Marion, Cochin, "Palatino Linotype", Palatino, Baskerville, serif !important;
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Avenir, "Avenir Next", "Myriad Set Pro", "Myriad Pro", Myriad, Ubuntu, "Bitstream Vera Sans", "DejaVu Sans", Helvetica, Arial, Tahoma, sans-serif !important;
     font-size: 105% !important;
     font-variant: oldstyle-nums;
     line-height: 1.5;
@@ -166,12 +166,9 @@ h1 a:hover, h2 a:hover, h3 a:hover, h4 a:hover, h5 a:hover, h6 a:hover {
     font-style: normal;
 }
 
-header {
-    text-align: center;
-}
-
 header h1, header h2 {
     font-style: normal;
+    text-align: center;
 }
 
 h1 {
@@ -346,7 +343,6 @@ table, .table {
 }
 
 time, .author {
-    color: rgba(0, 0, 0, 0.44);
     margin-top: 0em;
     font-weight: normal;
 }
@@ -433,14 +429,14 @@ article ul > li:before, #toc ul > li:before {
 /*     display: none; */
 /* } */
 
-.p-author {
-    /* font-style: italic; */
+.author {
+    color: rgba(0, 0, 0, 0.44);
+    text-align: center;
 }
 
-.dt-published:before {
-  content: "\f133"; /* fa-calendar-o */
-  font-family: FontAwesome;
-  margin-right: 0.5em;
+.p-author {
+    color: inherit;
+    /* font-style: italic; */
 }
 
 .flag-icon {
@@ -452,6 +448,7 @@ article ul > li:before, #toc ul > li:before {
     /* font-style: italic; */
     font-size: 1.3em;
     font-weight: 200;
+    text-align: center;
 }
 
 .dquo {
