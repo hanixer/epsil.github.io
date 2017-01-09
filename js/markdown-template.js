@@ -988,13 +988,13 @@ punctuation.addPunctuation = function () {
           node.nodeName !== 'PRE' &&
           node.nodeName !== 'TEXTAREA') {
         node.nodeValue = node.nodeValue
-          // .replace(/([-([«\s]|^)"(\S)/g, '$1\u201c$2') // beginning "
-          // .replace(/"/g, '\u201d') // ending "
-          // .replace(/([^0-9])"/g,'$1\u201d') // remaining " at end of word
+          .replace(/([-([«\s]|^)"(\S)/g, '$1\u201c$2') // beginning "
+          .replace(/"/g, '\u201d') // ending "
+          .replace(/([^0-9])"/g, '$1\u201d') // remaining " at end of word
           .replace(/([0-9])('|\u2019)([0-9])/g, '$1\u2032$3') // prime
           .replace(/([0-9]+)(\s*)x(\s*)([0-9]+)/g, '$1$2\u00d7$3$4') // times
-          // .replace(/([-([«\u201c\s]|^)('|\u2019)(\S)/g, '$1\u2018$3') // beginning '
-          // .replace(/'/ig, '\u2019') // ending '
+          .replace(/([-([«\u201c\s]|^)('|\u2019)(\S)/g, '$1\u2018$3') // beginning '
+          .replace(/'/ig, '\u2019') // ending '
           .replace(/\u2019\u201d/ig, '\u2019\u00a0\u201d') // "'
           .replace(/\u201d\u2019/ig, '\u201d\u00a0\u2019')
           .replace(/\u201c\u2018/ig, '\u201c\u00a0\u2018') // '"
