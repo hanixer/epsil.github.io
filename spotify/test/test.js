@@ -125,6 +125,13 @@ describe('spotify.js', function () {
       var promise = track.dispatch()
       return promise.should.eventually.be.an.instanceof(Track)
     })
+
+    it('should not confuse album title with track title', function () {
+      var track = new Track('Off the Wall - Michael Jackson')
+      return track.dispatch().then(function (track) {
+        track.uri().should.eql('spotify:track:3zYpRGnnoegSpt3SguSo3W')
+      })
+    })
   })
 
   describe('Playlist', function () {
@@ -168,7 +175,8 @@ describe('spotify.js', function () {
       var playlist = new Playlist('#ORDER BY POPULARITY\ntest1\ntest2')
       var promise = playlist.dispatch()
       // FIXME: this is really brittle
-      return promise.should.eventually.eql('spotify:track:5jwDjl5FofuDgwITfcROhq\nspotify:track:25BfjHTtaDCrKrq9hkr10U')
+      return promise.should.eventually.eql('spotify:track:5fUSaE4HYpnVqS9VFv5Z7m\n' +
+                                           'spotify:track:3fWs8HBZMvZDi3TqiUu3gZ')
     })
 
     it('should parse album entries', function () {
@@ -187,7 +195,8 @@ describe('spotify.js', function () {
       var playlist = new Playlist('test1\ntest2')
       var promise = playlist.dispatch()
       // FIXME: this is really brittle
-      return promise.should.eventually.eql('spotify:track:5jwDjl5FofuDgwITfcROhq\nspotify:track:25BfjHTtaDCrKrq9hkr10U')
+      return promise.should.eventually.eql('spotify:track:5fUSaE4HYpnVqS9VFv5Z7m\n' +
+                                           'spotify:track:3fWs8HBZMvZDi3TqiUu3gZ')
     })
   })
 
