@@ -123,9 +123,7 @@
 <div class="collapse in" id="eksportere-til-pdf-section">
 <p>For &#229; lage <abbr class="acronym" title="Portable Document Format"><span class="caps">PDF</span></abbr>, er det best &#229; eksportere til <abbr class="acronym" title="Encapsulated PostScript"><span class="caps">EPS</span></abbr> (med Pango-skrifter) og deretter <a href="http://www.dark.ca/2009/07/16/getting-dia-to-give-you-a-pdf/" target="_blank" title="Open dark.ca in a new window">konvertere til <abbr class="acronym" title="Portable Document Format"><span class="caps">PDF</span></abbr></a>:</p>
 
-<pre>
-<code>$ epstopdf diagram.eps</code>
-</pre>
+<pre>$ epstopdf diagram.eps</pre>
 
 <p><code>epstopdf</code> er inkludert i <abbr title="TeX">T<span class="tex-e">e</span>X</abbr> Live (<a href="http://tug.org/mactex/" target="_blank" title="Open tug.org in a new window"><abbr title="MacTeX">MacT<span class="tex-e">e</span>X</abbr></a>).</p>
 </div>
@@ -141,15 +139,11 @@
 <div class="collapse in" id="med-pdf2svg-section">
 <p>For &#229; konvertere til <abbr class="acronym" title="Scalable Vector Graphics"><span class="caps">SVG</span></abbr>, fungerer det bedre &#229; g&#229; <a href="http://superuser.com/questions/198460/converting-from-eps-to-svg-format#answer-542987" target="_blank" title="Open superuser.com in a new window">omveien om <abbr class="acronym" title="Portable Document Format"><span class="caps">PDF</span></abbr></a> enn &#229; eksportere direkte eller konvertere fra <abbr class="acronym" title="Encapsulated PostScript"><span class="caps">EPS</span></abbr>. <abbr class="acronym" title="Portable Document Format"><span class="caps">PDF</span></abbr> kan konverteres til <abbr class="acronym" title="Scalable Vector Graphics"><span class="caps">SVG</span></abbr> med <a href="http://www.cityinthesky.co.uk/opensource/pdf2svg/" target="_blank" title="Open cityinthesky.co.uk in a new window"><code>pdf2svg</code></a> (kan installeres med <code>$ brew install pdf2svg</code>):</p>
 
-<pre>
-<code>$ pdf2svg diagram.pdf diagram.svg</code>
-</pre>
+<pre>$ pdf2svg diagram.pdf diagram.svg</pre>
 
 <p>For &#229; konvertere en bestemt&#160;side:</p>
 
-<pre>
-<code>$ pdf2svg diagrammer.pdf diagram.svg 20</code>
-</pre>
+<pre>$ pdf2svg diagrammer.pdf diagram.svg 20</pre>
 
 <p><code>pdf2svg</code> har dessverre ingen valg for beskj&#230;ring. For dette kan man benytte <a href="https://sites.google.com/site/pdfscissors/" target="_blank" title="Open sites.google.com in a new window"><abbr class="acronym" title="Portable Document Format"><span class="caps">PDF</span></abbr> Scissors</a> (grafisk) eller <a href="https://www.pdflabs.com/tools/pdftk-the-pdf-toolkit/" target="_blank" title="Open pdflabs.com in a new window"><abbr title="PDF Toolkit">PDFtk</abbr></a>&#160;(kommandolinje).</p>
 </div>
@@ -161,9 +155,7 @@
 <div class="collapse in" id="med-inkscape-section">
 <p>Det ser ut til at <code>pdf2svg</code> har problemer med &#229; konvertere enkelte <abbr class="acronym" title="Portable Document Format"><span class="caps">PDF</span></abbr>-er. Et alternativ er &#229; bruke <a href="http://inkscape.org/" target="_blank" title="Open inkscape.org in a new window">Inkscape</a>, som kan <a href="http://stackoverflow.com/questions/10288065/convert-pdf-to-clean-svg#answer-10290006" target="_blank" title="Open stackoverflow.com in a new window">kj&#248;res fra terminalen</a>:</p>
 
-<pre>
-<code>$ inkscape --without-gui --file=diagram.pdf --export-plain-svg=diagram.svg</code>
-</pre>
+<pre>$ inkscape --without-gui --file=diagram.pdf --export-plain-svg=diagram.svg</pre>
 
 <p>Dette er visstnok den foretrukne konverteringsmetoden til <a href="https://en.wikipedia.org/wiki/Wikipedia:Graphics_Lab/Resources/PDF_conversion_to_SVG#Conversion_with_Inkscape" target="_blank" title="Open en.wikipedia.org in a new window">Wikipedia</a>.</p>
 </div>

@@ -74,17 +74,13 @@
 <section>
 <p>Etter oppdatering til <abbr class="acronym" title="Operating System 10"><span class="caps">OS</span> X</abbr> Yosemite feiler <code>brew</code> med f&#248;lgende&#160;feilmelding:</p>
 
-<pre>
-<code>/usr/local/bin/brew: /usr/local/Library/brew.rb: /System/Library/Frameworks/Ruby.framework/Versions/1.8/usr/bin/ruby: bad interpreter: No such file or directory
-/usr/local/bin/brew: line 26: /usr/local/Library/brew.rb: Undefined error: 0</code>
-</pre>
+<pre>/usr/local/bin/brew: /usr/local/Library/brew.rb: /System/Library/Frameworks/Ruby.framework/Versions/1.8/usr/bin/ruby: bad interpreter: No such file or directory
+/usr/local/bin/brew: line 26: /usr/local/Library/brew.rb: Undefined error: 0</pre>
 
 <p><code>brew update</code> feiler ogs&#229;. For &#229; l&#248;se problemet, <a href="http://apple.stackexchange.com/questions/153790/how-to-fix-brew-after-its-upgrade-to-yosemite" target="_blank" title="Open apple.stackexchange.com in a new window">oppgrader med Git</a>:</p>
 
-<pre>
-<code>$ cd /usr/local/Library
-$ git pull origin master</code>
-</pre>
+<pre>$ cd /usr/local/Library
+$ git pull origin master</pre>
 
 <p>Kj&#248;r deretter <code>$ brew update</code> for &#229; oppdatere til siste&#160;versjon.</p>
 </section>

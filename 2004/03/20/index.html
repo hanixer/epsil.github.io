@@ -87,19 +87,15 @@ HalTan o.a. har kanskje noe mer hysterisk som 󈶥r gang siden vises󠩠stedet (
 
 <p>Dersom vi har plassert alle &#171;rollover&#187;-bildene i en egen mappe, <abbr title="for eksempel">f.eks.</abbr> <code>rollovers</code>, kan vi plassere en tekstfil med filnavnet <code>.htaccess</code> som inneholder ekstra serverinstruksjoner for disse filene i denne mappen. Kopier f&#248;lgende inn i en passende&#160;tekstbehandler:</p>
 
-<pre>
-<code>ExpiresActive on
+<pre>ExpiresActive on
 ExpiresDefault "access plus 1 day"
-Header append Cache-Control "must-revalidate"</code>
-</pre>
+Header append Cache-Control "must-revalidate"</pre>
 
 <p>&#197; f&#229; lagret filen med navnet <code>.htaccess</code> kan v&#230;re litt problematisk p&#229; Windows-plattformen, men heldigvis fins det en enkel l&#248;sning. I Notisblokk skriver vi ganske enkelt <code>".htaccess"</code> &#8211; <em>med</em> anf&#248;rselstegnene &#8211; i <code>Filnavn</code>-feltet i <code>Lagre som</code>-dialogvinduet. Til slutt laster vi opp denne filen til samme mappe som &#171;rollover&#187;-bildene befinner seg i, alts&#229; rollovers. For &#229; kontrollere at dette fungerer som det skal, sjekker vi adressen <code>http://www.example.org/rollovers/bilde.png</code> med <a href="http://www.delorie.com/web/headers.html" target="_blank" title="Open delorie.com in a new window"><abbr class="acronym" title="HyperText Transfer Protocol"><span class="caps">HTTP</span></abbr> Header Viewer</a>. Dersom serveren har tatt notis av instruksjonene i <code>.htaccess</code>-fila, vil startblokken <abbr title="blant annet">bl.a.</abbr> inneholde to tekstlinjer som begynner med henholdsvis &#171;<code>Expires:</code>&#187; og &#171;<code>Cache-Control:</code>&#187;.</p>
 
 <p>Dersom de n&#248;dvendige modulene <em>ikke</em> er installert, vil serveren i stedet svare med en 500-feilmelding. Hvis bare funksjonene i <code>mod_headers</code> er tilgjengelige, kan vi heller&#160;skrive</p>
 
-<pre>
-<code>Header set Cache-Control "max-age=86400, must-revalidate"</code>
-</pre>
+<pre>Header set Cache-Control "max-age=86400, must-revalidate"</pre>
 
 <p>i <code>.htaccess.</code></p>
 

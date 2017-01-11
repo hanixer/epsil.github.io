@@ -74,10 +74,8 @@
 <section>
 <p>I Ubuntu 13.04 er <code>mkfs.ntfs</code> utilgjengelig (<code>mkntfs</code> fungerer). Dette skyldes en <a href="https://bugs.launchpad.net/ubuntu/+source/ntfs-3g/+bug/1148541" target="_blank" title="Open bugs.launchpad.net in a new window">manglende symlink</a> fra <code>/sbin/mkfs.ntfs</code> til <code>/sbin/mkntfs</code>. Det f&#248;lgende retter opp&#160;problemet:</p>
 
-<pre>
-<code>$ sudo unlink /sbin/mkfs.ntfs
-$ sudo ln -s /sbin/mkntfs /sbin/mkfs.ntfs</code>
-</pre>
+<pre>$ sudo unlink /sbin/mkfs.ntfs
+$ sudo ln -s /sbin/mkntfs /sbin/mkfs.ntfs</pre>
 </section>
 </section>
 </article>

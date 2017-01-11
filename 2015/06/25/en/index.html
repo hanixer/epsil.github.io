@@ -124,9 +124,7 @@
 <div class="collapse in" id="export-to-pdf-section">
 <p>To create a <abbr class="acronym" title="Portable Document Format"><span class="caps">PDF</span></abbr> file, it is best to export to <abbr class="acronym" title="Encapsulated PostScript"><span class="caps">EPS</span></abbr> first (with Pango fonts) and then <a href="http://www.dark.ca/2009/07/16/getting-dia-to-give-you-a-pdf/" target="_blank" title="Open dark.ca in a new window">convert to <abbr class="acronym" title="Portable Document Format"><span class="caps">PDF</span></abbr></a>:</p>
 
-<pre>
-<code>$ epstopdf diagram.eps</code>
-</pre>
+<pre>$ epstopdf diagram.eps</pre>
 
 <p><code>epstopdf</code> is included in <abbr title="TeX">T<span class="tex-e">e</span>X</abbr> Live (<a href="http://tug.org/mactex/" target="_blank" title="Open tug.org in a new window"><abbr title="MacTeX">MacT<span class="tex-e">e</span>X</abbr></a>).</p>
 </div>
@@ -142,15 +140,11 @@
 <div class="collapse in" id="with-pdf2svg-section">
 <p>To convert to <abbr class="acronym" title="Scalable Vector Graphics"><span class="caps">SVG</span></abbr>, it is better to <a href="http://superuser.com/questions/198460/converting-from-eps-to-svg-format#answer-542987" target="_blank" title="Open superuser.com in a new window">convert to <abbr class="acronym" title="Portable Document Format"><span class="caps">PDF</span></abbr></a> first than to export directly or convert from <abbr class="acronym" title="Encapsulated PostScript"><span class="caps">EPS</span></abbr>. <abbr class="acronym" title="Portable Document Format"><span class="caps">PDF</span></abbr> can be converted to <abbr class="acronym" title="Scalable Vector Graphics"><span class="caps">SVG</span></abbr> with <a href="http://www.cityinthesky.co.uk/opensource/pdf2svg/" target="_blank" title="Open cityinthesky.co.uk in a new window"><code>pdf2svg</code></a> (may be installed with <code>$ brew install pdf2svg</code>):</p>
 
-<pre>
-<code>$ pdf2svg diagram.pdf diagram.svg</code>
-</pre>
+<pre>$ pdf2svg diagram.pdf diagram.svg</pre>
 
 <p>To convert a specific&#160;page:</p>
 
-<pre>
-<code>$ pdf2svg diagrammer.pdf diagram.svg 20</code>
-</pre>
+<pre>$ pdf2svg diagrammer.pdf diagram.svg 20</pre>
 
 <p>Unfortunately, <code>pdf2svg</code> has no options for cropping. For this, one can use <a href="https://sites.google.com/site/pdfscissors/" target="_blank" title="Open sites.google.com in a new window"><abbr class="acronym" title="Portable Document Format"><span class="caps">PDF</span></abbr> Scissors</a> (graphics) or <a href="https://www.pdflabs.com/tools/pdftk-the-pdf-toolkit/" target="_blank" title="Open pdflabs.com in a new window"><abbr title="PDF Toolkit">PDFtk</abbr></a> (command&#160;line).</p>
 </div>
@@ -162,9 +156,7 @@
 <div class="collapse in" id="with-inkscape-section">
 <p>It seems that <code>pdf2svg</code> runs into problems with some <abbr class="acronym" title="Portable Document Format"><span class="caps">PDF</span></abbr> files. An alternative is to use <a href="http://inkscape.org/" target="_blank" title="Open inkscape.org in a new window">Inkscape</a>, which can be <a href="http://stackoverflow.com/questions/10288065/convert-pdf-to-clean-svg#answer-10290006" target="_blank" title="Open stackoverflow.com in a new window">run from the terminal</a>:</p>
 
-<pre>
-<code>$ inkscape --without-gui --file=diagram.pdf --export-plain-svg=diagram.svg</code>
-</pre>
+<pre>$ inkscape --without-gui --file=diagram.pdf --export-plain-svg=diagram.svg</pre>
 
 <p>This is apparently the conversion method recommended by <a href="https://en.wikipedia.org/wiki/Wikipedia:Graphics_Lab/Resources/PDF_conversion_to_SVG#Conversion_with_Inkscape" target="_blank" title="Open en.wikipedia.org in a new window">Wikipedia</a>.</p>
 </div>

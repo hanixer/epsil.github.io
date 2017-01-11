@@ -1,0 +1,398 @@
+<!DOCTYPE html>
+<html lang="no" prefix="og: http://ogp.me/ns#">
+<head>
+<title>
+</title>
+<meta content="text/html; charset=utf-8" http-equiv="Content-Type">
+<meta content="Vegard &#216;ye" name="author">
+<meta content="07c3a3ae670de134f1d7a18662408d19" name="md5">
+<meta content="text/css" http-equiv="Content-Style-Type">
+<meta content="width=device-width, initial-scale=1" name="viewport">
+<meta content="Vegard &#216;ye" name="DC.Creator">
+<meta content="no" name="DC.Language">
+<meta content="text/html" name="DC.Format">
+<meta content="no" name="og:locale">
+<meta content="article" property="og:type">
+<meta content="http://epsil.github.io/spotify/readme/" property="og:url">
+<meta content="Vegard&#8217;s blog" property="og:site_name">
+<meta content="summary" name="twitter:card">
+<meta content="@github" name="twitter:site">
+<link href="../../favicon.ico" rel="icon" type="image/x-icon">
+<link href="../../apple-touch-icon.png" rel="apple-touch-icon">
+<link href="../../css/markdown-template.css" rel="stylesheet">
+<link href="http://epsil.github.io/spotify/readme/" rel="canonical">
+<link href="index.txt" rel="alternate" title="Markdown" type="text/markdown">
+<script src="../../js/markdown-template.js">
+</script>
+</head>
+<body>
+<nav class="navbar navbar-default navbar-fixed-top">
+<div class="container-fluid">
+<ul class="nav nav-pills navbar-left">
+<li role="presentation"><a href="/" title="G&#229; hjem"><i class="fa fa-home"></i></a>
+</li>
+</ul>
+
+<ul class="nav nav-pills navbar-right">
+<li role="presentation"><a href="http://www.facebook.com/share.php?u=http%3A%2F%2Fepsil.github.io%2Fspotify%2Freadme%2F" target="_blank" title="Del p&#229; Facebook"><i class="fa fa-facebook-square"></i></a>
+</li>
+
+<li role="presentation"><a href="https://twitter.com/intent/tweet?url=http%3A%2F%2Fepsil.github.io%2Fspotify%2Freadme%2F" target="_blank" title="Del p&#229; Twitter"><i class="fa fa-twitter-square"></i></a>
+</li>
+
+<li role="presentation"><a href="https://github.com/epsil/epsil.github.io/edit/master/spotify/readme/index.txt" target="_blank" title="Rediger p&#229; GitHub"><i class="fa fa-edit"></i></a>
+</li>
+
+<li role="presentation"><a href="https://github.com/epsil/epsil.github.io/commits/master/spotify/readme/index.txt" target="_blank" title="Vis historie"><i class="fa fa-history"></i></a>
+</li>
+
+<li role="presentation"><a href="index.txt" title="Vis Markdown-kilde"><i class="fa fa-download"></i></a>
+</li>
+
+<li role="presentation"><a data-toggle="collapse" href="#toc" id="toc-button" name="toc-button" title="Innhold"><i class="fa fa-list"></i></a>
+</li>
+</ul>
+</div>
+
+<div class="collapse" id="toc">
+<ul>
+<li><span class="" id="usage-2"><a href="#usage" title="Usage">Usage</a><a aria-controls="usage-2-section" aria-expanded="false" aria-hidden="true" class="collapse-button" data-toggle="collapse" href="#usage-2-section" role="button"></a></span>
+<ul class="collapse" id="usage-2-section">
+<li><a href="#top-tracks" title="Top tracks">Top tracks</a>
+</li>
+
+<li><a href="#similar-artists" title="Similar artists">Similar artists</a>
+</li>
+
+<li><a href="#artists" title="Artists">Artists</a>
+</li>
+
+<li><a href="#albums" title="Albums">Albums</a>
+</li>
+
+<li><a href="#order" title="Order">Order</a>
+</li>
+
+<li><a href="#group" title="Group">Group</a>
+</li>
+
+<li><a href="#alternate" title="Alternate">Alternate</a>
+</li>
+
+<li><a href="#tracks" title="Tracks">Tracks</a>
+</li>
+
+<li><a href="#import-m3u-playlists" title="Import M3U playlists">Import <abbr class="acronym" title="MP3 Uniform Resource Locator"><span class="caps">M3U</span></abbr> playlists</a>
+</li>
+
+<li><a href="#import-existing-spotify-playlists" title="Import existing Spotify&#160;playlists">Import existing Spotify&#160;playlists</a>
+</li>
+</ul>
+</li>
+
+<li><a href="#command-line-script" title="Command-line script">Command-line script</a>
+</li>
+
+<li><span class="" id="links-2"><a href="#links" title="Links">Links</a><a aria-controls="links-2-section" aria-expanded="false" aria-hidden="true" class="collapse-button" data-toggle="collapse" href="#links-2-section" role="button"></a></span>
+<ul class="collapse" id="links-2-section">
+<li><span class="" id="see-also-2"><a href="#see-also" title="See also">See also</a><a aria-controls="see-also-2-section" aria-expanded="false" aria-hidden="true" class="collapse-button" data-toggle="collapse" href="#see-also-2-section" role="button"></a></span>
+<ul class="collapse" id="see-also-2-section">
+<li><a href="#gui-converters" title="GUI converters"><abbr class="acronym" title="Graphical User Interface"><span class="caps">GUI</span></abbr> converters</a>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</div>
+</nav>
+
+<article class="h-entry">
+<header>
+</header>
+
+<section class="e-content">
+<section>
+<hr>
+
+<ul>
+<li><a href="examples/pitchfork-50-best-albums-of-2016.spotify.txt">Pitchfork&#8217;s 50 Best Albums of 2016</a> (<a href="examples/pitchfork-50-best-albums-of-2016.txt">source</a>)</li>
+
+<li><a href="examples/pitchfork-honorable-mentions-of-2015.spotify.txt">Pitchfork&#8217;s Honorable Mentions of 2015</a> (<a href="examples/pitchfork-honorable-mentions-of-2015.txt">source</a>)</li>
+
+<li><a href="examples/pitchfork-50-best-ambient-albums-of-all-time.spotify.txt">Pitchfork&#8217;s 50 Best Ambient Albums of All Time</a> (<a href="examples/pitchfork-50-best-ambient-albums-of-all-time.txt">source</a>)</li>
+
+<li><a href="examples/rateyourmusic-top-albums-of-2016.spotify.txt">Rate Your Music&#8217;s Top Albums of 2016</a> (<a href="examples/rateyourmusic-top-albums-of-2016.txt">source</a>)</li>
+
+<li><a href="examples/rateyourmusic-top-dreampop-albums.spotify.txt">Rate Your Music&#8217;s Top Dream Pop Albums</a> (<a href="examples/rateyourmusic-top-dreampop-albums.txt">source</a>)</li>
+
+<li><a href="examples/rateyourmusic-top-shoegaze-albums.spotify.txt">Rate Your Music&#8217;s Top Shoegaze Albums</a> (<a href="examples/rateyourmusic-top-shoegaze-albums.txt">source</a>)</li>
+
+<li><a href="examples/rollingstone-500-greatest-songs-of-all-time.spotify.txt">Rolling Stone&#8217;s 500 Greatest Songs of All Time</a> (<a href="examples/rollingstone-500-greatest-songs-of-all-time.txt">source</a>)</li>
+</ul>
+</section>
+
+<section id="usage">
+<h2><a aria-hidden="true" class="header-anchor" href="#usage" title="Usage"></a>Usage<a aria-controls="usage-section" aria-expanded="true" aria-hidden="true" class="collapse-button" data-toggle="collapse" href="#usage-section" role="button"></a></h2>
+
+<div class="collapse in" id="usage-section">
+<section>
+<p>To import the playlist into&#160;Spotify:</p>
+
+<ol>
+<li><strong>Copy the output of the generator:</strong> choose <em>Edit &#8594; Copy</em> (<kbd title="Control">Ctrl</kbd> + <kbd>C</kbd>).</li>
+
+<li><strong>Create a new playlist in Spotify:</strong> choose <em>File &#8594; New Playlist</em> (<kbd title="Control">Ctrl</kbd> + <kbd>N</kbd>).</li>
+
+<li><strong>Paste into the playlist:</strong> select the playlist and choose <em>Edit &#8594; Paste</em> (<kbd title="Control">Ctrl</kbd> + <kbd>V</kbd>).</li>
+</ol>
+</section>
+
+<section id="top-tracks">
+<h3><a aria-hidden="true" class="header-anchor" href="#top-tracks" title="Top tracks"></a>Top tracks<a aria-controls="top-tracks-section" aria-expanded="true" aria-hidden="true" class="collapse-button" data-toggle="collapse" href="#top-tracks-section" role="button"></a></h3>
+
+<div class="collapse in" id="top-tracks-section">
+<p>To add the top 10 tracks of an&#160;artist:</p>
+
+<pre>#top Aphex Twin</pre>
+
+<p>This will create a playlist consisting of ten most popular tracks of Aphex Twin. To add only the top 5 tracks, use <code>#top5</code>.</p>
+</div>
+</section>
+
+<section id="similar-artists">
+<h3><a aria-hidden="true" class="header-anchor" href="#similar-artists" title="Similar artists"></a>Similar artists<a aria-controls="similar-artists-section" aria-expanded="true" aria-hidden="true" class="collapse-button" data-toggle="collapse" href="#similar-artists-section" role="button"></a></h3>
+
+<div class="collapse in" id="similar-artists-section">
+<p>To add tracks from similar&#160;artists:</p>
+
+<pre>#similar Aphex Twin</pre>
+
+<p>This will create a playlist consisting of the most popular tracks from the most similar artists to Aphex&#160;Twin.</p>
+</div>
+</section>
+
+<section id="artists">
+<h3><a aria-hidden="true" class="header-anchor" href="#artists" title="Artists"></a>Artists<a aria-controls="artists-section" aria-expanded="true" aria-hidden="true" class="collapse-button" data-toggle="collapse" href="#artists-section" role="button"></a></h3>
+
+<div class="collapse in" id="artists-section">
+<p>To add the entire discography of an&#160;artist:</p>
+
+<pre>#artist Beach House</pre>
+
+<p>Result:</p>
+
+<pre>spotify:track:&lt;Beach House Track #1&gt;
+spotify:track:&lt;Beach House Track #2&gt;
+spotify:track:&lt;Beach House Track #3&gt;
+...</pre>
+</div>
+</section>
+
+<section id="albums">
+<h3><a aria-hidden="true" class="header-anchor" href="#albums" title="Albums"></a>Albums<a aria-controls="albums-section" aria-expanded="true" aria-hidden="true" class="collapse-button" data-toggle="collapse" href="#albums-section" role="button"></a></h3>
+
+<div class="collapse in" id="albums-section">
+<p>To add an entire album to the&#160;playlist:</p>
+
+<pre>#album Substrata - Biosphere</pre>
+
+<p>Result:</p>
+
+<pre>spotify:track:&lt;Substrata Track #1&gt;
+spotify:track:&lt;Substrata Track #2&gt;
+spotify:track:&lt;Substrata Track #3&gt;
+...</pre>
+</div>
+</section>
+
+<section id="order">
+<h3><a aria-hidden="true" class="header-anchor" href="#order" title="Order"></a>Order<a aria-controls="order-section" aria-expanded="true" aria-hidden="true" class="collapse-button" data-toggle="collapse" href="#order-section" role="button"></a></h3>
+
+<div class="collapse in" id="order-section">
+<p>To order the tracks by Spotify popularity, use <code>#order by</code>:</p>
+
+<pre>#order by popularity
+#artist Beach House</pre>
+
+<p>To order the tracks by <a href="http://last.fm/" target="_blank" title="Open last.fm in a new window">Last.fm</a> playcount, add the line <code>#order by lastfm</code>:</p>
+
+<pre>#order by lastfm
+#artist Beach House</pre>
+</div>
+</section>
+
+<section id="group">
+<h3><a aria-hidden="true" class="header-anchor" href="#group" title="Group"></a>Group<a aria-controls="group-section" aria-expanded="true" aria-hidden="true" class="collapse-button" data-toggle="collapse" href="#group-section" role="button"></a></h3>
+
+<div class="collapse in" id="group-section">
+<p>To sort the ordered tracks into groups, use <code>#group by</code>:</p>
+
+<pre>#order by lastfm
+#group by artist
+#similar Beach House</pre>
+
+<p>This will create a Last.fm-ordered playlist of artists similar to Beach House, where tracks from the same artists are grouped&#160;together.</p>
+</div>
+</section>
+
+<section id="alternate">
+<h3><a aria-hidden="true" class="header-anchor" href="#alternate" title="Alternate"></a>Alternate<a aria-controls="alternate-section" aria-expanded="true" aria-hidden="true" class="collapse-button" data-toggle="collapse" href="#alternate-section" role="button"></a></h3>
+
+<div class="collapse in" id="alternate-section">
+<p>To group the tracks and then interleave them, use <code>#alternate by</code>:</p>
+
+<pre>#order by lastfm
+#alternate by artist
+#similar Beach House</pre>
+
+<p>This will create a Last.fm-ordered playlist of artists similar to Beach House, with each track having a different artist from the previous&#160;track.</p>
+</div>
+</section>
+
+<section id="tracks">
+<h3><a aria-hidden="true" class="header-anchor" href="#tracks" title="Tracks"></a>Tracks<a aria-controls="tracks-section" aria-expanded="true" aria-hidden="true" class="collapse-button" data-toggle="collapse" href="#tracks-section" role="button"></a></h3>
+
+<div class="collapse in" id="tracks-section">
+<p>To add a track to the playlist, add a line on the form <code>TITLE - ARTIST</code>:</p>
+
+<pre>Walk in the Park - Beach House
+Irene - Beach House
+Other People - Beach House
+Troublemaker - Beach House
+Wishes - Beach House</pre>
+
+<p>Result:</p>
+
+<pre>spotify:track:4oNXgGnumnu5oIXXyP8StH
+spotify:track:7rAjeWkQM6cLqbPjZtXxl2
+spotify:track:2Nt4Uw91pQLXSJ28SttDdF
+spotify:track:4qbCRlvE5Bb9XNBjxARjoP
+spotify:track:7x4tFmih1JBITx0e2ucGrT</pre>
+</div>
+</section>
+
+<section id="import-m3u-playlists">
+<h3><a aria-hidden="true" class="header-anchor" href="#import-m3u-playlists" title="Import M3U playlists"></a>Import <abbr class="acronym" title="MP3 Uniform Resource Locator"><span class="caps">M3U</span></abbr> playlists<a aria-controls="import-m3u-playlists-section" aria-expanded="true" aria-hidden="true" class="collapse-button" data-toggle="collapse" href="#import-m3u-playlists-section" role="button"></a></h3>
+
+<div class="collapse in" id="import-m3u-playlists-section">
+<p>One can easily import <a href="https://en.wikipedia.org/wiki/M3U" target="_blank" title="Open en.wikipedia.org in a new window"><abbr class="acronym" title="MP3 Uniform Resource Locator"><span class="caps">M3U</span></abbr></a> playlists (with the file extension <code>.m3u</code> or <code>.m3u8</code>) provided they contain <code>EXTM3U</code> metadata. That is, the playlist should be on the&#160;form:</p>
+
+<pre>#EXTM3U
+#EXTINF:404,Desire Lines - Deerhunter
+Deerhunter/Halcyon Digest/06 Desire Lines.mp3
+#EXTINF:230,Saved By Old Times - Deerhunter
+Deerhunter/Microcastle/10 Saved By Old Times.mp3
+#EXTINF:202,Agoraphobia - Deerhunter
+Deerhunter/Microcastle/02 Agoraphobia.mp3
+#EXTINF:133,Revival - Deerhunter
+Deerhunter/Halcyon Digest/03 Revival.mp3
+#EXTINF:264,Twilight at Carbon Lake - Deerhunter
+Deerhunter/Microcastle/12 Twilight at Carbon Lake.mp3</pre>
+
+<p>The generator will automatically convert this&#160;to:</p>
+
+<pre>Desire Lines - Deerhunter
+Saved By Old Times - Deerhunter
+Agoraphobia - Deerhunter
+Revival - Deerhunter
+Twilight at Carbon Lake - Deerhunter</pre>
+</div>
+</section>
+
+<section id="import-existing-spotify-playlists">
+<h3><a aria-hidden="true" class="header-anchor" href="#import-existing-spotify-playlists" title="Import existing Spotify&#160;playlists"></a>Import existing Spotify&#160;playlists<a aria-controls="import-existing-spotify-playlists-section" aria-expanded="true" aria-hidden="true" class="collapse-button" data-toggle="collapse" href="#import-existing-spotify-playlists-section" role="button"></a></h3>
+
+<div class="collapse in" id="import-existing-spotify-playlists-section">
+<p>One can also work with existing Spotify playlists. By selecting the playlist&#8217;s tracks in Spotify (with <em>Edit &#8594; Select All</em> or <kbd title="Control">Ctrl</kbd> + <kbd>A</kbd>), copying them (with <em>Edit &#8594; Copy</em> or <kbd title="Control">Ctrl</kbd> + <kbd>C</kbd>) and pasting them as text elsewhere (with <em>Edit &#8594; Paste</em> or <kbd title="Control">Ctrl</kbd> + <kbd>V</kbd>), one obtains a list of&#160;links:</p>
+
+<pre>https://open.spotify.com/track/4oNXgGnumnu5oIXXyP8StH
+https://open.spotify.com/track/7rAjeWkQM6cLqbPjZtXxl2
+https://open.spotify.com/track/2Nt4Uw91pQLXSJ28SttDdF
+https://open.spotify.com/track/4qbCRlvE5Bb9XNBjxARjoP
+https://open.spotify.com/track/7x4tFmih1JBITx0e2ucGrT</pre>
+
+<p>The generator will automatically convert this&#160;to:</p>
+
+<pre>spotify:track:4oNXgGnumnu5oIXXyP8StH
+spotify:track:7rAjeWkQM6cLqbPjZtXxl2
+spotify:track:2Nt4Uw91pQLXSJ28SttDdF
+spotify:track:4qbCRlvE5Bb9XNBjxARjoP
+spotify:track:7x4tFmih1JBITx0e2ucGrT</pre>
+</div>
+</section>
+</div>
+</section>
+
+<section id="command-line-script">
+<h2><a aria-hidden="true" class="header-anchor" href="#command-line-script" title="Command-line script"></a>Command-line script<a aria-controls="command-line-script-section" aria-expanded="true" aria-hidden="true" class="collapse-button" data-toggle="collapse" href="#command-line-script-section" role="button"></a></h2>
+
+<div class="collapse in" id="command-line-script-section">
+<p>A command-line version is also available. It requires <a href="https://nodejs.org/" target="_blank" title="Open nodejs.org in a new window">Node</a> to be&#160;installed.</p>
+
+<p>The source code is located at <a href="https://github.com/epsil/spotify-js" target="_blank" title="Open github.com in a new window">GitHub</a>. To clone the&#160;repository:</p>
+
+<pre>$ git clone https://github.com/epsil/spotify-js.git</pre>
+
+<p>Alternatively, download a <a href="https://github.com/epsil/spotify-js/archive/master.zip" target="_blank" title="Open github.com in a new window"><span class="caps">ZIP</span>&#160;file</a>.</p>
+
+<p>Run the script with <code>./index.js</code> or <code>node index</code>:</p>
+
+<pre>$ ./index.js input.txt output.txt</pre>
+</div>
+</section>
+
+<section id="links">
+<h2><a aria-hidden="true" class="header-anchor" href="#links" title="Links"></a>Links<a aria-controls="links-section" aria-expanded="true" aria-hidden="true" class="collapse-button" data-toggle="collapse" href="#links-section" role="button"></a></h2>
+
+<div class="collapse in" id="links-section">
+<section>
+<ul>
+<li><a href="https://epsil.github.io/spotify/" target="_blank" title="Open epsil.github.io in a new window">Web interface</a>
+</li>
+
+<li><a href="https://github.com/epsil/spotify-js" target="_blank" title="Open github.com in a new window">GitHub repository</a>
+</li>
+
+<li><a href="https://epsil.github.io/spotify/doc/" target="_blank" title="Open epsil.github.io in a new window">Developer documentation</a>
+</li>
+
+<li><a href="Tips.md">Additional tips</a>
+</li>
+</ul>
+</section>
+
+<section id="see-also">
+<h3><a aria-hidden="true" class="header-anchor" href="#see-also" title="See also"></a>See also<a aria-controls="see-also-section" aria-expanded="true" aria-hidden="true" class="collapse-button" data-toggle="collapse" href="#see-also-section" role="button"></a></h3>
+
+<div class="collapse in" id="see-also-section">
+<section>
+<ul>
+<li><a href="https://github.com/watsonbox/exportify" target="_blank" title="Open github.com in a new window">Exportify</a>, the opposite (export Spotify playlists to <span class="caps">CSV</span>&#160;format)</li>
+
+<li><a href="https://github.com/epsil/lastpy" target="_blank" title="Open github.com in a new window">last.py</a>, a Python script for sorting playlists by Last.fm&#160;rating</li>
+</ul>
+</section>
+
+<section id="gui-converters">
+<h4><a aria-hidden="true" class="header-anchor" href="#gui-converters" title="GUI converters"></a><abbr class="acronym" title="Graphical User Interface"><span class="caps">GUI</span></abbr> converters<a aria-controls="gui-converters-section" aria-expanded="true" aria-hidden="true" class="collapse-button" data-toggle="collapse" href="#gui-converters-section" role="button"></a></h4>
+
+<div class="collapse in" id="gui-converters-section">
+<ul>
+<li><a href="http://michaeldick.me/YetAnotherSpotifyPlaylistConverter/" target="_blank" title="Open michaeldick.me in a new window">Yet Another Spotify Playlist Converter</a> (<a href="https://github.com/bertique/YetAnotherSpotifyPlaylistConverter" target="_blank" title="Open github.com in a new window">source</a>)</li>
+
+<li><a href="http://spotlistr.herokuapp.com/" target="_blank" title="Open spotlistr.herokuapp.com in a new window">Spotlistr</a> (<a href="https://github.com/BobNisco/Spotlistr" target="_blank" title="Open github.com in a new window">source</a>)</li>
+
+<li><a href="http://www.playlist-converter.net/" target="_blank" title="Open playlist-converter.net in a new window">Playlist Converter</a>
+</li>
+</ul>
+</div>
+</section>
+</div>
+</section>
+</div>
+</section>
+</section>
+</article>
+</body>
+</html>

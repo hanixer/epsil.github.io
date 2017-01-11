@@ -85,8 +85,7 @@
                             etterfulgt av et hardt mellomrom */</span>
     <span class="hljs-attribute">display</span>: marker;
     <span class="hljs-attribute">padding-right</span>: .<span class="hljs-number">25em</span>;
-}</code>
-</pre>
+}</pre>
 
 <p><code class="language-css"><span class="hljs-selector-tag">margin</span></code>- og <code class="language-css"><span class="hljs-selector-tag">padding</span></code>-deklarasjonene er bare min m&#229;te &#229; oppn&#229; passende avstander p&#229;; du kan selvsagt justere disse etter&#160;behov.</p>
 
@@ -95,16 +94,14 @@
 <pre>
 <code class="language-css"><span class="hljs-selector-tag">ul</span> {
      <span class="hljs-attribute">list-style-image</span>: <span class="hljs-built_in">url</span>(<span class="hljs-string">"strek.png"</span>);
-}</code>
-</pre>
+}</pre>
 
 <p>Vi &#248;nsker selvsagt ikke at denne stilregelen skal brukes av Mozilla og Opera, da dette vil f&#248;re til <em>to</em> streker foran hver <code class="language-html">li</code> (urk). Derfor plasserer vi heller denne regelen i et eget stilark kun for Internet Explorer, som vi i <abbr class="acronym" title="HyperText Markup Language"><span class="caps">HTML</span></abbr>-dokumentene refererer til med f&#248;lgende&#160;kode:</p>
 
 <pre>
 <code class="language-html"><span class="hljs-comment">&lt;!--[if <span class="caps">IE</span>]&gt;
   &lt;link href="<span class="caps">IE</span>.css" rel="stylesheet" type="text/css"&gt;
-&lt;![endif]--&gt;</span></code>
-</pre>
+&lt;![endif]--&gt;</span></pre>
 
 <p>Bildel&#248;sningen er en <em>svak</em> l&#248;sning, som ikke skalerer s&#229; veldig bra. Men den er fortsatt mye bedre enn &#229; kludre til markeringen med &#171;presentasjonsorienterte&#187; streker, og gj&#248;r at listene ogs&#229; vil fungere i nettlesere uten <abbr class="acronym" title="Cascading Style Sheets"><span class="caps">CSS</span></abbr>-st&#248;tte (fordi <em>strukturen</em> i dokumentet er&#160;bevart).</p>
 </section>

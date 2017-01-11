@@ -895,8 +895,7 @@ July 2015</p>
   r &lt;- r - (<span class="hljs-number">1</span> + k_1 * r^<span class="hljs-number">2</span> + k_2 * r^<span class="hljs-number">4</span> + \k_3 * r^<span class="hljs-number">6</span> - d)
          / (<span class="hljs-number">2</span> * k_1 * r + <span class="hljs-number">4</span> * k_2 * r^<span class="hljs-number">3</span> + <span class="hljs-number">6</span> * k_3 * r^<span class="hljs-number">5</span>)
 end <span class="hljs-keyword">for</span>
-<span class="hljs-keyword">return</span> r <span class="hljs-comment"># final estimate</span></code>
-</pre>
+<span class="hljs-keyword">return</span> r <span class="hljs-comment"># final estimate</span></pre>
 </blockquote>
 
 <p id="alg-newton">
@@ -1183,8 +1182,7 @@ Built-in/Manual</th>
 <pre>
 <code class="language-python">[x, y] &lt;- [<span class="hljs-number">2</span>(s - <span class="hljs-number">1</span>/<span class="hljs-number">2</span>), <span class="hljs-number">2</span>(t - <span class="hljs-number">1</span>/<span class="hljs-number">2</span>)] <span class="hljs-comment"># convert to vertex space</span>
 [x<span class="hljs-string">', y'</span>] &lt;- F([x, y]) <span class="hljs-comment"># transform coordinate</span>
-[s<span class="hljs-string">', t'</span>] &lt;- [x<span class="hljs-string">'/2 + 1/2, y'</span>/<span class="hljs-number">2</span> + <span class="hljs-number">1</span>/<span class="hljs-number">2</span>] <span class="hljs-comment"># convert to texture space</span></code>
-</pre>
+[s<span class="hljs-string">', t'</span>] &lt;- [x<span class="hljs-string">'/2 + 1/2, y'</span>/<span class="hljs-number">2</span> + <span class="hljs-number">1</span>/<span class="hljs-number">2</span>] <span class="hljs-comment"># convert to texture space</span></pre>
 </blockquote>
 
 <p id="alg-coord">
@@ -1365,8 +1363,7 @@ varying vec2 v_texcoord;
 <span class="hljs-function"><span class="hljs-keyword">void</span> <span class="hljs-title">main</span><span class="hljs-params">()</span> </span>{
     gl_Position = a_position;
     v_texcoord = a_texcoord;
-}</code>
-</pre>
+}</pre>
 </blockquote>
 
 <p id="lst-vertexshader">
@@ -1381,8 +1378,7 @@ uniform sampler2D s_texture;
 
 <span class="hljs-function"><span class="hljs-keyword">void</span> <span class="hljs-title">main</span><span class="hljs-params">()</span> </span>{
     gl_FragColor = texture2D(s_texture, v_texcoord);
-}</code>
-</pre>
+}</pre>
 </blockquote>
 
 <p id="lst-fragmentshader">
@@ -1432,8 +1428,7 @@ varying vec2 v_texcoord;
 <span class="hljs-function"><span class="hljs-keyword">void</span> <span class="hljs-title">main</span><span class="hljs-params">()</span> </span>{
     gl_Position = transform(a_position);
     v_texcoord = a_texcoord;
-}</code>
-</pre>
+}</pre>
 </blockquote>
 
 <p id="lst-vertexshadertransform">
@@ -1476,8 +1471,7 @@ uniform sampler2D s_texture;
 
 <span class="hljs-function"><span class="hljs-keyword">void</span> <span class="hljs-title">main</span><span class="hljs-params">()</span> </span>{
     gl_FragColor = texture2D(s_texture, transform(v_texcoord));
-}</code>
-</pre>
+}</pre>
 </blockquote>
 
 <p id="lst-fragmentshadertransform">
@@ -1502,8 +1496,7 @@ uniform sampler2D s_texture;
 
 <span class="hljs-function"><span class="hljs-keyword">void</span> <span class="hljs-title">main</span><span class="hljs-params">()</span> </span>{
     gl_FragColor = color(s_texture, transform(v_texcoord));
-}</code>
-</pre>
+}</pre>
 </blockquote>
 
 <p id="lst-color">
@@ -1527,8 +1520,7 @@ vec2 v1 = vec2(v_texcoord.x,
                v_texcoord.y + px/<span class="hljs-number">2.0</span>);
 ...
 vec2 v8 = vec2(v_texcoord.x + px/<span class="hljs-number">2.0</span>,
-               v_texcoord.y - px/<span class="hljs-number">2.0</span>);</code>
-</pre>
+               v_texcoord.y - px/<span class="hljs-number">2.0</span>);</pre>
 </blockquote>
 
 <p lst-neighbor="">
@@ -1543,8 +1535,7 @@ vec2 v8 = vec2(v_texcoord.x + px/<span class="hljs-number">2.0</span>,
 <code class="language-c">v0 = transform(v0);
 v1 = transform(v1);
 ...
-v8 = transform(v8);</code>
-</pre>
+v8 = transform(v8);</pre>
 </blockquote>
 
 <p id="lst-transformed">
@@ -1559,8 +1550,7 @@ v8 = transform(v8);</code>
 <code class="language-c">vec4 c0 = color(s_texture, v0);
 vec4 c1 = color(s_texture, v1);
 ...
-vec4 c8 = color(s_texture, v4);</code>
-</pre>
+vec4 c8 = color(s_texture, v4);</pre>
 </blockquote>
 
 <p id="lst-sample">
@@ -1580,8 +1570,7 @@ vec4 c8 = color(s_texture, v4);</code>
             c2 * kernel[<span class="hljs-number">0</span>][<span class="hljs-number">1</span>] +
             ...
             c9 * kernel[<span class="hljs-number">2</span>][<span class="hljs-number">2</span>]) / div;
-}</code>
-</pre>
+}</pre>
 </blockquote>
 
 <p id="lst-filtering">
@@ -1598,8 +1587,7 @@ vec4 c8 = color(s_texture, v4);</code>
                        <span class="hljs-number">2.0</span>, <span class="hljs-number">4.0</span>, <span class="hljs-number">2.0</span>,
                        <span class="hljs-number">1.0</span>, <span class="hljs-number">2.0</span>, <span class="hljs-number">1.0</span>);
     <span class="hljs-keyword">return</span> filter9(c1, c2, ..., c9, kernel, <span class="hljs-number">16.0</span>);
-}</code>
-</pre>
+}</pre>
 </blockquote>
 
 <p id="lst-gaussian">
@@ -1622,8 +1610,7 @@ vec4 c8 = color(s_texture, v4);</code>
 <span class="hljs-function"><span class="hljs-keyword">float</span> <span class="hljs-title">distance2</span><span class="hljs-params">()</span> </span>{
     vec2 vx = <span class="hljs-built_in">abs</span>(fisheye(texcoordtopos(v_texcoord)));
     <span class="hljs-keyword">return</span> max(vx.x, vx.y);
-}</code>
-</pre>
+}</pre>
 </blockquote>
 
 <p id="lst-distance">
@@ -1640,8 +1627,7 @@ vec4 c8 = color(s_texture, v4);</code>
     gl_FragColor = sharpen9(c0, c1, ..., c8);
 } <span class="hljs-keyword">else</span> {
     gl_FragColor = gaussian9(c0, c1, ..., c8);
-}</code>
-</pre>
+}</pre>
 </blockquote>
 
 <p id="lst-adaptive">
@@ -1710,8 +1696,7 @@ glDeleteTextures(<span class="hljs-number">1</span>, &amp;id);
 glTexImage2D(GL_TEXTURE_2D, <span class="hljs-number">0</span>, GL_RGBA,
              img.height(), img.width(),
              <span class="hljs-number">0</span>, GL_RGBA, GL_UNSIGNED_BYTE,
-             img.constBits());</code>
-</pre>
+             img.constBits());</pre>
 </blockquote>
 
 <p id="lst-reload">
@@ -2014,15 +1999,11 @@ glTexImage2D(GL_TEXTURE_2D, <span class="hljs-number">0</span>, GL_RGBA,
 <div class="collapse in" id="chap-code-section">
 <p>The source code is freely available from a Git repository. To obtain the code, run the following command:</p>
 
-<pre>
-<code>$ git clone https://epsil@bitbucket.org/mpg_papers/thesis-2015-vegard.git</code>
-</pre>
+<pre>$ git clone https://epsil@bitbucket.org/mpg_papers/thesis-2015-vegard.git</pre>
 
 <p>To compile and run the code, run the included compilation script:</p>
 
-<pre>
-<code>$ ./compile.sh</code>
-</pre>
+<pre>$ ./compile.sh</pre>
 
 <p>This will generate a Makefile (using <code>qmake</code>), run the Makefile, and then execute the resulting application.</p>
 
@@ -2097,8 +2078,7 @@ plot(x,x,x,barrel(x),x,pincushion(x),x,logModel(x),x,expModel(x),
      x,trigModelInv(x),x,predict(divNlm ,x));
 legend(<span class="hljs-string">'x'</span>,<span class="hljs-string">'barrel'</span>,<span class="hljs-string">'pincushion'</span>,<span class="hljs-string">'logModel'</span>,<span class="hljs-string">'expModel'</span>,<span class="hljs-string">'pModel'</span>,
        <span class="hljs-string">'pModelInv'</span>,<span class="hljs-string">'trigModel'</span>,<span class="hljs-string">'trigModelInv'</span>,<span class="hljs-string">'divModel'</span>);
-axis([<span class="hljs-number">0.0</span> <span class="hljs-number">1.0</span> <span class="hljs-number">0.0</span> <span class="hljs-number">1.0</span>]);</code>
-</pre>
+axis([<span class="hljs-number">0.0</span> <span class="hljs-number">1.0</span> <span class="hljs-number">0.0</span> <span class="hljs-number">1.0</span>]);</pre>
 </div>
 </section>
 

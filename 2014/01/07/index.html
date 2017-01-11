@@ -74,36 +74,26 @@
 <section>
 <p>Pakkeh&#229;ndtering p&#229; <abbr class="acronym" title="Operating System 10"><span class="caps">OS</span> X</abbr> er et herk uten like. Her er det som skulle til for &#229; installere Python-biblioteket <a href="http://eyed3.nicfit.net/installation.html" target="_blank" title="Open eyed3.nicfit.net in a new window">eyeD3</a> med <code>pip</code>. F&#248;rst, <a href="http://www.pip-installer.org/en/latest/installing.html" target="_blank" title="Open pip-installer.org in a new window">installer pip</a> med <code>easy_install</code>:</p>
 
-<pre>
-<code>$ sudo easy_install pip</code>
-</pre>
+<pre>$ sudo easy_install pip</pre>
 
 <p>Deretter kan det v&#230;re n&#248;dvendig &#229; oppgradere <code>setuptools</code>:</p>
 
-<pre>
-<code>$ pip install --upgrade setuptools</code>
-</pre>
+<pre>$ pip install --upgrade setuptools</pre>
 
 <p>Hvis dette ikke fungerer,&#160;pr&#248;v:</p>
 
-<pre>
-<code>$ sudo pip install --no-use-wheel --upgrade setuptools</code>
-</pre>
+<pre>$ sudo pip install --no-use-wheel --upgrade setuptools</pre>
 
 <p>Alternativt, last ned og kj&#248;r det offisielle <a href="https://pypi.python.org/pypi/setuptools#unix-based-systems-including-mac-os-x" target="_blank" title="Open pypi.python.org in a new window">installasjonsskriptet</a>:</p>
 
-<pre>
-<code>$ wget https://bitbucket.org/pypa/setuptools/raw/bootstrap/ez_setup.py -O - | sudo python</code>
-</pre>
+<pre>$ wget https://bitbucket.org/pypa/setuptools/raw/bootstrap/ez_setup.py -O - | sudo python</pre>
 
 <p>(Hvis <code>wget</code> ikke er installert enn&#229;, gj&#248;r <code>$ brew install wget</code>. Hvis <code>brew</code> krangler, kj&#248;r <code>$ brew doctor</code> og p&#229;se at filrettigheter er som de skal&#160;v&#230;re.)</p>
 
 <p>N&#229;r <code>pip</code> <em>og</em> <code>setuptools</code> er installert, kan <code>pip</code>-pakken for <code>eye3D</code> finnes med <code>pip search</code>:</p>
 
-<pre>
-<code>$ pip search eyeD3
-$ pip install eyeD3-pip</code>
-</pre>
+<pre>$ pip search eyeD3
+$ pip install eyeD3-pip</pre>
 </section>
 </section>
 </article>
