@@ -5,6 +5,10 @@ image: spotify.png
 image-width: 100
 ---
 
+**Oppdatering:** Denne oppskriften er utdatert. Bruk [Spotify Playlist Generator](https://epsil.github.io/spotify/) i stedet.
+
+* * * * *
+
 Med nettstedet [Playlist Converter](http://www.playlist-converter.net/) kan man enkelt importere spillelister inn i Spotify. Spillelisten må være på formatet `Track - Artist`:
 
     Walk in the Park - Beach House
