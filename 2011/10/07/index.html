@@ -88,7 +88,8 @@
 <span class="hljs-string">"foo"</span>
 
 &gt; (<span class="hljs-name">second</span> (<span class="hljs-name">pair</span> <span class="hljs-string">"foo"</span> <span class="hljs-string">"bar"</span>))
-<span class="hljs-string">"bar"</span></pre>
+<span class="hljs-string">"bar"</span></code>
+</pre>
 
 <p>Den vanlige m&#229;ten &#229; implementere dette p&#229; ville v&#230;re &#229; konstruere en listestruktur &#8211; et stykke data &#8211; med <code class="language-scheme">pair</code>, og s&#229; la <code class="language-scheme">first</code> og <code class="language-scheme">second</code> hente ut riktig element fra strukturen. <em><abbr class="acronym" title="Structure and Interpretation of Computer Programs"><span class="caps">SICP</span></abbr></em> sin fremgangsm&#229;te er derimot &#229; implementere paret som en <em>prosedyre</em>:</p>
 
@@ -103,13 +104,15 @@
   (<span class="hljs-name">z</span> <span class="hljs-number">1</span>))
 
 (<span class="hljs-name"><span class="hljs-builtin-name">define</span></span> (<span class="hljs-name">second</span> z)
-  (<span class="hljs-name">z</span> <span class="hljs-number">2</span>))</pre>
+  (<span class="hljs-name">z</span> <span class="hljs-number">2</span>))</code>
+</pre>
 
 <p>Her returnerer <code class="language-scheme">pair</code> en anonym funksjon (som lages med <code class="language-scheme">lambda</code> i Lisp). Denne funksjonen inneholder argumentene til <code class="language-scheme">pair</code>:</p>
 
 <pre>
 <code class="language-scheme">&gt; (<span class="hljs-name">pair</span> <span class="hljs-string">"foo"</span> <span class="hljs-string">"bar"</span>)
-#&lt;prosedyre som inneholder <span class="hljs-string">"foo"</span> og <span class="hljs-string">"bar"</span>&gt;</pre>
+#&lt;prosedyre som inneholder <span class="hljs-string">"foo"</span> og <span class="hljs-string">"bar"</span>&gt;</code>
+</pre>
 
 <p>Det <code class="language-scheme">first</code> og <code class="language-scheme">second</code> s&#229; gj&#248;r, er &#229; kalle prosedyren med et bestemt argument slik at den f&#248;rste eller andre verdien returneres. Dermed vil <code class="language-scheme">(<span class="hljs-name">first</span> (<span class="hljs-name">pair</span> <span class="hljs-string">"foo"</span> <span class="hljs-string">"bar"</span>))</code> fortsatt gi <code class="language-scheme"><span class="hljs-string">"foo"</span></code>, og <code class="language-scheme">(<span class="hljs-name">second</span> (<span class="hljs-name">pair</span> <span class="hljs-string">"foo"</span> <span class="hljs-string">"bar"</span>))</code> gi <code class="language-scheme"><span class="hljs-string">"bar"</span></code>. P&#229; papiret en helt adekvat&#160;implementasjon.</p>
 

@@ -136,26 +136,36 @@
 
 <p>We can now open a command prompt window and run a Bash script as&#160;follows:</p>
 
-<pre>sh script.sh</pre>
+<pre>
+<code>sh script.sh</code>
+</pre>
 
 <p>If the script accepts parameters, we just provide them at the&#160;end:</p>
 
-<pre>sh script.sh --param1 val1 --param2 val2</pre>
+<pre>
+<code>sh script.sh --param1 val1 --param2 val2</code>
+</pre>
 
 <p>Git for Windows also extends the command prompt with common Unix commands like <code>cp</code>, <code>rm</code> and <code>mv</code>:</p>
 
-<pre>cp script.sh script2.sh
+<pre>
+<code>cp script.sh script2.sh
 rm script.sh
-mv script2.sh script.sh</pre>
+mv script2.sh script.sh</code>
+</pre>
 
 <p>Git Bash, a <a href="#standalone-shells" title="Standalone shells">standalone shell</a>, is installed as well. It can be run as a separate program, or in the command prompt. To do the latter, just type <code>bash</code>; to return to the standard command prompt, type <code>exit</code>. A <code>.bash_profile</code> file can be used to store settings between sessions. To edit this file, start Git Bash and&#160;type:</p>
 
-<pre>notepad ~/.bash_profile</pre>
+<pre>
+<code>notepad ~/.bash_profile</code>
+</pre>
 
 <p>(Feel free to substitute <code>vi</code> for <code>notepad</code> if familiar with the former.) Below is an example file that configures the history&#160;size:</p>
 
-<pre>HISTSIZE=10000
-HISTFILESIZE=10000</pre>
+<pre>
+<code>HISTSIZE=10000
+HISTFILESIZE=10000</code>
+</pre>
 
 <p>Configuring Bash settings is not covered here &#8211; that is a topic in its own right. Note that Git Bash typically stores the <code>.bash_profile</code> file at <code>C:\Users\user\.bash_profile</code>.</p>
 </section>
@@ -168,15 +178,21 @@ HISTFILESIZE=10000</pre>
 
 <p>Next, update the value of the <code>PATHEXT</code> environmental variable. To access the variable, go to <em>Control Panel</em> &#8594; <em>System</em> &#8594; <em>Advanced</em> &#8594; <em>Environment Variables</em>. The value is a list of file extensions separated by <code>;</code>, for example:</p>
 
-<pre>.COM;.EXE;.BAT;.CMD;.VBS;.VBE;.JS;.JSE;.WSF;.WSH;.MSC</pre>
+<pre>
+<code>.COM;.EXE;.BAT;.CMD;.VBS;.VBE;.JS;.JSE;.WSF;.WSH;.MSC</code>
+</pre>
 
 <p>Add <code>;.SH</code> to the&#160;end:</p>
 
-<pre>.COM;.EXE;.BAT;.CMD;.VBS;.VBE;.JS;.JSE;.WSF;.WSH;.MSC;.SH</pre>
+<pre>
+<code>.COM;.EXE;.BAT;.CMD;.VBS;.VBE;.JS;.JSE;.WSF;.WSH;.MSC;.SH</code>
+</pre>
 
 <p>We can now run <code>.sh</code> files <em>directly</em> from the command prompt, like&#160;so:</p>
 
-<pre>script.sh --param1 val1 --param2 val2</pre>
+<pre>
+<code>script.sh --param1 val1 --param2 val2</code>
+</pre>
 
 <p>We can also run a <code>.sh</code> file by clicking on it. However, note that the <code>.sh</code> extension is required to identify the file as a Bash script. Windows does <em>not</em> parse the <code>#!/bin/sh</code> shebang line; to execute an extensionless script, use <code>sh</code> (<abbr title="exempli gratia">e.g.</abbr>, <code>sh script</code>).</p>
 </div>
@@ -191,11 +207,15 @@ HISTFILESIZE=10000</pre>
 <div class="collapse in" id="gnuwin32-section">
 <p>For even more Unix utilities, install <a href="http://gnuwin32.sourceforge.net/" target="_blank" title="Open gnuwin32.sourceforge.net in a new window">G<em>nu</em>W<em>in</em>32</a>. Ensure that its utilities are globally available by <em>appending</em> the location of G<em>nu</em>W<em>in</em>32&#8217;s executables (its <code>bin/</code> directory) to the <code>PATH</code> environment variable. The value is a list of file paths separated by <code>;</code>, for example:</p>
 
-<pre>%SystemRoot%\system32;%SystemRoot%;C:\Ruby22\bin</pre>
+<pre>
+<code>%SystemRoot%\system32;%SystemRoot%;C:\Ruby22\bin</code>
+</pre>
 
 <p>Thus, if G<em>nu</em>W<em>in</em>32&#8217;s executables are located in <code>C:\GnuWin32\bin</code>, simply add <code>;C:\GnuWin32\bin</code> to the&#160;end:</p>
 
-<pre>%SystemRoot%\system32;%SystemRoot%;C:\Ruby22\bin;C:\GnuWin32\bin</pre>
+<pre>
+<code>%SystemRoot%\system32;%SystemRoot%;C:\Ruby22\bin;C:\GnuWin32\bin</code>
+</pre>
 
 <p>On Windows 10, the variable may be displayed as an editable list of directories. Add the directory to the bottom of the&#160;list.</p>
 
@@ -220,16 +240,22 @@ HISTFILESIZE=10000</pre>
 <div class="collapse in" id="alias-open-section">
 <p>Windows does not have the <code>open</code> command, and none of the packages above provide it. To alias <code>open</code> to Windows&#8217; <code>start</code> command, navigate to <abbr class="acronym" title="Minimal System"><span class="caps">MSYS</span></abbr>&#8217; <code>bin/</code> directory (<code>C:\Program Files\Git\usr\bin</code> or <code>C:\msys\1.0\bin</code>) and create an <code>open.bat</code> file containing the&#160;following:</p>
 
-<pre>@echo off
-start %*</pre>
+<pre>
+<code>@echo off
+start %*</code>
+</pre>
 
 <p>For Git Bash, we need to add a Bash alias to <code>.bash_profile</code>. Start Git Bash and&#160;type:</p>
 
-<pre>notepad ~/.bash_profile</pre>
+<pre>
+<code>notepad ~/.bash_profile</code>
+</pre>
 
 <p>Then add the following&#160;line:</p>
 
-<pre>alias open='start'</pre>
+<pre>
+<code>alias open='start'</code>
+</pre>
 </div>
 </section>
 
@@ -241,9 +267,11 @@ start %*</pre>
 
 <p>Alternatively, switch to Git Bash for the duration of the&#160;command:</p>
 
-<pre>bash
+<pre>
+<code>bash
 find . -name "*.txt"
-exit</pre>
+exit</code>
+</pre>
 </div>
 </section>
 

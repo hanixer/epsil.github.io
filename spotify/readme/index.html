@@ -154,7 +154,9 @@
 <div class="collapse in" id="top-tracks-section">
 <p>To add the top 10 tracks of an&#160;artist:</p>
 
-<pre>#top Aphex Twin</pre>
+<pre>
+<code>#top Aphex Twin</code>
+</pre>
 
 <p>This will create a playlist consisting of ten most popular tracks of Aphex Twin. To add only the top 5 tracks, use <code>#top5</code>.</p>
 </div>
@@ -166,7 +168,9 @@
 <div class="collapse in" id="similar-artists-section">
 <p>To add tracks from similar&#160;artists:</p>
 
-<pre>#similar Aphex Twin</pre>
+<pre>
+<code>#similar Aphex Twin</code>
+</pre>
 
 <p>This will create a playlist consisting of the most popular tracks from the most similar artists to Aphex&#160;Twin.</p>
 </div>
@@ -178,14 +182,18 @@
 <div class="collapse in" id="artists-section">
 <p>To add the entire discography of an&#160;artist:</p>
 
-<pre>#artist Beach House</pre>
+<pre>
+<code>#artist Beach House</code>
+</pre>
 
 <p>Result:</p>
 
-<pre>spotify:track:&lt;Beach House Track #1&gt;
+<pre>
+<code>spotify:track:&lt;Beach House Track #1&gt;
 spotify:track:&lt;Beach House Track #2&gt;
 spotify:track:&lt;Beach House Track #3&gt;
-...</pre>
+...</code>
+</pre>
 </div>
 </section>
 
@@ -195,14 +203,18 @@ spotify:track:&lt;Beach House Track #3&gt;
 <div class="collapse in" id="albums-section">
 <p>To add an entire album to the&#160;playlist:</p>
 
-<pre>#album Substrata - Biosphere</pre>
+<pre>
+<code>#album Substrata - Biosphere</code>
+</pre>
 
 <p>Result:</p>
 
-<pre>spotify:track:&lt;Substrata Track #1&gt;
+<pre>
+<code>spotify:track:&lt;Substrata Track #1&gt;
 spotify:track:&lt;Substrata Track #2&gt;
 spotify:track:&lt;Substrata Track #3&gt;
-...</pre>
+...</code>
+</pre>
 </div>
 </section>
 
@@ -212,13 +224,17 @@ spotify:track:&lt;Substrata Track #3&gt;
 <div class="collapse in" id="order-section">
 <p>To order the tracks by Spotify popularity, use <code>#order by</code>:</p>
 
-<pre>#order by popularity
-#artist Beach House</pre>
+<pre>
+<code>#order by popularity
+#artist Beach House</code>
+</pre>
 
 <p>To order the tracks by <a href="http://last.fm/" target="_blank" title="Open last.fm in a new window">Last.fm</a> playcount, add the line <code>#order by lastfm</code>:</p>
 
-<pre>#order by lastfm
-#artist Beach House</pre>
+<pre>
+<code>#order by lastfm
+#artist Beach House</code>
+</pre>
 </div>
 </section>
 
@@ -228,9 +244,11 @@ spotify:track:&lt;Substrata Track #3&gt;
 <div class="collapse in" id="group-section">
 <p>To sort the ordered tracks into groups, use <code>#group by</code>:</p>
 
-<pre>#order by lastfm
+<pre>
+<code>#order by lastfm
 #group by artist
-#similar Beach House</pre>
+#similar Beach House</code>
+</pre>
 
 <p>This will create a Last.fm-ordered playlist of artists similar to Beach House, where tracks from the same artists are grouped&#160;together.</p>
 </div>
@@ -242,9 +260,11 @@ spotify:track:&lt;Substrata Track #3&gt;
 <div class="collapse in" id="alternate-section">
 <p>To group the tracks and then interleave them, use <code>#alternate by</code>:</p>
 
-<pre>#order by lastfm
+<pre>
+<code>#order by lastfm
 #alternate by artist
-#similar Beach House</pre>
+#similar Beach House</code>
+</pre>
 
 <p>This will create a Last.fm-ordered playlist of artists similar to Beach House, with each track having a different artist from the previous&#160;track.</p>
 </div>
@@ -256,19 +276,23 @@ spotify:track:&lt;Substrata Track #3&gt;
 <div class="collapse in" id="tracks-section">
 <p>To add a track to the playlist, add a line on the form <code>TITLE - ARTIST</code>:</p>
 
-<pre>Walk in the Park - Beach House
+<pre>
+<code>Walk in the Park - Beach House
 Irene - Beach House
 Other People - Beach House
 Troublemaker - Beach House
-Wishes - Beach House</pre>
+Wishes - Beach House</code>
+</pre>
 
 <p>Result:</p>
 
-<pre>spotify:track:4oNXgGnumnu5oIXXyP8StH
+<pre>
+<code>spotify:track:4oNXgGnumnu5oIXXyP8StH
 spotify:track:7rAjeWkQM6cLqbPjZtXxl2
 spotify:track:2Nt4Uw91pQLXSJ28SttDdF
 spotify:track:4qbCRlvE5Bb9XNBjxARjoP
-spotify:track:7x4tFmih1JBITx0e2ucGrT</pre>
+spotify:track:7x4tFmih1JBITx0e2ucGrT</code>
+</pre>
 </div>
 </section>
 
@@ -278,7 +302,8 @@ spotify:track:7x4tFmih1JBITx0e2ucGrT</pre>
 <div class="collapse in" id="import-m3u-playlists-section">
 <p>One can easily import <a href="https://en.wikipedia.org/wiki/M3U" target="_blank" title="Open en.wikipedia.org in a new window"><abbr class="acronym" title="MP3 Uniform Resource Locator"><span class="caps">M3U</span></abbr></a> playlists (with the file extension <code>.m3u</code> or <code>.m3u8</code>) provided they contain <code>EXTM3U</code> metadata. That is, the playlist should be on the&#160;form:</p>
 
-<pre>#EXTM3U
+<pre>
+<code>#EXTM3U
 #EXTINF:404,Desire Lines - Deerhunter
 Deerhunter/Halcyon Digest/06 Desire Lines.mp3
 #EXTINF:230,Saved By Old Times - Deerhunter
@@ -288,15 +313,18 @@ Deerhunter/Microcastle/02 Agoraphobia.mp3
 #EXTINF:133,Revival - Deerhunter
 Deerhunter/Halcyon Digest/03 Revival.mp3
 #EXTINF:264,Twilight at Carbon Lake - Deerhunter
-Deerhunter/Microcastle/12 Twilight at Carbon Lake.mp3</pre>
+Deerhunter/Microcastle/12 Twilight at Carbon Lake.mp3</code>
+</pre>
 
 <p>The generator will automatically convert this&#160;to:</p>
 
-<pre>Desire Lines - Deerhunter
+<pre>
+<code>Desire Lines - Deerhunter
 Saved By Old Times - Deerhunter
 Agoraphobia - Deerhunter
 Revival - Deerhunter
-Twilight at Carbon Lake - Deerhunter</pre>
+Twilight at Carbon Lake - Deerhunter</code>
+</pre>
 </div>
 </section>
 
@@ -306,19 +334,23 @@ Twilight at Carbon Lake - Deerhunter</pre>
 <div class="collapse in" id="import-existing-spotify-playlists-section">
 <p>One can also work with existing Spotify playlists. By selecting the playlist&#8217;s tracks in Spotify (with <em>Edit &#8594; Select All</em> or <kbd title="Control">Ctrl</kbd> + <kbd>A</kbd>), copying them (with <em>Edit &#8594; Copy</em> or <kbd title="Control">Ctrl</kbd> + <kbd>C</kbd>) and pasting them as text elsewhere (with <em>Edit &#8594; Paste</em> or <kbd title="Control">Ctrl</kbd> + <kbd>V</kbd>), one obtains a list of&#160;links:</p>
 
-<pre>https://open.spotify.com/track/4oNXgGnumnu5oIXXyP8StH
+<pre>
+<code>https://open.spotify.com/track/4oNXgGnumnu5oIXXyP8StH
 https://open.spotify.com/track/7rAjeWkQM6cLqbPjZtXxl2
 https://open.spotify.com/track/2Nt4Uw91pQLXSJ28SttDdF
 https://open.spotify.com/track/4qbCRlvE5Bb9XNBjxARjoP
-https://open.spotify.com/track/7x4tFmih1JBITx0e2ucGrT</pre>
+https://open.spotify.com/track/7x4tFmih1JBITx0e2ucGrT</code>
+</pre>
 
 <p>The generator will automatically convert this&#160;to:</p>
 
-<pre>spotify:track:4oNXgGnumnu5oIXXyP8StH
+<pre>
+<code>spotify:track:4oNXgGnumnu5oIXXyP8StH
 spotify:track:7rAjeWkQM6cLqbPjZtXxl2
 spotify:track:2Nt4Uw91pQLXSJ28SttDdF
 spotify:track:4qbCRlvE5Bb9XNBjxARjoP
-spotify:track:7x4tFmih1JBITx0e2ucGrT</pre>
+spotify:track:7x4tFmih1JBITx0e2ucGrT</code>
+</pre>
 </div>
 </section>
 </div>
@@ -332,13 +364,17 @@ spotify:track:7x4tFmih1JBITx0e2ucGrT</pre>
 
 <p>The source code is located at <a href="https://github.com/epsil/spotify-js" target="_blank" title="Open github.com in a new window">GitHub</a>. To clone the&#160;repository:</p>
 
-<pre>$ git clone https://github.com/epsil/spotify-js.git</pre>
+<pre>
+<code>$ git clone https://github.com/epsil/spotify-js.git</code>
+</pre>
 
 <p>Alternatively, download a <a href="https://github.com/epsil/spotify-js/archive/master.zip" target="_blank" title="Open github.com in a new window"><span class="caps">ZIP</span>&#160;file</a>.</p>
 
 <p>Run the script with <code>./index.js</code> or <code>node index</code>:</p>
 
-<pre>$ ./index.js input.txt output.txt</pre>
+<pre>
+<code>$ ./index.js input.txt output.txt</code>
+</pre>
 </div>
 </section>
 

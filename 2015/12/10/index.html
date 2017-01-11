@@ -229,17 +229,21 @@
 <h2><a aria-hidden="true" class="header-anchor" href="#filstruktur" title="Filstruktur"></a>Filstruktur<a aria-controls="filstruktur-section" aria-expanded="true" aria-hidden="true" class="collapse-button" data-toggle="collapse" href="#filstruktur-section" role="button"></a></h2>
 
 <div class="collapse in" id="filstruktur-section">
-<pre>test/
+<pre>
+<code>test/
 |-- test.js
 `-- node_modules/
     |-- selenium_webdriver/
     |-- chai/
     |-- chai-as-promised/
-    `-- ...</pre>
+    `-- ...</code>
+</pre>
 
 <p>Kj&#248;res med:</p>
 
-<pre>mocha test.js</pre>
+<pre>
+<code>mocha test.js</code>
+</pre>
 </div>
 </section>
 
@@ -268,7 +272,8 @@ after(<span class="hljs-function"><span class="hljs-keyword">function</span> (<s
 
 describe(<span class="hljs-string">'Component'</span>, <span class="hljs-function"><span class="hljs-keyword">function</span> (<span class="hljs-params"></span>) </span>{
   <span class="hljs-comment">// ...</span>
-})</pre>
+})</code>
+</pre>
 </div>
 </section>
 
@@ -289,7 +294,8 @@ describe(<span class="hljs-string">'Component'</span>, <span class="hljs-functio
   it(<span class="hljs-string">'should work as expected'</span>, <span class="hljs-function"><span class="hljs-keyword">function</span> (<span class="hljs-params"></span>) </span>{
     <span class="hljs-comment">// Selenium test code here</span>
   })
-})</pre>
+})</code>
+</pre>
 
 <p>Resultat:</p>
 
@@ -311,7 +317,8 @@ describe(<span class="hljs-string">'Component'</span>, <span class="hljs-functio
     searchField.click()
     <span class="hljs-keyword">return</span> expect(searchField.getText()).to.eventually.equal(<span class="hljs-string">''</span>)
   })
-})</pre>
+})</code>
+</pre>
 
 <p>Resultat:</p>
 

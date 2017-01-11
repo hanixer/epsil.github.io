@@ -90,7 +90,8 @@
   <span class="hljs-tag">&lt;<span class="hljs-name">key</span>&gt;</span>RunAtLoad<span class="hljs-tag">&lt;/<span class="hljs-name">key</span>&gt;</span>
   <span class="hljs-tag">&lt;<span class="hljs-name">true</span>/&gt;</span>
 <span class="hljs-tag">&lt;/<span class="hljs-name">dict</span>&gt;</span>
-<span class="hljs-tag">&lt;/<span class="hljs-name">plist</span>&gt;</span></pre>
+<span class="hljs-tag">&lt;/<span class="hljs-name">plist</span>&gt;</span></code>
+</pre>
 
 <hr>
 
@@ -104,7 +105,8 @@
 <span class="caps">DIR</span>=<span class="hljs-string">"<span class="hljs-variable">$( cd "$( dirname "${BASH_SOURCE[0]}" )</span>"</span> &amp;&amp; <span class="hljs-built_in">pwd</span> )<span class="hljs-string">"
 cd "</span><span class="hljs-variable">$<span class="caps">DIR</span></span><span class="hljs-string">"
 <span class="hljs-variable">$<span class="caps">HTTPSERVER</span></span> . -p 8000
-</span></pre>
+</span></code>
+</pre>
 
 <p>Skriptet refereres s&#229; av <code>~/Library/LaunchAgents/com.personalwiki.httpserver.plist</code>:</p>
 
@@ -127,7 +129,8 @@ cd "</span><span class="hljs-variable">$<span class="caps">DIR</span></span><spa
   <span class="hljs-tag">&lt;<span class="hljs-name">key</span>&gt;</span>StandardOutPath<span class="hljs-tag">&lt;/<span class="hljs-name">key</span>&gt;</span>
   <span class="hljs-tag">&lt;<span class="hljs-name">string</span>&gt;</span>/tmp/mycommand.out<span class="hljs-tag">&lt;/<span class="hljs-name">string</span>&gt;</span>
 <span class="hljs-tag">&lt;/<span class="hljs-name">dict</span>&gt;</span>
-<span class="hljs-tag">&lt;/<span class="hljs-name">plist</span>&gt;</span></pre>
+<span class="hljs-tag">&lt;/<span class="hljs-name">plist</span>&gt;</span></code>
+</pre>
 
 <p>For &#229; kunne <a href="http://stackoverflow.com/questions/6337513/how-can-i-debug-a-launchd-script-that-doesnt-run-on-startup#answer-29926482" target="_blank" title="Open stackoverflow.com in a new window">debugge <code>launchd</code></a> dersom noe skulle g&#229; galt, loggf&#248;res resultatet til <code>StandardErrorPath</code> og <code>StandardOutPath</code>.</p>
 </section>

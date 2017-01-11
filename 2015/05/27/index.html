@@ -84,7 +84,8 @@ ci = GitHub::Markup::CommandImplementation.new(
       <span class="hljs-string">"pandoc -f markdown-tex_math_dollars-raw_tex"</span>)
 <span class="hljs-comment"># Our command needs to go to the front of the queue, in order to take</span>
 <span class="hljs-comment"># precedence before the stock GitHub::Markup::Markdown implementation</span>
-GitHub::Markup::markups.unshift(ci)</pre>
+GitHub::Markup::markups.unshift(ci)</code>
+</pre>
 
 <p>Dette forutsetter at Gollum startes med opsjonen <code>--config</code>.</p>
 </section>

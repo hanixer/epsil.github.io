@@ -74,7 +74,9 @@
 <section>
 <p>Profilmappene til Firefox og Thunderbird kan ta stor plass p&#229; grunn av <a href="http://en.kioskea.net/faq/2285-compacting-sqlite-bases-of-firefox-3" target="_blank" title="Open en.kioskea.net in a new window">ukomprimerte SQLite-databaser</a>. Man kan komprimere dem manuelt med f&#248;lgende&#160;kommando:</p>
 
-<pre>$ for f in *.sqlite; do sqlite3 "$f" "VACUUM"; done</pre>
+<pre>
+<code>$ for f in *.sqlite; do sqlite3 "$f" "VACUUM"; done</code>
+</pre>
 
 <p>Firefox-profilmappen befinner seg i <code>~/Library/Application Support/Firefox/Profiles</code> og Thunderbird-profilmappen i <code>~/Library/Thunderbird/Profiles</code>.</p>
 
