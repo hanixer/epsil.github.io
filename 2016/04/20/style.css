@@ -29,6 +29,10 @@ header > * {
     width: 100% !important;
 }
 
+header a, header a:hover {
+    color: inherit;
+}
+
 header figure {
     display: none;
 }
