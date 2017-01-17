@@ -5,7 +5,7 @@
 </title>
 <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
 <meta content="Vegard &#216;ye" name="author">
-<meta content="07c3a3ae670de134f1d7a18662408d19" name="md5">
+<meta content="d71898390ad79c78ec5d545799da3952" name="md5">
 <meta content="text/css" http-equiv="Content-Style-Type">
 <meta content="width=device-width, initial-scale=1" name="viewport">
 <meta content="Vegard &#216;ye" name="DC.Creator">
@@ -70,6 +70,12 @@
 <li><a href="#albums" title="Albums">Albums</a>
 </li>
 
+<li><a href="#tracks" title="Tracks">Tracks</a>
+</li>
+
+<li><a href="#duplicates" title="Duplicates">Duplicates</a>
+</li>
+
 <li><a href="#order" title="Order">Order</a>
 </li>
 
@@ -77,9 +83,6 @@
 </li>
 
 <li><a href="#alternate" title="Alternate">Alternate</a>
-</li>
-
-<li><a href="#tracks" title="Tracks">Tracks</a>
 </li>
 
 <li><a href="#import-m3u-playlists" title="Import M3U playlists">Import <abbr class="acronym" title="MP3 Uniform Resource Locator"><span class="caps">M3U</span></abbr> playlists</a>
@@ -97,7 +100,10 @@
 <ul class="collapse" id="links-2-section">
 <li><span class="" id="see-also-2"><a href="#see-also" title="See also">See also</a><a aria-controls="see-also-2-section" aria-expanded="false" aria-hidden="true" class="collapse-button" data-toggle="collapse" href="#see-also-2-section" role="button"></a></span>
 <ul class="collapse" id="see-also-2-section">
-<li><a href="#gui-converters" title="GUI converters"><abbr class="acronym" title="Graphical User Interface"><span class="caps">GUI</span></abbr> converters</a>
+<li><a href="#recommendations" title="Recommendations">Recommendations</a>
+</li>
+
+<li><a href="#conversion" title="Conversion">Conversion</a>
 </li>
 </ul>
 </li>
@@ -140,11 +146,11 @@
 <p>To import the playlist into&#160;Spotify:</p>
 
 <ol>
-<li><strong>Copy the output of the generator:</strong> choose <em>Edit &#8594; Copy</em> (<kbd title="Control">Ctrl</kbd> + <kbd>C</kbd>).</li>
+<li><strong>Copy the output of the generator:</strong> Choose <em>Edit &#8594; Copy</em> (<kbd title="Control">Ctrl</kbd> + <kbd>C</kbd>).</li>
 
-<li><strong>Create a new playlist in Spotify:</strong> choose <em>File &#8594; New Playlist</em> (<kbd title="Control">Ctrl</kbd> + <kbd>N</kbd>).</li>
+<li><strong>Create a new playlist in Spotify:</strong> Choose <em>File &#8594; New Playlist</em> (<kbd title="Control">Ctrl</kbd> + <kbd>N</kbd>).</li>
 
-<li><strong>Paste into the playlist:</strong> select the playlist and choose <em>Edit &#8594; Paste</em> (<kbd title="Control">Ctrl</kbd> + <kbd>V</kbd>).</li>
+<li><strong>Paste into the playlist:</strong> Select the playlist and choose <em>Edit &#8594; Paste</em> (<kbd title="Control">Ctrl</kbd> + <kbd>V</kbd>).</li>
 </ol>
 </section>
 
@@ -218,6 +224,44 @@ spotify:track:&lt;Substrata Track #3&gt;
 </div>
 </section>
 
+<section id="tracks">
+<h3><a aria-hidden="true" class="header-anchor" href="#tracks" title="Tracks"></a>Tracks<a aria-controls="tracks-section" aria-expanded="true" aria-hidden="true" class="collapse-button" data-toggle="collapse" href="#tracks-section" role="button"></a></h3>
+
+<div class="collapse in" id="tracks-section">
+<p>To add a track to the playlist, add a line on the form <code>TITLE - ARTIST</code>:</p>
+
+<pre>
+<code>Walk in the Park - Beach House
+Irene - Beach House
+Other People - Beach House
+Troublemaker - Beach House
+Wishes - Beach House</code>
+</pre>
+
+<p>Result:</p>
+
+<pre>
+<code>spotify:track:4oNXgGnumnu5oIXXyP8StH
+spotify:track:7rAjeWkQM6cLqbPjZtXxl2
+spotify:track:2Nt4Uw91pQLXSJ28SttDdF
+spotify:track:4qbCRlvE5Bb9XNBjxARjoP
+spotify:track:7x4tFmih1JBITx0e2ucGrT</code>
+</pre>
+</div>
+</section>
+
+<section id="duplicates">
+<h3><a aria-hidden="true" class="header-anchor" href="#duplicates" title="Duplicates"></a>Duplicates<a aria-controls="duplicates-section" aria-expanded="true" aria-hidden="true" class="collapse-button" data-toggle="collapse" href="#duplicates-section" role="button"></a></h3>
+
+<div class="collapse in" id="duplicates-section">
+<p>By default, the generator automatically removes duplicate tracks. To allow duplicates, add the&#160;line:</p>
+
+<pre>
+<code>#nonunique</code>
+</pre>
+</div>
+</section>
+
 <section id="order">
 <h3><a aria-hidden="true" class="header-anchor" href="#order" title="Order"></a>Order<a aria-controls="order-section" aria-expanded="true" aria-hidden="true" class="collapse-button" data-toggle="collapse" href="#order-section" role="button"></a></h3>
 
@@ -270,37 +314,11 @@ spotify:track:&lt;Substrata Track #3&gt;
 </div>
 </section>
 
-<section id="tracks">
-<h3><a aria-hidden="true" class="header-anchor" href="#tracks" title="Tracks"></a>Tracks<a aria-controls="tracks-section" aria-expanded="true" aria-hidden="true" class="collapse-button" data-toggle="collapse" href="#tracks-section" role="button"></a></h3>
-
-<div class="collapse in" id="tracks-section">
-<p>To add a track to the playlist, add a line on the form <code>TITLE - ARTIST</code>:</p>
-
-<pre>
-<code>Walk in the Park - Beach House
-Irene - Beach House
-Other People - Beach House
-Troublemaker - Beach House
-Wishes - Beach House</code>
-</pre>
-
-<p>Result:</p>
-
-<pre>
-<code>spotify:track:4oNXgGnumnu5oIXXyP8StH
-spotify:track:7rAjeWkQM6cLqbPjZtXxl2
-spotify:track:2Nt4Uw91pQLXSJ28SttDdF
-spotify:track:4qbCRlvE5Bb9XNBjxARjoP
-spotify:track:7x4tFmih1JBITx0e2ucGrT</code>
-</pre>
-</div>
-</section>
-
 <section id="import-m3u-playlists">
 <h3><a aria-hidden="true" class="header-anchor" href="#import-m3u-playlists" title="Import M3U playlists"></a>Import <abbr class="acronym" title="MP3 Uniform Resource Locator"><span class="caps">M3U</span></abbr> playlists<a aria-controls="import-m3u-playlists-section" aria-expanded="true" aria-hidden="true" class="collapse-button" data-toggle="collapse" href="#import-m3u-playlists-section" role="button"></a></h3>
 
 <div class="collapse in" id="import-m3u-playlists-section">
-<p>One can easily import <a href="https://en.wikipedia.org/wiki/M3U" target="_blank" title="Open en.wikipedia.org in a new window"><abbr class="acronym" title="MP3 Uniform Resource Locator"><span class="caps">M3U</span></abbr></a> playlists (with the file extension <code>.m3u</code> or <code>.m3u8</code>) provided they contain <code>EXTM3U</code> metadata. That is, the playlist should be on the&#160;form:</p>
+<p>One can easily import <a href="https://en.wikipedia.org/wiki/M3U" target="_blank" title="Open en.wikipedia.org in a new window"><abbr class="acronym" title="MP3 Uniform Resource Locator"><span class="caps">M3U</span></abbr></a> playlists (with the file extension <code>.m3u</code> or <code>.m3u8</code>), provided they contain <code>EXTM3U</code> metadata. That is, the playlist should be on the&#160;form:</p>
 
 <pre>
 <code>#EXTM3U
@@ -316,7 +334,7 @@ Deerhunter/Halcyon Digest/03 Revival.mp3
 Deerhunter/Microcastle/12 Twilight at Carbon Lake.mp3</code>
 </pre>
 
-<p>The generator will automatically convert this&#160;to:</p>
+<p>The generator translates this&#160;to:</p>
 
 <pre>
 <code>Desire Lines - Deerhunter
@@ -332,24 +350,33 @@ Twilight at Carbon Lake - Deerhunter</code>
 <h3><a aria-hidden="true" class="header-anchor" href="#import-existing-spotify-playlists" title="Import existing Spotify&#160;playlists"></a>Import existing Spotify&#160;playlists<a aria-controls="import-existing-spotify-playlists-section" aria-expanded="true" aria-hidden="true" class="collapse-button" data-toggle="collapse" href="#import-existing-spotify-playlists-section" role="button"></a></h3>
 
 <div class="collapse in" id="import-existing-spotify-playlists-section">
-<p>One can also work with existing Spotify playlists. By selecting the playlist&#8217;s tracks in Spotify (with <em>Edit &#8594; Select All</em> or <kbd title="Control">Ctrl</kbd> + <kbd>A</kbd>), copying them (with <em>Edit &#8594; Copy</em> or <kbd title="Control">Ctrl</kbd> + <kbd>C</kbd>) and pasting them as text elsewhere (with <em>Edit &#8594; Paste</em> or <kbd title="Control">Ctrl</kbd> + <kbd>V</kbd>), one obtains a list of&#160;links:</p>
+<p>One can also work with existing Spotify playlists. By selecting the playlist&#8217;s tracks in Spotify, copying them and then pasting them as text somewhere else, one obtains a list of Spotify&#160;links:</p>
 
 <pre>
 <code>https://open.spotify.com/track/4oNXgGnumnu5oIXXyP8StH
 https://open.spotify.com/track/7rAjeWkQM6cLqbPjZtXxl2
 https://open.spotify.com/track/2Nt4Uw91pQLXSJ28SttDdF
-https://open.spotify.com/track/4qbCRlvE5Bb9XNBjxARjoP
-https://open.spotify.com/track/7x4tFmih1JBITx0e2ucGrT</code>
+...</code>
 </pre>
 
-<p>The generator will automatically convert this&#160;to:</p>
+<p>One can easily apply <code>#order by popularity</code> to such a&#160;list:</p>
 
 <pre>
-<code>spotify:track:4oNXgGnumnu5oIXXyP8StH
+<code>#order by popularity
+https://open.spotify.com/track/4oNXgGnumnu5oIXXyP8StH
+https://open.spotify.com/track/7rAjeWkQM6cLqbPjZtXxl2
+https://open.spotify.com/track/2Nt4Uw91pQLXSJ28SttDdF
+...</code>
+</pre>
+
+<p>Likewise, spotify URIs are handled as&#160;well:</p>
+
+<pre>
+<code>#order by popularity
+spotify:track:4oNXgGnumnu5oIXXyP8StH
 spotify:track:7rAjeWkQM6cLqbPjZtXxl2
 spotify:track:2Nt4Uw91pQLXSJ28SttDdF
-spotify:track:4qbCRlvE5Bb9XNBjxARjoP
-spotify:track:7x4tFmih1JBITx0e2ucGrT</code>
+...</code>
 </pre>
 </div>
 </section>
@@ -410,10 +437,25 @@ spotify:track:7x4tFmih1JBITx0e2ucGrT</code>
 </ul>
 </section>
 
-<section id="gui-converters">
-<h4><a aria-hidden="true" class="header-anchor" href="#gui-converters" title="GUI converters"></a><abbr class="acronym" title="Graphical User Interface"><span class="caps">GUI</span></abbr> converters<a aria-controls="gui-converters-section" aria-expanded="true" aria-hidden="true" class="collapse-button" data-toggle="collapse" href="#gui-converters-section" role="button"></a></h4>
+<section id="recommendations">
+<h4><a aria-hidden="true" class="header-anchor" href="#recommendations" title="Recommendations"></a>Recommendations<a aria-controls="recommendations-section" aria-expanded="true" aria-hidden="true" class="collapse-button" data-toggle="collapse" href="#recommendations-section" role="button"></a></h4>
 
-<div class="collapse in" id="gui-converters-section">
+<div class="collapse in" id="recommendations-section">
+<ul>
+<li><a href="http://magicplaylist.co/" target="_blank" title="Open magicplaylist.co in a new window">MagicPlaylist</a> (<a href="https://github.com/loverajoel/magicplaylist" target="_blank" title="Open github.com in a new window">source</a>)</li>
+
+<li><a href="http://20v.co/" target="_blank" title="Open 20v.co in a new window">20v</a> (<a href="https://github.com/fusenlabs/20v" target="_blank" title="Open github.com in a new window">source</a>)</li>
+
+<li><a href="https://www.spotibot.com/" target="_blank" title="Open spotibot.com in a new window">Spotibot</a>
+</li>
+</ul>
+</div>
+</section>
+
+<section id="conversion">
+<h4><a aria-hidden="true" class="header-anchor" href="#conversion" title="Conversion"></a>Conversion<a aria-controls="conversion-section" aria-expanded="true" aria-hidden="true" class="collapse-button" data-toggle="collapse" href="#conversion-section" role="button"></a></h4>
+
+<div class="collapse in" id="conversion-section">
 <ul>
 <li><a href="http://michaeldick.me/YetAnotherSpotifyPlaylistConverter/" target="_blank" title="Open michaeldick.me in a new window">Yet Another Spotify Playlist Converter</a> (<a href="https://github.com/bertique/YetAnotherSpotifyPlaylistConverter" target="_blank" title="Open github.com in a new window">source</a>)</li>
 

@@ -1,7 +1,7 @@
 [Spotify Playlist Generator](https://epsil.github.io/spotify/)
 ==============================================================
 
-> A tool for converting, reordering and generating Spotify playlists.
+> A tool for converting, processing and generating Spotify playlists.
 >
 > <https://epsil.github.io/spotify/>
 
@@ -21,9 +21,9 @@ Usage
 
 To import the playlist into Spotify:
 
-1.  **Copy the output of the generator:** choose *Edit -> Copy* (<kbd>Ctrl</kbd> + <kbd>C</kbd>).
-2.  **Create a new playlist in Spotify:** choose *File -> New Playlist* (<kbd>Ctrl</kbd> + <kbd>N</kbd>).
-3.  **Paste into the playlist:** select the playlist and choose *Edit -> Paste* (<kbd>Ctrl</kbd> + <kbd>V</kbd>).
+1.  **Copy the output of the generator:** Choose *Edit -> Copy* (<kbd>Ctrl</kbd> + <kbd>C</kbd>).
+2.  **Create a new playlist in Spotify:** Choose *File -> New Playlist* (<kbd>Ctrl</kbd> + <kbd>N</kbd>).
+3.  **Paste into the playlist:** Select the playlist and choose *Edit -> Paste* (<kbd>Ctrl</kbd> + <kbd>V</kbd>).
 
 ### Top tracks
 
@@ -67,6 +67,30 @@ Result:
     spotify:track:<Substrata Track #3>
     ...
 
+### Tracks
+
+To add a track to the playlist, add a line on the form `TITLE - ARTIST`:
+
+    Walk in the Park - Beach House
+    Irene - Beach House
+    Other People - Beach House
+    Troublemaker - Beach House
+    Wishes - Beach House
+
+Result:
+
+    spotify:track:4oNXgGnumnu5oIXXyP8StH
+    spotify:track:7rAjeWkQM6cLqbPjZtXxl2
+    spotify:track:2Nt4Uw91pQLXSJ28SttDdF
+    spotify:track:4qbCRlvE5Bb9XNBjxARjoP
+    spotify:track:7x4tFmih1JBITx0e2ucGrT
+
+### Duplicates
+
+By default, the generator automatically removes duplicate tracks. To allow duplicates, add the line:
+
+    #nonunique
+
 ### Order
 
 To order the tracks by Spotify popularity, use `#order by`:
@@ -99,27 +123,9 @@ To group the tracks and then interleave them, use `#alternate by`:
 
 This will create a Last.fm-ordered playlist of artists similar to Beach House, with each track having a different artist from the previous track.
 
-### Tracks
-
-To add a track to the playlist, add a line on the form `TITLE - ARTIST`:
-
-    Walk in the Park - Beach House
-    Irene - Beach House
-    Other People - Beach House
-    Troublemaker - Beach House
-    Wishes - Beach House
-
-Result:
-
-    spotify:track:4oNXgGnumnu5oIXXyP8StH
-    spotify:track:7rAjeWkQM6cLqbPjZtXxl2
-    spotify:track:2Nt4Uw91pQLXSJ28SttDdF
-    spotify:track:4qbCRlvE5Bb9XNBjxARjoP
-    spotify:track:7x4tFmih1JBITx0e2ucGrT
-
 ### Import M3U playlists
 
-One can easily import [M3U](https://en.wikipedia.org/wiki/M3U) playlists (with the file extension `.m3u` or `.m3u8`) provided they contain `EXTM3U` metadata. That is, the playlist should be on the form:
+One can easily import [M3U](https://en.wikipedia.org/wiki/M3U) playlists (with the file extension `.m3u` or `.m3u8`), provided they contain `EXTM3U` metadata. That is, the playlist should be on the form:
 
     #EXTM3U
     #EXTINF:404,Desire Lines - Deerhunter
@@ -133,7 +139,7 @@ One can easily import [M3U](https://en.wikipedia.org/wiki/M3U) playlists (with t
     #EXTINF:264,Twilight at Carbon Lake - Deerhunter
     Deerhunter/Microcastle/12 Twilight at Carbon Lake.mp3
 
-The generator will automatically convert this to:
+The generator translates this to:
 
     Desire Lines - Deerhunter
     Saved By Old Times - Deerhunter
@@ -143,21 +149,28 @@ The generator will automatically convert this to:
 
 ### Import existing Spotify playlists
 
-One can also work with existing Spotify playlists. By selecting the playlist's tracks in Spotify (with *Edit -> Select All* or <kbd>Ctrl</kbd> + <kbd>A</kbd>), copying them (with *Edit -> Copy* or <kbd>Ctrl</kbd> + <kbd>C</kbd>) and pasting them as text elsewhere (with *Edit -> Paste* or <kbd>Ctrl</kbd> + <kbd>V</kbd>), one obtains a list of links:
+One can also work with existing Spotify playlists. By selecting the playlist's tracks in Spotify, copying them and then pasting them as text somewhere else, one obtains a list of Spotify links:
 
     https://open.spotify.com/track/4oNXgGnumnu5oIXXyP8StH
     https://open.spotify.com/track/7rAjeWkQM6cLqbPjZtXxl2
     https://open.spotify.com/track/2Nt4Uw91pQLXSJ28SttDdF
-    https://open.spotify.com/track/4qbCRlvE5Bb9XNBjxARjoP
-    https://open.spotify.com/track/7x4tFmih1JBITx0e2ucGrT
+    ...
 
-The generator will automatically convert this to:
+One can easily apply `#order by popularity` to such a list:
 
+    #order by popularity
+    https://open.spotify.com/track/4oNXgGnumnu5oIXXyP8StH
+    https://open.spotify.com/track/7rAjeWkQM6cLqbPjZtXxl2
+    https://open.spotify.com/track/2Nt4Uw91pQLXSJ28SttDdF
+    ...
+
+Likewise, spotify URIs are handled as well:
+
+    #order by popularity
     spotify:track:4oNXgGnumnu5oIXXyP8StH
     spotify:track:7rAjeWkQM6cLqbPjZtXxl2
     spotify:track:2Nt4Uw91pQLXSJ28SttDdF
-    spotify:track:4qbCRlvE5Bb9XNBjxARjoP
-    spotify:track:7x4tFmih1JBITx0e2ucGrT
+    ...
 
 Command-line script
 -------------------
@@ -187,7 +200,13 @@ Links
 -   [Exportify](https://github.com/watsonbox/exportify), the opposite (export Spotify playlists to CSV format)
 -   [last.py](https://github.com/epsil/lastpy), a Python script for sorting playlists by Last.fm rating
 
-#### GUI converters
+#### Recommendations
+
+-   [MagicPlaylist](http://magicplaylist.co/) ([source](https://github.com/loverajoel/magicplaylist))
+-   [20v](http://20v.co/) ([source](https://github.com/fusenlabs/20v))
+-   [Spotibot](https://www.spotibot.com/)
+
+#### Conversion
 
 -   [Yet Another Spotify Playlist Converter](http://michaeldick.me/YetAnotherSpotifyPlaylistConverter/) ([source](https://github.com/bertique/YetAnotherSpotifyPlaylistConverter))
 -   [Spotlistr](http://spotlistr.herokuapp.com/) ([source](https://github.com/BobNisco/Spotlistr))
